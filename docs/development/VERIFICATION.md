@@ -133,3 +133,10 @@ Pemeriksaan handoff:10 dokumen mempunyai seluruh tautan lokal valid;81 asset fro
 ## Akses LAN L-01 — 6 Oktober 2026
 
 `bun run start:lan` membuka frontend pada0.0.0.0:3000. IP antarmuka en0 saat pemeriksaan10.64.50.225. Listener *:3000 terkonfirmasi; halaman dan proxy /api/catalog melalui IP LAN memberikanHTTP200, judulDividenLab dan9emiten/12event. Backend tetaploopback8000. Tidak perlu rebuild karena perubahan hanya script peluncuran/dokumentasi. Akses dari perangkat kedua belum diperiksa; firewall/router tidak diubah.
+
+## Publikasi GitHub G-01 — 7 Oktober 2026
+
+- Initial commit aplikasi8260585 berisi316berkas, tanpa .env.local/.runtime/.venv/node_modules/.next. Scan literal key Sectors (termasuk encoded), pola token umum, dan private key tidak menemukan match pada kandidat berkas. Ini pemeriksaan terarah, bukan klaim audit keamanan menyeluruh.
+- `git archive HEAD` diekstrak di direktori sementara untuk memeriksa kelengkapan isi repository. Tanpa env privat/database yang disalin, startup TestClient berhasil membuat store lokal dan membaca snapshot: /api/health200, /api/catalog200,9emiten/12event. Memakai dependensi Python yang sudah terpasang; bukan fresh dependency installation.
+- `git diff --cached --check` untuk kode/config/docs development lulus. Peringatan whitespace pada6artifact sumber SVG/CSV/HTML/ekstraksiPDF dipertahankan, tidak menormalisasi sumber historis.
+- Push initial commit ke https://github.com/YohanesVito/horizon.git, main→main, berhasil. Dokumentasi publikasi menyusul sebagai commit terpisah. Tidak ada deployment website atau perubahan engine pada langkah ini.
