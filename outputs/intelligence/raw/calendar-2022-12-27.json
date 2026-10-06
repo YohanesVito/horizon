@@ -1,0 +1,84 @@
+{
+  "transport": "Sectors REST GET; endpoint absent from inspected MCP registry",
+  "url": "https://api.sectors.app/v2/corporate-actions/?start=2022-12-27&end=2023-03-26&type=dividend",
+  "retrieved_at": "2026-10-06T09:54:00.673785+08:00",
+  "http_status": 200,
+  "result": {
+    "start": "2022-12-27",
+    "end": "2023-03-26",
+    "dividend": [
+      {
+        "symbol": "IPCC.JK",
+        "ex_date": "2022-12-27",
+        "cum_date": "2022-12-26",
+        "recording_date": "2022-12-28",
+        "payment_date": "2023-01-13",
+        "dividend_amount": 12.49,
+        "dividend_yield": 0.0227168
+      },
+      {
+        "symbol": "ADRO.JK",
+        "ex_date": "2023-01-02",
+        "cum_date": "2022-12-30",
+        "recording_date": "2023-01-03",
+        "payment_date": "2023-01-13",
+        "dividend_amount": 251.28,
+        "dividend_yield": 0.0937407
+      },
+      {
+        "symbol": "BBRI.JK",
+        "ex_date": "2023-01-10",
+        "cum_date": "2023-01-09",
+        "recording_date": "2023-01-11",
+        "payment_date": "2023-01-27",
+        "dividend_amount": 57.0,
+        "dividend_yield": 0.0109773
+      },
+      {
+        "symbol": "RDTX.JK",
+        "ex_date": "2023-01-10",
+        "cum_date": "2023-01-09",
+        "recording_date": "2023-01-11",
+        "payment_date": "2023-01-27",
+        "dividend_amount": 280.0,
+        "dividend_yield": 0.0230243
+      },
+      {
+        "symbol": "AMOR.JK",
+        "ex_date": "2023-02-07",
+        "cum_date": "2023-02-06",
+        "recording_date": "2023-02-08",
+        "payment_date": "2023-02-24",
+        "dividend_amount": 16.0,
+        "dividend_yield": 0.0145529
+      },
+      {
+        "symbol": "MEGA.JK",
+        "ex_date": "2023-03-07",
+        "cum_date": "2023-03-06",
+        "recording_date": "2023-03-08",
+        "payment_date": "2023-03-28",
+        "dividend_amount": 241.618,
+        "dividend_yield": 0.0462332
+      },
+      {
+        "symbol": "ARNA.JK",
+        "ex_date": "2023-03-20",
+        "cum_date": "2023-03-17",
+        "recording_date": "2023-03-21",
+        "payment_date": "2023-03-29",
+        "dividend_amount": 55.0,
+        "dividend_yield": 0.064381
+      },
+      {
+        "symbol": "BBRI.JK",
+        "ex_date": "2023-03-24",
+        "cum_date": "2023-03-21",
+        "recording_date": "2023-03-27",
+        "payment_date": "2023-04-12",
+        "dividend_amount": 231.221,
+        "dividend_yield": 0.0445298
+      }
+    ]
+  }
+}

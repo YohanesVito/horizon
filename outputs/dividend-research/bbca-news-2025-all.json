@@ -1,0 +1,32 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "retrieved_at": "2026-10-06T01:02:25.629349+08:00",
+  "initialization": {
+    "protocolVersion": "2025-03-26",
+    "capabilities": {
+      "tools": {
+        "listChanged": true
+      }
+    },
+    "serverInfo": {
+      "name": "sectors-mcp",
+      "version": "1.0.0"
+    }
+  },
+  "method": "tools/call",
+  "tool": "fetch-news",
+  "arguments": {
+    "symbols": "BBCA",
+    "start": "2025-03-01",
+    "end": "2025-03-25",
+    "limit": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"results\": [],\n  \"pagination\": {\n    \"total_count\": 0,\n    \"showing\": 0,\n    \"limit\": 30,\n    \"offset\": 0,\n    \"has_next\": false,\n    \"has_previous\": false,\n    \"next_offset\": null,\n    \"previous_offset\": null\n  }\n}"
+      }
+    ]
+  }
+}

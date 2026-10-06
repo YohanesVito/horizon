@@ -1,0 +1,7 @@
+flowchart LR
+    C["Kas tersedia"] -->|beli lot sebelum batas cum| H["Posisi saham"]
+    H -->|memenuhi hak dividen| D["Piutang dividen"]
+    H -->|jual mulai ex sesuai aturan strategi| S["Piutang hasil jual"]
+    S -->|settlement T+2 sesi reguler| C
+    D -->|payment date| C
+    C -->|jika cukup dan belum lewat cum berikutnya| N["Emiten berikutnya"]

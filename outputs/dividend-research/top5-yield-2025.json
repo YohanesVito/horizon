@@ -1,0 +1,32 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "retrieved_at": "2026-10-06T01:01:12.291327+08:00",
+  "initialization": {
+    "protocolVersion": "2025-03-26",
+    "capabilities": {
+      "tools": {
+        "listChanged": true
+      }
+    },
+    "serverInfo": {
+      "name": "sectors-mcp",
+      "version": "1.0.0"
+    }
+  },
+  "method": "tools/call",
+  "tool": "fetch-companies",
+  "arguments": {
+    "where": "total_yield[2025] > 0",
+    "order_by": "-total_yield[2025]",
+    "limit": 5,
+    "include_query_values": true
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"results\": [\n    {\n      \"symbol\": \"DMAS.JK\",\n      \"company_name\": \"PT Puradelta Lestari Tbk\",\n      \"query_values\": {\n        \"total_yield[2025]\": 0.208766743540764\n      }\n    },\n    {\n      \"symbol\": \"LPPF.JK\",\n      \"company_name\": \"PT MDS Retailing Tbk\",\n      \"query_values\": {\n        \"total_yield[2025]\": 0.178184926509857\n      }\n    },\n    {\n      \"symbol\": \"ADRO.JK\",\n      \"company_name\": \"Alamtri Resources Indonesia Tbk\",\n      \"query_values\": {\n        \"total_yield[2025]\": 0.162205629050732\n      }\n    },\n    {\n      \"symbol\": \"CFIN.JK\",\n      \"company_name\": \"Clipan Finance Indonesia Tbk\",\n      \"query_values\": {\n        \"total_yield[2025]\": 0.159412071108818\n      }\n    },\n    {\n      \"symbol\": \"RALS.JK\",\n      \"company_name\": \"Ramayana Lestari Sentosa Tbk\",\n      \"query_values\": {\n        \"total_yield[2025]\": 0.151853129267693\n      }\n    }\n  ],\n  \"pagination\": {\n    \"total_count\": 368,\n    \"showing\": 5,\n    \"limit\": 5,\n    \"offset\": 0,\n    \"has_next\": true,\n    \"has_previous\": false,\n    \"next_offset\": 5,\n    \"previous_offset\": null\n  }\n}"
+      }
+    ]
+  }
+}

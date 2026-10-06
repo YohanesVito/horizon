@@ -1,0 +1,1659 @@
+{
+  "transport": "Sectors REST GET; endpoint absent from inspected MCP registry",
+  "url": "https://api.sectors.app/v2/corporate-actions/?start=2024-03-21&end=2024-06-18&type=dividend",
+  "retrieved_at": "2026-10-06T09:54:01.063465+08:00",
+  "http_status": 200,
+  "result": {
+    "start": "2024-03-21",
+    "end": "2024-06-18",
+    "dividend": [
+      {
+        "symbol": "BBCA.JK",
+        "ex_date": "2024-03-25",
+        "cum_date": "2024-03-22",
+        "recording_date": "2024-03-26",
+        "payment_date": "2024-04-04",
+        "dividend_amount": 227.5,
+        "dividend_yield": 0.0227933
+      },
+      {
+        "symbol": "HATM.JK",
+        "ex_date": "2024-03-26",
+        "cum_date": "2024-03-25",
+        "recording_date": "2024-03-27",
+        "payment_date": "2024-04-03",
+        "dividend_amount": 5.66,
+        "dividend_yield": 0.0213684
+      },
+      {
+        "symbol": "NISP.JK",
+        "ex_date": "2024-03-27",
+        "cum_date": "2024-03-26",
+        "recording_date": "2024-03-28",
+        "payment_date": "2024-04-18",
+        "dividend_amount": 72.0,
+        "dividend_yield": 0.0550603
+      },
+      {
+        "symbol": "BTPS.JK",
+        "ex_date": "2024-04-01",
+        "cum_date": "2024-03-28",
+        "recording_date": "2024-04-02",
+        "payment_date": "2024-04-19",
+        "dividend_amount": 70.15,
+        "dividend_yield": 0.0575647
+      },
+      {
+        "symbol": "ESSA.JK",
+        "ex_date": "2024-04-01",
+        "cum_date": "2024-03-28",
+        "recording_date": "2024-04-02",
+        "payment_date": "2024-04-19",
+        "dividend_amount": 5.0,
+        "dividend_yield": 0.00657231
+      },
+      {
+        "symbol": "BTPN.JK",
+        "ex_date": "2024-04-02",
+        "cum_date": "2024-04-01",
+        "recording_date": "2024-04-03",
+        "payment_date": "2024-04-19",
+        "dividend_amount": 44.3048,
+        "dividend_yield": 0.0184393
+      },
+      {
+        "symbol": "BDMN.JK",
+        "ex_date": "2024-04-03",
+        "cum_date": "2024-04-02",
+        "recording_date": "2024-04-04",
+        "payment_date": "2024-04-25",
+        "dividend_amount": 125.48,
+        "dividend_yield": 0.0470029
+      },
+      {
+        "symbol": "ADMF.JK",
+        "ex_date": "2024-04-16",
+        "cum_date": "2024-04-05",
+        "recording_date": "2024-04-17",
+        "payment_date": "2024-04-30",
+        "dividend_amount": 972.0,
+        "dividend_yield": 0.0835038
+      },
+      {
+        "symbol": "TMAS.JK",
+        "ex_date": "2024-04-16",
+        "cum_date": "2024-04-05",
+        "recording_date": "2024-04-17",
+        "payment_date": "2024-04-30",
+        "dividend_amount": 8.0,
+        "dividend_yield": 0.0521567
+      },
+      {
+        "symbol": "ARNA.JK",
+        "ex_date": "2024-04-17",
+        "cum_date": "2024-04-16",
+        "recording_date": "2024-04-18",
+        "payment_date": "2024-04-26",
+        "dividend_amount": 43.0,
+        "dividend_yield": 0.0621933
+      },
+      {
+        "symbol": "IFSH.JK",
+        "ex_date": "2024-04-17",
+        "cum_date": "2024-04-16",
+        "recording_date": "2024-04-18",
+        "payment_date": "2024-05-02",
+        "dividend_amount": 29.83,
+        "dividend_yield": 0.034833
+      },
+      {
+        "symbol": "ITMG.JK",
+        "ex_date": "2024-04-17",
+        "cum_date": "2024-04-16",
+        "recording_date": "2024-04-18",
+        "payment_date": "2024-04-25",
+        "dividend_amount": 1747.0,
+        "dividend_yield": 0.0668031
+      },
+      {
+        "symbol": "SICO.JK",
+        "ex_date": "2024-04-17",
+        "cum_date": "2024-04-16",
+        "recording_date": "2024-04-18",
+        "payment_date": "2024-04-30",
+        "dividend_amount": 2.0,
+        "dividend_yield": 0.019916
+      },
+      {
+        "symbol": "WOMF.JK",
+        "ex_date": "2024-04-17",
+        "cum_date": "2024-04-16",
+        "recording_date": "2024-04-18",
+        "payment_date": "2024-05-02",
+        "dividend_amount": 20.37,
+        "dividend_yield": 0.0555904
+      },
+      {
+        "symbol": "BNII.JK",
+        "ex_date": "2024-04-18",
+        "cum_date": "2024-04-17",
+        "recording_date": "2024-04-19",
+        "payment_date": "2024-04-30",
+        "dividend_amount": 10.2936,
+        "dividend_yield": 0.0444798
+      },
+      {
+        "symbol": "HAIS.JK",
+        "ex_date": "2024-04-18",
+        "cum_date": "2024-04-17",
+        "recording_date": "2024-04-19",
+        "payment_date": "2024-05-03",
+        "dividend_amount": 19.98,
+        "dividend_yield": 0.089819
+      },
+      {
+        "symbol": "BJBR.JK",
+        "ex_date": "2024-04-19",
+        "cum_date": "2024-04-18",
+        "recording_date": "2024-04-22",
+        "payment_date": "2024-05-02",
+        "dividend_amount": 95.05,
+        "dividend_yield": 0.0914017
+      },
+      {
+        "symbol": "CNMA.JK",
+        "ex_date": "2024-04-19",
+        "cum_date": "2024-04-18",
+        "recording_date": "2024-04-22",
+        "payment_date": "2024-05-02",
+        "dividend_amount": 8.0,
+        "dividend_yield": 0.0364132
+      },
+      {
+        "symbol": "BNGA.JK",
+        "ex_date": "2024-04-22",
+        "cum_date": "2024-04-19",
+        "recording_date": "2024-04-23",
+        "payment_date": "2024-05-03",
+        "dividend_amount": 122.67,
+        "dividend_yield": 0.066465
+      },
+      {
+        "symbol": "BNLI.JK",
+        "ex_date": "2024-04-22",
+        "cum_date": "2024-04-19",
+        "recording_date": "2024-04-23",
+        "payment_date": "2024-05-03",
+        "dividend_amount": 25.0,
+        "dividend_yield": 0.0252568
+      },
+      {
+        "symbol": "LPPF.JK",
+        "ex_date": "2024-04-22",
+        "cum_date": "2024-04-19",
+        "recording_date": "2024-04-23",
+        "payment_date": "2024-04-29",
+        "dividend_amount": 200.0,
+        "dividend_yield": 0.122768
+      },
+      {
+        "symbol": "ROTI.JK",
+        "ex_date": "2024-04-22",
+        "cum_date": "2024-04-19",
+        "recording_date": "2024-04-23",
+        "payment_date": "2024-04-26",
+        "dividend_amount": 87.67,
+        "dividend_yield": 0.0826648
+      },
+      {
+        "symbol": "AVIA.JK",
+        "ex_date": "2024-04-23",
+        "cum_date": "2024-04-22",
+        "recording_date": "2024-04-24",
+        "payment_date": "2024-04-30",
+        "dividend_amount": 11.0,
+        "dividend_yield": 0.0219267
+      },
+      {
+        "symbol": "JATI.JK",
+        "ex_date": "2024-04-24",
+        "cum_date": "2024-04-23",
+        "recording_date": "2024-04-25",
+        "payment_date": "2024-05-15",
+        "dividend_amount": 0.25,
+        "dividend_yield": 0.005
+      },
+      {
+        "symbol": "EAST.JK",
+        "ex_date": "2024-04-25",
+        "cum_date": "2024-04-24",
+        "recording_date": "2024-04-26",
+        "payment_date": "2024-05-03",
+        "dividend_amount": 2.45,
+        "dividend_yield": 0.0194627
+      },
+      {
+        "symbol": "BSML.JK",
+        "ex_date": "2024-04-26",
+        "cum_date": "2024-04-25",
+        "recording_date": "2024-04-29",
+        "payment_date": "2024-05-17",
+        "dividend_amount": 1.62,
+        "dividend_yield": 0.0121358
+      },
+      {
+        "symbol": "PRDA.JK",
+        "ex_date": "2024-04-29",
+        "cum_date": "2024-04-26",
+        "recording_date": "2024-04-30",
+        "payment_date": "2024-05-17",
+        "dividend_amount": 165.967,
+        "dividend_yield": 0.0477876
+      },
+      {
+        "symbol": "BELL.JK",
+        "ex_date": "2024-05-02",
+        "cum_date": "2024-04-30",
+        "recording_date": "2024-05-03",
+        "payment_date": "2024-05-22",
+        "dividend_amount": 0.3458,
+        "dividend_yield": 0.00525822
+      },
+      {
+        "symbol": "CINT.JK",
+        "ex_date": "2024-05-02",
+        "cum_date": "2024-04-30",
+        "recording_date": "2024-05-03",
+        "payment_date": "2024-05-22",
+        "dividend_amount": 5.0,
+        "dividend_yield": 0.0315638
+      },
+      {
+        "symbol": "AALI.JK",
+        "ex_date": "2024-05-03",
+        "cum_date": "2024-05-02",
+        "recording_date": "2024-05-06",
+        "payment_date": "2024-05-22",
+        "dividend_amount": 165.0,
+        "dividend_yield": 0.0258524
+      },
+      {
+        "symbol": "ASGR.JK",
+        "ex_date": "2024-05-03",
+        "cum_date": "2024-05-02",
+        "recording_date": "2024-05-06",
+        "payment_date": "2024-05-22",
+        "dividend_amount": 34.0,
+        "dividend_yield": 0.0405883
+      },
+      {
+        "symbol": "ASRM.JK",
+        "ex_date": "2024-05-03",
+        "cum_date": "2024-05-02",
+        "recording_date": "2024-05-06",
+        "payment_date": "2024-05-22",
+        "dividend_amount": 16.25,
+        "dividend_yield": 0.0430606
+      },
+      {
+        "symbol": "HMSP.JK",
+        "ex_date": "2024-05-03",
+        "cum_date": "2024-05-02",
+        "recording_date": "2024-05-06",
+        "payment_date": "2024-05-17",
+        "dividend_amount": 69.3,
+        "dividend_yield": 0.0917112
+      },
+      {
+        "symbol": "MPXL.JK",
+        "ex_date": "2024-05-03",
+        "cum_date": "2024-05-02",
+        "recording_date": "2024-05-06",
+        "payment_date": "2024-05-22",
+        "dividend_amount": 0.5,
+        "dividend_yield": 0.00371485
+      },
+      {
+        "symbol": "SCNP.JK",
+        "ex_date": "2024-05-03",
+        "cum_date": "2024-05-02",
+        "recording_date": "2024-05-06",
+        "payment_date": "2024-05-22",
+        "dividend_amount": 0.5,
+        "dividend_yield": 0.00306693
+      },
+      {
+        "symbol": "CBUT.JK",
+        "ex_date": "2024-05-06",
+        "cum_date": "2024-05-03",
+        "recording_date": "2024-05-07",
+        "payment_date": "2024-05-22",
+        "dividend_amount": 9.23,
+        "dividend_yield": 0.00698115
+      },
+      {
+        "symbol": "HRTA.JK",
+        "ex_date": "2024-05-06",
+        "cum_date": "2024-05-03",
+        "recording_date": "2024-05-07",
+        "payment_date": "2024-05-22",
+        "dividend_amount": 15.0,
+        "dividend_yield": 0.0388117
+      },
+      {
+        "symbol": "KEJU.JK",
+        "ex_date": "2024-05-06",
+        "cum_date": "2024-05-03",
+        "recording_date": "2024-05-07",
+        "payment_date": "2024-05-17",
+        "dividend_amount": 53.0,
+        "dividend_yield": 0.0382284
+      },
+      {
+        "symbol": "MKTR.JK",
+        "ex_date": "2024-05-06",
+        "cum_date": "2024-05-03",
+        "recording_date": "2024-05-07",
+        "payment_date": "2024-05-22",
+        "dividend_amount": 1.0,
+        "dividend_yield": 0.00806452
+      },
+      {
+        "symbol": "UNTR.JK",
+        "ex_date": "2024-05-06",
+        "cum_date": "2024-05-03",
+        "recording_date": "2024-05-07",
+        "payment_date": "2024-05-22",
+        "dividend_amount": 1569.0,
+        "dividend_yield": 0.0630671
+      },
+      {
+        "symbol": "AMAG.JK",
+        "ex_date": "2024-05-07",
+        "cum_date": "2024-05-06",
+        "recording_date": "2024-05-08",
+        "payment_date": "2024-05-22",
+        "dividend_amount": 30.0,
+        "dividend_yield": 0.0927399
+      },
+      {
+        "symbol": "CMRY.JK",
+        "ex_date": "2024-05-07",
+        "cum_date": "2024-05-06",
+        "recording_date": "2024-05-08",
+        "payment_date": "2024-05-20",
+        "dividend_amount": 90.0,
+        "dividend_yield": 0.0181561
+      },
+      {
+        "symbol": "DRMA.JK",
+        "ex_date": "2024-05-07",
+        "cum_date": "2024-05-06",
+        "recording_date": "2024-05-08",
+        "payment_date": "2024-05-20",
+        "dividend_amount": 36.4,
+        "dividend_yield": 0.034341
+      },
+      {
+        "symbol": "MLPT.JK",
+        "ex_date": "2024-05-07",
+        "cum_date": "2024-05-06",
+        "recording_date": "2024-05-08",
+        "payment_date": "2024-05-28",
+        "dividend_amount": 4.28,
+        "dividend_yield": 0.0187601
+      },
+      {
+        "symbol": "TLDN.JK",
+        "ex_date": "2024-05-07",
+        "cum_date": "2024-05-06",
+        "recording_date": "2024-05-08",
+        "payment_date": "2024-05-21",
+        "dividend_amount": 12.21,
+        "dividend_yield": 0.0257629
+      },
+      {
+        "symbol": "AUTO.JK",
+        "ex_date": "2024-05-08",
+        "cum_date": "2024-05-07",
+        "recording_date": "2024-05-13",
+        "payment_date": "2024-05-22",
+        "dividend_amount": 132.0,
+        "dividend_yield": 0.0594759
+      },
+      {
+        "symbol": "MCOL.JK",
+        "ex_date": "2024-05-08",
+        "cum_date": "2024-05-07",
+        "recording_date": "2024-05-13",
+        "payment_date": "2024-05-27",
+        "dividend_amount": 430.0,
+        "dividend_yield": 0.0778177
+      },
+      {
+        "symbol": "TPMA.JK",
+        "ex_date": "2024-05-08",
+        "cum_date": "2024-05-07",
+        "recording_date": "2024-05-13",
+        "payment_date": "2024-05-28",
+        "dividend_amount": 45.0,
+        "dividend_yield": 0.065874
+      },
+      {
+        "symbol": "AKRA.JK",
+        "ex_date": "2024-05-13",
+        "cum_date": "2024-05-08",
+        "recording_date": "2024-05-14",
+        "payment_date": "2024-05-27",
+        "dividend_amount": 50.0,
+        "dividend_yield": 0.0326065
+      },
+      {
+        "symbol": "LPGI.JK",
+        "ex_date": "2024-05-13",
+        "cum_date": "2024-05-08",
+        "recording_date": "2024-05-14",
+        "payment_date": "2024-05-31",
+        "dividend_amount": 2.7,
+        "dividend_yield": 0.00767119
+      },
+      {
+        "symbol": "PTMP.JK",
+        "ex_date": "2024-05-13",
+        "cum_date": "2024-05-08",
+        "recording_date": "2024-05-14",
+        "payment_date": "2024-05-31",
+        "dividend_amount": 1.33,
+        "dividend_yield": 0.0101061
+      },
+      {
+        "symbol": "PTRO.JK",
+        "ex_date": "2024-05-13",
+        "cum_date": "2024-05-08",
+        "recording_date": "2024-05-14",
+        "payment_date": "2024-05-30",
+        "dividend_amount": 4.95418,
+        "dividend_yield": 0.0046948
+      },
+      {
+        "symbol": "SMSM.JK",
+        "ex_date": "2024-05-13",
+        "cum_date": "2024-05-08",
+        "recording_date": "2024-05-14",
+        "payment_date": "2024-05-28",
+        "dividend_amount": 25.0,
+        "dividend_yield": 0.0128526
+      },
+      {
+        "symbol": "TRIS.JK",
+        "ex_date": "2024-05-13",
+        "cum_date": "2024-05-08",
+        "recording_date": "2024-05-14",
+        "payment_date": "2024-05-31",
+        "dividend_amount": 3.73999,
+        "dividend_yield": 0.0205085
+      },
+      {
+        "symbol": "TUGU.JK",
+        "ex_date": "2024-05-13",
+        "cum_date": "2024-05-08",
+        "recording_date": "2024-05-14",
+        "payment_date": "2024-05-29",
+        "dividend_amount": 123.256,
+        "dividend_yield": 0.110189
+      },
+      {
+        "symbol": "ASBI.JK",
+        "ex_date": "2024-05-14",
+        "cum_date": "2024-05-13",
+        "recording_date": "2024-05-15",
+        "payment_date": "2024-05-31",
+        "dividend_amount": 3.5,
+        "dividend_yield": 0.00442887
+      },
+      {
+        "symbol": "ASII.JK",
+        "ex_date": "2024-05-14",
+        "cum_date": "2024-05-13",
+        "recording_date": "2024-05-15",
+        "payment_date": "2024-05-30",
+        "dividend_amount": 421.0,
+        "dividend_yield": 0.0843548
+      },
+      {
+        "symbol": "GOOD.JK",
+        "ex_date": "2024-05-14",
+        "cum_date": "2024-05-13",
+        "recording_date": "2024-05-15",
+        "payment_date": "2024-05-21",
+        "dividend_amount": 9.0,
+        "dividend_yield": 0.0223374
+      },
+      {
+        "symbol": "MFMI.JK",
+        "ex_date": "2024-05-14",
+        "cum_date": "2024-05-13",
+        "recording_date": "2024-05-15",
+        "payment_date": "2024-05-31",
+        "dividend_amount": 37.0,
+        "dividend_yield": 0.0473483
+      },
+      {
+        "symbol": "PLIN.JK",
+        "ex_date": "2024-05-14",
+        "cum_date": "2024-05-13",
+        "recording_date": "2024-05-15",
+        "payment_date": "2024-05-27",
+        "dividend_amount": 85.0,
+        "dividend_yield": 0.0325987
+      },
+      {
+        "symbol": "SKLT.JK",
+        "ex_date": "2024-05-14",
+        "cum_date": "2024-05-13",
+        "recording_date": "2024-05-15",
+        "payment_date": "2024-05-31",
+        "dividend_amount": 5.0,
+        "dividend_yield": 0.0270431
+      },
+      {
+        "symbol": "BUAH.JK",
+        "ex_date": "2024-05-15",
+        "cum_date": "2024-05-14",
+        "recording_date": "2024-05-16",
+        "payment_date": "2024-06-05",
+        "dividend_amount": 11.5,
+        "dividend_yield": 0.0143045
+      },
+      {
+        "symbol": "MBAP.JK",
+        "ex_date": "2024-05-15",
+        "cum_date": "2024-05-14",
+        "recording_date": "2024-05-16",
+        "payment_date": "2024-05-21",
+        "dividend_amount": 64.0,
+        "dividend_yield": 0.0188446
+      },
+      {
+        "symbol": "TAPG.JK",
+        "ex_date": "2024-05-15",
+        "cum_date": "2024-05-14",
+        "recording_date": "2024-05-16",
+        "payment_date": "2024-05-31",
+        "dividend_amount": 91.0,
+        "dividend_yield": 0.13422
+      },
+      {
+        "symbol": "EXCL.JK",
+        "ex_date": "2024-05-16",
+        "cum_date": "2024-05-15",
+        "recording_date": "2024-05-17",
+        "payment_date": "2024-05-31",
+        "dividend_amount": 48.6,
+        "dividend_yield": 0.0213446
+      },
+      {
+        "symbol": "SMGR.JK",
+        "ex_date": "2024-05-16",
+        "cum_date": "2024-05-15",
+        "recording_date": "2024-05-17",
+        "payment_date": "2024-06-05",
+        "dividend_amount": 84.7278,
+        "dividend_yield": 0.0187838
+      },
+      {
+        "symbol": "TLKM.JK",
+        "ex_date": "2024-05-16",
+        "cum_date": "2024-05-15",
+        "recording_date": "2024-05-17",
+        "payment_date": "2024-05-30",
+        "dividend_amount": 178.504,
+        "dividend_yield": 0.0557678
+      },
+      {
+        "symbol": "INDY.JK",
+        "ex_date": "2024-05-17",
+        "cum_date": "2024-05-16",
+        "recording_date": "2024-05-20",
+        "payment_date": "2024-06-05",
+        "dividend_amount": 92.1331,
+        "dividend_yield": 0.063813
+      },
+      {
+        "symbol": "KDTN.JK",
+        "ex_date": "2024-05-17",
+        "cum_date": "2024-05-16",
+        "recording_date": "2024-05-20",
+        "payment_date": "2024-06-05",
+        "dividend_amount": 1.07851,
+        "dividend_yield": 0.0095479
+      },
+      {
+        "symbol": "RELF.JK",
+        "ex_date": "2024-05-17",
+        "cum_date": "2024-05-16",
+        "recording_date": "2024-05-20",
+        "payment_date": "2024-06-07",
+        "dividend_amount": 0.2,
+        "dividend_yield": 0.011753
+      },
+      {
+        "symbol": "ANTM.JK",
+        "ex_date": "2024-05-21",
+        "cum_date": "2024-05-20",
+        "recording_date": "2024-05-22",
+        "payment_date": "2024-06-07",
+        "dividend_amount": 128.071,
+        "dividend_yield": 0.0861403
+      },
+      {
+        "symbol": "BDKR.JK",
+        "ex_date": "2024-05-21",
+        "cum_date": "2024-05-20",
+        "recording_date": "2024-05-22",
+        "payment_date": "2024-06-12",
+        "dividend_amount": 5.0,
+        "dividend_yield": 0.00843753
+      },
+      {
+        "symbol": "HILL.JK",
+        "ex_date": "2024-05-21",
+        "cum_date": "2024-05-20",
+        "recording_date": "2024-05-22",
+        "payment_date": "2024-06-11",
+        "dividend_amount": 1.4,
+        "dividend_yield": 0.0150186
+      },
+      {
+        "symbol": "JSMR.JK",
+        "ex_date": "2024-05-21",
+        "cum_date": "2024-05-20",
+        "recording_date": "2024-05-22",
+        "payment_date": "2024-06-07",
+        "dividend_amount": 37.8635,
+        "dividend_yield": 0.00755956
+      },
+      {
+        "symbol": "LPIN.JK",
+        "ex_date": "2024-05-21",
+        "cum_date": "2024-05-20",
+        "recording_date": "2024-05-22",
+        "payment_date": "2024-06-10",
+        "dividend_amount": 25.0,
+        "dividend_yield": 0.0718025
+      },
+      {
+        "symbol": "MAHA.JK",
+        "ex_date": "2024-05-21",
+        "cum_date": "2024-05-20",
+        "recording_date": "2024-05-22",
+        "payment_date": "2024-06-03",
+        "dividend_amount": 12.0,
+        "dividend_yield": 0.0623575
+      },
+      {
+        "symbol": "PTBA.JK",
+        "ex_date": "2024-05-21",
+        "cum_date": "2024-05-20",
+        "recording_date": "2024-05-22",
+        "payment_date": "2024-06-07",
+        "dividend_amount": 397.712,
+        "dividend_yield": 0.144983
+      },
+      {
+        "symbol": "TEBE.JK",
+        "ex_date": "2024-05-21",
+        "cum_date": "2024-05-20",
+        "recording_date": "2024-05-22",
+        "payment_date": "2024-06-04",
+        "dividend_amount": 50.0,
+        "dividend_yield": 0.0706429
+      },
+      {
+        "symbol": "TPIA.JK",
+        "ex_date": "2024-05-21",
+        "cum_date": "2024-05-20",
+        "recording_date": "2024-05-22",
+        "payment_date": "2024-06-12",
+        "dividend_amount": 5.5764,
+        "dividend_yield": 0.000724587
+      },
+      {
+        "symbol": "HEAL.JK",
+        "ex_date": "2024-05-22",
+        "cum_date": "2024-05-21",
+        "recording_date": "2024-05-27",
+        "payment_date": "2024-06-13",
+        "dividend_amount": 8.5,
+        "dividend_yield": 0.00627766
+      },
+      {
+        "symbol": "PBID.JK",
+        "ex_date": "2024-05-22",
+        "cum_date": "2024-05-21",
+        "recording_date": "2024-05-27",
+        "payment_date": "2024-06-06",
+        "dividend_amount": 40.0,
+        "dividend_yield": 0.091627
+      },
+      {
+        "symbol": "EPMT.JK",
+        "ex_date": "2024-05-27",
+        "cum_date": "2024-05-22",
+        "recording_date": "2024-05-28",
+        "payment_date": "2024-06-12",
+        "dividend_amount": 166.0,
+        "dividend_yield": 0.0676502
+      },
+      {
+        "symbol": "INTP.JK",
+        "ex_date": "2024-05-27",
+        "cum_date": "2024-05-22",
+        "recording_date": "2024-05-28",
+        "payment_date": "2024-06-14",
+        "dividend_amount": 90.0,
+        "dividend_yield": 0.0117717
+      },
+      {
+        "symbol": "LTLS.JK",
+        "ex_date": "2024-05-27",
+        "cum_date": "2024-05-22",
+        "recording_date": "2024-05-28",
+        "payment_date": "2024-06-13",
+        "dividend_amount": 35.0,
+        "dividend_yield": 0.0330946
+      },
+      {
+        "symbol": "NRCA.JK",
+        "ex_date": "2024-05-27",
+        "cum_date": "2024-05-22",
+        "recording_date": "2024-05-28",
+        "payment_date": "2024-06-11",
+        "dividend_amount": 29.0,
+        "dividend_yield": 0.0819756
+      },
+      {
+        "symbol": "TOTL.JK",
+        "ex_date": "2024-05-27",
+        "cum_date": "2024-05-22",
+        "recording_date": "2024-05-28",
+        "payment_date": "2024-06-14",
+        "dividend_amount": 40.0,
+        "dividend_yield": 0.0717394
+      },
+      {
+        "symbol": "ABMM.JK",
+        "ex_date": "2024-05-28",
+        "cum_date": "2024-05-27",
+        "recording_date": "2024-05-29",
+        "payment_date": "2024-06-14",
+        "dividend_amount": 295.0,
+        "dividend_yield": 0.078461
+      },
+      {
+        "symbol": "ADRO.JK",
+        "ex_date": "2024-05-28",
+        "cum_date": "2024-05-27",
+        "recording_date": "2024-05-29",
+        "payment_date": "2024-06-05",
+        "dividend_amount": 209.31,
+        "dividend_yield": 0.0696417
+      },
+      {
+        "symbol": "ELPI.JK",
+        "ex_date": "2024-05-28",
+        "cum_date": "2024-05-27",
+        "recording_date": "2024-05-29",
+        "payment_date": "2024-06-14",
+        "dividend_amount": 6.3,
+        "dividend_yield": 0.0199639
+      },
+      {
+        "symbol": "ELSA.JK",
+        "ex_date": "2024-05-28",
+        "cum_date": "2024-05-27",
+        "recording_date": "2024-05-29",
+        "payment_date": "2024-06-14",
+        "dividend_amount": 27.57,
+        "dividend_yield": 0.0622057
+      },
+      {
+        "symbol": "MARK.JK",
+        "ex_date": "2024-05-28",
+        "cum_date": "2024-05-27",
+        "recording_date": "2024-05-29",
+        "payment_date": "2024-06-14",
+        "dividend_amount": 30.0,
+        "dividend_yield": 0.0328331
+      },
+      {
+        "symbol": "MASA.JK",
+        "ex_date": "2024-05-28",
+        "cum_date": "2024-05-27",
+        "recording_date": "2024-05-29",
+        "payment_date": "2024-06-14",
+        "dividend_amount": 37.0,
+        "dividend_yield": 0.00672905
+      },
+      {
+        "symbol": "SGER.JK",
+        "ex_date": "2024-05-28",
+        "cum_date": "2024-05-27",
+        "recording_date": "2024-05-29",
+        "payment_date": "2024-06-14",
+        "dividend_amount": 28.0,
+        "dividend_yield": 0.02668
+      },
+      {
+        "symbol": "SIDO.JK",
+        "ex_date": "2024-05-28",
+        "cum_date": "2024-05-27",
+        "recording_date": "2024-05-29",
+        "payment_date": "2024-06-06",
+        "dividend_amount": 18.0,
+        "dividend_yield": 0.0279033
+      },
+      {
+        "symbol": "TGKA.JK",
+        "ex_date": "2024-05-28",
+        "cum_date": "2024-05-27",
+        "recording_date": "2024-05-29",
+        "payment_date": "2024-06-07",
+        "dividend_amount": 312.0,
+        "dividend_yield": 0.0476075
+      },
+      {
+        "symbol": "AMRT.JK",
+        "ex_date": "2024-05-29",
+        "cum_date": "2024-05-28",
+        "recording_date": "2024-05-30",
+        "payment_date": "2024-06-12",
+        "dividend_amount": 28.68,
+        "dividend_yield": 0.00990075
+      },
+      {
+        "symbol": "BIKE.JK",
+        "ex_date": "2024-05-29",
+        "cum_date": "2024-05-28",
+        "recording_date": "2024-05-30",
+        "payment_date": "2024-06-19",
+        "dividend_amount": 10.0,
+        "dividend_yield": 0.0183357
+      },
+      {
+        "symbol": "BOBA.JK",
+        "ex_date": "2024-05-29",
+        "cum_date": "2024-05-28",
+        "recording_date": "2024-05-30",
+        "payment_date": "2024-06-12",
+        "dividend_amount": 5.0,
+        "dividend_yield": 0.029299
+      },
+      {
+        "symbol": "DLTA.JK",
+        "ex_date": "2024-05-29",
+        "cum_date": "2024-05-28",
+        "recording_date": "2024-05-30",
+        "payment_date": "2024-06-19",
+        "dividend_amount": 281.0,
+        "dividend_yield": 0.0983766
+      },
+      {
+        "symbol": "GEMS.JK",
+        "ex_date": "2024-05-29",
+        "cum_date": "2024-05-28",
+        "recording_date": "2024-05-30",
+        "payment_date": "2024-06-07",
+        "dividend_amount": 232.21,
+        "dividend_yield": 0.0270131
+      },
+      {
+        "symbol": "KLBF.JK",
+        "ex_date": "2024-05-29",
+        "cum_date": "2024-05-28",
+        "recording_date": "2024-05-30",
+        "payment_date": "2024-06-14",
+        "dividend_amount": 31.0,
+        "dividend_yield": 0.0199403
+      },
+      {
+        "symbol": "KMDS.JK",
+        "ex_date": "2024-05-29",
+        "cum_date": "2024-05-28",
+        "recording_date": "2024-05-30",
+        "payment_date": "2024-06-12",
+        "dividend_amount": 22.0,
+        "dividend_yield": 0.0416583
+      },
+      {
+        "symbol": "MIDI.JK",
+        "ex_date": "2024-05-29",
+        "cum_date": "2024-05-28",
+        "recording_date": "2024-05-30",
+        "payment_date": "2024-06-13",
+        "dividend_amount": 4.65,
+        "dividend_yield": 0.0110714
+      },
+      {
+        "symbol": "SRTG.JK",
+        "ex_date": "2024-05-29",
+        "cum_date": "2024-05-28",
+        "recording_date": "2024-05-30",
+        "payment_date": "2024-06-14",
+        "dividend_amount": 22.0,
+        "dividend_yield": 0.0120036
+      },
+      {
+        "symbol": "BAUT.JK",
+        "ex_date": "2024-05-30",
+        "cum_date": "2024-05-29",
+        "recording_date": "2024-05-31",
+        "payment_date": "2024-06-20",
+        "dividend_amount": 0.22,
+        "dividend_yield": 0.00880892
+      },
+      {
+        "symbol": "BRIS.JK",
+        "ex_date": "2024-05-30",
+        "cum_date": "2024-05-29",
+        "recording_date": "2024-05-31",
+        "payment_date": "2024-06-20",
+        "dividend_amount": 18.547,
+        "dividend_yield": 0.00714372
+      },
+      {
+        "symbol": "KUAS.JK",
+        "ex_date": "2024-05-30",
+        "cum_date": "2024-05-29",
+        "recording_date": "2024-05-31",
+        "payment_date": "2024-06-14",
+        "dividend_amount": 2.5,
+        "dividend_yield": 0.0486573
+      },
+      {
+        "symbol": "PPGL.JK",
+        "ex_date": "2024-05-30",
+        "cum_date": "2024-05-29",
+        "recording_date": "2024-05-31",
+        "payment_date": "2024-06-20",
+        "dividend_amount": 4.0,
+        "dividend_yield": 0.0403456
+      },
+      {
+        "symbol": "PSSI.JK",
+        "ex_date": "2024-05-30",
+        "cum_date": "2024-05-29",
+        "recording_date": "2024-05-31",
+        "payment_date": "2024-06-20",
+        "dividend_amount": 48.0,
+        "dividend_yield": 0.106038
+      },
+      {
+        "symbol": "RALS.JK",
+        "ex_date": "2024-05-30",
+        "cum_date": "2024-05-29",
+        "recording_date": "2024-05-31",
+        "payment_date": "2024-06-20",
+        "dividend_amount": 50.0,
+        "dividend_yield": 0.114986
+      },
+      {
+        "symbol": "SBMA.JK",
+        "ex_date": "2024-05-30",
+        "cum_date": "2024-05-29",
+        "recording_date": "2024-05-31",
+        "payment_date": "2024-06-14",
+        "dividend_amount": 1.1,
+        "dividend_yield": 0.00765706
+      },
+      {
+        "symbol": "WTON.JK",
+        "ex_date": "2024-05-30",
+        "cum_date": "2024-05-29",
+        "recording_date": "2024-05-31",
+        "payment_date": "2024-06-20",
+        "dividend_amount": 0.79,
+        "dividend_yield": 0.00836782
+      },
+      {
+        "symbol": "BBLD.JK",
+        "ex_date": "2024-05-31",
+        "cum_date": "2024-05-30",
+        "recording_date": "2024-06-03",
+        "payment_date": "2024-06-12",
+        "dividend_amount": 20.0,
+        "dividend_yield": 0.0320303
+      },
+      {
+        "symbol": "IMPC.JK",
+        "ex_date": "2024-05-31",
+        "cum_date": "2024-05-30",
+        "recording_date": "2024-06-03",
+        "payment_date": "2024-06-07",
+        "dividend_amount": 4.5,
+        "dividend_yield": 0.0125918
+      },
+      {
+        "symbol": "WEGE.JK",
+        "ex_date": "2024-05-31",
+        "cum_date": "2024-05-30",
+        "recording_date": "2024-06-03",
+        "payment_date": "2024-06-19",
+        "dividend_amount": 0.98,
+        "dividend_yield": 0.0130623
+      },
+      {
+        "symbol": "CPIN.JK",
+        "ex_date": "2024-06-03",
+        "cum_date": "2024-05-31",
+        "recording_date": "2024-06-04",
+        "payment_date": "2024-06-13",
+        "dividend_amount": 30.0,
+        "dividend_yield": 0.00600743
+      },
+      {
+        "symbol": "ISAT.JK",
+        "ex_date": "2024-06-03",
+        "cum_date": "2024-05-31",
+        "recording_date": "2024-06-04",
+        "payment_date": "2024-06-21",
+        "dividend_amount": 67.1,
+        "dividend_yield": 0.0257625
+      },
+      {
+        "symbol": "ITIC.JK",
+        "ex_date": "2024-06-03",
+        "cum_date": "2024-05-31",
+        "recording_date": "2024-06-04",
+        "payment_date": "2024-06-26",
+        "dividend_amount": 5.0,
+        "dividend_yield": 0.0184815
+      },
+      {
+        "symbol": "SMKL.JK",
+        "ex_date": "2024-06-03",
+        "cum_date": "2024-05-31",
+        "recording_date": "2024-06-04",
+        "payment_date": "2024-06-24",
+        "dividend_amount": 2.0,
+        "dividend_yield": 0.010773
+      },
+      {
+        "symbol": "BFIN.JK",
+        "ex_date": "2024-06-04",
+        "cum_date": "2024-06-03",
+        "recording_date": "2024-06-05",
+        "payment_date": "2024-06-21",
+        "dividend_amount": 27.0,
+        "dividend_yield": 0.0259935
+      },
+      {
+        "symbol": "EKAD.JK",
+        "ex_date": "2024-06-04",
+        "cum_date": "2024-06-03",
+        "recording_date": "2024-06-05",
+        "payment_date": "2024-06-27",
+        "dividend_amount": 9.0,
+        "dividend_yield": 0.0387973
+      },
+      {
+        "symbol": "JECC.JK",
+        "ex_date": "2024-06-04",
+        "cum_date": "2024-06-03",
+        "recording_date": "2024-06-05",
+        "payment_date": "2024-06-21",
+        "dividend_amount": 50.0,
+        "dividend_yield": 0.082617
+      },
+      {
+        "symbol": "KDSI.JK",
+        "ex_date": "2024-06-04",
+        "cum_date": "2024-06-03",
+        "recording_date": "2024-06-05",
+        "payment_date": "2024-06-26",
+        "dividend_amount": 24.75,
+        "dividend_yield": 0.057806
+      },
+      {
+        "symbol": "BBMD.JK",
+        "ex_date": "2024-06-05",
+        "cum_date": "2024-06-04",
+        "recording_date": "2024-06-06",
+        "payment_date": "2024-06-27",
+        "dividend_amount": 34.27,
+        "dividend_yield": 0.0172772
+      },
+      {
+        "symbol": "BISI.JK",
+        "ex_date": "2024-06-05",
+        "cum_date": "2024-06-04",
+        "recording_date": "2024-06-06",
+        "payment_date": "2024-06-14",
+        "dividend_amount": 80.0,
+        "dividend_yield": 0.0515175
+      },
+      {
+        "symbol": "EAST.JK",
+        "ex_date": "2024-06-05",
+        "cum_date": "2024-06-04",
+        "recording_date": "2024-06-06",
+        "payment_date": "2024-06-20",
+        "dividend_amount": 1.5,
+        "dividend_yield": 0.0119159
+      },
+      {
+        "symbol": "IKPM.JK",
+        "ex_date": "2024-06-05",
+        "cum_date": "2024-06-04",
+        "recording_date": "2024-06-06",
+        "payment_date": "2024-06-28",
+        "dividend_amount": 2.25,
+        "dividend_yield": 0.00859332
+      },
+      {
+        "symbol": "LAJU.JK",
+        "ex_date": "2024-06-05",
+        "cum_date": "2024-06-04",
+        "recording_date": "2024-06-06",
+        "payment_date": "2024-06-27",
+        "dividend_amount": 0.89,
+        "dividend_yield": 0.0173605
+      },
+      {
+        "symbol": "PTSN.JK",
+        "ex_date": "2024-06-05",
+        "cum_date": "2024-06-04",
+        "recording_date": "2024-06-06",
+        "payment_date": "2024-06-14",
+        "dividend_amount": 6.73008,
+        "dividend_yield": 0.030912
+      },
+      {
+        "symbol": "SGRO.JK",
+        "ex_date": "2024-06-05",
+        "cum_date": "2024-06-04",
+        "recording_date": "2024-06-06",
+        "payment_date": "2024-06-28",
+        "dividend_amount": 121.0,
+        "dividend_yield": 0.0600754
+      },
+      {
+        "symbol": "WIIM.JK",
+        "ex_date": "2024-06-05",
+        "cum_date": "2024-06-04",
+        "recording_date": "2024-06-06",
+        "payment_date": "2024-06-27",
+        "dividend_amount": 107.1,
+        "dividend_yield": 0.0924284
+      },
+      {
+        "symbol": "EURO.JK",
+        "ex_date": "2024-06-06",
+        "cum_date": "2024-06-05",
+        "recording_date": "2024-06-07",
+        "payment_date": "2024-06-14",
+        "dividend_amount": 4.6,
+        "dividend_yield": 0.0251994
+      },
+      {
+        "symbol": "MSTI.JK",
+        "ex_date": "2024-06-06",
+        "cum_date": "2024-06-05",
+        "recording_date": "2024-06-07",
+        "payment_date": "2024-06-28",
+        "dividend_amount": 99.84,
+        "dividend_yield": 0.0672648
+      },
+      {
+        "symbol": "PGEO.JK",
+        "ex_date": "2024-06-06",
+        "cum_date": "2024-06-05",
+        "recording_date": "2024-06-07",
+        "payment_date": "2024-06-28",
+        "dividend_amount": 47.7736,
+        "dividend_yield": 0.0408623
+      },
+      {
+        "symbol": "SKRN.JK",
+        "ex_date": "2024-06-06",
+        "cum_date": "2024-06-05",
+        "recording_date": "2024-06-07",
+        "payment_date": "2024-06-26",
+        "dividend_amount": 10.0,
+        "dividend_yield": 0.0260824
+      },
+      {
+        "symbol": "TCID.JK",
+        "ex_date": "2024-06-06",
+        "cum_date": "2024-06-05",
+        "recording_date": "2024-06-07",
+        "payment_date": "2024-06-25",
+        "dividend_amount": 94.0,
+        "dividend_yield": 0.0369962
+      },
+      {
+        "symbol": "UCID.JK",
+        "ex_date": "2024-06-06",
+        "cum_date": "2024-06-05",
+        "recording_date": "2024-06-07",
+        "payment_date": "2024-06-27",
+        "dividend_amount": 20.9082,
+        "dividend_yield": 0.0232373
+      },
+      {
+        "symbol": "VICI.JK",
+        "ex_date": "2024-06-06",
+        "cum_date": "2024-06-05",
+        "recording_date": "2024-06-07",
+        "payment_date": "2024-06-26",
+        "dividend_amount": 7.0,
+        "dividend_yield": 0.0110258
+      },
+      {
+        "symbol": "AMAR.JK",
+        "ex_date": "2024-06-07",
+        "cum_date": "2024-06-06",
+        "recording_date": "2024-06-10",
+        "payment_date": "2024-06-28",
+        "dividend_amount": 3.03914,
+        "dividend_yield": 0.0129822
+      },
+      {
+        "symbol": "BREN.JK",
+        "ex_date": "2024-06-07",
+        "cum_date": "2024-06-06",
+        "recording_date": "2024-06-10",
+        "payment_date": "2024-06-28",
+        "dividend_amount": 2.03362,
+        "dividend_yield": 0.000262455
+      },
+      {
+        "symbol": "CGAS.JK",
+        "ex_date": "2024-06-07",
+        "cum_date": "2024-06-06",
+        "recording_date": "2024-06-10",
+        "payment_date": "2024-06-28",
+        "dividend_amount": 1.25,
+        "dividend_yield": 0.00807279
+      },
+      {
+        "symbol": "CSRA.JK",
+        "ex_date": "2024-06-07",
+        "cum_date": "2024-06-06",
+        "recording_date": "2024-06-10",
+        "payment_date": "2024-06-28",
+        "dividend_amount": 14.63,
+        "dividend_yield": 0.0258963
+      },
+      {
+        "symbol": "MERK.JK",
+        "ex_date": "2024-06-07",
+        "cum_date": "2024-06-06",
+        "recording_date": "2024-06-10",
+        "payment_date": "2024-06-26",
+        "dividend_amount": 320.0,
+        "dividend_yield": 0.0827577
+      },
+      {
+        "symbol": "MOLI.JK",
+        "ex_date": "2024-06-07",
+        "cum_date": "2024-06-06",
+        "recording_date": "2024-06-10",
+        "payment_date": "2024-06-26",
+        "dividend_amount": 3.67,
+        "dividend_yield": 0.0134355
+      },
+      {
+        "symbol": "MPMX.JK",
+        "ex_date": "2024-06-07",
+        "cum_date": "2024-06-06",
+        "recording_date": "2024-06-10",
+        "payment_date": "2024-06-28",
+        "dividend_amount": 115.0,
+        "dividend_yield": 0.113145
+      },
+      {
+        "symbol": "NICL.JK",
+        "ex_date": "2024-06-07",
+        "cum_date": "2024-06-06",
+        "recording_date": "2024-06-10",
+        "payment_date": "2024-06-19",
+        "dividend_amount": 3.5,
+        "dividend_yield": 0.0153839
+      },
+      {
+        "symbol": "POWR.JK",
+        "ex_date": "2024-06-07",
+        "cum_date": "2024-06-06",
+        "recording_date": "2024-06-10",
+        "payment_date": "2024-06-25",
+        "dividend_amount": 43.9171,
+        "dividend_yield": 0.0641066
+      },
+      {
+        "symbol": "RAJA.JK",
+        "ex_date": "2024-06-07",
+        "cum_date": "2024-06-06",
+        "recording_date": "2024-06-10",
+        "payment_date": "2024-06-28",
+        "dividend_amount": 7.6,
+        "dividend_yield": 0.0253045
+      },
+      {
+        "symbol": "SMBR.JK",
+        "ex_date": "2024-06-07",
+        "cum_date": "2024-06-06",
+        "recording_date": "2024-06-10",
+        "payment_date": "2024-06-28",
+        "dividend_amount": 2.44793,
+        "dividend_yield": 0.0103345
+      },
+      {
+        "symbol": "BMHS.JK",
+        "ex_date": "2024-06-10",
+        "cum_date": "2024-06-07",
+        "recording_date": "2024-06-11",
+        "payment_date": "2024-07-03",
+        "dividend_amount": 0.56,
+        "dividend_yield": 0.0018801
+      },
+      {
+        "symbol": "BOLT.JK",
+        "ex_date": "2024-06-10",
+        "cum_date": "2024-06-07",
+        "recording_date": "2024-06-11",
+        "payment_date": "2024-07-02",
+        "dividend_amount": 35.0,
+        "dividend_yield": 0.0368888
+      },
+      {
+        "symbol": "CLEO.JK",
+        "ex_date": "2024-06-10",
+        "cum_date": "2024-06-07",
+        "recording_date": "2024-06-11",
+        "payment_date": "2024-06-28",
+        "dividend_amount": 5.05,
+        "dividend_yield": 0.00464553
+      },
+      {
+        "symbol": "GRPM.JK",
+        "ex_date": "2024-06-10",
+        "cum_date": "2024-06-07",
+        "recording_date": "2024-06-11",
+        "payment_date": "2024-07-03",
+        "dividend_amount": 1.5,
+        "dividend_yield": 0.031176
+      },
+      {
+        "symbol": "IDEA.JK",
+        "ex_date": "2024-06-10",
+        "cum_date": "2024-06-07",
+        "recording_date": "2024-06-11",
+        "payment_date": "2024-07-03",
+        "dividend_amount": 0.5,
+        "dividend_yield": 0.0120513
+      },
+      {
+        "symbol": "MEDC.JK",
+        "ex_date": "2024-06-10",
+        "cum_date": "2024-06-07",
+        "recording_date": "2024-06-11",
+        "payment_date": "2024-06-28",
+        "dividend_amount": 29.322,
+        "dividend_yield": 0.0228491
+      },
+      {
+        "symbol": "NAYZ.JK",
+        "ex_date": "2024-06-10",
+        "cum_date": "2024-06-07",
+        "recording_date": "2024-06-11",
+        "payment_date": "2024-07-03",
+        "dividend_amount": 0.12,
+        "dividend_yield": 0.00544515
+      },
+      {
+        "symbol": "PGAS.JK",
+        "ex_date": "2024-06-10",
+        "cum_date": "2024-06-07",
+        "recording_date": "2024-06-11",
+        "payment_date": "2024-06-28",
+        "dividend_amount": 148.306,
+        "dividend_yield": 0.103016
+      },
+      {
+        "symbol": "PSGO.JK",
+        "ex_date": "2024-06-10",
+        "cum_date": "2024-06-07",
+        "recording_date": "2024-06-11",
+        "payment_date": "2024-06-28",
+        "dividend_amount": 8.0,
+        "dividend_yield": 0.051904
+      },
+      {
+        "symbol": "SILO.JK",
+        "ex_date": "2024-06-10",
+        "cum_date": "2024-06-07",
+        "recording_date": "2024-06-11",
+        "payment_date": "2024-06-28",
+        "dividend_amount": 20.0,
+        "dividend_yield": 0.00746339
+      },
+      {
+        "symbol": "STAA.JK",
+        "ex_date": "2024-06-10",
+        "cum_date": "2024-06-07",
+        "recording_date": "2024-06-11",
+        "payment_date": "2024-06-24",
+        "dividend_amount": 27.0,
+        "dividend_yield": 0.0334457
+      },
+      {
+        "symbol": "TBIG.JK",
+        "ex_date": "2024-06-10",
+        "cum_date": "2024-06-07",
+        "recording_date": "2024-06-11",
+        "payment_date": "2024-07-03",
+        "dividend_amount": 30.204,
+        "dividend_yield": 0.0157732
+      },
+      {
+        "symbol": "APLI.JK",
+        "ex_date": "2024-06-11",
+        "cum_date": "2024-06-10",
+        "recording_date": "2024-06-12",
+        "payment_date": "2024-07-04",
+        "dividend_amount": 5.5,
+        "dividend_yield": 0.00959066
+      },
+      {
+        "symbol": "GEMS.JK",
+        "ex_date": "2024-06-11",
+        "cum_date": "2024-06-10",
+        "recording_date": "2024-06-12",
+        "payment_date": "2024-06-25",
+        "dividend_amount": 410.42,
+        "dividend_yield": 0.0477443
+      },
+      {
+        "symbol": "GHON.JK",
+        "ex_date": "2024-06-11",
+        "cum_date": "2024-06-10",
+        "recording_date": "2024-06-12",
+        "payment_date": "2024-07-03",
+        "dividend_amount": 165.0,
+        "dividend_yield": 0.094162
+      },
+      {
+        "symbol": "MLIA.JK",
+        "ex_date": "2024-06-11",
+        "cum_date": "2024-06-10",
+        "recording_date": "2024-06-12",
+        "payment_date": "2024-06-20",
+        "dividend_amount": 15.0,
+        "dividend_yield": 0.0405368
+      },
+      {
+        "symbol": "MTEL.JK",
+        "ex_date": "2024-06-11",
+        "cum_date": "2024-06-10",
+        "recording_date": "2024-06-12",
+        "payment_date": "2024-07-03",
+        "dividend_amount": 18.2746,
+        "dividend_yield": 0.0285437
+      },
+      {
+        "symbol": "SDPC.JK",
+        "ex_date": "2024-06-11",
+        "cum_date": "2024-06-10",
+        "recording_date": "2024-06-12",
+        "payment_date": "2024-07-04",
+        "dividend_amount": 2.5,
+        "dividend_yield": 0.0177645
+      },
+      {
+        "symbol": "SMCB.JK",
+        "ex_date": "2024-06-11",
+        "cum_date": "2024-06-10",
+        "recording_date": "2024-06-12",
+        "payment_date": "2024-06-27",
+        "dividend_amount": 29.7574,
+        "dividend_yield": 0.0294732
+      },
+      {
+        "symbol": "BPII.JK",
+        "ex_date": "2024-06-12",
+        "cum_date": "2024-06-11",
+        "recording_date": "2024-06-13",
+        "payment_date": "2024-06-21",
+        "dividend_amount": 5.5,
+        "dividend_yield": 0.0104204
+      },
+      {
+        "symbol": "FWCT.JK",
+        "ex_date": "2024-06-12",
+        "cum_date": "2024-06-11",
+        "recording_date": "2024-06-13",
+        "payment_date": "2024-07-04",
+        "dividend_amount": 7.0,
+        "dividend_yield": 0.06454
+      },
+      {
+        "symbol": "MTDL.JK",
+        "ex_date": "2024-06-12",
+        "cum_date": "2024-06-11",
+        "recording_date": "2024-06-13",
+        "payment_date": "2024-07-05",
+        "dividend_amount": 21.0,
+        "dividend_yield": 0.0353079
+      },
+      {
+        "symbol": "NTBK.JK",
+        "ex_date": "2024-06-12",
+        "cum_date": "2024-06-11",
+        "recording_date": "2024-06-13",
+        "payment_date": "2024-07-01",
+        "dividend_amount": 0.1565,
+        "dividend_yield": 0.00313
+      },
+      {
+        "symbol": "TOTO.JK",
+        "ex_date": "2024-06-12",
+        "cum_date": "2024-06-11",
+        "recording_date": "2024-06-13",
+        "payment_date": "2024-06-28",
+        "dividend_amount": 9.0,
+        "dividend_yield": 0.0408042
+      },
+      {
+        "symbol": "WINE.JK",
+        "ex_date": "2024-06-12",
+        "cum_date": "2024-06-11",
+        "recording_date": "2024-06-13",
+        "payment_date": "2024-07-05",
+        "dividend_amount": 2.35,
+        "dividend_yield": 0.00684702
+      },
+      {
+        "symbol": "JRPT.JK",
+        "ex_date": "2024-06-13",
+        "cum_date": "2024-06-12",
+        "recording_date": "2024-06-14",
+        "payment_date": "2024-07-05",
+        "dividend_amount": 24.0,
+        "dividend_yield": 0.0361258
+      },
+      {
+        "symbol": "MIKA.JK",
+        "ex_date": "2024-06-13",
+        "cum_date": "2024-06-12",
+        "recording_date": "2024-06-14",
+        "payment_date": "2024-07-05",
+        "dividend_amount": 34.0,
+        "dividend_yield": 0.0119811
+      },
+      {
+        "symbol": "CHEM.JK",
+        "ex_date": "2024-06-14",
+        "cum_date": "2024-06-13",
+        "recording_date": "2024-06-19",
+        "payment_date": "2024-07-05",
+        "dividend_amount": 0.13,
+        "dividend_yield": 0.00157693
+      },
+      {
+        "symbol": "CHIP.JK",
+        "ex_date": "2024-06-14",
+        "cum_date": "2024-06-13",
+        "recording_date": "2024-06-19",
+        "payment_date": "2024-07-05",
+        "dividend_amount": 3.05,
+        "dividend_yield": 0.00170994
+      },
+      {
+        "symbol": "DSNG.JK",
+        "ex_date": "2024-06-14",
+        "cum_date": "2024-06-13",
+        "recording_date": "2024-06-19",
+        "payment_date": "2024-07-04",
+        "dividend_amount": 22.0,
+        "dividend_yield": 0.028782
+      },
+      {
+        "symbol": "JKON.JK",
+        "ex_date": "2024-06-14",
+        "cum_date": "2024-06-13",
+        "recording_date": "2024-06-19",
+        "payment_date": "2024-07-05",
+        "dividend_amount": 4.25,
+        "dividend_yield": 0.0465285
+      },
+      {
+        "symbol": "SMAR.JK",
+        "ex_date": "2024-06-14",
+        "cum_date": "2024-06-13",
+        "recording_date": "2024-06-19",
+        "payment_date": "2024-06-25",
+        "dividend_amount": 95.0,
+        "dividend_yield": 0.025312
+      },
+      {
+        "symbol": "SPTO.JK",
+        "ex_date": "2024-06-14",
+        "cum_date": "2024-06-13",
+        "recording_date": "2024-06-19",
+        "payment_date": "2024-06-28",
+        "dividend_amount": 25.0,
+        "dividend_yield": 0.0441439
+      },
+      {
+        "symbol": "VISI.JK",
+        "ex_date": "2024-06-14",
+        "cum_date": "2024-06-13",
+        "recording_date": "2024-06-19",
+        "payment_date": "2024-07-05",
+        "dividend_amount": 1.0,
+        "dividend_yield": 0.00310429
+      }
+    ]
+  }
+}

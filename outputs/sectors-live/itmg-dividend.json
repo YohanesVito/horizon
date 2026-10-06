@@ -1,0 +1,32 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "initialization": {
+    "protocolVersion": "2025-03-26",
+    "capabilities": {
+      "tools": {
+        "listChanged": true
+      }
+    },
+    "serverInfo": {
+      "name": "sectors-mcp",
+      "version": "1.0.0"
+    }
+  },
+  "method": "tools/call",
+  "tool": "fetch-company-report",
+  "arguments": {
+    "symbol": "ITMG",
+    "sections": [
+      "dividend"
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"symbol\": \"ITMG.JK\",\n  \"company_name\": \"Indo Tambangraya Megah Tbk\",\n  \"dividend\": {\n    \"historical_dividends\": {\n      \"2020\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2020-11-10\",\n            \"total\": 307,\n            \"yield\": 0.0332713015377522\n          },\n          {\n            \"date\": \"2020-06-08\",\n            \"total\": 570,\n            \"yield\": 0.0617741011083126\n          }\n        ],\n        \"total_yield\": 0.0950454026460648,\n        \"total_dividend\": 877\n      },\n      \"2021\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2021-11-11\",\n            \"total\": 1218,\n            \"yield\": 0.0753372013568878\n          },\n          {\n            \"date\": \"2021-04-15\",\n            \"total\": 167,\n            \"yield\": 0.0103294998407364\n          }\n        ],\n        \"total_yield\": 0.0856667011976242,\n        \"total_dividend\": 1385\n      },\n      \"2022\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2022-11-11\",\n            \"total\": 4128,\n            \"yield\": 0.121670000255108\n          },\n          {\n            \"date\": \"2022-04-04\",\n            \"total\": 3040,\n            \"yield\": 0.0896018967032433\n          }\n        ],\n        \"total_yield\": 0.211271896958351,\n        \"total_dividend\": 7168\n      },\n      \"2023\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2023-09-12\",\n            \"total\": 2660,\n            \"yield\": 0.0894396975636482\n          },\n          {\n            \"date\": \"2023-04-11\",\n            \"total\": 6416,\n            \"yield\": 0.215730994939804\n          }\n        ],\n        \"total_yield\": 0.305170692503452,\n        \"total_dividend\": 9076\n      },\n      \"2024\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2024-09-10\",\n            \"total\": 1228,\n            \"yield\": 0.0469571985304356\n          },\n          {\n            \"date\": \"2024-04-17\",\n            \"total\": 1747,\n            \"yield\": 0.0668030977249146\n          }\n        ],\n        \"total_yield\": 0.11376029625535,\n        \"total_dividend\": 2975\n      },\n      \"2025\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2025-11-13\",\n            \"total\": 738,\n            \"yield\": 0.0319903008639812\n          },\n          {\n            \"date\": \"2025-04-21\",\n            \"total\": 2245,\n            \"yield\": 0.0973146706819534\n          }\n        ],\n        \"total_yield\": 0.129304971545935,\n        \"total_dividend\": 2983\n      },\n      \"2026\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2026-04-28\",\n            \"total\": 0.05712,\n            \"yield\": 0.0000022666666301943\n          }\n        ],\n        \"total_yield\": 0.0000022666666301943,\n        \"total_dividend\": 0.05712\n      }\n    },\n    \"upcoming_dividends\": null,\n    \"yield_ttm\": 0.0292879813058036,\n    \"dividend_yield_avg\": {\n      \"period\": 5,\n      \"avg_yield\": 0.188043992221355\n    },\n    \"dividend_ttm\": 738.057,\n    \"payout_ratio\": 0.23638698397543,\n    \"cash_payout_ratio\": -2.26566655157783,\n    \"last_ex_dividend_date\": \"2026-04-28\"\n  }\n}"
+      }
+    ]
+  },
+  "retrieved_at": "2026-10-06T00:25:40.232999+08:00"
+}

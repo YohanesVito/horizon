@@ -1,0 +1,428 @@
+{
+  "project": "Dividend rotation simulator — saham Indonesia",
+  "audit_date_local": "2026-10-06",
+  "timezone": "Asia/Makassar",
+  "financial_data_source": "Sectors App only",
+  "required_transport": "MCP",
+  "status": "expanded_calendar_and_BBCA_research_complete",
+  "integration": {
+    "skill": "sectors-api",
+    "skill_source": "https://github.com/supertypeai/sectors-agent-skills",
+    "skill_installed": true,
+    "mcp_url": "https://sectors-mcp.supertype.ai/mcp",
+    "mcp_configured": true,
+    "auth_environment_variable": "SECTORS_API_KEY",
+    "unauthenticated_initialize_status": 401,
+    "oauth_login_result": "Dynamic client registration rejected the Codex local callback: redirect_uri not allowed",
+    "mcp_tool_count": 66,
+    "access_method": "MCP Streamable HTTP plus official Sectors REST calendar; calendar endpoint absent from inspected 66-tool registry",
+    "native_tool_registry_available_in_this_turn": false,
+    "authentication_source": "Local .env.local; secret not copied to outputs",
+    "authenticated_data_calls_succeeded_initial_audit": 6,
+    "saved_expanded_audit_responses": 37
+  },
+  "documentation": [
+    "https://docs.sectors.app/api-references",
+    "https://docs.sectors.app/api-references/v2/indonesia/news/corporate-actions",
+    "https://docs.sectors.app/api-references/v2/indonesia/screener/companies",
+    "https://docs.sectors.app/recipes/sectors-for-ai-agents/00-sectors-mcp-guide",
+    "https://docs.sectors.app/recipes/sectors-for-ai-agents/01-agent-skills-guide",
+    "https://docs.sectors.app/recipes/sectors-for-ai-agents/03-sectors-in-chatgpt"
+  ],
+  "requirements": [
+    {
+      "need": "Historis DPS, jenis dividen, mata uang dan yield",
+      "documented_candidate_tools": [
+        "fetch-company-report",
+        "fetch-corporate-actions"
+      ],
+      "verification": "verified_on_two_issuers_with_amount_normalization_issues",
+      "open_questions": [
+        "Definisi field date dan total",
+        "Unit dan denominator yield",
+        "Cakupan tahun dan emiten",
+        "Perlakuan interim, final, dividen spesial dan revisi"
+      ],
+      "observed": "BBCA: 15 dividend events; ITMG: 13; both cover 2020–2026 in these responses. Currency and split adjustment basis are not explicit in the event records."
+    },
+    {
+      "need": "Kalender pengumuman, cum, ex, recording dan payment",
+      "documented_candidate_tools": [
+        "fetch-corporate-actions",
+        "fetch-company-report",
+        "REST GET /v2/corporate-actions/"
+      ],
+      "verification": "cum_ex_recording_payment_verified_via_REST_calendar; declaration_unverified; upcoming_revision_conflict",
+      "open_questions": [
+        "Declaration timestamp and when information first became public",
+        "Market type of cum/ex fields",
+        "Schedule revision history and cancellation/postponement propagation"
+      ],
+      "observed": "43 dividend rows in March–April 2025; all 8 BBCA 2022–2025 events have cum/ex/recording/payment. October–November 2026 query has 8 upcoming rows, including past ex-dates and UNTR/ASGR schedules requiring revision verification. Declaration timestamp remains absent in sampled calendars; BBCA news query returned empty."
+    },
+    {
+      "need": "Harga sebelum dan sesudah ex-date untuk simulasi dan pemulihan",
+      "documented_candidate_tools": [
+        "fetch-daily-price"
+      ],
+      "verification": "historical_OHLCV_verified_on_8_BBCA_event_windows",
+      "open_questions": [
+        "Price adjustment basis for splits and dividends remains unverified",
+        "Historical depth and coverage across issuers remain unverified",
+        "Live tool schema limits each request to 90 days; longer research periods need multiple windows"
+      ],
+      "observed": "8 windows around 2022–2025 BBCA events; unique dates, OHLC ordering, positive volume, 10 pre-ex and 20 post-ex session offsets checked. Exchange-session completeness still needs an independent calendar."
+    },
+    {
+      "need": "Corporate actions, suspensi dan emiten delisting",
+      "documented_candidate_tools": [
+        "fetch-corporate-actions",
+        "fetch-suspensions"
+      ],
+      "verification": "split_verified_in_BBCA_sample; suspensions_and_delistings_not_queried",
+      "open_questions": [
+        "Faktor dan tanggal efektif split",
+        "Riwayat suspensi",
+        "Ketersediaan emiten delisting dan perubahan ticker"
+      ],
+      "observed": {
+        "BBCA_stock_split": [
+          {
+            "date": "2021-10-13",
+            "split_ratio": 5
+          }
+        ]
+      }
+    },
+    {
+      "need": "Lapkeu yang sudah tersedia pada tanggal keputusan simulasi",
+      "documented_candidate_tools": [
+        "fetch-quarterly-financials",
+        "fetch-quarterly-financial-dates"
+      ],
+      "verification": "financial_fields_verified; publication_history_unverified",
+      "open_questions": [
+        "Tanggal publikasi vs akhir periode laporan",
+        "Versi laporan sebelum dan sesudah restatement",
+        "Cash flow, laba, utang dan kebutuhan modal menurut sektor"
+      ],
+      "observed": "One BBCA quarter dated 2026-06-30 returned income, balance sheet, cash flow and bank metrics. No publication timestamp or report vintage was present in the sampled record."
+    },
+    {
+      "need": "Benchmark pasar pada periode simulasi yang sama",
+      "documented_candidate_tools": [
+        "fetch-index-daily"
+      ],
+      "verification": "IHSG_price_data_verified_on_8_event_windows_with_3_missing_dates",
+      "open_questions": [
+        "Cakupan tanggal",
+        "Price index vs total-return index"
+      ],
+      "observed": [
+        {
+          "ex_date": "2022-03-28",
+          "stock_dates_without_index": []
+        },
+        {
+          "ex_date": "2022-12-02",
+          "stock_dates_without_index": []
+        },
+        {
+          "ex_date": "2023-03-29",
+          "stock_dates_without_index": []
+        },
+        {
+          "ex_date": "2023-12-04",
+          "stock_dates_without_index": []
+        },
+        {
+          "ex_date": "2024-03-25",
+          "stock_dates_without_index": []
+        },
+        {
+          "ex_date": "2024-11-21",
+          "stock_dates_without_index": []
+        },
+        {
+          "ex_date": "2025-03-21",
+          "stock_dates_without_index": [
+            "2025-05-02",
+            "2025-05-06",
+            "2025-05-07"
+          ]
+        },
+        {
+          "ex_date": "2025-12-03",
+          "stock_dates_without_index": []
+        }
+      ]
+    }
+  ],
+  "modeling_rules": [
+    "Contoh respons dalam dokumentasi bukan data emiten yang berhasil diambil.",
+    "Field yang belum diverifikasi tidak boleh dinyatakan tersedia atau tidak tersedia secara definitif.",
+    "Price BEP mengikuti harga beli pengguna; total-return BEP dihitung terpisah.",
+    "Dividen, perubahan harga, biaya dan waktu modal tertahan dihitung terpisah.",
+    "Observasi yang belum pulih tetap disertakan, bukan dikeluarkan dari statistik pemulihan.",
+    "Persentase risiko trap dan proyeksi recovery adalah hasil model yang perlu diuji, bukan diasumsikan tersedia langsung dari sumber data.",
+    "Biaya broker, perlakuan pajak dan asumsi slippage memerlukan input atau verifikasi terpisah; jangan mengarang nilai."
+  ],
+  "next_step": "Resolve calendar revisions, declaration and financial publication timestamps, market type and adjustment/unit definitions; then broaden chronological strategy tests. Discovery and explicit-assumption simulation can precede calibrated forecasting.",
+  "audited_at": "2026-10-06T01:24:25.743803+08:00",
+  "sample_coverage": {
+    "symbols": [
+      "BBCA",
+      "ITMG"
+    ],
+    "BBCA_dividend_events": 15,
+    "ITMG_dividend_events": 13,
+    "BBCA_history_years": [
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025",
+      "2026"
+    ],
+    "ITMG_history_years": [
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025",
+      "2026"
+    ],
+    "BBCA_price_rows": 34,
+    "BBCA_price_date_range": [
+      "2024-03-01",
+      "2024-04-30"
+    ],
+    "BBCA_price_fields": [
+      "close",
+      "date",
+      "high",
+      "low",
+      "market_cap",
+      "open",
+      "symbol",
+      "volume"
+    ],
+    "BBCA_financial_period": "2026-06-30",
+    "not_a_market_wide_audit": true,
+    "expanded_research": {
+      "BBCA_events": 8,
+      "event_years": [
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "annual_yield_top5": [
+        "DMAS",
+        "LPPF",
+        "ADRO",
+        "CFIN",
+        "RALS"
+      ],
+      "calendar_upcoming_rows": 8,
+      "calendar_March_April_2025_dividend_rows": 43,
+      "declaration_date_available": false
+    }
+  },
+  "quality_findings": [
+    {
+      "id": "dividend-split-basis",
+      "severity": "blocks_combining_unadjusted_values",
+      "symbol": "BBCA",
+      "evidence": [
+        {
+          "ex_date": "2020-12-08",
+          "company_report_total": 98,
+          "corporate_actions_amount": 19.6,
+          "ratio": 5.0
+        },
+        {
+          "ex_date": "2021-04-08",
+          "company_report_total": 432,
+          "corporate_actions_amount": 86.4,
+          "ratio": 5.0
+        },
+        {
+          "ex_date": "2020-04-21",
+          "company_report_total": 455,
+          "corporate_actions_amount": 91,
+          "ratio": 5.0
+        }
+      ],
+      "interpretation": "Ratios of 5 align with the returned 2021-10-13 split_ratio=5. This is an inference; obtain an explicit adjustment definition before normalizing prices, shares and dividends."
+    },
+    {
+      "id": "dividend-currency-unit",
+      "severity": "exclude_event_from_simulation_until_resolved",
+      "symbol": "ITMG",
+      "ex_date": "2026-04-28",
+      "payment_date": "2026-05-19",
+      "amount": 0.05712,
+      "company_report_yield": 2.2666666301943e-06,
+      "interpretation": "Both endpoints return this value, without an event currency field. Do not assume IDR or convert it using an invented exchange rate. Related yield and TTM aggregates also need validation."
+    },
+    {
+      "id": "yield-denominator",
+      "severity": "requires_definition",
+      "interpretation": "Source yield denominator and timing need verification. Portfolio yield must use the users actual or simulated purchase price with the correctly normalized DPS."
+    },
+    {
+      "id": "upcoming-calendar-postponement",
+      "severity": "quarantine_affected_events_pending_Sectors_confirmation",
+      "symbols": [
+        "UNTR",
+        "ASGR"
+      ],
+      "observed": "Sectors calendar snapshot 2026-10-06 01:01 Asia/Makassar still reports payment 2026-10-26. Sectors news for 2026-10-01..05 returns 18 articles, including UNTR schedule change and ASGR conversion canceling the old schedule. KSEI letters dated 2026-10-02 separately postpone these payments until further notice.",
+      "Sectors_evidence": [
+        "outputs/dividend-research/calendar-upcoming.json",
+        "outputs/dividend-research/untr-asgr-news-2026-october-corrected.json",
+        "outputs/dividend-research/schedule-conflict-evidence.json"
+      ],
+      "source_boundary": "KSEI used to detect a quality conflict, not replace financial model inputs; Sectors remains the required data provider.",
+      "external_evidence": [
+        "https://web.ksei.co.id/Announcement/Files/200234_ksei_24911_jku_1026_202610021447.pdf",
+        "https://web.ksei.co.id/Announcement/Files/200235_ksei_24908_jku_1026_202610021447.pdf"
+      ]
+    }
+  ],
+  "sample_event": {
+    "symbol": "BBCA",
+    "ex_date": "2024-03-25",
+    "payment_date": "2024-04-04",
+    "company_report_total": 227.5,
+    "corporate_actions_dividend_amount": 227.5,
+    "amounts_match": true
+  },
+  "raw_evidence_files": [
+    "outputs/dividend-research/bbca-news-2025-all.json",
+    "outputs/dividend-research/bbca-news-2025.json",
+    "outputs/dividend-research/bbca-prices-2022-03-28.json",
+    "outputs/dividend-research/bbca-prices-2022-12-02.json",
+    "outputs/dividend-research/bbca-prices-2023-03-29.json",
+    "outputs/dividend-research/bbca-prices-2023-12-04.json",
+    "outputs/dividend-research/bbca-prices-2024-03-25.json",
+    "outputs/dividend-research/bbca-prices-2024-11-21.json",
+    "outputs/dividend-research/bbca-prices-2025-03-21.json",
+    "outputs/dividend-research/bbca-prices-2025-12-03.json",
+    "outputs/dividend-research/calendar-2022-03-28.json",
+    "outputs/dividend-research/calendar-2022-12-02.json",
+    "outputs/dividend-research/calendar-2023-03-29.json",
+    "outputs/dividend-research/calendar-2023-12-04.json",
+    "outputs/dividend-research/calendar-2024-03-25.json",
+    "outputs/dividend-research/calendar-2024-11-21.json",
+    "outputs/dividend-research/calendar-2025-03-21.json",
+    "outputs/dividend-research/calendar-2025-12-03.json",
+    "outputs/dividend-research/calendar-2025-spring.json",
+    "outputs/dividend-research/calendar-upcoming.json",
+    "outputs/dividend-research/dividend-ADRO.json",
+    "outputs/dividend-research/dividend-CFIN.json",
+    "outputs/dividend-research/dividend-DMAS.json",
+    "outputs/dividend-research/dividend-LPPF.json",
+    "outputs/dividend-research/dividend-RALS.json",
+    "outputs/dividend-research/ihsg-2022-03-28.json",
+    "outputs/dividend-research/ihsg-2022-12-02.json",
+    "outputs/dividend-research/ihsg-2023-03-29.json",
+    "outputs/dividend-research/ihsg-2023-12-04.json",
+    "outputs/dividend-research/ihsg-2024-03-25.json",
+    "outputs/dividend-research/ihsg-2024-11-21.json",
+    "outputs/dividend-research/ihsg-2025-03-21.json",
+    "outputs/dividend-research/ihsg-2025-12-03.json",
+    "outputs/dividend-research/tools.json",
+    "outputs/dividend-research/top5-yield-2025.json",
+    "outputs/dividend-research/untr-asgr-news-2026-october-corrected.json",
+    "outputs/dividend-research/untr-asgr-news-2026-october.json",
+    "outputs/sectors-live/bbca-corporate-actions.json",
+    "outputs/sectors-live/bbca-daily-price-2024-03-01_2024-04-30.json",
+    "outputs/sectors-live/bbca-dividend.json",
+    "outputs/sectors-live/bbca-quarterly-financials.json",
+    "outputs/sectors-live/itmg-corporate-actions.json",
+    "outputs/sectors-live/itmg-dividend.json",
+    "outputs/sectors-live/tools.json"
+  ],
+  "prior_audits": [
+    {
+      "audited_at": "2026-10-06T00:27:52.791780+08:00",
+      "status": "authenticated_sample_audit_complete",
+      "integration_access_method": "MCP Streamable HTTP through local probe; no REST data requests",
+      "sample_coverage": {
+        "symbols": [
+          "BBCA",
+          "ITMG"
+        ],
+        "BBCA_dividend_events": 15,
+        "ITMG_dividend_events": 13,
+        "BBCA_history_years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025",
+          "2026"
+        ],
+        "ITMG_history_years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025",
+          "2026"
+        ],
+        "BBCA_price_rows": 34,
+        "BBCA_price_date_range": [
+          "2024-03-01",
+          "2024-04-30"
+        ],
+        "BBCA_price_fields": [
+          "close",
+          "date",
+          "high",
+          "low",
+          "market_cap",
+          "open",
+          "symbol",
+          "volume"
+        ],
+        "BBCA_financial_period": "2026-06-30",
+        "not_a_market_wide_audit": true,
+        "expanded_research": {
+          "BBCA_events": 8,
+          "event_years": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "annual_yield_top5": [
+            "DMAS",
+            "LPPF",
+            "ADRO",
+            "CFIN",
+            "RALS"
+          ],
+          "calendar_upcoming_rows": 8,
+          "calendar_March_April_2025_dividend_rows": 43,
+          "declaration_date_available": false
+        }
+      }
+    }
+  ],
+  "modeling_assumptions_current": {
+    "fees": 0,
+    "taxes": 0,
+    "slippage": 0,
+    "label": "Gross; before transaction fees, taxes and slippage, per latest PM instruction",
+    "recovery_reference": "User purchase price; pilot uses cum close",
+    "observation_window": "Ex t=0 through t=20 inclusive; 21 closes",
+    "production_prediction_ready": false
+  }
+}

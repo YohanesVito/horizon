@@ -1,0 +1,93 @@
+{
+  "transport": "Sectors REST GET; endpoint absent from inspected MCP registry",
+  "url": "https://api.sectors.app/v2/corporate-actions/?start=2025-12-11&end=2025-12-31&type=dividend",
+  "retrieved_at": "2026-10-06T09:54:01.605432+08:00",
+  "http_status": 200,
+  "result": {
+    "start": "2025-12-11",
+    "end": "2025-12-31",
+    "dividend": [
+      {
+        "symbol": "ARCI.JK",
+        "ex_date": "2025-12-11",
+        "cum_date": "2025-12-10",
+        "recording_date": "2025-12-12",
+        "payment_date": "2025-12-17",
+        "dividend_amount": 19.81,
+        "dividend_yield": 0.0281421
+      },
+      {
+        "symbol": "BFIN.JK",
+        "ex_date": "2025-12-11",
+        "cum_date": "2025-12-10",
+        "recording_date": "2025-12-12",
+        "payment_date": "2025-12-18",
+        "dividend_amount": 35.0,
+        "dividend_yield": 0.0431658
+      },
+      {
+        "symbol": "MSTI.JK",
+        "ex_date": "2025-12-11",
+        "cum_date": "2025-12-10",
+        "recording_date": "2025-12-12",
+        "payment_date": "2025-12-29",
+        "dividend_amount": 16.0,
+        "dividend_yield": 0.010904
+      },
+      {
+        "symbol": "UNVR.JK",
+        "ex_date": "2025-12-15",
+        "cum_date": "2025-12-12",
+        "recording_date": "2025-12-16",
+        "payment_date": "2025-12-30",
+        "dividend_amount": 87.0,
+        "dividend_yield": 0.048335
+      },
+      {
+        "symbol": "IPCC.JK",
+        "ex_date": "2025-12-17",
+        "cum_date": "2025-12-16",
+        "recording_date": "2025-12-18",
+        "payment_date": "2026-01-07",
+        "dividend_amount": 26.1629,
+        "dividend_yield": 0.0257038
+      },
+      {
+        "symbol": "AMAR.JK",
+        "ex_date": "2025-12-23",
+        "cum_date": "2025-12-22",
+        "recording_date": "2025-12-24",
+        "payment_date": "2026-01-09",
+        "dividend_amount": 1.54,
+        "dividend_yield": 0.00797822
+      },
+      {
+        "symbol": "KKGI.JK",
+        "ex_date": "2025-12-23",
+        "cum_date": "2025-12-22",
+        "recording_date": "2025-12-24",
+        "payment_date": "2026-01-14",
+        "dividend_amount": 17.0,
+        "dividend_yield": 0.0454612
+      },
+      {
+        "symbol": "ADRO.JK",
+        "ex_date": "2025-12-30",
+        "cum_date": "2025-12-29",
+        "recording_date": "2026-01-02",
+        "payment_date": "2026-01-15",
+        "dividend_amount": 145.14,
+        "dividend_yield": 0.0754979
+      },
+      {
+        "symbol": "BBRI.JK",
+        "ex_date": "2025-12-30",
+        "cum_date": "2025-12-29",
+        "recording_date": "2026-01-02",
+        "payment_date": "2026-01-15",
+        "dividend_amount": 137.0,
+        "dividend_yield": 0.0351149
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "retrieved_at": "2026-10-06T01:04:47.409811+08:00",
+  "tool": "fetch-company-report",
+  "arguments": {
+    "symbol": "CFIN",
+    "sections": [
+      "dividend"
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"symbol\": \"CFIN.JK\",\n  \"company_name\": \"Clipan Finance Indonesia Tbk\",\n  \"dividend\": {\n    \"historical_dividends\": {\n      \"2023\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2023-07-06\",\n            \"total\": 100,\n            \"yield\": 0.214173004031181\n          }\n        ],\n        \"total_yield\": 0.214173004031181,\n        \"total_dividend\": 100\n      },\n      \"2025\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2025-06-11\",\n            \"total\": 50,\n            \"yield\": 0.159412071108818\n          }\n        ],\n        \"total_yield\": 0.159412071108818,\n        \"total_dividend\": 50\n      },\n      \"2026\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2026-06-29\",\n            \"total\": 50,\n            \"yield\": 0.142857142857143\n          }\n        ],\n        \"total_yield\": 0.142857142857143,\n        \"total_dividend\": 50\n      }\n    },\n    \"upcoming_dividends\": null,\n    \"yield_ttm\": 0.142857142857143,\n    \"dividend_yield_avg\": {\n      \"period\": 5,\n      \"avg_yield\": 0.0747170150279999\n    },\n    \"dividend_ttm\": 50,\n    \"payout_ratio\": 0.851294335275364,\n    \"cash_payout_ratio\": 0.237043578175841,\n    \"last_ex_dividend_date\": \"2026-06-29\"\n  }\n}"
+      }
+    ]
+  }
+}

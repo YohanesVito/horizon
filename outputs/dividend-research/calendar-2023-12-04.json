@@ -1,0 +1,21 @@
+{
+  "transport": "Sectors REST GET; endpoint absent from inspected MCP registry",
+  "url": "https://api.sectors.app/v2/corporate-actions/?start=2023-12-04&end=2023-12-04&type=dividend",
+  "retrieved_at": "2026-10-06T01:04:40.757087+08:00",
+  "http_status": 200,
+  "result": {
+    "start": "2023-12-04",
+    "end": "2023-12-04",
+    "dividend": [
+      {
+        "symbol": "BBCA.JK",
+        "ex_date": "2023-12-04",
+        "cum_date": "2023-12-01",
+        "recording_date": "2023-12-05",
+        "payment_date": "2023-12-20",
+        "dividend_amount": 42.5,
+        "dividend_yield": 0.00476727
+      }
+    ]
+  }
+}

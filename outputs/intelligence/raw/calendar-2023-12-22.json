@@ -1,0 +1,156 @@
+{
+  "transport": "Sectors REST GET; endpoint absent from inspected MCP registry",
+  "url": "https://api.sectors.app/v2/corporate-actions/?start=2023-12-22&end=2024-03-20&type=dividend",
+  "retrieved_at": "2026-10-06T09:54:00.990066+08:00",
+  "http_status": 200,
+  "result": {
+    "start": "2023-12-22",
+    "end": "2024-03-20",
+    "dividend": [
+      {
+        "symbol": "RDTX.JK",
+        "ex_date": "2023-12-22",
+        "cum_date": "2023-12-21",
+        "recording_date": "2023-12-28",
+        "payment_date": "2024-01-12",
+        "dividend_amount": 745.0,
+        "dividend_yield": 0.061261
+      },
+      {
+        "symbol": "IPCC.JK",
+        "ex_date": "2023-12-27",
+        "cum_date": "2023-12-22",
+        "recording_date": "2023-12-28",
+        "payment_date": "2024-01-12",
+        "dividend_amount": 21.7,
+        "dividend_yield": 0.0313391
+      },
+      {
+        "symbol": "ADRO.JK",
+        "ex_date": "2023-12-29",
+        "cum_date": "2023-12-28",
+        "recording_date": "2024-01-02",
+        "payment_date": "2024-01-12",
+        "dividend_amount": 199.98,
+        "dividend_yield": 0.0746031
+      },
+      {
+        "symbol": "BBRI.JK",
+        "ex_date": "2024-01-02",
+        "cum_date": "2023-12-29",
+        "recording_date": "2024-01-03",
+        "payment_date": "2024-01-18",
+        "dividend_amount": 84.0,
+        "dividend_yield": 0.0166256
+      },
+      {
+        "symbol": "BSSR.JK",
+        "ex_date": "2024-01-08",
+        "cum_date": "2024-01-05",
+        "recording_date": "2024-01-09",
+        "payment_date": "2024-01-24",
+        "dividend_amount": 118.395,
+        "dividend_yield": 0.0287565
+      },
+      {
+        "symbol": "IPCM.JK",
+        "ex_date": "2024-01-08",
+        "cum_date": "2024-01-05",
+        "recording_date": "2024-01-09",
+        "payment_date": "2024-01-26",
+        "dividend_amount": 3.8,
+        "dividend_yield": 0.0139801
+      },
+      {
+        "symbol": "SDRA.JK",
+        "ex_date": "2024-01-10",
+        "cum_date": "2024-01-09",
+        "recording_date": "2024-01-11",
+        "payment_date": "2024-01-26",
+        "dividend_amount": 20.0,
+        "dividend_yield": 0.0404147
+      },
+      {
+        "symbol": "AMOR.JK",
+        "ex_date": "2024-02-12",
+        "cum_date": "2024-02-07",
+        "recording_date": "2024-02-13",
+        "payment_date": "2024-02-23",
+        "dividend_amount": 18.5,
+        "dividend_yield": 0.0220765
+      },
+      {
+        "symbol": "BJTM.JK",
+        "ex_date": "2024-02-21",
+        "cum_date": "2024-02-20",
+        "recording_date": "2024-02-22",
+        "payment_date": "2024-03-07",
+        "dividend_amount": 54.39,
+        "dividend_yield": 0.0945081
+      },
+      {
+        "symbol": "PJAA.JK",
+        "ex_date": "2024-03-05",
+        "cum_date": "2024-03-04",
+        "recording_date": "2024-03-06",
+        "payment_date": "2024-03-28",
+        "dividend_amount": 32.0,
+        "dividend_yield": 0.0437169
+      },
+      {
+        "symbol": "BBRI.JK",
+        "ex_date": "2024-03-14",
+        "cum_date": "2024-03-13",
+        "recording_date": "2024-03-15",
+        "payment_date": "2024-03-28",
+        "dividend_amount": 235.0,
+        "dividend_yield": 0.0465121
+      },
+      {
+        "symbol": "MEGA.JK",
+        "ex_date": "2024-03-14",
+        "cum_date": "2024-03-13",
+        "recording_date": "2024-03-15",
+        "payment_date": "2024-03-27",
+        "dividend_amount": 209.304,
+        "dividend_yield": 0.0417284
+      },
+      {
+        "symbol": "BBNI.JK",
+        "ex_date": "2024-03-15",
+        "cum_date": "2024-03-14",
+        "recording_date": "2024-03-18",
+        "payment_date": "2024-04-02",
+        "dividend_amount": 280.495,
+        "dividend_yield": 0.0535429
+      },
+      {
+        "symbol": "BBTN.JK",
+        "ex_date": "2024-03-19",
+        "cum_date": "2024-03-18",
+        "recording_date": "2024-03-20",
+        "payment_date": "2024-04-05",
+        "dividend_amount": 49.8914,
+        "dividend_yield": 0.037223
+      },
+      {
+        "symbol": "BMRI.JK",
+        "ex_date": "2024-03-20",
+        "cum_date": "2024-03-19",
+        "recording_date": "2024-03-21",
+        "payment_date": "2024-03-28",
+        "dividend_amount": 353.958,
+        "dividend_yield": 0.0532724
+      },
+      {
+        "symbol": "SDRA.JK",
+        "ex_date": "2024-03-20",
+        "cum_date": "2024-03-19",
+        "recording_date": "2024-03-21",
+        "payment_date": "2024-04-04",
+        "dividend_amount": 7.5,
+        "dividend_yield": 0.0151555
+      }
+    ]
+  }
+}

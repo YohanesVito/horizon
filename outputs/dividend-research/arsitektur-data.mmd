@@ -1,0 +1,37 @@
+flowchart TD
+    S1["Sectors MCP<br/>Screener, DPS, OHLCV, IHSG, lapkeu, news"]
+    S2["Sectors REST<br/>Kalender corporate actions lintas emiten"]
+    I["Worker pengambilan data<br/>Jadwal batch, cache, retry, batas 90 hari"]
+    R[("Arsip respons mentah<br/>Parameter, waktu unduh, checksum")]
+    Q["Validator dan normalizer<br/>Tanggal, unit, split, duplikasi, kelengkapan"]
+    X[("Data karantina dan masalah kualitas")]
+    DB[("Database terstruktur<br/>Emiten, harga, event berversi, laporan")]
+    F["Worker fitur dan riset<br/>Return, likuiditas, event window, recovery"]
+    T["Logika finansial milik tim<br/>Kelayakan, tujuan, batas risiko, versi aturan"]
+    M["Model dan evaluasi<br/>Baseline, uji kronologis, status validasi"]
+    C["Screener peluang<br/>Kandidat peristiwa dengan alasan dan kualitas data"]
+    U["Input pengguna<br/>Modal, tanggal, entry, exit, horizon, alokasi"]
+    P["Pembentuk alternatif rute<br/>All-in atau alokasi terbagi"]
+    E["Simulator per sesi<br/>Saham, hak dividen, settlement, kas"]
+    O[("Hasil simulasi berversi<br/>Rute, arus kas, risiko, sumber dan asumsi")]
+    A["API aplikasi"]
+    UI["Website<br/>Peluang, watchlist, timeline, pembanding strategi"]
+    S1 --> I
+    S2 --> I
+    I --> R --> Q
+    Q -->|lolos| DB
+    Q -->|ambigu atau gagal| X
+    DB --> F
+    F --> M
+    F --> C
+    T --> C
+    T --> P
+    M -->|skenario dan batas bukti| P
+    C --> P
+    U --> P
+    P --> E
+    DB -->|harga, jadwal, aturan| E
+    E --> O --> A --> UI
+    C --> A
+    DB -->|timeline faktual| A
+    X -->|label masalah data| A

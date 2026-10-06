@@ -1,0 +1,95 @@
+{
+  "source": "Sectors MCP fetch-news",
+  "retrieved_at": "2026-10-06T01:22:10.289214+08:00",
+  "calendar_reference": "calendar-upcoming.json",
+  "news_reference": "untr-asgr-news-2026-october-corrected.json",
+  "status": "Conflicting source representations; quarantine UNTR and ASGR until revised authoritative schedule is represented consistently",
+  "affected_news": [
+    {
+      "title": "PT Astra Graphia Tbk (ASGR) Cancels Rp 297 Interim Dividend, Converts It to Additional Final Cash Dividend",
+      "body": "PT Astra Graphia Tbk (ASGR), an information technology solutions provider, has revised its fiscal year 2026 dividend plan by canceling the interim dividend scheme and converting it into an additional final cash dividend, keeping the total payout unchanged at no less than Rp 400.05 billion, or Rp 297 per share. The additional final dividend will be sourced from retained earnings of prior fiscal years and therefore requires shareholder approval at an Extraordinary General Meeting of Shareholders planned for November 2026. The previously announced interim dividend schedule, with cum dividend on October 7, 2026 and payment on October 26, 2026, no longer applies, with payment details to be set after the meeting. Management stated the scheme change has no material impact on operations, legal aspects, financial condition, or business continuity; ASGR shares closed down 2.78% at Rp 2,450 on October 1, 2026, after rising 16.11% over five days.",
+      "source": "https://investasi.kontan.co.id/news/astra-graphia-asgr-batalkan-dividen-interim-rp-297-begini-skema-yang-baru",
+      "thumbnail": "https://foto.kontan.co.id/vDVrdxzYTkFi1zSFguGGsdPh17g=/smart/filters:format(webp)/2025/04/23/1776668907p.jpg",
+      "timestamp": "2026-10-02T08:42:00",
+      "sector": "industrials",
+      "sub_sector": [
+        "industrial-services"
+      ],
+      "tags": [
+        "Dividend Announcement",
+        "Shareholders General Meeting",
+        "Neutral"
+      ],
+      "symbols": [
+        "ASGR.JK"
+      ],
+      "dimension": {
+        "future": 1,
+        "dividend": 2,
+        "ownership": 0,
+        "technical": 1,
+        "valuation": 0,
+        "financials": 0,
+        "management": 0,
+        "sustainability": 0
+      }
+    },
+    {
+      "title": "PT United Tractors Tbk (UNTR) Reschedules Interim Dividend Payment to November 2026",
+      "body": "PT United Tractors Tbk (UNTR), a subsidiary of PT Astra International Tbk (ASII), has changed its interim dividend payment schedule from 26 October 2026 to November 2026. The rescheduling is intended to use the company's financial statements as of 30 September 2026 as the basis for the interim dividend distribution. The dividend amount remains unchanged at up to Rp1,478 trillion, equivalent to Rp430 per share, with the new schedule to be announced after the September financial report is published. The company stated the change has no material impact on its operations, legal aspects, financial condition, or business continuity. UNTR shares closed at Rp27,075 on 30 September 2026, up 7.55%, though still down 8.22% year to date.",
+      "source": "https://investasi.kontan.co.id/news/united-tractors-untr-ubah-jadwal-dividen-interim-ini-alasannya",
+      "thumbnail": "https://foto.kontan.co.id/93S0iHbHH99knrioljVhaIPjMeA=/smart/filters:format(webp)/2017/08/07/564700084.jpg",
+      "timestamp": "2026-10-01T07:12:00",
+      "sector": "industrials",
+      "sub_sector": [
+        "industrial-goods"
+      ],
+      "tags": [
+        "Dividend Announcement"
+      ],
+      "symbols": [
+        "UNTR.JK"
+      ],
+      "dimension": {
+        "future": 0,
+        "dividend": 2,
+        "ownership": 0,
+        "technical": 1,
+        "valuation": 0,
+        "financials": 0,
+        "management": 0,
+        "sustainability": 0
+      }
+    },
+    {
+      "title": "Astra Graphia (ASGR) Converts Planned Interim Dividend into Final Cash Dividend of Rp297 per Share",
+      "body": "Astra Graphia (ASGR), a subsidiary of Astra International, has changed its planned interim dividend of Rp400.05 billion into a final cash dividend of Rp297 per share, to be paid from retained earnings of prior fiscal years. The change requires shareholder approval at an Extraordinary General Meeting of Shareholders planned for November 2026, after which the new payment schedule will be announced. The company stated the change has no material impact on operations, legal standing, financial condition, or business continuity. ASGR posted a first-half 2026 net profit of Rp138.45 billion, up 30.37% from Rp106.20 billion a year earlier, with revenue of Rp1.56 trillion, up 1.99% year-on-year, implying a dividend yield of about 13.38% based on the September 29, 2026 closing price of Rp2,220 per share.",
+      "source": "https://emitennews.com/news/asgr-ubah-pembagian-dividen-interim-jadi-dividen-tunai-final-tahun-ini",
+      "thumbnail": "https://ap-south-1.linodeobjects.com/emitennews-02/uploads/news/thumb_1790806257.jpg?25119ab",
+      "timestamp": "2026-10-01T05:11:00",
+      "sector": "industrials",
+      "sub_sector": [
+        "industrial-services"
+      ],
+      "tags": [
+        "Dividend Announcement",
+        "Shareholders General Meeting",
+        "Financial Metrics",
+        "Bullish"
+      ],
+      "symbols": [
+        "ASGR.JK"
+      ],
+      "dimension": {
+        "future": 0,
+        "dividend": 2,
+        "ownership": 0,
+        "technical": 0,
+        "valuation": 1,
+        "financials": 1,
+        "management": 0,
+        "sustainability": 0
+      }
+    }
+  ]
+}

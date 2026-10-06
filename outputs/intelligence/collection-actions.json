@@ -1,0 +1,46 @@
+[
+  {
+    "file": "actions-BBCA.json",
+    "ok": true,
+    "rows": null
+  },
+  {
+    "file": "actions-BBRI.json",
+    "ok": true,
+    "rows": null
+  },
+  {
+    "file": "actions-BMRI.json",
+    "cached": true
+  },
+  {
+    "file": "actions-BBNI.json",
+    "ok": true,
+    "rows": null
+  },
+  {
+    "file": "actions-DMAS.json",
+    "ok": true,
+    "rows": null
+  },
+  {
+    "file": "actions-LPPF.json",
+    "ok": true,
+    "rows": null
+  },
+  {
+    "file": "actions-ADRO.json",
+    "ok": true,
+    "rows": null
+  },
+  {
+    "file": "actions-CFIN.json",
+    "ok": true,
+    "rows": null
+  },
+  {
+    "file": "actions-RALS.json",
+    "ok": true,
+    "rows": null
+  }
+]

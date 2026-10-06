@@ -1,0 +1,37 @@
+{
+  "checked_at": "2026-10-06T03:15:32.976598+00:00",
+  "dataset_version": "unified-b749e08ddb769800",
+  "engine_versions": [
+    "replay-v2.1"
+  ],
+  "runs": 1620,
+  "failures": [],
+  "dimensions": {
+    "event_bundles": 15,
+    "entry_offsets": [
+      0,
+      5,
+      10
+    ],
+    "holding_limits": [
+      1,
+      20,
+      60
+    ],
+    "exit_rules": 4,
+    "allocations": 3
+  },
+  "checks": [
+    "entitlement from dates held",
+    "gross PnL equals lot gains plus dividends",
+    "100-share lots",
+    "entry/exit/settlement order",
+    "finite nonnegative balances",
+    "NAV conservation",
+    "common period"
+  ],
+  "limits": [
+    "Accounting checks only; not out-of-sample strategy validation.",
+    "Official calendar, declaration timestamps and fees remain documented gaps."
+  ]
+}

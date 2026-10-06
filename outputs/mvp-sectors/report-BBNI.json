@@ -1,0 +1,19 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "retrieved_at": "2026-10-05T18:34:51.154047+00:00",
+  "tool": "fetch-company-report",
+  "arguments": {
+    "symbol": "BBNI",
+    "sections": [
+      "dividend"
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"symbol\": \"BBNI.JK\",\n  \"company_name\": \"PT Bank Negara Indonesia (Persero) Tbk\",\n  \"dividend\": {\n    \"historical_dividends\": {\n      \"2020\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2020-03-02\",\n            \"total\": 206.241,\n            \"yield\": 0.0778511017560959\n          }\n        ],\n        \"total_yield\": 0.0778511017560959,\n        \"total_dividend\": 206.241\n      },\n      \"2021\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2021-04-08\",\n            \"total\": 44.0226,\n            \"yield\": 0.0149330999702215\n          }\n        ],\n        \"total_yield\": 0.0149330999702215,\n        \"total_dividend\": 44.0226\n      },\n      \"2022\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2022-03-24\",\n            \"total\": 146.297,\n            \"yield\": 0.0346448011696339\n          }\n        ],\n        \"total_yield\": 0.0346448011696339,\n        \"total_dividend\": 146.297\n      },\n      \"2023\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2023-03-28\",\n            \"total\": 392.78,\n            \"yield\": 0.0832652002573013\n          }\n        ],\n        \"total_yield\": 0.0832652002573013,\n        \"total_dividend\": 392.78\n      },\n      \"2024\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2024-03-15\",\n            \"total\": 280.495,\n            \"yield\": 0.0535429008305073\n          }\n        ],\n        \"total_yield\": 0.0535429008305073,\n        \"total_dividend\": 280.495\n      },\n      \"2025\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2025-04-15\",\n            \"total\": 374.057,\n            \"yield\": 0.0873342454433441\n          }\n        ],\n        \"total_yield\": 0.0873342454433441,\n        \"total_dividend\": 374.057\n      }\n    },\n    \"upcoming_dividends\": null,\n    \"yield_ttm\": 0,\n    \"dividend_yield_avg\": {\n      \"period\": 5,\n      \"avg_yield\": 0.0703142698854208\n    },\n    \"dividend_ttm\": null,\n    \"payout_ratio\": null,\n    \"cash_payout_ratio\": null,\n    \"last_ex_dividend_date\": \"2025-04-15\"\n  }\n}"
+      }
+    ]
+  }
+}

@@ -1,0 +1,6035 @@
+{
+  "version": "empirical-v1.0",
+  "dataset_version": "intelligence-8a6d340ad419b922",
+  "entry_offset": 5,
+  "horizon": 20,
+  "companies": [
+    {
+      "symbol": "BBCA",
+      "total_events": 8,
+      "eligible_events": 8,
+      "complete_events": 8,
+      "excluded_events": 0,
+      "early_censored": 0,
+      "price_unrecovered": 4,
+      "total_unrecovered": 2,
+      "losses": 4,
+      "trap_pct": 50.0,
+      "trap_interval": [
+        21.521606221387763,
+        78.47839377861223
+      ],
+      "median_return_pct": -1.0311322300507946,
+      "worst_return_pct": -4.611111111111111,
+      "price_recovery": {
+        "curve": [
+          {
+            "session": 0,
+            "at_risk": 8,
+            "recovered": 3,
+            "censored": 0,
+            "recovery_pct": 37.5
+          },
+          {
+            "session": 1,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 37.5
+          },
+          {
+            "session": 2,
+            "at_risk": 5,
+            "recovered": 1,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 3,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 4,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 5,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 6,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 7,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 8,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 9,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 10,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 11,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 12,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 13,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 14,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 15,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 16,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 17,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 18,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 19,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 20,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 4,
+            "recovery_pct": 50.0
+          }
+        ],
+        "median_sessions": 2
+      },
+      "total_recovery": {
+        "curve": [
+          {
+            "session": 0,
+            "at_risk": 8,
+            "recovered": 4,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 1,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 2,
+            "at_risk": 4,
+            "recovered": 1,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 3,
+            "at_risk": 3,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 4,
+            "at_risk": 3,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 5,
+            "at_risk": 3,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 6,
+            "at_risk": 3,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 7,
+            "at_risk": 3,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 8,
+            "at_risk": 3,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 9,
+            "at_risk": 3,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 10,
+            "at_risk": 3,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 11,
+            "at_risk": 3,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 12,
+            "at_risk": 3,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 13,
+            "at_risk": 3,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 14,
+            "at_risk": 3,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 15,
+            "at_risk": 3,
+            "recovered": 1,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 16,
+            "at_risk": 2,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 17,
+            "at_risk": 2,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 18,
+            "at_risk": 2,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 19,
+            "at_risk": 2,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 20,
+            "at_risk": 2,
+            "recovered": 0,
+            "censored": 2,
+            "recovery_pct": 75.0
+          }
+        ],
+        "median_sessions": 0
+      },
+      "temporal": [
+        {
+          "period": "2022–2024",
+          "n": 6,
+          "trap_pct": 50.0
+        },
+        {
+          "period": "2025",
+          "n": 2,
+          "trap_pct": 50.0
+        }
+      ],
+      "evidence_status": "exploratory",
+      "period": [
+        "2022-03-28",
+        "2025-12-03"
+      ],
+      "events": [
+        {
+          "id": "BBCA:2022-03-28",
+          "symbol": "BBCA",
+          "ex_date": "2022-03-28",
+          "declaration_date": null,
+          "dps": 120,
+          "cum_date": "2022-03-25",
+          "payment_date": "2022-04-19",
+          "recording_date": "2022-03-29",
+          "reasons": [],
+          "warnings": [
+            "Jeda harga >7 hari; mungkin libur/suspensi, belum diverifikasi"
+          ],
+          "sources": [
+            "actions-BBCA.json",
+            "calendar-2022-01-01.json",
+            "prices-BBCA-2022-03-28.json"
+          ],
+          "eligible": true,
+          "entry_date": "2022-03-18",
+          "entry_price": 7900,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2022-04-26",
+          "price_bep_session": 0,
+          "total_bep_session": 0,
+          "price_return_pct": 2.848101265822778,
+          "gross_return_pct": 4.367088607594937,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            0.0,
+            -0.6329113924050667,
+            -0.31645569620253333,
+            0.9493670886076,
+            0.31645569620253333,
+            0.0,
+            0.0,
+            -1.898734177215189,
+            -1.898734177215189,
+            -0.6329113924050667,
+            -2.215189873417722,
+            -1.2658227848101222,
+            -1.2658227848101222,
+            -2.5316455696202556,
+            -2.5316455696202556,
+            -3.4810126582278444,
+            -3.164556962025311,
+            0.31645569620253333,
+            -0.31645569620253333,
+            1.2658227848101333,
+            2.848101265822778
+          ],
+          "worst_price_move_pct": -3.4810126582278444,
+          "early_censor_reason": null
+        },
+        {
+          "id": "BBCA:2022-12-02",
+          "symbol": "BBCA",
+          "ex_date": "2022-12-02",
+          "declaration_date": null,
+          "dps": 35,
+          "cum_date": "2022-12-01",
+          "payment_date": "2022-12-20",
+          "recording_date": "2022-12-05",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-BBCA.json",
+            "calendar-2022-09-28.json",
+            "prices-BBCA-2022-12-02.json"
+          ],
+          "eligible": true,
+          "entry_date": "2022-11-24",
+          "entry_price": 9000,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2022-12-30",
+          "price_bep_session": null,
+          "total_bep_session": null,
+          "price_return_pct": -5.000000000000004,
+          "gross_return_pct": -4.611111111111111,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -1.1111111111111072,
+            -2.500000000000002,
+            -3.6111111111111094,
+            -6.111111111111112,
+            -5.555555555555558,
+            -4.722222222222228,
+            -3.3333333333333326,
+            -3.3333333333333326,
+            -4.1666666666666625,
+            -5.555555555555558,
+            -4.444444444444439,
+            -3.888888888888886,
+            -4.722222222222228,
+            -3.6111111111111094,
+            -4.722222222222228,
+            -5.555555555555558,
+            -4.722222222222228,
+            -4.444444444444439,
+            -3.888888888888886,
+            -4.722222222222228,
+            -5.000000000000004
+          ],
+          "worst_price_move_pct": -6.111111111111112,
+          "early_censor_reason": null
+        },
+        {
+          "id": "BBCA:2023-03-29",
+          "symbol": "BBCA",
+          "ex_date": "2023-03-29",
+          "declaration_date": null,
+          "dps": 170,
+          "cum_date": "2023-03-28",
+          "payment_date": "2023-04-14",
+          "recording_date": "2023-03-30",
+          "reasons": [],
+          "warnings": [
+            "Jeda harga >7 hari; mungkin libur/suspensi, belum diverifikasi"
+          ],
+          "sources": [
+            "actions-BBCA.json",
+            "calendar-2023-03-27.json",
+            "prices-BBCA-2023-03-29.json"
+          ],
+          "eligible": true,
+          "entry_date": "2023-03-17",
+          "entry_price": 8375,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2023-05-05",
+          "price_bep_session": 0,
+          "total_bep_session": 0,
+          "price_return_pct": 7.462686567164178,
+          "gross_return_pct": 9.492537313432836,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            5.074626865671639,
+            5.37313432835822,
+            4.477611940298498,
+            5.074626865671639,
+            4.7761194029850795,
+            4.179104477611939,
+            4.477611940298498,
+            5.074626865671639,
+            5.37313432835822,
+            6.26865671641792,
+            6.567164179104479,
+            7.462686567164178,
+            7.761194029850738,
+            8.955223880597018,
+            9.850746268656717,
+            9.253731343283578,
+            8.059701492537318,
+            8.059701492537318,
+            6.567164179104479,
+            7.462686567164178,
+            7.462686567164178
+          ],
+          "worst_price_move_pct": 4.179104477611939,
+          "early_censor_reason": null
+        },
+        {
+          "id": "BBCA:2023-12-04",
+          "symbol": "BBCA",
+          "ex_date": "2023-12-04",
+          "declaration_date": null,
+          "dps": 42.5,
+          "cum_date": "2023-12-01",
+          "payment_date": "2023-12-20",
+          "recording_date": "2023-12-05",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-BBCA.json",
+            "calendar-2023-09-23.json",
+            "prices-BBCA-2023-12-04.json"
+          ],
+          "eligible": true,
+          "entry_date": "2023-11-24",
+          "entry_price": 8925,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2024-01-04",
+          "price_bep_session": 0,
+          "total_bep_session": 0,
+          "price_return_pct": 6.162464985994398,
+          "gross_return_pct": 6.638655462184874,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            0.0,
+            -0.2801120448179262,
+            -1.4005602240896309,
+            -1.1204481792717047,
+            -1.9607843137254943,
+            -1.9607843137254943,
+            -2.5210084033613467,
+            -2.801120448179273,
+            1.4005602240896309,
+            3.3613445378151363,
+            3.081232492997188,
+            3.6414565826330625,
+            4.201680672268915,
+            4.481792717086841,
+            4.481792717086841,
+            5.042016806722693,
+            5.3221288515406195,
+            5.3221288515406195,
+            5.602240896358546,
+            4.761904761904767,
+            6.162464985994398
+          ],
+          "worst_price_move_pct": -2.801120448179273,
+          "early_censor_reason": null
+        },
+        {
+          "id": "BBCA:2024-03-25",
+          "symbol": "BBCA",
+          "ex_date": "2024-03-25",
+          "declaration_date": null,
+          "dps": 227.5,
+          "cum_date": "2024-03-22",
+          "payment_date": "2024-04-04",
+          "recording_date": "2024-03-26",
+          "reasons": [],
+          "warnings": [
+            "Jeda harga >7 hari; mungkin libur/suspensi, belum diverifikasi"
+          ],
+          "sources": [
+            "actions-BBCA.json",
+            "calendar-2024-03-21.json",
+            "prices-BBCA-2024-03-25.json"
+          ],
+          "eligible": true,
+          "entry_date": "2024-03-15",
+          "entry_price": 10150,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2024-05-02",
+          "price_bep_session": null,
+          "total_bep_session": 0,
+          "price_return_pct": -5.911330049261087,
+          "gross_return_pct": -3.6699507389162562,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -0.7389162561576401,
+            -0.9852216748768461,
+            -0.7389162561576401,
+            -0.7389162561576401,
+            -2.9556650246305383,
+            -2.463054187192115,
+            -6.157635467980294,
+            -2.9556650246305383,
+            -3.2019704433497553,
+            -6.650246305418717,
+            -6.157635467980294,
+            -6.650246305418717,
+            -6.650246305418717,
+            -7.881773399014779,
+            -4.187192118226601,
+            -1.9704433497536922,
+            -3.6945812807881784,
+            -5.1724137931034475,
+            -3.4482758620689613,
+            -3.4482758620689613,
+            -5.911330049261087
+          ],
+          "worst_price_move_pct": -7.881773399014779,
+          "early_censor_reason": null
+        },
+        {
+          "id": "BBCA:2024-11-21",
+          "symbol": "BBCA",
+          "ex_date": "2024-11-21",
+          "declaration_date": null,
+          "dps": 50,
+          "cum_date": "2024-11-20",
+          "payment_date": "2024-12-11",
+          "recording_date": "2024-11-22",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-BBCA.json",
+            "calendar-2024-09-17.json",
+            "prices-BBCA-2024-11-21.json"
+          ],
+          "eligible": true,
+          "entry_date": "2024-11-13",
+          "entry_price": 10150,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2024-12-20",
+          "price_bep_session": 2,
+          "total_bep_session": 2,
+          "price_return_pct": -4.926108374384242,
+          "gross_return_pct": -4.433497536945813,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -2.9556650246305383,
+            -2.9556650246305383,
+            0.24630541871921707,
+            -1.4778325123152691,
+            -1.4778325123152691,
+            -1.4778325123152691,
+            -3.9408866995073843,
+            0.49261083743843415,
+            0.49261083743843415,
+            0.9852216748768461,
+            -0.7389162561576401,
+            1.9704433497536922,
+            1.9704433497536922,
+            2.709359605911321,
+            0.24630541871921707,
+            -0.9852216748768461,
+            -0.49261083743842304,
+            -2.463054187192115,
+            -3.4482758620689613,
+            -4.679802955665025,
+            -4.926108374384242
+          ],
+          "worst_price_move_pct": -4.926108374384242,
+          "early_censor_reason": null
+        },
+        {
+          "id": "BBCA:2025-03-21",
+          "symbol": "BBCA",
+          "ex_date": "2025-03-21",
+          "declaration_date": null,
+          "dps": 250,
+          "cum_date": "2025-03-20",
+          "payment_date": "2025-04-11",
+          "recording_date": "2025-03-24",
+          "reasons": [],
+          "warnings": [
+            "Jeda harga >7 hari; mungkin libur/suspensi, belum diverifikasi"
+          ],
+          "sources": [
+            "actions-BBCA.json",
+            "calendar-2025-03-16.json",
+            "prices-BBCA-2025-03-21.json"
+          ],
+          "eligible": true,
+          "entry_date": "2025-03-13",
+          "entry_price": 8975,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2025-04-30",
+          "price_bep_session": null,
+          "total_bep_session": 15,
+          "price_return_pct": -1.671309192200554,
+          "gross_return_pct": 1.1142061281337048,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -11.977715877437323,
+            -11.420612813370479,
+            -10.30640668523677,
+            -5.013927576601674,
+            -5.292479108635096,
+            -13.370473537604454,
+            -11.6991643454039,
+            -8.356545961002782,
+            -7.799442896935938,
+            -6.406685236768805,
+            -4.456824512534818,
+            -5.571030640668528,
+            -5.292479108635096,
+            -7.520891364902504,
+            -5.292479108635096,
+            -2.785515320334264,
+            -5.571030640668528,
+            -4.178272980501396,
+            -2.228412256267409,
+            -2.785515320334264,
+            -1.671309192200554
+          ],
+          "worst_price_move_pct": -13.370473537604454,
+          "early_censor_reason": null
+        },
+        {
+          "id": "BBCA:2025-12-03",
+          "symbol": "BBCA",
+          "ex_date": "2025-12-03",
+          "declaration_date": null,
+          "dps": 55,
+          "cum_date": "2025-12-02",
+          "payment_date": "2025-12-22",
+          "recording_date": "2025-12-04",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-BBCA.json",
+            "calendar-2025-09-12.json",
+            "prices-BBCA-2025-12-03.json"
+          ],
+          "eligible": true,
+          "entry_date": "2025-11-25",
+          "entry_price": 8500,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2026-01-06",
+          "price_bep_session": null,
+          "total_bep_session": null,
+          "price_return_pct": -3.8235294117647034,
+          "gross_return_pct": -3.176470588235294,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -2.352941176470591,
+            -3.2352941176470584,
+            -2.352941176470591,
+            -2.352941176470591,
+            -4.705882352941182,
+            -5.000000000000004,
+            -5.882352941176472,
+            -5.882352941176472,
+            -2.352941176470591,
+            -5.000000000000004,
+            -5.588235294117649,
+            -3.8235294117647034,
+            -5.294117647058827,
+            -3.8235294117647034,
+            -5.588235294117649,
+            -5.588235294117649,
+            -5.588235294117649,
+            -5.000000000000004,
+            -5.588235294117649,
+            -5.000000000000004,
+            -3.8235294117647034
+          ],
+          "worst_price_move_pct": -5.882352941176472,
+          "early_censor_reason": null
+        }
+      ]
+    },
+    {
+      "symbol": "BBRI",
+      "total_events": 8,
+      "eligible_events": 8,
+      "complete_events": 8,
+      "excluded_events": 0,
+      "early_censored": 0,
+      "price_unrecovered": 1,
+      "total_unrecovered": 1,
+      "losses": 2,
+      "trap_pct": 25.0,
+      "trap_interval": [
+        7.147921275210911,
+        59.0724569689831
+      ],
+      "median_return_pct": 4.667887252854358,
+      "worst_return_pct": -8.512396694214877,
+      "price_recovery": {
+        "curve": [
+          {
+            "session": 0,
+            "at_risk": 8,
+            "recovered": 3,
+            "censored": 0,
+            "recovery_pct": 37.5
+          },
+          {
+            "session": 1,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 37.5
+          },
+          {
+            "session": 2,
+            "at_risk": 5,
+            "recovered": 2,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 3,
+            "at_risk": 3,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 4,
+            "at_risk": 3,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 5,
+            "at_risk": 3,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 6,
+            "at_risk": 3,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 7,
+            "at_risk": 3,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 8,
+            "at_risk": 3,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 9,
+            "at_risk": 3,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 62.5
+          },
+          {
+            "session": 10,
+            "at_risk": 3,
+            "recovered": 2,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 11,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 12,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 13,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 14,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 15,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 16,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 17,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 18,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 19,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 20,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 1,
+            "recovery_pct": 87.5
+          }
+        ],
+        "median_sessions": 2
+      },
+      "total_recovery": {
+        "curve": [
+          {
+            "session": 0,
+            "at_risk": 8,
+            "recovered": 7,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 1,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 2,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 3,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 4,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 5,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 6,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 7,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 8,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 9,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 10,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 11,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 12,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 13,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 14,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 15,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 16,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 17,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 18,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 19,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 87.5
+          },
+          {
+            "session": 20,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 1,
+            "recovery_pct": 87.5
+          }
+        ],
+        "median_sessions": 0
+      },
+      "temporal": [
+        {
+          "period": "2022–2024",
+          "n": 6,
+          "trap_pct": 33.33333333333333
+        },
+        {
+          "period": "2025",
+          "n": 2,
+          "trap_pct": 0.0
+        }
+      ],
+      "evidence_status": "exploratory",
+      "period": [
+        "2022-03-11",
+        "2025-12-30"
+      ],
+      "events": [
+        {
+          "id": "BBRI:2022-03-11",
+          "symbol": "BBRI",
+          "ex_date": "2022-03-11",
+          "declaration_date": null,
+          "dps": 174.251,
+          "cum_date": "2022-03-10",
+          "payment_date": "2022-04-01",
+          "recording_date": "2022-03-14",
+          "reasons": [],
+          "warnings": [
+            "Jeda harga >7 hari; mungkin libur/suspensi, belum diverifikasi"
+          ],
+          "sources": [
+            "actions-BBRI.json",
+            "calendar-2022-01-01.json",
+            "prices-BBRI-2022-03-11.json"
+          ],
+          "eligible": true,
+          "entry_date": "2022-03-02",
+          "entry_price": 4560,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2022-04-08",
+          "price_bep_session": 2,
+          "total_bep_session": 0,
+          "price_return_pct": 1.0964912280701844,
+          "gross_return_pct": 4.917785087719298,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -3.508771929824561,
+            -0.8771929824561431,
+            1.0964912280701844,
+            1.9736842105263053,
+            1.9736842105263053,
+            0.43859649122806044,
+            0.6578947368421018,
+            1.7543859649122862,
+            1.9736842105263053,
+            3.7280701754385914,
+            3.289473684210531,
+            3.7280701754385914,
+            2.8508771929824483,
+            3.289473684210531,
+            2.1929824561403466,
+            3.7280701754385914,
+            3.0701754385964897,
+            3.0701754385964897,
+            0.8771929824561431,
+            1.5350877192982448,
+            1.0964912280701844
+          ],
+          "worst_price_move_pct": -3.508771929824561,
+          "early_censor_reason": null
+        },
+        {
+          "id": "BBRI:2023-01-10",
+          "symbol": "BBRI",
+          "ex_date": "2023-01-10",
+          "declaration_date": null,
+          "dps": 57,
+          "cum_date": "2023-01-09",
+          "payment_date": "2023-01-27",
+          "recording_date": "2023-01-11",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-BBRI.json",
+            "calendar-2022-12-27.json",
+            "prices-BBRI-2023-01-10.json"
+          ],
+          "eligible": true,
+          "entry_date": "2023-01-02",
+          "entry_price": 4870,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2023-02-08",
+          "price_bep_session": null,
+          "total_bep_session": null,
+          "price_return_pct": -1.642710472279263,
+          "gross_return_pct": -0.4722792607802875,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -9.034907597535934,
+            -10.061601642710471,
+            -7.597535934291577,
+            -8.008213552361399,
+            -7.186858316221767,
+            -6.365503080082135,
+            -5.544147843942504,
+            -5.338809034907599,
+            -4.517453798767967,
+            -5.133470225872694,
+            -6.365503080082135,
+            -5.749486652977409,
+            -4.722792607802873,
+            -5.338809034907599,
+            -5.954825462012325,
+            -3.901437371663241,
+            -5.544147843942504,
+            -2.4640657084188944,
+            -2.6694045174537995,
+            -2.4640657084188944,
+            -1.642710472279263
+          ],
+          "worst_price_move_pct": -10.061601642710471,
+          "early_censor_reason": null
+        },
+        {
+          "id": "BBRI:2023-03-24",
+          "symbol": "BBRI",
+          "ex_date": "2023-03-24",
+          "declaration_date": null,
+          "dps": 231.221,
+          "cum_date": "2023-03-21",
+          "payment_date": "2023-04-12",
+          "recording_date": "2023-03-27",
+          "reasons": [],
+          "warnings": [
+            "Jeda harga >7 hari; mungkin libur/suspensi, belum diverifikasi"
+          ],
+          "sources": [
+            "actions-BBRI.json",
+            "calendar-2022-12-27.json",
+            "prices-BBRI-2023-03-24.json"
+          ],
+          "eligible": true,
+          "entry_date": "2023-03-14",
+          "entry_price": 4710,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2023-05-02",
+          "price_bep_session": 0,
+          "total_bep_session": 0,
+          "price_return_pct": 9.341825902335454,
+          "gross_return_pct": 14.250976645435244,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            1.273885350318471,
+            0.6369426751592355,
+            1.273885350318471,
+            2.123142250530785,
+            0.849256900212314,
+            0.424628450106157,
+            1.9108280254777066,
+            2.3354564755838636,
+            2.547770700636942,
+            2.7600849256900206,
+            3.1847133757961776,
+            3.6093418259023347,
+            4.670912951167727,
+            5.73248407643312,
+            7.749469214437377,
+            5.944798301486198,
+            5.095541401273884,
+            6.687898089171984,
+            9.341825902335454,
+            8.280254777070063,
+            9.341825902335454
+          ],
+          "worst_price_move_pct": 0.424628450106157,
+          "early_censor_reason": null
+        },
+        {
+          "id": "BBRI:2024-01-02",
+          "symbol": "BBRI",
+          "ex_date": "2024-01-02",
+          "declaration_date": null,
+          "dps": 84,
+          "cum_date": "2023-12-29",
+          "payment_date": "2024-01-18",
+          "recording_date": "2024-01-03",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-BBRI.json",
+            "calendar-2023-12-22.json",
+            "prices-BBRI-2024-01-02.json"
+          ],
+          "eligible": true,
+          "entry_date": "2023-12-20",
+          "entry_price": 5550,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2024-01-30",
+          "price_bep_session": 0,
+          "total_bep_session": 0,
+          "price_return_pct": 1.3513513513513598,
+          "gross_return_pct": 2.864864864864865,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            2.2522522522522515,
+            0.9009009009008917,
+            2.7027027027026973,
+            3.603603603603611,
+            1.3513513513513598,
+            2.7027027027026973,
+            2.7027027027026973,
+            3.603603603603611,
+            5.405405405405395,
+            4.954954954954949,
+            4.954954954954949,
+            4.054054054054057,
+            3.603603603603611,
+            4.504504504504503,
+            4.054054054054057,
+            2.7027027027026973,
+            1.8018018018018056,
+            -0.45045045045044585,
+            -2.2522522522522515,
+            0.45045045045044585,
+            1.3513513513513598
+          ],
+          "worst_price_move_pct": -2.2522522522522515,
+          "early_censor_reason": null
+        },
+        {
+          "id": "BBRI:2024-03-14",
+          "symbol": "BBRI",
+          "ex_date": "2024-03-14",
+          "declaration_date": null,
+          "dps": 235,
+          "cum_date": "2024-03-13",
+          "payment_date": "2024-03-28",
+          "recording_date": "2024-03-15",
+          "reasons": [],
+          "warnings": [
+            "Jeda harga >7 hari; mungkin libur/suspensi, belum diverifikasi"
+          ],
+          "sources": [
+            "actions-BBRI.json",
+            "calendar-2023-12-22.json",
+            "prices-BBRI-2024-03-14.json"
+          ],
+          "eligible": true,
+          "entry_date": "2024-03-04",
+          "entry_price": 6050,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2024-04-22",
+          "price_bep_session": 0,
+          "total_bep_session": 0,
+          "price_return_pct": -12.396694214876035,
+          "gross_return_pct": -8.512396694214877,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            1.6528925619834656,
+            -1.2396694214875992,
+            -0.8264462809917328,
+            -0.8264462809917328,
+            0.8264462809917328,
+            0.8264462809917328,
+            1.2396694214876103,
+            3.305785123966931,
+            4.132231404958686,
+            3.305785123966931,
+            0.0,
+            -2.066115702479343,
+            -6.198347107438018,
+            -7.024793388429751,
+            -5.785123966942152,
+            -6.6115702479338845,
+            -11.570247933884293,
+            -12.396694214876035,
+            -9.50413223140496,
+            -12.809917355371903,
+            -12.396694214876035
+          ],
+          "worst_price_move_pct": -12.809917355371903,
+          "early_censor_reason": null
+        },
+        {
+          "id": "BBRI:2024-12-27",
+          "symbol": "BBRI",
+          "ex_date": "2024-12-27",
+          "declaration_date": null,
+          "dps": 135,
+          "cum_date": "2024-12-24",
+          "payment_date": "2025-01-15",
+          "recording_date": "2024-12-30",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-BBRI.json",
+            "calendar-2024-12-16.json",
+            "prices-BBRI-2024-12-27.json"
+          ],
+          "eligible": true,
+          "entry_date": "2024-12-17",
+          "entry_price": 4150,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2025-01-31",
+          "price_bep_session": 2,
+          "total_bep_session": 0,
+          "price_return_pct": 1.6867469879518149,
+          "gross_return_pct": 4.9397590361445785,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -1.2048192771084376,
+            -1.6867469879518038,
+            1.4457831325301207,
+            0.0,
+            -1.2048192771084376,
+            -2.8915662650602414,
+            -1.6867469879518038,
+            -2.8915662650602414,
+            -3.3734939759036187,
+            -7.2289156626506035,
+            -8.433734939759042,
+            -1.4457831325301207,
+            0.24096385542169418,
+            -1.4457831325301207,
+            1.6867469879518149,
+            2.650602409638547,
+            2.650602409638547,
+            3.6144578313253017,
+            0.9638554216867545,
+            -0.7228915662650603,
+            1.6867469879518149
+          ],
+          "worst_price_move_pct": -8.433734939759042,
+          "early_censor_reason": null
+        },
+        {
+          "id": "BBRI:2025-04-11",
+          "symbol": "BBRI",
+          "ex_date": "2025-04-11",
+          "declaration_date": null,
+          "dps": 208.4,
+          "cum_date": "2025-04-10",
+          "payment_date": "2025-04-23",
+          "recording_date": "2025-04-14",
+          "reasons": [],
+          "warnings": [
+            "Jeda harga >7 hari; mungkin libur/suspensi, belum diverifikasi"
+          ],
+          "sources": [
+            "actions-BBRI.json",
+            "calendar-2025-03-16.json",
+            "prices-BBRI-2025-04-11.json"
+          ],
+          "eligible": true,
+          "entry_date": "2025-03-25",
+          "entry_price": 3800,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2025-05-15",
+          "price_bep_session": 10,
+          "total_bep_session": 0,
+          "price_return_pct": 12.368421052631584,
+          "gross_return_pct": 17.852631578947367,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -4.473684210526319,
+            -2.894736842105261,
+            -2.894736842105261,
+            -3.9473684210526327,
+            -4.210526315789476,
+            -4.736842105263161,
+            -4.473684210526319,
+            -1.0526315789473717,
+            -1.8421052631578894,
+            -1.5789473684210575,
+            1.0526315789473717,
+            1.3157894736842035,
+            1.3157894736842035,
+            2.1052631578947434,
+            1.5789473684210575,
+            2.1052631578947434,
+            2.894736842105261,
+            -0.2631578947368429,
+            1.0526315789473717,
+            7.6315789473684115,
+            12.368421052631584
+          ],
+          "worst_price_move_pct": -4.736842105263161,
+          "early_censor_reason": null
+        },
+        {
+          "id": "BBRI:2025-12-30",
+          "symbol": "BBRI",
+          "ex_date": "2025-12-30",
+          "declaration_date": null,
+          "dps": 137,
+          "cum_date": "2025-12-29",
+          "payment_date": "2026-01-15",
+          "recording_date": "2026-01-02",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-BBRI.json",
+            "calendar-2025-12-11.json",
+            "prices-BBRI-2025-12-30.json"
+          ],
+          "eligible": true,
+          "entry_date": "2025-12-18",
+          "entry_price": 3780,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2026-01-30",
+          "price_bep_session": 10,
+          "total_bep_session": 0,
+          "price_return_pct": 0.7936507936507908,
+          "gross_return_pct": 4.417989417989418,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -3.1746031746031744,
+            -3.703703703703709,
+            -3.9682539682539653,
+            -2.645502645502651,
+            -2.1164021164021163,
+            -1.851851851851849,
+            -2.645502645502651,
+            -2.1164021164021163,
+            -1.5873015873015928,
+            -1.5873015873015928,
+            1.0582010582010692,
+            1.5873015873015817,
+            1.85185185185186,
+            1.0582010582010692,
+            0.7936507936507908,
+            1.85185185185186,
+            1.85185185185186,
+            1.0582010582010692,
+            -5.026455026455023,
+            0.0,
+            0.7936507936507908
+          ],
+          "worst_price_move_pct": -5.026455026455023,
+          "early_censor_reason": null
+        }
+      ]
+    },
+    {
+      "symbol": "BMRI",
+      "total_events": 4,
+      "eligible_events": 2,
+      "complete_events": 2,
+      "excluded_events": 2,
+      "early_censored": 0,
+      "price_unrecovered": 0,
+      "total_unrecovered": 0,
+      "losses": 1,
+      "trap_pct": 50.0,
+      "trap_interval": [
+        9.453120573423075,
+        90.54687942657694
+      ],
+      "median_return_pct": 7.533734900357691,
+      "worst_return_pct": -0.29532631578947366,
+      "price_recovery": {
+        "curve": [
+          {
+            "session": 0,
+            "at_risk": 2,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 1,
+            "at_risk": 2,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 2,
+            "at_risk": 2,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 3,
+            "at_risk": 2,
+            "recovered": 1,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 4,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 5,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 6,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 7,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 8,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 9,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 10,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 11,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 12,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 13,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 14,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 15,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 16,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 17,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 18,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 19,
+            "at_risk": 1,
+            "recovered": 1,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 20,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          }
+        ],
+        "median_sessions": 3
+      },
+      "total_recovery": {
+        "curve": [
+          {
+            "session": 0,
+            "at_risk": 2,
+            "recovered": 2,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 1,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 2,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 3,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 4,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 5,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 6,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 7,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 8,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 9,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 10,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 11,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 12,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 13,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 14,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 15,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 16,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 17,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 18,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 19,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 20,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          }
+        ],
+        "median_sessions": 0
+      },
+      "temporal": [
+        {
+          "period": "2022–2024",
+          "n": 1,
+          "trap_pct": 100.0
+        },
+        {
+          "period": "2025",
+          "n": 1,
+          "trap_pct": 0.0
+        }
+      ],
+      "evidence_status": "exploratory",
+      "period": [
+        "2024-03-20",
+        "2025-04-14"
+      ],
+      "events": [
+        {
+          "id": "BMRI:2022-03-21",
+          "symbol": "BMRI",
+          "ex_date": "2022-03-21",
+          "declaration_date": null,
+          "dps": 180.318,
+          "cum_date": "2022-03-18",
+          "payment_date": "2022-04-06",
+          "recording_date": "2022-03-22",
+          "reasons": [
+            "Event sebelum split; kesetaraan basis DPS/OHLC belum terverifikasi"
+          ],
+          "warnings": [
+            "Jeda harga >7 hari; mungkin libur/suspensi, belum diverifikasi"
+          ],
+          "sources": [
+            "actions-BMRI.json",
+            "calendar-2022-01-01.json",
+            "prices-BMRI-2022-03-21.json"
+          ],
+          "eligible": false
+        },
+        {
+          "id": "BMRI:2023-03-27",
+          "symbol": "BMRI",
+          "ex_date": "2023-03-27",
+          "declaration_date": null,
+          "dps": 264.668,
+          "cum_date": "2023-03-24",
+          "payment_date": "2023-04-12",
+          "recording_date": "2023-03-28",
+          "reasons": [
+            "Event sebelum split; kesetaraan basis DPS/OHLC belum terverifikasi"
+          ],
+          "warnings": [
+            "Jeda harga >7 hari; mungkin libur/suspensi, belum diverifikasi"
+          ],
+          "sources": [
+            "actions-BMRI.json",
+            "calendar-2023-03-27.json",
+            "prices-BMRI-2023-03-27.json"
+          ],
+          "eligible": false
+        },
+        {
+          "id": "BMRI:2024-03-20",
+          "symbol": "BMRI",
+          "ex_date": "2024-03-20",
+          "declaration_date": null,
+          "dps": 353.958,
+          "cum_date": "2024-03-19",
+          "payment_date": "2024-03-28",
+          "recording_date": "2024-03-21",
+          "reasons": [],
+          "warnings": [
+            "Jeda harga >7 hari; mungkin libur/suspensi, belum diverifikasi"
+          ],
+          "sources": [
+            "actions-BMRI.json",
+            "calendar-2023-12-22.json",
+            "prices-BMRI-2024-03-20.json"
+          ],
+          "eligible": true,
+          "entry_date": "2024-03-08",
+          "entry_price": 7125,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2024-04-26",
+          "price_bep_session": 3,
+          "total_bep_session": 0,
+          "price_return_pct": -5.263157894736848,
+          "gross_return_pct": -0.29532631578947366,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -1.0526315789473717,
+            -1.0526315789473717,
+            -1.0526315789473717,
+            1.7543859649122862,
+            0.7017543859649145,
+            0.7017543859649145,
+            1.7543859649122862,
+            -3.157894736842104,
+            -3.157894736842104,
+            -4.912280701754391,
+            -3.508771929824561,
+            -4.210526315789476,
+            -7.017543859649122,
+            -7.017543859649122,
+            -4.561403508771933,
+            -5.6140350877192935,
+            -5.6140350877192935,
+            -4.210526315789476,
+            -1.0526315789473717,
+            -2.4561403508771895,
+            -5.263157894736848
+          ],
+          "worst_price_move_pct": -7.017543859649122,
+          "early_censor_reason": null
+        },
+        {
+          "id": "BMRI:2025-04-14",
+          "symbol": "BMRI",
+          "ex_date": "2025-04-14",
+          "declaration_date": null,
+          "dps": 466.184,
+          "cum_date": "2025-04-11",
+          "payment_date": "2025-04-23",
+          "recording_date": "2025-04-15",
+          "reasons": [],
+          "warnings": [
+            "Jeda harga >7 hari; mungkin libur/suspensi, belum diverifikasi"
+          ],
+          "sources": [
+            "actions-BMRI.json",
+            "calendar-2025-03-16.json",
+            "prices-BMRI-2025-04-14.json"
+          ],
+          "eligible": true,
+          "entry_date": "2025-03-26",
+          "entry_price": 5150,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2025-05-16",
+          "price_bep_session": 19,
+          "total_bep_session": 0,
+          "price_return_pct": 6.310679611650483,
+          "gross_return_pct": 15.362796116504855,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -7.7669902912621325,
+            -8.543689320388347,
+            -10.09708737864078,
+            -10.679611650485432,
+            -10.48543689320388,
+            -8.349514563106798,
+            -4.854368932038833,
+            -5.048543689320384,
+            -4.854368932038833,
+            -4.466019417475731,
+            -4.077669902912618,
+            -5.048543689320384,
+            -3.689320388349515,
+            -3.300970873786413,
+            -3.300970873786413,
+            -3.8834951456310662,
+            -6.9902912621359174,
+            -7.37864077669903,
+            -1.9417475728155331,
+            3.398058252427183,
+            6.310679611650483
+          ],
+          "worst_price_move_pct": -10.679611650485432,
+          "early_censor_reason": null
+        }
+      ]
+    },
+    {
+      "symbol": "BBNI",
+      "total_events": 4,
+      "eligible_events": 2,
+      "complete_events": 2,
+      "excluded_events": 2,
+      "early_censored": 0,
+      "price_unrecovered": 0,
+      "total_unrecovered": 0,
+      "losses": 1,
+      "trap_pct": 50.0,
+      "trap_interval": [
+        9.453120573423075,
+        90.54687942657694
+      ],
+      "median_return_pct": 3.8739908458586507,
+      "worst_return_pct": -6.262796610169492,
+      "price_recovery": {
+        "curve": [
+          {
+            "session": 0,
+            "at_risk": 2,
+            "recovered": 1,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 1,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 2,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 3,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 4,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 5,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 6,
+            "at_risk": 1,
+            "recovered": 1,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 7,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 8,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 9,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 10,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 11,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 12,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 13,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 14,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 15,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 16,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 17,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 18,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 19,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 20,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          }
+        ],
+        "median_sessions": 0
+      },
+      "total_recovery": {
+        "curve": [
+          {
+            "session": 0,
+            "at_risk": 2,
+            "recovered": 2,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 1,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 2,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 3,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 4,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 5,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 6,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 7,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 8,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 9,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 10,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 11,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 12,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 13,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 14,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 15,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 16,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 17,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 18,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 19,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 20,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          }
+        ],
+        "median_sessions": 0
+      },
+      "temporal": [
+        {
+          "period": "2022–2024",
+          "n": 1,
+          "trap_pct": 100.0
+        },
+        {
+          "period": "2025",
+          "n": 1,
+          "trap_pct": 0.0
+        }
+      ],
+      "evidence_status": "exploratory",
+      "period": [
+        "2024-03-15",
+        "2025-04-15"
+      ],
+      "events": [
+        {
+          "id": "BBNI:2022-03-24",
+          "symbol": "BBNI",
+          "ex_date": "2022-03-24",
+          "declaration_date": null,
+          "dps": 73.1484,
+          "cum_date": "2022-03-23",
+          "payment_date": "2022-04-14",
+          "recording_date": "2022-03-25",
+          "reasons": [
+            "Event sebelum split; kesetaraan basis DPS/OHLC belum terverifikasi"
+          ],
+          "warnings": [
+            "Jeda harga >7 hari; mungkin libur/suspensi, belum diverifikasi"
+          ],
+          "sources": [
+            "actions-BBNI.json",
+            "calendar-2022-01-01.json",
+            "prices-BBNI-2022-03-24.json"
+          ],
+          "eligible": false
+        },
+        {
+          "id": "BBNI:2023-03-28",
+          "symbol": "BBNI",
+          "ex_date": "2023-03-28",
+          "declaration_date": null,
+          "dps": 196.39,
+          "cum_date": "2023-03-27",
+          "payment_date": "2023-04-14",
+          "recording_date": "2023-03-29",
+          "reasons": [
+            "Event sebelum split; kesetaraan basis DPS/OHLC belum terverifikasi"
+          ],
+          "warnings": [
+            "Jeda harga >7 hari; mungkin libur/suspensi, belum diverifikasi"
+          ],
+          "sources": [
+            "actions-BBNI.json",
+            "calendar-2023-03-27.json",
+            "prices-BBNI-2023-03-28.json"
+          ],
+          "eligible": false
+        },
+        {
+          "id": "BBNI:2024-03-15",
+          "symbol": "BBNI",
+          "ex_date": "2024-03-15",
+          "declaration_date": null,
+          "dps": 280.495,
+          "cum_date": "2024-03-14",
+          "payment_date": "2024-04-02",
+          "recording_date": "2024-03-18",
+          "reasons": [],
+          "warnings": [
+            "Jeda harga >7 hari; mungkin libur/suspensi, belum diverifikasi"
+          ],
+          "sources": [
+            "actions-BBNI.json",
+            "calendar-2023-12-22.json",
+            "prices-BBNI-2024-03-15.json"
+          ],
+          "eligible": true,
+          "entry_date": "2024-03-05",
+          "entry_price": 5900,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2024-04-23",
+          "price_bep_session": 6,
+          "total_bep_session": 0,
+          "price_return_pct": -11.016949152542377,
+          "gross_return_pct": -6.262796610169492,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -1.6949152542372836,
+            -1.6949152542372836,
+            -0.8474576271186418,
+            -0.4237288135593209,
+            -1.6949152542372836,
+            -0.8474576271186418,
+            0.4237288135593209,
+            0.8474576271186418,
+            0.4237288135593209,
+            0.0,
+            -4.23728813559322,
+            -7.203389830508478,
+            -9.745762711864403,
+            -9.322033898305083,
+            -10.169491525423723,
+            -11.864406779661019,
+            -11.016949152542377,
+            -10.169491525423723,
+            -11.440677966101697,
+            -9.322033898305083,
+            -11.016949152542377
+          ],
+          "worst_price_move_pct": -11.864406779661019,
+          "early_censor_reason": null
+        },
+        {
+          "id": "BBNI:2025-04-15",
+          "symbol": "BBNI",
+          "ex_date": "2025-04-15",
+          "declaration_date": null,
+          "dps": 374.057,
+          "cum_date": "2025-04-14",
+          "payment_date": "2025-04-25",
+          "recording_date": "2025-04-16",
+          "reasons": [],
+          "warnings": [
+            "Jeda harga >7 hari; mungkin libur/suspensi, belum diverifikasi"
+          ],
+          "sources": [
+            "actions-BBNI.json",
+            "calendar-2025-03-16.json",
+            "prices-BBNI-2025-04-15.json"
+          ],
+          "eligible": true,
+          "entry_date": "2025-03-27",
+          "entry_price": 4240,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2025-05-19",
+          "price_bep_session": 0,
+          "total_bep_session": 0,
+          "price_return_pct": 5.188679245283012,
+          "gross_return_pct": 14.010778301886793,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            0.9433962264151052,
+            -3.301886792452835,
+            -4.716981132075471,
+            -5.8962264150943415,
+            -5.424528301886788,
+            -2.1226415094339646,
+            -1.650943396226412,
+            -0.9433962264150941,
+            -1.1792452830188704,
+            -2.358490566037741,
+            -1.4150943396226467,
+            -0.9433962264150941,
+            -0.7075471698113178,
+            -1.4150943396226467,
+            -1.8867924528301883,
+            -2.8301886792452824,
+            -3.301886792452835,
+            3.0660377358490587,
+            6.132075471698117,
+            6.132075471698117,
+            5.188679245283012
+          ],
+          "worst_price_move_pct": -5.8962264150943415,
+          "early_censor_reason": null
+        }
+      ]
+    },
+    {
+      "symbol": "DMAS",
+      "total_events": 5,
+      "eligible_events": 5,
+      "complete_events": 5,
+      "excluded_events": 0,
+      "early_censored": 0,
+      "price_unrecovered": 5,
+      "total_unrecovered": 1,
+      "losses": 3,
+      "trap_pct": 60.0,
+      "trap_interval": [
+        23.072428127601302,
+        88.2379225767352
+      ],
+      "median_return_pct": -3.409090909090909,
+      "worst_return_pct": -8.707865168539326,
+      "price_recovery": {
+        "curve": [
+          {
+            "session": 0,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 1,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 2,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 3,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 4,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 5,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 6,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 7,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 8,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 9,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 10,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 11,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 12,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 13,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 14,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 15,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 16,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 17,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 18,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 19,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 20,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 5,
+            "recovery_pct": 0.0
+          }
+        ],
+        "median_sessions": null
+      },
+      "total_recovery": {
+        "curve": [
+          {
+            "session": 0,
+            "at_risk": 5,
+            "recovered": 4,
+            "censored": 0,
+            "recovery_pct": 80.0
+          },
+          {
+            "session": 1,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 80.0
+          },
+          {
+            "session": 2,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 80.0
+          },
+          {
+            "session": 3,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 80.0
+          },
+          {
+            "session": 4,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 80.0
+          },
+          {
+            "session": 5,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 80.0
+          },
+          {
+            "session": 6,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 80.0
+          },
+          {
+            "session": 7,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 80.0
+          },
+          {
+            "session": 8,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 80.0
+          },
+          {
+            "session": 9,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 80.0
+          },
+          {
+            "session": 10,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 80.0
+          },
+          {
+            "session": 11,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 80.0
+          },
+          {
+            "session": 12,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 80.0
+          },
+          {
+            "session": 13,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 80.0
+          },
+          {
+            "session": 14,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 80.0
+          },
+          {
+            "session": 15,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 80.0
+          },
+          {
+            "session": 16,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 80.0
+          },
+          {
+            "session": 17,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 80.0
+          },
+          {
+            "session": 18,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 80.0
+          },
+          {
+            "session": 19,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 80.0
+          },
+          {
+            "session": 20,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 1,
+            "recovery_pct": 80.0
+          }
+        ],
+        "median_sessions": 0
+      },
+      "temporal": [
+        {
+          "period": "2022–2024",
+          "n": 4,
+          "trap_pct": 50.0
+        },
+        {
+          "period": "2025",
+          "n": 1,
+          "trap_pct": 100.0
+        }
+      ],
+      "evidence_status": "exploratory",
+      "period": [
+        "2022-06-15",
+        "2025-05-08"
+      ],
+      "events": [
+        {
+          "id": "DMAS:2022-06-15",
+          "symbol": "DMAS",
+          "ex_date": "2022-06-15",
+          "declaration_date": null,
+          "dps": 2.5,
+          "cum_date": "2022-06-14",
+          "payment_date": "2022-06-30",
+          "recording_date": "2022-06-16",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-DMAS.json",
+            "calendar-2022-04-01.json",
+            "prices-DMAS-2022-06-15.json"
+          ],
+          "eligible": true,
+          "entry_date": "2022-06-07",
+          "entry_price": 178,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2022-07-13",
+          "price_bep_session": null,
+          "total_bep_session": null,
+          "price_return_pct": -10.1123595505618,
+          "gross_return_pct": -8.707865168539326,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -9.55056179775281,
+            -8.42696629213483,
+            -8.42696629213483,
+            -9.55056179775281,
+            -10.1123595505618,
+            -8.98876404494382,
+            -10.1123595505618,
+            -10.1123595505618,
+            -8.42696629213483,
+            -8.42696629213483,
+            -9.55056179775281,
+            -10.1123595505618,
+            -8.98876404494382,
+            -11.23595505617978,
+            -11.23595505617978,
+            -11.23595505617978,
+            -12.35955056179775,
+            -11.79775280898876,
+            -9.55056179775281,
+            -9.55056179775281,
+            -10.1123595505618
+          ],
+          "worst_price_move_pct": -12.35955056179775,
+          "early_censor_reason": null
+        },
+        {
+          "id": "DMAS:2022-11-08",
+          "symbol": "DMAS",
+          "ex_date": "2022-11-08",
+          "declaration_date": null,
+          "dps": 15,
+          "cum_date": "2022-11-07",
+          "payment_date": "2022-11-25",
+          "recording_date": "2022-11-09",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-DMAS.json",
+            "calendar-2022-09-28.json",
+            "prices-DMAS-2022-11-08.json"
+          ],
+          "eligible": true,
+          "entry_date": "2022-10-31",
+          "entry_price": 182,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2022-12-06",
+          "price_bep_session": null,
+          "total_bep_session": 0,
+          "price_return_pct": -12.637362637362637,
+          "gross_return_pct": -4.395604395604396,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -7.692307692307687,
+            -8.791208791208794,
+            -10.989010989010994,
+            -10.989010989010994,
+            -10.439560439560436,
+            -10.439560439560436,
+            -10.989010989010994,
+            -10.439560439560436,
+            -10.989010989010994,
+            -10.989010989010994,
+            -10.439560439560436,
+            -10.439560439560436,
+            -9.340659340659341,
+            -9.340659340659341,
+            -9.890109890109889,
+            -9.890109890109889,
+            -10.439560439560436,
+            -10.439560439560436,
+            -10.989010989010994,
+            -11.538461538461542,
+            -12.637362637362637
+          ],
+          "worst_price_move_pct": -12.637362637362637,
+          "early_censor_reason": null
+        },
+        {
+          "id": "DMAS:2023-07-03",
+          "symbol": "DMAS",
+          "ex_date": "2023-07-03",
+          "declaration_date": null,
+          "dps": 10,
+          "cum_date": "2023-06-27",
+          "payment_date": "2023-07-14",
+          "recording_date": "2023-07-04",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-DMAS.json",
+            "calendar-2023-06-25.json",
+            "prices-DMAS-2023-07-03.json"
+          ],
+          "eligible": true,
+          "entry_date": "2023-06-20",
+          "entry_price": 173,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2023-08-01",
+          "price_bep_session": null,
+          "total_bep_session": 0,
+          "price_return_pct": -1.1560693641618491,
+          "gross_return_pct": 4.624277456647399,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -5.202312138728327,
+            -4.046242774566478,
+            -2.8901734104046284,
+            -4.046242774566478,
+            -3.4682080924855474,
+            -2.8901734104046284,
+            -2.8901734104046284,
+            -3.4682080924855474,
+            -2.8901734104046284,
+            -1.7341040462427793,
+            -2.3121387283236983,
+            -2.8901734104046284,
+            -1.7341040462427793,
+            -1.1560693641618491,
+            -2.3121387283236983,
+            -2.3121387283236983,
+            -2.3121387283236983,
+            -2.3121387283236983,
+            -1.1560693641618491,
+            -1.7341040462427793,
+            -1.1560693641618491
+          ],
+          "worst_price_move_pct": -5.202312138728327,
+          "early_censor_reason": null
+        },
+        {
+          "id": "DMAS:2023-12-11",
+          "symbol": "DMAS",
+          "ex_date": "2023-12-11",
+          "declaration_date": null,
+          "dps": 12,
+          "cum_date": "2023-12-08",
+          "payment_date": "2023-12-28",
+          "recording_date": "2023-12-12",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-DMAS.json",
+            "calendar-2023-09-23.json",
+            "prices-DMAS-2023-12-11.json"
+          ],
+          "eligible": true,
+          "entry_date": "2023-12-01",
+          "entry_price": 174,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2024-01-11",
+          "price_bep_session": null,
+          "total_bep_session": 0,
+          "price_return_pct": -6.896551724137934,
+          "gross_return_pct": 0.0,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -6.3218390804597675,
+            -6.3218390804597675,
+            -6.896551724137934,
+            -6.896551724137934,
+            -6.896551724137934,
+            -6.896551724137934,
+            -6.3218390804597675,
+            -6.896551724137934,
+            -6.3218390804597675,
+            -7.471264367816088,
+            -7.471264367816088,
+            -6.896551724137934,
+            -6.3218390804597675,
+            -7.471264367816088,
+            -7.471264367816088,
+            -6.3218390804597675,
+            -6.3218390804597675,
+            -6.3218390804597675,
+            -6.896551724137934,
+            -6.896551724137934,
+            -6.896551724137934
+          ],
+          "worst_price_move_pct": -7.471264367816088,
+          "early_censor_reason": null
+        },
+        {
+          "id": "DMAS:2025-05-08",
+          "symbol": "DMAS",
+          "ex_date": "2025-05-08",
+          "declaration_date": null,
+          "dps": 29,
+          "cum_date": "2025-05-07",
+          "payment_date": "2025-05-20",
+          "recording_date": "2025-05-09",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-DMAS.json",
+            "calendar-2025-03-16.json",
+            "prices-DMAS-2025-05-08.json"
+          ],
+          "eligible": true,
+          "entry_date": "2025-04-29",
+          "entry_price": 176,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2025-06-13",
+          "price_bep_session": null,
+          "total_bep_session": 0,
+          "price_return_pct": -19.886363636363637,
+          "gross_return_pct": -3.409090909090909,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -14.77272727272727,
+            -21.590909090909093,
+            -19.886363636363637,
+            -20.45454545454546,
+            -18.75,
+            -17.613636363636363,
+            -17.613636363636363,
+            -17.613636363636363,
+            -17.613636363636363,
+            -18.181818181818176,
+            -18.75,
+            -19.318181818181824,
+            -19.886363636363637,
+            -19.886363636363637,
+            -20.45454545454546,
+            -21.02272727272727,
+            -21.02272727272727,
+            -20.45454545454546,
+            -20.45454545454546,
+            -18.75,
+            -19.886363636363637
+          ],
+          "worst_price_move_pct": -21.590909090909093,
+          "early_censor_reason": null
+        }
+      ]
+    },
+    {
+      "symbol": "LPPF",
+      "total_events": 4,
+      "eligible_events": 4,
+      "complete_events": 4,
+      "excluded_events": 0,
+      "early_censored": 0,
+      "price_unrecovered": 4,
+      "total_unrecovered": 0,
+      "losses": 3,
+      "trap_pct": 75.0,
+      "trap_interval": [
+        30.06418425824019,
+        95.44127391902994
+      ],
+      "median_return_pct": -2.125277098846132,
+      "worst_return_pct": -7.793522267206478,
+      "price_recovery": {
+        "curve": [
+          {
+            "session": 0,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 1,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 2,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 3,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 4,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 5,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 6,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 7,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 8,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 9,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 10,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 11,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 12,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 13,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 14,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 15,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 16,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 17,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 18,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 19,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 20,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 4,
+            "recovery_pct": 0.0
+          }
+        ],
+        "median_sessions": null
+      },
+      "total_recovery": {
+        "curve": [
+          {
+            "session": 0,
+            "at_risk": 4,
+            "recovered": 1,
+            "censored": 0,
+            "recovery_pct": 25.0
+          },
+          {
+            "session": 1,
+            "at_risk": 3,
+            "recovered": 1,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 2,
+            "at_risk": 2,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 3,
+            "at_risk": 2,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 4,
+            "at_risk": 2,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 5,
+            "at_risk": 2,
+            "recovered": 1,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 6,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 7,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 8,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 9,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 10,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 11,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 12,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 13,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 14,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 15,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 16,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 17,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 18,
+            "at_risk": 1,
+            "recovered": 1,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 19,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 20,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          }
+        ],
+        "median_sessions": 1
+      },
+      "temporal": [
+        {
+          "period": "2022–2024",
+          "n": 3,
+          "trap_pct": 100.0
+        },
+        {
+          "period": "2025",
+          "n": 1,
+          "trap_pct": 0.0
+        }
+      ],
+      "evidence_status": "exploratory",
+      "period": [
+        "2022-04-14",
+        "2025-04-22"
+      ],
+      "events": [
+        {
+          "id": "LPPF:2022-04-14",
+          "symbol": "LPPF",
+          "ex_date": "2022-04-14",
+          "declaration_date": null,
+          "dps": 250,
+          "cum_date": "2022-04-13",
+          "payment_date": "2022-04-28",
+          "recording_date": "2022-04-18",
+          "reasons": [],
+          "warnings": [
+            "Jeda harga >7 hari; mungkin libur/suspensi, belum diverifikasi"
+          ],
+          "sources": [
+            "actions-LPPF.json",
+            "calendar-2022-04-01.json",
+            "prices-LPPF-2022-04-14.json"
+          ],
+          "eligible": true,
+          "entry_date": "2022-04-06",
+          "entry_price": 6025,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2022-05-24",
+          "price_bep_session": null,
+          "total_bep_session": 1,
+          "price_return_pct": -4.56431535269709,
+          "gross_return_pct": -0.4149377593360996,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -4.56431535269709,
+            -1.6597510373444035,
+            -4.56431535269709,
+            -6.224066390041494,
+            -6.224066390041494,
+            -4.56431535269709,
+            -4.149377593360992,
+            -6.224066390041494,
+            -3.734439834024894,
+            -3.734439834024894,
+            -10.373443983402487,
+            -10.373443983402487,
+            -4.9792531120331995,
+            -11.203319502074693,
+            -9.958506224066388,
+            -9.128630705394192,
+            -10.373443983402487,
+            -9.128630705394192,
+            -7.468879668049788,
+            -6.224066390041494,
+            -4.56431535269709
+          ],
+          "worst_price_move_pct": -11.203319502074693,
+          "early_censor_reason": null
+        },
+        {
+          "id": "LPPF:2023-04-10",
+          "symbol": "LPPF",
+          "ex_date": "2023-04-10",
+          "declaration_date": null,
+          "dps": 525,
+          "cum_date": "2023-04-06",
+          "payment_date": "2023-04-17",
+          "recording_date": "2023-04-11",
+          "reasons": [],
+          "warnings": [
+            "Jeda harga >7 hari; mungkin libur/suspensi, belum diverifikasi"
+          ],
+          "sources": [
+            "actions-LPPF.json",
+            "calendar-2023-03-27.json",
+            "prices-LPPF-2023-04-10.json"
+          ],
+          "eligible": true,
+          "entry_date": "2023-03-30",
+          "entry_price": 4940,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2023-05-16",
+          "price_bep_session": null,
+          "total_bep_session": 0,
+          "price_return_pct": -18.42105263157895,
+          "gross_return_pct": -7.793522267206478,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -4.858299595141702,
+            -11.336032388663963,
+            -15.182186234817818,
+            -16.80161943319838,
+            -15.587044534412954,
+            -17.813765182186238,
+            -18.42105263157895,
+            -21.255060728744933,
+            -19.028340080971663,
+            -18.016194331983804,
+            -17.206477732793523,
+            -17.40890688259109,
+            -19.23076923076923,
+            -18.42105263157895,
+            -14.979757085020239,
+            -15.384615384615385,
+            -15.789473684210531,
+            -16.599190283400812,
+            -15.587044534412954,
+            -17.004048582995956,
+            -18.42105263157895
+          ],
+          "worst_price_move_pct": -21.255060728744933,
+          "early_censor_reason": null
+        },
+        {
+          "id": "LPPF:2024-04-22",
+          "symbol": "LPPF",
+          "ex_date": "2024-04-22",
+          "declaration_date": null,
+          "dps": 200,
+          "cum_date": "2024-04-19",
+          "payment_date": "2024-04-29",
+          "recording_date": "2024-04-23",
+          "reasons": [],
+          "warnings": [
+            "Jeda harga >7 hari; mungkin libur/suspensi, belum diverifikasi"
+          ],
+          "sources": [
+            "actions-LPPF.json",
+            "calendar-2024-03-21.json",
+            "prices-LPPF-2024-04-22.json"
+          ],
+          "eligible": true,
+          "entry_date": "2024-04-04",
+          "entry_price": 1825,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2024-05-27",
+          "price_bep_session": null,
+          "total_bep_session": 18,
+          "price_return_pct": -14.7945205479452,
+          "gross_return_pct": -3.835616438356164,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -17.53424657534246,
+            -16.43835616438356,
+            -18.356164383561648,
+            -18.356164383561648,
+            -17.808219178082197,
+            -16.712328767123285,
+            -12.602739726027401,
+            -13.972602739726025,
+            -15.068493150684937,
+            -13.698630136986301,
+            -13.15068493150685,
+            -16.712328767123285,
+            -19.72602739726027,
+            -19.452054794520546,
+            -20.273972602739732,
+            -20.547945205479458,
+            -19.17808219178082,
+            -15.616438356164386,
+            -10.136986301369866,
+            -11.232876712328766,
+            -14.7945205479452
+          ],
+          "worst_price_move_pct": -20.547945205479458,
+          "early_censor_reason": null
+        },
+        {
+          "id": "LPPF:2025-04-22",
+          "symbol": "LPPF",
+          "ex_date": "2025-04-22",
+          "declaration_date": null,
+          "dps": 300,
+          "cum_date": "2025-04-21",
+          "payment_date": "2025-04-29",
+          "recording_date": "2025-04-23",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-LPPF.json",
+            "calendar-2025-03-16.json",
+            "prices-LPPF-2025-04-22.json"
+          ],
+          "eligible": true,
+          "entry_date": "2025-04-11",
+          "entry_price": 2010,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2025-05-23",
+          "price_bep_session": null,
+          "total_bep_session": 5,
+          "price_return_pct": -9.452736318407961,
+          "gross_return_pct": 5.472636815920398,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -16.16915422885572,
+            -16.417910447761198,
+            -18.905472636815922,
+            -17.41293532338308,
+            -15.920398009950254,
+            -14.427860696517413,
+            -12.935323383084574,
+            -9.452736318407961,
+            -4.975124378109452,
+            -4.975124378109452,
+            -4.477611940298509,
+            -3.9800995024875663,
+            -3.9800995024875663,
+            -3.233830845771146,
+            -2.487562189054726,
+            -3.482587064676612,
+            -1.741293532338306,
+            -3.9800995024875663,
+            -6.467661691542292,
+            -9.203980099502484,
+            -9.452736318407961
+          ],
+          "worst_price_move_pct": -18.905472636815922,
+          "early_censor_reason": null
+        }
+      ]
+    },
+    {
+      "symbol": "ADRO",
+      "total_events": 9,
+      "eligible_events": 9,
+      "complete_events": 8,
+      "excluded_events": 0,
+      "early_censored": 1,
+      "price_unrecovered": 6,
+      "total_unrecovered": 1,
+      "losses": 6,
+      "trap_pct": 75.0,
+      "trap_interval": [
+        40.9275430310169,
+        92.8520787247891
+      ],
+      "median_return_pct": -4.6538095238095245,
+      "worst_return_pct": -15.714435695538057,
+      "price_recovery": {
+        "curve": [
+          {
+            "session": 0,
+            "at_risk": 9,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 1,
+            "at_risk": 9,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 2,
+            "at_risk": 9,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 3,
+            "at_risk": 9,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 4,
+            "at_risk": 9,
+            "recovered": 2,
+            "censored": 0,
+            "recovery_pct": 22.22222222222222
+          },
+          {
+            "session": 5,
+            "at_risk": 7,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 22.22222222222222
+          },
+          {
+            "session": 6,
+            "at_risk": 7,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 22.22222222222222
+          },
+          {
+            "session": 7,
+            "at_risk": 7,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 22.22222222222222
+          },
+          {
+            "session": 8,
+            "at_risk": 7,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 22.22222222222222
+          },
+          {
+            "session": 9,
+            "at_risk": 7,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 22.22222222222222
+          },
+          {
+            "session": 10,
+            "at_risk": 7,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 22.22222222222222
+          },
+          {
+            "session": 11,
+            "at_risk": 7,
+            "recovered": 1,
+            "censored": 0,
+            "recovery_pct": 33.33333333333333
+          },
+          {
+            "session": 12,
+            "at_risk": 6,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 33.33333333333333
+          },
+          {
+            "session": 13,
+            "at_risk": 6,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 33.33333333333333
+          },
+          {
+            "session": 14,
+            "at_risk": 6,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 33.33333333333333
+          },
+          {
+            "session": 15,
+            "at_risk": 6,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 33.33333333333333
+          },
+          {
+            "session": 16,
+            "at_risk": 6,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 33.33333333333333
+          },
+          {
+            "session": 17,
+            "at_risk": 6,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 33.33333333333333
+          },
+          {
+            "session": 18,
+            "at_risk": 6,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 33.33333333333333
+          },
+          {
+            "session": 19,
+            "at_risk": 6,
+            "recovered": 0,
+            "censored": 1,
+            "recovery_pct": 33.33333333333333
+          },
+          {
+            "session": 20,
+            "at_risk": 5,
+            "recovered": 0,
+            "censored": 5,
+            "recovery_pct": 33.33333333333333
+          }
+        ],
+        "median_sessions": null
+      },
+      "total_recovery": {
+        "curve": [
+          {
+            "session": 0,
+            "at_risk": 9,
+            "recovered": 6,
+            "censored": 0,
+            "recovery_pct": 66.66666666666666
+          },
+          {
+            "session": 1,
+            "at_risk": 3,
+            "recovered": 2,
+            "censored": 0,
+            "recovery_pct": 88.88888888888889
+          },
+          {
+            "session": 2,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 88.88888888888889
+          },
+          {
+            "session": 3,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 88.88888888888889
+          },
+          {
+            "session": 4,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 88.88888888888889
+          },
+          {
+            "session": 5,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 88.88888888888889
+          },
+          {
+            "session": 6,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 88.88888888888889
+          },
+          {
+            "session": 7,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 88.88888888888889
+          },
+          {
+            "session": 8,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 88.88888888888889
+          },
+          {
+            "session": 9,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 88.88888888888889
+          },
+          {
+            "session": 10,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 88.88888888888889
+          },
+          {
+            "session": 11,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 88.88888888888889
+          },
+          {
+            "session": 12,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 88.88888888888889
+          },
+          {
+            "session": 13,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 88.88888888888889
+          },
+          {
+            "session": 14,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 88.88888888888889
+          },
+          {
+            "session": 15,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 88.88888888888889
+          },
+          {
+            "session": 16,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 88.88888888888889
+          },
+          {
+            "session": 17,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 88.88888888888889
+          },
+          {
+            "session": 18,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 88.88888888888889
+          },
+          {
+            "session": 19,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 88.88888888888889
+          },
+          {
+            "session": 20,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 1,
+            "recovery_pct": 88.88888888888889
+          }
+        ],
+        "median_sessions": 0
+      },
+      "temporal": [
+        {
+          "period": "2022–2024",
+          "n": 6,
+          "trap_pct": 83.33333333333334
+        },
+        {
+          "period": "2025",
+          "n": 2,
+          "trap_pct": 50.0
+        }
+      ],
+      "evidence_status": "exploratory",
+      "period": [
+        "2022-05-17",
+        "2025-12-30"
+      ],
+      "events": [
+        {
+          "id": "ADRO:2022-05-17",
+          "symbol": "ADRO",
+          "ex_date": "2022-05-17",
+          "declaration_date": null,
+          "dps": 141.39,
+          "cum_date": "2022-05-13",
+          "payment_date": "2022-06-08",
+          "recording_date": "2022-05-18",
+          "reasons": [],
+          "warnings": [
+            "Jeda harga >7 hari; mungkin libur/suspensi, belum diverifikasi"
+          ],
+          "sources": [
+            "actions-ADRO.json",
+            "calendar-2022-04-01.json",
+            "prices-ADRO-2022-05-17.json"
+          ],
+          "eligible": true,
+          "entry_date": "2022-04-28",
+          "entry_price": 3340,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2022-06-16",
+          "price_bep_session": 11,
+          "total_bep_session": 0,
+          "price_return_pct": -8.383233532934131,
+          "gross_return_pct": -4.15,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -3.59281437125748,
+            -4.491017964071853,
+            -6.886227544910184,
+            -0.8982035928143728,
+            -5.688622754491012,
+            -4.191616766467066,
+            -7.185628742514972,
+            -5.389221556886225,
+            -8.383233532934131,
+            -2.095808383233533,
+            -0.29940119760478723,
+            5.389221556886237,
+            3.592814371257491,
+            9.281437125748493,
+            8.682634730538918,
+            7.784431137724557,
+            2.6946107784431073,
+            -4.491017964071853,
+            -2.39520958083832,
+            -8.982035928143716,
+            -8.383233532934131
+          ],
+          "worst_price_move_pct": -8.982035928143716,
+          "early_censor_reason": null
+        },
+        {
+          "id": "ADRO:2023-01-02",
+          "symbol": "ADRO",
+          "ex_date": "2023-01-02",
+          "declaration_date": null,
+          "dps": 251.28,
+          "cum_date": "2022-12-30",
+          "payment_date": "2023-01-13",
+          "recording_date": "2023-01-03",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-ADRO.json",
+            "calendar-2022-12-27.json",
+            "prices-ADRO-2023-01-02.json"
+          ],
+          "eligible": true,
+          "entry_date": "2022-12-23",
+          "entry_price": 3810,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2023-01-31",
+          "price_bep_session": null,
+          "total_bep_session": 0,
+          "price_return_pct": -22.30971128608924,
+          "gross_return_pct": -15.714435695538057,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -5.774278215223094,
+            -7.6115485564304475,
+            -13.38582677165354,
+            -18.635170603674545,
+            -17.58530183727034,
+            -20.472440944881885,
+            -17.58530183727034,
+            -16.535433070866144,
+            -18.89763779527559,
+            -17.58530183727034,
+            -18.635170603674545,
+            -17.58530183727034,
+            -16.79790026246719,
+            -15.223097112860895,
+            -14.960629921259837,
+            -16.010498687664043,
+            -17.847769028871397,
+            -20.99737532808399,
+            -19.685039370078737,
+            -20.99737532808399,
+            -22.30971128608924
+          ],
+          "worst_price_move_pct": -22.30971128608924,
+          "early_censor_reason": null
+        },
+        {
+          "id": "ADRO:2023-05-23",
+          "symbol": "ADRO",
+          "ex_date": "2023-05-23",
+          "declaration_date": null,
+          "dps": 240.78,
+          "cum_date": "2023-05-22",
+          "payment_date": "2023-06-06",
+          "recording_date": "2023-05-24",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-ADRO.json",
+            "calendar-2023-03-27.json",
+            "prices-ADRO-2023-05-23.json"
+          ],
+          "eligible": true,
+          "entry_date": "2023-05-12",
+          "entry_price": 2760,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2023-06-22",
+          "price_bep_session": null,
+          "total_bep_session": null,
+          "price_return_pct": -18.11594202898551,
+          "gross_return_pct": -9.392028985507247,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -17.028985507246375,
+            -18.478260869565222,
+            -23.188405797101453,
+            -24.27536231884058,
+            -25.0,
+            -23.550724637681164,
+            -26.086956521739136,
+            -23.913043478260864,
+            -19.565217391304344,
+            -21.376811594202895,
+            -20.28985507246377,
+            -20.65217391304348,
+            -19.92753623188406,
+            -19.92753623188406,
+            -18.478260869565222,
+            -16.666666666666664,
+            -15.94202898550725,
+            -18.11594202898551,
+            -17.753623188405797,
+            -18.11594202898551,
+            -18.11594202898551
+          ],
+          "worst_price_move_pct": -26.086956521739136,
+          "early_censor_reason": null
+        },
+        {
+          "id": "ADRO:2023-12-29",
+          "symbol": "ADRO",
+          "ex_date": "2023-12-29",
+          "declaration_date": null,
+          "dps": 199.98,
+          "cum_date": "2023-12-28",
+          "payment_date": "2024-01-12",
+          "recording_date": "2024-01-02",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-ADRO.json",
+            "calendar-2023-12-22.json",
+            "prices-ADRO-2023-12-29.json"
+          ],
+          "eligible": true,
+          "entry_date": "2023-12-19",
+          "entry_price": 2600,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2024-01-29",
+          "price_bep_session": null,
+          "total_bep_session": 1,
+          "price_return_pct": -7.692307692307687,
+          "gross_return_pct": -0.0007692307692307692,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -8.461538461538465,
+            -4.230769230769226,
+            -7.307692307692304,
+            -5.384615384615388,
+            -6.153846153846154,
+            -6.153846153846154,
+            -6.538461538461537,
+            -5.384615384615388,
+            -5.769230769230771,
+            -4.61538461538461,
+            -3.4615384615384603,
+            -3.8461538461538436,
+            -4.230769230769226,
+            -5.384615384615388,
+            -6.538461538461537,
+            -7.692307692307687,
+            -9.615384615384615,
+            -9.999999999999998,
+            -9.230769230769232,
+            -8.461538461538465,
+            -7.692307692307687
+          ],
+          "worst_price_move_pct": -9.999999999999998,
+          "early_censor_reason": null
+        },
+        {
+          "id": "ADRO:2024-05-28",
+          "symbol": "ADRO",
+          "ex_date": "2024-05-28",
+          "declaration_date": null,
+          "dps": 209.31,
+          "cum_date": "2024-05-27",
+          "payment_date": "2024-06-05",
+          "recording_date": "2024-05-29",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-ADRO.json",
+            "calendar-2024-03-21.json",
+            "prices-ADRO-2024-05-28.json"
+          ],
+          "eligible": true,
+          "entry_date": "2024-05-16",
+          "entry_price": 2880,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2024-06-27",
+          "price_bep_session": 4,
+          "total_bep_session": 0,
+          "price_return_pct": -4.513888888888884,
+          "gross_return_pct": 2.7538194444444444,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -6.597222222222221,
+            -6.944444444444442,
+            -4.861111111111116,
+            -3.819444444444442,
+            1.736111111111116,
+            1.388888888888884,
+            -0.347222222222221,
+            -1.041666666666663,
+            -1.388888888888884,
+            -4.513888888888884,
+            -5.555555555555558,
+            -3.125,
+            -3.472222222222221,
+            -3.472222222222221,
+            -7.638888888888884,
+            -5.2083333333333375,
+            -5.2083333333333375,
+            -5.555555555555558,
+            -5.902777777777779,
+            -4.513888888888884,
+            -4.513888888888884
+          ],
+          "worst_price_move_pct": -7.638888888888884,
+          "early_censor_reason": null
+        },
+        {
+          "id": "ADRO:2024-11-28",
+          "symbol": "ADRO",
+          "ex_date": "2024-11-28",
+          "declaration_date": null,
+          "dps": 1358.18,
+          "cum_date": "2024-11-26",
+          "payment_date": "2024-12-06",
+          "recording_date": "2024-11-29",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-ADRO.json",
+            "calendar-2024-09-17.json",
+            "prices-ADRO-2024-11-28.json"
+          ],
+          "eligible": true,
+          "entry_date": "2024-11-19",
+          "entry_price": 3710,
+          "observed_sessions": 19,
+          "complete": false,
+          "last_date": "2024-12-27",
+          "price_bep_session": null,
+          "total_bep_session": 0,
+          "price_return_pct": null,
+          "gross_return_pct": null,
+          "trap": null,
+          "dividend_paid_at_horizon": null,
+          "price_path_pct": [
+            -25.60646900269542,
+            -43.93530997304582,
+            -37.735849056603776,
+            -36.38814016172507,
+            -36.38814016172507,
+            -36.92722371967655,
+            -38.00539083557951,
+            -27.762803234501344,
+            -26.415094339622648,
+            -29.64959568733153,
+            -31.805929919137466,
+            -30.45822102425876,
+            -29.919137466307276,
+            -32.34501347708895,
+            -30.188679245283023,
+            -31.53638814016172,
+            -31.266846361185983,
+            -31.53638814016172,
+            -32.34501347708895,
+            -31.53638814016172
+          ],
+          "worst_price_move_pct": -43.93530997304582,
+          "early_censor_reason": "Data terpotong/invalid atau ada ex-dividen berikutnya"
+        },
+        {
+          "id": "ADRO:2024-12-30",
+          "symbol": "ADRO",
+          "ex_date": "2024-12-30",
+          "declaration_date": null,
+          "dps": 106.84,
+          "cum_date": "2024-12-27",
+          "payment_date": "2025-01-15",
+          "recording_date": "2025-01-02",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-ADRO.json",
+            "calendar-2024-12-16.json",
+            "prices-ADRO-2024-12-30.json"
+          ],
+          "eligible": true,
+          "entry_date": "2024-12-18",
+          "entry_price": 2590,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2025-02-03",
+          "price_bep_session": null,
+          "total_bep_session": 1,
+          "price_return_pct": -10.81081081081081,
+          "gross_return_pct": -6.685714285714286,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -6.177606177606176,
+            -2.316602316602312,
+            -5.019305019305021,
+            -8.108108108108103,
+            -4.633204633204635,
+            -7.335907335907333,
+            -9.652509652509655,
+            -10.424710424710426,
+            -9.26640926640927,
+            -8.880308880308885,
+            -7.335907335907333,
+            -6.949806949806947,
+            -7.335907335907333,
+            -9.26640926640927,
+            -10.81081081081081,
+            -10.424710424710426,
+            -9.652509652509655,
+            -11.196911196911197,
+            -11.196911196911197,
+            -10.038610038610042,
+            -10.81081081081081
+          ],
+          "worst_price_move_pct": -11.196911196911197,
+          "early_censor_reason": null
+        },
+        {
+          "id": "ADRO:2025-06-13",
+          "symbol": "ADRO",
+          "ex_date": "2025-06-13",
+          "declaration_date": null,
+          "dps": 166.69,
+          "cum_date": "2025-06-12",
+          "payment_date": "2025-06-26",
+          "recording_date": "2025-06-16",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-ADRO.json",
+            "calendar-2025-03-16.json",
+            "prices-ADRO-2025-06-13.json"
+          ],
+          "eligible": true,
+          "entry_date": "2025-06-03",
+          "entry_price": 2100,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2025-07-14",
+          "price_bep_session": null,
+          "total_bep_session": 0,
+          "price_return_pct": -13.095238095238093,
+          "gross_return_pct": -5.157619047619048,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -5.000000000000004,
+            -4.761904761904767,
+            -4.761904761904767,
+            -5.238095238095242,
+            -8.333333333333337,
+            -11.428571428571432,
+            -14.28571428571429,
+            -13.571428571428568,
+            -15.000000000000002,
+            -14.761904761904765,
+            -12.857142857142856,
+            -12.857142857142856,
+            -15.476190476190476,
+            -16.19047619047619,
+            -16.428571428571427,
+            -17.14285714285714,
+            -16.9047619047619,
+            -17.14285714285714,
+            -12.380952380952381,
+            -10.952380952380958,
+            -13.095238095238093
+          ],
+          "worst_price_move_pct": -17.14285714285714,
+          "early_censor_reason": null
+        },
+        {
+          "id": "ADRO:2025-12-30",
+          "symbol": "ADRO",
+          "ex_date": "2025-12-30",
+          "declaration_date": null,
+          "dps": 145.14,
+          "cum_date": "2025-12-29",
+          "payment_date": "2026-01-15",
+          "recording_date": "2026-01-02",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-ADRO.json",
+            "calendar-2025-12-11.json",
+            "prices-ADRO-2025-12-30.json"
+          ],
+          "eligible": true,
+          "entry_date": "2025-12-18",
+          "entry_price": 1900,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2026-01-30",
+          "price_bep_session": 4,
+          "total_bep_session": 0,
+          "price_return_pct": 16.315789473684216,
+          "gross_return_pct": 23.954736842105262,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -4.736842105263161,
+            -4.210526315789476,
+            -3.157894736842104,
+            -1.8421052631578894,
+            5.789473684210522,
+            6.842105263157894,
+            10.526315789473696,
+            13.157894736842103,
+            20.52631578947368,
+            17.36842105263159,
+            17.36842105263159,
+            14.210526315789473,
+            17.894736842105253,
+            18.947368421052623,
+            23.684210526315795,
+            26.315789473684205,
+            25.789473684210517,
+            20.52631578947368,
+            16.315789473684216,
+            16.842105263157904,
+            16.315789473684216
+          ],
+          "worst_price_move_pct": -4.736842105263161,
+          "early_censor_reason": null
+        }
+      ]
+    },
+    {
+      "symbol": "CFIN",
+      "total_events": 2,
+      "eligible_events": 2,
+      "complete_events": 2,
+      "excluded_events": 0,
+      "early_censored": 0,
+      "price_unrecovered": 1,
+      "total_unrecovered": 0,
+      "losses": 0,
+      "trap_pct": 0.0,
+      "trap_interval": [
+        0.0,
+        65.76197724933468
+      ],
+      "median_return_pct": 24.082747853239656,
+      "worst_return_pct": 0.546448087431694,
+      "price_recovery": {
+        "curve": [
+          {
+            "session": 0,
+            "at_risk": 2,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 1,
+            "at_risk": 2,
+            "recovered": 1,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 2,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 3,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 4,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 5,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 6,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 7,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 8,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 9,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 10,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 11,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 12,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 13,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 14,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 15,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 16,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 17,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 18,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 19,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 20,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 1,
+            "recovery_pct": 50.0
+          }
+        ],
+        "median_sessions": 1
+      },
+      "total_recovery": {
+        "curve": [
+          {
+            "session": 0,
+            "at_risk": 2,
+            "recovered": 2,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 1,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 2,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 3,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 4,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 5,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 6,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 7,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 8,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 9,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 10,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 11,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 12,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 13,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 14,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 15,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 16,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 17,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 18,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 19,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          },
+          {
+            "session": 20,
+            "at_risk": 0,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 100.0
+          }
+        ],
+        "median_sessions": 0
+      },
+      "temporal": [
+        {
+          "period": "2022–2024",
+          "n": 1,
+          "trap_pct": 0.0
+        },
+        {
+          "period": "2025",
+          "n": 1,
+          "trap_pct": 0.0
+        }
+      ],
+      "evidence_status": "exploratory",
+      "period": [
+        "2023-07-06",
+        "2025-06-11"
+      ],
+      "events": [
+        {
+          "id": "CFIN:2023-07-06",
+          "symbol": "CFIN",
+          "ex_date": "2023-07-06",
+          "declaration_date": null,
+          "dps": 100,
+          "cum_date": "2023-07-05",
+          "payment_date": "2023-07-25",
+          "recording_date": "2023-07-07",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-CFIN.json",
+            "calendar-2023-06-25.json",
+            "prices-CFIN-2023-07-06.json"
+          ],
+          "eligible": true,
+          "entry_date": "2023-06-23",
+          "entry_price": 525,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2023-08-04",
+          "price_bep_session": 1,
+          "total_bep_session": 0,
+          "price_return_pct": 28.57142857142858,
+          "gross_return_pct": 47.61904761904762,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -0.952380952380949,
+            7.619047619047614,
+            9.523809523809534,
+            32.38095238095238,
+            29.52380952380953,
+            15.238095238095228,
+            19.999999999999996,
+            19.999999999999996,
+            17.14285714285715,
+            12.380952380952381,
+            15.238095238095228,
+            24.761904761904763,
+            24.761904761904763,
+            30.476190476190478,
+            32.38095238095238,
+            30.476190476190478,
+            23.809523809523814,
+            23.809523809523814,
+            27.61904761904761,
+            27.61904761904761,
+            28.57142857142858
+          ],
+          "worst_price_move_pct": -0.952380952380949,
+          "early_censor_reason": null
+        },
+        {
+          "id": "CFIN:2025-06-11",
+          "symbol": "CFIN",
+          "ex_date": "2025-06-11",
+          "declaration_date": null,
+          "dps": 50,
+          "cum_date": "2025-06-10",
+          "payment_date": "2025-06-26",
+          "recording_date": "2025-06-12",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-CFIN.json",
+            "calendar-2025-03-16.json",
+            "prices-CFIN-2025-06-11.json"
+          ],
+          "eligible": true,
+          "entry_date": "2025-05-28",
+          "entry_price": 366,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2025-07-10",
+          "price_bep_session": null,
+          "total_bep_session": 0,
+          "price_return_pct": -13.11475409836066,
+          "gross_return_pct": 0.546448087431694,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -5.464480874316935,
+            -8.743169398907103,
+            -11.475409836065575,
+            -12.02185792349727,
+            -11.475409836065575,
+            -12.568306010928964,
+            -15.846994535519121,
+            -16.93989071038251,
+            -19.672131147540984,
+            -17.486338797814206,
+            -17.486338797814206,
+            -16.393442622950815,
+            -14.754098360655743,
+            -15.300546448087427,
+            -15.846994535519121,
+            -15.846994535519121,
+            -16.93989071038251,
+            -16.393442622950815,
+            -15.846994535519121,
+            -15.300546448087427,
+            -13.11475409836066
+          ],
+          "worst_price_move_pct": -19.672131147540984,
+          "early_censor_reason": null
+        }
+      ]
+    },
+    {
+      "symbol": "RALS",
+      "total_events": 4,
+      "eligible_events": 4,
+      "complete_events": 4,
+      "excluded_events": 0,
+      "early_censored": 0,
+      "price_unrecovered": 4,
+      "total_unrecovered": 1,
+      "losses": 1,
+      "trap_pct": 25.0,
+      "trap_interval": [
+        4.558726080970055,
+        69.9358157417598
+      ],
+      "median_return_pct": 1.469642857142857,
+      "worst_return_pct": -8.88888888888889,
+      "price_recovery": {
+        "curve": [
+          {
+            "session": 0,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 1,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 2,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 3,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 4,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 5,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 6,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 7,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 8,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 9,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 10,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 11,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 12,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 13,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 14,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 15,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 16,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 17,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 18,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 19,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 0.0
+          },
+          {
+            "session": 20,
+            "at_risk": 4,
+            "recovered": 0,
+            "censored": 4,
+            "recovery_pct": 0.0
+          }
+        ],
+        "median_sessions": null
+      },
+      "total_recovery": {
+        "curve": [
+          {
+            "session": 0,
+            "at_risk": 4,
+            "recovered": 2,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 1,
+            "at_risk": 2,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 50.0
+          },
+          {
+            "session": 2,
+            "at_risk": 2,
+            "recovered": 1,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 3,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 4,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 5,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 6,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 7,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 8,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 9,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 10,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 11,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 12,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 13,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 14,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 15,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 16,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 17,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 18,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 19,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 0,
+            "recovery_pct": 75.0
+          },
+          {
+            "session": 20,
+            "at_risk": 1,
+            "recovered": 0,
+            "censored": 1,
+            "recovery_pct": 75.0
+          }
+        ],
+        "median_sessions": 0
+      },
+      "temporal": [
+        {
+          "period": "2022–2024",
+          "n": 3,
+          "trap_pct": 33.33333333333333
+        },
+        {
+          "period": "2025",
+          "n": 1,
+          "trap_pct": 0.0
+        }
+      ],
+      "evidence_status": "exploratory",
+      "period": [
+        "2022-06-02",
+        "2025-05-22"
+      ],
+      "events": [
+        {
+          "id": "RALS:2022-06-02",
+          "symbol": "RALS",
+          "ex_date": "2022-06-02",
+          "declaration_date": null,
+          "dps": 30,
+          "cum_date": "2022-05-31",
+          "payment_date": "2022-06-23",
+          "recording_date": "2022-06-03",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-RALS.json",
+            "calendar-2022-04-01.json",
+            "prices-RALS-2022-06-02.json"
+          ],
+          "eligible": true,
+          "entry_date": "2022-05-23",
+          "entry_price": 675,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2022-06-30",
+          "price_bep_session": null,
+          "total_bep_session": null,
+          "price_return_pct": -13.33333333333333,
+          "gross_return_pct": -8.88888888888889,
+          "trap": true,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -5.925925925925924,
+            -5.925925925925924,
+            -9.629629629629633,
+            -5.185185185185182,
+            -5.185185185185182,
+            -8.148148148148149,
+            -9.629629629629633,
+            -8.888888888888891,
+            -8.888888888888891,
+            -8.888888888888891,
+            -9.629629629629633,
+            -13.33333333333333,
+            -13.33333333333333,
+            -14.074074074074073,
+            -12.592592592592588,
+            -12.592592592592588,
+            -11.851851851851848,
+            -12.592592592592588,
+            -13.33333333333333,
+            -13.33333333333333,
+            -13.33333333333333
+          ],
+          "worst_price_move_pct": -14.074074074074073,
+          "early_censor_reason": null
+        },
+        {
+          "id": "RALS:2023-06-06",
+          "symbol": "RALS",
+          "ex_date": "2023-06-06",
+          "declaration_date": null,
+          "dps": 50,
+          "cum_date": "2023-06-05",
+          "payment_date": "2023-06-23",
+          "recording_date": "2023-06-07",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-RALS.json",
+            "calendar-2023-03-27.json",
+            "prices-RALS-2023-06-06.json"
+          ],
+          "eligible": true,
+          "entry_date": "2023-05-25",
+          "entry_price": 625,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2023-07-07",
+          "price_bep_session": null,
+          "total_bep_session": 2,
+          "price_return_pct": -6.399999999999995,
+          "gross_return_pct": 1.6,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -8.799999999999997,
+            -8.799999999999997,
+            -7.9999999999999964,
+            -9.599999999999998,
+            -7.9999999999999964,
+            -7.199999999999996,
+            -7.199999999999996,
+            -7.199999999999996,
+            -7.199999999999996,
+            -7.9999999999999964,
+            -8.799999999999997,
+            -7.199999999999996,
+            -7.9999999999999964,
+            -8.799999999999997,
+            -5.600000000000005,
+            -7.199999999999996,
+            -6.399999999999995,
+            -7.199999999999996,
+            -7.9999999999999964,
+            -7.9999999999999964,
+            -6.399999999999995
+          ],
+          "worst_price_move_pct": -9.599999999999998,
+          "early_censor_reason": null
+        },
+        {
+          "id": "RALS:2024-05-30",
+          "symbol": "RALS",
+          "ex_date": "2024-05-30",
+          "declaration_date": null,
+          "dps": 50,
+          "cum_date": "2024-05-29",
+          "payment_date": "2024-06-20",
+          "recording_date": "2024-05-31",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-RALS.json",
+            "calendar-2024-03-21.json",
+            "prices-RALS-2024-05-30.json"
+          ],
+          "eligible": true,
+          "entry_date": "2024-05-20",
+          "entry_price": 472,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2024-07-01",
+          "price_bep_session": null,
+          "total_bep_session": 0,
+          "price_return_pct": -8.47457627118644,
+          "gross_return_pct": 2.1186440677966103,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -2.1186440677966156,
+            -8.898305084745761,
+            -9.745762711864403,
+            -8.898305084745761,
+            -9.322033898305083,
+            -8.898305084745761,
+            -8.898305084745761,
+            -10.169491525423723,
+            -11.016949152542377,
+            -15.254237288135597,
+            -15.254237288135597,
+            -17.3728813559322,
+            -17.3728813559322,
+            -14.830508474576277,
+            -12.711864406779661,
+            -11.440677966101697,
+            -10.593220338983055,
+            -9.745762711864403,
+            -9.322033898305083,
+            -9.745762711864403,
+            -8.47457627118644
+          ],
+          "worst_price_move_pct": -17.3728813559322,
+          "early_censor_reason": null
+        },
+        {
+          "id": "RALS:2025-05-22",
+          "symbol": "RALS",
+          "ex_date": "2025-05-22",
+          "declaration_date": null,
+          "dps": 60,
+          "cum_date": "2025-05-21",
+          "payment_date": "2025-06-13",
+          "recording_date": "2025-05-23",
+          "reasons": [],
+          "warnings": [],
+          "sources": [
+            "actions-RALS.json",
+            "calendar-2025-03-16.json",
+            "prices-RALS-2025-05-22.json"
+          ],
+          "eligible": true,
+          "entry_date": "2025-05-14",
+          "entry_price": 448,
+          "observed_sessions": 20,
+          "complete": true,
+          "last_date": "2025-06-25",
+          "price_bep_session": null,
+          "total_bep_session": 0,
+          "price_return_pct": -12.05357142857143,
+          "gross_return_pct": 1.3392857142857142,
+          "trap": false,
+          "dividend_paid_at_horizon": true,
+          "price_path_pct": [
+            -6.25,
+            -6.696428571428569,
+            -8.482142857142861,
+            -8.92857142857143,
+            -9.375,
+            -8.03571428571429,
+            -9.375,
+            -8.482142857142861,
+            -8.03571428571429,
+            -7.14285714285714,
+            -6.25,
+            -6.25,
+            -6.696428571428569,
+            -7.58928571428571,
+            -7.14285714285714,
+            -8.482142857142861,
+            -10.71428571428571,
+            -9.82142857142857,
+            -12.5,
+            -11.607142857142861,
+            -12.05357142857143
+          ],
+          "worst_price_move_pct": -12.5,
+          "early_censor_reason": null
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "file": "actions-ADRO.json",
+      "retrieved_at": "2026-10-06T01:53:43.329144+00:00",
+      "tool": "fetch-corporate-actions",
+      "sha256": "d729c02f19a0836e6c89b3335954e97500d4bbcd8ff2520ccf6964e6d86dddad"
+    },
+    {
+      "file": "actions-BBCA.json",
+      "retrieved_at": "2026-10-06T01:53:42.212308+00:00",
+      "tool": "fetch-corporate-actions",
+      "sha256": "af6a4b4c4be51c50d88540cfa06e17c60ea6d62e3a59d02bee378fb1bccc6173"
+    },
+    {
+      "file": "actions-BBNI.json",
+      "retrieved_at": "2026-10-06T01:53:42.795797+00:00",
+      "tool": "fetch-corporate-actions",
+      "sha256": "22abd0a431e6d1d3654ab49c228656de549362fe0cec2d029c0929426c8e7f11"
+    },
+    {
+      "file": "actions-BBRI.json",
+      "retrieved_at": "2026-10-06T01:53:42.319995+00:00",
+      "tool": "fetch-corporate-actions",
+      "sha256": "6ac631f7167e63e3adb8e19469fc50748808b9ce1290250321843aae9e1fec36"
+    },
+    {
+      "file": "actions-BMRI.json",
+      "retrieved_at": "2026-10-06T09:52:47.992165+08:00",
+      "tool": "fetch-corporate-actions",
+      "sha256": "55ecd2705b810aac8680b98f764d92fd7dbd4752e7813a0ba18b90a7330c401f"
+    },
+    {
+      "file": "actions-CFIN.json",
+      "retrieved_at": "2026-10-06T01:53:43.715661+00:00",
+      "tool": "fetch-corporate-actions",
+      "sha256": "6e17151c54678e528e8f32fd39c8003252c319d907bce757feeb6f0200be1e50"
+    },
+    {
+      "file": "actions-DMAS.json",
+      "retrieved_at": "2026-10-06T01:53:42.821610+00:00",
+      "tool": "fetch-corporate-actions",
+      "sha256": "7d2beacffcf123a528bc25f365e5950c158a317e32c8c29a6b5bb53d38352c72"
+    },
+    {
+      "file": "actions-LPPF.json",
+      "retrieved_at": "2026-10-06T01:53:43.232790+00:00",
+      "tool": "fetch-corporate-actions",
+      "sha256": "32dc97f51a402a82c05dfe4ac1c907007ae364b08fabef1f17e33788ab641daa"
+    },
+    {
+      "file": "actions-RALS.json",
+      "retrieved_at": "2026-10-06T01:53:43.835301+00:00",
+      "tool": "fetch-corporate-actions",
+      "sha256": "3a6b800f856249671090f324f2b2875373231faf052f7e0f183af55a0e65b515"
+    },
+    {
+      "file": "calendar-2022-01-01.json",
+      "retrieved_at": "2026-10-06T09:54:00.336449+08:00",
+      "tool": "Sectors REST calendar",
+      "sha256": "9f5f649d2c3b6f56f4d36a19f4757679a266b1f366f3e62215cd21368f94db96"
+    },
+    {
+      "file": "calendar-2022-04-01.json",
+      "retrieved_at": "2026-10-06T09:54:00.429372+08:00",
+      "tool": "Sectors REST calendar",
+      "sha256": "2b9b52385230a74666b471c5d468674ca5c9e7b0b8ddb551b547cb39d4398170"
+    },
+    {
+      "file": "calendar-2022-06-30.json",
+      "retrieved_at": "2026-10-06T09:54:00.517586+08:00",
+      "tool": "Sectors REST calendar",
+      "sha256": "6a8e522c9c75a12c9cdbb527a79c04bdb761a97e2a2e1ab84e1d79456d73ee1d"
+    },
+    {
+      "file": "calendar-2022-09-28.json",
+      "retrieved_at": "2026-10-06T09:54:00.586368+08:00",
+      "tool": "Sectors REST calendar",
+      "sha256": "1242a89f65dea9699c29ea0fe6783c06cac22798d813da9f75954b59b737ee5b"
+    },
+    {
+      "file": "calendar-2022-12-27.json",
+      "retrieved_at": "2026-10-06T09:54:00.673785+08:00",
+      "tool": "Sectors REST calendar",
+      "sha256": "f2a664610359c397a5e24230c39c772421d19613a64c1baa585a388fbd6bdff9"
+    },
+    {
+      "file": "calendar-2023-03-27.json",
+      "retrieved_at": "2026-10-06T09:54:00.748084+08:00",
+      "tool": "Sectors REST calendar",
+      "sha256": "0838e61a59f7983f80a2e3fde361096ef895467d5f0de216249c01d2fcbb140c"
+    },
+    {
+      "file": "calendar-2023-06-25.json",
+      "retrieved_at": "2026-10-06T09:54:00.831242+08:00",
+      "tool": "Sectors REST calendar",
+      "sha256": "3278c78ec0c1371195426d62953a78aae093dca2558843e19fae0a2c4e468946"
+    },
+    {
+      "file": "calendar-2023-09-23.json",
+      "retrieved_at": "2026-10-06T09:54:00.902059+08:00",
+      "tool": "Sectors REST calendar",
+      "sha256": "9762fd4aef7899135187a4255377e5ec49025a53152dbc3b772904f287099a4b"
+    },
+    {
+      "file": "calendar-2023-12-22.json",
+      "retrieved_at": "2026-10-06T09:54:00.990066+08:00",
+      "tool": "Sectors REST calendar",
+      "sha256": "c64ec9984e6b6f84973a5adf6f4be427d4e77216af270192896833931bfea619"
+    },
+    {
+      "file": "calendar-2024-03-21.json",
+      "retrieved_at": "2026-10-06T09:54:01.063465+08:00",
+      "tool": "Sectors REST calendar",
+      "sha256": "6e6a1ba3c7f8fa5b407e3385783fa35af640f37614db860f0890e151b476e7fd"
+    },
+    {
+      "file": "calendar-2024-06-19.json",
+      "retrieved_at": "2026-10-06T09:54:01.149353+08:00",
+      "tool": "Sectors REST calendar",
+      "sha256": "cf405b285ea3bfb20fb1f302906e5a00325192fe4f648400bc9b8c5407cd6615"
+    },
+    {
+      "file": "calendar-2024-09-17.json",
+      "retrieved_at": "2026-10-06T09:54:01.215679+08:00",
+      "tool": "Sectors REST calendar",
+      "sha256": "2776c9218d2daca1e596c82feb1e546abf3b3c05bf59576ee23b3c521f7f870e"
+    },
+    {
+      "file": "calendar-2024-12-16.json",
+      "retrieved_at": "2026-10-06T09:54:01.295774+08:00",
+      "tool": "Sectors REST calendar",
+      "sha256": "278dc5251a36458c6bcf2e0aaf5f73151cfa40d98a0fef9fd3304b446b96cdef"
+    },
+    {
+      "file": "calendar-2025-03-16.json",
+      "retrieved_at": "2026-10-06T09:54:01.377306+08:00",
+      "tool": "Sectors REST calendar",
+      "sha256": "534a932ad2bf72893507c272b4b32be7d6c09ec0ab554a136fc4f30399b0e4e8"
+    },
+    {
+      "file": "calendar-2025-06-14.json",
+      "retrieved_at": "2026-10-06T09:54:01.452447+08:00",
+      "tool": "Sectors REST calendar",
+      "sha256": "122b688fdd773a23032d956a694b7066d32b8e93b5cc23000efc1c47cda56ec4"
+    },
+    {
+      "file": "calendar-2025-09-12.json",
+      "retrieved_at": "2026-10-06T09:54:01.528198+08:00",
+      "tool": "Sectors REST calendar",
+      "sha256": "54ea0060756e6313480a5017ed4ce89569b3b70d676ff5faf3fdece718ce5675"
+    },
+    {
+      "file": "calendar-2025-12-11.json",
+      "retrieved_at": "2026-10-06T09:54:01.605432+08:00",
+      "tool": "Sectors REST calendar",
+      "sha256": "816614be2842d2a974439e9d7608569eca444ef113b37d558d10c7de212e4880"
+    },
+    {
+      "file": "prices-ADRO-2022-05-17.json",
+      "retrieved_at": "2026-10-06T01:57:11.586703+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "532a117d2a6aefdfc643150ea5429a0aae9ef2753c3cb6556cce17d9c11d6813"
+    },
+    {
+      "file": "prices-ADRO-2023-01-02.json",
+      "retrieved_at": "2026-10-06T01:57:11.461472+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "d46bd6113d604aa65d81dc89973c8d30d12023a5449b054e0a3126de821bb563"
+    },
+    {
+      "file": "prices-ADRO-2023-05-23.json",
+      "retrieved_at": "2026-10-06T01:57:08.635060+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "c3f7a74a1a456e46df7ccc28b5a177524d123a2374279428ae82f97cfb8d0183"
+    },
+    {
+      "file": "prices-ADRO-2023-12-29.json",
+      "retrieved_at": "2026-10-06T01:57:14.418470+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "0593e30b1b77997ed52e016a6a06fabb6b79165f99ee491706b98c741110d668"
+    },
+    {
+      "file": "prices-ADRO-2024-05-28.json",
+      "retrieved_at": "2026-10-06T01:57:08.484465+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "bf7455b9942c3f87ee59d9e325e6a8cdcaa6fde86c91bf8f9bd0fedd87ec1daa"
+    },
+    {
+      "file": "prices-ADRO-2024-11-28.json",
+      "retrieved_at": "2026-10-06T01:57:05.493638+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "998c5f95420d835c45385df35b18016f34ba20387df32c5cdee8a4a8c9f84375"
+    },
+    {
+      "file": "prices-ADRO-2024-12-30.json",
+      "retrieved_at": "2026-10-06T01:57:17.396713+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "3cb06eea50eb64c60acf22d25517b94e5d9935dcabe07b0e1b241e630cad58d5"
+    },
+    {
+      "file": "prices-ADRO-2025-06-13.json",
+      "retrieved_at": "2026-10-06T01:57:14.623969+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "54ae8be8cc1bec3aa4339bcc37efb2590a19c46aca7d6386e38c0aa10c623452"
+    },
+    {
+      "file": "prices-ADRO-2025-12-30.json",
+      "retrieved_at": "2026-10-06T01:57:05.582676+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "36347f3d1933ed66d8597dd2ffaa3acdd009c374003dacd938795f4e003e77c5"
+    },
+    {
+      "file": "prices-BBCA-2022-03-28.json",
+      "retrieved_at": "2026-10-06T01:54:10.416221+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "60ea08a1f2ed9273ad9230183b0c4f0bc8d666cc559d6836e3bca6debe3aa89d"
+    },
+    {
+      "file": "prices-BBCA-2022-12-02.json",
+      "retrieved_at": "2026-10-06T01:54:10.367223+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "582465716d5e002fadd92bef5a6dddf7c65016cada0d40f16da401fd27fc5b04"
+    },
+    {
+      "file": "prices-BBCA-2023-03-29.json",
+      "retrieved_at": "2026-10-06T01:54:09.842549+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "2ee51330879425a1996026f0eacba809ce6402ba6b5fbe3a24d807d40b02a032"
+    },
+    {
+      "file": "prices-BBCA-2023-12-04.json",
+      "retrieved_at": "2026-10-06T01:54:09.895778+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "f705e6ed697060530597809a330baf62703c2c8dc2f5d79cefcdba9ca722ddb2"
+    },
+    {
+      "file": "prices-BBCA-2024-03-25.json",
+      "retrieved_at": "2026-10-06T01:54:08.810960+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "d3052616e32ab39c107827b13eac17477d084bcc9b15b493b7f4fbb531891072"
+    },
+    {
+      "file": "prices-BBCA-2024-11-21.json",
+      "retrieved_at": "2026-10-06T01:54:08.876349+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "4d66adffc69a060aac46d68cccd38feaa64dba3d774e3889618478e1b5d72b24"
+    },
+    {
+      "file": "prices-BBCA-2025-03-21.json",
+      "retrieved_at": "2026-10-06T01:54:09.374658+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "9780bf10a578caf35a2d3180e8a1dff614636f5e6f8d661e84c67df382648881"
+    },
+    {
+      "file": "prices-BBCA-2025-12-03.json",
+      "retrieved_at": "2026-10-06T01:54:09.319752+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "1d02df2de5d945470b5d90f7aec944f5db138a2337296003c58e3f30d891afe5"
+    },
+    {
+      "file": "prices-BBNI-2022-03-24.json",
+      "retrieved_at": "2026-10-06T01:54:14.317409+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "c13273c89b9f5ff318bff92fe790ab27300335934bd55e78ee790a0d02c46cdf"
+    },
+    {
+      "file": "prices-BBNI-2023-03-28.json",
+      "retrieved_at": "2026-10-06T01:54:13.996430+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "1ffa58c6c0c2be65c67d087be7008076f415f99307a9d81b74b80651bb128d6c"
+    },
+    {
+      "file": "prices-BBNI-2024-03-15.json",
+      "retrieved_at": "2026-10-06T01:54:13.863000+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "ed53ae799c8effbb7770453036590b605f2de4a76792e7cc6396587e50746ac0"
+    },
+    {
+      "file": "prices-BBNI-2025-04-15.json",
+      "retrieved_at": "2026-10-06T01:54:14.468761+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "d99a910727b410705708b226168e68fe2e20e750bd9714d9cb0277554f1c9827"
+    },
+    {
+      "file": "prices-BBRI-2022-03-11.json",
+      "retrieved_at": "2026-10-06T01:54:12.099510+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "db5cefbac0f9b72500916b41b49f8ed93e3fc6670e86b7bc124e2b4733661658"
+    },
+    {
+      "file": "prices-BBRI-2023-01-10.json",
+      "retrieved_at": "2026-10-06T01:54:11.404907+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "dc1b647a65d5b0ed069cd0224f28176d47314c665200dede5388d10884d06afd"
+    },
+    {
+      "file": "prices-BBRI-2023-03-24.json",
+      "retrieved_at": "2026-10-06T01:54:11.444917+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "b46a723c242c0e81426b942ed96c94f36e3bb6f0ef9817e8ca7a55e8d98358c9"
+    },
+    {
+      "file": "prices-BBRI-2024-01-02.json",
+      "retrieved_at": "2026-10-06T01:54:10.882347+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "341b9f470acf0e137ecbb08d464856bc4f318708941d1a46f1de5973484e8eca"
+    },
+    {
+      "file": "prices-BBRI-2024-03-14.json",
+      "retrieved_at": "2026-10-06T01:54:10.924787+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "e6b3c529c0cc31c12b3c62e7a8f986f2b4b8695c63f8a786ccccba93415c8eab"
+    },
+    {
+      "file": "prices-BBRI-2024-12-27.json",
+      "retrieved_at": "2026-10-06T01:54:12.411063+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "1a36772fe8cb35aef9f9e8e5f79d5b5ffdb91f90d9a0a73019c79b20c0312d44"
+    },
+    {
+      "file": "prices-BBRI-2025-04-11.json",
+      "retrieved_at": "2026-10-06T01:54:11.922132+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "929500fcb5c25106bee23c623f66b4a3e5573b7526a23a5bbfe037e83d031544"
+    },
+    {
+      "file": "prices-BBRI-2025-12-30.json",
+      "retrieved_at": "2026-10-06T01:54:12.567282+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "823aece783476195123c4ce9b5d6f59b85d2e47f66bcff2d4f5d0832e2537d32"
+    },
+    {
+      "file": "prices-BMRI-2022-03-21.json",
+      "retrieved_at": "2026-10-06T01:54:13.480722+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "9ed28e87ffc28f17476a5f6915fa8d00af45f0db4330eec31671f0181b2ef203"
+    },
+    {
+      "file": "prices-BMRI-2023-03-27.json",
+      "retrieved_at": "2026-10-06T01:54:13.365928+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "c9adf654e7a6b363b88451ab4fec8e29eba01e91436457460800e5115a6988c0"
+    },
+    {
+      "file": "prices-BMRI-2024-03-20.json",
+      "retrieved_at": "2026-10-06T01:54:13.041695+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "c45a8cdc080f3f6c8cd69255568dfc47f6144bab4a3679b25419c241a994e7ab"
+    },
+    {
+      "file": "prices-BMRI-2025-04-14.json",
+      "retrieved_at": "2026-10-06T01:54:12.891359+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "6c7b7b58653288f97cae0ede428cbbf16ebcb075727e66b942ae4ac2d1470466"
+    },
+    {
+      "file": "prices-CFIN-2023-07-06.json",
+      "retrieved_at": "2026-10-06T01:57:20.426204+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "6304685e5d58140c699e23bfd476cae46166514b1aed7cfc31369862557c6edd"
+    },
+    {
+      "file": "prices-CFIN-2025-06-11.json",
+      "retrieved_at": "2026-10-06T01:57:17.630697+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "20b3ce79eed299ed7e4620c9edd07adbb7e9510c49fc426b909eb092e6c732c6"
+    },
+    {
+      "file": "prices-DMAS-2022-06-15.json",
+      "retrieved_at": "2026-10-06T01:56:56.418594+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "47e02a08a1c0ef5ac4f0f35a657e45fb2b5d953c501bb099ff76b5f7fcb437b4"
+    },
+    {
+      "file": "prices-DMAS-2022-11-08.json",
+      "retrieved_at": "2026-10-06T01:56:53.402609+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "fde593b887a11a63ce5becfe1feca4bdde10b8ef450f0acdb47428fb608bae6e"
+    },
+    {
+      "file": "prices-DMAS-2023-07-03.json",
+      "retrieved_at": "2026-10-06T01:56:56.404609+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "1122e10abab2852df964677cfac659842e28704b3dcec08c6debed166d2e1359"
+    },
+    {
+      "file": "prices-DMAS-2023-12-11.json",
+      "retrieved_at": "2026-10-06T01:56:53.408762+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "bfccc99a2c3e9fc5860eff577b3a0b3e7fe5a3f92e7a0d779b7348e6ee313f18"
+    },
+    {
+      "file": "prices-DMAS-2025-05-08.json",
+      "retrieved_at": "2026-10-06T01:54:14.841112+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "f8f1ee9d484972944db2035f969f337f2f65624e49f06c19fdaabf8b63e4e30d"
+    },
+    {
+      "file": "prices-LPPF-2022-04-14.json",
+      "retrieved_at": "2026-10-06T01:57:02.552124+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "137a8372f35d87c954d0cf51a8c75bead2acac3db48e49cd90c14b489e4b7731"
+    },
+    {
+      "file": "prices-LPPF-2023-04-10.json",
+      "retrieved_at": "2026-10-06T01:57:02.481227+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "ddcc50be165835a7ab9a9bc5b9b4fc0e9100651052db3b2d076673b0cd709b4e"
+    },
+    {
+      "file": "prices-LPPF-2024-04-22.json",
+      "retrieved_at": "2026-10-06T01:56:59.559357+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "da6b6a0c5dbf8532721fe29f44ba51b5b935cf294f1829d826778242666a21c8"
+    },
+    {
+      "file": "prices-LPPF-2025-04-22.json",
+      "retrieved_at": "2026-10-06T01:56:59.457294+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "1c208ee6981e302f2adae450687a4b4b38d62996f3f4af8c9230510e26e1d61d"
+    },
+    {
+      "file": "prices-RALS-2022-06-02.json",
+      "retrieved_at": "2026-10-06T01:57:23.476935+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "7cf4b0424650e761a16194259a197ba38a1d265df551da82ef609d878f6907f2"
+    },
+    {
+      "file": "prices-RALS-2023-06-06.json",
+      "retrieved_at": "2026-10-06T01:57:20.646253+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "d8d0aeacd5cf291d6e2f4f0a252681dbf47cbd3e4e661557d457f01af0ba40a1"
+    },
+    {
+      "file": "prices-RALS-2024-05-30.json",
+      "retrieved_at": "2026-10-06T01:57:26.576817+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "d49eb51c880493047bc5acb98d8ad8c527d40327fc2e2c041f07c59084fb4b97"
+    },
+    {
+      "file": "prices-RALS-2025-05-22.json",
+      "retrieved_at": "2026-10-06T01:57:23.753425+00:00",
+      "tool": "fetch-daily-price",
+      "sha256": "f309ae453400dc704acd7c68c5dc4e4fdebead1f92e4a49a40f549567c14cd52"
+    }
+  ],
+  "limitations": [
+    "Statistik sampel terpilih 2022–2025, bukan seluruh IDX atau probabilitas prediksi tervalidasi.",
+    "Wilson 95% memakai asumsi binomial independen; korelasi antar-event dan perubahan rezim belum dimodelkan.",
+    "Tanggal declaration dan vintage data tidak tersedia; kelayakan membeli sebelum pengumuman belum terbukti.",
+    "Sesi mengikuti harga teramati. Kalender resmi dan penjelasan suspensi belum tersedia.",
+    "Price BEP adalah sinyal close mencapai harga entry, bukan jaminan eksekusi atau waktu settlement.",
+    "DPS diperlakukan sebagai IDR sesuai data IDX Sectors; respons tidak membawa metadata mata uang per event.",
+    "Censoring akibat dividen berikutnya dapat informatif; kurva KM eksploratif tidak membuktikan peluang pemulihan masa depan.",
+    "Di luar biaya transaksi, pajak, dan slippage. Dividen dapat masih berupa piutang."
+  ],
+  "audit": {
+    "symbols": 9,
+    "events": 48,
+    "eligible": 44,
+    "complete": 43,
+    "excluded": 4
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "created_at": "2026-10-06T01:03:49.376323+08:00",
+  "selection": "All 8 BBCA cash dividend events present in the saved Sectors response for 2022–2025; chosen before fetching their new price windows. Excludes pre-2022 split-basis ambiguity. Two months of 2024 prices were already seen in an earlier audit, so this is not a blind preregistered experiment.",
+  "events": [
+    {
+      "ex_date": "2022-03-28",
+      "payment_date": "2022-04-19",
+      "dividend_yield": 0.0149941,
+      "dividend_amount": 120
+    },
+    {
+      "ex_date": "2022-12-02",
+      "payment_date": "2022-12-20",
+      "dividend_yield": 0.00437328,
+      "dividend_amount": 35
+    },
+    {
+      "ex_date": "2023-03-29",
+      "payment_date": "2023-04-14",
+      "dividend_yield": 0.0190691,
+      "dividend_amount": 170
+    },
+    {
+      "ex_date": "2023-12-04",
+      "payment_date": "2023-12-20",
+      "dividend_yield": 0.00476727,
+      "dividend_amount": 42.5
+    },
+    {
+      "ex_date": "2024-03-25",
+      "payment_date": "2024-04-04",
+      "dividend_yield": 0.0227933,
+      "dividend_amount": 227.5
+    },
+    {
+      "ex_date": "2024-11-21",
+      "payment_date": "2024-12-11",
+      "dividend_yield": 0.00500951,
+      "dividend_amount": 50
+    },
+    {
+      "ex_date": "2025-03-21",
+      "payment_date": "2025-04-11",
+      "dividend_yield": 0.0291689,
+      "dividend_amount": 250
+    },
+    {
+      "ex_date": "2025-12-03",
+      "payment_date": "2025-12-22",
+      "dividend_yield": 0.00641717,
+      "dividend_amount": 55
+    }
+  ],
+  "training_years": [
+    2022,
+    2023,
+    2024
+  ],
+  "holdout_year": 2025,
+  "reference_day": "last observed trading day strictly before ex-date",
+  "event_offsets": [
+    -10,
+    -5,
+    -1,
+    0,
+    1,
+    5,
+    10,
+    20
+  ],
+  "recovery_observation_days": 20,
+  "price_forecast": "At cum-day close, predict post-ex price using empirical median relative paths from six 2022–2024 events. Also compare constant-price and constant Pcum-DPS baselines. Empirical 10th–90th percentile spread is descriptive and uncalibrated.",
+  "benchmark": "IHSG price index; simple market-adjusted returns, beta implicitly 1; not causal dividend effect.",
+  "declaration_analysis": "Only use verified Sectors declaration timestamps; if absent, do not relabel ex-date/AGM/news timestamps as declaration.",
+  "costs": {
+    "broker_fees": 0,
+    "tax": 0,
+    "slippage": 0,
+    "label": "Gross; before transaction fees, taxes and slippage"
+  },
+  "minimum_data_policy": "No fill-forward for missing prices. Mark missing event stages and exclude incomplete offset calculations. Retain unrecovered cases as censored.",
+  "use": "Initial descriptive research and retrospective forecasting experiment; not validated production signals."
+}

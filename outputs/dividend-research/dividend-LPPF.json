@@ -1,0 +1,19 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "retrieved_at": "2026-10-06T01:04:46.067595+08:00",
+  "tool": "fetch-company-report",
+  "arguments": {
+    "symbol": "LPPF",
+    "sections": [
+      "dividend"
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"symbol\": \"LPPF.JK\",\n  \"company_name\": \"PT MDS Retailing Tbk\",\n  \"dividend\": {\n    \"historical_dividends\": {\n      \"2021\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2021-11-11\",\n            \"total\": 100,\n            \"yield\": 0.0436967015266418\n          }\n        ],\n        \"total_yield\": 0.0436967015266418,\n        \"total_dividend\": 100\n      },\n      \"2022\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2022-04-14\",\n            \"total\": 250,\n            \"yield\": 0.0529500991106033\n          }\n        ],\n        \"total_yield\": 0.0529500991106033,\n        \"total_dividend\": 250\n      },\n      \"2023\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2023-04-10\",\n            \"total\": 525,\n            \"yield\": 0.158095002174377\n          }\n        ],\n        \"total_yield\": 0.158095002174377,\n        \"total_dividend\": 525\n      },\n      \"2024\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2024-04-22\",\n            \"total\": 200,\n            \"yield\": 0.122767999768257\n          }\n        ],\n        \"total_yield\": 0.122767999768257,\n        \"total_dividend\": 200\n      },\n      \"2025\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2025-04-22\",\n            \"total\": 300,\n            \"yield\": 0.178184926509857\n          }\n        ],\n        \"total_yield\": 0.178184926509857,\n        \"total_dividend\": 300\n      },\n      \"2026\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2026-04-24\",\n            \"total\": 250,\n            \"yield\": 0.157728706624606\n          }\n        ],\n        \"total_yield\": 0.157728706624606,\n        \"total_dividend\": 250\n      }\n    },\n    \"upcoming_dividends\": null,\n    \"yield_ttm\": 0.157728706624606,\n    \"dividend_yield_avg\": {\n      \"period\": 5,\n      \"avg_yield\": 0.111138945817947\n    },\n    \"dividend_ttm\": 250,\n    \"payout_ratio\": 0.722080041348531,\n    \"cash_payout_ratio\": 0.369945370316607,\n    \"last_ex_dividend_date\": \"2026-04-24\"\n  }\n}"
+      }
+    ]
+  }
+}

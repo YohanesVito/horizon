@@ -1,0 +1,19 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "retrieved_at": "2026-10-05T18:34:49.049662+00:00",
+  "tool": "fetch-company-report",
+  "arguments": {
+    "symbol": "BBRI",
+    "sections": [
+      "dividend"
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"symbol\": \"BBRI.JK\",\n  \"company_name\": \"PT Bank Rakyat Indonesia (Persero) Tbk\",\n  \"dividend\": {\n    \"historical_dividends\": {\n      \"2020\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2020-02-27\",\n            \"total\": 168.202,\n            \"yield\": 0.0434216000139713\n          }\n        ],\n        \"total_yield\": 0.0434216000139713,\n        \"total_dividend\": 168.202\n      },\n      \"2021\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2021-04-06\",\n            \"total\": 98.9057,\n            \"yield\": 0.0215505007654428\n          }\n        ],\n        \"total_yield\": 0.0215505007654428,\n        \"total_dividend\": 98.9057\n      },\n      \"2022\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2022-03-11\",\n            \"total\": 174.251,\n            \"yield\": 0.0388936996459961\n          }\n        ],\n        \"total_yield\": 0.0388936996459961,\n        \"total_dividend\": 174.251\n      },\n      \"2023\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2023-03-24\",\n            \"total\": 231.221,\n            \"yield\": 0.0445297993719578\n          },\n          {\n            \"date\": \"2023-01-10\",\n            \"total\": 57,\n            \"yield\": 0.0109772998839617\n          }\n        ],\n        \"total_yield\": 0.0555070992559195,\n        \"total_dividend\": 288.221\n      },\n      \"2024\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2024-12-27\",\n            \"total\": 135,\n            \"yield\": 0.0267197005450726\n          },\n          {\n            \"date\": \"2024-03-14\",\n            \"total\": 235,\n            \"yield\": 0.0465121008455753\n          },\n          {\n            \"date\": \"2024-01-02\",\n            \"total\": 84,\n            \"yield\": 0.0166255999356508\n          }\n        ],\n        \"total_yield\": 0.0898574013262987,\n        \"total_dividend\": 454\n      },\n      \"2025\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2025-12-30\",\n            \"total\": 137,\n            \"yield\": 0.0351148508489132\n          },\n          {\n            \"date\": \"2025-04-11\",\n            \"total\": 208.4,\n            \"yield\": 0.053415585309267\n          }\n        ],\n        \"total_yield\": 0.0885304361581802,\n        \"total_dividend\": 345.4\n      },\n      \"2026\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2026-04-21\",\n            \"total\": 209,\n            \"yield\": 0.0678571428571429\n          }\n        ],\n        \"total_yield\": 0.0678571428571429,\n        \"total_dividend\": 209\n      }\n    },\n    \"upcoming_dividends\": null,\n    \"yield_ttm\": 0.112337662337662,\n    \"dividend_yield_avg\": {\n      \"period\": 5,\n      \"avg_yield\": 0.0675521474331617\n    },\n    \"dividend_ttm\": 346,\n    \"payout_ratio\": 0.832220112593675,\n    \"cash_payout_ratio\": -3.97467928516739,\n    \"last_ex_dividend_date\": \"2026-04-21\"\n  }\n}"
+      }
+    ]
+  }
+}

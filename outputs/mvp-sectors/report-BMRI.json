@@ -1,0 +1,19 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "retrieved_at": "2026-10-05T18:34:48.907996+00:00",
+  "tool": "fetch-company-report",
+  "arguments": {
+    "symbol": "BMRI",
+    "sections": [
+      "dividend"
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"symbol\": \"BMRI.JK\",\n  \"company_name\": \"PT Bank Mandiri (Persero) Tbk\",\n  \"dividend\": {\n    \"historical_dividends\": {\n      \"2020\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2020-02-28\",\n            \"total\": 353.342,\n            \"yield\": 0.0602167993783951\n          }\n        ],\n        \"total_yield\": 0.0602167993783951,\n        \"total_dividend\": 353.342\n      },\n      \"2021\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2021-03-24\",\n            \"total\": 220.272,\n            \"yield\": 0.0341979004442692\n          }\n        ],\n        \"total_yield\": 0.0341979004442692,\n        \"total_dividend\": 220.272\n      },\n      \"2022\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2022-03-21\",\n            \"total\": 360.636,\n            \"yield\": 0.0421836003661156\n          }\n        ],\n        \"total_yield\": 0.0421836003661156,\n        \"total_dividend\": 360.636\n      },\n      \"2023\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2023-03-27\",\n            \"total\": 529.337,\n            \"yield\": 0.0482899993658066\n          }\n        ],\n        \"total_yield\": 0.0482899993658066,\n        \"total_dividend\": 529.337\n      },\n      \"2024\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2024-03-20\",\n            \"total\": 353.958,\n            \"yield\": 0.0532724000513554\n          }\n        ],\n        \"total_yield\": 0.0532724000513554,\n        \"total_dividend\": 353.958\n      },\n      \"2025\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2025-04-14\",\n            \"total\": 466.184,\n            \"yield\": 0.0952206999063492\n          }\n        ],\n        \"total_yield\": 0.0952206999063492,\n        \"total_dividend\": 466.184\n      },\n      \"2026\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2026-09-16\",\n            \"total\": 66,\n            \"yield\": 0.0163771712158809\n          },\n          {\n            \"date\": \"2026-05-11\",\n            \"total\": 376.957,\n            \"yield\": 0.0935377021581304\n          },\n          {\n            \"date\": \"2026-01-06\",\n            \"total\": 100,\n            \"yield\": 0.0248138957816377\n          }\n        ],\n        \"total_yield\": 0.134728769155649,\n        \"total_dividend\": 542.957\n      }\n    },\n    \"upcoming_dividends\": null,\n    \"yield_ttm\": 0.134728761583049,\n    \"dividend_yield_avg\": {\n      \"period\": 5,\n      \"avg_yield\": 0.0666762799024582\n    },\n    \"dividend_ttm\": 542.957,\n    \"payout_ratio\": 0.718339126185197,\n    \"cash_payout_ratio\": -4.41716516645713,\n    \"last_ex_dividend_date\": \"2026-09-16\"\n  }\n}"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1002 @@
+{
+  "transport": "Sectors REST GET; endpoint absent from inspected MCP registry",
+  "url": "https://api.sectors.app/v2/corporate-actions/?start=2022-06-30&end=2022-09-27&type=dividend",
+  "retrieved_at": "2026-10-06T09:54:00.517586+08:00",
+  "http_status": 200,
+  "result": {
+    "start": "2022-06-30",
+    "end": "2022-09-27",
+    "dividend": [
+      {
+        "symbol": "SGER.JK",
+        "ex_date": "2022-06-30",
+        "cum_date": "2022-06-29",
+        "recording_date": "2022-07-01",
+        "payment_date": "2022-07-20",
+        "dividend_amount": 17.0,
+        "dividend_yield": 0.0174374
+      },
+      {
+        "symbol": "CSAP.JK",
+        "ex_date": "2022-07-01",
+        "cum_date": "2022-06-30",
+        "recording_date": "2022-07-04",
+        "payment_date": "2022-07-22",
+        "dividend_amount": 9.0,
+        "dividend_yield": 0.0134003
+      },
+      {
+        "symbol": "HRTA.JK",
+        "ex_date": "2022-07-01",
+        "cum_date": "2022-06-30",
+        "recording_date": "2022-07-04",
+        "payment_date": "2022-07-22",
+        "dividend_amount": 10.0,
+        "dividend_yield": 0.048156
+      },
+      {
+        "symbol": "LIFE.JK",
+        "ex_date": "2022-07-01",
+        "cum_date": "2022-06-30",
+        "recording_date": "2022-07-04",
+        "payment_date": "2022-07-22",
+        "dividend_amount": 34.0,
+        "dividend_yield": 0.00575676
+      },
+      {
+        "symbol": "MFMI.JK",
+        "ex_date": "2022-07-01",
+        "cum_date": "2022-06-30",
+        "recording_date": "2022-07-04",
+        "payment_date": "2022-07-22",
+        "dividend_amount": 5.0,
+        "dividend_yield": 0.00625524
+      },
+      {
+        "symbol": "PNBN.JK",
+        "ex_date": "2022-07-01",
+        "cum_date": "2022-06-30",
+        "recording_date": "2022-07-04",
+        "payment_date": "2022-07-22",
+        "dividend_amount": 20.0,
+        "dividend_yield": 0.0131905
+      },
+      {
+        "symbol": "RAJA.JK",
+        "ex_date": "2022-07-01",
+        "cum_date": "2022-06-30",
+        "recording_date": "2022-07-04",
+        "payment_date": "2022-07-22",
+        "dividend_amount": 1.396,
+        "dividend_yield": 0.0112282
+      },
+      {
+        "symbol": "AKPI.JK",
+        "ex_date": "2022-07-04",
+        "cum_date": "2022-07-01",
+        "recording_date": "2022-07-05",
+        "payment_date": "2022-07-27",
+        "dividend_amount": 49.0,
+        "dividend_yield": 0.0374011
+      },
+      {
+        "symbol": "ASRM.JK",
+        "ex_date": "2022-07-04",
+        "cum_date": "2022-07-01",
+        "recording_date": "2022-07-05",
+        "payment_date": "2022-07-27",
+        "dividend_amount": 13.75,
+        "dividend_yield": 0.0343253
+      },
+      {
+        "symbol": "BIRD.JK",
+        "ex_date": "2022-07-04",
+        "cum_date": "2022-07-01",
+        "recording_date": "2022-07-05",
+        "payment_date": "2022-07-22",
+        "dividend_amount": 60.0,
+        "dividend_yield": 0.041285
+      },
+      {
+        "symbol": "ERAA.JK",
+        "ex_date": "2022-07-04",
+        "cum_date": "2022-07-01",
+        "recording_date": "2022-07-05",
+        "payment_date": "2022-07-27",
+        "dividend_amount": 22.8,
+        "dividend_yield": 0.0464824
+      },
+      {
+        "symbol": "ESTI.JK",
+        "ex_date": "2022-07-04",
+        "cum_date": "2022-07-01",
+        "recording_date": "2022-07-05",
+        "payment_date": "2022-07-22",
+        "dividend_amount": 1.0,
+        "dividend_yield": 0.0111575
+      },
+      {
+        "symbol": "IPCM.JK",
+        "ex_date": "2022-07-04",
+        "cum_date": "2022-07-01",
+        "recording_date": "2022-07-05",
+        "payment_date": "2022-07-27",
+        "dividend_amount": 17.27,
+        "dividend_yield": 0.060388
+      },
+      {
+        "symbol": "JRPT.JK",
+        "ex_date": "2022-07-04",
+        "cum_date": "2022-07-01",
+        "recording_date": "2022-07-05",
+        "payment_date": "2022-07-27",
+        "dividend_amount": 19.5,
+        "dividend_yield": 0.0405676
+      },
+      {
+        "symbol": "KBLI.JK",
+        "ex_date": "2022-07-04",
+        "cum_date": "2022-07-01",
+        "recording_date": "2022-07-05",
+        "payment_date": "2022-07-27",
+        "dividend_amount": 4.0,
+        "dividend_yield": 0.013249
+      },
+      {
+        "symbol": "MKPI.JK",
+        "ex_date": "2022-07-04",
+        "cum_date": "2022-07-01",
+        "recording_date": "2022-07-05",
+        "payment_date": "2022-07-25",
+        "dividend_amount": 117.0,
+        "dividend_yield": 0.00501359
+      },
+      {
+        "symbol": "BAYU.JK",
+        "ex_date": "2022-07-05",
+        "cum_date": "2022-07-04",
+        "recording_date": "2022-07-06",
+        "payment_date": "2022-07-28",
+        "dividend_amount": 25.0,
+        "dividend_yield": 0.022592
+      },
+      {
+        "symbol": "IDPR.JK",
+        "ex_date": "2022-07-05",
+        "cum_date": "2022-07-04",
+        "recording_date": "2022-07-06",
+        "payment_date": "2022-07-21",
+        "dividend_amount": 1.0,
+        "dividend_yield": 0.00573547
+      },
+      {
+        "symbol": "INDR.JK",
+        "ex_date": "2022-07-05",
+        "cum_date": "2022-07-04",
+        "recording_date": "2022-07-06",
+        "payment_date": "2022-07-19",
+        "dividend_amount": 940.0,
+        "dividend_yield": 0.137489
+      },
+      {
+        "symbol": "KMTR.JK",
+        "ex_date": "2022-07-05",
+        "cum_date": "2022-07-04",
+        "recording_date": "2022-07-06",
+        "payment_date": "2022-07-28",
+        "dividend_amount": 4.96,
+        "dividend_yield": 0.0172393
+      },
+      {
+        "symbol": "WIIM.JK",
+        "ex_date": "2022-07-06",
+        "cum_date": "2022-07-05",
+        "recording_date": "2022-07-07",
+        "payment_date": "2022-07-27",
+        "dividend_amount": 21.6,
+        "dividend_yield": 0.0379746
+      },
+      {
+        "symbol": "ADCP.JK",
+        "ex_date": "2022-07-07",
+        "cum_date": "2022-07-06",
+        "recording_date": "2022-07-08",
+        "payment_date": "2022-07-29",
+        "dividend_amount": 1.17,
+        "dividend_yield": 0.0149135
+      },
+      {
+        "symbol": "DVLA.JK",
+        "ex_date": "2022-07-07",
+        "cum_date": "2022-07-06",
+        "recording_date": "2022-07-08",
+        "payment_date": "2022-07-27",
+        "dividend_amount": 75.0,
+        "dividend_yield": 0.0287634
+      },
+      {
+        "symbol": "MYOR.JK",
+        "ex_date": "2022-07-07",
+        "cum_date": "2022-07-06",
+        "recording_date": "2022-07-08",
+        "payment_date": "2022-07-27",
+        "dividend_amount": 21.0,
+        "dividend_yield": 0.00795626
+      },
+      {
+        "symbol": "SKBM.JK",
+        "ex_date": "2022-07-07",
+        "cum_date": "2022-07-06",
+        "recording_date": "2022-07-08",
+        "payment_date": "2022-07-27",
+        "dividend_amount": 3.5,
+        "dividend_yield": 0.00918537
+      },
+      {
+        "symbol": "SKRN.JK",
+        "ex_date": "2022-07-07",
+        "cum_date": "2022-07-06",
+        "recording_date": "2022-07-08",
+        "payment_date": "2022-07-19",
+        "dividend_amount": 2.0,
+        "dividend_yield": 0.0075913
+      },
+      {
+        "symbol": "UNIC.JK",
+        "ex_date": "2022-07-07",
+        "cum_date": "2022-07-06",
+        "recording_date": "2022-07-08",
+        "payment_date": "2022-07-18",
+        "dividend_amount": 100.0,
+        "dividend_yield": 0.00836336
+      },
+      {
+        "symbol": "AMAG.JK",
+        "ex_date": "2022-07-08",
+        "cum_date": "2022-07-07",
+        "recording_date": "2022-07-11",
+        "payment_date": "2022-07-29",
+        "dividend_amount": 50.0,
+        "dividend_yield": 0.134321
+      },
+      {
+        "symbol": "BFIN.JK",
+        "ex_date": "2022-07-08",
+        "cum_date": "2022-07-07",
+        "recording_date": "2022-07-11",
+        "payment_date": "2022-07-28",
+        "dividend_amount": 10.0,
+        "dividend_yield": 0.00853663
+      },
+      {
+        "symbol": "INDS.JK",
+        "ex_date": "2022-07-08",
+        "cum_date": "2022-07-07",
+        "recording_date": "2022-07-11",
+        "payment_date": "2022-07-29",
+        "dividend_amount": 7.5,
+        "dividend_yield": 0.035377
+      },
+      {
+        "symbol": "JTPE.JK",
+        "ex_date": "2022-07-08",
+        "cum_date": "2022-07-07",
+        "recording_date": "2022-07-11",
+        "payment_date": "2022-07-20",
+        "dividend_amount": 5.5,
+        "dividend_yield": 0.0212963
+      },
+      {
+        "symbol": "KEEN.JK",
+        "ex_date": "2022-07-08",
+        "cum_date": "2022-07-07",
+        "recording_date": "2022-07-11",
+        "payment_date": "2022-07-29",
+        "dividend_amount": 5.46,
+        "dividend_yield": 0.00972431
+      },
+      {
+        "symbol": "PURI.JK",
+        "ex_date": "2022-07-08",
+        "cum_date": "2022-07-07",
+        "recording_date": "2022-07-11",
+        "payment_date": "2022-07-29",
+        "dividend_amount": 1.8,
+        "dividend_yield": 0.0046258
+      },
+      {
+        "symbol": "SCMA.JK",
+        "ex_date": "2022-07-08",
+        "cum_date": "2022-07-07",
+        "recording_date": "2022-07-11",
+        "payment_date": "2022-07-29",
+        "dividend_amount": 2.5,
+        "dividend_yield": 0.0103219
+      },
+      {
+        "symbol": "SEMA.JK",
+        "ex_date": "2022-07-08",
+        "cum_date": "2022-07-07",
+        "recording_date": "2022-07-11",
+        "payment_date": "2022-07-29",
+        "dividend_amount": 1.95,
+        "dividend_yield": 0.00943031
+      },
+      {
+        "symbol": "SMDR.JK",
+        "ex_date": "2022-07-08",
+        "cum_date": "2022-07-07",
+        "recording_date": "2022-07-11",
+        "payment_date": "2022-07-29",
+        "dividend_amount": 10.0,
+        "dividend_yield": 0.0230769
+      },
+      {
+        "symbol": "BINO.JK",
+        "ex_date": "2022-07-11",
+        "cum_date": "2022-07-08",
+        "recording_date": "2022-07-12",
+        "payment_date": "2022-08-03",
+        "dividend_amount": 0.999999,
+        "dividend_yield": 0.00732099
+      },
+      {
+        "symbol": "BUDI.JK",
+        "ex_date": "2022-07-11",
+        "cum_date": "2022-07-08",
+        "recording_date": "2022-07-12",
+        "payment_date": "2022-08-02",
+        "dividend_amount": 8.0,
+        "dividend_yield": 0.0381085
+      },
+      {
+        "symbol": "CITA.JK",
+        "ex_date": "2022-07-11",
+        "cum_date": "2022-07-08",
+        "recording_date": "2022-07-12",
+        "payment_date": "2022-08-03",
+        "dividend_amount": 55.0,
+        "dividend_yield": 0.0183013
+      },
+      {
+        "symbol": "GGRM.JK",
+        "ex_date": "2022-07-11",
+        "cum_date": "2022-07-08",
+        "recording_date": "2022-07-12",
+        "payment_date": "2022-07-28",
+        "dividend_amount": 2250.0,
+        "dividend_yield": 8.28801e-05
+      },
+      {
+        "symbol": "IPCC.JK",
+        "ex_date": "2022-07-11",
+        "cum_date": "2022-07-08",
+        "recording_date": "2022-07-12",
+        "payment_date": "2022-08-03",
+        "dividend_amount": 23.12,
+        "dividend_yield": 0.0420507
+      },
+      {
+        "symbol": "ISSP.JK",
+        "ex_date": "2022-07-11",
+        "cum_date": "2022-07-08",
+        "recording_date": "2022-07-12",
+        "payment_date": "2022-08-03",
+        "dividend_amount": 9.0,
+        "dividend_yield": 0.0284561
+      },
+      {
+        "symbol": "KKGI.JK",
+        "ex_date": "2022-07-11",
+        "cum_date": "2022-07-08",
+        "recording_date": "2022-07-12",
+        "payment_date": "2022-07-20",
+        "dividend_amount": 20.0,
+        "dividend_yield": 0.0406051
+      },
+      {
+        "symbol": "LPGI.JK",
+        "ex_date": "2022-07-11",
+        "cum_date": "2022-07-08",
+        "recording_date": "2022-07-12",
+        "payment_date": "2022-08-03",
+        "dividend_amount": 66.667,
+        "dividend_yield": 0.138764
+      },
+      {
+        "symbol": "PMJS.JK",
+        "ex_date": "2022-07-11",
+        "cum_date": "2022-07-08",
+        "recording_date": "2022-07-12",
+        "payment_date": "2022-08-03",
+        "dividend_amount": 4.8,
+        "dividend_yield": 0.0300175
+      },
+      {
+        "symbol": "PNLF.JK",
+        "ex_date": "2022-07-11",
+        "cum_date": "2022-07-08",
+        "recording_date": "2022-07-12",
+        "payment_date": "2022-08-03",
+        "dividend_amount": 10.0,
+        "dividend_yield": 0.0285648
+      },
+      {
+        "symbol": "SICO.JK",
+        "ex_date": "2022-07-11",
+        "cum_date": "2022-07-08",
+        "recording_date": "2022-07-12",
+        "payment_date": "2022-07-29",
+        "dividend_amount": 1.0011,
+        "dividend_yield": 0.00587385
+      },
+      {
+        "symbol": "TBLA.JK",
+        "ex_date": "2022-07-11",
+        "cum_date": "2022-07-08",
+        "recording_date": "2022-07-12",
+        "payment_date": "2022-08-02",
+        "dividend_amount": 50.0,
+        "dividend_yield": 0.0643486
+      },
+      {
+        "symbol": "TRJA.JK",
+        "ex_date": "2022-07-11",
+        "cum_date": "2022-07-08",
+        "recording_date": "2022-07-12",
+        "payment_date": "2022-08-03",
+        "dividend_amount": 4.0,
+        "dividend_yield": 0.0134608
+      },
+      {
+        "symbol": "BALI.JK",
+        "ex_date": "2022-07-12",
+        "cum_date": "2022-07-11",
+        "recording_date": "2022-07-13",
+        "payment_date": "2022-07-27",
+        "dividend_amount": 31.15,
+        "dividend_yield": 0.0370636
+      },
+      {
+        "symbol": "MTLA.JK",
+        "ex_date": "2022-07-12",
+        "cum_date": "2022-07-11",
+        "recording_date": "2022-07-13",
+        "payment_date": "2022-08-04",
+        "dividend_amount": 8.5,
+        "dividend_yield": 0.0239568
+      },
+      {
+        "symbol": "PWON.JK",
+        "ex_date": "2022-07-14",
+        "cum_date": "2022-07-13",
+        "recording_date": "2022-07-15",
+        "payment_date": "2022-08-05",
+        "dividend_amount": 4.0,
+        "dividend_yield": 0.00844012
+      },
+      {
+        "symbol": "KBAG.JK",
+        "ex_date": "2022-07-18",
+        "cum_date": "2022-07-15",
+        "recording_date": "2022-07-19",
+        "payment_date": "2022-08-05",
+        "dividend_amount": 0.11,
+        "dividend_yield": 0.00219589
+      },
+      {
+        "symbol": "MICE.JK",
+        "ex_date": "2022-07-18",
+        "cum_date": "2022-07-15",
+        "recording_date": "2022-07-19",
+        "payment_date": "2022-08-10",
+        "dividend_amount": 15.0,
+        "dividend_yield": 0.0346668
+      },
+      {
+        "symbol": "SMRA.JK",
+        "ex_date": "2022-07-18",
+        "cum_date": "2022-07-15",
+        "recording_date": "2022-07-19",
+        "payment_date": "2022-08-05",
+        "dividend_amount": 6.0,
+        "dividend_yield": 0.00919769
+      },
+      {
+        "symbol": "ASBI.JK",
+        "ex_date": "2022-07-19",
+        "cum_date": "2022-07-18",
+        "recording_date": "2022-07-20",
+        "payment_date": "2022-08-10",
+        "dividend_amount": 5.7,
+        "dividend_yield": 0.0151394
+      },
+      {
+        "symbol": "PANS.JK",
+        "ex_date": "2022-07-22",
+        "cum_date": "2022-07-21",
+        "recording_date": "2022-07-25",
+        "payment_date": "2022-08-03",
+        "dividend_amount": 150.0,
+        "dividend_yield": 0.0952098
+      },
+      {
+        "symbol": "BSML.JK",
+        "ex_date": "2022-07-25",
+        "cum_date": "2022-07-22",
+        "recording_date": "2022-07-26",
+        "payment_date": "2022-08-12",
+        "dividend_amount": 1.08,
+        "dividend_yield": 0.00134333
+      },
+      {
+        "symbol": "STAA.JK",
+        "ex_date": "2022-07-26",
+        "cum_date": "2022-07-25",
+        "recording_date": "2022-07-27",
+        "payment_date": "2022-08-12",
+        "dividend_amount": 10.0,
+        "dividend_yield": 0.0090459
+      },
+      {
+        "symbol": "UVCR.JK",
+        "ex_date": "2022-07-26",
+        "cum_date": "2022-07-25",
+        "recording_date": "2022-07-27",
+        "payment_date": "2022-08-18",
+        "dividend_amount": 0.249,
+        "dividend_yield": 0.00134512
+      },
+      {
+        "symbol": "WOOD.JK",
+        "ex_date": "2022-07-26",
+        "cum_date": "2022-07-25",
+        "recording_date": "2022-07-27",
+        "payment_date": "2022-08-12",
+        "dividend_amount": 6.5,
+        "dividend_yield": 0.0110517
+      },
+      {
+        "symbol": "CLPI.JK",
+        "ex_date": "2022-07-28",
+        "cum_date": "2022-07-27",
+        "recording_date": "2022-07-29",
+        "payment_date": "2022-08-19",
+        "dividend_amount": 71.21,
+        "dividend_yield": 0.0705021
+      },
+      {
+        "symbol": "INOV.JK",
+        "ex_date": "2022-07-28",
+        "cum_date": "2022-07-27",
+        "recording_date": "2022-07-29",
+        "payment_date": "2022-08-19",
+        "dividend_amount": 3.0,
+        "dividend_yield": 0.0154944
+      },
+      {
+        "symbol": "BIKE.JK",
+        "ex_date": "2022-07-29",
+        "cum_date": "2022-07-28",
+        "recording_date": "2022-08-01",
+        "payment_date": "2022-08-19",
+        "dividend_amount": 3.8,
+        "dividend_yield": 0.0171076
+      },
+      {
+        "symbol": "ELSA.JK",
+        "ex_date": "2022-07-29",
+        "cum_date": "2022-07-28",
+        "recording_date": "2022-08-01",
+        "payment_date": "2022-08-19",
+        "dividend_amount": 7.45,
+        "dividend_yield": 0.0241813
+      },
+      {
+        "symbol": "SHIP.JK",
+        "ex_date": "2022-07-29",
+        "cum_date": "2022-07-28",
+        "recording_date": "2022-08-01",
+        "payment_date": "2022-08-19",
+        "dividend_amount": 17.0,
+        "dividend_yield": 0.0163031
+      },
+      {
+        "symbol": "BMHS.JK",
+        "ex_date": "2022-08-01",
+        "cum_date": "2022-07-29",
+        "recording_date": "2022-08-02",
+        "payment_date": "2022-08-24",
+        "dividend_amount": 2.55712,
+        "dividend_yield": 0.00419855
+      },
+      {
+        "symbol": "LSIP.JK",
+        "ex_date": "2022-08-01",
+        "cum_date": "2022-07-29",
+        "recording_date": "2022-08-02",
+        "payment_date": "2022-08-19",
+        "dividend_amount": 51.0,
+        "dividend_yield": 0.0415988
+      },
+      {
+        "symbol": "PLIN.JK",
+        "ex_date": "2022-08-01",
+        "cum_date": "2022-07-29",
+        "recording_date": "2022-08-02",
+        "payment_date": "2022-08-10",
+        "dividend_amount": 88.0,
+        "dividend_yield": 0.0412465
+      },
+      {
+        "symbol": "SIMP.JK",
+        "ex_date": "2022-08-01",
+        "cum_date": "2022-07-29",
+        "recording_date": "2022-08-02",
+        "payment_date": "2022-08-23",
+        "dividend_amount": 13.0,
+        "dividend_yield": 0.0281864
+      },
+      {
+        "symbol": "SMKL.JK",
+        "ex_date": "2022-08-01",
+        "cum_date": "2022-07-29",
+        "recording_date": "2022-08-02",
+        "payment_date": "2022-08-19",
+        "dividend_amount": 12.0,
+        "dividend_yield": 0.0326019
+      },
+      {
+        "symbol": "BOLA.JK",
+        "ex_date": "2022-08-02",
+        "cum_date": "2022-08-01",
+        "recording_date": "2022-08-03",
+        "payment_date": "2022-08-25",
+        "dividend_amount": 1.0,
+        "dividend_yield": 0.00275859
+      },
+      {
+        "symbol": "CAMP.JK",
+        "ex_date": "2022-08-02",
+        "cum_date": "2022-08-01",
+        "recording_date": "2022-08-03",
+        "payment_date": "2022-08-25",
+        "dividend_amount": 35.0,
+        "dividend_yield": 0.123853
+      },
+      {
+        "symbol": "EKAD.JK",
+        "ex_date": "2022-08-02",
+        "cum_date": "2022-08-01",
+        "recording_date": "2022-08-03",
+        "payment_date": "2022-08-25",
+        "dividend_amount": 10.0,
+        "dividend_yield": 0.0353453
+      },
+      {
+        "symbol": "ICBP.JK",
+        "ex_date": "2022-08-02",
+        "cum_date": "2022-08-01",
+        "recording_date": "2022-08-03",
+        "payment_date": "2022-08-23",
+        "dividend_amount": 215.0,
+        "dividend_yield": 0.0244124
+      },
+      {
+        "symbol": "INDF.JK",
+        "ex_date": "2022-08-02",
+        "cum_date": "2022-08-01",
+        "recording_date": "2022-08-03",
+        "payment_date": "2022-08-24",
+        "dividend_amount": 278.0,
+        "dividend_yield": 0.0429701
+      },
+      {
+        "symbol": "AMAN.JK",
+        "ex_date": "2022-08-03",
+        "cum_date": "2022-08-02",
+        "recording_date": "2022-08-04",
+        "payment_date": "2022-08-26",
+        "dividend_amount": 0.5,
+        "dividend_yield": 0.000857023
+      },
+      {
+        "symbol": "PGLI.JK",
+        "ex_date": "2022-08-03",
+        "cum_date": "2022-08-02",
+        "recording_date": "2022-08-04",
+        "payment_date": "2022-08-26",
+        "dividend_amount": 1.0,
+        "dividend_yield": 0.00341733
+      },
+      {
+        "symbol": "AKRA.JK",
+        "ex_date": "2022-08-04",
+        "cum_date": "2022-08-03",
+        "recording_date": "2022-08-05",
+        "payment_date": "2022-08-16",
+        "dividend_amount": 25.0,
+        "dividend_yield": 0.0224182
+      },
+      {
+        "symbol": "ATAP.JK",
+        "ex_date": "2022-08-04",
+        "cum_date": "2022-08-03",
+        "recording_date": "2022-08-05",
+        "payment_date": "2022-08-26",
+        "dividend_amount": 0.65,
+        "dividend_yield": 0.00555923
+      },
+      {
+        "symbol": "EAST.JK",
+        "ex_date": "2022-08-04",
+        "cum_date": "2022-08-03",
+        "recording_date": "2022-08-05",
+        "payment_date": "2022-08-15",
+        "dividend_amount": 1.7,
+        "dividend_yield": 0.0180898
+      },
+      {
+        "symbol": "ULTJ.JK",
+        "ex_date": "2022-08-04",
+        "cum_date": "2022-08-03",
+        "recording_date": "2022-08-05",
+        "payment_date": "2022-08-26",
+        "dividend_amount": 25.0,
+        "dividend_yield": 0.0169821
+      },
+      {
+        "symbol": "AGII.JK",
+        "ex_date": "2022-08-05",
+        "cum_date": "2022-08-04",
+        "recording_date": "2022-08-08",
+        "payment_date": "2022-08-26",
+        "dividend_amount": 10.063,
+        "dividend_yield": 0.00508431
+      },
+      {
+        "symbol": "CTRA.JK",
+        "ex_date": "2022-08-05",
+        "cum_date": "2022-08-04",
+        "recording_date": "2022-08-08",
+        "payment_date": "2022-08-26",
+        "dividend_amount": 14.0,
+        "dividend_yield": 0.0145883
+      },
+      {
+        "symbol": "HOKI.JK",
+        "ex_date": "2022-08-05",
+        "cum_date": "2022-08-04",
+        "recording_date": "2022-08-08",
+        "payment_date": "2022-08-26",
+        "dividend_amount": 1.0,
+        "dividend_yield": 0.00719403
+      },
+      {
+        "symbol": "IBST.JK",
+        "ex_date": "2022-08-05",
+        "cum_date": "2022-08-04",
+        "recording_date": "2022-08-08",
+        "payment_date": "2022-08-25",
+        "dividend_amount": 618.0,
+        "dividend_yield": 0.0866096
+      },
+      {
+        "symbol": "IMAS.JK",
+        "ex_date": "2022-08-05",
+        "cum_date": "2022-08-04",
+        "recording_date": "2022-08-08",
+        "payment_date": "2022-08-26",
+        "dividend_amount": 4.0,
+        "dividend_yield": 0.00483301
+      },
+      {
+        "symbol": "IMJS.JK",
+        "ex_date": "2022-08-05",
+        "cum_date": "2022-08-04",
+        "recording_date": "2022-08-08",
+        "payment_date": "2022-08-26",
+        "dividend_amount": 0.25,
+        "dividend_yield": 0.00072195
+      },
+      {
+        "symbol": "MEDC.JK",
+        "ex_date": "2022-08-05",
+        "cum_date": "2022-08-04",
+        "recording_date": "2022-08-08",
+        "payment_date": "2022-08-26",
+        "dividend_amount": 20.8656,
+        "dividend_yield": 0.0278928
+      },
+      {
+        "symbol": "RUIS.JK",
+        "ex_date": "2022-08-05",
+        "cum_date": "2022-08-04",
+        "recording_date": "2022-08-08",
+        "payment_date": "2022-08-26",
+        "dividend_amount": 4.0,
+        "dividend_yield": 0.0192987
+      },
+      {
+        "symbol": "CEKA.JK",
+        "ex_date": "2022-08-08",
+        "cum_date": "2022-08-05",
+        "recording_date": "2022-08-09",
+        "payment_date": "2022-08-31",
+        "dividend_amount": 100.0,
+        "dividend_yield": 0.0471562
+      },
+      {
+        "symbol": "GPRA.JK",
+        "ex_date": "2022-08-08",
+        "cum_date": "2022-08-05",
+        "recording_date": "2022-08-09",
+        "payment_date": "2022-08-31",
+        "dividend_amount": 1.0,
+        "dividend_yield": 0.0115444
+      },
+      {
+        "symbol": "SMSM.JK",
+        "ex_date": "2022-08-08",
+        "cum_date": "2022-08-05",
+        "recording_date": "2022-08-09",
+        "payment_date": "2022-08-23",
+        "dividend_amount": 20.0,
+        "dividend_yield": 0.0143252
+      },
+      {
+        "symbol": "UCID.JK",
+        "ex_date": "2022-08-08",
+        "cum_date": "2022-08-05",
+        "recording_date": "2022-08-09",
+        "payment_date": "2022-08-26",
+        "dividend_amount": 22.9327,
+        "dividend_yield": 0.0184617
+      },
+      {
+        "symbol": "ERTX.JK",
+        "ex_date": "2022-08-09",
+        "cum_date": "2022-08-08",
+        "recording_date": "2022-08-10",
+        "payment_date": "2022-09-01",
+        "dividend_amount": 2.91,
+        "dividend_yield": 0.014216
+      },
+      {
+        "symbol": "IRRA.JK",
+        "ex_date": "2022-08-09",
+        "cum_date": "2022-08-08",
+        "recording_date": "2022-08-10",
+        "payment_date": "2022-09-01",
+        "dividend_amount": 18.75,
+        "dividend_yield": 0.0133719
+      },
+      {
+        "symbol": "NTBK.JK",
+        "ex_date": "2022-08-09",
+        "cum_date": "2022-08-08",
+        "recording_date": "2022-08-10",
+        "payment_date": "2022-08-31",
+        "dividend_amount": 0.069637,
+        "dividend_yield": 0.00125103
+      },
+      {
+        "symbol": "TCPI.JK",
+        "ex_date": "2022-08-09",
+        "cum_date": "2022-08-08",
+        "recording_date": "2022-08-10",
+        "payment_date": "2022-09-01",
+        "dividend_amount": 3.0,
+        "dividend_yield": 0.000309905
+      },
+      {
+        "symbol": "SMAR.JK",
+        "ex_date": "2022-08-10",
+        "cum_date": "2022-08-09",
+        "recording_date": "2022-08-11",
+        "payment_date": "2022-08-24",
+        "dividend_amount": 200.0,
+        "dividend_yield": 0.0423211
+      },
+      {
+        "symbol": "SMDR.JK",
+        "ex_date": "2022-08-10",
+        "cum_date": "2022-08-09",
+        "recording_date": "2022-08-11",
+        "payment_date": "2022-08-31",
+        "dividend_amount": 10.0,
+        "dividend_yield": 0.0230769
+      },
+      {
+        "symbol": "INDY.JK",
+        "ex_date": "2022-08-16",
+        "cum_date": "2022-08-15",
+        "recording_date": "2022-08-17",
+        "payment_date": "2022-08-30",
+        "dividend_amount": 114.464,
+        "dividend_yield": 0.0435584
+      },
+      {
+        "symbol": "MEDC.JK",
+        "ex_date": "2022-08-19",
+        "cum_date": "2022-08-18",
+        "recording_date": "2022-08-22",
+        "payment_date": "2022-09-08",
+        "dividend_amount": 14.858,
+        "dividend_yield": 0.0198619
+      },
+      {
+        "symbol": "ISAT.JK",
+        "ex_date": "2022-08-29",
+        "cum_date": "2022-08-26",
+        "recording_date": "2022-08-30",
+        "payment_date": "2022-09-21",
+        "dividend_amount": 62.0141,
+        "dividend_yield": 0.0397291
+      },
+      {
+        "symbol": "SMSM.JK",
+        "ex_date": "2022-09-07",
+        "cum_date": "2022-09-06",
+        "recording_date": "2022-09-08",
+        "payment_date": "2022-09-21",
+        "dividend_amount": 25.0,
+        "dividend_yield": 0.0179065
+      },
+      {
+        "symbol": "GEMS.JK",
+        "ex_date": "2022-09-12",
+        "cum_date": "2022-09-09",
+        "recording_date": "2022-09-13",
+        "payment_date": "2022-09-21",
+        "dividend_amount": 505.75,
+        "dividend_yield": 0.0773994
+      },
+      {
+        "symbol": "MLPT.JK",
+        "ex_date": "2022-09-15",
+        "cum_date": "2022-09-14",
+        "recording_date": "2022-09-16",
+        "payment_date": "2022-09-23",
+        "dividend_amount": 6.2,
+        "dividend_yield": 0.0551035
+      },
+      {
+        "symbol": "EMTK.JK",
+        "ex_date": "2022-09-16",
+        "cum_date": "2022-09-15",
+        "recording_date": "2022-09-19",
+        "payment_date": "2022-09-27",
+        "dividend_amount": 5.0,
+        "dividend_yield": 0.00268111
+      },
+      {
+        "symbol": "BSSR.JK",
+        "ex_date": "2022-09-22",
+        "cum_date": "2022-09-21",
+        "recording_date": "2022-09-23",
+        "payment_date": "2022-09-30",
+        "dividend_amount": 567.132,
+        "dividend_yield": 0.14137
+      },
+      {
+        "symbol": "MBAP.JK",
+        "ex_date": "2022-09-22",
+        "cum_date": "2022-09-21",
+        "recording_date": "2022-09-23",
+        "payment_date": "2022-10-03",
+        "dividend_amount": 1.03,
+        "dividend_yield": 0.000158432
+      },
+      {
+        "symbol": "SMMT.JK",
+        "ex_date": "2022-09-26",
+        "cum_date": "2022-09-23",
+        "recording_date": "2022-09-27",
+        "payment_date": "2022-09-29",
+        "dividend_amount": 60.0,
+        "dividend_yield": 0.0763106
+      }
+    ]
+  }
+}

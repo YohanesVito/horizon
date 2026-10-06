@@ -1,0 +1,252 @@
+[
+  {
+    "file": "ihsg-2024-12-01.json",
+    "ok": true,
+    "rows": 58
+  },
+  {
+    "file": "prices-BBCA-2024-12-01.json",
+    "ok": true,
+    "rows": 58
+  },
+  {
+    "file": "prices-BBRI-2024-12-01.json",
+    "ok": true,
+    "rows": 58
+  },
+  {
+    "file": "prices-BMRI-2024-12-01.json",
+    "ok": true,
+    "rows": 58
+  },
+  {
+    "file": "prices-BBNI-2024-12-01.json",
+    "ok": true,
+    "rows": 58
+  },
+  {
+    "file": "prices-DMAS-2024-12-01.json",
+    "ok": true,
+    "rows": 58
+  },
+  {
+    "file": "prices-LPPF-2024-12-01.json",
+    "ok": true,
+    "rows": 58
+  },
+  {
+    "file": "prices-ADRO-2024-12-01.json",
+    "ok": true,
+    "rows": 58
+  },
+  {
+    "file": "prices-CFIN-2024-12-01.json",
+    "ok": true,
+    "rows": 58
+  },
+  {
+    "file": "prices-RALS-2024-12-01.json",
+    "ok": true,
+    "rows": 58
+  },
+  {
+    "file": "ihsg-2025-03-01.json",
+    "ok": true,
+    "rows": 49
+  },
+  {
+    "file": "prices-BBCA-2025-03-01.json",
+    "ok": true,
+    "rows": 52
+  },
+  {
+    "file": "prices-BBRI-2025-03-01.json",
+    "ok": true,
+    "rows": 52
+  },
+  {
+    "file": "prices-BMRI-2025-03-01.json",
+    "ok": true,
+    "rows": 52
+  },
+  {
+    "file": "prices-BBNI-2025-03-01.json",
+    "ok": true,
+    "rows": 52
+  },
+  {
+    "file": "prices-DMAS-2025-03-01.json",
+    "ok": true,
+    "rows": 52
+  },
+  {
+    "file": "prices-LPPF-2025-03-01.json",
+    "ok": true,
+    "rows": 52
+  },
+  {
+    "file": "prices-ADRO-2025-03-01.json",
+    "ok": true,
+    "rows": 52
+  },
+  {
+    "file": "prices-CFIN-2025-03-01.json",
+    "ok": true,
+    "rows": 52
+  },
+  {
+    "file": "prices-RALS-2025-03-01.json",
+    "ok": true,
+    "rows": 52
+  },
+  {
+    "file": "ihsg-2025-05-30.json",
+    "ok": true,
+    "rows": 59
+  },
+  {
+    "file": "prices-BBCA-2025-05-30.json",
+    "ok": true,
+    "rows": 59
+  },
+  {
+    "file": "prices-BBRI-2025-05-30.json",
+    "ok": true,
+    "rows": 59
+  },
+  {
+    "file": "prices-BMRI-2025-05-30.json",
+    "ok": true,
+    "rows": 59
+  },
+  {
+    "file": "prices-BBNI-2025-05-30.json",
+    "ok": true,
+    "rows": 59
+  },
+  {
+    "file": "prices-DMAS-2025-05-30.json",
+    "ok": true,
+    "rows": 59
+  },
+  {
+    "file": "prices-LPPF-2025-05-30.json",
+    "ok": true,
+    "rows": 59
+  },
+  {
+    "file": "prices-ADRO-2025-05-30.json",
+    "ok": true,
+    "rows": 59
+  },
+  {
+    "file": "prices-CFIN-2025-05-30.json",
+    "ok": true,
+    "rows": 59
+  },
+  {
+    "file": "prices-RALS-2025-05-30.json",
+    "ok": true,
+    "rows": 59
+  },
+  {
+    "file": "ihsg-2025-08-28.json",
+    "ok": true,
+    "rows": 62
+  },
+  {
+    "file": "prices-BBCA-2025-08-28.json",
+    "ok": true,
+    "rows": 63
+  },
+  {
+    "file": "prices-BBRI-2025-08-28.json",
+    "ok": true,
+    "rows": 63
+  },
+  {
+    "file": "prices-BMRI-2025-08-28.json",
+    "ok": true,
+    "rows": 63
+  },
+  {
+    "file": "prices-BBNI-2025-08-28.json",
+    "ok": true,
+    "rows": 63
+  },
+  {
+    "file": "prices-DMAS-2025-08-28.json",
+    "ok": true,
+    "rows": 63
+  },
+  {
+    "file": "prices-LPPF-2025-08-28.json",
+    "ok": true,
+    "rows": 63
+  },
+  {
+    "file": "prices-ADRO-2025-08-28.json",
+    "ok": true,
+    "rows": 63
+  },
+  {
+    "file": "prices-CFIN-2025-08-28.json",
+    "ok": true,
+    "rows": 63
+  },
+  {
+    "file": "prices-RALS-2025-08-28.json",
+    "ok": true,
+    "rows": 63
+  },
+  {
+    "file": "ihsg-2025-11-26.json",
+    "ok": true,
+    "rows": 29
+  },
+  {
+    "file": "prices-BBCA-2025-11-26.json",
+    "ok": true,
+    "rows": 29
+  },
+  {
+    "file": "prices-BBRI-2025-11-26.json",
+    "ok": true,
+    "rows": 29
+  },
+  {
+    "file": "prices-BMRI-2025-11-26.json",
+    "ok": true,
+    "rows": 29
+  },
+  {
+    "file": "prices-BBNI-2025-11-26.json",
+    "ok": true,
+    "rows": 29
+  },
+  {
+    "file": "prices-DMAS-2025-11-26.json",
+    "ok": true,
+    "rows": 29
+  },
+  {
+    "file": "prices-LPPF-2025-11-26.json",
+    "ok": true,
+    "rows": 29
+  },
+  {
+    "file": "prices-ADRO-2025-11-26.json",
+    "ok": true,
+    "rows": 29
+  },
+  {
+    "file": "prices-CFIN-2025-11-26.json",
+    "ok": true,
+    "rows": 29
+  },
+  {
+    "file": "prices-RALS-2025-11-26.json",
+    "ok": true,
+    "rows": 29
+  }
+]

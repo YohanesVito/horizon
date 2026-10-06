@@ -1,0 +1,138 @@
+{
+  "transport": "Sectors REST GET; endpoint absent from inspected MCP registry",
+  "url": "https://api.sectors.app/v2/corporate-actions/?start=2024-12-16&end=2025-03-15&type=dividend",
+  "retrieved_at": "2026-10-06T09:54:01.295774+08:00",
+  "http_status": 200,
+  "result": {
+    "start": "2024-12-16",
+    "end": "2025-03-15",
+    "dividend": [
+      {
+        "symbol": "GDST.JK",
+        "ex_date": "2024-12-16",
+        "cum_date": "2024-12-13",
+        "recording_date": "2024-12-17",
+        "payment_date": "2024-12-30",
+        "dividend_amount": 7.5,
+        "dividend_yield": 0.0641003
+      },
+      {
+        "symbol": "BYAN.JK",
+        "ex_date": "2024-12-18",
+        "cum_date": "2024-12-17",
+        "recording_date": "2024-12-19",
+        "payment_date": "2025-01-08",
+        "dividend_amount": 144.9,
+        "dividend_yield": 0.00791995
+      },
+      {
+        "symbol": "IPCM.JK",
+        "ex_date": "2024-12-20",
+        "cum_date": "2024-12-19",
+        "recording_date": "2024-12-23",
+        "payment_date": "2025-01-10",
+        "dividend_amount": 3.8,
+        "dividend_yield": 0.0139801
+      },
+      {
+        "symbol": "AMAR.JK",
+        "ex_date": "2024-12-27",
+        "cum_date": "2024-12-24",
+        "recording_date": "2024-12-30",
+        "payment_date": "2025-01-15",
+        "dividend_amount": 1.4,
+        "dividend_yield": 0.00598032
+      },
+      {
+        "symbol": "BBRI.JK",
+        "ex_date": "2024-12-27",
+        "cum_date": "2024-12-24",
+        "recording_date": "2024-12-30",
+        "payment_date": "2025-01-15",
+        "dividend_amount": 135.0,
+        "dividend_yield": 0.0267197
+      },
+      {
+        "symbol": "ADRO.JK",
+        "ex_date": "2024-12-30",
+        "cum_date": "2024-12-27",
+        "recording_date": "2025-01-02",
+        "payment_date": "2025-01-15",
+        "dividend_amount": 106.84,
+        "dividend_yield": 0.0355478
+      },
+      {
+        "symbol": "RDTX.JK",
+        "ex_date": "2024-12-30",
+        "cum_date": "2024-12-27",
+        "recording_date": "2025-01-02",
+        "payment_date": "2025-01-15",
+        "dividend_amount": 151.0,
+        "dividend_yield": 0.0105525
+      },
+      {
+        "symbol": "KKGI.JK",
+        "ex_date": "2025-01-02",
+        "cum_date": "2024-12-30",
+        "recording_date": "2025-01-03",
+        "payment_date": "2025-01-17",
+        "dividend_amount": 15.0,
+        "dividend_yield": 0.0401129
+      },
+      {
+        "symbol": "ACRO.JK",
+        "ex_date": "2025-01-07",
+        "cum_date": "2025-01-06",
+        "recording_date": "2025-01-08",
+        "payment_date": "2025-01-23",
+        "dividend_amount": 10.14,
+        "dividend_yield": 0.137145
+      },
+      {
+        "symbol": "TOWR.JK",
+        "ex_date": "2025-01-07",
+        "cum_date": "2025-01-06",
+        "recording_date": "2025-01-08",
+        "payment_date": "2025-01-22",
+        "dividend_amount": 6.0,
+        "dividend_yield": 0.0104134
+      },
+      {
+        "symbol": "BSSR.JK",
+        "ex_date": "2025-01-10",
+        "cum_date": "2025-01-09",
+        "recording_date": "2025-01-13",
+        "payment_date": "2025-01-15",
+        "dividend_amount": 154.39,
+        "dividend_yield": 0.0380539
+      },
+      {
+        "symbol": "GTSI.JK",
+        "ex_date": "2025-01-10",
+        "cum_date": "2025-01-09",
+        "recording_date": "2025-01-13",
+        "payment_date": "2025-01-30",
+        "dividend_amount": 1.5,
+        "dividend_yield": 0.0190323
+      },
+      {
+        "symbol": "KUAS.JK",
+        "ex_date": "2025-01-10",
+        "cum_date": "2025-01-09",
+        "recording_date": "2025-01-13",
+        "payment_date": "2025-01-24",
+        "dividend_amount": 1.5,
+        "dividend_yield": 0.0251189
+      },
+      {
+        "symbol": "AMOR.JK",
+        "ex_date": "2025-02-10",
+        "cum_date": "2025-02-07",
+        "recording_date": "2025-02-11",
+        "payment_date": "2025-02-24",
+        "dividend_amount": 14.0,
+        "dividend_yield": 0.027796
+      }
+    ]
+  }
+}

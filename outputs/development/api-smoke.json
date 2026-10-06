@@ -1,0 +1,39 @@
+{
+  "checked_at": "2026-10-06T01:15:57.557531+00:00",
+  "health_http": 200,
+  "health": {
+    "status": "ok",
+    "source": "Sectors snapshots",
+    "storage": "sqlite-local",
+    "worker": "local-thread",
+    "mode": "research-mvp"
+  },
+  "companies": 9,
+  "events": 50,
+  "eligible_events": 5,
+  "dataset_version": "sectors-5b885fb8a3dea1f4",
+  "run_id": "5bf1e5e9-f9cb-48e2-a246-b5f3bf8af637",
+  "engine_version": "replay-v1.1",
+  "results": [
+    {
+      "allocation": "single",
+      "nav": 101110000.0,
+      "return_pct": 1.11,
+      "drawdown_pct": -10.545
+    },
+    {
+      "allocation": "equal",
+      "nav": 108743577.6,
+      "return_pct": 8.7436,
+      "drawdown_pct": -6.587
+    },
+    {
+      "allocation": "rotation",
+      "nav": 101440000.0,
+      "return_pct": 1.44,
+      "drawdown_pct": -10.545
+    }
+  ],
+  "final_browser_run_id": "8f5def9c-ba65-43fb-b134-54d4bd4f9cac",
+  "invalid_horizon_seen": true
+}

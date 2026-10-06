@@ -1,0 +1,297 @@
+{
+  "created_at": "2026-10-06T01:24:25.743803+08:00",
+  "financial_data_source": "Sectors",
+  "external_research_and_rules": [
+    {
+      "role": "announcement research",
+      "url": "https://ersj.eu/journal/1460",
+      "access": "publisher abstract"
+    },
+    {
+      "role": "announcement research",
+      "url": "https://link.springer.com/article/10.1007/s43546-021-00198-8",
+      "access": "publisher abstract"
+    },
+    {
+      "role": "settlement rules",
+      "url": "https://web.ksei.co.id/services/types/transaction-settlement"
+    },
+    {
+      "role": "cum/ex market-specific schedule semantics only",
+      "url": "https://web.ksei.co.id/Announcement/Files/HRTA_DIV_20260615_ID.pdf"
+    },
+    {
+      "role": "market mechanics",
+      "url": "https://sikapiuangmu.ojk.go.id/FrontEnd/images/FileDownload/560_Buku%20Saku%20Pasar%20Modal_compressed.pdf"
+    },
+    {
+      "role": "quality conflict only; not simulation feed",
+      "url": "https://web.ksei.co.id/Announcement/Files/200234_ksei_24911_jku_1026_202610021447.pdf"
+    },
+    {
+      "role": "quality conflict only; not simulation feed",
+      "url": "https://web.ksei.co.id/Announcement/Files/200235_ksei_24908_jku_1026_202610021447.pdf"
+    }
+  ],
+  "files": [
+    {
+      "path": "outputs/dividend-research/bbca-news-2025-all.json",
+      "sha256": "07e30c069edef9c30f42107030bca943b1ad076b5e6f8700746f25ba54818d3d",
+      "retrieved_at": "2026-10-06T01:02:25.629349+08:00",
+      "tool_or_url": "fetch-news",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/bbca-news-2025.json",
+      "sha256": "d2c7f5c9cf7adb483e3f8d14adb58b87dadcfb742e5741c9e709e8f398157c98",
+      "retrieved_at": "2026-10-06T01:01:12.291300+08:00",
+      "tool_or_url": "fetch-news",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/bbca-prices-2022-03-28.json",
+      "sha256": "ae2deb519b34afa43d2a15593780a548539ce2341bd23d9145e6ffcdfd2212fb",
+      "retrieved_at": "2026-10-06T01:04:35.602292+08:00",
+      "tool_or_url": "fetch-daily-price",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/bbca-prices-2022-12-02.json",
+      "sha256": "fb93f226333c6c54a0b3db038bc2dd21b5a20a5fd20927f92535dc288b0071e9",
+      "retrieved_at": "2026-10-06T01:04:35.594733+08:00",
+      "tool_or_url": "fetch-daily-price",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/bbca-prices-2023-03-29.json",
+      "sha256": "9236207de598d9524d21fe4a56bd5daf35a4d1b6d62e28648d3ca34c4f69a451",
+      "retrieved_at": "2026-10-06T01:04:41.898429+08:00",
+      "tool_or_url": "fetch-daily-price",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/bbca-prices-2023-12-04.json",
+      "sha256": "6bbe73819a6262724d8509421b57800b77887346e3d1c7f07394bebce78fdb04",
+      "retrieved_at": "2026-10-06T01:04:39.455986+08:00",
+      "tool_or_url": "fetch-daily-price",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/bbca-prices-2024-03-25.json",
+      "sha256": "c2c958ef0772c4651e874cdf8d600b2382327fa42b0c4fa61cd8ff3cff6c1bbc",
+      "retrieved_at": "2026-10-06T01:04:39.457177+08:00",
+      "tool_or_url": "fetch-daily-price",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/bbca-prices-2024-11-21.json",
+      "sha256": "d087e80e433f55a877c4e9a8001527ae9597c5ea57cfcef804fb50d393b6fdc6",
+      "retrieved_at": "2026-10-06T01:04:42.702166+08:00",
+      "tool_or_url": "fetch-daily-price",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/bbca-prices-2025-03-21.json",
+      "sha256": "495cca0820880f43dddf3e6a3bcdcd0609b3f2a3662e99cca58cb7259580d0db",
+      "retrieved_at": "2026-10-06T01:04:42.806671+08:00",
+      "tool_or_url": "fetch-daily-price",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/bbca-prices-2025-12-03.json",
+      "sha256": "300fdfa7bf9036461e2dd57f3bafe28574fcd21ab0d376d940d6d75a1fea4a4b",
+      "retrieved_at": "2026-10-06T01:04:44.683781+08:00",
+      "tool_or_url": "fetch-daily-price",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/calendar-2022-03-28.json",
+      "sha256": "9e3329c8f2aafbf3821459d690783a22955085ade8e9717ff30aa96c58590d92",
+      "retrieved_at": "2026-10-06T01:04:37.645886+08:00",
+      "tool_or_url": "https://api.sectors.app/v2/corporate-actions/?start=2022-03-28&end=2022-03-28&type=dividend",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/calendar-2022-12-02.json",
+      "sha256": "5e022629fb7c3e628212e74991c017865587568fc96363039b86c76ddf442f08",
+      "retrieved_at": "2026-10-06T01:04:36.992389+08:00",
+      "tool_or_url": "https://api.sectors.app/v2/corporate-actions/?start=2022-12-02&end=2022-12-02&type=dividend",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/calendar-2023-03-29.json",
+      "sha256": "5d64d50388ffd2863a7a6896af5cb091bfea75a47ced268117d27d984342942c",
+      "retrieved_at": "2026-10-06T01:04:43.238531+08:00",
+      "tool_or_url": "https://api.sectors.app/v2/corporate-actions/?start=2023-03-29&end=2023-03-29&type=dividend",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/calendar-2023-12-04.json",
+      "sha256": "fc79ab41de11e5e7d7a05fb11cccd2b08a4c79a174a77bb27fd391927b1106d5",
+      "retrieved_at": "2026-10-06T01:04:40.757087+08:00",
+      "tool_or_url": "https://api.sectors.app/v2/corporate-actions/?start=2023-12-04&end=2023-12-04&type=dividend",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/calendar-2024-03-25.json",
+      "sha256": "092c2fb5ea880546df84b2ed175097e9a5b6f76a7616f4df23bef23783b14963",
+      "retrieved_at": "2026-10-06T01:04:40.757097+08:00",
+      "tool_or_url": "https://api.sectors.app/v2/corporate-actions/?start=2024-03-25&end=2024-03-25&type=dividend",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/calendar-2024-11-21.json",
+      "sha256": "61db3eb12cd3cc2987119d5cfb58e516417a603e2e22e8a97e913a6770ae9a33",
+      "retrieved_at": "2026-10-06T01:04:43.444038+08:00",
+      "tool_or_url": "https://api.sectors.app/v2/corporate-actions/?start=2024-11-21&end=2024-11-21&type=dividend",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/calendar-2025-03-21.json",
+      "sha256": "1a9369b26fe97483a93a5525c7f95a6a76907bc1e4999dab267a5ddd34a7ed90",
+      "retrieved_at": "2026-10-06T01:04:43.748480+08:00",
+      "tool_or_url": "https://api.sectors.app/v2/corporate-actions/?start=2025-03-21&end=2025-03-21&type=dividend",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/calendar-2025-12-03.json",
+      "sha256": "23cc4c6315f3e7bb3b5caafb3f032dc88f8d41a33ca2428db4dc9fe8cdfa6de4",
+      "retrieved_at": "2026-10-06T01:04:46.537305+08:00",
+      "tool_or_url": "https://api.sectors.app/v2/corporate-actions/?start=2025-12-03&end=2025-12-03&type=dividend",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/calendar-2025-spring.json",
+      "sha256": "981a380acb4913bad804c8c4dcdd3da6bbdd62dc7043d950a2b279cb075cc766",
+      "retrieved_at": "2026-10-06T01:01:11.473208+08:00",
+      "tool_or_url": "https://api.sectors.app/v2/corporate-actions/?start=2025-03-01&end=2025-04-30&type=dividend",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/calendar-upcoming.json",
+      "sha256": "3640def106c8324ad24ae6304a8debbc517dd3f6c21363a767a78d958ccfd041",
+      "retrieved_at": "2026-10-06T01:01:11.473201+08:00",
+      "tool_or_url": "https://api.sectors.app/v2/corporate-actions/?start=2026-10-01&end=2026-11-30&type=dividend%2Cupcoming_dividend",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/dividend-ADRO.json",
+      "sha256": "569c573926f3149fec77a36a2bbabdb9d4d3c396a4921d0ddb5fb3ca03c19f86",
+      "retrieved_at": "2026-10-06T01:04:47.208029+08:00",
+      "tool_or_url": "fetch-company-report",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/dividend-CFIN.json",
+      "sha256": "6e1db492b6a741055b2712edb0925c99fbc96b32d585893d45613103247f36e4",
+      "retrieved_at": "2026-10-06T01:04:47.409811+08:00",
+      "tool_or_url": "fetch-company-report",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/dividend-DMAS.json",
+      "sha256": "3c8cf9d29c3ac7e6361f6ae5fd71ddc4055bd2d3842daa5d0f94903db0434ec7",
+      "retrieved_at": "2026-10-06T01:04:45.200385+08:00",
+      "tool_or_url": "fetch-company-report",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/dividend-LPPF.json",
+      "sha256": "0ea17d528b20d062bc8376ad990be27eb6e53d17bc0d5e7761a810cdfd523d4f",
+      "retrieved_at": "2026-10-06T01:04:46.067595+08:00",
+      "tool_or_url": "fetch-company-report",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/dividend-RALS.json",
+      "sha256": "62e21e3ecd3cf289926b3155f2ea773266ccf9172cc6df1de14c0f7372ed7d37",
+      "retrieved_at": "2026-10-06T01:04:48.037359+08:00",
+      "tool_or_url": "fetch-company-report",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/ihsg-2022-03-28.json",
+      "sha256": "6a83f396eb718ec9961cb82d76d21554f510eec850c87e23ffcada40335de3ff",
+      "retrieved_at": "2026-10-06T01:04:36.898640+08:00",
+      "tool_or_url": "fetch-index-daily",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/ihsg-2022-12-02.json",
+      "sha256": "fe21c7ed30f84e30a2be3f8eceb179edbbc5a63b2b13359f7e4f422d5206c5b9",
+      "retrieved_at": "2026-10-06T01:04:36.508613+08:00",
+      "tool_or_url": "fetch-index-daily",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/ihsg-2023-03-29.json",
+      "sha256": "69f556089d786c77813f1ceb0de8707e424c223c1772524ec1a92b81304604c6",
+      "retrieved_at": "2026-10-06T01:04:42.760398+08:00",
+      "tool_or_url": "fetch-index-daily",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/ihsg-2023-12-04.json",
+      "sha256": "323f7f4fb8f61c5c17ca6be0ab0733a1552db1dade1c6fc4b4c9e1aa50da0a2c",
+      "retrieved_at": "2026-10-06T01:04:39.961995+08:00",
+      "tool_or_url": "fetch-index-daily",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/ihsg-2024-03-25.json",
+      "sha256": "d5aa751410574f28a1158d4fb88092421068ef85794203e9a0f20c0f25bdf80f",
+      "retrieved_at": "2026-10-06T01:04:39.961885+08:00",
+      "tool_or_url": "fetch-index-daily",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/ihsg-2024-11-21.json",
+      "sha256": "1481d5738dc02896a6131e7079ec6c0e18b5811a3a35f8417858eabb55ee5c6d",
+      "retrieved_at": "2026-10-06T01:04:43.077482+08:00",
+      "tool_or_url": "fetch-index-daily",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/ihsg-2025-03-21.json",
+      "sha256": "1254ffbf44edeebc9a3a8f2f447660af91e9b15daf0f7a584a5fdd2687e81798",
+      "retrieved_at": "2026-10-06T01:04:43.249974+08:00",
+      "tool_or_url": "fetch-index-daily",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/ihsg-2025-12-03.json",
+      "sha256": "a346569c858cf7ded1afabc70e28fef0941371f57ac28d7170714e418cbbaedc",
+      "retrieved_at": "2026-10-06T01:04:46.069910+08:00",
+      "tool_or_url": "fetch-index-daily",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/tools.json",
+      "sha256": "85a23167e66eb36b6b05f75ebde5c55fd2bcb453c7b1990502ff91eea6996d22",
+      "retrieved_at": "2026-10-06T00:58:53.578158+08:00",
+      "tool_or_url": null,
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/top5-yield-2025.json",
+      "sha256": "4378542f98e22c1b007a32de5c886ed14d551694485d3c33ae5a1786ada2fd5d",
+      "retrieved_at": "2026-10-06T01:01:12.291327+08:00",
+      "tool_or_url": "fetch-companies",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/untr-asgr-news-2026-october-corrected.json",
+      "sha256": "202779045872796fcf8623d34d36bd5bbe983c2c9a4d3cac4ee439f70b59ef7a",
+      "retrieved_at": "2026-10-06T01:22:10.289214+08:00",
+      "tool_or_url": "fetch-news",
+      "isError": false
+    },
+    {
+      "path": "outputs/dividend-research/untr-asgr-news-2026-october.json",
+      "sha256": "368f063134a31e9ac07a5ed7a82bd53b34db86725a1227a9cd5a813a15a1224b",
+      "retrieved_at": "2026-10-06T01:21:55.814306+08:00",
+      "tool_or_url": "fetch-news",
+      "isError": true
+    }
+  ]
+}

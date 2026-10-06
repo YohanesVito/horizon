@@ -1,0 +1,399 @@
+{
+  "transport": "Sectors REST GET; endpoint absent from inspected MCP registry",
+  "url": "https://api.sectors.app/v2/corporate-actions/?start=2025-03-01&end=2025-04-30&type=dividend",
+  "retrieved_at": "2026-10-06T01:01:11.473208+08:00",
+  "http_status": 200,
+  "result": {
+    "start": "2025-03-01",
+    "end": "2025-04-30",
+    "dividend": [
+      {
+        "symbol": "BBCA.JK",
+        "ex_date": "2025-03-21",
+        "cum_date": "2025-03-20",
+        "recording_date": "2025-03-24",
+        "payment_date": "2025-04-11",
+        "dividend_amount": 250.0,
+        "dividend_yield": 0.0291689
+      },
+      {
+        "symbol": "NISP.JK",
+        "ex_date": "2025-04-09",
+        "cum_date": "2025-04-08",
+        "recording_date": "2025-04-10",
+        "payment_date": "2025-04-17",
+        "dividend_amount": 106.0,
+        "dividend_yield": 0.0790045
+      },
+      {
+        "symbol": "BDMN.JK",
+        "ex_date": "2025-04-10",
+        "cum_date": "2025-04-09",
+        "recording_date": "2025-04-11",
+        "payment_date": "2025-04-24",
+        "dividend_amount": 113.85,
+        "dividend_yield": 0.0462423
+      },
+      {
+        "symbol": "BBRI.JK",
+        "ex_date": "2025-04-11",
+        "cum_date": "2025-04-10",
+        "recording_date": "2025-04-14",
+        "payment_date": "2025-04-23",
+        "dividend_amount": 208.4,
+        "dividend_yield": 0.0534156
+      },
+      {
+        "symbol": "CNMA.JK",
+        "ex_date": "2025-04-11",
+        "cum_date": "2025-04-10",
+        "recording_date": "2025-04-14",
+        "payment_date": "2025-04-24",
+        "dividend_amount": 4.0,
+        "dividend_yield": 0.029477
+      },
+      {
+        "symbol": "TMAS.JK",
+        "ex_date": "2025-04-11",
+        "cum_date": "2025-04-10",
+        "recording_date": "2025-04-14",
+        "payment_date": "2025-04-25",
+        "dividend_amount": 4.0,
+        "dividend_yield": 0.0301511
+      },
+      {
+        "symbol": "ADMF.JK",
+        "ex_date": "2025-04-14",
+        "cum_date": "2025-04-11",
+        "recording_date": "2025-04-15",
+        "payment_date": "2025-04-25",
+        "dividend_amount": 703.0,
+        "dividend_yield": 0.0782659
+      },
+      {
+        "symbol": "BMRI.JK",
+        "ex_date": "2025-04-14",
+        "cum_date": "2025-04-11",
+        "recording_date": "2025-04-15",
+        "payment_date": "2025-04-23",
+        "dividend_amount": 466.184,
+        "dividend_yield": 0.0952207
+      },
+      {
+        "symbol": "EXCL.JK",
+        "ex_date": "2025-04-14",
+        "cum_date": "2025-04-11",
+        "recording_date": "2025-04-15",
+        "payment_date": "2025-04-24",
+        "dividend_amount": 85.7,
+        "dividend_yield": 0.0339771
+      },
+      {
+        "symbol": "IFSH.JK",
+        "ex_date": "2025-04-14",
+        "cum_date": "2025-04-11",
+        "recording_date": "2025-04-15",
+        "payment_date": "2025-04-24",
+        "dividend_amount": 13.05,
+        "dividend_yield": 0.0161208
+      },
+      {
+        "symbol": "WOMF.JK",
+        "ex_date": "2025-04-14",
+        "cum_date": "2025-04-11",
+        "recording_date": "2025-04-15",
+        "payment_date": "2025-04-25",
+        "dividend_amount": 22.66,
+        "dividend_yield": 0.0658478
+      },
+      {
+        "symbol": "BBNI.JK",
+        "ex_date": "2025-04-15",
+        "cum_date": "2025-04-14",
+        "recording_date": "2025-04-16",
+        "payment_date": "2025-04-25",
+        "dividend_amount": 374.057,
+        "dividend_yield": 0.0873342
+      },
+      {
+        "symbol": "BBTN.JK",
+        "ex_date": "2025-04-15",
+        "cum_date": "2025-04-14",
+        "recording_date": "2025-04-16",
+        "payment_date": "2025-04-25",
+        "dividend_amount": 53.5705,
+        "dividend_yield": 0.0475824
+      },
+      {
+        "symbol": "HAIS.JK",
+        "ex_date": "2025-04-15",
+        "cum_date": "2025-04-14",
+        "recording_date": "2025-04-16",
+        "payment_date": "2025-05-08",
+        "dividend_amount": 15.37,
+        "dividend_yield": 0.0754481
+      },
+      {
+        "symbol": "SDRA.JK",
+        "ex_date": "2025-04-15",
+        "cum_date": "2025-04-14",
+        "recording_date": "2025-04-16",
+        "payment_date": "2025-05-06",
+        "dividend_amount": 8.0,
+        "dividend_yield": 0.0247056
+      },
+      {
+        "symbol": "MEGA.JK",
+        "ex_date": "2025-04-16",
+        "cum_date": "2025-04-15",
+        "recording_date": "2025-04-17",
+        "payment_date": "2025-04-29",
+        "dividend_amount": 89.6352,
+        "dividend_yield": 0.026051
+      },
+      {
+        "symbol": "SICO.JK",
+        "ex_date": "2025-04-16",
+        "cum_date": "2025-04-15",
+        "recording_date": "2025-04-17",
+        "payment_date": "2025-05-09",
+        "dividend_amount": 3.0,
+        "dividend_yield": 0.0265746
+      },
+      {
+        "symbol": "ARNA.JK",
+        "ex_date": "2025-04-17",
+        "cum_date": "2025-04-16",
+        "recording_date": "2025-04-21",
+        "payment_date": "2025-04-29",
+        "dividend_amount": 43.0,
+        "dividend_yield": 0.0735816
+      },
+      {
+        "symbol": "ROTI.JK",
+        "ex_date": "2025-04-17",
+        "cum_date": "2025-04-16",
+        "recording_date": "2025-04-21",
+        "payment_date": "2025-04-28",
+        "dividend_amount": 79.44,
+        "dividend_yield": 0.09369
+      },
+      {
+        "symbol": "BNLI.JK",
+        "ex_date": "2025-04-21",
+        "cum_date": "2025-04-17",
+        "recording_date": "2025-04-22",
+        "payment_date": "2025-05-08",
+        "dividend_amount": 30.0,
+        "dividend_yield": 0.009295
+      },
+      {
+        "symbol": "ITMG.JK",
+        "ex_date": "2025-04-21",
+        "cum_date": "2025-04-17",
+        "recording_date": "2025-04-22",
+        "payment_date": "2025-05-07",
+        "dividend_amount": 2245.0,
+        "dividend_yield": 0.0973147
+      },
+      {
+        "symbol": "AVIA.JK",
+        "ex_date": "2025-04-22",
+        "cum_date": "2025-04-21",
+        "recording_date": "2025-04-23",
+        "payment_date": "2025-04-30",
+        "dividend_amount": 11.0,
+        "dividend_yield": 0.0257154
+      },
+      {
+        "symbol": "BBHI.JK",
+        "ex_date": "2025-04-22",
+        "cum_date": "2025-04-21",
+        "recording_date": "2025-04-23",
+        "payment_date": "2025-04-30",
+        "dividend_amount": 10.74,
+        "dividend_yield": 0.00994035
+      },
+      {
+        "symbol": "JPFA.JK",
+        "ex_date": "2025-04-22",
+        "cum_date": "2025-04-21",
+        "recording_date": "2025-04-23",
+        "payment_date": "2025-04-29",
+        "dividend_amount": 70.0,
+        "dividend_yield": 0.0354058
+      },
+      {
+        "symbol": "LPPF.JK",
+        "ex_date": "2025-04-22",
+        "cum_date": "2025-04-21",
+        "recording_date": "2025-04-23",
+        "payment_date": "2025-04-29",
+        "dividend_amount": 300.0,
+        "dividend_yield": 0.178185
+      },
+      {
+        "symbol": "OBAT.JK",
+        "ex_date": "2025-04-22",
+        "cum_date": "2025-04-21",
+        "recording_date": "2025-04-23",
+        "payment_date": "2025-04-30",
+        "dividend_amount": 22.37,
+        "dividend_yield": 0.0461793
+      },
+      {
+        "symbol": "BNII.JK",
+        "ex_date": "2025-04-23",
+        "cum_date": "2025-04-22",
+        "recording_date": "2025-04-24",
+        "payment_date": "2025-05-09",
+        "dividend_amount": 5.85691,
+        "dividend_yield": 0.028897
+      },
+      {
+        "symbol": "BNGA.JK",
+        "ex_date": "2025-04-24",
+        "cum_date": "2025-04-23",
+        "recording_date": "2025-04-25",
+        "payment_date": "2025-05-14",
+        "dividend_amount": 155.73,
+        "dividend_yield": 0.0904772
+      },
+      {
+        "symbol": "IMJS.JK",
+        "ex_date": "2025-04-24",
+        "cum_date": "2025-04-23",
+        "recording_date": "2025-04-25",
+        "payment_date": "2025-05-16",
+        "dividend_amount": 0.35,
+        "dividend_yield": 0.00161942
+      },
+      {
+        "symbol": "BELL.JK",
+        "ex_date": "2025-04-25",
+        "cum_date": "2025-04-24",
+        "recording_date": "2025-04-28",
+        "payment_date": "2025-05-15",
+        "dividend_amount": 0.69,
+        "dividend_yield": 0.011874
+      },
+      {
+        "symbol": "CINT.JK",
+        "ex_date": "2025-04-25",
+        "cum_date": "2025-04-24",
+        "recording_date": "2025-04-28",
+        "payment_date": "2025-05-15",
+        "dividend_amount": 10.0,
+        "dividend_yield": 0.0590724
+      },
+      {
+        "symbol": "NAIK.JK",
+        "ex_date": "2025-04-25",
+        "cum_date": "2025-04-24",
+        "recording_date": "2025-04-28",
+        "payment_date": "2025-05-16",
+        "dividend_amount": 3.0,
+        "dividend_yield": 0.0130673
+      },
+      {
+        "symbol": "BJBR.JK",
+        "ex_date": "2025-04-28",
+        "cum_date": "2025-04-25",
+        "recording_date": "2025-04-29",
+        "payment_date": "2025-05-16",
+        "dividend_amount": 85.25,
+        "dividend_yield": 0.103677
+      },
+      {
+        "symbol": "ESSA.JK",
+        "ex_date": "2025-04-28",
+        "cum_date": "2025-04-25",
+        "recording_date": "2025-04-29",
+        "payment_date": "2025-05-16",
+        "dividend_amount": 10.0,
+        "dividend_yield": 0.0153596
+      },
+      {
+        "symbol": "KDTN.JK",
+        "ex_date": "2025-04-28",
+        "cum_date": "2025-04-25",
+        "recording_date": "2025-04-29",
+        "payment_date": "2025-05-15",
+        "dividend_amount": 0.88,
+        "dividend_yield": 0.00484193
+      },
+      {
+        "symbol": "TRIS.JK",
+        "ex_date": "2025-04-28",
+        "cum_date": "2025-04-25",
+        "recording_date": "2025-04-29",
+        "payment_date": "2025-05-21",
+        "dividend_amount": 7.2,
+        "dividend_yield": 0.0409377
+      },
+      {
+        "symbol": "BTPS.JK",
+        "ex_date": "2025-04-29",
+        "cum_date": "2025-04-28",
+        "recording_date": "2025-04-30",
+        "payment_date": "2025-05-16",
+        "dividend_amount": 34.5,
+        "dividend_yield": 0.0280986
+      },
+      {
+        "symbol": "CMRY.JK",
+        "ex_date": "2025-04-29",
+        "cum_date": "2025-04-28",
+        "recording_date": "2025-04-30",
+        "payment_date": "2025-05-09",
+        "dividend_amount": 150.0,
+        "dividend_yield": 0.0305498
+      },
+      {
+        "symbol": "MFIN.JK",
+        "ex_date": "2025-04-29",
+        "cum_date": "2025-04-28",
+        "recording_date": "2025-04-30",
+        "payment_date": "2025-05-22",
+        "dividend_amount": 116.0,
+        "dividend_yield": 0.0461269
+      },
+      {
+        "symbol": "CUAN.JK",
+        "ex_date": "2025-04-30",
+        "cum_date": "2025-04-29",
+        "recording_date": "2025-05-02",
+        "payment_date": "2025-05-22",
+        "dividend_amount": 2.9342,
+        "dividend_yield": 0.00199684
+      },
+      {
+        "symbol": "PTRO.JK",
+        "ex_date": "2025-04-30",
+        "cum_date": "2025-04-29",
+        "recording_date": "2025-05-02",
+        "payment_date": "2025-05-22",
+        "dividend_amount": 16.5367,
+        "dividend_yield": 0.00342327
+      },
+      {
+        "symbol": "SOSS.JK",
+        "ex_date": "2025-04-30",
+        "cum_date": "2025-04-29",
+        "recording_date": "2025-05-02",
+        "payment_date": "2025-05-23",
+        "dividend_amount": 2.0,
+        "dividend_yield": 0.00316428
+      },
+      {
+        "symbol": "SSMS.JK",
+        "ex_date": "2025-04-30",
+        "cum_date": "2025-04-29",
+        "recording_date": "2025-05-02",
+        "payment_date": "2025-05-21",
+        "dividend_amount": 47.24,
+        "dividend_yield": 0.0308148
+      }
+    ]
+  }
+}

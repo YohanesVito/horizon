@@ -1,0 +1,33 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "retrieved_at": "2026-10-06T01:21:55.814306+08:00",
+  "initialization": {
+    "protocolVersion": "2025-03-26",
+    "capabilities": {
+      "tools": {
+        "listChanged": true
+      }
+    },
+    "serverInfo": {
+      "name": "sectors-mcp",
+      "version": "1.0.0"
+    }
+  },
+  "method": "tools/call",
+  "tool": "fetch-news",
+  "arguments": {
+    "symbols": "UNTR,ASGR",
+    "start": "2026-10-01",
+    "end": "2026-10-06",
+    "limit": 30
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "API error (400): End date cannot be in the future. Today is 2026-10-05."
+      }
+    ],
+    "isError": true
+  }
+}

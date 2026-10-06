@@ -1,0 +1,217 @@
+[
+  {
+    "file": "prices-BBCA-2024-03-25.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BBCA-2024-11-21.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BBCA-2025-12-03.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BBCA-2025-03-21.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BBCA-2023-12-04.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BBCA-2023-03-29.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BBCA-2022-12-02.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BBCA-2022-03-28.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BBRI-2024-01-02.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BBRI-2024-03-14.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BBRI-2023-03-24.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BBRI-2023-01-10.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BBRI-2022-03-11.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BBRI-2025-04-11.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BBRI-2024-12-27.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BBRI-2025-12-30.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BMRI-2025-04-14.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BMRI-2024-03-20.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BMRI-2023-03-27.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BMRI-2022-03-21.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BBNI-2024-03-15.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BBNI-2023-03-28.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BBNI-2022-03-24.json",
+    "cached": true
+  },
+  {
+    "file": "prices-BBNI-2025-04-15.json",
+    "cached": true
+  },
+  {
+    "file": "prices-DMAS-2025-05-08.json",
+    "cached": true
+  },
+  {
+    "file": "prices-DMAS-2023-12-11.json",
+    "ok": true,
+    "rows": 59
+  },
+  {
+    "file": "prices-DMAS-2022-11-08.json",
+    "ok": true,
+    "rows": 64
+  },
+  {
+    "file": "prices-DMAS-2022-06-15.json",
+    "ok": true,
+    "rows": 61
+  },
+  {
+    "file": "prices-DMAS-2023-07-03.json",
+    "ok": true,
+    "rows": 60
+  },
+  {
+    "file": "prices-LPPF-2025-04-22.json",
+    "ok": true,
+    "rows": 50
+  },
+  {
+    "file": "prices-LPPF-2024-04-22.json",
+    "ok": true,
+    "rows": 52
+  },
+  {
+    "file": "prices-LPPF-2023-04-10.json",
+    "ok": true,
+    "rows": 53
+  },
+  {
+    "file": "prices-LPPF-2022-04-14.json",
+    "ok": true,
+    "rows": 54
+  },
+  {
+    "file": "prices-ADRO-2024-11-28.json",
+    "ok": true,
+    "rows": 56
+  },
+  {
+    "file": "prices-ADRO-2025-12-30.json",
+    "ok": true,
+    "rows": 57
+  },
+  {
+    "file": "prices-ADRO-2024-05-28.json",
+    "ok": true,
+    "rows": 58
+  },
+  {
+    "file": "prices-ADRO-2023-05-23.json",
+    "ok": true,
+    "rows": 57
+  },
+  {
+    "file": "prices-ADRO-2023-01-02.json",
+    "ok": true,
+    "rows": 64
+  },
+  {
+    "file": "prices-ADRO-2022-05-17.json",
+    "ok": true,
+    "rows": 55
+  },
+  {
+    "file": "prices-ADRO-2023-12-29.json",
+    "ok": true,
+    "rows": 58
+  },
+  {
+    "file": "prices-ADRO-2025-06-13.json",
+    "ok": true,
+    "rows": 58
+  },
+  {
+    "file": "prices-ADRO-2024-12-30.json",
+    "ok": true,
+    "rows": 58
+  },
+  {
+    "file": "prices-CFIN-2025-06-11.json",
+    "ok": true,
+    "rows": 58
+  },
+  {
+    "file": "prices-CFIN-2023-07-06.json",
+    "ok": true,
+    "rows": 59
+  },
+  {
+    "file": "prices-RALS-2023-06-06.json",
+    "ok": true,
+    "rows": 57
+  },
+  {
+    "file": "prices-RALS-2022-06-02.json",
+    "ok": true,
+    "rows": 61
+  },
+  {
+    "file": "prices-RALS-2025-05-22.json",
+    "ok": true,
+    "rows": 56
+  },
+  {
+    "file": "prices-RALS-2024-05-30.json",
+    "ok": true,
+    "rows": 58
+  }
+]

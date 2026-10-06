@@ -1,0 +1,19 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "retrieved_at": "2026-10-06T01:04:45.200385+08:00",
+  "tool": "fetch-company-report",
+  "arguments": {
+    "symbol": "DMAS",
+    "sections": [
+      "dividend"
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"symbol\": \"DMAS.JK\",\n  \"company_name\": \"PT Puradelta Lestari Tbk\",\n  \"dividend\": {\n    \"historical_dividends\": {\n      \"2020\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2020-12-03\",\n            \"total\": 25,\n            \"yield\": 0.115685001015663\n          },\n          {\n            \"date\": \"2020-04-24\",\n            \"total\": 21,\n            \"yield\": 0.0971757024526596\n          }\n        ],\n        \"total_yield\": 0.212860703468323,\n        \"total_dividend\": 46\n      },\n      \"2021\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2021-12-10\",\n            \"total\": 12,\n            \"yield\": 0.0555129013955593\n          },\n          {\n            \"date\": \"2021-05-21\",\n            \"total\": 6.5,\n            \"yield\": 0.030069500207901\n          }\n        ],\n        \"total_yield\": 0.0855824016034603,\n        \"total_dividend\": 18.5\n      },\n      \"2022\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2022-11-08\",\n            \"total\": 15,\n            \"yield\": 0.0860039964318275\n          },\n          {\n            \"date\": \"2022-06-15\",\n            \"total\": 2.5,\n            \"yield\": 0.0143339997157454\n          }\n        ],\n        \"total_yield\": 0.100337996147573,\n        \"total_dividend\": 17.5\n      },\n      \"2023\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2023-12-11\",\n            \"total\": 12,\n            \"yield\": 0.0708236023783684\n          },\n          {\n            \"date\": \"2023-07-03\",\n            \"total\": 10,\n            \"yield\": 0.0590195991098881\n          }\n        ],\n        \"total_yield\": 0.129843201488256,\n        \"total_dividend\": 22\n      },\n      \"2025\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2025-05-08\",\n            \"total\": 29,\n            \"yield\": 0.208766743540764\n          }\n        ],\n        \"total_yield\": 0.208766743540764,\n        \"total_dividend\": 29\n      },\n      \"2026\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2026-06-25\",\n            \"total\": 16.5,\n            \"yield\": 0.0916666666666667\n          }\n        ],\n        \"total_yield\": 0.0916666666666667,\n        \"total_dividend\": 16.5\n      }\n    },\n    \"upcoming_dividends\": null,\n    \"yield_ttm\": 0.0916666666666667,\n    \"dividend_yield_avg\": {\n      \"period\": 5,\n      \"avg_yield\": 0.147478209249675\n    },\n    \"dividend_ttm\": 16.5,\n    \"payout_ratio\": 0.509487447168915,\n    \"cash_payout_ratio\": 0.544275807312361,\n    \"last_ex_dividend_date\": \"2026-06-25\"\n  }\n}"
+      }
+    ]
+  }
+}

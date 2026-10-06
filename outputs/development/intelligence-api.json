@@ -1,0 +1,461 @@
+{
+  "audit": {
+    "symbols": 9,
+    "events": 48,
+    "eligible": 44,
+    "complete": 43,
+    "excluded": 4
+  },
+  "rules": {
+    "name": "Return dan risiko tim",
+    "entry_offset": 5,
+    "horizon": 20,
+    "objective": "return",
+    "minimum_samples": 3,
+    "maximum_loss_upper_pct": 100.0,
+    "minimum_median_return_pct": -100.0,
+    "saved_at": "2026-10-06T02:07:24.435818+00:00"
+  },
+  "version": "intelligence-8a6d340ad419b922",
+  "ranking": {
+    "ranked": [
+      {
+        "symbol": "BBRI",
+        "complete_events": 8,
+        "trap_pct": 25.0,
+        "trap_interval": [
+          7.147921275210911,
+          59.0724569689831
+        ],
+        "median_return_pct": 4.667887252854358,
+        "worst_return_pct": -8.512396694214877,
+        "median_recovery_sessions": 2,
+        "reasons": [],
+        "rank": 1
+      },
+      {
+        "symbol": "RALS",
+        "complete_events": 4,
+        "trap_pct": 25.0,
+        "trap_interval": [
+          4.558726080970055,
+          69.9358157417598
+        ],
+        "median_return_pct": 1.469642857142857,
+        "worst_return_pct": -8.88888888888889,
+        "median_recovery_sessions": null,
+        "reasons": [],
+        "rank": 2
+      },
+      {
+        "symbol": "BBCA",
+        "complete_events": 8,
+        "trap_pct": 50.0,
+        "trap_interval": [
+          21.521606221387763,
+          78.47839377861223
+        ],
+        "median_return_pct": -1.0311322300507946,
+        "worst_return_pct": -4.611111111111111,
+        "median_recovery_sessions": 2,
+        "reasons": [],
+        "rank": 3
+      },
+      {
+        "symbol": "LPPF",
+        "complete_events": 4,
+        "trap_pct": 75.0,
+        "trap_interval": [
+          30.06418425824019,
+          95.44127391902994
+        ],
+        "median_return_pct": -2.125277098846132,
+        "worst_return_pct": -7.793522267206478,
+        "median_recovery_sessions": null,
+        "reasons": [],
+        "rank": 4
+      },
+      {
+        "symbol": "DMAS",
+        "complete_events": 5,
+        "trap_pct": 60.0,
+        "trap_interval": [
+          23.072428127601302,
+          88.2379225767352
+        ],
+        "median_return_pct": -3.409090909090909,
+        "worst_return_pct": -8.707865168539326,
+        "median_recovery_sessions": null,
+        "reasons": [],
+        "rank": 5
+      },
+      {
+        "symbol": "ADRO",
+        "complete_events": 8,
+        "trap_pct": 75.0,
+        "trap_interval": [
+          40.9275430310169,
+          92.8520787247891
+        ],
+        "median_return_pct": -4.6538095238095245,
+        "worst_return_pct": -15.714435695538057,
+        "median_recovery_sessions": null,
+        "reasons": [],
+        "rank": 6
+      }
+    ],
+    "excluded": [
+      {
+        "symbol": "BMRI",
+        "complete_events": 2,
+        "trap_pct": 50.0,
+        "trap_interval": [
+          9.453120573423075,
+          90.54687942657694
+        ],
+        "median_return_pct": 7.533734900357691,
+        "worst_return_pct": -0.29532631578947366,
+        "median_recovery_sessions": 3,
+        "reasons": [
+          "Sampel lengkap 2 < 3"
+        ]
+      },
+      {
+        "symbol": "BBNI",
+        "complete_events": 2,
+        "trap_pct": 50.0,
+        "trap_interval": [
+          9.453120573423075,
+          90.54687942657694
+        ],
+        "median_return_pct": 3.8739908458586507,
+        "worst_return_pct": -6.262796610169492,
+        "median_recovery_sessions": 0,
+        "reasons": [
+          "Sampel lengkap 2 < 3"
+        ]
+      },
+      {
+        "symbol": "CFIN",
+        "complete_events": 2,
+        "trap_pct": 0.0,
+        "trap_interval": [
+          0.0,
+          65.76197724933468
+        ],
+        "median_return_pct": 24.082747853239656,
+        "worst_return_pct": 0.546448087431694,
+        "median_recovery_sessions": 1,
+        "reasons": [
+          "Sampel lengkap 2 < 3"
+        ]
+      }
+    ],
+    "rules": {
+      "name": "Return dan risiko tim",
+      "entry_offset": 5,
+      "horizon": 20,
+      "objective": "return",
+      "minimum_samples": 3,
+      "maximum_loss_upper_pct": 100.0,
+      "minimum_median_return_pct": -100.0
+    },
+    "dataset_version": "intelligence-8a6d340ad419b922",
+    "version": "empirical-v1.0",
+    "label": "Ranking historis eksploratif; bukan rekomendasi atau forecast"
+  },
+  "scenario": {
+    "id": "0ab6fa57-df7e-4974-9270-b2450d4efe92",
+    "input": {
+      "symbol": "BBCA",
+      "capital": "100000000",
+      "entry_price": "10000",
+      "dps": "250",
+      "entry_date": "2026-11-02",
+      "cum_date": "2026-11-09",
+      "ex_date": "2026-11-10",
+      "recording_date": "2026-11-11",
+      "payment_date": "2026-12-10",
+      "valuation_date": "2026-12-08",
+      "entry_offset": 5,
+      "horizon": 20
+    },
+    "result": {
+      "symbol": "BBCA",
+      "analog_count": 8,
+      "shares": 10000,
+      "uninvested_cash": 0.0,
+      "dividend_entitlement": 2500000.0,
+      "dividend_cash": 0,
+      "dividend_receivable": 2500000.0,
+      "price_bep": 10000.0,
+      "total_bep": 9750.0,
+      "pnl": {
+        "worst": -3411330.049261087,
+        "p10": -2773399.014778329,
+        "median": -247419.3019826287,
+        "p90": 9052531.460345332,
+        "best": 9962686.567164177
+      },
+      "loss_scenarios": 4,
+      "rows": [
+        {
+          "event_id": "BBCA:2024-03-25",
+          "ex_date": "2024-03-25",
+          "price_change_pct": -5.911330049261087,
+          "exit_price": 9408.866995073891,
+          "capital_gain": -5911330.049261087,
+          "dividend": 2500000.0,
+          "gross_pnl": -3411330.049261087,
+          "gross_return_pct": -3.411330049261087,
+          "ending_value": 96588669.9507389,
+          "price_bep_session": null,
+          "assumed_receivable": true
+        },
+        {
+          "event_id": "BBCA:2022-12-02",
+          "ex_date": "2022-12-02",
+          "price_change_pct": -5.000000000000004,
+          "exit_price": 9500.0,
+          "capital_gain": -5000000.000000004,
+          "dividend": 2500000.0,
+          "gross_pnl": -2500000.000000004,
+          "gross_return_pct": -2.500000000000004,
+          "ending_value": 97500000.0,
+          "price_bep_session": null,
+          "assumed_receivable": true
+        },
+        {
+          "event_id": "BBCA:2024-11-21",
+          "ex_date": "2024-11-21",
+          "price_change_pct": -4.926108374384242,
+          "exit_price": 9507.389162561576,
+          "capital_gain": -4926108.374384242,
+          "dividend": 2500000.0,
+          "gross_pnl": -2426108.374384242,
+          "gross_return_pct": -2.426108374384242,
+          "ending_value": 97573891.62561576,
+          "price_bep_session": 2,
+          "assumed_receivable": true
+        },
+        {
+          "event_id": "BBCA:2025-12-03",
+          "ex_date": "2025-12-03",
+          "price_change_pct": -3.8235294117647034,
+          "exit_price": 9617.64705882353,
+          "capital_gain": -3823529.411764703,
+          "dividend": 2500000.0,
+          "gross_pnl": -1323529.4117647035,
+          "gross_return_pct": -1.3235294117647034,
+          "ending_value": 98676470.5882353,
+          "price_bep_session": null,
+          "assumed_receivable": true
+        },
+        {
+          "event_id": "BBCA:2025-03-21",
+          "ex_date": "2025-03-21",
+          "price_change_pct": -1.671309192200554,
+          "exit_price": 9832.869080779945,
+          "capital_gain": -1671309.192200554,
+          "dividend": 2500000.0,
+          "gross_pnl": 828690.807799446,
+          "gross_return_pct": 0.828690807799446,
+          "ending_value": 100828690.80779944,
+          "price_bep_session": null,
+          "assumed_receivable": true
+        },
+        {
+          "event_id": "BBCA:2022-03-28",
+          "ex_date": "2022-03-28",
+          "price_change_pct": 2.848101265822778,
+          "exit_price": 10284.810126582277,
+          "capital_gain": 2848101.265822778,
+          "dividend": 2500000.0,
+          "gross_pnl": 5348101.265822778,
+          "gross_return_pct": 5.348101265822778,
+          "ending_value": 105348101.26582278,
+          "price_bep_session": 0,
+          "assumed_receivable": true
+        },
+        {
+          "event_id": "BBCA:2023-12-04",
+          "ex_date": "2023-12-04",
+          "price_change_pct": 6.162464985994398,
+          "exit_price": 10616.24649859944,
+          "capital_gain": 6162464.985994398,
+          "dividend": 2500000.0,
+          "gross_pnl": 8662464.985994399,
+          "gross_return_pct": 8.662464985994397,
+          "ending_value": 108662464.9859944,
+          "price_bep_session": 0,
+          "assumed_receivable": true
+        },
+        {
+          "event_id": "BBCA:2023-03-29",
+          "ex_date": "2023-03-29",
+          "price_change_pct": 7.462686567164178,
+          "exit_price": 10746.268656716418,
+          "capital_gain": 7462686.567164178,
+          "dividend": 2500000.0,
+          "gross_pnl": 9962686.567164177,
+          "gross_return_pct": 9.962686567164178,
+          "ending_value": 109962686.56716418,
+          "price_bep_session": 0,
+          "assumed_receivable": true
+        }
+      ],
+      "dataset_version": "intelligence-8a6d340ad419b922",
+      "trajectory": [
+        {
+          "session": 0,
+          "p10": -3162280.280472574,
+          "median": 1574986.3163656262,
+          "p90": 4022388.059701491
+        },
+        {
+          "session": 1,
+          "p10": -3190889.7263640845,
+          "median": 757389.1625615759,
+          "p90": 3915861.8671349166
+        },
+        {
+          "session": 2,
+          "p10": -3119699.783348807,
+          "median": 1430261.7598763644,
+          "p90": 4015697.375193001
+        },
+        {
+          "session": 3,
+          "p10": -2843082.636954505,
+          "median": 1200859.654206513,
+          "p90": 4686945.021726811
+        },
+        {
+          "session": 4,
+          "p10": -2871402.0427112347,
+          "median": 41775.33082198369,
+          "p90": 4154354.8082372965
+        },
+        {
+          "session": 5,
+          "p10": -5011142.061281338,
+          "median": 288080.74954119534,
+          "p90": 3753731.343283581
+        },
+        {
+          "session": 6,
+          "p10": -5320094.131207375,
+          "median": -1137110.0164203583,
+          "p90": 3843283.5820895485
+        },
+        {
+          "session": 7,
+          "p10": -4124610.847124365,
+          "median": -378392.7364049057,
+          "p90": 4367215.645908395
+        },
+        {
+          "session": 8,
+          "p10": -2756499.5357474447,
+          "median": 374162.32315711,
+          "p90": 5092332.455370206
+        },
+        {
+          "session": 9,
+          "p10": -3979753.557363779,
+          "median": -316455.6962025354,
+          "p90": 6733538.19139597
+        },
+        {
+          "session": 10,
+          "p10": -3259055.3462764425,
+          "median": -829817.1589310805,
+          "p90": 6627011.998829375
+        },
+        {
+          "session": 11,
+          "p10": -3394795.3400935847,
+          "median": -44676.09828741278,
+          "p90": 7287825.577992396
+        },
+        {
+          "session": 12,
+          "p10": -3200956.244566794,
+          "median": -494022.5035161751,
+          "p90": 7769534.679543462
+        },
+        {
+          "session": 13,
+          "p10": -5129155.975136186,
+          "median": -571378.3403656825,
+          "p90": 8323822.066139894
+        },
+        {
+          "session": 14,
+          "p10": -2881205.9642798617,
+          "median": -859418.8439234283,
+          "p90": 8592478.782557804
+        },
+        {
+          "session": 15,
+          "p10": -3065359.4771241853,
+          "median": 122020.66495602191,
+          "p90": 8805531.167690959
+        },
+        {
+          "session": 16,
+          "p10": -3076192.0367032643,
+          "median": -929569.1214067447,
+          "p90": 8643400.64383963
+        },
+        {
+          "session": 17,
+          "p10": -2551724.137931037,
+          "median": -820663.5838467556,
+          "p90": 8643400.64383963
+        },
+        {
+          "session": 18,
+          "p10": -1898692.8104575148,
+          "median": -338344.0591681851,
+          "p90": 8391717.881182326
+        },
+        {
+          "session": 19,
+          "p10": -2305555.555555561,
+          "median": -616895.5912016126,
+          "p90": 8072139.303482589
+        },
+        {
+          "session": 20,
+          "p10": -2773399.014778329,
+          "median": -247419.3019826287,
+          "p90": 9052531.460345332
+        }
+      ],
+      "worst_observed_pnl": -10870473.537604455,
+      "version": "analogs-v1.0",
+      "model_version": null,
+      "assumptions": [
+        "Stress test satu posisi: harga/DPS/jadwal diinput pengguna, bukan jadwal terkonfirmasi atau target harga.",
+        "Perubahan harga analog dari entry 5 sesi sebelum cum hingga t20 setelah ex diterapkan ke harga input.",
+        "Tanggal valuasi adalah asumsi tanggal tH dari pengguna; jumlah sesi kalender BEI belum diverifikasi.",
+        "P10/P50/P90 adalah kuantil sampel analog, bukan peluang/rentang prediksi masa depan.",
+        "Kurva kuantil dihitung per sesi; tiap garis bukan satu jalur event dan bukan simulasi eksekusi.",
+        "Nilai akhir adalah valuasi posisi + hak dividen + sisa kas; bukan kas siap rotasi. Tidak menyimulasikan penjualan/T+2.",
+        "Di luar biaya transaksi, pajak, dan slippage. Tidak memasukkan dividen kedua atau reinvestasi."
+      ]
+    },
+    "created_at": "2026-10-06T02:07:43.768801+00:00",
+    "financial_logic": {
+      "name": "Return dan risiko tim",
+      "entry_offset": 5,
+      "horizon": 20,
+      "objective": "return",
+      "minimum_samples": 3,
+      "maximum_loss_upper_pct": 100.0,
+      "minimum_median_return_pct": -100.0,
+      "saved_at": "2026-10-06T02:07:24.435818+00:00"
+    }
+  }
+}

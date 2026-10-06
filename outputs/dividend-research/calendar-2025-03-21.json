@@ -1,0 +1,21 @@
+{
+  "transport": "Sectors REST GET; endpoint absent from inspected MCP registry",
+  "url": "https://api.sectors.app/v2/corporate-actions/?start=2025-03-21&end=2025-03-21&type=dividend",
+  "retrieved_at": "2026-10-06T01:04:43.748480+08:00",
+  "http_status": 200,
+  "result": {
+    "start": "2025-03-21",
+    "end": "2025-03-21",
+    "dividend": [
+      {
+        "symbol": "BBCA.JK",
+        "ex_date": "2025-03-21",
+        "cum_date": "2025-03-20",
+        "recording_date": "2025-03-24",
+        "payment_date": "2025-04-11",
+        "dividend_amount": 250.0,
+        "dividend_yield": 0.0291689
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "retrieved_at": "2026-10-06T01:04:47.208029+08:00",
+  "tool": "fetch-company-report",
+  "arguments": {
+    "symbol": "ADRO",
+    "sections": [
+      "dividend"
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"symbol\": \"ADRO.JK\",\n  \"company_name\": \"Alamtri Resources Indonesia Tbk\",\n  \"dividend\": {\n    \"historical_dividends\": {\n      \"2020\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2020-06-04\",\n            \"total\": 44.13,\n            \"yield\": 0.0379342995584011\n          },\n          {\n            \"date\": \"2020-01-03\",\n            \"total\": 65.48,\n            \"yield\": 0.0562869012355804\n          }\n        ],\n        \"total_yield\": 0.0942212007939816,\n        \"total_dividend\": 109.61\n      },\n      \"2021\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2021-12-30\",\n            \"total\": 160.16,\n            \"yield\": 0.112777002155781\n          },\n          {\n            \"date\": \"2021-05-05\",\n            \"total\": 66.28,\n            \"yield\": 0.0466714017093182\n          }\n        ],\n        \"total_yield\": 0.159448403865099,\n        \"total_dividend\": 226.44\n      },\n      \"2022\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2022-05-17\",\n            \"total\": 141.39,\n            \"yield\": 0.04376570135355\n          }\n        ],\n        \"total_yield\": 0.04376570135355,\n        \"total_dividend\": 141.39\n      },\n      \"2023\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2023-12-29\",\n            \"total\": 199.98,\n            \"yield\": 0.0746031031012535\n          },\n          {\n            \"date\": \"2023-05-23\",\n            \"total\": 240.78,\n            \"yield\": 0.0898236036300659\n          },\n          {\n            \"date\": \"2023-01-02\",\n            \"total\": 251.28,\n            \"yield\": 0.093740701675415\n          }\n        ],\n        \"total_yield\": 0.258167408406734,\n        \"total_dividend\": 692.04\n      },\n      \"2024\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2024-12-30\",\n            \"total\": 106.84,\n            \"yield\": 0.0355478003621101\n          },\n          {\n            \"date\": \"2024-11-28\",\n            \"total\": 1358.18,\n            \"yield\": 0.451893985271454\n          },\n          {\n            \"date\": \"2024-05-28\",\n            \"total\": 209.31,\n            \"yield\": 0.0696417018771172\n          }\n        ],\n        \"total_yield\": 0.557083487510681,\n        \"total_dividend\": 1674.33\n      },\n      \"2025\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2025-12-30\",\n            \"total\": 145.15,\n            \"yield\": 0.0754979476332664\n          },\n          {\n            \"date\": \"2025-06-13\",\n            \"total\": 166.69,\n            \"yield\": 0.0867076814174652\n          }\n        ],\n        \"total_yield\": 0.162205629050732,\n        \"total_dividend\": 311.84\n      }\n    },\n    \"upcoming_dividends\": null,\n    \"yield_ttm\": 0.0580559997558594,\n    \"dividend_yield_avg\": {\n      \"period\": 5,\n      \"avg_yield\": 0.254978366196156\n    },\n    \"dividend_ttm\": 145.15,\n    \"payout_ratio\": 0.424955950698624,\n    \"cash_payout_ratio\": -0.897356857314066,\n    \"last_ex_dividend_date\": \"2025-12-30\"\n  }\n}"
+      }
+    ]
+  }
+}

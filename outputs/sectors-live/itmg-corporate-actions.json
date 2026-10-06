@@ -1,0 +1,29 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "initialization": {
+    "protocolVersion": "2025-03-26",
+    "capabilities": {
+      "tools": {
+        "listChanged": true
+      }
+    },
+    "serverInfo": {
+      "name": "sectors-mcp",
+      "version": "1.0.0"
+    }
+  },
+  "method": "tools/call",
+  "tool": "fetch-corporate-actions",
+  "arguments": {
+    "symbol": "ITMG"
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"symbol\": \"ITMG.JK\",\n  \"corporate_actions\": {\n    \"agm\": [\n      {\n        \"agm_date\": \"2022-03-24\",\n        \"agm_time\": \"13:00:00\",\n        \"agm_place\": \"Virtual Dan Offline Secara Terbatas Dikantor Perseroan\",\n        \"agm_result\": null\n      },\n      {\n        \"agm_date\": \"2022-09-15\",\n        \"agm_time\": \"16:00:00\",\n        \"agm_place\": \"Pubex Live 2022\",\n        \"agm_result\": null\n      },\n      {\n        \"agm_date\": \"2023-03-30\",\n        \"agm_time\": \"13:00:00\",\n        \"agm_place\": \"Pondok Indah Office Tower Iii, Lt.3Jl. Sultan Iskandar Muda KAV V-Tajakarta Selatan 12310\",\n        \"agm_result\": null\n      },\n      {\n        \"agm_date\": \"2023-11-30\",\n        \"agm_time\": \"10:00:00\",\n        \"agm_place\": \"IDX Public Expose\",\n        \"agm_result\": null\n      },\n      {\n        \"agm_date\": \"2024-03-28\",\n        \"agm_time\": null,\n        \"agm_place\": \"\",\n        \"agm_result\": null\n      },\n      {\n        \"agm_date\": \"2024-08-28\",\n        \"agm_time\": \"15:00:00\",\n        \"agm_place\": \"IDX Public Expose\",\n        \"agm_result\": null\n      },\n      {\n        \"agm_date\": \"2025-04-09\",\n        \"agm_time\": \"13:30:00\",\n        \"agm_place\": \"Intercontinental Jakarta Pondok Indah Jalan Metro Pondok Indah Kav. IV Ta, Jakarta, 12310\",\n        \"agm_result\": null\n      },\n      {\n        \"agm_date\": \"2025-09-10\",\n        \"agm_time\": \"14:00:00\",\n        \"agm_place\": \"IDX Public Expose\",\n        \"agm_result\": null\n      },\n      {\n        \"agm_date\": \"2025-11-03\",\n        \"agm_time\": \"14:30:00\",\n        \"agm_place\": \"Secara Elektronik Melalui Sistem Easy. Ksei (E-Rups Ksei Kota Adm. Jakartaselatan\",\n        \"agm_result\": null\n      },\n      {\n        \"agm_date\": \"2026-04-17\",\n        \"agm_time\": \"09:00:00\",\n        \"agm_place\": \"Rapat Akan Dilaksanakan Secara Elektronik Melalui Fasilitas Electronic General Meetingsystem Kseie-Rups Ksei\",\n        \"agm_result\": null\n      },\n      {\n        \"agm_date\": \"2026-09-09\",\n        \"agm_time\": \"09:00:00\",\n        \"agm_place\": \"IDX Public Expose\",\n        \"agm_result\": null\n      }\n    ],\n    \"bonus\": null,\n    \"warrant\": null,\n    \"dividend\": [\n      {\n        \"ex_date\": \"2026-04-28\",\n        \"payment_date\": \"2026-05-19\",\n        \"dividend_yield\": null,\n        \"dividend_amount\": 0.05712\n      },\n      {\n        \"ex_date\": \"2020-06-08\",\n        \"payment_date\": \"2020-06-23\",\n        \"dividend_yield\": 0.0617741,\n        \"dividend_amount\": 570\n      },\n      {\n        \"ex_date\": \"2025-11-13\",\n        \"payment_date\": \"2025-11-26\",\n        \"dividend_yield\": 0.0319903,\n        \"dividend_amount\": 738\n      },\n      {\n        \"ex_date\": \"2024-04-17\",\n        \"payment_date\": \"2024-04-25\",\n        \"dividend_yield\": 0.0668031,\n        \"dividend_amount\": 1747\n      },\n      {\n        \"ex_date\": \"2021-11-11\",\n        \"payment_date\": \"2021-11-24\",\n        \"dividend_yield\": 0.0753372,\n        \"dividend_amount\": 1218\n      },\n      {\n        \"ex_date\": \"2023-09-12\",\n        \"payment_date\": \"2023-09-22\",\n        \"dividend_yield\": 0.0894397,\n        \"dividend_amount\": 2660\n      },\n      {\n        \"ex_date\": \"2023-04-11\",\n        \"payment_date\": \"2023-04-18\",\n        \"dividend_yield\": 0.215731,\n        \"dividend_amount\": 6416\n      },\n      {\n        \"ex_date\": \"2022-11-11\",\n        \"payment_date\": \"2022-11-22\",\n        \"dividend_yield\": 0.12167,\n        \"dividend_amount\": 4128\n      },\n      {\n        \"ex_date\": \"2022-04-04\",\n        \"payment_date\": \"2022-04-22\",\n        \"dividend_yield\": 0.0896019,\n        \"dividend_amount\": 3040\n      },\n      {\n        \"ex_date\": \"2021-04-15\",\n        \"payment_date\": \"2021-04-29\",\n        \"dividend_yield\": 0.0103295,\n        \"dividend_amount\": 167\n      },\n      {\n        \"ex_date\": \"2020-11-10\",\n        \"payment_date\": \"2020-11-24\",\n        \"dividend_yield\": 0.0332713,\n        \"dividend_amount\": 307\n      },\n      {\n        \"ex_date\": \"2025-04-21\",\n        \"payment_date\": \"2025-05-07\",\n        \"dividend_yield\": 0.0973147,\n        \"dividend_amount\": 2245\n      },\n      {\n        \"ex_date\": \"2024-09-10\",\n        \"payment_date\": \"2024-09-25\",\n        \"dividend_yield\": 0.0469572,\n        \"dividend_amount\": 1228\n      }\n    ],\n    \"right_issue\": null,\n    \"stock_split\": null,\n    \"upcoming_dividend\": null\n  }\n}"
+      }
+    ]
+  },
+  "retrieved_at": "2026-10-06T00:25:02.350884+08:00"
+}

@@ -1,0 +1,2001 @@
+{
+  "transport": "Sectors REST GET; endpoint absent from inspected MCP registry",
+  "url": "https://api.sectors.app/v2/corporate-actions/?start=2023-03-27&end=2023-06-24&type=dividend",
+  "retrieved_at": "2026-10-06T09:54:00.748084+08:00",
+  "http_status": 200,
+  "result": {
+    "start": "2023-03-27",
+    "end": "2023-06-24",
+    "dividend": [
+      {
+        "symbol": "BMRI.JK",
+        "ex_date": "2023-03-27",
+        "cum_date": "2023-03-24",
+        "recording_date": "2023-03-28",
+        "payment_date": "2023-04-12",
+        "dividend_amount": 264.668,
+        "dividend_yield": 0.04829
+      },
+      {
+        "symbol": "BBNI.JK",
+        "ex_date": "2023-03-28",
+        "cum_date": "2023-03-27",
+        "recording_date": "2023-03-29",
+        "payment_date": "2023-04-14",
+        "dividend_amount": 196.39,
+        "dividend_yield": 0.0832652
+      },
+      {
+        "symbol": "ESSA.JK",
+        "ex_date": "2023-03-28",
+        "cum_date": "2023-03-27",
+        "recording_date": "2023-03-29",
+        "payment_date": "2023-04-05",
+        "dividend_amount": 45.0,
+        "dividend_yield": 0.0621737
+      },
+      {
+        "symbol": "BBCA.JK",
+        "ex_date": "2023-03-29",
+        "cum_date": "2023-03-28",
+        "recording_date": "2023-03-30",
+        "payment_date": "2023-04-14",
+        "dividend_amount": 170.0,
+        "dividend_yield": 0.0190691
+      },
+      {
+        "symbol": "BBTN.JK",
+        "ex_date": "2023-03-29",
+        "cum_date": "2023-03-28",
+        "recording_date": "2023-03-30",
+        "payment_date": "2023-04-14",
+        "dividend_amount": 43.3943,
+        "dividend_yield": 0.0340414
+      },
+      {
+        "symbol": "FASW.JK",
+        "ex_date": "2023-03-31",
+        "cum_date": "2023-03-30",
+        "recording_date": "2023-04-03",
+        "payment_date": "2023-04-18",
+        "dividend_amount": 23.0,
+        "dividend_yield": 0.00384755
+      },
+      {
+        "symbol": "EAST.JK",
+        "ex_date": "2023-04-04",
+        "cum_date": "2023-04-03",
+        "recording_date": "2023-04-05",
+        "payment_date": "2023-04-17",
+        "dividend_amount": 2.355,
+        "dividend_yield": 0.0184461
+      },
+      {
+        "symbol": "LPPF.JK",
+        "ex_date": "2023-04-10",
+        "cum_date": "2023-04-06",
+        "recording_date": "2023-04-11",
+        "payment_date": "2023-04-17",
+        "dividend_amount": 525.0,
+        "dividend_yield": 0.158095
+      },
+      {
+        "symbol": "SIDO.JK",
+        "ex_date": "2023-04-10",
+        "cum_date": "2023-04-06",
+        "recording_date": "2023-04-11",
+        "payment_date": "2023-04-28",
+        "dividend_amount": 23.0,
+        "dividend_yield": 0.0333584
+      },
+      {
+        "symbol": "ITMG.JK",
+        "ex_date": "2023-04-11",
+        "cum_date": "2023-04-10",
+        "recording_date": "2023-04-12",
+        "payment_date": "2023-04-18",
+        "dividend_amount": 6416.0,
+        "dividend_yield": 0.215731
+      },
+      {
+        "symbol": "SDRA.JK",
+        "ex_date": "2023-04-11",
+        "cum_date": "2023-04-10",
+        "recording_date": "2023-04-12",
+        "payment_date": "2023-05-03",
+        "dividend_amount": 22.5,
+        "dividend_yield": 0.0383177
+      },
+      {
+        "symbol": "WOMF.JK",
+        "ex_date": "2023-04-11",
+        "cum_date": "2023-04-10",
+        "recording_date": "2023-04-12",
+        "payment_date": "2023-05-03",
+        "dividend_amount": 17.0,
+        "dividend_yield": 0.0503732
+      },
+      {
+        "symbol": "BDMN.JK",
+        "ex_date": "2023-04-12",
+        "cum_date": "2023-04-11",
+        "recording_date": "2023-04-13",
+        "payment_date": "2023-05-04",
+        "dividend_amount": 118.26,
+        "dividend_yield": 0.0417368
+      },
+      {
+        "symbol": "BNII.JK",
+        "ex_date": "2023-04-12",
+        "cum_date": "2023-04-11",
+        "recording_date": "2023-04-13",
+        "payment_date": "2023-04-28",
+        "dividend_amount": 7.72061,
+        "dividend_yield": 0.0308422
+      },
+      {
+        "symbol": "AALI.JK",
+        "ex_date": "2023-04-13",
+        "cum_date": "2023-04-12",
+        "recording_date": "2023-04-14",
+        "payment_date": "2023-05-04",
+        "dividend_amount": 319.0,
+        "dividend_yield": 0.0417885
+      },
+      {
+        "symbol": "ASGR.JK",
+        "ex_date": "2023-04-13",
+        "cum_date": "2023-04-12",
+        "recording_date": "2023-04-14",
+        "payment_date": "2023-05-05",
+        "dividend_amount": 21.0,
+        "dividend_yield": 0.0220737
+      },
+      {
+        "symbol": "ADMF.JK",
+        "ex_date": "2023-04-14",
+        "cum_date": "2023-04-13",
+        "recording_date": "2023-04-17",
+        "payment_date": "2023-05-04",
+        "dividend_amount": 803.0,
+        "dividend_yield": 0.076483
+      },
+      {
+        "symbol": "BJBR.JK",
+        "ex_date": "2023-04-14",
+        "cum_date": "2023-04-13",
+        "recording_date": "2023-04-17",
+        "payment_date": "2023-05-04",
+        "dividend_amount": 104.55,
+        "dividend_yield": 0.0853207
+      },
+      {
+        "symbol": "JPFA.JK",
+        "ex_date": "2023-04-17",
+        "cum_date": "2023-04-14",
+        "recording_date": "2023-04-18",
+        "payment_date": "2023-05-03",
+        "dividend_amount": 50.0,
+        "dividend_yield": 0.0400946
+      },
+      {
+        "symbol": "ROTI.JK",
+        "ex_date": "2023-04-17",
+        "cum_date": "2023-04-14",
+        "recording_date": "2023-04-18",
+        "payment_date": "2023-04-28",
+        "dividend_amount": 106.55,
+        "dividend_yield": 0.0796729
+      },
+      {
+        "symbol": "BNLI.JK",
+        "ex_date": "2023-04-18",
+        "cum_date": "2023-04-17",
+        "recording_date": "2023-04-26",
+        "payment_date": "2023-05-09",
+        "dividend_amount": 15.0,
+        "dividend_yield": 0.0155965
+      },
+      {
+        "symbol": "CMRY.JK",
+        "ex_date": "2023-04-18",
+        "cum_date": "2023-04-17",
+        "recording_date": "2023-04-26",
+        "payment_date": "2023-05-05",
+        "dividend_amount": 70.0,
+        "dividend_yield": 0.016591
+      },
+      {
+        "symbol": "CSAP.JK",
+        "ex_date": "2023-04-18",
+        "cum_date": "2023-04-17",
+        "recording_date": "2023-04-26",
+        "payment_date": "2023-05-11",
+        "dividend_amount": 11.0,
+        "dividend_yield": 0.0166668
+      },
+      {
+        "symbol": "DRMA.JK",
+        "ex_date": "2023-04-18",
+        "cum_date": "2023-04-17",
+        "recording_date": "2023-04-26",
+        "payment_date": "2023-05-10",
+        "dividend_amount": 20.94,
+        "dividend_yield": 0.0177382
+      },
+      {
+        "symbol": "BELL.JK",
+        "ex_date": "2023-04-26",
+        "cum_date": "2023-04-18",
+        "recording_date": "2023-04-27",
+        "payment_date": "2023-05-10",
+        "dividend_amount": 0.500206,
+        "dividend_yield": 0.00453611
+      },
+      {
+        "symbol": "BNGA.JK",
+        "ex_date": "2023-04-26",
+        "cum_date": "2023-04-18",
+        "recording_date": "2023-04-27",
+        "payment_date": "2023-05-10",
+        "dividend_amount": 115.16,
+        "dividend_yield": 0.0767819
+      },
+      {
+        "symbol": "IFSH.JK",
+        "ex_date": "2023-04-26",
+        "cum_date": "2023-04-18",
+        "recording_date": "2023-04-27",
+        "payment_date": "2023-05-12",
+        "dividend_amount": 28.12,
+        "dividend_yield": 0.0268205
+      },
+      {
+        "symbol": "TRIS.JK",
+        "ex_date": "2023-04-26",
+        "cum_date": "2023-04-18",
+        "recording_date": "2023-04-27",
+        "payment_date": "2023-05-12",
+        "dividend_amount": 6.5,
+        "dividend_yield": 0.0280496
+      },
+      {
+        "symbol": "AUTO.JK",
+        "ex_date": "2023-04-27",
+        "cum_date": "2023-04-26",
+        "recording_date": "2023-04-28",
+        "payment_date": "2023-05-11",
+        "dividend_amount": 88.0,
+        "dividend_yield": 0.0377171
+      },
+      {
+        "symbol": "NISP.JK",
+        "ex_date": "2023-04-27",
+        "cum_date": "2023-04-26",
+        "recording_date": "2023-04-28",
+        "payment_date": "2023-05-12",
+        "dividend_amount": 57.9974,
+        "dividend_yield": 0.0568136
+      },
+      {
+        "symbol": "BJTM.JK",
+        "ex_date": "2023-04-28",
+        "cum_date": "2023-04-27",
+        "recording_date": "2023-05-02",
+        "payment_date": "2023-05-12",
+        "dividend_amount": 53.09,
+        "dividend_yield": 0.0796067
+      },
+      {
+        "symbol": "BTPS.JK",
+        "ex_date": "2023-04-28",
+        "cum_date": "2023-04-27",
+        "recording_date": "2023-05-02",
+        "payment_date": "2023-05-12",
+        "dividend_amount": 92.5,
+        "dividend_yield": 0.0446364
+      },
+      {
+        "symbol": "KEJU.JK",
+        "ex_date": "2023-04-28",
+        "cum_date": "2023-04-27",
+        "recording_date": "2023-05-02",
+        "payment_date": "2023-05-12",
+        "dividend_amount": 75.0,
+        "dividend_yield": 0.0604013
+      },
+      {
+        "symbol": "MKTR.JK",
+        "ex_date": "2023-04-28",
+        "cum_date": "2023-04-27",
+        "recording_date": "2023-05-02",
+        "payment_date": "2023-05-12",
+        "dividend_amount": 1.0,
+        "dividend_yield": 0.0063885
+      },
+      {
+        "symbol": "TMAS.JK",
+        "ex_date": "2023-04-28",
+        "cum_date": "2023-04-27",
+        "recording_date": "2023-05-02",
+        "payment_date": "2023-05-12",
+        "dividend_amount": 8.0,
+        "dividend_yield": 0.0343976
+      },
+      {
+        "symbol": "UNTR.JK",
+        "ex_date": "2023-04-28",
+        "cum_date": "2023-04-27",
+        "recording_date": "2023-05-02",
+        "payment_date": "2023-05-12",
+        "dividend_amount": 6185.0,
+        "dividend_yield": 0.243407
+      },
+      {
+        "symbol": "AVIA.JK",
+        "ex_date": "2023-05-02",
+        "cum_date": "2023-04-28",
+        "recording_date": "2023-05-03",
+        "payment_date": "2023-05-09",
+        "dividend_amount": 11.0,
+        "dividend_yield": 0.0184447
+      },
+      {
+        "symbol": "BTPN.JK",
+        "ex_date": "2023-05-02",
+        "cum_date": "2023-04-28",
+        "recording_date": "2023-05-03",
+        "payment_date": "2023-05-12",
+        "dividend_amount": 76.8484,
+        "dividend_yield": 0.0295172
+      },
+      {
+        "symbol": "PRDA.JK",
+        "ex_date": "2023-05-02",
+        "cum_date": "2023-04-28",
+        "recording_date": "2023-05-03",
+        "payment_date": "2023-05-12",
+        "dividend_amount": 237.854,
+        "dividend_yield": 0.0407886
+      },
+      {
+        "symbol": "RUNS.JK",
+        "ex_date": "2023-05-02",
+        "cum_date": "2023-04-28",
+        "recording_date": "2023-05-03",
+        "payment_date": "2023-05-12",
+        "dividend_amount": 0.3064,
+        "dividend_yield": 0.00291751
+      },
+      {
+        "symbol": "GOOD.JK",
+        "ex_date": "2023-05-03",
+        "cum_date": "2023-05-02",
+        "recording_date": "2023-05-04",
+        "payment_date": "2023-05-16",
+        "dividend_amount": 6.0,
+        "dividend_yield": 0.0132865
+      },
+      {
+        "symbol": "MTEL.JK",
+        "ex_date": "2023-05-03",
+        "cum_date": "2023-05-02",
+        "recording_date": "2023-05-04",
+        "payment_date": "2023-05-17",
+        "dividend_amount": 21.3809,
+        "dividend_yield": 0.00909267
+      },
+      {
+        "symbol": "CINT.JK",
+        "ex_date": "2023-05-04",
+        "cum_date": "2023-05-03",
+        "recording_date": "2023-05-05",
+        "payment_date": "2023-05-17",
+        "dividend_amount": 1.0,
+        "dividend_yield": 0.00508955
+      },
+      {
+        "symbol": "KDTN.JK",
+        "ex_date": "2023-05-04",
+        "cum_date": "2023-05-03",
+        "recording_date": "2023-05-05",
+        "payment_date": "2023-05-15",
+        "dividend_amount": 1.22,
+        "dividend_yield": 0.0100503
+      },
+      {
+        "symbol": "SMGR.JK",
+        "ex_date": "2023-05-04",
+        "cum_date": "2023-05-03",
+        "recording_date": "2023-05-05",
+        "payment_date": "2023-05-17",
+        "dividend_amount": 245.19,
+        "dividend_yield": 0.0373966
+      },
+      {
+        "symbol": "ASII.JK",
+        "ex_date": "2023-05-05",
+        "cum_date": "2023-05-04",
+        "recording_date": "2023-05-08",
+        "payment_date": "2023-05-19",
+        "dividend_amount": 552.0,
+        "dividend_yield": 0.089909
+      },
+      {
+        "symbol": "INDY.JK",
+        "ex_date": "2023-05-05",
+        "cum_date": "2023-05-04",
+        "recording_date": "2023-05-08",
+        "payment_date": "2023-05-17",
+        "dividend_amount": 208.0,
+        "dividend_yield": 0.101668
+      },
+      {
+        "symbol": "MCOL.JK",
+        "ex_date": "2023-05-05",
+        "cum_date": "2023-05-04",
+        "recording_date": "2023-05-08",
+        "payment_date": "2023-05-17",
+        "dividend_amount": 650.0,
+        "dividend_yield": 0.117092
+      },
+      {
+        "symbol": "MFIN.JK",
+        "ex_date": "2023-05-05",
+        "cum_date": "2023-05-04",
+        "recording_date": "2023-05-08",
+        "payment_date": "2023-05-19",
+        "dividend_amount": 100.0,
+        "dividend_yield": 0.0427465
+      },
+      {
+        "symbol": "MLPT.JK",
+        "ex_date": "2023-05-05",
+        "cum_date": "2023-05-04",
+        "recording_date": "2023-05-08",
+        "payment_date": "2023-05-26",
+        "dividend_amount": 7.24,
+        "dividend_yield": 0.0995215
+      },
+      {
+        "symbol": "TEBE.JK",
+        "ex_date": "2023-05-05",
+        "cum_date": "2023-05-04",
+        "recording_date": "2023-05-08",
+        "payment_date": "2023-05-26",
+        "dividend_amount": 91.0,
+        "dividend_yield": 0.113789
+      },
+      {
+        "symbol": "TGKA.JK",
+        "ex_date": "2023-05-05",
+        "cum_date": "2023-05-04",
+        "recording_date": "2023-05-08",
+        "payment_date": "2023-05-12",
+        "dividend_amount": 325.0,
+        "dividend_yield": 0.047742
+      },
+      {
+        "symbol": "BYAN.JK",
+        "ex_date": "2023-05-09",
+        "cum_date": "2023-05-08",
+        "recording_date": "2023-05-10",
+        "payment_date": "2023-05-23",
+        "dividend_amount": 354.168,
+        "dividend_yield": 0.0187613
+      },
+      {
+        "symbol": "AKRA.JK",
+        "ex_date": "2023-05-10",
+        "cum_date": "2023-05-09",
+        "recording_date": "2023-05-11",
+        "payment_date": "2023-05-24",
+        "dividend_amount": 50.0,
+        "dividend_yield": 0.0352409
+      },
+      {
+        "symbol": "TUGU.JK",
+        "ex_date": "2023-05-10",
+        "cum_date": "2023-05-09",
+        "recording_date": "2023-05-11",
+        "payment_date": "2023-05-26",
+        "dividend_amount": 39.0542,
+        "dividend_yield": 0.0347527
+      },
+      {
+        "symbol": "EPMT.JK",
+        "ex_date": "2023-05-11",
+        "cum_date": "2023-05-10",
+        "recording_date": "2023-05-12",
+        "payment_date": "2023-05-26",
+        "dividend_amount": 205.0,
+        "dividend_yield": 0.0751238
+      },
+      {
+        "symbol": "LUCY.JK",
+        "ex_date": "2023-05-11",
+        "cum_date": "2023-05-10",
+        "recording_date": "2023-05-12",
+        "payment_date": "2023-05-31",
+        "dividend_amount": 4.7,
+        "dividend_yield": 0.0296651
+      },
+      {
+        "symbol": "SMSM.JK",
+        "ex_date": "2023-05-11",
+        "cum_date": "2023-05-10",
+        "recording_date": "2023-05-12",
+        "payment_date": "2023-05-24",
+        "dividend_amount": 25.0,
+        "dividend_yield": 0.0137048
+      },
+      {
+        "symbol": "KLBF.JK",
+        "ex_date": "2023-05-12",
+        "cum_date": "2023-05-11",
+        "recording_date": "2023-05-15",
+        "payment_date": "2023-05-31",
+        "dividend_amount": 38.0,
+        "dividend_yield": 0.0196672
+      },
+      {
+        "symbol": "NICL.JK",
+        "ex_date": "2023-05-12",
+        "cum_date": "2023-05-11",
+        "recording_date": "2023-05-15",
+        "payment_date": "2023-05-31",
+        "dividend_amount": 3.0,
+        "dividend_yield": 0.0119806
+      },
+      {
+        "symbol": "TLDN.JK",
+        "ex_date": "2023-05-12",
+        "cum_date": "2023-05-11",
+        "recording_date": "2023-05-15",
+        "payment_date": "2023-05-30",
+        "dividend_amount": 13.52,
+        "dividend_yield": 0.0278999
+      },
+      {
+        "symbol": "EXCL.JK",
+        "ex_date": "2023-05-16",
+        "cum_date": "2023-05-15",
+        "recording_date": "2023-05-17",
+        "payment_date": "2023-05-31",
+        "dividend_amount": 42.0,
+        "dividend_yield": 0.0196216
+      },
+      {
+        "symbol": "INCO.JK",
+        "ex_date": "2023-05-16",
+        "cum_date": "2023-05-15",
+        "recording_date": "2023-05-17",
+        "payment_date": "2023-05-31",
+        "dividend_amount": 89.6,
+        "dividend_yield": 0.0146371
+      },
+      {
+        "symbol": "KRYA.JK",
+        "ex_date": "2023-05-16",
+        "cum_date": "2023-05-15",
+        "recording_date": "2023-05-17",
+        "payment_date": "2023-06-06",
+        "dividend_amount": 1.5,
+        "dividend_yield": 0.0132142
+      },
+      {
+        "symbol": "LINK.JK",
+        "ex_date": "2023-05-16",
+        "cum_date": "2023-05-15",
+        "recording_date": "2023-05-17",
+        "payment_date": "2023-06-05",
+        "dividend_amount": 45.41,
+        "dividend_yield": 0.0247548
+      },
+      {
+        "symbol": "TOWR.JK",
+        "ex_date": "2023-05-16",
+        "cum_date": "2023-05-15",
+        "recording_date": "2023-05-17",
+        "payment_date": "2023-05-31",
+        "dividend_amount": 18.1,
+        "dividend_yield": 0.0179625
+      },
+      {
+        "symbol": "PLIN.JK",
+        "ex_date": "2023-05-17",
+        "cum_date": "2023-05-16",
+        "recording_date": "2023-05-19",
+        "payment_date": "2023-05-30",
+        "dividend_amount": 140.0,
+        "dividend_yield": 0.0575201
+      },
+      {
+        "symbol": "POWR.JK",
+        "ex_date": "2023-05-17",
+        "cum_date": "2023-05-16",
+        "recording_date": "2023-05-19",
+        "payment_date": "2023-06-06",
+        "dividend_amount": 41.6852,
+        "dividend_yield": 0.0591683
+      },
+      {
+        "symbol": "SMBR.JK",
+        "ex_date": "2023-05-17",
+        "cum_date": "2023-05-16",
+        "recording_date": "2023-05-19",
+        "payment_date": "2023-06-09",
+        "dividend_amount": 1.9094,
+        "dividend_yield": 0.00537726
+      },
+      {
+        "symbol": "SSMS.JK",
+        "ex_date": "2023-05-17",
+        "cum_date": "2023-05-16",
+        "recording_date": "2023-05-19",
+        "payment_date": "2023-06-08",
+        "dividend_amount": 74.64,
+        "dividend_yield": 0.0551377
+      },
+      {
+        "symbol": "WTON.JK",
+        "ex_date": "2023-05-19",
+        "cum_date": "2023-05-17",
+        "recording_date": "2023-05-22",
+        "payment_date": "2023-06-09",
+        "dividend_amount": 3.75,
+        "dividend_yield": 0.024669
+      },
+      {
+        "symbol": "ABMM.JK",
+        "ex_date": "2023-05-22",
+        "cum_date": "2023-05-19",
+        "recording_date": "2023-05-23",
+        "payment_date": "2023-06-09",
+        "dividend_amount": 400.0,
+        "dividend_yield": 0.118396
+      },
+      {
+        "symbol": "HAIS.JK",
+        "ex_date": "2023-05-22",
+        "cum_date": "2023-05-19",
+        "recording_date": "2023-05-23",
+        "payment_date": "2023-06-09",
+        "dividend_amount": 13.25,
+        "dividend_yield": 0.0535883
+      },
+      {
+        "symbol": "JSMR.JK",
+        "ex_date": "2023-05-22",
+        "cum_date": "2023-05-19",
+        "recording_date": "2023-05-23",
+        "payment_date": "2023-06-09",
+        "dividend_amount": 75.6939,
+        "dividend_yield": 0.0197139
+      },
+      {
+        "symbol": "MERK.JK",
+        "ex_date": "2023-05-22",
+        "cum_date": "2023-05-19",
+        "recording_date": "2023-05-23",
+        "payment_date": "2023-05-26",
+        "dividend_amount": 320.0,
+        "dividend_yield": 0.0679562
+      },
+      {
+        "symbol": "MYOH.JK",
+        "ex_date": "2023-05-22",
+        "cum_date": "2023-05-19",
+        "recording_date": "2023-05-23",
+        "payment_date": "2023-06-09",
+        "dividend_amount": 47.37,
+        "dividend_yield": 0.0298663
+      },
+      {
+        "symbol": "TCID.JK",
+        "ex_date": "2023-05-22",
+        "cum_date": "2023-05-19",
+        "recording_date": "2023-05-23",
+        "payment_date": "2023-05-30",
+        "dividend_amount": 45.0,
+        "dividend_yield": 0.0148609
+      },
+      {
+        "symbol": "TOTL.JK",
+        "ex_date": "2023-05-22",
+        "cum_date": "2023-05-19",
+        "recording_date": "2023-05-23",
+        "payment_date": "2023-06-09",
+        "dividend_amount": 100.0,
+        "dividend_yield": 0.285837
+      },
+      {
+        "symbol": "WEGE.JK",
+        "ex_date": "2023-05-22",
+        "cum_date": "2023-05-19",
+        "recording_date": "2023-05-23",
+        "payment_date": "2023-06-09",
+        "dividend_amount": 2.42,
+        "dividend_yield": 0.0221661
+      },
+      {
+        "symbol": "ADRO.JK",
+        "ex_date": "2023-05-23",
+        "cum_date": "2023-05-22",
+        "recording_date": "2023-05-24",
+        "payment_date": "2023-06-06",
+        "dividend_amount": 240.78,
+        "dividend_yield": 0.0898236
+      },
+      {
+        "symbol": "BUDI.JK",
+        "ex_date": "2023-05-24",
+        "cum_date": "2023-05-23",
+        "recording_date": "2023-05-25",
+        "payment_date": "2023-06-14",
+        "dividend_amount": 8.0,
+        "dividend_yield": 0.0344442
+      },
+      {
+        "symbol": "SMCB.JK",
+        "ex_date": "2023-05-24",
+        "cum_date": "2023-05-23",
+        "recording_date": "2023-05-25",
+        "payment_date": "2023-06-09",
+        "dividend_amount": 27.9158,
+        "dividend_yield": 0.0191239
+      },
+      {
+        "symbol": "TBLA.JK",
+        "ex_date": "2023-05-24",
+        "cum_date": "2023-05-23",
+        "recording_date": "2023-05-25",
+        "payment_date": "2023-06-14",
+        "dividend_amount": 20.0,
+        "dividend_yield": 0.027176
+      },
+      {
+        "symbol": "ISAT.JK",
+        "ex_date": "2023-05-25",
+        "cum_date": "2023-05-24",
+        "recording_date": "2023-05-26",
+        "payment_date": "2023-06-15",
+        "dividend_amount": 63.925,
+        "dividend_yield": 0.0306981
+      },
+      {
+        "symbol": "KUAS.JK",
+        "ex_date": "2023-05-25",
+        "cum_date": "2023-05-24",
+        "recording_date": "2023-05-26",
+        "payment_date": "2023-06-12",
+        "dividend_amount": 1.6,
+        "dividend_yield": 0.0303035
+      },
+      {
+        "symbol": "NTBK.JK",
+        "ex_date": "2023-05-25",
+        "cum_date": "2023-05-24",
+        "recording_date": "2023-05-26",
+        "payment_date": "2023-06-16",
+        "dividend_amount": 0.125941,
+        "dividend_yield": 0.00214341
+      },
+      {
+        "symbol": "PTRO.JK",
+        "ex_date": "2023-05-25",
+        "cum_date": "2023-05-24",
+        "recording_date": "2023-05-26",
+        "payment_date": "2023-05-31",
+        "dividend_amount": 114.59,
+        "dividend_yield": 0.268519
+      },
+      {
+        "symbol": "SRTG.JK",
+        "ex_date": "2023-05-25",
+        "cum_date": "2023-05-24",
+        "recording_date": "2023-05-26",
+        "payment_date": "2023-06-14",
+        "dividend_amount": 75.0,
+        "dividend_yield": 0.0412766
+      },
+      {
+        "symbol": "TRGU.JK",
+        "ex_date": "2023-05-25",
+        "cum_date": "2023-05-24",
+        "recording_date": "2023-05-26",
+        "payment_date": "2023-06-14",
+        "dividend_amount": 1.25,
+        "dividend_yield": 0.00593087
+      },
+      {
+        "symbol": "BFIN.JK",
+        "ex_date": "2023-05-26",
+        "cum_date": "2023-05-25",
+        "recording_date": "2023-05-29",
+        "payment_date": "2023-06-15",
+        "dividend_amount": 32.0,
+        "dividend_yield": 0.026018
+      },
+      {
+        "symbol": "INKP.JK",
+        "ex_date": "2023-05-26",
+        "cum_date": "2023-05-25",
+        "recording_date": "2023-05-29",
+        "payment_date": "2023-06-16",
+        "dividend_amount": 50.0,
+        "dividend_yield": 0.00580936
+      },
+      {
+        "symbol": "TAPG.JK",
+        "ex_date": "2023-05-26",
+        "cum_date": "2023-05-25",
+        "recording_date": "2023-05-29",
+        "payment_date": "2023-06-16",
+        "dividend_amount": 38.0,
+        "dividend_yield": 0.0649457
+      },
+      {
+        "symbol": "TKIM.JK",
+        "ex_date": "2023-05-26",
+        "cum_date": "2023-05-25",
+        "recording_date": "2023-05-29",
+        "payment_date": "2023-06-16",
+        "dividend_amount": 25.0,
+        "dividend_yield": 0.00349809
+      },
+      {
+        "symbol": "AMRT.JK",
+        "ex_date": "2023-05-29",
+        "cum_date": "2023-05-26",
+        "recording_date": "2023-05-30",
+        "payment_date": "2023-06-14",
+        "dividend_amount": 24.06,
+        "dividend_yield": 0.00847445
+      },
+      {
+        "symbol": "DLTA.JK",
+        "ex_date": "2023-05-29",
+        "cum_date": "2023-05-26",
+        "recording_date": "2023-05-30",
+        "payment_date": "2023-06-16",
+        "dividend_amount": 325.0,
+        "dividend_yield": 0.0866976
+      },
+      {
+        "symbol": "EAST.JK",
+        "ex_date": "2023-05-29",
+        "cum_date": "2023-05-26",
+        "recording_date": "2023-05-30",
+        "payment_date": "2023-06-08",
+        "dividend_amount": 1.953,
+        "dividend_yield": 0.0152973
+      },
+      {
+        "symbol": "INTP.JK",
+        "ex_date": "2023-05-29",
+        "cum_date": "2023-05-26",
+        "recording_date": "2023-05-30",
+        "payment_date": "2023-06-08",
+        "dividend_amount": 160.0,
+        "dividend_yield": 0.0156882
+      },
+      {
+        "symbol": "JAYA.JK",
+        "ex_date": "2023-05-29",
+        "cum_date": "2023-05-26",
+        "recording_date": "2023-05-30",
+        "payment_date": "2023-06-16",
+        "dividend_amount": 3.0,
+        "dividend_yield": 0.0251508
+      },
+      {
+        "symbol": "MIDI.JK",
+        "ex_date": "2023-05-29",
+        "cum_date": "2023-05-26",
+        "recording_date": "2023-05-30",
+        "payment_date": "2023-06-16",
+        "dividend_amount": 4.16,
+        "dividend_yield": 0.0100059
+      },
+      {
+        "symbol": "TPIA.JK",
+        "ex_date": "2023-05-29",
+        "cum_date": "2023-05-26",
+        "recording_date": "2023-05-30",
+        "payment_date": "2023-06-21",
+        "dividend_amount": 5.13574,
+        "dividend_yield": 0.00202408
+      },
+      {
+        "symbol": "TPMA.JK",
+        "ex_date": "2023-05-29",
+        "cum_date": "2023-05-26",
+        "recording_date": "2023-05-30",
+        "payment_date": "2023-06-21",
+        "dividend_amount": 60.0,
+        "dividend_yield": 0.112188
+      },
+      {
+        "symbol": "UVCR.JK",
+        "ex_date": "2023-05-29",
+        "cum_date": "2023-05-26",
+        "recording_date": "2023-05-30",
+        "payment_date": "2023-06-21",
+        "dividend_amount": 0.594,
+        "dividend_yield": 0.00480833
+      },
+      {
+        "symbol": "VINS.JK",
+        "ex_date": "2023-05-29",
+        "cum_date": "2023-05-26",
+        "recording_date": "2023-05-30",
+        "payment_date": "2023-06-21",
+        "dividend_amount": 4.7,
+        "dividend_yield": 0.0369385
+      },
+      {
+        "symbol": "BAUT.JK",
+        "ex_date": "2023-05-30",
+        "cum_date": "2023-05-29",
+        "recording_date": "2023-05-31",
+        "payment_date": "2023-06-22",
+        "dividend_amount": 0.27,
+        "dividend_yield": 0.0054
+      },
+      {
+        "symbol": "GMTD.JK",
+        "ex_date": "2023-05-30",
+        "cum_date": "2023-05-29",
+        "recording_date": "2023-05-31",
+        "payment_date": "2023-06-22",
+        "dividend_amount": 0.3,
+        "dividend_yield": 0.00193081
+      },
+      {
+        "symbol": "KKES.JK",
+        "ex_date": "2023-05-30",
+        "cum_date": "2023-05-29",
+        "recording_date": "2023-05-31",
+        "payment_date": "2023-06-20",
+        "dividend_amount": 1.0,
+        "dividend_yield": 0.0133624
+      },
+      {
+        "symbol": "PBID.JK",
+        "ex_date": "2023-05-30",
+        "cum_date": "2023-05-29",
+        "recording_date": "2023-05-31",
+        "payment_date": "2023-06-07",
+        "dividend_amount": 25.0,
+        "dividend_yield": 0.0667579
+      },
+      {
+        "symbol": "PJAA.JK",
+        "ex_date": "2023-05-30",
+        "cum_date": "2023-05-29",
+        "recording_date": "2023-05-31",
+        "payment_date": "2023-06-22",
+        "dividend_amount": 29.0,
+        "dividend_yield": 0.0360248
+      },
+      {
+        "symbol": "SMSM.JK",
+        "ex_date": "2023-05-30",
+        "cum_date": "2023-05-29",
+        "recording_date": "2023-05-31",
+        "payment_date": "2023-06-14",
+        "dividend_amount": 25.0,
+        "dividend_yield": 0.0137048
+      },
+      {
+        "symbol": "STAA.JK",
+        "ex_date": "2023-05-30",
+        "cum_date": "2023-05-29",
+        "recording_date": "2023-05-31",
+        "payment_date": "2023-06-22",
+        "dividend_amount": 46.0,
+        "dividend_yield": 0.0499341
+      },
+      {
+        "symbol": "BPII.JK",
+        "ex_date": "2023-05-31",
+        "cum_date": "2023-05-30",
+        "recording_date": "2023-06-05",
+        "payment_date": "2023-06-12",
+        "dividend_amount": 3.05,
+        "dividend_yield": 0.00576906
+      },
+      {
+        "symbol": "BRIS.JK",
+        "ex_date": "2023-05-31",
+        "cum_date": "2023-05-30",
+        "recording_date": "2023-06-05",
+        "payment_date": "2023-06-23",
+        "dividend_amount": 9.23531,
+        "dividend_yield": 0.00573876
+      },
+      {
+        "symbol": "BSML.JK",
+        "ex_date": "2023-05-31",
+        "cum_date": "2023-05-30",
+        "recording_date": "2023-06-05",
+        "payment_date": "2023-06-21",
+        "dividend_amount": 1.62,
+        "dividend_yield": 0.00771213
+      },
+      {
+        "symbol": "IDEA.JK",
+        "ex_date": "2023-05-31",
+        "cum_date": "2023-05-30",
+        "recording_date": "2023-06-05",
+        "payment_date": "2023-06-23",
+        "dividend_amount": 1.0,
+        "dividend_yield": 0.0139099
+      },
+      {
+        "symbol": "NAYZ.JK",
+        "ex_date": "2023-05-31",
+        "cum_date": "2023-05-30",
+        "recording_date": "2023-06-05",
+        "payment_date": "2023-06-23",
+        "dividend_amount": 1.0,
+        "dividend_yield": 0.0164298
+      },
+      {
+        "symbol": "BISI.JK",
+        "ex_date": "2023-06-05",
+        "cum_date": "2023-05-31",
+        "recording_date": "2023-06-06",
+        "payment_date": "2023-06-13",
+        "dividend_amount": 68.0,
+        "dividend_yield": 0.0426931
+      },
+      {
+        "symbol": "ITIC.JK",
+        "ex_date": "2023-06-05",
+        "cum_date": "2023-05-31",
+        "recording_date": "2023-06-06",
+        "payment_date": "2023-06-23",
+        "dividend_amount": 5.0,
+        "dividend_yield": 0.0175338
+      },
+      {
+        "symbol": "MIKA.JK",
+        "ex_date": "2023-06-05",
+        "cum_date": "2023-05-31",
+        "recording_date": "2023-06-06",
+        "payment_date": "2023-06-23",
+        "dividend_amount": 37.0,
+        "dividend_yield": 0.0131239
+      },
+      {
+        "symbol": "MLBI.JK",
+        "ex_date": "2023-06-05",
+        "cum_date": "2023-05-31",
+        "recording_date": "2023-06-06",
+        "payment_date": "2023-06-22",
+        "dividend_amount": 245.0,
+        "dividend_yield": 0.028309
+      },
+      {
+        "symbol": "SICO.JK",
+        "ex_date": "2023-06-05",
+        "cum_date": "2023-05-31",
+        "recording_date": "2023-06-06",
+        "payment_date": "2023-06-21",
+        "dividend_amount": 2.0,
+        "dividend_yield": 0.0157636
+      },
+      {
+        "symbol": "SKLT.JK",
+        "ex_date": "2023-06-05",
+        "cum_date": "2023-05-31",
+        "recording_date": "2023-06-06",
+        "payment_date": "2023-06-23",
+        "dividend_amount": 2.7,
+        "dividend_yield": 0.0963012
+      },
+      {
+        "symbol": "ARTA.JK",
+        "ex_date": "2023-06-06",
+        "cum_date": "2023-06-05",
+        "recording_date": "2023-06-07",
+        "payment_date": "2023-06-23",
+        "dividend_amount": 100.0,
+        "dividend_yield": 0.0506673
+      },
+      {
+        "symbol": "BOBA.JK",
+        "ex_date": "2023-06-06",
+        "cum_date": "2023-06-05",
+        "recording_date": "2023-06-07",
+        "payment_date": "2023-06-16",
+        "dividend_amount": 2.0,
+        "dividend_yield": 0.0125479
+      },
+      {
+        "symbol": "BSSR.JK",
+        "ex_date": "2023-06-06",
+        "cum_date": "2023-06-05",
+        "recording_date": "2023-06-07",
+        "payment_date": "2023-06-16",
+        "dividend_amount": 341.403,
+        "dividend_yield": 0.0874369
+      },
+      {
+        "symbol": "ELIT.JK",
+        "ex_date": "2023-06-06",
+        "cum_date": "2023-06-05",
+        "recording_date": "2023-06-07",
+        "payment_date": "2023-06-23",
+        "dividend_amount": 3.5,
+        "dividend_yield": 0.0238863
+      },
+      {
+        "symbol": "KMDS.JK",
+        "ex_date": "2023-06-06",
+        "cum_date": "2023-06-05",
+        "recording_date": "2023-06-07",
+        "payment_date": "2023-06-16",
+        "dividend_amount": 21.0,
+        "dividend_yield": 0.0404784
+      },
+      {
+        "symbol": "MBAP.JK",
+        "ex_date": "2023-06-06",
+        "cum_date": "2023-06-05",
+        "recording_date": "2023-06-07",
+        "payment_date": "2023-06-13",
+        "dividend_amount": 963.0,
+        "dividend_yield": 0.175693
+      },
+      {
+        "symbol": "MITI.JK",
+        "ex_date": "2023-06-06",
+        "cum_date": "2023-06-05",
+        "recording_date": "2023-06-07",
+        "payment_date": "2023-06-22",
+        "dividend_amount": 1.5,
+        "dividend_yield": 0.00602947
+      },
+      {
+        "symbol": "MPMX.JK",
+        "ex_date": "2023-06-06",
+        "cum_date": "2023-06-05",
+        "recording_date": "2023-06-07",
+        "payment_date": "2023-06-23",
+        "dividend_amount": 135.0,
+        "dividend_yield": 0.123401
+      },
+      {
+        "symbol": "NELY.JK",
+        "ex_date": "2023-06-06",
+        "cum_date": "2023-06-05",
+        "recording_date": "2023-06-07",
+        "payment_date": "2023-06-23",
+        "dividend_amount": 20.0,
+        "dividend_yield": 0.0460639
+      },
+      {
+        "symbol": "PNGO.JK",
+        "ex_date": "2023-06-06",
+        "cum_date": "2023-06-05",
+        "recording_date": "2023-06-07",
+        "payment_date": "2023-06-15",
+        "dividend_amount": 60.0,
+        "dividend_yield": 0.0442272
+      },
+      {
+        "symbol": "RALS.JK",
+        "ex_date": "2023-06-06",
+        "cum_date": "2023-06-05",
+        "recording_date": "2023-06-07",
+        "payment_date": "2023-06-23",
+        "dividend_amount": 50.0,
+        "dividend_yield": 0.0852676
+      },
+      {
+        "symbol": "SKRN.JK",
+        "ex_date": "2023-06-06",
+        "cum_date": "2023-06-05",
+        "recording_date": "2023-06-07",
+        "payment_date": "2023-06-15",
+        "dividend_amount": 6.0,
+        "dividend_yield": 0.0106447
+      },
+      {
+        "symbol": "ELPI.JK",
+        "ex_date": "2023-06-07",
+        "cum_date": "2023-06-06",
+        "recording_date": "2023-06-08",
+        "payment_date": "2023-06-27",
+        "dividend_amount": 4.18,
+        "dividend_yield": 0.0169699
+      },
+      {
+        "symbol": "MREI.JK",
+        "ex_date": "2023-06-07",
+        "cum_date": "2023-06-06",
+        "recording_date": "2023-06-08",
+        "payment_date": "2023-06-26",
+        "dividend_amount": 15.0,
+        "dividend_yield": 0.00503292
+      },
+      {
+        "symbol": "OMED.JK",
+        "ex_date": "2023-06-07",
+        "cum_date": "2023-06-06",
+        "recording_date": "2023-06-08",
+        "payment_date": "2023-06-27",
+        "dividend_amount": 3.17,
+        "dividend_yield": 0.015861
+      },
+      {
+        "symbol": "PBSA.JK",
+        "ex_date": "2023-06-07",
+        "cum_date": "2023-06-06",
+        "recording_date": "2023-06-08",
+        "payment_date": "2023-06-27",
+        "dividend_amount": 40.0,
+        "dividend_yield": 0.121449
+      },
+      {
+        "symbol": "SDPC.JK",
+        "ex_date": "2023-06-07",
+        "cum_date": "2023-06-06",
+        "recording_date": "2023-06-08",
+        "payment_date": "2023-06-27",
+        "dividend_amount": 2.0,
+        "dividend_yield": 0.0108511
+      },
+      {
+        "symbol": "SILO.JK",
+        "ex_date": "2023-06-07",
+        "cum_date": "2023-06-06",
+        "recording_date": "2023-06-08",
+        "payment_date": "2023-06-23",
+        "dividend_amount": 19.67,
+        "dividend_yield": 0.0107683
+      },
+      {
+        "symbol": "SPTO.JK",
+        "ex_date": "2023-06-07",
+        "cum_date": "2023-06-06",
+        "recording_date": "2023-06-08",
+        "payment_date": "2023-06-16",
+        "dividend_amount": 25.0,
+        "dividend_yield": 0.0443216
+      },
+      {
+        "symbol": "VICI.JK",
+        "ex_date": "2023-06-07",
+        "cum_date": "2023-06-06",
+        "recording_date": "2023-06-08",
+        "payment_date": "2023-06-21",
+        "dividend_amount": 5.5,
+        "dividend_yield": 0.00965125
+      },
+      {
+        "symbol": "CEKA.JK",
+        "ex_date": "2023-06-08",
+        "cum_date": "2023-06-07",
+        "recording_date": "2023-06-09",
+        "payment_date": "2023-06-27",
+        "dividend_amount": 100.0,
+        "dividend_yield": 0.0514615
+      },
+      {
+        "symbol": "LPIN.JK",
+        "ex_date": "2023-06-08",
+        "cum_date": "2023-06-07",
+        "recording_date": "2023-06-09",
+        "payment_date": "2023-06-26",
+        "dividend_amount": 15.0,
+        "dividend_yield": 0.039003
+      },
+      {
+        "symbol": "MLIA.JK",
+        "ex_date": "2023-06-08",
+        "cum_date": "2023-06-07",
+        "recording_date": "2023-06-09",
+        "payment_date": "2023-06-16",
+        "dividend_amount": 26.0,
+        "dividend_yield": 0.0547634
+      },
+      {
+        "symbol": "NRCA.JK",
+        "ex_date": "2023-06-08",
+        "cum_date": "2023-06-07",
+        "recording_date": "2023-06-09",
+        "payment_date": "2023-06-23",
+        "dividend_amount": 42.0,
+        "dividend_yield": 0.127234
+      },
+      {
+        "symbol": "OILS.JK",
+        "ex_date": "2023-06-08",
+        "cum_date": "2023-06-07",
+        "recording_date": "2023-06-09",
+        "payment_date": "2023-06-27",
+        "dividend_amount": 3.09612,
+        "dividend_yield": 0.0187686
+      },
+      {
+        "symbol": "SBMA.JK",
+        "ex_date": "2023-06-08",
+        "cum_date": "2023-06-07",
+        "recording_date": "2023-06-09",
+        "payment_date": "2023-06-16",
+        "dividend_amount": 1.5,
+        "dividend_yield": 0.00956561
+      },
+      {
+        "symbol": "TOTO.JK",
+        "ex_date": "2023-06-08",
+        "cum_date": "2023-06-07",
+        "recording_date": "2023-06-09",
+        "payment_date": "2023-06-16",
+        "dividend_amount": 10.0,
+        "dividend_yield": 0.04103
+      },
+      {
+        "symbol": "CHEM.JK",
+        "ex_date": "2023-06-09",
+        "cum_date": "2023-06-08",
+        "recording_date": "2023-06-12",
+        "payment_date": "2023-06-27",
+        "dividend_amount": 1.21,
+        "dividend_yield": 0.0098077
+      },
+      {
+        "symbol": "PTSN.JK",
+        "ex_date": "2023-06-09",
+        "cum_date": "2023-06-08",
+        "recording_date": "2023-06-12",
+        "payment_date": "2023-06-19",
+        "dividend_amount": 5.53224,
+        "dividend_yield": 0.0254329
+      },
+      {
+        "symbol": "RAJA.JK",
+        "ex_date": "2023-06-09",
+        "cum_date": "2023-06-08",
+        "recording_date": "2023-06-12",
+        "payment_date": "2023-06-27",
+        "dividend_amount": 3.174,
+        "dividend_yield": 0.0158389
+      },
+      {
+        "symbol": "SAMF.JK",
+        "ex_date": "2023-06-09",
+        "cum_date": "2023-06-08",
+        "recording_date": "2023-06-12",
+        "payment_date": "2023-06-27",
+        "dividend_amount": 15.0,
+        "dividend_yield": 0.0440919
+      },
+      {
+        "symbol": "WIIM.JK",
+        "ex_date": "2023-06-09",
+        "cum_date": "2023-06-08",
+        "recording_date": "2023-06-12",
+        "payment_date": "2023-06-27",
+        "dividend_amount": 72.9,
+        "dividend_yield": 0.0423194
+      },
+      {
+        "symbol": "ZYRX.JK",
+        "ex_date": "2023-06-09",
+        "cum_date": "2023-06-08",
+        "recording_date": "2023-06-12",
+        "payment_date": "2023-06-27",
+        "dividend_amount": 8.85,
+        "dividend_yield": 0.0352949
+      },
+      {
+        "symbol": "GHON.JK",
+        "ex_date": "2023-06-12",
+        "cum_date": "2023-06-09",
+        "recording_date": "2023-06-13",
+        "payment_date": "2023-07-04",
+        "dividend_amount": 128.0,
+        "dividend_yield": 0.0702828
+      },
+      {
+        "symbol": "HEAL.JK",
+        "ex_date": "2023-06-12",
+        "cum_date": "2023-06-09",
+        "recording_date": "2023-06-13",
+        "payment_date": "2023-07-05",
+        "dividend_amount": 7.0,
+        "dividend_yield": 0.00486387
+      },
+      {
+        "symbol": "MARK.JK",
+        "ex_date": "2023-06-12",
+        "cum_date": "2023-06-09",
+        "recording_date": "2023-06-13",
+        "payment_date": "2023-06-27",
+        "dividend_amount": 35.0,
+        "dividend_yield": 0.0579884
+      },
+      {
+        "symbol": "MTDL.JK",
+        "ex_date": "2023-06-12",
+        "cum_date": "2023-06-09",
+        "recording_date": "2023-06-13",
+        "payment_date": "2023-06-27",
+        "dividend_amount": 14.5,
+        "dividend_yield": 0.0269848
+      },
+      {
+        "symbol": "PGAS.JK",
+        "ex_date": "2023-06-12",
+        "cum_date": "2023-06-09",
+        "recording_date": "2023-06-13",
+        "payment_date": "2023-06-27",
+        "dividend_amount": 141.054,
+        "dividend_yield": 0.102317
+      },
+      {
+        "symbol": "TLKM.JK",
+        "ex_date": "2023-06-12",
+        "cum_date": "2023-06-09",
+        "recording_date": "2023-06-13",
+        "payment_date": "2023-07-05",
+        "dividend_amount": 167.599,
+        "dividend_yield": 0.0432291
+      },
+      {
+        "symbol": "UCID.JK",
+        "ex_date": "2023-06-12",
+        "cum_date": "2023-06-09",
+        "recording_date": "2023-06-13",
+        "payment_date": "2023-06-27",
+        "dividend_amount": 15.1399,
+        "dividend_yield": 0.0129945
+      },
+      {
+        "symbol": "AGII.JK",
+        "ex_date": "2023-06-13",
+        "cum_date": "2023-06-12",
+        "recording_date": "2023-06-14",
+        "payment_date": "2023-07-06",
+        "dividend_amount": 4.86,
+        "dividend_yield": 0.00262807
+      },
+      {
+        "symbol": "BALI.JK",
+        "ex_date": "2023-06-13",
+        "cum_date": "2023-06-12",
+        "recording_date": "2023-06-14",
+        "payment_date": "2023-07-03",
+        "dividend_amount": 32.34,
+        "dividend_yield": 0.0406643
+      },
+      {
+        "symbol": "CLEO.JK",
+        "ex_date": "2023-06-13",
+        "cum_date": "2023-06-12",
+        "recording_date": "2023-06-14",
+        "payment_date": "2023-06-27",
+        "dividend_amount": 1.65,
+        "dividend_yield": 0.00284016
+      },
+      {
+        "symbol": "HRTA.JK",
+        "ex_date": "2023-06-13",
+        "cum_date": "2023-06-12",
+        "recording_date": "2023-06-14",
+        "payment_date": "2023-06-27",
+        "dividend_amount": 12.0,
+        "dividend_yield": 0.031529
+      },
+      {
+        "symbol": "MEDC.JK",
+        "ex_date": "2023-06-13",
+        "cum_date": "2023-06-12",
+        "recording_date": "2023-06-14",
+        "payment_date": "2023-07-03",
+        "dividend_amount": 23.7888,
+        "dividend_yield": 0.0210813
+      },
+      {
+        "symbol": "PUDP.JK",
+        "ex_date": "2023-06-13",
+        "cum_date": "2023-06-12",
+        "recording_date": "2023-06-14",
+        "payment_date": "2023-06-23",
+        "dividend_amount": 100.0,
+        "dividend_yield": 0.345421
+      },
+      {
+        "symbol": "SMKL.JK",
+        "ex_date": "2023-06-13",
+        "cum_date": "2023-06-12",
+        "recording_date": "2023-06-14",
+        "payment_date": "2023-07-06",
+        "dividend_amount": 12.0,
+        "dividend_yield": 0.0454791
+      },
+      {
+        "symbol": "SWID.JK",
+        "ex_date": "2023-06-13",
+        "cum_date": "2023-06-12",
+        "recording_date": "2023-06-14",
+        "payment_date": "2023-07-04",
+        "dividend_amount": 1.0895,
+        "dividend_yield": 0.0132873
+      },
+      {
+        "symbol": "TBIG.JK",
+        "ex_date": "2023-06-13",
+        "cum_date": "2023-06-12",
+        "recording_date": "2023-06-14",
+        "payment_date": "2023-07-05",
+        "dividend_amount": 35.3455,
+        "dividend_yield": 0.0170863
+      },
+      {
+        "symbol": "TSPC.JK",
+        "ex_date": "2023-06-13",
+        "cum_date": "2023-06-12",
+        "recording_date": "2023-06-14",
+        "payment_date": "2023-07-03",
+        "dividend_amount": 100.0,
+        "dividend_yield": 0.0619356
+      },
+      {
+        "symbol": "BUAH.JK",
+        "ex_date": "2023-06-14",
+        "cum_date": "2023-06-13",
+        "recording_date": "2023-06-15",
+        "payment_date": "2023-07-07",
+        "dividend_amount": 7.0,
+        "dividend_yield": 0.00968718
+      },
+      {
+        "symbol": "FWCT.JK",
+        "ex_date": "2023-06-14",
+        "cum_date": "2023-06-13",
+        "recording_date": "2023-06-15",
+        "payment_date": "2023-07-06",
+        "dividend_amount": 2.0,
+        "dividend_yield": 0.0277707
+      },
+      {
+        "symbol": "KBLM.JK",
+        "ex_date": "2023-06-14",
+        "cum_date": "2023-06-13",
+        "recording_date": "2023-06-15",
+        "payment_date": "2023-07-07",
+        "dividend_amount": 8.0,
+        "dividend_yield": 0.0294154
+      },
+      {
+        "symbol": "MDKI.JK",
+        "ex_date": "2023-06-14",
+        "cum_date": "2023-06-13",
+        "recording_date": "2023-06-15",
+        "payment_date": "2023-07-07",
+        "dividend_amount": 10.0,
+        "dividend_yield": 0.0509117
+      },
+      {
+        "symbol": "PGEO.JK",
+        "ex_date": "2023-06-14",
+        "cum_date": "2023-06-13",
+        "recording_date": "2023-06-15",
+        "payment_date": "2023-07-07",
+        "dividend_amount": 10.8728,
+        "dividend_yield": 0.0105479
+      },
+      {
+        "symbol": "SGER.JK",
+        "ex_date": "2023-06-14",
+        "cum_date": "2023-06-13",
+        "recording_date": "2023-06-15",
+        "payment_date": "2023-07-07",
+        "dividend_amount": 37.0773,
+        "dividend_yield": 0.0335362
+      },
+      {
+        "symbol": "SRSN.JK",
+        "ex_date": "2023-06-14",
+        "cum_date": "2023-06-13",
+        "recording_date": "2023-06-15",
+        "payment_date": "2023-07-07",
+        "dividend_amount": 1.0,
+        "dividend_yield": 0.0184243
+      },
+      {
+        "symbol": "AKPI.JK",
+        "ex_date": "2023-06-15",
+        "cum_date": "2023-06-14",
+        "recording_date": "2023-06-16",
+        "payment_date": "2023-07-07",
+        "dividend_amount": 16.5,
+        "dividend_yield": 0.0166695
+      },
+      {
+        "symbol": "BRAM.JK",
+        "ex_date": "2023-06-15",
+        "cum_date": "2023-06-14",
+        "recording_date": "2023-06-16",
+        "payment_date": "2023-06-26",
+        "dividend_amount": 200.0,
+        "dividend_yield": 0.0278036
+      },
+      {
+        "symbol": "ELSA.JK",
+        "ex_date": "2023-06-15",
+        "cum_date": "2023-06-14",
+        "recording_date": "2023-06-16",
+        "payment_date": "2023-07-06",
+        "dividend_amount": 25.9,
+        "dividend_yield": 0.0717393
+      },
+      {
+        "symbol": "PSSI.JK",
+        "ex_date": "2023-06-15",
+        "cum_date": "2023-06-14",
+        "recording_date": "2023-06-16",
+        "payment_date": "2023-07-05",
+        "dividend_amount": 50.0,
+        "dividend_yield": 0.0850352
+      },
+      {
+        "symbol": "SCCO.JK",
+        "ex_date": "2023-06-15",
+        "cum_date": "2023-06-14",
+        "recording_date": "2023-06-16",
+        "payment_date": "2023-07-06",
+        "dividend_amount": 37.5,
+        "dividend_yield": 0.0169853
+      },
+      {
+        "symbol": "SCPI.JK",
+        "ex_date": "2023-06-15",
+        "cum_date": "2023-06-14",
+        "recording_date": "2023-06-16",
+        "payment_date": "2023-07-07",
+        "dividend_amount": 50000.0,
+        "dividend_yield": 1.72414
+      },
+      {
+        "symbol": "SMAR.JK",
+        "ex_date": "2023-06-15",
+        "cum_date": "2023-06-14",
+        "recording_date": "2023-06-16",
+        "payment_date": "2023-06-22",
+        "dividend_amount": 370.0,
+        "dividend_yield": 0.0794876
+      },
+      {
+        "symbol": "ANJT.JK",
+        "ex_date": "2023-06-16",
+        "cum_date": "2023-06-15",
+        "recording_date": "2023-06-19",
+        "payment_date": "2023-07-07",
+        "dividend_amount": 27.8,
+        "dividend_yield": 0.03793
+      },
+      {
+        "symbol": "BBMD.JK",
+        "ex_date": "2023-06-16",
+        "cum_date": "2023-06-15",
+        "recording_date": "2023-06-19",
+        "payment_date": "2023-07-07",
+        "dividend_amount": 34.27,
+        "dividend_yield": 0.0175795
+      },
+      {
+        "symbol": "HATM.JK",
+        "ex_date": "2023-06-16",
+        "cum_date": "2023-06-15",
+        "recording_date": "2023-06-19",
+        "payment_date": "2023-07-07",
+        "dividend_amount": 4.07,
+        "dividend_yield": 0.0156483
+      },
+      {
+        "symbol": "JKON.JK",
+        "ex_date": "2023-06-16",
+        "cum_date": "2023-06-15",
+        "recording_date": "2023-06-19",
+        "payment_date": "2023-07-07",
+        "dividend_amount": 3.0,
+        "dividend_yield": 0.0268459
+      },
+      {
+        "symbol": "PADA.JK",
+        "ex_date": "2023-06-16",
+        "cum_date": "2023-06-15",
+        "recording_date": "2023-06-19",
+        "payment_date": "2023-07-04",
+        "dividend_amount": 0.5,
+        "dividend_yield": 0.00531087
+      },
+      {
+        "symbol": "PDPP.JK",
+        "ex_date": "2023-06-16",
+        "cum_date": "2023-06-15",
+        "recording_date": "2023-06-19",
+        "payment_date": "2023-07-07",
+        "dividend_amount": 2.69,
+        "dividend_yield": 0.0115641
+      },
+      {
+        "symbol": "TBMS.JK",
+        "ex_date": "2023-06-16",
+        "cum_date": "2023-06-15",
+        "recording_date": "2023-06-19",
+        "payment_date": "2023-07-05",
+        "dividend_amount": 29.89,
+        "dividend_yield": 0.0350848
+      },
+      {
+        "symbol": "WGSH.JK",
+        "ex_date": "2023-06-16",
+        "cum_date": "2023-06-15",
+        "recording_date": "2023-06-19",
+        "payment_date": "2023-07-07",
+        "dividend_amount": 4.0,
+        "dividend_yield": 0.0298517
+      },
+      {
+        "symbol": "DOID.JK",
+        "ex_date": "2023-06-19",
+        "cum_date": "2023-06-16",
+        "recording_date": "2023-06-20",
+        "payment_date": "2023-07-07",
+        "dividend_amount": 4.0,
+        "dividend_yield": 0.0112045
+      },
+      {
+        "symbol": "DSNG.JK",
+        "ex_date": "2023-06-19",
+        "cum_date": "2023-06-16",
+        "recording_date": "2023-06-20",
+        "payment_date": "2023-07-06",
+        "dividend_amount": 30.0,
+        "dividend_yield": 0.0494193
+      },
+      {
+        "symbol": "IMPC.JK",
+        "ex_date": "2023-06-19",
+        "cum_date": "2023-06-16",
+        "recording_date": "2023-06-20",
+        "payment_date": "2023-06-26",
+        "dividend_amount": 33.0,
+        "dividend_yield": 0.0934829
+      },
+      {
+        "symbol": "JRPT.JK",
+        "ex_date": "2023-06-19",
+        "cum_date": "2023-06-16",
+        "recording_date": "2023-06-20",
+        "payment_date": "2023-07-07",
+        "dividend_amount": 21.0,
+        "dividend_yield": 0.036497
+      },
+      {
+        "symbol": "PEHA.JK",
+        "ex_date": "2023-06-19",
+        "cum_date": "2023-06-16",
+        "recording_date": "2023-06-20",
+        "payment_date": "2023-07-12",
+        "dividend_amount": 13.37,
+        "dividend_yield": 0.0201573
+      },
+      {
+        "symbol": "TOBA.JK",
+        "ex_date": "2023-06-19",
+        "cum_date": "2023-06-16",
+        "recording_date": "2023-06-20",
+        "payment_date": "2023-07-12",
+        "dividend_amount": 12.7621,
+        "dividend_yield": 0.0319859
+      },
+      {
+        "symbol": "DEPO.JK",
+        "ex_date": "2023-06-20",
+        "cum_date": "2023-06-19",
+        "recording_date": "2023-06-21",
+        "payment_date": "2023-07-03",
+        "dividend_amount": 2.3,
+        "dividend_yield": 0.00525164
+      },
+      {
+        "symbol": "HMSP.JK",
+        "ex_date": "2023-06-20",
+        "cum_date": "2023-06-19",
+        "recording_date": "2023-06-21",
+        "payment_date": "2023-06-27",
+        "dividend_amount": 54.7,
+        "dividend_yield": 0.0570737
+      },
+      {
+        "symbol": "MTLA.JK",
+        "ex_date": "2023-06-20",
+        "cum_date": "2023-06-19",
+        "recording_date": "2023-06-21",
+        "payment_date": "2023-07-13",
+        "dividend_amount": 10.3,
+        "dividend_yield": 0.0270683
+      },
+      {
+        "symbol": "SGRO.JK",
+        "ex_date": "2023-06-20",
+        "cum_date": "2023-06-19",
+        "recording_date": "2023-06-21",
+        "payment_date": "2023-07-12",
+        "dividend_amount": 198.0,
+        "dividend_yield": 0.0960073
+      },
+      {
+        "symbol": "SKBM.JK",
+        "ex_date": "2023-06-20",
+        "cum_date": "2023-06-19",
+        "recording_date": "2023-06-21",
+        "payment_date": "2023-07-11",
+        "dividend_amount": 9.97,
+        "dividend_yield": 0.0304624
+      },
+      {
+        "symbol": "BRPT.JK",
+        "ex_date": "2023-06-21",
+        "cum_date": "2023-06-20",
+        "recording_date": "2023-06-22",
+        "payment_date": "2023-07-14",
+        "dividend_amount": 1.59,
+        "dividend_yield": 0.00165445
+      },
+      {
+        "symbol": "JECC.JK",
+        "ex_date": "2023-06-21",
+        "cum_date": "2023-06-20",
+        "recording_date": "2023-06-22",
+        "payment_date": "2023-07-12",
+        "dividend_amount": 20.0,
+        "dividend_yield": 0.0259124
+      },
+      {
+        "symbol": "BOLT.JK",
+        "ex_date": "2023-06-22",
+        "cum_date": "2023-06-21",
+        "recording_date": "2023-06-23",
+        "payment_date": "2023-07-14",
+        "dividend_amount": 25.0,
+        "dividend_yield": 0.0313426
+      },
+      {
+        "symbol": "EKAD.JK",
+        "ex_date": "2023-06-22",
+        "cum_date": "2023-06-21",
+        "recording_date": "2023-06-23",
+        "payment_date": "2023-07-14",
+        "dividend_amount": 9.0,
+        "dividend_yield": 0.0340985
+      },
+      {
+        "symbol": "ENAK.JK",
+        "ex_date": "2023-06-22",
+        "cum_date": "2023-06-21",
+        "recording_date": "2023-06-23",
+        "payment_date": "2023-07-10",
+        "dividend_amount": 12.0,
+        "dividend_yield": 0.00917789
+      },
+      {
+        "symbol": "KBLI.JK",
+        "ex_date": "2023-06-22",
+        "cum_date": "2023-06-21",
+        "recording_date": "2023-06-23",
+        "payment_date": "2023-07-14",
+        "dividend_amount": 4.0,
+        "dividend_yield": 0.0126412
+      },
+      {
+        "symbol": "MASA.JK",
+        "ex_date": "2023-06-22",
+        "cum_date": "2023-06-21",
+        "recording_date": "2023-06-23",
+        "payment_date": "2023-07-14",
+        "dividend_amount": 31.0,
+        "dividend_yield": 0.00894089
+      },
+      {
+        "symbol": "MYOR.JK",
+        "ex_date": "2023-06-22",
+        "cum_date": "2023-06-21",
+        "recording_date": "2023-06-23",
+        "payment_date": "2023-07-11",
+        "dividend_amount": 35.0,
+        "dividend_yield": 0.0135937
+      },
+      {
+        "symbol": "RSGK.JK",
+        "ex_date": "2023-06-22",
+        "cum_date": "2023-06-21",
+        "recording_date": "2023-06-23",
+        "payment_date": "2023-07-07",
+        "dividend_amount": 81.0,
+        "dividend_yield": 0.0682003
+      },
+      {
+        "symbol": "UNIC.JK",
+        "ex_date": "2023-06-22",
+        "cum_date": "2023-06-21",
+        "recording_date": "2023-06-23",
+        "payment_date": "2023-07-12",
+        "dividend_amount": 360.0,
+        "dividend_yield": 0.0411886
+      },
+      {
+        "symbol": "ZONE.JK",
+        "ex_date": "2023-06-22",
+        "cum_date": "2023-06-21",
+        "recording_date": "2023-06-23",
+        "payment_date": "2023-07-13",
+        "dividend_amount": 20.94,
+        "dividend_yield": 0.0185344
+      },
+      {
+        "symbol": "EMTK.JK",
+        "ex_date": "2023-06-23",
+        "cum_date": "2023-06-22",
+        "recording_date": "2023-06-26",
+        "payment_date": "2023-07-14",
+        "dividend_amount": 5.0,
+        "dividend_yield": 0.00691155
+      },
+      {
+        "symbol": "HILL.JK",
+        "ex_date": "2023-06-23",
+        "cum_date": "2023-06-22",
+        "recording_date": "2023-06-26",
+        "payment_date": "2023-07-14",
+        "dividend_amount": 1.2,
+        "dividend_yield": 0.0118093
+      },
+      {
+        "symbol": "JTPE.JK",
+        "ex_date": "2023-06-23",
+        "cum_date": "2023-06-22",
+        "recording_date": "2023-06-26",
+        "payment_date": "2023-07-03",
+        "dividend_amount": 7.5,
+        "dividend_yield": 0.02698
+      },
+      {
+        "symbol": "KOBX.JK",
+        "ex_date": "2023-06-23",
+        "cum_date": "2023-06-22",
+        "recording_date": "2023-06-26",
+        "payment_date": "2023-07-10",
+        "dividend_amount": 10.0,
+        "dividend_yield": 0.0414233
+      },
+      {
+        "symbol": "LTLS.JK",
+        "ex_date": "2023-06-23",
+        "cum_date": "2023-06-22",
+        "recording_date": "2023-06-26",
+        "payment_date": "2023-07-03",
+        "dividend_amount": 50.0,
+        "dividend_yield": 0.0422799
+      },
+      {
+        "symbol": "SCMA.JK",
+        "ex_date": "2023-06-23",
+        "cum_date": "2023-06-22",
+        "recording_date": "2023-06-26",
+        "payment_date": "2023-07-14",
+        "dividend_amount": 6.5,
+        "dividend_yield": 0.0380452
+      }
+    ]
+  }
+}

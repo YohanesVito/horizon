@@ -1,0 +1,19 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "retrieved_at": "2026-10-06T01:04:48.037359+08:00",
+  "tool": "fetch-company-report",
+  "arguments": {
+    "symbol": "RALS",
+    "sections": [
+      "dividend"
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"symbol\": \"RALS.JK\",\n  \"company_name\": \"Ramayana Lestari Sentosa Tbk\",\n  \"dividend\": {\n    \"historical_dividends\": {\n      \"2020\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2020-08-28\",\n            \"total\": 50,\n            \"yield\": 0.0715434029698372\n          }\n        ],\n        \"total_yield\": 0.0715434029698372,\n        \"total_dividend\": 50\n      },\n      \"2022\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2022-06-02\",\n            \"total\": 30,\n            \"yield\": 0.048640601336956\n          }\n        ],\n        \"total_yield\": 0.048640601336956,\n        \"total_dividend\": 30\n      },\n      \"2023\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2023-06-06\",\n            \"total\": 50,\n            \"yield\": 0.0852676033973694\n          }\n        ],\n        \"total_yield\": 0.0852676033973694,\n        \"total_dividend\": 50\n      },\n      \"2024\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2024-05-30\",\n            \"total\": 50,\n            \"yield\": 0.114986002445221\n          }\n        ],\n        \"total_yield\": 0.114986002445221,\n        \"total_dividend\": 50\n      },\n      \"2025\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2025-05-22\",\n            \"total\": 60,\n            \"yield\": 0.151853129267693\n          }\n        ],\n        \"total_yield\": 0.151853129267693,\n        \"total_dividend\": 60\n      },\n      \"2026\": {\n        \"breakdown\": [\n          {\n            \"date\": \"2026-05-22\",\n            \"total\": 50,\n            \"yield\": 0.132978723404255\n          }\n        ],\n        \"total_yield\": 0.132978723404255,\n        \"total_dividend\": 50\n      }\n    },\n    \"upcoming_dividends\": null,\n    \"yield_ttm\": 0.132978723404255,\n    \"dividend_yield_avg\": {\n      \"period\": 5,\n      \"avg_yield\": 0.0944581478834152\n    },\n    \"dividend_ttm\": 50,\n    \"payout_ratio\": 1.27886506557694,\n    \"cash_payout_ratio\": 0.963021243594786,\n    \"last_ex_dividend_date\": \"2026-05-22\"\n  }\n}"
+      }
+    ]
+  }
+}

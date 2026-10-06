@@ -1,0 +1,30 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "initialization": {
+    "protocolVersion": "2025-03-26",
+    "capabilities": {
+      "tools": {
+        "listChanged": true
+      }
+    },
+    "serverInfo": {
+      "name": "sectors-mcp",
+      "version": "1.0.0"
+    }
+  },
+  "method": "tools/call",
+  "tool": "fetch-quarterly-financials",
+  "arguments": {
+    "symbol": "BBCA",
+    "n_quarters": 1
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[\n  {\n    \"symbol\": \"BBCA.JK\",\n    \"financials_sector_metrics\": {\n      \"interest_income\": 25173142000000,\n      \"interest_expense\": 3769007000000,\n      \"net_interest_income\": 21404135000000,\n      \"gross_loan\": 1012705846000000,\n      \"allowance_for_loans\": 30705949000000,\n      \"net_loan\": 981999897000000,\n      \"total_earning_assets\": null,\n      \"current_account\": 440796760000000,\n      \"savings_account\": 635057569000000,\n      \"time_deposit\": 192970355000000,\n      \"total_deposit\": 1268824684000000,\n      \"other_interest_bearing_liabilities\": null,\n      \"total_cash_and_due_from_banks\": 76568826000000\n    },\n    \"date\": \"2026-06-30\",\n    \"premium_income\": 520278000000,\n    \"premium_expense\": null,\n    \"net_premium_income\": 520278000000,\n    \"non_interest_income\": 6752926000000,\n    \"revenue\": 28677339000000,\n    \"operating_expense\": 9149655000000,\n    \"provision\": -752472000000,\n    \"operating_pnl\": 18374757000000,\n    \"non_operating_income_or_loss\": 0,\n    \"earnings_before_tax\": 18374757000000,\n    \"tax\": 3518935000000,\n    \"minorities\": 5499000000,\n    \"earnings\": 14861321000000,\n    \"gross_profit\": null,\n    \"interest_expense_non_operating\": null,\n    \"ebit\": 18374757000000,\n    \"ebitda\": 19062149000000,\n    \"cost_of_revenue\": null,\n    \"total_assets\": 1660579336000000,\n    \"non_interest_bearing_liabilities\": null,\n    \"cash_only\": 21065925000000,\n    \"total_liabilities\": 1379511881000000,\n    \"total_equity\": 270667746000000,\n    \"total_debt\": null,\n    \"stockholders_equity\": 270437543000000,\n    \"total_non_current_assets\": null,\n    \"current_liabilities\": null,\n    \"cash_and_short_term_investments\": null,\n    \"non_loan_assets\": 678579439000000,\n    \"total_current_asset\": null,\n    \"total_non_current_liabilities\": null,\n    \"financing_cash_flow\": 11588921000000,\n    \"operating_cash_flow\": -15658754000000,\n    \"investing_cash_flow\": -17337136000000,\n    \"net_cash_flow\": -21406969000000,\n    \"free_cash_flow\": -16453704000000,\n    \"realized_capital_goods_investment\": -794950000000\n  }\n]"
+      }
+    ]
+  },
+  "retrieved_at": "2026-10-06T00:25:40.285542+08:00"
+}
