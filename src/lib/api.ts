@@ -1,3 +1,10 @@
+// Saved research may retain earlier wording; normalize only displayed prose.
+export function tradingDayText(value: string): string {
+  return value.replace(/\bsesi\b/gi, (word) =>
+    word[0] === "S" ? "Hari bursa" : "hari bursa",
+  );
+}
+
 export async function api<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(`/api${path}`, {
     ...init,
@@ -6,16 +13,18 @@ export async function api<T>(path: string, init?: RequestInit): Promise<T> {
   if (!response.ok) {
     const body = await response.json().catch(() => null);
     throw new Error(
-      typeof body?.detail === "string"
-        ? body.detail
-        : Array.isArray(body?.detail)
+      tradingDayText(
+        typeof body?.detail === "string"
           ? body.detail
-              .slice(0, 3)
-              .map(
-                (issue: { msg?: string }) => issue.msg ?? "Input tidak valid",
-              )
-              .join(". ")
-          : `Permintaan gagal (${response.status}). Periksa input atau coba lagi.`,
+          : Array.isArray(body?.detail)
+            ? body.detail
+                .slice(0, 3)
+                .map(
+                  (issue: { msg?: string }) => issue.msg ?? "Input tidak valid",
+                )
+                .join(". ")
+            : `Permintaan gagal (${response.status}). Periksa input atau coba lagi.`,
+      ),
     );
   }
   return response.json();

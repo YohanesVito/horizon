@@ -53,7 +53,7 @@ def make_period(event, bars, sources, review=None):
         issues.append('Tanggal dividen belum valid.')
     for key, message in [
         ('announcement_link_verified', 'Hubungan pengumuman dan event belum diverifikasi.'),
-        ('sessions_verified', 'Kelengkapan sesi harga belum diverifikasi.'),
+        ('sessions_verified', 'Kelengkapan data harga per hari bursa belum diverifikasi.'),
         ('basis_verified', 'Basis harga, DPS dan mata uang belum diverifikasi.'),
         ('cycle_verified', 'Jenis siklus dividen belum diverifikasi.'),
     ]:

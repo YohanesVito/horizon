@@ -11,9 +11,10 @@ import {
   Play,
   Route,
 } from "lucide-react";
-import { api, dt, money, pct } from "@/lib/api";
+import { api, dt, money, pct, tradingDayText } from "@/lib/api";
 import type { Allocation, Catalog, Replay, Run, SimInput } from "@/lib/types";
 import Chart, { lineOption } from "./chart";
+import MoneyInput from "./money-input";
 const labels: Record<Allocation, string> = {
   single: "All-in pertama",
   equal: "Bagi rata",
@@ -23,9 +24,10 @@ const exitLabels: Record<SimInput["exit_rule"], string> = {
   price_bep: "Setelah sinyal BEP harga",
   ex_close: "Close ex-date",
   payment_close: "Close payment date",
-  holding_period: "Batas sesi pengamatan",
+  holding_period: "Batas hari bursa pengamatan",
 };
-function inputSignature(input: SimInput, startDate?: string) {
+type SimulationDraft = Omit<SimInput, "capital"> & { capital: string };
+function inputSignature(input: SimInput | SimulationDraft, startDate?: string) {
   return JSON.stringify([
     Number(input.capital),
     [...input.event_ids].sort(),
@@ -47,8 +49,8 @@ export default function Simulator({
 }) {
   const events = catalog.events.filter((e) => e.replay_available);
   const initialEvent = events.find((e) => e.id === initialEventId);
-  const [input, setInput] = useState<SimInput>({
-    capital: 100000000,
+  const [input, setInput] = useState<SimulationDraft>({
+    capital: "",
     event_ids: initialEvent
       ? [initialEvent.id]
       : events
@@ -73,6 +75,7 @@ export default function Simulator({
   const [jobId, setJobId] = useState<string | null>(null),
     [chosen, setChosen] = useState<Allocation>("rotation");
   const [copiedFrom, setCopiedFrom] = useState<string | null>(null);
+  const [capitalResetKey, setCapitalResetKey] = useState(0);
   const [showAllHistory, setShowAllHistory] = useState(false);
   const capitalField = useRef<HTMLInputElement>(null);
   const client = useQueryClient();
@@ -120,8 +123,10 @@ export default function Simulator({
     result?.input.event_ids.filter(
       (id) => !events.some((event) => event.id === id),
     ) ?? [];
-  const set = <K extends keyof SimInput>(key: K, value: SimInput[K]) =>
-    setInput({ ...input, [key]: value });
+  const set = <K extends keyof SimulationDraft>(
+    key: K,
+    value: SimulationDraft[K],
+  ) => setInput({ ...input, [key]: value });
   const toggle = (id: string) =>
     set(
       "event_ids",
@@ -135,8 +140,7 @@ export default function Simulator({
         <section className="glass pad">
           <div className="section-head">
             <div>
-              <p className="eyebrow">01 / BUILD YOUR STRATEGY</p>
-              <h2>Atur perjalanan modal</h2>
+              <h2>Aturan simulasi</h2>
             </div>
             <Route size={21} className="accent" />
           </div>
@@ -164,44 +168,72 @@ export default function Simulator({
                 ...input,
                 end_date: String(form.get("end_date")),
                 start_date: String(form.get("start_date")),
-                capital: Number(form.get("capital")),
+                capital: String(form.get("capital")),
                 max_holding_sessions: Number(form.get("max_holding_sessions")),
               };
               setInput(next);
-              submit.mutate(next);
+              submit.mutate({ ...next, capital: Number(next.capital) });
             }}
           >
             <div className="form-grid">
-              <label>
+              <label className="sim-capital-field">
                 Modal awal (Rp)
-                <input
-                  ref={capitalField}
-                  type="number"
+                <MoneyInput
+                  inputRef={capitalField}
+                  resetKey={capitalResetKey}
                   name="capital"
                   required
                   min="1"
                   max="1000000000000"
                   step="1"
+                  placeholder="Masukkan modal"
                   value={input.capital}
-                  onChange={(e) => set("capital", Number(e.target.value))}
+                  onValueChange={(value) => set("capital", value)}
                 />
               </label>
-              <label>
-                Strategi utama
-                <select
-                  value={input.allocation}
-                  onChange={(e) =>
-                    set("allocation", e.target.value as Allocation)
-                  }
-                >
-                  {Object.entries(labels).map(([key, name]) => (
-                    <option key={key} value={key}>
-                      {name}
-                    </option>
-                  ))}
-                </select>
-              </label>
             </div>
+            <fieldset className="strategy-picker">
+              <legend>Strategi utama</legend>
+              <div className="strategy-cards">
+                {(
+                  [
+                    [
+                      "single",
+                      "Pakai seluruh modal untuk satu event dengan cum date paling awal. Event lain dilewati.",
+                    ],
+                    [
+                      "equal",
+                      "Bagi modal awal sama rata untuk setiap event. Jatah tiap event tetap, meski waktunya berbeda.",
+                    ],
+                    [
+                      "rotation",
+                      "Pakai kas yang tersedia untuk event berikutnya. Dana jual menunggu T+2; dividen menunggu payment date.",
+                    ],
+                  ] as const
+                ).map(([mode, explanation]) => (
+                  <label
+                    className={`strategy-card ${input.allocation === mode ? "selected" : ""}`}
+                    key={mode}
+                  >
+                    <span className="strategy-choice">
+                      <input
+                        type="radio"
+                        name="allocation"
+                        value={mode}
+                        checked={input.allocation === mode}
+                        onChange={() => set("allocation", mode)}
+                      />
+                      <strong>{labels[mode]}</strong>
+                    </span>
+                    <span>{explanation}</span>
+                  </label>
+                ))}
+              </div>
+              <p className="tiny muted">
+                Urutan mengikuti cum date, lalu kode emiten bila tanggal sama.
+                Pembelian mengikuti lot 100 saham dan kas tersedia.
+              </p>
+            </fieldset>
             <fieldset>
               <legend>
                 Event dalam rute (maks. 10){" "}
@@ -247,8 +279,8 @@ export default function Simulator({
                   }
                 >
                   <option value={0}>Close pada cum date</option>
-                  <option value={5}>5 sesi sebelumnya</option>
-                  <option value={10}>10 sesi sebelumnya</option>
+                  <option value={5}>5 hari bursa sebelumnya</option>
+                  <option value={10}>10 hari bursa sebelumnya</option>
                 </select>
               </label>
               <label>
@@ -262,11 +294,13 @@ export default function Simulator({
                   <option value="price_bep">Setelah sinyal BEP harga</option>
                   <option value="ex_close">Close ex-date</option>
                   <option value="payment_close">Close payment date</option>
-                  <option value="holding_period">Batas sesi pengamatan</option>
+                  <option value="holding_period">
+                    Batas hari bursa pengamatan
+                  </option>
                 </select>
               </label>
               <label>
-                Batas sesi setelah ex-date
+                Batas hari bursa setelah ex-date
                 <input
                   type="number"
                   name="max_holding_sessions"
@@ -307,13 +341,13 @@ export default function Simulator({
               </label>
             </div>
             <p className="tiny muted">
-              Batas sesi berlaku untuk BEP, payment, dan pengamatan. Bagi rata
-              membagi anggaran per event. Entry memakai close; sinyal BEP pada
-              close dieksekusi pada open sesi berikutnya.
+              Batas hari bursa berlaku untuk BEP, payment, dan pengamatan. Entry
+              memakai close; sinyal BEP pada close dieksekusi pada open hari
+              bursa berikutnya.
             </p>
             <div className="notice">
-              Replay historis · Lot 100 saham · Dana jual T+2 sesi dataset ·
-              Dividen tersedia pada payment date.
+              Replay historis · Lot 100 saham · Dana jual T+2 hari bursa dataset
+              · Dividen tersedia pada payment date.
             </div>
             <button
               className="btn primary full"
@@ -322,7 +356,7 @@ export default function Simulator({
             >
               {busy ? (
                 <>
-                  <span className="spinner" /> Menghitung perjalanan modal…
+                  <span className="spinner" /> Menghitung simulasi…
                 </>
               ) : (
                 <>
@@ -336,7 +370,6 @@ export default function Simulator({
           </form>
         </section>
         <aside className="glass pad history-panel">
-          <p className="eyebrow">SAVED RESEARCH</p>
           <h2>
             <History size={18} /> Riwayat simulasi
           </h2>
@@ -420,14 +453,18 @@ export default function Simulator({
       </div>
       {(submit.isError || run.isError || run.data?.status === "failed") && (
         <div className="notice error" role="alert">
-          {submit.error?.message ?? run.error?.message ?? run.data?.error}
+          {tradingDayText(
+            submit.error?.message ??
+              run.error?.message ??
+              run.data?.error ??
+              "",
+          )}
         </div>
       )}
       {selected && result && (
         <section className="results">
           <div className="section-head">
             <div>
-              <p className="eyebrow">02 / FOLLOW THE MONEY</p>
               <h2>Hasil replay strategi</h2>
               <p className="small muted">
                 {dt(result.primary.start_date, true)} –{" "}
@@ -456,12 +493,13 @@ export default function Simulator({
                 onClick={() => {
                   setInput({
                     ...result.input,
-                    capital: Number(result.input.capital),
+                    capital: String(result.input.capital),
                     event_ids: [...result.input.event_ids],
                     start_date:
                       result.input.start_date ?? result.primary.start_date,
                   });
                   setCopiedFrom(run.data!.id);
+                  setCapitalResetKey((revision) => revision + 1);
                   capitalField.current?.focus({ preventScroll: true });
                   capitalField.current?.scrollIntoView({ block: "center" });
                 }}
@@ -479,7 +517,7 @@ export default function Simulator({
                 <dd>
                   {result.input.entry_sessions_before_cum === 0
                     ? "Close pada cum date"
-                    : `${result.input.entry_sessions_before_cum} sesi sebelum cum date`}
+                    : `${result.input.entry_sessions_before_cum} hari bursa sebelum cum date`}
                 </dd>
               </div>
               <div>
@@ -488,7 +526,7 @@ export default function Simulator({
               </div>
               <div>
                 <dt>Batas setelah ex-date</dt>
-                <dd>{result.input.max_holding_sessions} sesi</dd>
+                <dd>{result.input.max_holding_sessions} hari bursa</dd>
               </div>
               <div>
                 <dt>Strategi utama</dt>
@@ -573,12 +611,9 @@ export default function Simulator({
             <Route size={32} />
           </div>
           <div>
-            <p className="eyebrow">FROM ASSUMPTIONS TO EVIDENCE</p>
-            <h2>Setiap rute punya konsekuensi.</h2>
+            <h2>Belum ada hasil simulasi</h2>
             <p className="muted">
-              Jalankan replay untuk melihat hasil, penurunan nilai,
-              <br />
-              dan berapa lama modal menunggu.
+              Pilih event dan aturan, lalu jalankan replay historis.
             </p>
           </div>
         </div>
@@ -654,7 +689,6 @@ export function ResultView({
       <section className="glass pad">
         <div className="section-head">
           <div>
-            <p className="eyebrow">CAPITAL ROUTE</p>
             <h3>{labels[r.allocation]} · jejak perpindahan</h3>
           </div>
           <span className="badge">{r.rules_version}</span>
@@ -714,7 +748,7 @@ export function ResultView({
                     </small>
                   </span>
                 </div>
-                <p className="small muted">{t.reason}</p>
+                <p className="small muted">{tradingDayText(t.reason)}</p>
                 <div className="route-foot">
                   <span>Dividen {money(t.dividend)}</span>
                   <span>PnL saham {money(t.capital_pnl)}</span>
@@ -756,7 +790,9 @@ export function ResultView({
                     <td>{l.kind}</td>
                     <td>{l.symbol}</td>
                     <td>{money(l.amount)}</td>
-                    <td className="ledger-detail">{l.detail}</td>
+                    <td className="ledger-detail">
+                      {tradingDayText(l.detail)}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -768,7 +804,7 @@ export function ResultView({
         <summary>Asumsi dan batas hasil ini</summary>
         <ul>
           {r.assumptions.map((s) => (
-            <li key={s}>{s}</li>
+            <li key={s}>{tradingDayText(s)}</li>
           ))}
         </ul>
         <p>

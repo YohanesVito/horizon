@@ -38,7 +38,6 @@ export default function CompanyDialog({
       <div className="dialog-inner">
         <div className="section-head">
           <div>
-            <p className="eyebrow">COMPANY RESEARCH</p>
             <h2 id="detail-title">
               {symbol} <span className="muted">/ Dividen & harga</span>
             </h2>
@@ -164,22 +163,21 @@ export default function CompanyDialog({
             </div>
             {c.research ? (
               <div className="research-block">
-                <p className="eyebrow">RECOVERY STUDY / BBCA</p>
-                <h3>Harga pulih tidak selalu berarti modal bebas risiko.</h3>
+                <h3>Pemulihan harga BBCA</h3>
                 <div className="detail-stats">
                   <div>
                     <small>Event diteliti</small>
                     <strong>{c.research.n_events}</strong>
                   </div>
                   <div>
-                    <small>Pulih ≤20 sesi</small>
+                    <small>Pulih ≤20 hari bursa</small>
                     <strong>
                       {c.research.price_bep_recovered_by_t20} /{" "}
                       {c.research.n_events}
                     </strong>
                   </div>
                   <div>
-                    <small>Belum pulih ≤20 sesi</small>
+                    <small>Belum pulih ≤20 hari bursa</small>
                     <strong>
                       {c.research.price_bep_censored_at_t20} /{" "}
                       {c.research.n_events}
@@ -210,12 +208,12 @@ export default function CompanyDialog({
                           <td>
                             {e.price_bep_offset == null
                               ? "Belum pulih"
-                              : `${e.price_bep_offset} sesi`}
+                              : `${e.price_bep_offset} hari bursa`}
                           </td>
                           <td>
                             {e.gross_total_bep_offset == null
                               ? "Belum pulih"
-                              : `${e.gross_total_bep_offset} sesi`}
+                              : `${e.gross_total_bep_offset} hari bursa`}
                           </td>
                           <td>{pct(Number(e.t20_gross_total_return) * 100)}</td>
                         </tr>
@@ -225,8 +223,8 @@ export default function CompanyDialog({
                 </div>
                 <div className="notice">
                   Event yang belum pulih tetap masuk perhitungan. Median{" "}
-                  {c.research.median_recovery_offset_among_recovered_only} sesi
-                  hanya untuk event yang sudah pulih; bukan estimasi waktu
+                  {c.research.median_recovery_offset_among_recovered_only} hari
+                  bursa hanya untuk event yang sudah pulih; bukan estimasi waktu
                   tunggu semua posisi.
                 </div>
               </div>

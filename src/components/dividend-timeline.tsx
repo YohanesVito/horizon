@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { PointerEvent } from "react";
+import type { MouseEvent, PointerEvent } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
   ArrowUpRight,
@@ -12,7 +12,7 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
-import { api, dt, money, pct } from "@/lib/api";
+import { api, dt, money, pct, tradingDayText } from "@/lib/api";
 import { cumExMovement, phaseLabel } from "@/lib/timeline-chart";
 import type {
   TimelineCatalog,
@@ -317,7 +317,7 @@ function TimelineExplorer({
         <div className="timeline-audit-body">
           <ul>
             {data.issues.map((issue) => (
-              <li key={issue}>{issue}</li>
+              <li key={issue}>{tradingDayText(issue)}</li>
             ))}
           </ul>
           <p>
@@ -438,7 +438,9 @@ function TimelinePlot({
     setLegendYear(null);
     setHover(null);
   };
-  function onPointerMove(event: PointerEvent<SVGSVGElement>) {
+  function closestAt(
+    event: PointerEvent<SVGSVGElement> | MouseEvent<SVGSVGElement>,
+  ): Hover | null {
     const rect = event.currentTarget.getBoundingClientRect();
     const pointerX = ((event.clientX - rect.left) * width) / rect.width;
     const pointerY = ((event.clientY - rect.top) * height) / rect.height;
@@ -448,8 +450,7 @@ function TimelinePlot({
       pointerY < top ||
       pointerY > bottom
     ) {
-      setHover(null);
-      return;
+      return null;
     }
     let closest: Hover | null = null;
     let distance = Infinity;
@@ -466,6 +467,21 @@ function TimelinePlot({
         closest = { period, point };
       }
     }
+    return closest;
+  }
+  function onPointerMove(event: PointerEvent<SVGSVGElement>) {
+    const closest = closestAt(event);
+    if (closest) setLegendYear(null);
+    setHover(closest);
+  }
+  function onChartClick(event: MouseEvent<SVGSVGElement>) {
+    const closest = closestAt(event);
+    if (!closest) return;
+    if (pinned !== null) {
+      reset();
+      return;
+    }
+    setPinned(closest.period.year);
     setLegendYear(null);
     setHover(closest);
   }
@@ -535,8 +551,8 @@ function TimelinePlot({
         </span>
         <span>
           {pinned
-            ? `Fokus ${pinned} terkunci`
-            : "Hover garis / area · klik tahun untuk mengunci"}
+            ? `Fokus ${pinned} terkunci · klik grafik lagi untuk melepas`
+            : "Hover garis / area · klik grafik atau tahun untuk mengunci"}
         </span>
       </div>
       {active && (
@@ -565,12 +581,14 @@ function TimelinePlot({
               role="img"
               aria-label={`Overlay harga ${symbol}, ${years.join(", ")}; ${units === "price" ? "rupiah" : "perubahan persen"}; hari kalender relatif ex-date`}
               onPointerMove={onPointerMove}
+              onClick={onChartClick}
               onPointerLeave={() => setHover(null)}
             >
               <title>Harga historis {symbol} pada periode dividen</title>
               <desc>
-                Pilih tahun pada tombol legenda untuk menonjolkan garis dan
-                membaca timeline tanggal di bawah grafik.
+                Klik garis atau area grafik, atau pilih tahun pada tombol
+                legenda, untuk mengunci fokus dan membaca timeline tanggal di
+                bawah grafik. Klik grafik lagi untuk melepas fokus.
               </desc>
               {[0, 1, 2, 3, 4].map((i) => {
                 const v = minY + ((maxY - minY) * i) / 4;

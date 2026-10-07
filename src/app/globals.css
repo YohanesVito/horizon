@@ -1743,6 +1743,57 @@ tr:hover td {
 .sim-setup form > .form-grid {
   margin: 22px 0 17px;
 }
+.sim-setup .form-grid > .sim-capital-field {
+  grid-column: 1 / -1;
+  font-size: 14px;
+}
+.sim-setup .sim-capital-field > input[type="text"] {
+  min-height: 52px;
+  font-size: 24px;
+  padding: 12px 14px;
+  font-variant-numeric: tabular-nums;
+}
+.strategy-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: 10px;
+}
+.strategy-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.strategy-card.selected {
+  border-color: var(--rose);
+  color: var(--text);
+}
+.strategy-card:focus-within {
+  outline: 2px solid #e7b2d1;
+  outline-offset: 4px;
+}
+.strategy-choice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+}
+.strategy-choice input {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  flex-shrink: 0;
+  accent-color: var(--rose);
+}
+.strategy-picker > p {
+  margin-top: 10px;
+}
 fieldset {
   padding: 0;
   border: 0;

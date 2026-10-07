@@ -1,0 +1,192 @@
+{
+  "recorded_at": "2026-10-07T12:56:36.075Z",
+  "base": "http://localhost:3000",
+  "mode": "after",
+  "source": "real LPPF snapshot API / rendered SVG path coordinates",
+  "checks": [
+    {
+      "width": 1440,
+      "touch": false,
+      "first": {
+        "year": 2024,
+        "x": 453.65,
+        "y": 243.39,
+        "separation": 40.329999999999984,
+        "clientX": 747.65,
+        "clientY": 811.593125
+      },
+      "second": {
+        "year": 2025,
+        "x": 138.73,
+        "y": 243.9,
+        "separation": 31.960000000000008,
+        "clientX": 432.73,
+        "clientY": 812.103125
+      },
+      "pinned": {
+        "locked": 2024,
+        "focus": "Jejak dividen 2024\nPembayaran tercatat · jenis belum terverifikasi",
+        "tooltip": "2024 · Historis\n5 Apr 2024 · H−17\nRp 1.870\n4,76% dari cum-date\nSebelum ex-date",
+        "meta": "Perubahan harga dari close cum-date (%)\nFokus 2024 terkunci · klik grafik lagi untuk melepas"
+      },
+      "expected_pinned_point": {
+        "date": "2024-04-05",
+        "close": 1870
+      },
+      "second_chart_click": {
+        "unlocked": {
+          "locked": null,
+          "focus": "Jejak dividen 2025\nPembayaran tercatat · jenis belum terverifikasi",
+          "tooltip": null,
+          "meta": "Perubahan harga dari close cum-date (%)\nHover garis / area · klik grafik atau tahun untuk mengunci"
+        },
+        "all_series_opacities": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "next_hover": "Jejak dividen2025"
+      },
+      "pointer_leave": "retains2024/clears tooltip",
+      "outside_plot_click": "does not pin",
+      "keyboard": "Enter toggles2023off; Space locks2022",
+      "touch_first_tap": "not applicable",
+      "legend": {
+        "locked": 2023,
+        "focus": "Jejak dividen 2023\nPembayaran tercatat · jenis belum terverifikasi",
+        "tooltip": "2023 · Historis\n27 Mar 2023 · H−14\nRp 4.780\n-5,35% dari cum-date\nSebelum ex-date",
+        "meta": "Perubahan harga dari close cum-date (%)\nFokus 2023 terkunci · klik grafik lagi untuk melepas"
+      },
+      "reset": {
+        "locked": null,
+        "focus": "Jejak dividen 2025\nPembayaran tercatat · jenis belum terverifikasi",
+        "tooltip": "2025 · Historis\n8 Apr 2025 · H−14\nRp 1.745\n-11,87% dari cum-date\nSebelum ex-date",
+        "meta": "Perubahan harga dari close cum-date (%)\nHover garis / area · klik grafik atau tahun untuk mengunci"
+      },
+      "size": {
+        "width": 1440,
+        "scrollWidth": 1440
+      }
+    },
+    {
+      "width": 390,
+      "touch": true,
+      "first": {
+        "year": 2024,
+        "x": 150.25,
+        "y": 232.71,
+        "separation": 30.830000000000013,
+        "clientX": 181.25,
+        "clientY": 539.131875
+      },
+      "second": {
+        "year": 2025,
+        "x": 138.56,
+        "y": 218.91,
+        "separation": 14.840000000000003,
+        "clientX": 169.56,
+        "clientY": 525.331875
+      },
+      "pinned": {
+        "locked": 2024,
+        "focus": "Jejak dividen 2024\nPembayaran tercatat · jenis belum terverifikasi",
+        "tooltip": "2024 · Historis\n2 Mei 2024 · H+10\nRp 1.570\n-12,04% dari cum-date\nSetelah ex-date",
+        "meta": "Perubahan harga dari close cum-date (%)\nFokus 2024 terkunci · klik grafik lagi untuk melepas"
+      },
+      "expected_pinned_point": {
+        "date": "2024-05-02",
+        "close": 1570
+      },
+      "second_chart_click": {
+        "unlocked": {
+          "locked": null,
+          "focus": "Jejak dividen 2025\nPembayaran tercatat · jenis belum terverifikasi",
+          "tooltip": null,
+          "meta": "Perubahan harga dari close cum-date (%)\nHover garis / area · klik grafik atau tahun untuk mengunci"
+        },
+        "all_series_opacities": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "next_hover": "Jejak dividen2025"
+      },
+      "pointer_leave": "retains2024/clears tooltip",
+      "outside_plot_click": "does not pin",
+      "keyboard": "Enter toggles2023off; Space locks2022",
+      "touch_first_tap": "locks without prior hover; second tap unlocks",
+      "legend": {
+        "locked": 2023,
+        "focus": "Jejak dividen 2023\nPembayaran tercatat · jenis belum terverifikasi",
+        "tooltip": "2023 · Historis\n18 Apr 2023 · H+8\nRp 4.030\n-20,2% dari cum-date\nSetelah ex-date",
+        "meta": "Perubahan harga dari close cum-date (%)\nFokus 2023 terkunci · klik grafik lagi untuk melepas"
+      },
+      "reset": {
+        "locked": null,
+        "focus": "Jejak dividen 2025\nPembayaran tercatat · jenis belum terverifikasi",
+        "tooltip": "2025 · Historis\n2 Mei 2025 · H+10\nRp 1.820\n-8,08% dari cum-date\nSetelah ex-date",
+        "meta": "Perubahan harga dari close cum-date (%)\nHover garis / area · klik grafik atau tahun untuk mengunci"
+      },
+      "size": {
+        "width": 390,
+        "scrollWidth": 390
+      }
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/api/catalog"
+    },
+    {
+      "method": "GET",
+      "path": "/api/watchlist"
+    },
+    {
+      "method": "GET",
+      "path": "/api/rules"
+    },
+    {
+      "method": "GET",
+      "path": "/api/companies/BBCA"
+    },
+    {
+      "method": "GET",
+      "path": "/api/timeline"
+    },
+    {
+      "method": "GET",
+      "path": "/api/timeline/LPPF?preview=true"
+    },
+    {
+      "method": "GET",
+      "path": "/api/catalog"
+    },
+    {
+      "method": "GET",
+      "path": "/api/watchlist"
+    },
+    {
+      "method": "GET",
+      "path": "/api/rules"
+    },
+    {
+      "method": "GET",
+      "path": "/api/companies/BBCA"
+    },
+    {
+      "method": "GET",
+      "path": "/api/timeline"
+    },
+    {
+      "method": "GET",
+      "path": "/api/timeline/LPPF?preview=true"
+    }
+  ],
+  "page_errors": [],
+  "status": "passed"
+}
