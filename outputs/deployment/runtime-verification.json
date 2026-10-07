@@ -1,0 +1,62 @@
+{
+  "at_utc": "2026-10-07T16:15:28.712543+00:00",
+  "curation_services": {
+    "curation-realtime": {
+      "MainPID": "0",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "enabled"
+    },
+    "curation-recorder": {
+      "MainPID": "0",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "enabled"
+    },
+    "curation-reversal-paper": {
+      "MainPID": "0",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "enabled"
+    },
+    "curation-reversal-paper-v2": {
+      "MainPID": "0",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "enabled"
+    },
+    "curation-zone-paper": {
+      "MainPID": "0",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "enabled"
+    }
+  },
+  "containers": [
+    {
+      "name": "/horizon-api-1",
+      "image_id": "sha256:4cec0602445d515db19c1d8d1e76d0ca4b49bca6029a51fa71ec393eb4002099",
+      "status": "running",
+      "healthy": "healthy",
+      "started_at": "2026-10-07T16:12:25.820776356Z",
+      "restart_count": 0,
+      "user": "horizon",
+      "read_only": true,
+      "memory_limit": 805306368,
+      "restart_policy": "unless-stopped",
+      "cap_drop": [
+        "ALL"
+      ]
+    }
+  ],
+  "io_pressure": "some avg10=5.89 avg60=14.31 avg300=37.13 total=610483153381\nfull avg10=5.88 avg60=14.19 avg300=36.91 total=569142679914",
+  "disk_free_bytes": 5000040448,
+  "docker_bridge_mtu": 1442,
+  "origin_health": {
+    "status": "ok",
+    "source": "Sectors snapshots",
+    "storage": "postgresql",
+    "worker": "local-thread",
+    "mode": "research-mvp"
+  }
+}

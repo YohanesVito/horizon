@@ -1,5 +1,33 @@
 # Progres development MVP
 
+## Review branch sebelum Vercel — 8 Oktober 2026
+
+**BR-01 DONE pada scope review.** Remote `feat/timeline-ui-polish` 523c993 mencakup Sammy9fdf32b dan chart9cc1c81; Supabase/Dalang masih uncommitted di branch lokal feat/supabase-migration. Salinan sementara gabungan lulus build/TypeScript, lint dan60tes backend; preview browser tersambung VPS dan input modal bekerja. Tidak ada konflik kode, tiga dokumen berkonflik, ID issue bertabrakan. Fixture replay berbeda12teks tetapi angka/struktur sama (ISS-051). Rekomendasi dan bukti: [BRANCH_REVIEW.md](./BRANCH_REVIEW.md), `outputs/development/branch-review.json`. Checkout/branch aplikasi tidak diganti; tidak merge/commit/push/deploy Vercel. UAT tidak dijalankan.
+
+## Deployment selesai — 8 Oktober 2026 WITA
+
+**DEP-01, DEP-02, DEP-03: DONE pada scope backend dan development verification.** FastAPI container `horizon-api-1` healthy di Dalang, memakai Supabase Session Pooler dengan role runtime terbatas. Frontend lokal3000 sudah membaca backend VPS melalui proxy server; backend lokal8000 berhenti. HTTPS, proteksi key baca/tulis, delapan endpoint, replay API→worker→Supabase dan checksum20record lama lulus. Probe replay dibersihkan. Browser Peluang/Timeline/pratinjauLPPF tampil, consoleerror/warning kosong. Lima layanan kurasi tetap inactive/PID0; enabledstate tidak diubah.
+
+Release `20261007T125050Z-f062081aa6`, image `sha256:4cec0602445d515db19c1d8d1e76d0ca4b49bca6029a51fa71ec393eb4002099`. Bukti final `outputs/deployment/deployment.json`, `dalang-api-verification.json`, `runtime-verification.json`, `frontend-proxy-verification.json`, `browser-verification.json`; [runbook operasi/rollback](./DEPLOYMENT_DALANG.md). Packaging sebelumnya:60pytest,7proxychecks, lint/TypeScript/build dan image smoke lulus. Retry mengubah konfigurasi koneksi, tidak mengubah engine atau menjalankan ulang seluruh suite.
+
+ISS-047/049/050 RESOLVED (paket dpkg, MTU Docker, koneksi IPv6). ISS-048 tetap OPEN: I/O sangat lambat saat install/build/recreate, membaik setelah startup tetapi akar penyebab belum diketahui. Kebutuhan login, durableworker, gap data/forecast, PRD dan UAT tetap seperti sebelumnya. Frontend belum dipublikasikan ke Vercel; tidak ada commit/push atau klaim UAT. Catatan di bawah adalah riwayat tahap sebelumnya.
+
+## Deployment Docker Dalang — 7 Oktober 2026
+
+**DEP-01 DONE, DEP-02/DEP-03 IN_PROGRESS (13:59 UTC).** Image `sha256:4cec0602445d515db19c1d8d1e76d0ca4b49bca6029a51fa71ec393eb4002099` berhasil dibangun; smoke packaged health/catalog/intelligence/timeline/preview lulus. Bukti `outputs/deployment/build-result.json` dan `docker-build.log`. Backend lokal dihentikan dengan application shutdown complete sebelum aktivasi VPS untuk melepas single-worker lease. Aktivasi container produksi sedang berjalan; HTTPS/Supabase end-to-end belum dinyatakan lulus.
+
+Update DEP-01 berikutnya: build pertama timeout ke PyPI pada bridge MTU1500, sedangkan uplink VPS1442 dan curl host berhasil. MTU daemon/default bridge disamakan1442; uji HTTPS dari container lulus. Build retry berhasil mengunduh dan memasang seluruh dependency terkunci, dilanjutkan copy layer aplikasi. ISS-049 RESOLVED pada konektivitas; uji image dan cutover tetap pending.
+
+Update DEP-01: Docker Engine29.8.2/containerd2.3.6/Compose5.6.0 terpasang dan API daemon merespons. Build image sudah berjalan, checksum211file cocok. Laporan installer di `outputs/deployment/docker-install.log`. Masih menunggu build/smoke dan cutover; kendala I/O ISS-048 belum dinyatakan pulih.
+
+**DEP-01–DEP-03: IN_PROGRESS, tertahan storage VPS (ISS-048).** PM meminta deploy sekarang. Dockerfile/Compose non-root, release allowlist 211 file dan runtime env terbatas sudah disiapkan/diunggah. Prasyarat dpkg sudo/libc-bin yang terputus berhasil diperbaiki (ISS-047). Instalasi Docker berikutnya berjalan sangat lambat pada penulisan paket; pengamatan 13:05:07 UTC menemukan IO full avg10=94.85%, memory PSI=0, Docker belum tersedia dan lima layanan kurasi tetap inactive. `horizon-build.service` diantrikan setelah installer berhasil; belum ada bukti build image atau API VPS lulus. Backend lokal belum dihentikan dan frontend belum dialihkan ke VPS.
+
+Pemeriksaan lokal: 60 pytest lulus; tujuh pemeriksaan proxy server lulus; lint/TypeScript/production build lulus; 83 asset browser tidak memuat secret; health via frontend lokal HTTP200 dengan storage PostgreSQL. Kredensial yang diunggah hanya DATABASE_URL role terbatas dan HORIZON_API_KEY, file mode600; tidak ada admin/Supabase secret key pada VPS atau image. Bukti di `outputs/deployment/`, runbook [DEPLOYMENT_DALANG.md](./DEPLOYMENT_DALANG.md). Tidak membeli addon/domain, memaksa kill dpkg, mengaktifkan layanan kurasi, atau menyatakan deployment/UAT selesai. Docker lokal juga tidak berjalan, sehingga tidak ada klaim image sudah diuji di Docker lokal.
+
+## Operasi Dalang — 7 Oktober 2026
+
+**OPS-01: DONE.** PM mempertahankan FastAPI dengan target Docker pada VPS Dalang. Inventaris langsung menemukan satu VPS `hyperliquid-engine` (ID `10e0ff54-f828-44de-a965-5671328a08d3`), Docker tidak tersedia, dan lima layanan kurasi systemd aktif. Setelah PM mengonfirmasi penghentian kelima layanan, `systemctl stop --no-block` dikirim 12:09:29 UTC. Verifikasi 12:10:07 UTC: lima unit inactive/dead, Result=success, MainPID=0 dan tanpa pending job. Tidak mengubah enabled state, menghapus data atau mendeploy Horizon. Runbook: [DALANG_SERVICE_PAUSE.md](./DALANG_SERVICE_PAUSE.md); snapshot tersimpan di `outputs/operations/dalang-20261007T120842Z/` dan `/root/horizon-ops/20261007T120842Z/` pada VPS. Autostart saat reboot tetap aktif. Build/UAT tidak dijalankan karena tidak ada perubahan kode aplikasi. Kebutuhan deployment berikutnya: ISS-046.
+
 Tanggal pembaruan: 6 Oktober 2026. Tahap saat ini: implementasi MVP lokal. PRD/user story lampiran belum tersedia; baseline sementara mengikuti percakapan dan instruksi coding 6 Oktober.
 
 ## Aturan pencatatan
@@ -9,6 +37,8 @@ Perbarui status setelah pekerjaan berubah, bukan hanya di akhir sprint. Setiap t
 Status task: `TODO`, `IN_PROGRESS`, `WAITING_INPUT`, `BLOCKED`, `BYPASSED`, `DONE`. `DONE` berarti selesai pada lingkup task dan pemeriksaan development yang dicatat; bukan otomatis lulus testing akhir. Status milestone `READY_FOR_TESTING` dan `DELIVERED` mengikuti [rencana sprint](./SPRINT_PLAN.md).
 
 ## Status task
+
+DB-01/DB-02/DB-03 DONE pada scope migrasi record (7 Oktober 2026). Branch `feat/supabase-migration` dari `feat/chart`. Schema privat `horizon` di PostgreSQL Supabase dibuat dengan migration version/checksum, RLS dan akun runtime terbatas `horizon_app`; backend membaca env server dengan SSL.20record dipindahkan dan seluruh ID/kind/payload/timestamp mempunyai checksum sumber/tujuan sama. Backup `.runtime/backups/pre-supabase-lx6m5567.db` berizin600; SQLite asli tetap utuh. Cloud smoke membuktikan rerun0insert, pembatasan role/schema, penolakan backend kedua, CRUD/kind guard dan pembersihan probe.57pytest lulus (warning upstream ISS-016). ISS-044/045 dicatat serta diperbaiki.10GET melalui frontend3000 menghasilkan200: health melaporkanpostgresql, watchlist/rules/riwayat cocok, hasil simulasi lengkap tetap sama, katalog9emiten dan previewTimeline tersedia. Pemeriksaan API cloud read-only.57tes mencakup regression backend; tidak menjalankan ulang build/lint frontend karena TSX/CSS tidak berubah. Secret scan444file termasuk bundlefrontend tidak menemukan kredensial tersimpan; env lokal600 dan diabaikan Git. Bukti `supabase-migration-dry-run.json`, `supabase-migration.json`, `supabase-verification.json`, `supabase-api-verification.json`; runbook di SUPABASE_MIGRATION.md. FastAPI8000 dan frontend3000 dijalankan kembali. Hosting aplikasi, market snapshots, worker durable, akun pengguna dan UAT tetap di luar tahap ini.
 
 Pemeriksaan lanjutan: Q-01–Q-03 DONE pada scope developer. Matriks1.620 replay/0gagal,40pytest, lint/typecheck/build dan browser lulus. TEST_MATRIX.md mencatat pengujian PM yang belum dijalankan; status UAT tidak diubah.
 
@@ -23,7 +53,7 @@ Sprint intelligence: I-01 sampai I-05 DONE pada scope eksploratif yang tercatat.
 | S0-03 | WAITING_INPUT | Lampiran PRD/user story belum tersedia | ISS-001; lokasi sudah ditanyakan sebelumnya |
 | S0-04 | WAITING_INPUT | Rekonsiliasi dokumen asli belum dapat dilakukan | Bergantung S0-03 |
 | S1-01 | DONE | Next.js + FastAPI berjalan lokal | Build, typecheck, lint, health dan proxy API lolos |
-| S1-02 | BYPASSED | Pydantic/OpenAPI + SQLite record JSON; schema/migrasi kanonis ditunda | ISS-010, ISS-013 |
+| S1-02 | BYPASSED sebagian | Supabase PostgreSQL record text/JSON dan migrasi berversi tersedia melalui DB-01/DB-02; schema domain kanonis dan market snapshots dalam database tetap ditunda | ISS-010, ISS-013; SUPABASE_MIGRATION.md |
 | S1-03 | DONE | Lima area UI glassmorphism/dark sesuai palette | Browser desktop dan mobile390 px diperiksa |
 | S2-01 | DONE | MCP Sectors7 respons baru + importer snapshot kalender REST | outputs/mvp-sectors; 9 emiten, 50 event2025 |
 | S2-02 | DONE | Null, OHLC, urutan tanggal, konflik dan jendela replay divalidasi | 5 event eligible; uji karantina konflik dan eligibility lolos |

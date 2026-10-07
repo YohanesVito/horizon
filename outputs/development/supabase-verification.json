@@ -1,0 +1,12 @@
+{
+  "second_backend_rejected": true,
+  "idempotent_inserted": 0,
+  "restricted_role_verified": true,
+  "private_schema_and_rls_verified": true,
+  "read_insert_update_kind_guard_verified": true,
+  "records_after_probe": 20,
+  "source_digest": "5d8aee7123b2cb2c8eb8f4c045a0b4ab0e93d9f7afa79da733493a7cd8cf2047",
+  "destination_digest": "5d8aee7123b2cb2c8eb8f4c045a0b4ab0e93d9f7afa79da733493a7cd8cf2047",
+  "temporary_probe_removed": true,
+  "storage": "postgresql"
+}

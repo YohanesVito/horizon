@@ -1,0 +1,20 @@
+{
+  "status": "deployed-and-verified",
+  "completed_at_utc": "2026-10-07T16:17:51.935341+00:00",
+  "release": "20261007T125050Z-f062081aa6",
+  "source_sha256": "f062081aa6e849a672ac3d7c0fde754b71ac2b6c27b93dadf25c860a13f92937",
+  "image_id": "sha256:4cec0602445d515db19c1d8d1e76d0ca4b49bca6029a51fa71ec393eb4002099",
+  "backend_url": "https://10e0ff54-f828-44de-a965-5671328a08d3.svc.dalang.io",
+  "database": "Supabase PostgreSQL via session pooler 5432; runtime role horizon_app",
+  "frontend": "Local Next.js port 3000; server proxy points to VPS",
+  "public_frontend_deployed": false,
+  "local_backend_stopped": true,
+  "cloud_replay_verified": true,
+  "original_records_preserved": 20,
+  "curation_services": "Five units remain inactive; enabled at boot unchanged",
+  "open_issues": [
+    "ISS-048 storage I/O waits, root cause unverified",
+    "Existing user-auth, data/forecast and UAT gaps unchanged"
+  ],
+  "uncommitted_release": true
+}

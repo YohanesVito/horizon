@@ -163,3 +163,37 @@ Task development berstatus `DONE` setelah hasil implementasinya ada dan pemeriks
 | T-05 | Pemeriksaan kalkulasi/gate, build/lint, browser desktop/mobile dan handoff | C-02/C-08 | Bukti yang dijalankan, isu/bypass tercatat; tidak mengklaim UAT final |
 | T-06 | Label fase langsung pada grafik dan warna area cum→ex menurut arah perubahan close | C-02/C-06 | Label tidak bertumpuk; negatif merah, positif hijau, nol netral; mengikuti periode fokus dan modeRp/% |
 | T-07 | Simpan implementasi chart pada branch `feat/chart` sesuai permintaan PM | C-02/C-06/C-08 | Commit lokal berisi kode, snapshot yang diperlukan, dokumentasi dan bukti pemeriksaan; tidak memuat kredensial |
+
+### Migrasi Supabase — 7 Oktober 2026
+
+| Task | Scope | Requirement | Bukti selesai |
+|---|---|---|---|
+| DB-01 | Konfigurasi PostgreSQL/Supabase dan schema privat berversi | S1-02/C-03/C-07/C-08 | Env server, SSL, akun backend terbatas, startup memeriksa versi schema |
+| DB-02 | Migrasi record SQLite dengan backup, deteksi konflik dan verifikasi | S1-02/C-04/C-05 | Semua ID/payload/timestamp cocok; rerun tidak menduplikasi atau menimpa konflik |
+| DB-03 | Alihkan runtime, regression/API dan runbook | S3-04/S5-02/C-08 | Backend memakai Supabase, riwayat terbaca, read/write teruji; rollback dan batas scope jelas |
+
+Tahap ini memindahkan penyimpanan aplikasi (watchlist, rules, skenario, rencana dan hasil). Snapshot harga/kalender Sectors tetap sumber immutable di repo; pemindahan dataset pasar, autentikasi multi-user dan deployment frontend/backend bukan bagian migrasi record ini.
+
+### Operasi VPS Dalang — keputusan PM 7 Oktober 2026
+
+Backend tetap FastAPI, dengan target hosting Docker pada VPS Dalang; proposal rewrite Next.js + ORM TypeScript tidak dilanjutkan. Database tetap Supabase. Scope saat ini hanya penghentian sementara layanan lama dan pencatatan pemulihan.
+
+| Task | Scope | Sumber | Bukti selesai |
+|---|---|---|---|
+| OPS-01 | Inventaris VPS, penghentian lima layanan kurasi systemd setelah konfirmasi PM, dan runbook restart | Instruksi langsung PM; S5-02 | Snapshot sebelum/perintah/sesudah, kelima unit inactive/dead, catatan lokal + VPS + memori |
+
+Docker belum tersedia; instalasi dan deployment Horizon adalah pekerjaan lanjutan. Detail: [DALANG_SERVICE_PAUSE.md](./DALANG_SERVICE_PAUSE.md).
+
+### Deployment backend Dalang — diotorisasi PM 7 Oktober 2026
+
+| Task | Scope | Sumber | Bukti selesai |
+|---|---|---|---|
+| DEP-01 | Instalasi Docker dan kemasan runtime/release tanpa kredensial dalam image | Instruksi deploy PM; S1-01/S5-02 | Docker berfungsi, build dari snapshot sumber terpilih, manifest dan konfigurasi tersimpan |
+| DEP-02 | FastAPI satu proses, Supabase, HTTPS provider dan proxy frontend dengan key server-only | C-03/C-04/C-08; S3-04 | Backend sehat, key tidak di browser, koneksi database dan alur API berjalan |
+| DEP-03 | Verifikasi deployment, simulasi, runbook upgrade/rollback, catatan batas | S5-02/S5-03 | Bukti aktual; deployment frontend publik dan UAT dibedakan |
+
+### Review branch sebelum Vercel — permintaan PM 8 Oktober 2026
+
+| Task | Scope | Sumber | Bukti selesai |
+|---|---|---|---|
+| BR-01 | Bandingkan ancestry, perubahan polish dan kesiapan gabungan deployment tanpa mengubah checkout | Permintaan review PM; DEP-02/DEP-03, S5-02 | BRANCH_REVIEW.md, branch-review.json, build/lint/60tes/preview browser gabungan; merge dan deploy tetap langkah berikutnya |

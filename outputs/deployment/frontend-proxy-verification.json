@@ -1,0 +1,32 @@
+{
+  "at_utc": "2026-10-07T16:15:57.151376+00:00",
+  "frontend": "http://127.0.0.1:3000",
+  "backend_origin": "https://10e0ff54-f828-44de-a965-5671328a08d3.svc.dalang.io",
+  "checks": {
+    "/api/health": {
+      "status": 200,
+      "cache_control": "no-store"
+    },
+    "/api/catalog": {
+      "status": 200,
+      "cache_control": "no-store"
+    },
+    "/api/timeline/LPPF?preview=true": {
+      "status": 200,
+      "cache_control": "no-store"
+    },
+    "/api/simulations": {
+      "status": 200,
+      "cache_control": "no-store"
+    }
+  },
+  "health": {
+    "status": "ok",
+    "source": "Sectors snapshots",
+    "storage": "postgresql",
+    "worker": "local-thread",
+    "mode": "research-mvp"
+  },
+  "local_backend_stopped": true,
+  "status": "passed"
+}

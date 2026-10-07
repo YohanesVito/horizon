@@ -1,0 +1,28 @@
+{
+  "api_via_frontend_proxy": true,
+  "status_codes": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    200,
+    200,
+    200,
+    200,
+    200
+  ],
+  "storage": "postgresql",
+  "watchlist_preserved": true,
+  "rules_preserved": true,
+  "history_counts": {
+    "run": 9,
+    "rotation-plan": 4,
+    "rotation-run": 3,
+    "scenario": 1
+  },
+  "full_saved_simulation_result_preserved": true,
+  "catalog_companies": 9,
+  "timeline_preview_available": true,
+  "live_api_test_read_only": true
+}

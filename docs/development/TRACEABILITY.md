@@ -1,5 +1,11 @@
 # Pemetaan kebutuhan ke pekerjaan development
 
+## Keputusan operasi terbaru — 8 Oktober 2026
+
+DEP-01–DEP-03 DONE: FastAPI/Docker Dalang healthy, Supabase Session Pooler, HTTPS provider dan proxy Next server-only terverifikasi. Smoke image, delapan endpoint, penolakan401, replay identik fixture, preservasi20record, frontend→VPS dan browser Peluang/Timeline lulus. Kelima layanan kurasi tetapinactive. Bukti `outputs/deployment/deployment.json` dan laporan terkait; [DEPLOYMENT_DALANG.md](./DEPLOYMENT_DALANG.md). Frontend publik, UAT, login, durablequeue serta gap data/model bukan hasil deployment ini. ISS-048 storage tetap OPEN.
+
+Instruksi langsung PM: FastAPI tetap dipakai, target deployment Docker pada VPS Dalang, database Supabase; proposal rewrite Next.js + ORM TypeScript tidak dilanjutkan. OPS-01 menangani penghentian sementara dan pencatatan restart. Setelah ditemukan bahwa layanan lama berjalan melalui systemd, PM mengotorisasi penghentian tepat lima layanan kurasi. Bukti dan runbook berada di [DALANG_SERVICE_PAUSE.md](./DALANG_SERVICE_PAUSE.md). Keputusan hosting bukan bukti deployment selesai atau kesesuaian PRD yang belum diterima.
+
 Tanggal: 6 Oktober 2026. Status: pemetaan sementara dari percakapan; menunggu PRD dan user story lampiran. ID `C-*` adalah referensi internal untuk kebutuhan percakapan, bukan ID resmi dokumen pengguna.
 
 ## Daftar sumber
@@ -71,3 +77,7 @@ U-01 menambah bukti C-04/C-07/C-08: hasil manual menampilkan snapshot aturan/eve
 ## Timeline T-03–T-05
 
 C-02/C-06/C-08: menu Timeline dengan overlay lima periode satu emiten, fokus hover/klik/keyboard, hargaRp/perubahan%, fase dividen per tahun dan lapisan aktual2026dengan placeholder prediksi. API memisahkan katalog histori lengkap dari pratinjau riset LPPF.46tesbackend,build/lint/typecheck,API dan browser diperiksa; lihat [TIMELINE_IMPLEMENTATION.md](./TIMELINE_IMPLEMENTATION.md). Dataset lengkap masih gap ISS-041; engine prediksi ditunda oleh PM pada ISS-042. Bukan klaim coverage PRD final atau UAT lulus.
+
+## Migrasi Supabase DB-01–DB-03
+
+C-03/C-04/C-05/C-07/C-08 dan S1-02: penyimpanan watchlist, rules, scenario, rencana dan hasil dipindahkan dari SQLite ke schema privat PostgreSQL. Migrasi berversi mempertahankan ID/payload/timestamp, memiliki backup, deteksi konflik dan pemeriksaan checksum; akun backend terpisah dari admin. [Runbook](./SUPABASE_MIGRATION.md) menjelaskan batas: market snapshots tetap file, workspace masih bersama, local worker belum durable, dan frontend/backend tetap berjalan lokal. Status pemeriksaan aktual di PROGRESS.md; tidak mengubah klaim coverage PRD/UAT.

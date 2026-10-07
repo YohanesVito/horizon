@@ -1,0 +1,33 @@
+{
+  "hostname": "vps-10e0ff54",
+  "os": {
+    "code": 0,
+    "stdout": "PRETTY_NAME=\"Ubuntu 24.04.4 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.4 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo",
+    "stderr": ""
+  },
+  "resources": {
+    "code": 0,
+    "stdout": "total        used        free      shared  buff/cache   available\nMem:            1827         317         520          22        1174        1510\nSwap:              0           0           0\nFilesystem      Size  Used Avail Use% Mounted on\n/dev/sda2       9.6G  3.9G  5.7G  42% /\nx86_64\nkvm",
+    "stderr": ""
+  },
+  "listeners": {
+    "code": 0,
+    "stdout": "State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                                   \nLISTEN 0      4096      127.0.0.54:53        0.0.0.0:*    users:((\"systemd-resolve\",pid=361,fd=17))\nLISTEN 0      4096   127.0.0.53%lo:53        0.0.0.0:*    users:((\"systemd-resolve\",pid=361,fd=15))",
+    "stderr": ""
+  },
+  "curation": {
+    "code": 3,
+    "stdout": "inactive\ninactive\ninactive\ninactive\ninactive",
+    "stderr": ""
+  },
+  "packages": {
+    "code": 1,
+    "stdout": "",
+    "stderr": "dpkg-query: no packages found matching docker.io\ndpkg-query: no packages found matching docker-ce\ndpkg-query: no packages found matching containerd\ndpkg-query: no packages found matching runc\ndpkg-query: no packages found matching nginx\ndpkg-query: no packages found matching caddy"
+  },
+  "paths": {
+    "code": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+}

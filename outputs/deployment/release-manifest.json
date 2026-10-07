@@ -1,0 +1,1065 @@
+{
+  "release": "20261007T125050Z-f062081aa6",
+  "source_sha256": "f062081aa6e849a672ac3d7c0fde754b71ac2b6c27b93dadf25c860a13f92937",
+  "files": [
+    {
+      "path": ".dockerignore",
+      "bytes": 546,
+      "sha256": "1b29ed66432e3dce088a516b78d870c52523e53935637b651429942a422bc57b"
+    },
+    {
+      "path": "Dockerfile",
+      "bytes": 840,
+      "sha256": "fe4b9039ff3cbce8b311b169257d3bc2c58f4005a37a7dcac38db365e4b5c8d1"
+    },
+    {
+      "path": "backend/__init__.py",
+      "bytes": 44,
+      "sha256": "60040c13a703a2890acd1ad7098efbfb9fc08b2bdb370843875c29e02b9ad613"
+    },
+    {
+      "path": "backend/config.py",
+      "bytes": 1992,
+      "sha256": "3bfeaf7655e783effae4846b0d7d6a48316a624e140c8474d1ed33d3aa0e98da"
+    },
+    {
+      "path": "backend/data.py",
+      "bytes": 7521,
+      "sha256": "2425eb60fe223ebdc17636a61582eb5ceec2a5babcde93fd034aef343946eb50"
+    },
+    {
+      "path": "backend/domain.py",
+      "bytes": 4082,
+      "sha256": "4ba150fcc6b67e72baaa0fb2b30bea88875f8ace82f590202f4d022624f6e371"
+    },
+    {
+      "path": "backend/intelligence.py",
+      "bytes": 20332,
+      "sha256": "86901577cf56b61d81dee0ab09fbf9ad40e25559e24eecd7bed177fe4c060bce"
+    },
+    {
+      "path": "backend/main.py",
+      "bytes": 9097,
+      "sha256": "e3516ac5ab7f0b9880f3354aeb32ece1f5f1137d734a44d9e5163e70bd12cab0"
+    },
+    {
+      "path": "backend/migration.py",
+      "bytes": 10864,
+      "sha256": "0f94d31d1af7f2fc92392e2b166fcb49f8407096d37d04cf9e81935a109d8bc7"
+    },
+    {
+      "path": "backend/migrations/001_records.sql",
+      "bytes": 1094,
+      "sha256": "960e1673c089f37d4694c5f5d611c2edc51a63bc4c863d3c5875924886e119eb"
+    },
+    {
+      "path": "backend/planner.py",
+      "bytes": 8748,
+      "sha256": "c5164a7d259f6bd02a7e0bab13acaca7b82c32b3bbbb0da404c7880b1c0436f6"
+    },
+    {
+      "path": "backend/requirements.lock",
+      "bytes": 463,
+      "sha256": "93c79c99075bbe638a0e057979e4eed6eded951ce8cfdf761556e93a499445f7"
+    },
+    {
+      "path": "backend/security.py",
+      "bytes": 1086,
+      "sha256": "e38a0c758d5d41ae6c050413eca58423f9208992dbc2b0dc3aadd7f9f7e0d4d4"
+    },
+    {
+      "path": "backend/simulator.py",
+      "bytes": 14384,
+      "sha256": "5db185315ef07783d39473df21d3382d6eba01aa8fb039ae6c8d0233fb8af5a3"
+    },
+    {
+      "path": "backend/store.py",
+      "bytes": 3390,
+      "sha256": "550a57b247f35fee544003cd179c535d7c0fa7fefa6f647b37efa10de82cdf0c"
+    },
+    {
+      "path": "backend/timeline.py",
+      "bytes": 7415,
+      "sha256": "13ca3a147835bac12ea430117c2598684fe97fc93757c89e1ac51248d9dc4ce4"
+    },
+    {
+      "path": "backend/unified.py",
+      "bytes": 7881,
+      "sha256": "faa4a9cb372f1ba99b53cdf3291396d2c21f8f83e068ab8a3a6bc25bc08447fa"
+    },
+    {
+      "path": "deploy/compose.yaml",
+      "bytes": 688,
+      "sha256": "3fe38acf63fcf3839bf52509926ac4bcd71c96bce905166077f777f0ca09d9b7"
+    },
+    {
+      "path": "outputs/dividend-research/bbca-news-2025-all.json",
+      "bytes": 836,
+      "sha256": "07e30c069edef9c30f42107030bca943b1ad076b5e6f8700746f25ba54818d3d"
+    },
+    {
+      "path": "outputs/dividend-research/bbca-news-2025.json",
+      "bytes": 862,
+      "sha256": "d2c7f5c9cf7adb483e3f8d14adb58b87dadcfb742e5741c9e709e8f398157c98"
+    },
+    {
+      "path": "outputs/dividend-research/bbca-prices-2022-03-28.json",
+      "bytes": 11791,
+      "sha256": "ae2deb519b34afa43d2a15593780a548539ce2341bd23d9145e6ffcdfd2212fb"
+    },
+    {
+      "path": "outputs/dividend-research/bbca-prices-2022-12-02.json",
+      "bytes": 13821,
+      "sha256": "fb93f226333c6c54a0b3db038bc2dd21b5a20a5fd20927f92535dc288b0071e9"
+    },
+    {
+      "path": "outputs/dividend-research/bbca-prices-2023-03-29.json",
+      "bytes": 11387,
+      "sha256": "9236207de598d9524d21fe4a56bd5daf35a4d1b6d62e28648d3ca34c4f69a451"
+    },
+    {
+      "path": "outputs/dividend-research/bbca-prices-2023-12-04.json",
+      "bytes": 13372,
+      "sha256": "6bbe73819a6262724d8509421b57800b77887346e3d1c7f07394bebce78fdb04"
+    },
+    {
+      "path": "outputs/dividend-research/bbca-prices-2024-03-25.json",
+      "bytes": 11011,
+      "sha256": "c2c958ef0772c4651e874cdf8d600b2382327fa42b0c4fa61cd8ff3cff6c1bbc"
+    },
+    {
+      "path": "outputs/dividend-research/bbca-prices-2024-11-21.json",
+      "bytes": 12831,
+      "sha256": "d087e80e433f55a877c4e9a8001527ae9597c5ea57cfcef804fb50d393b6fdc6"
+    },
+    {
+      "path": "outputs/dividend-research/bbca-prices-2025-03-21.json",
+      "bytes": 11619,
+      "sha256": "495cca0820880f43dddf3e6a3bcdcd0609b3f2a3662e99cca58cb7259580d0db"
+    },
+    {
+      "path": "outputs/dividend-research/bbca-prices-2025-12-03.json",
+      "bytes": 12477,
+      "sha256": "300fdfa7bf9036461e2dd57f3bafe28574fcd21ab0d376d940d6d75a1fea4a4b"
+    },
+    {
+      "path": "outputs/dividend-research/calendar-2022-03-28.json",
+      "bytes": 879,
+      "sha256": "9e3329c8f2aafbf3821459d690783a22955085ade8e9717ff30aa96c58590d92"
+    },
+    {
+      "path": "outputs/dividend-research/calendar-2022-12-02.json",
+      "bytes": 618,
+      "sha256": "5e022629fb7c3e628212e74991c017865587568fc96363039b86c76ddf442f08"
+    },
+    {
+      "path": "outputs/dividend-research/calendar-2023-03-29.json",
+      "bytes": 881,
+      "sha256": "5d64d50388ffd2863a7a6896af5cb091bfea75a47ced268117d27d984342942c"
+    },
+    {
+      "path": "outputs/dividend-research/calendar-2023-12-04.json",
+      "bytes": 618,
+      "sha256": "fc79ab41de11e5e7d7a05fb11cccd2b08a4c79a174a77bb27fd391927b1106d5"
+    },
+    {
+      "path": "outputs/dividend-research/calendar-2024-03-25.json",
+      "bytes": 618,
+      "sha256": "092c2fb5ea880546df84b2ed175097e9a5b6f76a7616f4df23bef23783b14963"
+    },
+    {
+      "path": "outputs/dividend-research/calendar-2024-11-21.json",
+      "bytes": 879,
+      "sha256": "61db3eb12cd3cc2987119d5cfb58e516417a603e2e22e8a97e913a6770ae9a33"
+    },
+    {
+      "path": "outputs/dividend-research/calendar-2025-03-21.json",
+      "bytes": 618,
+      "sha256": "1a9369b26fe97483a93a5525c7f95a6a76907bc1e4999dab267a5ddd34a7ed90"
+    },
+    {
+      "path": "outputs/dividend-research/calendar-2025-12-03.json",
+      "bytes": 618,
+      "sha256": "23cc4c6315f3e7bb3b5caafb3f032dc88f8d41a33ca2428db4dc9fe8cdfa6de4"
+    },
+    {
+      "path": "outputs/dividend-research/calendar-2025-spring.json",
+      "bytes": 11568,
+      "sha256": "981a380acb4913bad804c8c4dcdd3da6bbdd62dc7043d950a2b279cb075cc766"
+    },
+    {
+      "path": "outputs/dividend-research/calendar-upcoming.json",
+      "bytes": 2967,
+      "sha256": "3640def106c8324ad24ae6304a8debbc517dd3f6c21363a767a78d958ccfd041"
+    },
+    {
+      "path": "outputs/dividend-research/dividend-ADRO.json",
+      "bytes": 3522,
+      "sha256": "569c573926f3149fec77a36a2bbabdb9d4d3c396a4921d0ddb5fb3ca03c19f86"
+    },
+    {
+      "path": "outputs/dividend-research/dividend-CFIN.json",
+      "bytes": 1644,
+      "sha256": "6e1db492b6a741055b2712edb0925c99fbc96b32d585893d45613103247f36e4"
+    },
+    {
+      "path": "outputs/dividend-research/dividend-DMAS.json",
+      "bytes": 3040,
+      "sha256": "3c8cf9d29c3ac7e6361f6ae5fd71ddc4055bd2d3842daa5d0f94903db0434ec7"
+    },
+    {
+      "path": "outputs/dividend-research/dividend-LPPF.json",
+      "bytes": 2487,
+      "sha256": "0ea17d528b20d062bc8376ad990be27eb6e53d17bc0d5e7761a810cdfd523d4f"
+    },
+    {
+      "path": "outputs/dividend-research/dividend-RALS.json",
+      "bytes": 2482,
+      "sha256": "62e21e3ecd3cf289926b3155f2ea773266ccf9172cc6df1de14c0f7372ed7d37"
+    },
+    {
+      "path": "outputs/dividend-research/evidence-manifest.json",
+      "bytes": 12596,
+      "sha256": "b2459c038255cf31ba7061bebfa032508b81faca47aa92757fe98552f5e0eb89"
+    },
+    {
+      "path": "outputs/dividend-research/ihsg-2022-03-28.json",
+      "bytes": 5422,
+      "sha256": "6a83f396eb718ec9961cb82d76d21554f510eec850c87e23ffcada40335de3ff"
+    },
+    {
+      "path": "outputs/dividend-research/ihsg-2022-12-02.json",
+      "bytes": 6298,
+      "sha256": "fe21c7ed30f84e30a2be3f8eceb179edbbc5a63b2b13359f7e4f422d5206c5b9"
+    },
+    {
+      "path": "outputs/dividend-research/ihsg-2023-03-29.json",
+      "bytes": 5225,
+      "sha256": "69f556089d786c77813f1ceb0de8707e424c223c1772524ec1a92b81304604c6"
+    },
+    {
+      "path": "outputs/dividend-research/ihsg-2023-12-04.json",
+      "bytes": 6108,
+      "sha256": "323f7f4fb8f61c5c17ca6be0ab0733a1552db1dade1c6fc4b4c9e1aa50da0a2c"
+    },
+    {
+      "path": "outputs/dividend-research/ihsg-2024-03-25.json",
+      "bytes": 5029,
+      "sha256": "d5aa751410574f28a1158d4fb88092421068ef85794203e9a0f20c0f25bdf80f"
+    },
+    {
+      "path": "outputs/dividend-research/ihsg-2024-11-21.json",
+      "bytes": 5758,
+      "sha256": "1481d5738dc02896a6131e7079ec6c0e18b5811a3a35f8417858eabb55ee5c6d"
+    },
+    {
+      "path": "outputs/dividend-research/ihsg-2025-03-21.json",
+      "bytes": 4976,
+      "sha256": "1254ffbf44edeebc9a3a8f2f447660af91e9b15daf0f7a584a5fdd2687e81798"
+    },
+    {
+      "path": "outputs/dividend-research/ihsg-2025-12-03.json",
+      "bytes": 5712,
+      "sha256": "a346569c858cf7ded1afabc70e28fef0941371f57ac28d7170714e418cbbaedc"
+    },
+    {
+      "path": "outputs/dividend-research/research-design.json",
+      "bytes": 2767,
+      "sha256": "8ebe7d3bd087c05d0d8601373fa1d0af071c7ad40c6430d86c4ec2a5c37327ee"
+    },
+    {
+      "path": "outputs/dividend-research/schedule-conflict-evidence.json",
+      "bytes": 5565,
+      "sha256": "23b0a0155f2cbfe0131da784686d330601d303c13f79648fbde11f89ed06ff1d"
+    },
+    {
+      "path": "outputs/dividend-research/study-results.json",
+      "bytes": 11130,
+      "sha256": "8b2b45dcb6813410505b3b72db3818fde1607129d67c5b5ddd75128db70da016"
+    },
+    {
+      "path": "outputs/dividend-research/tools.json",
+      "bytes": 142509,
+      "sha256": "85a23167e66eb36b6b05f75ebde5c55fd2bcb453c7b1990502ff91eea6996d22"
+    },
+    {
+      "path": "outputs/dividend-research/top5-yield-2025.json",
+      "bytes": 1826,
+      "sha256": "4378542f98e22c1b007a32de5c886ed14d551694485d3c33ae5a1786ada2fd5d"
+    },
+    {
+      "path": "outputs/dividend-research/untr-asgr-news-2026-october-corrected.json",
+      "bytes": 38104,
+      "sha256": "202779045872796fcf8623d34d36bd5bbe983c2c9a4d3cac4ee439f70b59ef7a"
+    },
+    {
+      "path": "outputs/dividend-research/untr-asgr-news-2026-october.json",
+      "bytes": 682,
+      "sha256": "368f063134a31e9ac07a5ed7a82bd53b34db86725a1227a9cd5a813a15a1224b"
+    },
+    {
+      "path": "outputs/intelligence/raw/actions-ADRO.json",
+      "bytes": 7258,
+      "sha256": "d729c02f19a0836e6c89b3335954e97500d4bbcd8ff2520ccf6964e6d86dddad"
+    },
+    {
+      "path": "outputs/intelligence/raw/actions-BBCA.json",
+      "bytes": 6587,
+      "sha256": "af6a4b4c4be51c50d88540cfa06e17c60ea6d62e3a59d02bee378fb1bccc6173"
+    },
+    {
+      "path": "outputs/intelligence/raw/actions-BBNI.json",
+      "bytes": 6017,
+      "sha256": "22abd0a431e6d1d3654ab49c228656de549362fe0cec2d029c0929426c8e7f11"
+    },
+    {
+      "path": "outputs/intelligence/raw/actions-BBRI.json",
+      "bytes": 6371,
+      "sha256": "6ac631f7167e63e3adb8e19469fc50748808b9ce1290250321843aae9e1fec36"
+    },
+    {
+      "path": "outputs/intelligence/raw/actions-BMRI.json",
+      "bytes": 7056,
+      "sha256": "55ecd2705b810aac8680b98f764d92fd7dbd4752e7813a0ba18b90a7330c401f"
+    },
+    {
+      "path": "outputs/intelligence/raw/actions-CFIN.json",
+      "bytes": 5673,
+      "sha256": "6e17151c54678e528e8f32fd39c8003252c319d907bce757feeb6f0200be1e50"
+    },
+    {
+      "path": "outputs/intelligence/raw/actions-DMAS.json",
+      "bytes": 5280,
+      "sha256": "7d2beacffcf123a528bc25f365e5950c158a317e32c8c29a6b5bb53d38352c72"
+    },
+    {
+      "path": "outputs/intelligence/raw/actions-LPPF.json",
+      "bytes": 4426,
+      "sha256": "32dc97f51a402a82c05dfe4ac1c907007ae364b08fabef1f17e33788ab641daa"
+    },
+    {
+      "path": "outputs/intelligence/raw/actions-RALS.json",
+      "bytes": 4651,
+      "sha256": "3a6b800f856249671090f324f2b2875373231faf052f7e0f183af55a0e65b515"
+    },
+    {
+      "path": "outputs/intelligence/raw/calendar-2022-01-01.json",
+      "bytes": 4796,
+      "sha256": "9f5f649d2c3b6f56f4d36a19f4757679a266b1f366f3e62215cd21368f94db96"
+    },
+    {
+      "path": "outputs/intelligence/raw/calendar-2022-04-01.json",
+      "bytes": 44896,
+      "sha256": "2b9b52385230a74666b471c5d468674ca5c9e7b0b8ddb551b547cb39d4398170"
+    },
+    {
+      "path": "outputs/intelligence/raw/calendar-2022-06-30.json",
+      "bytes": 29001,
+      "sha256": "6a8e522c9c75a12c9cdbb527a79c04bdb761a97e2a2e1ab84e1d79456d73ee1d"
+    },
+    {
+      "path": "outputs/intelligence/raw/calendar-2022-09-28.json",
+      "bytes": 14148,
+      "sha256": "1242a89f65dea9699c29ea0fe6783c06cac22798d813da9f75954b59b737ee5b"
+    },
+    {
+      "path": "outputs/intelligence/raw/calendar-2022-12-27.json",
+      "bytes": 2446,
+      "sha256": "f2a664610359c397a5e24230c39c772421d19613a64c1baa585a388fbd6bdff9"
+    },
+    {
+      "path": "outputs/intelligence/raw/calendar-2023-03-27.json",
+      "bytes": 57926,
+      "sha256": "0838e61a59f7983f80a2e3fde361096ef895467d5f0de216249c01d2fcbb140c"
+    },
+    {
+      "path": "outputs/intelligence/raw/calendar-2023-06-25.json",
+      "bytes": 27682,
+      "sha256": "3278c78ec0c1371195426d62953a78aae093dca2558843e19fae0a2c4e468946"
+    },
+    {
+      "path": "outputs/intelligence/raw/calendar-2023-09-23.json",
+      "bytes": 16223,
+      "sha256": "9762fd4aef7899135187a4255377e5ec49025a53152dbc3b772904f287099a4b"
+    },
+    {
+      "path": "outputs/intelligence/raw/calendar-2023-12-22.json",
+      "bytes": 4533,
+      "sha256": "c64ec9984e6b6f84973a5adf6f4be427d4e77216af270192896833931bfea619"
+    },
+    {
+      "path": "outputs/intelligence/raw/calendar-2024-03-21.json",
+      "bytes": 48016,
+      "sha256": "6e6a1ba3c7f8fa5b407e3385783fa35af640f37614db860f0890e151b476e7fd"
+    },
+    {
+      "path": "outputs/intelligence/raw/calendar-2024-06-19.json",
+      "bytes": 42489,
+      "sha256": "cf405b285ea3bfb20fb1f302906e5a00325192fe4f648400bc9b8c5407cd6615"
+    },
+    {
+      "path": "outputs/intelligence/raw/calendar-2024-09-17.json",
+      "bytes": 16224,
+      "sha256": "2776c9218d2daca1e596c82feb1e546abf3b3c05bf59576ee23b3c521f7f870e"
+    },
+    {
+      "path": "outputs/intelligence/raw/calendar-2024-12-16.json",
+      "bytes": 3999,
+      "sha256": "278dc5251a36458c6bcf2e0aaf5f73151cfa40d98a0fef9fd3304b446b96cdef"
+    },
+    {
+      "path": "outputs/intelligence/raw/calendar-2025-03-16.json",
+      "bytes": 50105,
+      "sha256": "534a932ad2bf72893507c272b4b32be7d6c09ec0ab554a136fc4f30399b0e4e8"
+    },
+    {
+      "path": "outputs/intelligence/raw/calendar-2025-06-14.json",
+      "bytes": 47712,
+      "sha256": "122b688fdd773a23032d956a694b7066d32b8e93b5cc23000efc1c47cda56ec4"
+    },
+    {
+      "path": "outputs/intelligence/raw/calendar-2025-09-12.json",
+      "bytes": 15711,
+      "sha256": "54ea0060756e6313480a5017ed4ce89569b3b70d676ff5faf3fdece718ce5675"
+    },
+    {
+      "path": "outputs/intelligence/raw/calendar-2025-12-11.json",
+      "bytes": 2703,
+      "sha256": "816614be2842d2a974439e9d7608569eca444ef113b37d558d10c7de212e4880"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-ADRO-2022-05-17.json",
+      "bytes": 12431,
+      "sha256": "532a117d2a6aefdfc643150ea5429a0aae9ef2753c3cb6556cce17d9c11d6813"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-ADRO-2023-01-02.json",
+      "bytes": 14382,
+      "sha256": "d46bd6113d604aa65d81dc89973c8d30d12023a5449b054e0a3126de821bb563"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-ADRO-2023-05-23.json",
+      "bytes": 12819,
+      "sha256": "c3f7a74a1a456e46df7ccc28b5a177524d123a2374279428ae82f97cfb8d0183"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-ADRO-2023-12-29.json",
+      "bytes": 13028,
+      "sha256": "0593e30b1b77997ed52e016a6a06fabb6b79165f99ee491706b98c741110d668"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-ADRO-2024-05-28.json",
+      "bytes": 13039,
+      "sha256": "bf7455b9942c3f87ee59d9e325e6a8cdcaa6fde86c91bf8f9bd0fedd87ec1daa"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-ADRO-2024-11-28.json",
+      "bytes": 12622,
+      "sha256": "998c5f95420d835c45385df35b18016f34ba20387df32c5cdee8a4a8c9f84375"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-ADRO-2024-12-30.json",
+      "bytes": 13036,
+      "sha256": "3cb06eea50eb64c60acf22d25517b94e5d9935dcabe07b0e1b241e630cad58d5"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-ADRO-2025-06-13.json",
+      "bytes": 13041,
+      "sha256": "54ae8be8cc1bec3aa4339bcc37efb2590a19c46aca7d6386e38c0aa10c623452"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-ADRO-2025-12-30.json",
+      "bytes": 12844,
+      "sha256": "36347f3d1933ed66d8597dd2ffaa3acdd009c374003dacd938795f4e003e77c5"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BBCA-2022-03-28.json",
+      "bytes": 12453,
+      "sha256": "60ea08a1f2ed9273ad9230183b0c4f0bc8d666cc559d6836e3bca6debe3aa89d"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BBCA-2022-12-02.json",
+      "bytes": 14265,
+      "sha256": "582465716d5e002fadd92bef5a6dddf7c65016cada0d40f16da401fd27fc5b04"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BBCA-2023-03-29.json",
+      "bytes": 11830,
+      "sha256": "2ee51330879425a1996026f0eacba809ce6402ba6b5fbe3a24d807d40b02a032"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BBCA-2023-12-04.json",
+      "bytes": 13593,
+      "sha256": "f705e6ed697060530597809a330baf62703c2c8dc2f5d79cefcdba9ca722ddb2"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BBCA-2024-03-25.json",
+      "bytes": 11675,
+      "sha256": "d3052616e32ab39c107827b13eac17477d084bcc9b15b493b7f4fbb531891072"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BBCA-2024-11-21.json",
+      "bytes": 13042,
+      "sha256": "4d66adffc69a060aac46d68cccd38feaa64dba3d774e3889618478e1b5d72b24"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BBCA-2025-03-21.json",
+      "bytes": 12060,
+      "sha256": "9780bf10a578caf35a2d3180e8a1dff614636f5e6f8d661e84c67df382648881"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BBCA-2025-12-03.json",
+      "bytes": 13360,
+      "sha256": "1d02df2de5d945470b5d90f7aec944f5db138a2337296003c58e3f30d891afe5"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BBNI-2022-03-24.json",
+      "bytes": 12220,
+      "sha256": "c13273c89b9f5ff318bff92fe790ab27300335934bd55e78ee790a0d02c46cdf"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BBNI-2023-03-28.json",
+      "bytes": 11775,
+      "sha256": "1ffa58c6c0c2be65c67d087be7008076f415f99307a9d81b74b80651bb128d6c"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BBNI-2024-03-15.json",
+      "bytes": 11773,
+      "sha256": "ed53ae799c8effbb7770453036590b605f2de4a76792e7cc6396587e50746ac0"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BBNI-2025-04-15.json",
+      "bytes": 11119,
+      "sha256": "d99a910727b410705708b226168e68fe2e20e750bd9714d9cb0277554f1c9827"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BBRI-2022-03-11.json",
+      "bytes": 12253,
+      "sha256": "db5cefbac0f9b72500916b41b49f8ed93e3fc6670e86b7bc124e2b4733661658"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BBRI-2023-01-10.json",
+      "bytes": 14229,
+      "sha256": "dc1b647a65d5b0ed069cd0224f28176d47314c665200dede5388d10884d06afd"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BBRI-2023-03-24.json",
+      "bytes": 12245,
+      "sha256": "b46a723c242c0e81426b942ed96c94f36e3bb6f0ef9817e8ca7a55e8d98358c9"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BBRI-2024-01-02.json",
+      "bytes": 13126,
+      "sha256": "341b9f470acf0e137ecbb08d464856bc4f318708941d1a46f1de5973484e8eca"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BBRI-2024-03-14.json",
+      "bytes": 11809,
+      "sha256": "e6b3c529c0cc31c12b3c62e7a8f986f2b4b8695c63f8a786ccccba93415c8eab"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BBRI-2024-12-27.json",
+      "bytes": 12922,
+      "sha256": "1a36772fe8cb35aef9f9e8e5f79d5b5ffdb91f90d9a0a73019c79b20c0312d44"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BBRI-2025-04-11.json",
+      "bytes": 11154,
+      "sha256": "929500fcb5c25106bee23c623f66b4a3e5573b7526a23a5bbfe037e83d031544"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BBRI-2025-12-30.json",
+      "bytes": 12921,
+      "sha256": "823aece783476195123c4ce9b5d6f59b85d2e47f66bcff2d4f5d0832e2537d32"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BMRI-2022-03-21.json",
+      "bytes": 12249,
+      "sha256": "9ed28e87ffc28f17476a5f6915fa8d00af45f0db4330eec31671f0181b2ef203"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BMRI-2023-03-27.json",
+      "bytes": 12009,
+      "sha256": "c9adf654e7a6b363b88451ab4fec8e29eba01e91436457460800e5115a6988c0"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BMRI-2024-03-20.json",
+      "bytes": 11355,
+      "sha256": "c45a8cdc080f3f6c8cd69255568dfc47f6144bab4a3679b25419c241a994e7ab"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-BMRI-2025-04-14.json",
+      "bytes": 11365,
+      "sha256": "6c7b7b58653288f97cae0ede428cbbf16ebcb075727e66b942ae4ac2d1470466"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-CFIN-2023-07-06.json",
+      "bytes": 12957,
+      "sha256": "6304685e5d58140c699e23bfd476cae46166514b1aed7cfc31369862557c6edd"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-CFIN-2025-06-11.json",
+      "bytes": 12688,
+      "sha256": "20b3ce79eed299ed7e4620c9edd07adbb7e9510c49fc426b909eb092e6c732c6"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-DMAS-2022-06-15.json",
+      "bytes": 13383,
+      "sha256": "47e02a08a1c0ef5ac4f0f35a657e45fb2b5d953c501bb099ff76b5f7fcb437b4"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-DMAS-2022-11-08.json",
+      "bytes": 14011,
+      "sha256": "fde593b887a11a63ce5becfe1feca4bdde10b8ef450f0acdb47428fb608bae6e"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-DMAS-2023-07-03.json",
+      "bytes": 13161,
+      "sha256": "1122e10abab2852df964677cfac659842e28704b3dcec08c6debed166d2e1359"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-DMAS-2023-12-11.json",
+      "bytes": 12940,
+      "sha256": "bfccc99a2c3e9fc5860eff577b3a0b3e7fe5a3f92e7a0d779b7348e6ee313f18"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-DMAS-2025-05-08.json",
+      "bytes": 12105,
+      "sha256": "f8f1ee9d484972944db2035f969f337f2f65624e49f06c19fdaabf8b63e4e30d"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-LPPF-2022-04-14.json",
+      "bytes": 12098,
+      "sha256": "137a8372f35d87c954d0cf51a8c75bead2acac3db48e49cd90c14b489e4b7731"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-LPPF-2023-04-10.json",
+      "bytes": 11834,
+      "sha256": "ddcc50be165835a7ab9a9bc5b9b4fc0e9100651052db3b2d076673b0cd709b4e"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-LPPF-2024-04-22.json",
+      "bytes": 11596,
+      "sha256": "da6b6a0c5dbf8532721fe29f44ba51b5b935cf294f1829d826778242666a21c8"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-LPPF-2025-04-22.json",
+      "bytes": 11187,
+      "sha256": "1c208ee6981e302f2adae450687a4b4b38d62996f3f4af8c9230510e26e1d61d"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-RALS-2022-06-02.json",
+      "bytes": 13333,
+      "sha256": "7cf4b0424650e761a16194259a197ba38a1d265df551da82ef609d878f6907f2"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-RALS-2023-06-06.json",
+      "bytes": 12483,
+      "sha256": "d8d0aeacd5cf291d6e2f4f0a252681dbf47cbd3e4e661557d457f01af0ba40a1"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-RALS-2024-05-30.json",
+      "bytes": 12679,
+      "sha256": "d49eb51c880493047bc5acb98d8ad8c527d40327fc2e2c041f07c59084fb4b97"
+    },
+    {
+      "path": "outputs/intelligence/raw/prices-RALS-2025-05-22.json",
+      "bytes": 12279,
+      "sha256": "f309ae453400dc704acd7c68c5dc4e4fdebead1f92e4a49a40f549567c14cd52"
+    },
+    {
+      "path": "outputs/intelligence/raw/tools.json",
+      "bytes": 142509,
+      "sha256": "7df92c73ce74344ed380d1f90e8bc1d6977f5546c0236d57d24e8815fe0194dc"
+    },
+    {
+      "path": "outputs/mvp-sectors/prices-BBNI.json",
+      "bytes": 11566,
+      "sha256": "fcc67ce68e39ffbc4e5e9c1e2a21460d18cb8544f64b4e48b6b92f44a3b038a4"
+    },
+    {
+      "path": "outputs/mvp-sectors/prices-BBRI.json",
+      "bytes": 11597,
+      "sha256": "b84037d54d80732ba45919a1f2e816c44071d0845b04bc8ea59c2a2fb450de09"
+    },
+    {
+      "path": "outputs/mvp-sectors/prices-BMRI.json",
+      "bytes": 11594,
+      "sha256": "0735bccaf339e17470d9595023dc9d92d85fa7bacc06697e80075931c4b2a728"
+    },
+    {
+      "path": "outputs/mvp-sectors/prices-LPPF.json",
+      "bytes": 11403,
+      "sha256": "941f70b1854b15de727fe026784053a98ae7acadcaf68d658b903d7c059ee86b"
+    },
+    {
+      "path": "outputs/mvp-sectors/report-BBNI.json",
+      "bytes": 2519,
+      "sha256": "9ec1badcd6b5f89714e035755add1ff1d00d3d92290bc912d57a679725fffe5e"
+    },
+    {
+      "path": "outputs/mvp-sectors/report-BBRI.json",
+      "bytes": 3382,
+      "sha256": "e800a42a03dc61bd8bb45ff9ab4b6ec50a34d468afd71a786f62fb142b35700c"
+    },
+    {
+      "path": "outputs/mvp-sectors/report-BMRI.json",
+      "bytes": 3122,
+      "sha256": "593570b30dec262fa9dbef921279ae9c4b455e59276af439f0ca82d7f58de8f8"
+    },
+    {
+      "path": "outputs/rotation/raw/ihsg-2024-12-01.json",
+      "bytes": 5948,
+      "sha256": "f4937d02f51936649d471cc5972f07056ba72e2de94fae03822cc69f31fae7e3"
+    },
+    {
+      "path": "outputs/rotation/raw/ihsg-2025-03-01.json",
+      "bytes": 5075,
+      "sha256": "52438032494de95a198acef42fdbede715c531fba214d2c157f0c11fdbb9669a"
+    },
+    {
+      "path": "outputs/rotation/raw/ihsg-2025-05-30.json",
+      "bytes": 6048,
+      "sha256": "09ad1688c546c555f3b50509a910d759539e55c7c73ea00e5a06a200a5e74fee"
+    },
+    {
+      "path": "outputs/rotation/raw/ihsg-2025-08-28.json",
+      "bytes": 6381,
+      "sha256": "286e6942f826729752696ad684619a04f0b54bfe89fd0b3b7459dd9429d6e1f7"
+    },
+    {
+      "path": "outputs/rotation/raw/ihsg-2025-11-26.json",
+      "bytes": 3170,
+      "sha256": "b581179b100fbd61fbc0f00015077fdfee3516df7b1d2d78d24e83c310c6893f"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-ADRO-2024-12-01.json",
+      "bytes": 13038,
+      "sha256": "738caf4b3e025c275b980be201910b5e9568ee5861c8ae169699e7dd3ea7ee21"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-ADRO-2025-03-01.json",
+      "bytes": 11728,
+      "sha256": "32a0c14746723480d621324329dfa3706525e958fca8e29fc5e72fd86ad05361"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-ADRO-2025-05-30.json",
+      "bytes": 13259,
+      "sha256": "d43b094654572cd0893b2d0389cd604d9e56426d97e27edebf1e94747e76a8ac"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-ADRO-2025-08-28.json",
+      "bytes": 14148,
+      "sha256": "39bbe169d797ed42ee00c90201c45e34a65c9f0cb723724f555198a25c985840"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-ADRO-2025-11-26.json",
+      "bytes": 6688,
+      "sha256": "c1ca93e945a77af0d1d7553c952d3aa72acd10854063cb8d846bd355067e657b"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-BBCA-2024-12-01.json",
+      "bytes": 13207,
+      "sha256": "3898a9dcf449bf1797d5d6d5e09cd7a93b9e76e0043965b6796793673f13922f"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-BBCA-2025-03-01.json",
+      "bytes": 11838,
+      "sha256": "c0c97135221ff58818de4f20449f9a26fe56354fbac922d7d5dc85a5a88d45c9"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-BBCA-2025-05-30.json",
+      "bytes": 13386,
+      "sha256": "3f79a926d3ad24a65bc637d354ae2f1721f76c9d86b1f3da9cb5425f8c75a792"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-BBCA-2025-08-28.json",
+      "bytes": 14264,
+      "sha256": "2eb90a9c2b3e0c9e2930fbc7c9a66a5d5c5b4fb0b370ff2602e045b7605ed044"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-BBCA-2025-11-26.json",
+      "bytes": 6724,
+      "sha256": "9fbfcc4936ebddbb2ef73bda6b91afb0af16a2e71db1b219c77195a190469238"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-BBNI-2024-12-01.json",
+      "bytes": 13088,
+      "sha256": "48052570d331f423f0cd8c5cbfeac89737cc0fdb58796c8f400d7e6344144a5a"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-BBNI-2025-03-01.json",
+      "bytes": 11785,
+      "sha256": "55d8ffbe432bd69594c5d1af2e6a201b9d798d82d12f9f0ac85b57a1d113ccf3"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-BBNI-2025-05-30.json",
+      "bytes": 13307,
+      "sha256": "60816272e63654c7079fd79167a401ae1b114483ac04934ed1c078b815310849"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-BBNI-2025-08-28.json",
+      "bytes": 14194,
+      "sha256": "fc2e86f6a70ca77ff46fbc77f06b84175d6206caa5f4f8a3e717838ff985cbdf"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-BBNI-2025-11-26.json",
+      "bytes": 6705,
+      "sha256": "aa86932df7d79701855502689a5a4d9900bd054edf3d145e7cc8dc404aa45a80"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-BBRI-2024-12-01.json",
+      "bytes": 13143,
+      "sha256": "6800d7f878fa3a6a29ba5a2765624e907988879d32bc480a7592252c1f520cc5"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-BBRI-2025-03-01.json",
+      "bytes": 11817,
+      "sha256": "07edaf54c0ff9ee6d1c1cd1b554be32f98dda82f2d291e465c2f4ef08b74bb2b"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-BBRI-2025-05-30.json",
+      "bytes": 13354,
+      "sha256": "342c18b88e08dbb8bd4670a019dbfe74ba504daf860e51b153e1fdd5c9597a23"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-BBRI-2025-08-28.json",
+      "bytes": 14243,
+      "sha256": "b7b11a176e60ff13ee610e885d6fc9ed81353c9a431bbbbec27de958026c6e94"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-BBRI-2025-11-26.json",
+      "bytes": 6734,
+      "sha256": "2e348c3427a0ccf1e6b3168c1154b7923597a2e2a587fba0878919b75f3a8b0d"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-BMRI-2024-12-01.json",
+      "bytes": 13119,
+      "sha256": "2577dbf67111c9c5e83975ef054215081c5604abe634f8d568ca940ff422efbc"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-BMRI-2025-03-01.json",
+      "bytes": 11813,
+      "sha256": "2087b1ec558c0734bfe122de04b6844c81208d099baf82ccb6ae971b39c2ef16"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-BMRI-2025-05-30.json",
+      "bytes": 13351,
+      "sha256": "7adb3bb6585ae496b5c6ea790565eaab55992a326c4f42933e0a3846ba4b9ff9"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-BMRI-2025-08-28.json",
+      "bytes": 14232,
+      "sha256": "bf8cfd0acc7415b5ef304d3eaefd935f13dd468ce17bbc1733bd9534d2cd99fe"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-BMRI-2025-11-26.json",
+      "bytes": 6722,
+      "sha256": "920a10568c8d5336f5dd09dde8343e038237926f7aeacd8cb4c55e041b58bb1d"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-CFIN-2024-12-01.json",
+      "bytes": 12667,
+      "sha256": "1c081045b90eb36ccdb9a9266a822f53d45b90024a16158063fb6055327f3173"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-CFIN-2025-03-01.json",
+      "bytes": 11396,
+      "sha256": "4896c9d9f429c488704a8d035a618a47c534792be6b898b5734552be871dadc3"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-CFIN-2025-05-30.json",
+      "bytes": 12898,
+      "sha256": "a3947175fff494dba62000d04e0657d4a2e6312f68fc1ab95ad6276d784968dd"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-CFIN-2025-08-28.json",
+      "bytes": 13734,
+      "sha256": "a28b798c8ac804aaca9ef28b25d86a54e54833397beec3e01ea6f7f365a8f7e1"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-CFIN-2025-11-26.json",
+      "bytes": 6501,
+      "sha256": "e2e4ff4c38c2bd61e2152df3505637bb54207e439821138fe1d05465fa860c3f"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-DMAS-2024-12-01.json",
+      "bytes": 12728,
+      "sha256": "122dc8f17d5ed92eb7401c70ba1a2a32442f912c9dcea04bed7e0f23c05b2ecd"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-DMAS-2025-03-01.json",
+      "bytes": 11457,
+      "sha256": "d4092d6ed174becc60858a4dd7255fd5367bfaca037c884a09312a566c9bb534"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-DMAS-2025-05-30.json",
+      "bytes": 12954,
+      "sha256": "bf1d4889d1425bf6ec100684f83381c39a328501a7d87c1abefc30228d8f8e9e"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-DMAS-2025-08-28.json",
+      "bytes": 13806,
+      "sha256": "d8ebf605eebcca27e295f7668420efd9227dd317a852418f803b56102020105d"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-DMAS-2025-11-26.json",
+      "bytes": 6532,
+      "sha256": "4a99cb51a693ec8265891e0e4012e4d94b151f3612b9f92a33e56ff4b9408a9f"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-LPPF-2024-12-01.json",
+      "bytes": 12896,
+      "sha256": "36cfc9994e7f177f9e7078ed587fad6c77eb78e1a9fbb5958451d195791a5831"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-LPPF-2025-03-01.json",
+      "bytes": 11620,
+      "sha256": "32f6b26a794a0069df57f65a688548ae53ade44ef9133bf1fde2abc007a57416"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-LPPF-2025-05-30.json",
+      "bytes": 13129,
+      "sha256": "0e4200f84ff897b9a5c2f89420130cac6daa410181c1e99e8d865808f888b109"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-LPPF-2025-08-28.json",
+      "bytes": 13988,
+      "sha256": "cfed0f98b6df86f4a04a94d2ea2c4714c24ed1709c1dda223df3c0b553c45be2"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-LPPF-2025-11-26.json",
+      "bytes": 6613,
+      "sha256": "eedc6125ba7ca7c93970862287469ddaee72fcb5e82b23fdc570e346fe81dd70"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-RALS-2024-12-01.json",
+      "bytes": 12677,
+      "sha256": "150f1ad2f41e0da6805fd178337eba34d9eb54cc416dc61927151d2673eaddfd"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-RALS-2025-03-01.json",
+      "bytes": 11424,
+      "sha256": "2a1f89f6bc8704ece35f38af508e642e593d1e167e7d4addb5d4ff5ee6915768"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-RALS-2025-05-30.json",
+      "bytes": 12901,
+      "sha256": "af78d1fb98b040bc33fb87eca91276b158695640f8a05baf21f39678dc425186"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-RALS-2025-08-28.json",
+      "bytes": 13753,
+      "sha256": "1e1d578893ab078d02aacdfa2845b01e06bba5370a496ded9532c699495fec4e"
+    },
+    {
+      "path": "outputs/rotation/raw/prices-RALS-2025-11-26.json",
+      "bytes": 6504,
+      "sha256": "7c324fbab2619764484659ef6b599924f1f71f1a8b50dd7d27f15bcb7c2632d4"
+    },
+    {
+      "path": "outputs/sectors-live/bbca-dividend.json",
+      "bytes": 4144,
+      "sha256": "f3f6e53c956b178c5869c5978f174cbbba0e5c9cf7be78b279c1aafd7fea994a"
+    },
+    {
+      "path": "outputs/timeline-audit/collection.json",
+      "bytes": 702,
+      "sha256": "b5193c232b302ab10b643fbca981f21214493f7707b0b1ca43fe066567cf05fc"
+    },
+    {
+      "path": "outputs/timeline-audit/coverage.json",
+      "bytes": 254169,
+      "sha256": "6c68f2c10fe75e81c8d32e58803c86b0384811e0a6e35bb254d6238359eed8ab"
+    },
+    {
+      "path": "outputs/timeline-audit/mcp-registry-2026-10-07.json",
+      "bytes": 142509,
+      "sha256": "baca8f37202ea36e02d28b5d2b5bd9925ff893d8662345986feaca734437e31c"
+    },
+    {
+      "path": "outputs/timeline-audit/pilot-LPPF.json",
+      "bytes": 3916,
+      "sha256": "5e3b7c9ffc3956da104fed3d7d6726e62bed0f275128979e7d4d72fa3864e2b1"
+    },
+    {
+      "path": "outputs/timeline-audit/raw/actions-LPPF.json",
+      "bytes": 4425,
+      "sha256": "88b1a6081d091897e0a7e89a326a1c542c35253b95d96d55c3da584ce952d6d7"
+    },
+    {
+      "path": "outputs/timeline-audit/raw/calendar-2021-01-01.json",
+      "bytes": 1665,
+      "sha256": "b9b30288a301be6392c80ece110a703f3f3456e4d7af8bf04db359cc3fedf518"
+    },
+    {
+      "path": "outputs/timeline-audit/raw/calendar-2021-04-01.json",
+      "bytes": 36313,
+      "sha256": "8d880bd37aa010870304aa6dca6521e613d32ff040c410788a1d6a1f56cc949b"
+    },
+    {
+      "path": "outputs/timeline-audit/raw/calendar-2021-06-30.json",
+      "bytes": 24021,
+      "sha256": "a1e7865d28c592b3f5f505f62aed9a502578974408b3dc9b0c398edffa18e514"
+    },
+    {
+      "path": "outputs/timeline-audit/raw/calendar-2021-09-28.json",
+      "bytes": 11289,
+      "sha256": "695d0ffa561969c64012291405aeaf269a0abe24f7b5d70d2b3a01b695d22559"
+    },
+    {
+      "path": "outputs/timeline-audit/raw/calendar-2021-12-27.json",
+      "bytes": 618,
+      "sha256": "4f10539f3e600472d96dfc1ad34b2cecfba9422fc438e1b095fbafa99f3781c9"
+    },
+    {
+      "path": "outputs/timeline-audit/raw/current-calendar-2026-04-01.json",
+      "bytes": 60388,
+      "sha256": "02f1c59885436b8d4c62ed92bb404173ee8f83d5de1c2e63574243a3ff0425c5"
+    },
+    {
+      "path": "outputs/timeline-audit/raw/current-prices-LPPF-2026-04-03.json",
+      "bytes": 12480,
+      "sha256": "8dd566f90f762ce36e72f6267adcfd95106ecc264fe525b403952b4611f86bd5"
+    },
+    {
+      "path": "outputs/timeline-audit/raw/current-prices-LPPF-2026-07-02.json",
+      "bytes": 13758,
+      "sha256": "238cde37da06300cbfd7a1e1bfd6bd92bc911cdc0522cf196898514d31adb7d9"
+    },
+    {
+      "path": "outputs/timeline-audit/raw/current-prices-LPPF-2026-09-30.json",
+      "bytes": 1408,
+      "sha256": "241c8d4110a344d9fd21cb952053c2e2f723084fb7ac18a94014d90f83d0e677"
+    },
+    {
+      "path": "outputs/timeline-audit/raw/five-year-dividend-payers.json",
+      "bytes": 64457,
+      "sha256": "d69fcba4f94c379d97e6a63979b1667d1146c00e14bc243545d98fed4b51806f"
+    },
+    {
+      "path": "outputs/timeline-audit/raw/news-BBCA-2021.json",
+      "bytes": 650,
+      "sha256": "32824c55d17dcf52823cf58b99ea9b2d193fc06a35aa24e28d47453e1166dbdb"
+    },
+    {
+      "path": "outputs/timeline-audit/raw/news-BBCA-2025.json",
+      "bytes": 650,
+      "sha256": "3b6ce962c03b4d5486cf77efb8b4af64c48c273e4d138ae31f8645b1c117fa2b"
+    },
+    {
+      "path": "outputs/timeline-audit/raw/prices-LPPF-2021-11-11.json",
+      "bytes": 14055,
+      "sha256": "fa454dddccb6d9b30b00dc70f41096aa87a5be66616c74df19746621b464deb5"
+    },
+    {
+      "path": "outputs/timeline-audit/verification.json",
+      "bytes": 512,
+      "sha256": "6743bfb63458d2134d0bf932a666fa5053eded8a6a2505745549f5ee25d6a18b"
+    }
+  ],
+  "git_head": "9cc1c81d44712749b18377adc4e6f53953928123",
+  "includes_uncommitted_work": true,
+  "secret_scan": "passed",
+  "image": "horizon-api:20261007t125050z-f062081aa6"
+}
