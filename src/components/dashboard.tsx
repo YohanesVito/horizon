@@ -13,14 +13,11 @@ import {
   ChevronLeft,
   ChevronRight,
   Database,
-  FlaskConical,
   Layers3,
-  LayoutGrid,
   Route,
   Search,
   SlidersHorizontal,
   ScanLine,
-  Sparkles,
 } from "lucide-react";
 import { api, dt, money, pct } from "@/lib/api";
 import type {
@@ -46,14 +43,9 @@ type View =
   | "Watchlist"
   | "Metodologi";
 const nav = [
-  { name: "Peluang", icon: LayoutGrid },
-  { name: "Kalender", icon: CalendarDays },
-  { name: "Timeline", icon: ScanLine },
-  { name: "Simulator", icon: Route },
-  { name: "Intelligence", icon: ChartNoAxesCombined },
-  { name: "Rencana rotasi", icon: Layers3 },
-  { name: "Watchlist", icon: Bookmark },
-  { name: "Metodologi", icon: FlaskConical },
+  // Fitur lain tetap tersedia di kode, tetapi tidak mengalihkan alur demo.
+  { name: "Timeline", label: "Analisis emiten", icon: ScanLine },
+  { name: "Simulator", label: "Simulator", icon: Route },
 ] as const;
 export const defaults: Rules = {
   name: "Logika dividen saya",
@@ -94,7 +86,7 @@ export function Empty({
   );
 }
 export default function Dashboard() {
-  const [view, setView] = useState<View>("Peluang"),
+  const [view, setView] = useState<View>("Timeline"),
     [plannerSymbols, setPlannerSymbols] = useState<string[] | undefined>(),
     [simulationEvent, setSimulationEvent] = useState<string | undefined>(),
     [evidenceSymbol, setEvidenceSymbol] = useState("BBCA"),
@@ -175,23 +167,15 @@ export default function Dashboard() {
           </span>
           <span>
             dividen<span className="brand-light">lab</span>
-            <small>RESEARCH WORKSPACE</small>
           </span>
         </Link>
-        <div className="workspace">
-          <span className="workspace-dot" />
-          <div>
-            Saham Indonesia<small>Workspace lokal</small>
-          </div>
-          <ChevronRight size={15} />
-        </div>
-        <p className="nav-label">EXPLORE & PLAN</p>
+        <p className="nav-label">MENU</p>
         <nav aria-label="Navigasi utama">
-          {nav.map(({ name, icon: Icon }) => (
+          {nav.map(({ name, label, icon: Icon }) => (
             <button
               key={name}
-              aria-label={name}
-              title={name}
+              aria-label={label}
+              title={label}
               onClick={() => {
                 if (name === "Simulator") setSimulationEvent(undefined);
                 changeView(name);
@@ -200,115 +184,65 @@ export default function Dashboard() {
               aria-current={view === name ? "page" : undefined}
             >
               <Icon size={19} />
-              <span>{name}</span>
-              {name === "Watchlist" && !!watches.data?.symbols.length && (
-                <span className="count">{watches.data.symbols.length}</span>
-              )}
+              <span>{label}</span>
             </button>
           ))}
         </nav>
         <div className="sidebar-bottom">
           <div className="sidebar-note">
-            <span className="small-orbit">
-              <Sparkles size={18} />
-            </span>
-            <h4>
-              Keputusan yang lebih
-              <br />
-              terukur.
-            </h4>
-            <p>Kenali dividen, pahami risiko, uji strategimu.</p>
             <button onClick={() => changeView("Metodologi")}>
               Lihat metodologi <ArrowUpRight size={15} />
             </button>
           </div>
           <div className="provider">
-            <Database size={15} /> Data from <strong>Sectors</strong>
-            <span className="live-dot" />
+            <Database size={15} /> Sumber: <strong>Sectors</strong>
           </div>
         </div>
       </aside>
       <main id="main" className="main">
         <header className="topbar">
           <div>
-            <span className="muted">Workspace</span>
-            <ChevronRight size={13} />
-            <span>{view}</span>
+            <span>{view === "Timeline" ? "Analisis emiten" : view}</span>
           </div>
           <div>
             <span className="badge">
               <span className="small-dot" />
               {view === "Timeline"
-                ? "Histori 2021–2025 + 2026"
+                ? "Data Sectors · analisis emiten"
                 : `Riset historis · ${view === "Intelligence" ? "2022–2025" : "2025"}`}
             </span>
-            <span className="avatar">DL</span>
           </div>
         </header>
         <div className="page-content">
           <div className="page-heading">
             <div>
-              <p className="eyebrow">
-                {view === "Simulator"
-                  ? "YOUR CAPITAL. YOUR LOGIC."
-                  : view === "Kalender"
-                    ? "EVERY EVENT, IN PERSPECTIVE."
-                    : "A CLEARER VIEW OF DIVIDENDS."}
-              </p>
               <h1>
-                {view === "Peluang" ? (
+                {view === "Timeline" ? (
                   <>
-                    Temukan dividen.
-                    <br />
-                    <span>Rencanakan langkah berikutnya.</span>
+                    Harga saham <span>di sekitar dividen.</span>
                   </>
-                ) : view === "Watchlist" ? (
-                  "Pilihan dalam pantauan."
-                ) : view === "Kalender" ? (
-                  "Ruang untuk setiap peluang."
-                ) : view === "Timeline" ? (
-                  <>
-                    Satu emiten. <span>Lima perspektif.</span>
-                  </>
-                ) : view === "Simulator" ? (
-                  "Uji strategi. Pahami hasilnya."
-                ) : view === "Intelligence" ? (
-                  "Dari histori menjadi logika."
-                ) : view === "Rencana rotasi" ? (
-                  "Satu modal. Beberapa perjalanan."
                 ) : (
-                  "Di balik setiap angka."
+                  view
                 )}
               </h1>
               <p className="subtitle">
                 {view === "Peluang"
-                  ? "Dari kandidat dividen hingga strategi rotasi, dalam satu workspace."
+                  ? "Saring emiten dari yield dan riwayat dividen."
                   : view === "Kalender"
-                    ? "Jelajahi jadwal historis sebelum menyusun urutan perpindahan modal."
+                    ? "Jadwal dividen historis per emiten."
                     : view === "Timeline"
-                      ? "Lihat pergerakan harga di sekitar dividen. Bandingkan tahunnya, telusuri setiap fasenya."
+                      ? "Bandingkan peristiwa sebelumnya, lihat periode berjalan, lalu uji asumsi di simulator."
                       : view === "Watchlist"
-                        ? "Simpan emiten, lalu kembali untuk menguji strategi yang berbeda."
+                        ? "Emiten yang kamu simpan untuk dipantau."
                         : view === "Simulator"
-                          ? "Bandingkan all-in, pembagian modal, dan rotasi dengan harga historis."
+                          ? "Replay historis 2025 dengan modal dan aturan yang bisa kamu ubah."
                           : view === "Intelligence"
-                            ? "Telusuri risiko dan pemulihan, susun ranking, lalu uji asumsi modalmu."
+                            ? "Statistik risiko dan pemulihan historis, ranking, serta skenario asumsi."
                             : view === "Rencana rotasi"
-                              ? "Susun kandidat dari logika tim, lalu bandingkan hasil dan waktu modal tertahan."
-                              : "Sumber, asumsi, dan batas penelitian yang bisa kamu telusuri."}
+                              ? "Buat usulan rute dari aturan tim, lalu bandingkan replay tiap rute."
+                              : "Sumber data, cara menghitung, dan batas model."}
               </p>
             </div>
-            {view !== "Rencana rotasi" && (
-              <button
-                className="btn primary"
-                onClick={() => {
-                  setPlannerSymbols(undefined);
-                  changeView("Rencana rotasi");
-                }}
-              >
-                Rencanakan rotasi <ArrowUpRight size={17} />
-              </button>
-            )}
           </div>
           {catalog.isPending && (
             <div className="loading glass">Memuat workspace Sectors…</div>
@@ -618,9 +552,17 @@ export default function Dashboard() {
           )}
           {data && view === "Metodologi" && <Methodology catalog={data} />}
           <footer className="footer">
-            <span>
-              Dividen Lab <span className="muted">/</span> Research workspace
-            </span>
+            <span>Dividen Lab</span>
+            <button
+              className="text-button"
+              onClick={() =>
+                changeView(view === "Metodologi" ? "Timeline" : "Metodologi")
+              }
+            >
+              {view === "Metodologi"
+                ? "Kembali ke analisis"
+                : "Sumber & metodologi"}
+            </button>
             <span>
               Seluruh hasil di luar biaya transaksi, pajak, dan slippage.
             </span>
@@ -678,8 +620,7 @@ function PricePanel({ onDetail }: { onDetail: () => void }) {
     <section className="glass price-panel">
       <div className="section-head">
         <div>
-          <p className="eyebrow">BEYOND THE YIELD</p>
-          <h2>Harga bergerak. Dividen tetap perlu konteks.</h2>
+          <h2>Harga historis BBCA</h2>
         </div>
         <button
           className="icon-btn"
@@ -722,7 +663,7 @@ function PricePanel({ onDetail }: { onDetail: () => void }) {
       )}
       <div className="chart-caption">
         <span>
-          <i className="line-key" /> Harga penutupan aktual
+          <i className="line-key" /> Harga penutupan harian · snapshot historis
         </span>
         <button className="text-button" onClick={onDetail}>
           Lihat timeline dividen <ArrowRight size={13} />
@@ -747,8 +688,7 @@ function Season({
     <section className="glass season">
       <div className="section-head">
         <div>
-          <p className="eyebrow">IN THE CALENDAR</p>
-          <h2>Musim dividen</h2>
+          <h2>Cuplikan dividen April 2025</h2>
         </div>
         <CalendarDays size={19} className="accent" />
       </div>
@@ -863,7 +803,6 @@ function Calendar({
     <section className="glass calendar-panel">
       <div className="section-head">
         <div>
-          <p className="eyebrow">HISTORICAL DIVIDEND CALENDAR</p>
           <h2>
             {start.toLocaleDateString("id-ID", {
               month: "long",
@@ -947,8 +886,7 @@ function Methodology({ catalog }: { catalog: Catalog }) {
   return (
     <div className="method-grid">
       <section className="glass pad">
-        <p className="eyebrow">01 / SOURCE & SCOPE</p>
-        <h2>Data yang bisa ditelusuri.</h2>
+        <h2>Sumber dan cakupan data</h2>
         <p>
           Seluruh data finansial berasal dari Sectors. Workspace ini memuat{" "}
           {catalog.companies.length} emiten terpilih dan {catalog.events.length}{" "}
@@ -980,28 +918,27 @@ function Methodology({ catalog }: { catalog: Catalog }) {
         </a>
       </section>
       <section className="glass pad">
-        <p className="eyebrow">02 / FINANCIAL LOGIC</p>
-        <h2>Modal punya perjalanan.</h2>
+        <h2>Perhitungan modal dan dividen</h2>
         <p>
           Nilai portofolio = kas + nilai saham yang masih dipegang + piutang
           hasil jual + piutang dividen. Dividen baru bisa dipakai kembali pada
           payment date.
         </p>
         <p>
-          Hasil jual tersedia setelah T+2 sesi yang diamati dalam dataset. Ini
-          asumsi replay, bukan verifikasi kalender resmi bursa. Lot 100 saham,
-          tanpa margin.
+          Hasil jual tersedia setelah T+2 hari bursa yang diamati dalam dataset.
+          Ini asumsi replay, bukan verifikasi kalender resmi bursa. Lot 100
+          saham, tanpa margin.
         </p>
         <p>
-          Gap sesi IHSG dilengkapi dari harga valid kesembilan emiten pada{" "}
+          Gap hari bursa IHSG dilengkapi dari harga valid kesembilan emiten pada{" "}
           {catalog.meta.session_repairs?.map((d) => dt(d)).join(", ") || "—"}.
           Tanggal perbaikan dan versi dataset disimpan untuk audit.
         </p>
         <p>
           <strong>BEP harga</strong> berarti harga kembali ke harga beli.{" "}
           <strong>BEP total</strong> memperhitungkan hak dividen. Sinyal close
-          BEP dieksekusi pada open sesi berikutnya; harga eksekusi bisa kembali
-          turun.
+          BEP dieksekusi pada open hari bursa berikutnya; harga eksekusi bisa
+          kembali turun.
         </p>
         <Notice>
           Biaya transaksi, pajak, dan slippage = 0 sesuai scope awal. Semua
@@ -1009,8 +946,7 @@ function Methodology({ catalog }: { catalog: Catalog }) {
         </Notice>
       </section>
       <section className="glass pad">
-        <p className="eyebrow">03 / RISK & RECOVERY</p>
-        <h2>Belum pulih tetap dihitung.</h2>
+        <h2>Risiko dan pemulihan</h2>
         <p>
           Pilot detail BBCA memakai entry close cum-date untuk 8 event. Menu
           Intelligence memperluas audit ke 48 event pada 9 emiten (2022–2025),
@@ -1030,8 +966,7 @@ function Methodology({ catalog }: { catalog: Catalog }) {
         </p>
       </section>
       <section className="glass pad">
-        <p className="eyebrow">04 / YOUR WORKSPACE</p>
-        <h2>Eksplorasi yang tersimpan.</h2>
+        <h2>Data yang tersimpan</h2>
         <p>
           Watchlist, logika screening, input, dan hasil simulasi tersimpan di
           server lokal workspace ini. Belum ada akun terpisah atau sinkronisasi

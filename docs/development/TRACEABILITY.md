@@ -81,3 +81,13 @@ C-02/C-06/C-08: menu Timeline dengan overlay lima periode satu emiten, fokus hov
 ## Migrasi Supabase DB-01–DB-03
 
 C-03/C-04/C-05/C-07/C-08 dan S1-02: penyimpanan watchlist, rules, scenario, rencana dan hasil dipindahkan dari SQLite ke schema privat PostgreSQL. Migrasi berversi mempertahankan ID/payload/timestamp, memiliki backup, deteksi konflik dan pemeriksaan checksum; akun backend terpisah dari admin. [Runbook](./SUPABASE_MIGRATION.md) menjelaskan batas: market snapshots tetap file, workspace masih bersama, local worker belum durable, dan frontend/backend tetap berjalan lokal. Status pemeriksaan aktual di PROGRESS.md; tidak mengubah klaim coverage PRD/UAT.
+
+## Fokus demo D-01
+
+Instruksi PM 7 Oktober memprioritaskan satu alur: analisis emiten (histori dan periode berjalan) lalu simulator. D-01 mengubah pintu masuk dan navigasi demo, bukan menghapus C-01/C-03/C-05 atau implementasinya. Pratinjau LPPF tetap berlabel belum terverifikasi (ISS-041); simulator satu-emiten belum terhubung dan masih perlu pekerjaan terpisah (ISS-054). Sumber/metodologi tersedia sebagai tautan sekunder.
+
+D-02 menggabungkan arah demo dari PM (D-01, perubahan lokal pada branch UI) dengan implementasi Sammy pada `feat/chart-sammy` (UX-01–UX-04: input modal, pilihan strategi, klik chart, dan copy/istilah). `dashboard.tsx` diselaraskan manual agar pemangkasan copy/sidebar Sammy tidak mengembalikan delapan menu atau landing Peluang. Ini sinkronisasi kontribusi, bukan bukti bahwa simulator satu-emiten, data lengkap, atau forecast sudah selesai.
+
+## Integrasi BR-02 dan deployment frontend V-01/V-02
+
+C-02/C-04/C-08, S5-02: gabungan UI polish523c993 dengan proxy Next/Supabase/Dalang f64df85 mempertahankan kedua kontribusi. Fixture berversi membuktikan hitungan tidak berubah; issue052/053/054 merujuk UX/handoff, sedangkan044–050 tetap migrasi/deployment. Status deployment Vercel dan bukti aktual mengikuti PROGRESS.md; bukan kelulusan UAT.

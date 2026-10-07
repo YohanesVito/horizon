@@ -1,0 +1,183 @@
+{
+  "recorded_at": "2026-10-07T13:24:10.720Z",
+  "base": "http://localhost:3000",
+  "views": [
+    {
+      "view": "Simulator",
+      "samples": [
+        "5 hari bursa sebelumnya",
+        "10 hari bursa sebelumnya",
+        "Batas hari bursa pengamatan",
+        "Batas hari bursa setelah ex-date",
+        "Batas hari bursa berlaku untuk BEP, payment, dan pengamatan. Entry memakai close; sinyal BEP pada close dieksekusi pada open hari bursa berikutnya.",
+        "Replay historis · Lot 100 saham · Dana jual T+2 hari bursa dataset · Dividen tersedia pada payment date."
+      ],
+      "aria_samples": []
+    },
+    {
+      "view": "Rencana rotasi",
+      "samples": [
+        "Batas hari bursa pengamatan",
+        "Batas hari bursa setelah ex-date",
+        "0 hari bursa",
+        "5 hari bursa",
+        "10 hari bursa"
+      ],
+      "aria_samples": []
+    },
+    {
+      "view": "Intelligence",
+      "samples": [
+        "\t2 hari bursa",
+        "\t2 hari bursa",
+        "2 hari bursa",
+        "0 hari bursa"
+      ],
+      "aria_samples": [
+        "Kurva pemulihan Kaplan–Meier BBCA; BEP harga dan total dalam 20 hari bursa"
+      ]
+    },
+    {
+      "view": "Metodologi",
+      "samples": [
+        "Hasil jual tersedia setelah T+2 hari bursa yang diamati dalam dataset. Ini asumsi replay, bukan verifikasi kalender resmi bursa. Lot 100 saham, tanpa margin.",
+        "Gap hari bursa IHSG dilengkapi dari harga valid kesembilan emiten pada 2 Mei, 6 Mei, 7 Mei, 20 Okt. Tanggal perbaikan dan versi dataset disimpan untuk audit.",
+        "BEP harga berarti harga kembali ke harga beli. BEP total memperhitungkan hak dividen. Sinyal close BEP dieksekusi pada open hari bursa berikutnya; harga eksekusi bisa kembali turun."
+      ],
+      "aria_samples": []
+    },
+    {
+      "view": "Detail BBCA",
+      "samples": [
+        "Pulih ≤20 hari bursa",
+        "Belum pulih ≤20 hari bursa",
+        "28 Mar 2022\t3 hari bursa\t0 hari bursa\t3,71%",
+        "29 Mar 2023\t0 hari bursa\t0 hari bursa\t5,71%",
+        "4 Des 2023\t8 hari bursa\t0 hari bursa\t6,34%",
+        "25 Mar 2024\tBelum pulih\t0 hari bursa\t-3,19%",
+        "21 Nov 2024\t2 hari bursa\t2 hari bursa\t-3,24%",
+        "21 Mar 2025\t3 hari bursa\t3 hari bursa\t8,36%",
+        "Event yang belum pulih tetap masuk perhitungan. Median 3 hari bursa hanya untuk event yang sudah pulih; bukan estimasi waktu tunggu semua posisi."
+      ],
+      "aria_samples": [
+        "Tren 24 hari bursa historis terakhir",
+        "Tren 24 hari bursa historis terakhir",
+        "Tren 24 hari bursa historis terakhir"
+      ]
+    },
+    {
+      "view": "Timeline/calendar unit retained",
+      "samples": [],
+      "aria_samples": []
+    },
+    {
+      "view": "Legacy saved result",
+      "samples": [
+        "5 hari bursa sebelumnya",
+        "10 hari bursa sebelumnya",
+        "Batas hari bursa pengamatan",
+        "Batas hari bursa setelah ex-date",
+        "Batas hari bursa berlaku untuk BEP, payment, dan pengamatan. Entry memakai close; sinyal BEP pada close dieksekusi pada open hari bursa berikutnya.",
+        "Replay historis · Lot 100 saham · Dana jual T+2 hari bursa dataset · Dividen tersedia pada payment date.",
+        "5 hari bursa sebelum cum date",
+        "20 hari bursa"
+      ],
+      "aria_samples": []
+    },
+    {
+      "view": "Fresh completed run",
+      "samples": [
+        "5 hari bursa sebelumnya",
+        "10 hari bursa sebelumnya",
+        "Batas hari bursa pengamatan",
+        "Batas hari bursa setelah ex-date",
+        "Batas hari bursa berlaku untuk BEP, payment, dan pengamatan. Entry memakai close; sinyal BEP pada close dieksekusi pada open hari bursa berikutnya.",
+        "Replay historis · Lot 100 saham · Dana jual T+2 hari bursa dataset · Dividen tersedia pada payment date.",
+        "5 hari bursa sebelum cum date",
+        "Batas hari bursa pengamatan",
+        "20 hari bursa"
+      ],
+      "aria_samples": []
+    }
+  ],
+  "page_errors": [],
+  "legacy": {
+    "id": "edb55364-4f8f-44c7-a3a1-33a7f84c833e",
+    "raw_sesi_unchanged": [
+      "Beberapa event/lot per emiten; split anggaran per event; lot 100, tanpa margin. T+2 sesi IHSG dan konsensus sembilan feed emiten; kalender resmi belum diverifikasi.",
+      "Entry dan exit terjadwal memakai close. Sinyal BEP dieksekusi pada open sesi berikutnya; hasilnya bisa di bawah BEP."
+    ],
+    "display": "hari bursa; no sesi",
+    "unchanged_verified": true
+  },
+  "new_run": {
+    "id": "eca2707d-8dde-4bf5-8b2c-b51e7f7784eb",
+    "input": {
+      "capital": "50000000",
+      "event_ids": [
+        "BBCA:2025-03-21",
+        "BMRI:2025-04-14",
+        "LPPF:2025-04-22"
+      ],
+      "allocation": "rotation",
+      "entry_sessions_before_cum": 5,
+      "exit_rule": "holding_period",
+      "max_holding_sessions": 20,
+      "end_date": "2025-05-20",
+      "start_date": "2025-03-01",
+      "compare": true
+    },
+    "assumptions": [
+      "Beberapa event/lot per emiten; split anggaran per event; lot 100, tanpa margin. T+2 hari bursa IHSG dan konsensus sembilan feed emiten; kalender resmi belum diverifikasi.",
+      "Entry dan exit terjadwal memakai close. Sinyal BEP dieksekusi pada open hari bursa berikutnya; hasilnya bisa di bawah BEP."
+    ],
+    "ledger_samples": [
+      {
+        "date": "2025-03-13",
+        "kind": "buy",
+        "symbol": "BBCA",
+        "amount": -49362500,
+        "detail": "5,500 saham pada close hari bursa masuk"
+      },
+      {
+        "date": "2025-03-26",
+        "kind": "buy",
+        "symbol": "BMRI",
+        "amount": -515000,
+        "detail": "100 saham pada close hari bursa masuk"
+      },
+      {
+        "date": "2025-04-11",
+        "kind": "buy",
+        "symbol": "LPPF",
+        "amount": -1407000,
+        "detail": "700 saham pada close hari bursa masuk"
+      },
+      {
+        "date": "2025-04-30",
+        "kind": "sell",
+        "symbol": "BBCA",
+        "amount": 48537500,
+        "detail": "5,500 saham × Rp8825; Batas hari bursa pengamatan"
+      }
+    ],
+    "trade_reasons": [
+      "Batas hari bursa pengamatan",
+      "Batas hari bursa pengamatan",
+      "Belum keluar"
+    ]
+  },
+  "new_scenario": {
+    "id": "b85831d8-eb81-459a-8a53-6987e2335a91",
+    "assumptions": [
+      "Stress test satu posisi: harga/DPS/jadwal diinput pengguna, bukan jadwal terkonfirmasi atau target harga.",
+      "Perubahan harga analog dari entry 5 hari bursa sebelum cum hingga t20 setelah ex diterapkan ke harga input.",
+      "Tanggal valuasi adalah asumsi tanggal tH dari pengguna; jumlah hari bursa menurut kalender BEI belum diverifikasi.",
+      "P10/P50/P90 adalah kuantil sampel analog, bukan peluang/rentang prediksi masa depan.",
+      "Kurva kuantil dihitung per hari bursa; tiap garis bukan satu jalur event dan bukan simulasi eksekusi.",
+      "Nilai akhir adalah valuasi posisi + hak dividen + sisa kas; bukan kas siap rotasi. Tidak menyimulasikan penjualan/T+2.",
+      "Di luar biaya transaksi, pajak, dan slippage. Tidak memasukkan dividen kedua atau reinvestasi."
+    ]
+  },
+  "status": "passed"
+}

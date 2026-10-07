@@ -9,7 +9,7 @@ import {
   Play,
   SlidersHorizontal,
 } from "lucide-react";
-import { api, dt, money, pct } from "@/lib/api";
+import { api, dt, money, pct, tradingDayText } from "@/lib/api";
 import type { Catalog, Allocation } from "@/lib/types";
 import type {
   FinancialLogic,
@@ -22,6 +22,7 @@ import type {
   RotationRun,
 } from "@/lib/rotation-types";
 import { ResultView } from "./simulator";
+import MoneyInput from "./money-input";
 
 const allocations: Record<Allocation, string> = {
   single: "All-in pertama",
@@ -176,8 +177,7 @@ function Planner({
     <div className="rotation-workspace">
       <div className="rotation-intro glass pad">
         <div>
-          <p className="eyebrow">ONE CAPITAL · MULTIPLE PATHS</p>
-          <h2>Logika → kandidat rute → replay</h2>
+          <h2>Rute berdasarkan aturan tim</h2>
           <p className="muted small">
             Pilih periode historis. Screening hanya memakai pengamatan sebelum
             awal periode. Hasil replay dihitung setelah rute dibekukan.
@@ -188,7 +188,6 @@ function Planner({
       <section className="glass pad">
         <div className="section-head">
           <div>
-            <p className="eyebrow">01 / DECISION INPUTS</p>
             <h2>Modal, waktu, dan aturan tim</h2>
           </div>
           <GitBranch className="accent" size={22} />
@@ -210,14 +209,13 @@ function Planner({
           <div className="rotation-form-grid">
             <label>
               Modal awal (Rp)
-              <input
+              <MoneyInput
                 name="rotation-capital"
-                type="number"
                 min="1"
                 max="1000000000000"
                 required
                 value={input.capital}
-                onChange={(e) => set("capital", e.target.value)}
+                onValueChange={(value) => set("capital", value)}
               />
             </label>
             <label>
@@ -259,11 +257,13 @@ function Planner({
                 <option value="payment_close">
                   Close payment / batas waktu
                 </option>
-                <option value="holding_period">Batas sesi pengamatan</option>
+                <option value="holding_period">
+                  Batas hari bursa pengamatan
+                </option>
               </select>
             </label>
             <label>
-              Batas sesi setelah ex-date
+              Batas hari bursa setelah ex-date
               <input
                 type="number"
                 min="1"
@@ -354,7 +354,7 @@ function Planner({
                 >
                   {[0, 5, 10].map((n) => (
                     <option key={n} value={n}>
-                      {n} sesi
+                      {n} hari bursa
                     </option>
                   ))}
                 </select>
@@ -466,7 +466,6 @@ function Planner({
           <section className="rotation-snapshot glass pad">
             <div className="section-head">
               <div>
-                <p className="eyebrow">02 / FROZEN PLAN</p>
                 <h2>{plan.routes.length} kandidat rute</h2>
               </div>
               <span className="badge">
@@ -529,7 +528,7 @@ function Planner({
                       </summary>
                       {r.omitted.map((o) => (
                         <p className="tiny muted" key={o.event_id}>
-                          {o.event_id}: {o.reason}
+                          {o.event_id}: {tradingDayText(o.reason)}
                         </p>
                       ))}
                     </details>
@@ -553,12 +552,12 @@ function Planner({
                 {plan.input.rules.minimum_samples} event · entry −
                 {plan.input.rules.entry_offset} cum · statistik t
                 {plan.input.rules.horizon} · holding{" "}
-                {plan.input.max_holding_sessions} sesi
+                {plan.input.max_holding_sessions} hari bursa
               </p>
               <ul>
                 {plan.assumptions.map((a) => (
                   <li className="small muted" key={a}>
-                    {a}
+                    {tradingDayText(a)}
                   </li>
                 ))}
               </ul>
@@ -582,7 +581,7 @@ function Planner({
       )}
       {job.data?.status === "failed" && (
         <div role="alert" className="notice error">
-          {job.data.error}
+          {tradingDayText(job.data.error ?? "")}
         </div>
       )}
       {busy && (
@@ -593,7 +592,6 @@ function Planner({
       {result && chosenRoute && chosenReplay && (
         <section className="rotation-results">
           <div className="glass pad">
-            <p className="eyebrow">03 / SAME CAPITAL. SAME PERIOD.</p>
             <h2>Hasil aktual pada replay historis</h2>
             <p className="small muted">
               {money(result.cash_baseline.capital)} ·{" "}
@@ -787,7 +785,7 @@ function CandidateTable({ rows }: { rows: Candidate[] }) {
               </td>
               <td className="rotation-reason">
                 {c.reasons.length
-                  ? c.reasons.join(" · ")
+                  ? tradingDayText(c.reasons.join(" · "))
                   : `Lolos · ranking ${c.evidence?.rank}`}
               </td>
               <td>

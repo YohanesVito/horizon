@@ -9,9 +9,9 @@ import "@fontsource/sora/600.css";
 import "./globals.css";
 import Providers from "@/components/providers";
 export const metadata: Metadata = {
-  title: "Dividen Lab — Rencanakan langkah berikutnya",
+  title: "Dividen Lab — Analisis peristiwa dividen",
   description:
-    "Workspace riset dan simulasi rotasi dividen saham Indonesia. Data historis Sectors.",
+    "Analisis harga saham di sekitar dividen dan uji asumsi dengan data historis Sectors.",
 };
 export default function RootLayout({
   children,

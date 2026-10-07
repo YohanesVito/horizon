@@ -111,7 +111,7 @@ export function Sparkline({ values }: { values: number[] }) {
       height="30"
       viewBox="0 0 96 30"
       role="img"
-      aria-label="Tren 24 sesi historis terakhir"
+      aria-label="Tren 24 hari bursa historis terakhir"
     >
       <polyline
         fill="none"

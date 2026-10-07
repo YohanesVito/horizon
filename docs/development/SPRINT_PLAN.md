@@ -197,3 +197,16 @@ Docker belum tersedia; instalasi dan deployment Horizon adalah pekerjaan lanjuta
 | Task | Scope | Sumber | Bukti selesai |
 |---|---|---|---|
 | BR-01 | Bandingkan ancestry, perubahan polish dan kesiapan gabungan deployment tanpa mengubah checkout | Permintaan review PM; DEP-02/DEP-03, S5-02 | BRANCH_REVIEW.md, branch-review.json, build/lint/60tes/preview browser gabungan; merge dan deploy tetap langkah berikutnya |
+
+| BR-02 | Commit deployment, integrasikan UI polish, rekonsiliasi issue/fixture dan verifikasi gabungan | Persetujuan PM 8 Oktober; BR-01, C-02/C-04/C-08 | Kedua parent commit terpelihara, fixture strict berversi, build/lint/backend/proxy lulus |
+| V-01 | Konfigurasi server-only dan deploy Preview Vercel dari branch gabungan | BR-02, DEP-02, S5-02 | Project/scope terverifikasi, URL Preview, browser/API sampai backend berfungsi |
+| V-02 | Merge hasil teruji ke main dan deploy production Vercel | V-01 lulus; persetujuan PM | main remote sinkron, production memakai main, smoke dan runbook aktual; bukan UAT |
+
+### Fokus demo satu emiten — keputusan PM 7 Oktober
+
+Instruksi PM terbaru memprioritaskan chart histori, periode dividen berikutnya, lalu simulator satu dividend play. Fitur discovery, kalender pasar, intelligence, rotasi, dan watchlist tetap di kode tetapi tidak perlu muncul dalam navigasi demo. Ini keputusan presentasi/alur, bukan penghapusan requirement lama atau klaim kesiapan model prediksi.
+
+| Task | Scope | Requirement | Bukti selesai |
+|---|---|---|---|
+| D-01 | Navigasi demo dua area, landing analisis emiten, pratinjau LPPF langsung terbuka dengan caveat, metodologi sebagai tautan sekunder | Instruksi PM terbaru; C-02/C-08; S5-02 | Browser landing dan perpindahan area, lint/typecheck/build, tidak ada fitur lama dihapus |
+| D-02 | Sinkronkan branch UI dengan `feat/chart-sammy` sambil mempertahankan D-01; jelaskan asal kontribusi dan resolusi konflik | Instruksi PM terbaru; D-01; UX-01–UX-04 | HEAD mengikuti commit Sammy, alur D-01 tetap ada, ID issue unik, pemeriksaan integrasi lulus; tanpa commit/push baru |

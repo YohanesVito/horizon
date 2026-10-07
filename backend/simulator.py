@@ -72,7 +72,7 @@ def simulate(dataset, request: SimulationRequest, allocation=None):
                     exit_date, exit_reason = cap_date, 'Batas waktu sebelum payment date; hak dividen tetap disimpan'
         elif request.exit_rule == 'holding_period':
             if ex_idx + request.max_holding_sessions < len(dates) and dates[ex_idx + request.max_holding_sessions] <= end:
-                exit_date, exit_reason = dates[ex_idx + request.max_holding_sessions], 'Batas sesi pengamatan'
+                exit_date, exit_reason = dates[ex_idx + request.max_holding_sessions], 'Batas hari bursa pengamatan'
         else:
             # A close-based signal may only be executed at the next available open.
             # The signal at the terminal date cannot create a trade beyond the run.
@@ -83,7 +83,7 @@ def simulate(dataset, request: SimulationRequest, allocation=None):
                     signal_date = dates[k]
                     if k + 1 < len(dates) and dates[k + 1] <= limit:
                         exit_date, price_field = dates[k + 1], 'open'
-                        exit_reason = 'Open sesi setelah sinyal BEP harga'
+                        exit_reason = 'Open hari bursa setelah sinyal BEP harga'
                     break
             if exit_date is None and ex_idx + request.max_holding_sessions < len(dates) and dates[ex_idx + request.max_holding_sessions] <= end:
                 exit_date, price_field, exit_reason = dates[ex_idx + request.max_holding_sessions], 'close', 'Batas waktu; BEP tidak menjamin fill'
@@ -131,7 +131,7 @@ def simulate(dataset, request: SimulationRequest, allocation=None):
         for receivable in sale_receivables[:]:
             if receivable['date'] is not None and receivable['date'] <= day:
                 cash += receivable['amount']
-                log(day, 'settlement', receivable['symbol'], receivable['amount'], 'Hasil jual menjadi kas tersedia (T+2 sesi dataset)')
+                log(day, 'settlement', receivable['symbol'], receivable['amount'], 'Hasil jual menjadi kas tersedia (T+2 hari bursa dataset)')
                 sale_receivables.remove(receivable)
         for e in dividend_calendar:
             if day != e['ex_date']:
@@ -164,7 +164,7 @@ def simulate(dataset, request: SimulationRequest, allocation=None):
                     plan['shares'], plan['status'] = shares, 'holding'
                     amount = shares * plan['entry_price']
                     cash -= amount
-                    log(day, 'buy', plan['event']['symbol'], -amount, f'{shares:,} saham pada close sesi masuk')
+                    log(day, 'buy', plan['event']['symbol'], -amount, f'{shares:,} saham pada close hari bursa masuk')
         for plan in plans:
             if plan['status'] == 'holding':
                 bar = dataset.prices[plan['event']['symbol']].get(day)
@@ -209,8 +209,8 @@ def simulate(dataset, request: SimulationRequest, allocation=None):
             'dataset_version': getattr(dataset, 'version', 'synthetic-test-fixture'),
             'assumptions': ['Harga aktual Sectors; replay bersyarat pada kalender yang tersedia sekarang.',
                             'Di luar biaya transaksi, pajak, dan slippage.',
-                            ('Beberapa event/lot per emiten; split anggaran per event; lot 100, tanpa margin. T+2 sesi IHSG dan konsensus sembilan feed emiten; kalender resmi belum diverifikasi.' if unified else 'Satu event per emiten; lot 100 saham; tanpa margin. Hasil jual tersedia setelah T+2 sesi dataset.'),
-                            'Entry dan exit terjadwal memakai close. Sinyal BEP dieksekusi pada open sesi berikutnya; hasilnya bisa di bawah BEP.',
+                            ('Beberapa event/lot per emiten; split anggaran per event; lot 100, tanpa margin. T+2 hari bursa IHSG dan konsensus sembilan feed emiten; kalender resmi belum diverifikasi.' if unified else 'Satu event per emiten; lot 100 saham; tanpa margin. Hasil jual tersedia setelah T+2 hari bursa dataset.'),
+                            'Entry dan exit terjadwal memakai close. Sinyal BEP dieksekusi pada open hari bursa berikutnya; hasilnya bisa di bawah BEP.',
                             'Posisi yang belum keluar pada tanggal akhir tetap dinilai dengan harga terakhir yang tersedia.',
                             'Urutan saham mengikuti tanggal masuk; saham pertama adalah baseline all-in. Ini bukan optimasi rute global.']}
 

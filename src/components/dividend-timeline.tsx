@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { PointerEvent } from "react";
+import type { MouseEvent, PointerEvent } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
   ArrowUpRight,
@@ -12,7 +12,7 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
-import { api, dt, money, pct } from "@/lib/api";
+import { api, dt, money, pct, tradingDayText } from "@/lib/api";
 import { cumExMovement, phaseLabel } from "@/lib/timeline-chart";
 import type {
   TimelineCatalog,
@@ -37,14 +37,30 @@ const dayLabel = (day: number) =>
   day === 0 ? "Ex · H0" : `H${day > 0 ? "+" : "−"}${Math.abs(day)}`;
 
 export default function DividendTimeline() {
-  const [selection, setSelection] = useState<{
+  const [chosenSelection, setChosenSelection] = useState<{
     symbol: string;
     preview: boolean;
   } | null>(null);
+  const [selectionTouched, setSelectionTouched] = useState(false);
   const catalog = useQuery({
     queryKey: ["timeline-catalog"],
     queryFn: () => api<TimelineCatalog>("/timeline"),
   });
+  // LPPF langsung terbuka untuk demo; versi terverifikasi didahulukan bila tersedia.
+  const defaultSelection = catalog.data?.companies.some(
+    (c) => c.symbol === "LPPF",
+  )
+    ? { symbol: "LPPF", preview: false }
+    : catalog.data?.preview_symbols.includes("LPPF")
+      ? { symbol: "LPPF", preview: true }
+      : catalog.data?.companies[0]
+        ? { symbol: catalog.data.companies[0].symbol, preview: false }
+        : null;
+  const selection = selectionTouched ? chosenSelection : defaultSelection;
+  const chooseSelection = (next: typeof chosenSelection) => {
+    setSelectionTouched(true);
+    setChosenSelection(next);
+  };
   const detail = useQuery({
     queryKey: ["timeline", selection?.symbol, selection?.preview],
     queryFn: () =>
@@ -67,45 +83,42 @@ export default function DividendTimeline() {
   const data = catalog.data;
   return (
     <div className="timeline-workspace">
-      <section
-        className="glass timeline-catalog"
-        aria-label="Katalog timeline lengkap"
-      >
+      <section className="glass timeline-catalog" aria-label="Pilih emiten">
         <div className="timeline-catalog-title">
           <ScanLine size={20} />
           <div>
-            <h2>Histori lengkap, perbandingan yang jelas.</h2>
+            <h2>Emiten yang dianalisis</h2>
             <p className="small muted">
               {data.history_years[0]}–{data.history_years.at(-1)} · satu emiten
               dalam satu grafik
             </p>
           </div>
         </div>
-        <div className="timeline-count">
-          <strong>{data.companies.length}</strong>
-          <span>
-            emiten lolos
-            <br />
-            verifikasi lengkap
-          </span>
-        </div>
-        {data.companies.length ? (
+        {data.companies.length || data.preview_symbols.length ? (
           <label className="timeline-picker">
             Pilih emiten
             <select
-              value={selection?.preview ? "" : (selection?.symbol ?? "")}
-              onChange={(e) =>
-                setSelection(
-                  e.target.value
-                    ? { symbol: e.target.value, preview: false }
-                    : null,
-                )
+              value={
+                selection
+                  ? `${selection.preview ? "preview" : "verified"}:${selection.symbol}`
+                  : ""
               }
+              onChange={(e) => {
+                const [kind, symbol] = e.target.value.split(":");
+                chooseSelection(
+                  symbol ? { symbol, preview: kind === "preview" } : null,
+                );
+              }}
             >
               <option value="">Pilih emiten</option>
               {data.companies.map((c) => (
-                <option key={c.symbol} value={c.symbol}>
+                <option key={c.symbol} value={`verified:${c.symbol}`}>
                   {c.symbol} — {c.name}
+                </option>
+              ))}
+              {data.preview_symbols.map((symbol) => (
+                <option key={`preview:${symbol}`} value={`preview:${symbol}`}>
+                  {symbol} — pratinjau, belum terverifikasi
                 </option>
               ))}
             </select>
@@ -136,7 +149,7 @@ export default function DividendTimeline() {
           {data.preview_symbols.includes("LPPF") && (
             <button
               className="btn primary"
-              onClick={() => setSelection({ symbol: "LPPF", preview: true })}
+              onClick={() => chooseSelection({ symbol: "LPPF", preview: true })}
             >
               Buka pratinjau LPPF <ArrowUpRight size={16} />
             </button>
@@ -162,7 +175,7 @@ export default function DividendTimeline() {
               </button>
               <button
                 className="text-button"
-                onClick={() => setSelection(null)}
+                onClick={() => chooseSelection(null)}
               >
                 Kembali
               </button>
@@ -172,7 +185,7 @@ export default function DividendTimeline() {
             <TimelineExplorer
               key={`${selection.symbol}-${selection.preview}`}
               data={detail.data}
-              onClose={() => setSelection(null)}
+              onClose={() => chooseSelection(null)}
             />
           )}
         </>
@@ -317,7 +330,7 @@ function TimelineExplorer({
         <div className="timeline-audit-body">
           <ul>
             {data.issues.map((issue) => (
-              <li key={issue}>{issue}</li>
+              <li key={issue}>{tradingDayText(issue)}</li>
             ))}
           </ul>
           <p>
@@ -438,7 +451,9 @@ function TimelinePlot({
     setLegendYear(null);
     setHover(null);
   };
-  function onPointerMove(event: PointerEvent<SVGSVGElement>) {
+  function closestAt(
+    event: PointerEvent<SVGSVGElement> | MouseEvent<SVGSVGElement>,
+  ): Hover | null {
     const rect = event.currentTarget.getBoundingClientRect();
     const pointerX = ((event.clientX - rect.left) * width) / rect.width;
     const pointerY = ((event.clientY - rect.top) * height) / rect.height;
@@ -448,8 +463,7 @@ function TimelinePlot({
       pointerY < top ||
       pointerY > bottom
     ) {
-      setHover(null);
-      return;
+      return null;
     }
     let closest: Hover | null = null;
     let distance = Infinity;
@@ -466,6 +480,21 @@ function TimelinePlot({
         closest = { period, point };
       }
     }
+    return closest;
+  }
+  function onPointerMove(event: PointerEvent<SVGSVGElement>) {
+    const closest = closestAt(event);
+    if (closest) setLegendYear(null);
+    setHover(closest);
+  }
+  function onChartClick(event: MouseEvent<SVGSVGElement>) {
+    const closest = closestAt(event);
+    if (!closest) return;
+    if (pinned !== null) {
+      reset();
+      return;
+    }
+    setPinned(closest.period.year);
     setLegendYear(null);
     setHover(closest);
   }
@@ -535,8 +564,8 @@ function TimelinePlot({
         </span>
         <span>
           {pinned
-            ? `Fokus ${pinned} terkunci`
-            : "Hover garis / area · klik tahun untuk mengunci"}
+            ? `Fokus ${pinned} terkunci · klik grafik lagi untuk melepas`
+            : "Hover garis / area · klik grafik atau tahun untuk mengunci"}
         </span>
       </div>
       {active && (
@@ -565,12 +594,14 @@ function TimelinePlot({
               role="img"
               aria-label={`Overlay harga ${symbol}, ${years.join(", ")}; ${units === "price" ? "rupiah" : "perubahan persen"}; hari kalender relatif ex-date`}
               onPointerMove={onPointerMove}
+              onClick={onChartClick}
               onPointerLeave={() => setHover(null)}
             >
               <title>Harga historis {symbol} pada periode dividen</title>
               <desc>
-                Pilih tahun pada tombol legenda untuk menonjolkan garis dan
-                membaca timeline tanggal di bawah grafik.
+                Klik garis atau area grafik, atau pilih tahun pada tombol
+                legenda, untuk mengunci fokus dan membaca timeline tanggal di
+                bawah grafik. Klik grafik lagi untuk melepas fokus.
               </desc>
               {[0, 1, 2, 3, 4].map((i) => {
                 const v = minY + ((maxY - minY) * i) / 4;

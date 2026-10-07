@@ -90,8 +90,8 @@ def plan_routes(dataset, request: RotationRequest):
                 f'Statistik dan outcome dipotong sebelum {start}; kalender dividen berikutnya diasumsikan sudah diketahui jika timestamp pengumuman kosong.',
                 'Universe dipilih setelah 2025 dan snapshot terbaru; ini replay bersyarat, bukan backtest point-in-time bersih.',
                 'Tiga aturan kandidat rute dibekukan sebelum replay; tidak diurutkan menurut keuntungan yang baru diketahui sesudahnya.',
-                'Jeda modal memakai batas waktu dan T+2 sesi pasar teramati, bukan waktu BEP aktual masa depan. Entry bersamaan diurutkan alfabet emiten.',
-                'Sesi IHSG dilengkapi pada gap yang dikonfirmasi harga valid seluruh sembilan emiten. Kalender settlement resmi belum diverifikasi.',
+                'Jeda modal memakai batas waktu dan T+2 hari bursa yang teramati, bukan waktu BEP aktual masa depan. Entry bersamaan diurutkan alfabet emiten.',
+                'Hari bursa IHSG dilengkapi pada gap yang dikonfirmasi harga valid seluruh sembilan emiten. Kalender settlement resmi belum diverifikasi.',
                 'Median return/risk screening memakai horizon statistik yang dipilih; bukan forecast PnL rute atau exit-rule yang sama.',
                 'Di luar biaya transaksi, pajak dan slippage. Skenario masa depan dan optimum rute global belum tersedia.',
             ]}

@@ -79,6 +79,8 @@ PYTHONPATH=. .venv/bin/python work/verify_dalang_deployment.py https://10e0ff54-
 
 Verifier memakai key lokal, menjalankan satu replay sementara, membandingkan fixture, membersihkan probe yang selesai, serta memeriksa checksum record sebelumnya. Jalankan saat tidak ada perubahan pengguna bersamaan agar checksum dapat dibandingkan.
 
+Untuk release backend yang sudah menyertakan `feat/timeline-ui-polish`, tambahkan `--fixture outputs/development/readiness-case-timeline-ui.json`. Default `readiness-case.json` tetap untuk release Dalang awal. Fixture baru hanya mengubah 12 field prosa sesi→hari bursa yang sudah ditinjau; pemeriksaan result tetap kesamaan JSON penuh. Snapshot lama tidak ditulis ulang. Deployment frontend dapat memakai backend Dalang awal karena kontrak dan hitungan sama; formatter UI menangani prosa lama.
+
 6. Verifikasi frontend→proxy→API, lalu arahkan `/opt/horizon/current` ke release baru dan simpan metadata/bukti. Pertahankan image/manifest sebelumnya untuk rollback.
 
 ## Stop, start dan rollback

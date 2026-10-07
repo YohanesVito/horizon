@@ -1,0 +1,45 @@
+{
+  "checked_at_utc": "2026-10-07T17:08:32.731510+00:00",
+  "task": "BR-02",
+  "parents": {
+    "supabase_dalang": "f64df85",
+    "timeline_polish": "523c993"
+  },
+  "checks": {
+    "production_build_and_typescript": "passed",
+    "eslint": "passed",
+    "backend_tests": {
+      "passed": 60,
+      "warnings": 1,
+      "warning": "Known Starlette TestClient/httpx deprecation"
+    },
+    "proxy_checks": {
+      "passed": 7
+    },
+    "strict_versioned_replay": "passed",
+    "gross_pnl": 2900364,
+    "ending_nav": 102900364,
+    "original_fixture_preserved": true,
+    "local_frontend_health": {
+      "status": 200,
+      "storage": "postgresql"
+    },
+    "browser_local": {
+      "landing": "Analisis emiten, LPPF preview, five historical periods",
+      "simulator_initial_capital": "empty",
+      "capital_50000000_display": "50.000.000",
+      "console_errors_warnings": [],
+      "submitted_cloud_run": false
+    }
+  },
+  "issue_aliases": {
+    "ui:ISS-044": "ISS-052",
+    "ui:ISS-045": "ISS-053",
+    "ui:ISS-046": "ISS-054"
+  },
+  "limits": [
+    "Not final UAT",
+    "Backend VPS retains original deployed snapshot; frontend normalizes legacy wording",
+    "Vercel preview and production pending"
+  ]
+}

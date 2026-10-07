@@ -1,5 +1,6 @@
 """Verify HTTPS, API protection, database preservation and a disposable replay."""
 from datetime import datetime, timezone
+import argparse
 from pathlib import Path
 from time import sleep, monotonic
 import json
@@ -15,11 +16,18 @@ from backend.migration import digest
 
 
 def main():
-    base = sys.argv[1].rstrip('/')
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('base_url')
+    parser.add_argument('--fixture', type=Path, default=ROOT / 'outputs/development/readiness-case.json',
+                        help='Strict golden fixture for the deployed backend release; default is the original Dalang release.')
+    args = parser.parse_args()
+    base = args.base_url.rstrip('/')
     assert base.startswith('https://'), 'Verification requires HTTPS'
+    fixture = json.loads(args.fixture.read_text())
     values = dotenv_values(ROOT / '.env.local')
     key = values['HORIZON_API_KEY']
-    report = {'base_url': base, 'verified_at_utc': datetime.now(timezone.utc).isoformat(), 'checks': {}}
+    report = {'base_url': base, 'fixture': args.fixture.name,
+              'verified_at_utc': datetime.now(timezone.utc).isoformat(), 'checks': {}}
     with store.engine.connect() as connection:
         before = list(connection.execute(select(store.Record.__table__)).mappings())
     probe_id = None
@@ -40,7 +48,6 @@ def main():
                 assert response.status_code == 200, path
                 assert key not in response.text
                 report['checks'][path] = 200
-            fixture = json.loads((ROOT / 'outputs/development/readiness-case.json').read_text())
             submitted = client.post('/api/simulations', json=fixture['input'])
             assert submitted.status_code == 202
             probe_id = submitted.json()['id']

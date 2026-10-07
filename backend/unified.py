@@ -61,7 +61,7 @@ class UnifiedDataset:
             if not event['payment_date']:
                 problems.append('Payment date belum tersedia')
             if any(d not in bars or not valid_bar(bars[d]) or d not in sessions for d in (event['cum_date'], event['ex_date'])):
-                problems.append('Harga/sesi cum atau ex belum valid')
+                problems.append('Harga/hari bursa cum atau ex belum valid')
             # Both engines must agree on market prices wherever their snapshots overlap.
             for bar in event['bars']:
                 fresh = bars.get(bar['date'])
@@ -87,10 +87,10 @@ class UnifiedDataset:
     def entry_date(self, event, offset):
         cum = event['cum_date']
         if cum not in self.market_sessions:
-            raise ValueError('Cum date tidak ada pada sesi IHSG teramati.')
+            raise ValueError('Cum date tidak ada pada hari bursa IHSG teramati.')
         i = self.market_sessions.index(cum)-offset
         if i < 0:
-            raise ValueError('Sesi sebelum cum belum cukup.')
+            raise ValueError('Hari bursa sebelum cum belum cukup.')
         day = self.market_sessions[i]
         bar = self.prices[event['symbol']].get(day)
         if not bar or not valid_bar(bar):
@@ -105,12 +105,12 @@ class UnifiedDataset:
         symbol = event['symbol']
         missing = [d for d in self.market_sessions if entry <= d <= end and (d not in self.prices[symbol] or not valid_bar(self.prices[symbol][d]))]
         if missing:
-            raise ValueError(f"{symbol}: harga/volume tidak valid pada {len(missing)} sesi, mulai {missing[0]}.")
+            raise ValueError(f"{symbol}: harga/volume tidak valid pada {len(missing)} hari bursa, mulai {missing[0]}.")
         conflicts = [r for r in self.quality_issues if r['symbol'] == symbol and entry <= r['date'] <= end and 'Konflik' in r['reason']]
         if conflicts:
             raise ValueError(f'{symbol}: konflik harga dalam periode replay.')
         if not self.market_sessions or self.market_sessions[-1] < end or self.market_sessions[0] > entry:
-            raise ValueError('Cakupan sesi pasar belum cukup.')
+            raise ValueError('Cakupan hari bursa pasar belum cukup.')
         for other in self.events.values():
             if other['symbol'] == symbol and entry <= other['ex_date'] <= end and other['reasons']:
                 raise ValueError(f"Dividen lain belum tervalidasi: {other['id']}")

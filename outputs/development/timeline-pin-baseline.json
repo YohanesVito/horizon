@@ -1,0 +1,62 @@
+{
+  "recorded_at": "2026-10-07T12:53:33.870Z",
+  "base": "http://localhost:3000",
+  "mode": "baseline",
+  "source": "real LPPF snapshot API / rendered SVG path coordinates",
+  "checks": [
+    {
+      "width": 1440,
+      "first": {
+        "year": 2024,
+        "x": 453.65,
+        "y": 243.39,
+        "separation": 40.329999999999984,
+        "clientX": 747.65,
+        "clientY": 811.593125
+      },
+      "second": {
+        "year": 2025,
+        "x": 138.73,
+        "y": 243.9,
+        "separation": 31.960000000000008,
+        "clientX": 432.73,
+        "clientY": 812.103125
+      },
+      "after_click_and_other_hover": {
+        "locked": null,
+        "focus": "Jejak dividen 2025\nPembayaran tercatat · jenis belum terverifikasi",
+        "tooltip": "2025 · Historis\n8 Apr 2025 · H−14\nRp 1.745\n-11,87% dari cum-date\nSebelum ex-date",
+        "meta": "Perubahan harga dari close cum-date (%)\nHover garis / area · klik tahun untuk mengunci"
+      },
+      "regression": "Direct chart click does not pin before implementation"
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/api/catalog"
+    },
+    {
+      "method": "GET",
+      "path": "/api/watchlist"
+    },
+    {
+      "method": "GET",
+      "path": "/api/rules"
+    },
+    {
+      "method": "GET",
+      "path": "/api/companies/BBCA"
+    },
+    {
+      "method": "GET",
+      "path": "/api/timeline"
+    },
+    {
+      "method": "GET",
+      "path": "/api/timeline/LPPF?preview=true"
+    }
+  ],
+  "page_errors": [],
+  "status": "passed"
+}

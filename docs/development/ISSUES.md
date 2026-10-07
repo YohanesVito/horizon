@@ -2,7 +2,7 @@
 
 ## Review integrasi UI dan deployment — 8 Oktober 2026
 
-- **ISS-051 — Fixture deployment / P2 / OPEN:** gabungan UI polish523c993 dan deployment lokal lulus60tes/build, tetapi replay dibandingkan readiness-case lama berbeda12field teks (sesi→hari bursa); seluruh angka/struktur sama. Verifier deployment membandingkan keseluruhan JSON pada work/verify_dalang_deployment.py:55 sehingga akan gagal setelah backend gabungan dirilis. Perbarui fixture yang ditinjau atau pisahkan pemeriksaan wording dan angka secara eksplisit sebelum release backend berikutnya. Tidak mengendurkan pemeriksaan atau mengubah engine pada review. Bukti `outputs/development/branch-review.json`. Penomoran ISS-044/045/046 lintas branch juga perlu rekonsiliasi saat merge; detail BRANCH_REVIEW.md.
+- **ISS-051 — Fixture deployment / P2 / RESOLVED:** BR-02 mempertahankan readiness-case.json asli dan menambah readiness-case-timeline-ui.json dengan tepat12perubahan prosa yang telah ditinjau. Replay engine gabungan cocok secara strict dengan seluruh JSON result; angka grossPnL2900364/endingNAV102900364 tetap. Verifier menerima --fixture eksplisit dan tidak mengendurkan kesamaan hasil. Default tetap fixture release Dalang awal yang masih aktif; runbook membedakan kedua versi. Issue UI asal044/045/046 direkonsiliasi menjadi052/053/054. Bukti integration-verification.json dan metadata fixture baru.
 
 ## Retry deployment — 8 Oktober 2026
 
@@ -138,3 +138,16 @@ Implementasi T-03/T-04 memasang gate ISS-041 di server dan menampilkan pratinjau
 - **ISS-045 — Upsert PostgreSQL / P1 / RESOLVED:** cloud smoke gagal dengan ValueError pada jalur tulis setelah migrasi20record berhasil diverifikasi. Diagnosis terhadap query asli membuktikan `rowcount=-1` pada insert/upsert psycopg/SQLAlchemy; pemeriksaan `rowcount != 1` salah menganggap insert sebagai konflik dan rollback. Implementasi diperbaiki memakai RETURNING key untuk memeriksa keberhasilan insert/update secara eksplisit. Query diagnosis di-rollback, record probe dibersihkan, source SQLite tidak diubah.57tes lokal lulus sesudah perbaikan; cloud smoke read/insert/update/kind guard dan timestamp lulus. Checksum20record asli tetap sama. Bukti `supabase-verification.json`; terkait DB-03.
 
 ISS-010/ISS-013 tidak otomatis tertutup seluruhnya oleh database cloud: worker durable, schema domain ternormalisasi, pemindahan market snapshots dan isolasi multi-user masih belum dibuat. Migrasi record memiliki schema/version dan akun backend sendiri. ISS-009 (akun pengguna) tetap berlaku; kredensial Supabase bukan implementasi login.
+
+## Feedback UI UX-01 — 7 Oktober 2026
+
+- **ISS-052 — Input / P2 / RESOLVED:** setelah modal50juta valid dan hasil tersimpan, paste `1e8` ditolak sehingga tampilan tetap50.000.000 tetapi customValidity invalid. Menekan “Gunakan input hasil ini” dengan nilai angka sama sebelumnya tidak menghapus error; browser membuktikan form tetap invalid. Komponen hanya menyinkronkan draf ketika nilai sumber berubah. Reset eksplisit saat salin hasil kini menyinkronkan raw/error walau nominal sama, sambil mempertahankan elemen/fokus input. Regresi browser production membuktikan display50.000.000, canonical50000000 dan validitytrue/messagekosong. Terkait UX-01/C-04/S5-02; bukti di ui-feedback-verification.json. Ini perbaikan penyebab yang teramati, bukan tebakan gejala.
+- **ISS-053 — Kosmetik / P3 / OPEN:** browser production meminta `/favicon.ico` dan menerima404; console mencatat failed resource untuk URL itu. Tidak ada pageerror atau warning pada pemeriksaan alur utama. Favicon belum ditambahkan karena di luar scope feedback ini; tidak menghambat input, simulasi, timeline atau setup lokal. Terkait UX-01/S5-02.
+
+## Fokus demo D-01 — arahan PM 7 Oktober 2026
+
+- **ISS-054 — Alur demo / P1 / OPEN:** landing analisis kini langsung membuka pratinjau LPPF, tetapi navigasi ke Simulator masih membuka form replay historis multi-event dengan pilihan default BBCA/BMRI/LPPF. Identitas emiten yang dianalisis belum diteruskan dan simulasi satu dividend play belum ada. Dampak: urutan analisis → simulator sudah terlihat, tetapi belum menjadi satu alur keputusan emiten yang koheren. D-01 hanya merapikan pintu masuk/navigasi; jangan mengklaim integrasi selesai. Tindak lanjut pada chunk simulator terpisah, setelah kontrak dan asumsi perhitungan diperiksa. ID 046 dipakai setelah sinkronisasi dengan branch Sammy karena ISS-052/045 sudah tercatat untuk temuan UX-01 miliknya.
+
+## Deployment frontend V-01 — 8 Oktober 2026
+
+- **ISS-055 — Akses deployment / P1 / OPEN:** project Vercel horizon sudah dibuat dan linked melalui CLI. Pengiriman BACKEND_URL/HORIZON_API_KEY dari env lokal ke Preview/Production ditolak automatic approval review: perlu izin eksplisit secret + tujuan Vercel. Tidak ada secret yang diunggah. Penyelesaian: izin PM atau PM memasang dua environment server sendiri; verifikasi Preview sebelum main/production. MCP403 dibypass dengan CLI resmi yang terautentikasi, tanpa mengubah scope.

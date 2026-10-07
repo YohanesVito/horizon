@@ -27,6 +27,30 @@ bun run start
 
 Buka http://127.0.0.1:3000. API/OpenAPI tersedia di http://127.0.0.1:8000/docs. Untuk mengubah UI dengan hot reload, gunakan `bun run dev` sebagai pengganti `start`. Dev memakai webpack polling untuk menghindari EMFILE pada workspace campuran Python/Node.
 
+Setup lokal checkout `horizon` pada 7 Oktober memakai npm dan Python 3.12 yang dikelola uv. Ini juga menjadi alternatif bila Python sistem gagal membuat virtualenv karena `pyexpat`/`libexpat`:
+
+```sh
+npm install --package-lock=false
+/opt/homebrew/bin/uv python install 3.12
+/opt/homebrew/bin/uv venv --python 3.12 .runtime/ui-feedback-venv
+/opt/homebrew/bin/uv pip install --python .runtime/ui-feedback-venv/bin/python -r backend/requirements.lock
+```
+
+Jalankan backend dan frontend di dua terminal dari akar proyek:
+
+```sh
+# Terminal backend
+.runtime/ui-feedback-venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
+```
+
+```sh
+# Terminal frontend
+npm run build
+npm run start
+```
+
+Keduanya memakai loopback lokal. Buka http://localhost:3000/; frontend meneruskan `/api` ke backend. Snapshot yang disertakan cukup, tanpa mengambil data provider baru. Virtualenv alternatif ini tersimpan di `.runtime` yang diabaikan Git.
+
 Untuk berbagi demo dengan perangkat di jaringan lokal yang sama, jalankan `bun run start:lan` sebagai pengganti `bun run start`. Buka `http://<IP-LAN-komputer>:3000` dari perangkat teman. Backend tetap berjalan pada127.0.0.1:8000; frontend meneruskan `/api` melalui port3000. Komputer host harus tetap menyala dan terhubung. Semua pengunjung memakai watchlist/rules/riwayat lokal yang sama karena akun terpisah belum tersedia. Hentikan proses LAN dan jalankan `bun run start` untuk kembali ke akses komputer sendiri.
 
 Snapshot yang disertakan cukup untuk menjalankan aplikasi tanpa panggilan provider baru. `.env.local` yang sudah ada memuat kunci Sectors dan tidak boleh dicetak, disalin ke frontend, atau masuk Git. Contoh variabel tanpa rahasia ada di `.env.local.example`. Jangan menimpa file `.env.local` yang sudah berisi key.
