@@ -1,0 +1,127 @@
+{
+  "recorded_at": "2026-10-07T13:08:13.498Z",
+  "base": "http://localhost:3000",
+  "source": "real backend / local Sectors snapshots",
+  "checks": [
+    {
+      "width": 1440,
+      "initial": {
+        "display": "",
+        "valid": false,
+        "message": "Please fill out this field.",
+        "labelFont": "14px",
+        "inputFont": "24px",
+        "inputHeight": 64.390625
+      },
+      "empty_required": "no POST",
+      "copied_saved_input": {
+        "id": "26eb72ee-bea9-45a8-93f2-c43ac1984185",
+        "capital": "222222222",
+        "observed": {
+          "display": "222.222.222",
+          "valid": true,
+          "message": "",
+          "labelFont": "14px",
+          "inputFont": "24px",
+          "inputHeight": 64.390625
+        }
+      },
+      "run": {
+        "id": "ee2a33aa-ba88-4217-b9b5-85dd9c1ad9ae",
+        "capital": "50000000",
+        "status": "completed",
+        "ending_nav": 50550000
+      },
+      "fresh_navigation": "empty",
+      "detail_handoff": "empty/one BBCA event",
+      "defaults": {
+        "planner": "100.000.000",
+        "scenario": "100.000.000"
+      },
+      "size": {
+        "width": 1440,
+        "scrollWidth": 1440
+      }
+    },
+    {
+      "width": 390,
+      "initial": {
+        "display": "",
+        "valid": false,
+        "message": "Please fill out this field.",
+        "labelFont": "14px",
+        "inputFont": "24px",
+        "inputHeight": 64.390625
+      },
+      "empty_required": "no POST",
+      "copied_saved_input": {
+        "id": "ee2a33aa-ba88-4217-b9b5-85dd9c1ad9ae",
+        "capital": "50000000",
+        "observed": {
+          "display": "50.000.000",
+          "valid": true,
+          "message": "",
+          "labelFont": "14px",
+          "inputFont": "24px",
+          "inputHeight": 64.390625
+        }
+      },
+      "run": {
+        "id": "8aac034b-fa38-412b-a11c-c057e78620b2",
+        "capital": "50000000",
+        "status": "completed",
+        "ending_nav": 50550000
+      },
+      "fresh_navigation": "empty",
+      "detail_handoff": "empty/one BBCA event",
+      "defaults": {
+        "planner": "100.000.000",
+        "scenario": "100.000.000"
+      },
+      "size": {
+        "width": 390,
+        "scrollWidth": 390
+      }
+    }
+  ],
+  "posts": [
+    {
+      "path": "/api/simulations",
+      "body": {
+        "capital": 50000000,
+        "event_ids": [
+          "BBCA:2025-03-21",
+          "BMRI:2025-04-14",
+          "LPPF:2025-04-22"
+        ],
+        "allocation": "single",
+        "entry_sessions_before_cum": 5,
+        "exit_rule": "price_bep",
+        "max_holding_sessions": 20,
+        "end_date": "2025-05-20",
+        "start_date": "2025-03-01",
+        "compare": true
+      }
+    },
+    {
+      "path": "/api/simulations",
+      "body": {
+        "capital": 50000000,
+        "event_ids": [
+          "BBCA:2025-03-21",
+          "BMRI:2025-04-14",
+          "LPPF:2025-04-22"
+        ],
+        "allocation": "single",
+        "entry_sessions_before_cum": 5,
+        "exit_rule": "price_bep",
+        "max_holding_sessions": 20,
+        "end_date": "2025-05-20",
+        "start_date": "2025-03-01",
+        "compare": true
+      }
+    }
+  ],
+  "page_errors": [],
+  "status": "passed"
+}

@@ -1,0 +1,13 @@
+{
+  "at_utc": "2026-10-07T16:17:51.935934+00:00",
+  "url": "http://127.0.0.1:3000/",
+  "backend": "VPS via Next server proxy",
+  "observed": [
+    "Peluang: 9 issuers and 12 events",
+    "Timeline: 170 candidates; 0 verified complete, existing data gap",
+    "LPPF historical 2021-2025 preview displayed with declaration/RUPS gaps labeled"
+  ],
+  "browser_errors_or_warnings": [],
+  "method": "CUA reload, navigation, accessibility snapshots and browser console",
+  "uat": false
+}

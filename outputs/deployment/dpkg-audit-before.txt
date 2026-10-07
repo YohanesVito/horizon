@@ -1,0 +1,10 @@
+The following packages are only half configured, probably due to problems
+configuring them the first time.  The configuration should be retried using
+dpkg --configure <package> or the configure menu option in dselect:
+ sudo                 Provide limited super user privileges to specific users
+
+The following packages have been triggered, but the trigger processing
+has not yet been done.  Trigger processing can be requested using
+dselect or dpkg --configure --pending (or dpkg --triggers-only):
+ libc-bin             GNU C Library: Binaries
+

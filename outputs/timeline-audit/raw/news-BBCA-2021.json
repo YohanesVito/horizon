@@ -1,0 +1,22 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "retrieved_at": "2026-10-07T04:32:27.153291+00:00",
+  "tool": "fetch-news",
+  "arguments": {
+    "symbols": "BBCA",
+    "keyword": "dividen",
+    "extension": "idx",
+    "start": "2021-01-01",
+    "end": "2021-12-31",
+    "limit": 30,
+    "offset": 0
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"results\": [],\n  \"pagination\": {\n    \"total_count\": 0,\n    \"showing\": 0,\n    \"limit\": 30,\n    \"offset\": 0,\n    \"has_next\": false,\n    \"has_previous\": false,\n    \"next_offset\": null,\n    \"previous_offset\": null\n  }\n}"
+      }
+    ]
+  }
+}

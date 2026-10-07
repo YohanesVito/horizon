@@ -1,0 +1,15 @@
+{
+  "observed_at_utc": "2026-10-07T13:05:07.909557+00:00",
+  "docker_binary": null,
+  "io_pressure": "some avg10=95.05 avg60=95.79 avg300=86.93 total=607062877421\nfull avg10=94.85 avg60=95.41 avg300=86.53 total=565759426888\n",
+  "memory_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=472647665\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=444776123\n",
+  "installer": {
+    "code": 0,
+    "output": "ExecMainStartTimestamp=Wed 2026-10-07 12:54:58 UTC\nExecMainStatus=0\nActiveState=activating\nSubState=start"
+  },
+  "curation": {
+    "code": 3,
+    "output": "inactive\ninactive\ninactive\ninactive\ninactive"
+  },
+  "private_env_mode": "0o600"
+}

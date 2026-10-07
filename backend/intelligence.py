@@ -21,7 +21,7 @@ LIMITS = [
     'Statistik sampel terpilih 2022–2025, bukan seluruh IDX atau probabilitas prediksi tervalidasi.',
     'Wilson 95% memakai asumsi binomial independen; korelasi antar-event dan perubahan rezim belum dimodelkan.',
     'Tanggal declaration dan vintage data tidak tersedia; kelayakan membeli sebelum pengumuman belum terbukti.',
-    'Sesi mengikuti harga teramati. Kalender resmi dan penjelasan suspensi belum tersedia.',
+    'Hari bursa mengikuti harga teramati. Kalender resmi dan penjelasan suspensi belum tersedia.',
     'Price BEP adalah sinyal close mencapai harga entry, bukan jaminan eksekusi atau waktu settlement.',
     'DPS diperlakukan sebagai IDR sesuai data IDX Sectors; respons tidak membawa metadata mata uang per event.',
     'Censoring akibat dividen berikutnya dapat informatif; kurva KM eksploratif tidak membuktikan peluang pemulihan masa depan.',
@@ -297,10 +297,10 @@ def scenario(analysis, request):
             'version': 'analogs-v1.0', 'model_version': None,
             'assumptions': [
                 'Stress test satu posisi: harga/DPS/jadwal diinput pengguna, bukan jadwal terkonfirmasi atau target harga.',
-                f"Perubahan harga analog dari entry {analysis['entry_offset']} sesi sebelum cum hingga t{analysis['horizon']} setelah ex diterapkan ke harga input.",
-                'Tanggal valuasi adalah asumsi tanggal tH dari pengguna; jumlah sesi kalender BEI belum diverifikasi.',
+                f"Perubahan harga analog dari entry {analysis['entry_offset']} hari bursa sebelum cum hingga t{analysis['horizon']} setelah ex diterapkan ke harga input.",
+                'Tanggal valuasi adalah asumsi tanggal tH dari pengguna; jumlah hari bursa menurut kalender BEI belum diverifikasi.',
                 'P10/P50/P90 adalah kuantil sampel analog, bukan peluang/rentang prediksi masa depan.',
-                'Kurva kuantil dihitung per sesi; tiap garis bukan satu jalur event dan bukan simulasi eksekusi.',
+                'Kurva kuantil dihitung per hari bursa; tiap garis bukan satu jalur event dan bukan simulasi eksekusi.',
                 'Nilai akhir adalah valuasi posisi + hak dividen + sisa kas; bukan kas siap rotasi. Tidak menyimulasikan penjualan/T+2.',
                 'Di luar biaya transaksi, pajak, dan slippage. Tidak memasukkan dividen kedua atau reinvestasi.',
             ]}

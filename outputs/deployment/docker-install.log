@@ -1,0 +1,169 @@
+Hit:1 http://security.ubuntu.com/ubuntu noble-security InRelease
+Hit:2 http://archive.ubuntu.com/ubuntu noble InRelease
+Hit:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+ca-certificates is already the newest version (20260601~24.04.1).
+The following packages were automatically installed and are no longer required:
+  linux-image-6.8.0-138-generic linux-modules-6.8.0-138-generic
+Use 'apt autoremove' to remove them.
+The following additional packages will be installed:
+  libcurl3t64-gnutls libcurl4t64
+The following packages will be upgraded:
+  curl libcurl3t64-gnutls libcurl4t64
+3 upgraded, 0 newly installed, 0 to remove and 34 not upgraded.
+Need to get 906 kB of archives.
+After this operation, 0 B of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 curl amd64 8.5.0-2ubuntu10.15 [227 kB]
+Get:2 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcurl4t64 amd64 8.5.0-2ubuntu10.15 [343 kB]
+Get:3 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcurl3t64-gnutls amd64 8.5.0-2ubuntu10.15 [336 kB]
+Fetched 906 kB in 2s (417 kB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 35704 files and directories currently installed.)
+Preparing to unpack .../curl_8.5.0-2ubuntu10.15_amd64.deb ...
+Unpacking curl (8.5.0-2ubuntu10.15) over (8.5.0-2ubuntu10.13) ...
+Preparing to unpack .../libcurl4t64_8.5.0-2ubuntu10.15_amd64.deb ...
+Unpacking libcurl4t64:amd64 (8.5.0-2ubuntu10.15) over (8.5.0-2ubuntu10.13) ...
+Preparing to unpack .../libcurl3t64-gnutls_8.5.0-2ubuntu10.15_amd64.deb ...
+Unpacking libcurl3t64-gnutls:amd64 (8.5.0-2ubuntu10.15) over (8.5.0-2ubuntu10.13) ...
+Setting up libcurl4t64:amd64 (8.5.0-2ubuntu10.15) ...
+Setting up libcurl3t64-gnutls:amd64 (8.5.0-2ubuntu10.15) ...
+Setting up curl (8.5.0-2ubuntu10.15) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+Get:1 https://download.docker.com/linux/ubuntu noble InRelease [48.5 kB]
+Hit:2 http://security.ubuntu.com/ubuntu noble-security InRelease
+Hit:3 http://archive.ubuntu.com/ubuntu noble InRelease
+Hit:4 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:5 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+Get:6 https://download.docker.com/linux/ubuntu noble/stable amd64 Packages [68.0 kB]
+Fetched 117 kB in 3s (36.0 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages were automatically installed and are no longer required:
+  linux-image-6.8.0-138-generic linux-modules-6.8.0-138-generic
+Use 'apt autoremove' to remove them.
+The following additional packages will be installed:
+  iptables libip4tc2 libip6tc2 libnetfilter-conntrack3 libnfnetlink0
+  libnftables1 libnftnl11 nftables
+Suggested packages:
+  cgroupfs-mount | cgroup-lite docker-model-plugin firewalld
+Recommended packages:
+  apparmor docker-ce-rootless-extras pigz
+The following NEW packages will be installed:
+  containerd.io docker-buildx-plugin docker-ce docker-ce-cli
+  docker-compose-plugin iptables libip4tc2 libip6tc2 libnetfilter-conntrack3
+  libnfnetlink0 libnftables1 libnftnl11 nftables
+0 upgraded, 13 newly installed, 0 to remove and 34 not upgraded.
+Need to get 91.4 MB of archives.
+After this operation, 361 MB of additional disk space will be used.
+Get:1 https://download.docker.com/linux/ubuntu noble/stable amd64 containerd.io amd64 2.3.6-1~ubuntu.24.04~noble [23.2 MB]
+Get:2 http://archive.ubuntu.com/ubuntu noble/main amd64 libip4tc2 amd64 1.8.10-3ubuntu2 [23.3 kB]
+Get:3 http://archive.ubuntu.com/ubuntu noble/main amd64 libip6tc2 amd64 1.8.10-3ubuntu2 [23.7 kB]
+Get:4 http://archive.ubuntu.com/ubuntu noble/main amd64 libnfnetlink0 amd64 1.0.2-2build1 [14.8 kB]
+Get:5 http://archive.ubuntu.com/ubuntu noble/main amd64 libnetfilter-conntrack3 amd64 1.0.9-6build1 [45.2 kB]
+Get:6 http://archive.ubuntu.com/ubuntu noble/main amd64 libnftnl11 amd64 1.2.6-2build1 [66.0 kB]
+Get:7 http://archive.ubuntu.com/ubuntu noble/main amd64 iptables amd64 1.8.10-3ubuntu2 [381 kB]
+Get:8 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libnftables1 amd64 1.0.9-1ubuntu0.1 [359 kB]
+Get:9 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 nftables amd64 1.0.9-1ubuntu0.1 [69.8 kB]
+Get:10 https://download.docker.com/linux/ubuntu noble/stable amd64 docker-ce-cli amd64 5:29.8.2-1~ubuntu.24.04~noble [17.5 MB]
+Get:11 https://download.docker.com/linux/ubuntu noble/stable amd64 docker-ce amd64 5:29.8.2-1~ubuntu.24.04~noble [24.4 MB]
+Get:12 https://download.docker.com/linux/ubuntu noble/stable amd64 docker-buildx-plugin amd64 0.37.1-1~ubuntu.24.04~noble [17.3 MB]
+Get:13 https://download.docker.com/linux/ubuntu noble/stable amd64 docker-compose-plugin amd64 5.6.0-1~ubuntu.24.04~noble [8,080 kB]
+Fetched 91.4 MB in 1min 6s (1,385 kB/s)
+Selecting previously unselected package containerd.io.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 35704 files and directories currently installed.)
+Preparing to unpack .../00-containerd.io_2.3.6-1~ubuntu.24.04~noble_amd64.deb ...
+Unpacking containerd.io (2.3.6-1~ubuntu.24.04~noble) ...
+Selecting previously unselected package docker-ce-cli.
+Preparing to unpack .../01-docker-ce-cli_5%3a29.8.2-1~ubuntu.24.04~noble_amd64.deb ...
+Unpacking docker-ce-cli (5:29.8.2-1~ubuntu.24.04~noble) ...
+Selecting previously unselected package libip4tc2:amd64.
+Preparing to unpack .../02-libip4tc2_1.8.10-3ubuntu2_amd64.deb ...
+Unpacking libip4tc2:amd64 (1.8.10-3ubuntu2) ...
+Selecting previously unselected package libip6tc2:amd64.
+Preparing to unpack .../03-libip6tc2_1.8.10-3ubuntu2_amd64.deb ...
+Unpacking libip6tc2:amd64 (1.8.10-3ubuntu2) ...
+Selecting previously unselected package libnfnetlink0:amd64.
+Preparing to unpack .../04-libnfnetlink0_1.0.2-2build1_amd64.deb ...
+Unpacking libnfnetlink0:amd64 (1.0.2-2build1) ...
+Selecting previously unselected package libnetfilter-conntrack3:amd64.
+Preparing to unpack .../05-libnetfilter-conntrack3_1.0.9-6build1_amd64.deb ...
+Unpacking libnetfilter-conntrack3:amd64 (1.0.9-6build1) ...
+Selecting previously unselected package libnftnl11:amd64.
+Preparing to unpack .../06-libnftnl11_1.2.6-2build1_amd64.deb ...
+Unpacking libnftnl11:amd64 (1.2.6-2build1) ...
+Selecting previously unselected package iptables.
+Preparing to unpack .../07-iptables_1.8.10-3ubuntu2_amd64.deb ...
+Unpacking iptables (1.8.10-3ubuntu2) ...
+Selecting previously unselected package libnftables1:amd64.
+Preparing to unpack .../08-libnftables1_1.0.9-1ubuntu0.1_amd64.deb ...
+Unpacking libnftables1:amd64 (1.0.9-1ubuntu0.1) ...
+Selecting previously unselected package nftables.
+Preparing to unpack .../09-nftables_1.0.9-1ubuntu0.1_amd64.deb ...
+Unpacking nftables (1.0.9-1ubuntu0.1) ...
+Selecting previously unselected package docker-ce.
+Preparing to unpack .../10-docker-ce_5%3a29.8.2-1~ubuntu.24.04~noble_amd64.deb ...
+Unpacking docker-ce (5:29.8.2-1~ubuntu.24.04~noble) ...
+Selecting previously unselected package docker-buildx-plugin.
+Preparing to unpack .../11-docker-buildx-plugin_0.37.1-1~ubuntu.24.04~noble_amd64.deb ...
+Unpacking docker-buildx-plugin (0.37.1-1~ubuntu.24.04~noble) ...
+Selecting previously unselected package docker-compose-plugin.
+Preparing to unpack .../12-docker-compose-plugin_5.6.0-1~ubuntu.24.04~noble_amd64.deb ...
+Unpacking docker-compose-plugin (5.6.0-1~ubuntu.24.04~noble) ...
+Setting up libip4tc2:amd64 (1.8.10-3ubuntu2) ...
+Setting up libip6tc2:amd64 (1.8.10-3ubuntu2) ...
+Setting up libnftnl11:amd64 (1.2.6-2build1) ...
+Setting up docker-buildx-plugin (0.37.1-1~ubuntu.24.04~noble) ...
+Setting up containerd.io (2.3.6-1~ubuntu.24.04~noble) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/containerd.service → /usr/lib/systemd/system/containerd.service.
+Setting up docker-compose-plugin (5.6.0-1~ubuntu.24.04~noble) ...
+Setting up docker-ce-cli (5:29.8.2-1~ubuntu.24.04~noble) ...
+Setting up libnfnetlink0:amd64 (1.0.2-2build1) ...
+Setting up libnftables1:amd64 (1.0.9-1ubuntu0.1) ...
+Setting up nftables (1.0.9-1ubuntu0.1) ...
+Setting up libnetfilter-conntrack3:amd64 (1.0.9-6build1) ...
+Setting up iptables (1.8.10-3ubuntu2) ...
+update-alternatives: using /usr/sbin/iptables-legacy to provide /usr/sbin/iptables (iptables) in auto mode
+update-alternatives: using /usr/sbin/ip6tables-legacy to provide /usr/sbin/ip6tables (ip6tables) in auto mode
+update-alternatives: using /usr/sbin/iptables-nft to provide /usr/sbin/iptables (iptables) in auto mode
+update-alternatives: using /usr/sbin/ip6tables-nft to provide /usr/sbin/ip6tables (ip6tables) in auto mode
+update-alternatives: using /usr/sbin/arptables-nft to provide /usr/sbin/arptables (arptables) in auto mode
+update-alternatives: using /usr/sbin/ebtables-nft to provide /usr/sbin/ebtables (ebtables) in auto mode
+Setting up docker-ce (5:29.8.2-1~ubuntu.24.04~noble) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /usr/lib/systemd/system/docker.service.
+Created symlink /etc/systemd/system/sockets.target.wants/docker.socket → /usr/lib/systemd/system/docker.socket.
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+Synchronizing state of docker.service with SysV service script with /usr/lib/systemd/systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install enable docker
+Client: Docker Engine - Community
+ Version:           29.8.2
+ API version:       1.56
+ Go version:        go1.26.8
+ Git commit:        7fc2dff
+ Built:             Wed Sep 30 19:32:28 2026
+ OS/Arch:           linux/amd64
+ Context:           default
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          29.8.2
+  API version:      1.56 (minimum version 1.40)
+  Go version:       go1.26.8
+  Git commit:       8af9fe3
+  Built:            Wed Sep 30 19:32:28 2026
+  OS/Arch:          linux/amd64
+  Experimental:     false
+ containerd:
+  Version:          v2.3.6
+  GitCommit:        ee2735368117d2eb259779949d5e75cdafec9761
+ runc:
+  Version:          1.5.1
+  GitCommit:        v1.5.1-0-g8f2685a4
+ docker-init:
+  Version:          0.19.0
+  GitCommit:        de40ad0
+Docker Compose version v5.6.0

@@ -1,0 +1,434 @@
+{
+  "recorded_at": "2026-10-07T12:40:36.940Z",
+  "base": "http://localhost:3000",
+  "source": "real API / local Sectors snapshots",
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/api/catalog"
+    },
+    {
+      "method": "GET",
+      "path": "/api/watchlist"
+    },
+    {
+      "method": "GET",
+      "path": "/api/rules"
+    },
+    {
+      "method": "GET",
+      "path": "/api/companies/BBCA"
+    },
+    {
+      "method": "GET",
+      "path": "/api/timeline"
+    },
+    {
+      "method": "GET",
+      "path": "/api/timeline/LPPF?preview=true"
+    },
+    {
+      "method": "GET",
+      "path": "/api/simulations"
+    },
+    {
+      "method": "POST",
+      "path": "/api/simulations",
+      "body": {
+        "capital": 50000000,
+        "event_ids": [
+          "BBCA:2025-03-21",
+          "BMRI:2025-04-14",
+          "LPPF:2025-04-22"
+        ],
+        "allocation": "single",
+        "entry_sessions_before_cum": 5,
+        "exit_rule": "price_bep",
+        "max_holding_sessions": 20,
+        "end_date": "2025-05-20",
+        "start_date": "2025-03-01",
+        "compare": true
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/simulations"
+    },
+    {
+      "method": "GET",
+      "path": "/api/simulations/edb55364-4f8f-44c7-a3a1-33a7f84c833e"
+    },
+    {
+      "method": "POST",
+      "path": "/api/simulations",
+      "body": {
+        "capital": 50000000,
+        "event_ids": [
+          "BBCA:2025-03-21",
+          "BMRI:2025-04-14",
+          "LPPF:2025-04-22"
+        ],
+        "allocation": "equal",
+        "entry_sessions_before_cum": 5,
+        "exit_rule": "price_bep",
+        "max_holding_sessions": 20,
+        "end_date": "2025-05-20",
+        "start_date": "2025-03-01",
+        "compare": true
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/simulations"
+    },
+    {
+      "method": "GET",
+      "path": "/api/simulations/c9636271-3b8c-47e4-9059-22043458d9fd"
+    },
+    {
+      "method": "POST",
+      "path": "/api/simulations",
+      "body": {
+        "capital": 50000000,
+        "event_ids": [
+          "BBCA:2025-03-21",
+          "BMRI:2025-04-14",
+          "LPPF:2025-04-22"
+        ],
+        "allocation": "rotation",
+        "entry_sessions_before_cum": 5,
+        "exit_rule": "price_bep",
+        "max_holding_sessions": 20,
+        "end_date": "2025-05-20",
+        "start_date": "2025-03-01",
+        "compare": true
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/simulations"
+    },
+    {
+      "method": "GET",
+      "path": "/api/simulations/fbfba19a-c334-4813-b74c-d6aca7c81f28"
+    },
+    {
+      "method": "GET",
+      "path": "/api/intelligence"
+    },
+    {
+      "method": "GET",
+      "path": "/api/rotation-plans"
+    },
+    {
+      "method": "GET",
+      "path": "/api/rotation-runs"
+    },
+    {
+      "method": "POST",
+      "path": "/api/rotation-plans",
+      "body": {
+        "capital": "50000000",
+        "start_date": "2025-03-01",
+        "end_date": "2025-06-30",
+        "symbols": [
+          "DMAS",
+          "LPPF",
+          "ADRO",
+          "CFIN",
+          "RALS",
+          "BMRI",
+          "BBRI",
+          "BBNI",
+          "BBCA"
+        ],
+        "rules": {
+          "name": "Return dan risiko tim",
+          "entry_offset": 5,
+          "horizon": 20,
+          "objective": "return",
+          "minimum_samples": 3,
+          "maximum_loss_upper_pct": 100,
+          "minimum_median_return_pct": -100
+        },
+        "exit_rule": "price_bep",
+        "max_holding_sessions": 20,
+        "max_events": 5,
+        "allow_calendar_assumption": true
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/rotation-plans"
+    },
+    {
+      "method": "GET",
+      "path": "/api/scenarios"
+    },
+    {
+      "method": "POST",
+      "path": "/api/scenarios",
+      "body": {
+        "symbol": "BBCA",
+        "capital": "50000000.25",
+        "entry_price": "10000.5",
+        "dps": "0.125",
+        "entry_date": "2026-11-02",
+        "cum_date": "2026-11-09",
+        "ex_date": "2026-11-10",
+        "recording_date": "2026-11-11",
+        "payment_date": "2026-12-10",
+        "valuation_date": "2026-12-08",
+        "entry_offset": 5,
+        "horizon": 20
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/scenarios"
+    }
+  ],
+  "browser_errors": [],
+  "browser_console": [
+    {
+      "type": "error",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "location": {
+        "url": "http://localhost:3000/favicon.ico",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    }
+  ],
+  "response_errors": [],
+  "cache": {
+    "bbca": {
+      "initial": 1,
+      "after_two_detail_opens": 1
+    },
+    "timeline": {
+      "initial": 1,
+      "after_year_currency_hover": 1
+    },
+    "checked_controls": [
+      "year focus",
+      "Rp/%",
+      "hover"
+    ],
+    "elapsed_ms": 1484,
+    "existing_stale_time_ms": 60000,
+    "timeframe_zoom": "not implemented / not tested"
+  },
+  "copy_recovery": {
+    "display": "50.000.000",
+    "valid": true,
+    "message": "",
+    "caret": 0
+  },
+  "simulator": {
+    "typed_raw": "100000000 → 100.000.000",
+    "paste": "50.000.000 → 50000000",
+    "invalid": [
+      {
+        "input": "",
+        "display": "",
+        "valid": false,
+        "message": "Please fill out this field.",
+        "caret": 0
+      },
+      {
+        "input": "0",
+        "display": "0",
+        "valid": false,
+        "message": "Nilai minimum 1.",
+        "caret": 1
+      },
+      {
+        "input": "1.000.000.000.001",
+        "display": "1.000.000.000.001",
+        "valid": false,
+        "message": "Nilai maksimum 1.000.000.000.000.",
+        "caret": 17
+      },
+      {
+        "input": "1,5",
+        "display": "1,5",
+        "valid": false,
+        "message": "Gunakan kelipatan 1 dari 1.",
+        "caret": 3
+      },
+      {
+        "input": "abc",
+        "display": "abc",
+        "valid": false,
+        "message": "Gunakan angka positif; desimal memakai koma.",
+        "caret": 3
+      }
+    ],
+    "editing": [
+      {
+        "display": "12.934.567",
+        "valid": true,
+        "message": "",
+        "caret": 4
+      },
+      {
+        "display": "1.234.567",
+        "valid": true,
+        "message": "",
+        "caret": 3
+      },
+      {
+        "display": "234.567",
+        "valid": true,
+        "message": "",
+        "caret": 0
+      }
+    ],
+    "keyboard_radio": "Space / ArrowRight selects single→equal→rotation",
+    "simulations": [
+      {
+        "id": "edb55364-4f8f-44c7-a3a1-33a7f84c833e",
+        "input": {
+          "capital": "50000000",
+          "event_ids": [
+            "BBCA:2025-03-21",
+            "BMRI:2025-04-14",
+            "LPPF:2025-04-22"
+          ],
+          "allocation": "single",
+          "entry_sessions_before_cum": 5,
+          "exit_rule": "price_bep",
+          "max_holding_sessions": 20,
+          "end_date": "2025-05-20",
+          "start_date": "2025-03-01",
+          "compare": true
+        },
+        "primary": "single",
+        "alternatives": [
+          "single",
+          "equal",
+          "rotation"
+        ],
+        "return_pct": 1.1,
+        "ending_nav": 50550000
+      },
+      {
+        "id": "c9636271-3b8c-47e4-9059-22043458d9fd",
+        "input": {
+          "capital": "50000000",
+          "event_ids": [
+            "BBCA:2025-03-21",
+            "BMRI:2025-04-14",
+            "LPPF:2025-04-22"
+          ],
+          "allocation": "equal",
+          "entry_sessions_before_cum": 5,
+          "exit_rule": "price_bep",
+          "max_holding_sessions": 20,
+          "end_date": "2025-05-20",
+          "start_date": "2025-03-01",
+          "compare": true
+        },
+        "primary": "equal",
+        "alternatives": [
+          "single",
+          "equal",
+          "rotation"
+        ],
+        "return_pct": 8.7116,
+        "ending_nav": 54355788.8
+      },
+      {
+        "id": "fbfba19a-c334-4813-b74c-d6aca7c81f28",
+        "input": {
+          "capital": "50000000",
+          "event_ids": [
+            "BBCA:2025-03-21",
+            "BMRI:2025-04-14",
+            "LPPF:2025-04-22"
+          ],
+          "allocation": "rotation",
+          "entry_sessions_before_cum": 5,
+          "exit_rule": "price_bep",
+          "max_holding_sessions": 20,
+          "end_date": "2025-05-20",
+          "start_date": "2025-03-01",
+          "compare": true
+        },
+        "primary": "rotation",
+        "alternatives": [
+          "single",
+          "equal",
+          "rotation"
+        ],
+        "return_pct": 1.5562,
+        "ending_nav": 50778118.4
+      }
+    ],
+    "copy_saved_capital": "123 → 50.000.000"
+  },
+  "planner": {
+    "id": "56068482-1a80-493b-b4aa-6432d591c714",
+    "display": "50.000.000",
+    "capital": "50000000",
+    "candidates": 6
+  },
+  "scenario": {
+    "id": "fcc9d7b8-9321-428d-9206-e729f15cb5f5",
+    "display": {
+      "capital": "50.000.000,25",
+      "entry": "10.000,5",
+      "dps": "0,125"
+    },
+    "input": {
+      "symbol": "BBCA",
+      "capital": "50000000.25",
+      "entry_price": "10000.5",
+      "dps": "0.125",
+      "entry_date": "2026-11-02",
+      "cum_date": "2026-11-09",
+      "ex_date": "2026-11-10",
+      "recording_date": "2026-11-11",
+      "payment_date": "2026-12-10",
+      "valuation_date": "2026-12-08",
+      "entry_offset": 5,
+      "horizon": 20
+    }
+  },
+  "responsive": [
+    {
+      "view": "Simulator",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "view": "Rencana rotasi",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "view": "Intelligence",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "view": "Simulator",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "view": "Rencana rotasi",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "view": "Intelligence",
+      "width": 390,
+      "scrollWidth": 390
+    }
+  ],
+  "status": "passed"
+}

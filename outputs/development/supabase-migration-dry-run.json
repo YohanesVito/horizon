@@ -1,0 +1,16 @@
+{
+  "mode": "dry-run",
+  "schema_version": "001_records",
+  "source_records": 20,
+  "source_by_kind": {
+    "rotation-run": 3,
+    "run": 9,
+    "scenario": 1,
+    "rotation-plan": 4,
+    "settings": 3
+  },
+  "source_digest": "5d8aee7123b2cb2c8eb8f4c045a0b4ab0e93d9f7afa79da733493a7cd8cf2047",
+  "source_preserved": true,
+  "schema_exists": false,
+  "records_to_insert": 20
+}

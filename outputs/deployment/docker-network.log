@@ -1,0 +1,11 @@
+configuration OK
+DOCKER_BRIDGE_MTU 1442
+Unable to find image 'python:3.12-slim-bookworm' locally
+3.12-slim-bookworm: Pulling from library/python
+f9d2fb07d6f0: Pulling fs layer
+6e0ba8ba0487: Pulling fs layer
+7fd1ebe418b5: Pulling fs layer
+86a9e13e035d: Pulling fs layer
+Digest: sha256:34386ef0cb081344d7ec1c103ba398e6e9f64e9ab3a1509accc92a4e24a07258
+Status: Downloaded newer image for python:3.12-slim-bookworm
+CONTAINER_PYPI_HTTPS_PASSED

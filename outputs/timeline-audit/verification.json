@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "calendar_query_range_covered": true,
+    "event_counts_reconcile": true,
+    "screener_pagination_complete": true,
+    "screener_calendar_same_candidates": true,
+    "pilot_five_event_years": true,
+    "pilot_ohlc_structurally_valid": true,
+    "pilot_milestone_bars_present": true,
+    "unverified_not_approved": true,
+    "stored_key_not_in_artifacts": true
+  },
+  "pilot_bar_count": 272,
+  "scope": "Audit consistency only; not market truth, full timeline eligibility, app tests or UAT"
+}

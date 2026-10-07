@@ -1,0 +1,12 @@
+{
+  "checks": [
+    "inventory has five services",
+    "stop dispatched successfully",
+    "five services inactive/dead with successful shutdown",
+    "original autostart preserved",
+    "runbook local links exist",
+    "remote runbook checksum matches local"
+  ],
+  "runbook_sha256": "2a1683e9dc6f0533803c3f23ad97dc54e1c1d872c86f15cc23aad515cae98dd2",
+  "remote_runbook": "/root/horizon-ops/20261007T120842Z/RESTORE.md"
+}

@@ -1,0 +1,21 @@
+{
+  "transport": "Sectors REST GET; endpoint absent from inspected MCP registry",
+  "url": "https://api.sectors.app/v2/corporate-actions/?start=2021-12-27&end=2021-12-31&type=dividend",
+  "retrieved_at": "2026-10-07T12:32:18.348728+08:00",
+  "http_status": 200,
+  "result": {
+    "start": "2021-12-27",
+    "end": "2021-12-31",
+    "dividend": [
+      {
+        "symbol": "ADRO.JK",
+        "ex_date": "2021-12-30",
+        "cum_date": "2021-12-29",
+        "recording_date": "2022-01-03",
+        "payment_date": "2022-01-14",
+        "dividend_amount": 160.16,
+        "dividend_yield": 0.112777
+      }
+    ]
+  }
+}

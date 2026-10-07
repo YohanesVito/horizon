@@ -1,0 +1,73 @@
+{
+  "verified_at_utc": "2026-10-07T12:10:07.014870+00:00",
+  "hostname": "vps-10e0ff54",
+  "services": [
+    {
+      "TimeoutStopUSec": "1min 30s",
+      "MainPID": "0",
+      "Result": "success",
+      "ControlGroup": "",
+      "Id": "curation-realtime.service",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "enabled",
+      "Job": "",
+      "query_returncode": 0,
+      "cgroup_pids": []
+    },
+    {
+      "TimeoutStopUSec": "1min 30s",
+      "MainPID": "0",
+      "Result": "success",
+      "ControlGroup": "",
+      "Id": "curation-recorder.service",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "enabled",
+      "Job": "",
+      "query_returncode": 0,
+      "cgroup_pids": []
+    },
+    {
+      "TimeoutStopUSec": "1min 30s",
+      "MainPID": "0",
+      "Result": "success",
+      "ControlGroup": "",
+      "Id": "curation-reversal-paper.service",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "enabled",
+      "Job": "",
+      "query_returncode": 0,
+      "cgroup_pids": []
+    },
+    {
+      "TimeoutStopUSec": "1min 30s",
+      "MainPID": "0",
+      "Result": "success",
+      "ControlGroup": "",
+      "Id": "curation-reversal-paper-v2.service",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "enabled",
+      "Job": "",
+      "query_returncode": 0,
+      "cgroup_pids": []
+    },
+    {
+      "TimeoutStopUSec": "1min 30s",
+      "MainPID": "0",
+      "Result": "success",
+      "ControlGroup": "",
+      "Id": "curation-zone-paper.service",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "enabled",
+      "Job": "",
+      "query_returncode": 0,
+      "cgroup_pids": []
+    }
+  ],
+  "all_stopped": true,
+  "pending_jobs": []
+}

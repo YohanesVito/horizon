@@ -27,17 +27,49 @@ bun run start
 
 Buka http://127.0.0.1:3000. API/OpenAPI tersedia di http://127.0.0.1:8000/docs. Untuk mengubah UI dengan hot reload, gunakan `bun run dev` sebagai pengganti `start`. Dev memakai webpack polling untuk menghindari EMFILE pada workspace campuran Python/Node.
 
+Setup lokal checkout `horizon` pada 7 Oktober memakai npm dan Python 3.12 yang dikelola uv. Ini juga menjadi alternatif bila Python sistem gagal membuat virtualenv karena `pyexpat`/`libexpat`:
+
+```sh
+npm install --package-lock=false
+/opt/homebrew/bin/uv python install 3.12
+/opt/homebrew/bin/uv venv --python 3.12 .runtime/ui-feedback-venv
+/opt/homebrew/bin/uv pip install --python .runtime/ui-feedback-venv/bin/python -r backend/requirements.lock
+```
+
+Jalankan backend dan frontend di dua terminal dari akar proyek:
+
+```sh
+# Terminal backend
+.runtime/ui-feedback-venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
+```
+
+```sh
+# Terminal frontend
+npm run build
+npm run start
+```
+
+Keduanya memakai loopback lokal. Buka http://localhost:3000/; frontend meneruskan `/api` ke backend. Snapshot yang disertakan cukup, tanpa mengambil data provider baru. Virtualenv alternatif ini tersimpan di `.runtime` yang diabaikan Git.
+
 Untuk berbagi demo dengan perangkat di jaringan lokal yang sama, jalankan `bun run start:lan` sebagai pengganti `bun run start`. Buka `http://<IP-LAN-komputer>:3000` dari perangkat teman. Backend tetap berjalan pada127.0.0.1:8000; frontend meneruskan `/api` melalui port3000. Komputer host harus tetap menyala dan terhubung. Semua pengunjung memakai watchlist/rules/riwayat lokal yang sama karena akun terpisah belum tersedia. Hentikan proses LAN dan jalankan `bun run start` untuk kembali ke akses komputer sendiri.
 
 Snapshot yang disertakan cukup untuk menjalankan aplikasi tanpa panggilan provider baru. `.env.local` yang sudah ada memuat kunci Sectors dan tidak boleh dicetak, disalin ke frontend, atau masuk Git. Contoh variabel tanpa rahasia ada di `.env.local.example`. Jangan menimpa file `.env.local` yang sudah berisi key.
 
 Repository: https://github.com/YohanesVito/horizon. Pada clone baru, snapshot riset dan bukti development ikut tersedia; database `.runtime` dibuat lokal saat backend mulai berjalan. Watchlist dan riwayat simulasi pribadi dari komputer lain tidak ikut tersalin. Replay dari snapshot tidak memerlukan API key; isi konfigurasi server sendiri bila akan mengambil data Sectors baru.
 
+## Backend Docker di Dalang
+
+Aktif per8Oktober2026: FastAPI dalam Docker di VPS Dalang, database Supabase melalui Session Pooler. [Health backend](https://10e0ff54-f828-44de-a965-5671328a08d3.svc.dalang.io/api/health). Frontend lokal3000 sudah memakai VPS; backend lokal8000 dihentikan. Cukup jalankan frontend dengan `bun run start:lan` pada konfigurasi lokal ini. Jangan menjalankan backend kedua pada database yang sama. Frontend publik/Vercel belum dideploy. Release, bukti pengujian, kendala storage dan prosedur rollback berada di [DEPLOYMENT_DALANG.md](docs/development/DEPLOYMENT_DALANG.md).
+
+Frontend meneruskan `/api/*` melalui Route Handler server ke `BACKEND_URL`. Untuk backend remote, URL harus HTTPS dan `HORIZON_API_KEY` harus sama pada server Next.js dan FastAPI. Jangan menggunakan awalan `NEXT_PUBLIC_` untuk key. Jika key diaktifkan, akses langsung data API/OpenAPI memerlukan header `Authorization: Bearer ...`; hanya `/api/health` terbuka. Ini proteksi antarlayanan, bukan implementasi akun pengguna. Jalankan hanya satu proses backend untuk database Supabase yang sama.
+
 ## Fitur yang dapat dicoba
+
+**Timeline lima periode:** buka menu **Timeline → Buka pratinjau LPPF**. Bandingkan2021–2025dengan hover/fokus tahun dan modeRp/%. Tab2026memuat harga aktual sampai6Oktober2026serta panel prediksi yang belum tersedia. Katalog hanya menerima histori lengkap; sekarang belum ada emiten yang lolos seluruh verifikasi. Pratinjau LPPF terpisah dan diberi label gap data. [Runbook dan bukti pemeriksaan](docs/development/TIMELINE_IMPLEMENTATION.md).
 
 1. **Peluang:** sembilan emiten, pencarian, sorting, filter yield/frekuensi/kelengkapan data dan aturan screening tersimpan.
 2. **Detail & kalender:** 12 event kanonis tahun 2025 dari sembilan emiten yang juga ada di Intelligence; lima tahap tanggal, grafik harga setahun, riwayat dividen, null jelas.
-3. **Watchlist:** tambah/hapus tersimpan di database lokal. Belum ada login/multi-user.
+3. **Watchlist:** tambah/hapus tersimpan di database server (Supabase atau SQLite lokal). Belum ada login/multi-user.
 4. **Simulator:** modal, pilihan event, entry0/5/10 sesi sebelum cum, exit ex-close/payment-close/BEP/holding-limit. Bandingkan all-in pada event pertama, split merata, dan rotasi seluruh kas tersedia.
 5. **Hasil:** grafik NAV, dividen, PnL saham, drawdown, lama modal tertahan, kesempatan terlewat, posisi terbuka, ledger, dan riwayat run persisten.
 6. **Risiko:** studi delapan event BBCA 2022–2025, BEP harga dan total terpisah; tiga event belum pulih pada t+20 tetap ditampilkan.
@@ -63,7 +95,7 @@ python3 work/collect_intelligence.py prices
 
 74 snapshot sumber ada di `outputs/intelligence/raw/` (9 corporate actions,17 kalender,48 harga). Harga/actions lewat MCP; kalender lewat REST resmi karena tidak tersedia dalam registry66 tools MCP yang diperiksa. `baseline-analysis.json` dan `event-audit.csv` menyimpan hasil baseline; fingerprint mencakup byte snapshot serta provenance. Aturan metode ada di [INTELLIGENCE_POLICY.md](docs/development/INTELLIGENCE_POLICY.md).
 
-API baru: `GET /api/intelligence`, `PUT /api/intelligence/rules`, `POST /api/scenarios`, `GET /api/scenarios`. Financial logic dan skenario disimpan pada record SQLite lokal. Tidak ada API key pada client atau panggilan provider dari browser.
+API baru: `GET /api/intelligence`, `PUT /api/intelligence/rules`, `POST /api/scenarios`, `GET /api/scenarios`. Financial logic dan skenario disimpan pada database server yang dikonfigurasi. Tidak ada API key pada client atau panggilan provider dari browser.
 
 ```mermaid
 flowchart LR
@@ -76,7 +108,7 @@ flowchart LR
   O --> S[Stress test analog: modal, harga, DPS, tanggal input]
   F --> API[FastAPI]
   S --> API
-  API --> DB[(SQLite: rules, scenario input/result/version)]
+  API --> DB[(Supabase / SQLite: rules, scenario input/result/version)]
   API --> UI[Next.js Intelligence: ranking, kurva, audit, skenario]
 ```
 
@@ -93,7 +125,7 @@ flowchart LR
   JOB --> W[Local thread worker]
   D --> W
   W --> ENGINE[Decimal replay: lot, posisi, hak, kas, settlement]
-  ENGINE --> DB[(SQLite: run, ledger, results)]
+  ENGINE --> DB[(Supabase / SQLite: run, ledger, results)]
   DB --> RESULT[GET run: status dan hasil]
   RESULT --> UI
 ```
@@ -125,10 +157,12 @@ Uji keuangan memakai fixture sintetis yang tidak ditampilkan sebagai data pasar,
 - Belum ada prediksi tanggal, jalur harga, probabilitas trap terkalibrasi, model lapkeu, optimizer rute global, maupun otomatisasi perdagangan. Statistik delapan event tidak menggantikan model tervalidasi.
 - Belum ada declaration timestamp yang memadai atau lapkeu dengan timestamp publikasi terverifikasi. Replay bersyarat pada kalender yang diketahui saat riset; belum merupakan backtest point-in-time bebas look-ahead.
 - Snapshot terbatas; kalender bukan coverage IDX lengkap. DPS berbeda basis/currency/split dan jadwal konflik tidak boleh ditambahkan ke replay tanpa validasi baru. Harga replay tidak dividend-adjusted ulang; penambahan histori memerlukan audit corporate actions.
-- SQLite dan local thread worker adalah bypass PostgreSQL+Redis/RQ karena Docker lokal tidak aktif. Schema kanonis/migrasi belum dibuat. Penyimpanan JSON cukup untuk workspace lokal; bukan deployment multi-user. Restart menandai job yang terputus sebagai gagal agar bisa dijalankan ulang.
-- `DATABASE_URL` dapat diarahkan ke `postgresql+psycopg://...` melalui environment proses backend, tetapi jalur PostgreSQL belum diuji. Tidak ada cloud provision/deployment. Kedua server default bind127.0.0.1; `start:lan` membuka frontend pada0.0.0.0:3000 untuk demo jaringan lokal.
+- Penyimpanan record mendukung PostgreSQL Supabase dengan schema privat/migrasi berversi dan SQLite untuk lokal. Schema domain ternormalisasi serta autentikasi multi-user belum ada. Local-thread worker tetap bypass Redis/RQ; satu backend aktif per database cloud dijaga advisory lock. Restart menandai job yang terputus sebagai gagal agar bisa dijalankan ulang.
+- Backend membaca `.env.local` otomatis; environment proses mengungguli file. `DATABASE_URL` menentukan koneksi runtime, `MIGRATION_DATABASE_URL` hanya untuk migrasi. Hosting frontend/FastAPI tetap terpisah dari database cloud. Kedua server default bind127.0.0.1; `start:lan` membuka frontend pada0.0.0.0:3000 untuk demo jaringan lokal.
 
 Rencana dan log: [SPRINT_PLAN](docs/development/SPRINT_PLAN.md), [PROGRESS](docs/development/PROGRESS.md), [ISSUES](docs/development/ISSUES.md), [TRACEABILITY](docs/development/TRACEABILITY.md), [DESIGN](docs/development/DESIGN.md).
+
+Konfigurasi Supabase, migrasi SQLite, pemeriksaan dan rollback: [SUPABASE_MIGRATION.md](docs/development/SUPABASE_MIGRATION.md). Migrasi hanya memindahkan record aplikasi; harga/kalender tetap snapshot Sectors di repository.
 
 ## Reproduksi dan review rencana rotasi
 

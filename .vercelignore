@@ -1,0 +1,13 @@
+# Only the Next.js frontend is deployed to Vercel. FastAPI remains on Dalang.
+.env*
+.runtime/
+.venv/
+backend/
+deploy/
+docs/
+outputs/
+work/
+tmp/
+Dockerfile
+.dockerignore
+AGENTS.md

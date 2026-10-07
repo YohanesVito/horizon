@@ -9,7 +9,7 @@ import {
   SlidersHorizontal,
 } from "lucide-react";
 import type { EChartsOption } from "echarts";
-import { api, dt, money, pct } from "@/lib/api";
+import { api, dt, money, pct, tradingDayText } from "@/lib/api";
 import type {
   Evidence,
   FinancialLogic,
@@ -18,9 +18,10 @@ import type {
   ScenarioRun,
 } from "@/lib/intelligence-types";
 import Chart from "./chart";
+import MoneyInput from "./money-input";
 
 const sessions = (value: number | null) =>
-  value === null ? "Belum tercapai" : `${value} sesi`;
+  value === null ? "Belum tercapai" : `${value} hari bursa`;
 const interval = (value: [number, number] | null) =>
   value ? `${pct(value[0])} – ${pct(value[1])}` : "Belum tersedia";
 
@@ -181,24 +182,24 @@ export default function Intelligence({
                   </select>
                 </label>
                 <label>
-                  Entry sebelum cum (sesi)
+                  Entry sebelum cum (hari bursa)
                   <select
                     name="entry_offset"
                     defaultValue={data.rules.entry_offset}
                   >
                     {[0, 5, 10].map((n) => (
                       <option key={n} value={n}>
-                        {n} sesi
+                        {n} hari bursa
                       </option>
                     ))}
                   </select>
                 </label>
                 <label>
-                  Horizon setelah ex (sesi)
+                  Horizon setelah ex (hari bursa)
                   <select name="horizon" defaultValue={data.rules.horizon}>
                     {[5, 10, 20].map((n) => (
                       <option key={n} value={n}>
-                        {n} sesi
+                        {n} hari bursa
                       </option>
                     ))}
                   </select>
@@ -263,7 +264,6 @@ export default function Intelligence({
           <section className="glass intelligence-panel">
             <div className="section-head">
               <div>
-                <p className="eyebrow">YOUR LOGIC, VISIBLE EVIDENCE</p>
                 <h2>Ranking berdasarkan aturanmu</h2>
               </div>
               <span className="badge">{data.ranking.ranked.length} lolos</span>
@@ -341,7 +341,7 @@ export default function Intelligence({
                     >
                       {row.symbol}
                     </button>{" "}
-                    — {row.reasons.join("; ")}
+                    — {tradingDayText(row.reasons.join("; "))}
                   </li>
                 ))}
               </ul>
@@ -350,7 +350,6 @@ export default function Intelligence({
           <section className="glass intelligence-panel">
             <div className="section-head">
               <div>
-                <p className="eyebrow">UNDERSTAND THE RISK</p>
                 <h2>Bukti per emiten</h2>
               </div>
               <label className="issuer-select">
@@ -375,7 +374,7 @@ export default function Intelligence({
             <summary>Metode, batas data & provenance</summary>
             <ul>
               {data.limitations.map((s) => (
-                <li key={s}>{s}</li>
+                <li key={s}>{tradingDayText(s)}</li>
               ))}
             </ul>
             <p className="muted tiny">
@@ -522,7 +521,7 @@ function EvidencePanel({
       </p>
       <Chart
         option={option}
-        label={`Kurva pemulihan Kaplan–Meier ${c.symbol}; BEP harga dan total dalam ${horizon} sesi`}
+        label={`Kurva pemulihan Kaplan–Meier ${c.symbol}; BEP harga dan total dalam ${horizon} hari bursa`}
         height={255}
       />
       <p className="muted tiny">
@@ -574,13 +573,13 @@ function EvidencePanel({
                   </td>
                   <td className="audit-cell">
                     {!e.eligible
-                      ? e.reasons.join("; ")
+                      ? tradingDayText(e.reasons.join("; "))
                       : e.complete
                         ? "Lengkap"
                         : `Tersensor pada t${e.observed_sessions}`}
                     {e.warnings.map((w) => (
                       <small className="cell-note" key={w}>
-                        {w}
+                        {tradingDayText(w)}
                       </small>
                     ))}
                     <details>
@@ -635,8 +634,7 @@ function ScenarioPanel({
       </div>
       <div className="intelligence-scenario-grid">
         <section className="glass intelligence-panel">
-          <p className="eyebrow">WHAT IF?</p>
-          <h2>Uji modal dan dividen asumsi</h2>
+          <h2>Input skenario</h2>
           <p className="muted tiny">
             Nilai awal hanya contoh hipotetis. Horizon analog: entry −
             {data.entry_offset} sebelum cum, valuasi t{data.horizon} setelah ex.
@@ -673,9 +671,8 @@ function ScenarioPanel({
               </label>
               <label>
                 Modal (Rp)
-                <input
+                <MoneyInput
                   name="capital"
-                  type="number"
                   min="1"
                   max="1000000000000"
                   step="any"
@@ -685,9 +682,8 @@ function ScenarioPanel({
               </label>
               <label>
                 Asumsi harga entry (Rp)
-                <input
+                <MoneyInput
                   name="entry_price"
-                  type="number"
                   min="0.0001"
                   max="10000000"
                   step="any"
@@ -697,9 +693,8 @@ function ScenarioPanel({
               </label>
               <label>
                 Asumsi DPS (Rp)
-                <input
+                <MoneyInput
                   name="dps"
-                  type="number"
                   min="0"
                   max="10000000"
                   step="any"
@@ -732,8 +727,9 @@ function ScenarioPanel({
             </div>
             <p className="muted tiny">
               Declaration belum tersedia. Tanggal valuasi mengasumsikan horizon
-              sesi di atas; kalender bursa belum diverifikasi. Analisis hanya
-              memakai analog yang berakhir sebelum tanggal masuk.
+              hari bursa di atas; kalender bursa belum diverifikasi. Analisis
+              hanya memakai analog yang berakhir sebelum tanggal masuk. Desimal
+              memakai koma, misalnya 0,125.
             </p>
             <button className="btn primary" disabled={create.isPending}>
               <FlaskConical size={16} />{" "}
@@ -825,7 +821,6 @@ function ScenarioResult({ run }: { run: ScenarioRun }) {
     <section className="glass intelligence-panel" aria-label="Hasil skenario">
       <div className="section-head">
         <div>
-          <p className="eyebrow">HISTORICAL ANALOGS, HYPOTHETICAL CAPITAL</p>
           <h2>
             {r.symbol} · {r.analog_count} skenario harga
           </h2>
@@ -888,8 +883,8 @@ function ScenarioResult({ run }: { run: ScenarioRun }) {
         height={270}
       />
       <p className="muted tiny">
-        Kuantil per sesi, bukan jalur satu event atau interval prediksi. PnL
-        terendah yang teramati sepanjang seluruh analog:{" "}
+        Kuantil per hari bursa, bukan jalur satu event atau interval prediksi.
+        PnL terendah yang teramati sepanjang seluruh analog:{" "}
         {money(r.worst_observed_pnl)}.
       </p>
       <div className="table-scroll">
@@ -927,7 +922,7 @@ function ScenarioResult({ run }: { run: ScenarioRun }) {
         <summary>Asumsi dan versi hasil</summary>
         <ul>
           {r.assumptions.map((s) => (
-            <li key={s}>{s}</li>
+            <li key={s}>{tradingDayText(s)}</li>
           ))}
         </ul>
         <p className="tiny break-anywhere">
