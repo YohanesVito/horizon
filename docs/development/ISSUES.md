@@ -151,3 +151,5 @@ ISS-010/ISS-013 tidak otomatis tertutup seluruhnya oleh database cloud: worker d
 ## Deployment frontend V-01 — 8 Oktober 2026
 
 - **ISS-055 — Akses deployment / P1 / OPEN:** project Vercel horizon sudah dibuat dan linked melalui CLI. Pengiriman BACKEND_URL/HORIZON_API_KEY dari env lokal ke Preview/Production ditolak automatic approval review: perlu izin eksplisit secret + tujuan Vercel. Tidak ada secret yang diunggah. Penyelesaian: izin PM atau PM memasang dua environment server sendiri; verifikasi Preview sebelum main/production. MCP403 dibypass dengan CLI resmi yang terautentikasi, tanpa mengubah scope.
+
+- **ISS-056 — Target deployment pertama / P2 / OPEN:** CLI62.7.0 dipanggil --target preview tetapi deployment pertama project baru diterima sebagai Production dan diberi alias. Build berhasil, env kosong; deployment yang baru dibuat dihapus untuk menghindari penyerahan situs belum terhubung. Source CLI juga menyebut perilaku first deployment → production. --skip-domain hanya untuk Production; kombinasi dengan Preview ditolak sebelum deploy. Verifikasi target aktual dan domain sebelum melanjutkan main; belum ada Preview end-to-end.
