@@ -200,7 +200,7 @@ Docker belum tersedia; instalasi dan deployment Horizon adalah pekerjaan lanjuta
 
 | BR-02 | Commit deployment, integrasikan UI polish, rekonsiliasi issue/fixture dan verifikasi gabungan | Persetujuan PM 8 Oktober; BR-01, C-02/C-04/C-08 | Kedua parent commit terpelihara, fixture strict berversi, build/lint/backend/proxy lulus |
 | V-01 | Konfigurasi server-only dan deploy Preview Vercel dari branch gabungan | BR-02, DEP-02, S5-02 | Project/scope terverifikasi, URL Preview, browser/API sampai backend berfungsi |
-| V-02 | Merge hasil teruji ke main dan deploy production Vercel | V-01 lulus; persetujuan PM | main remote sinkron, production memakai main, smoke dan runbook aktual; bukan UAT |
+| V-02 | Merge dan push branch integrasi ke main; deployment Vercel diserahkan kepada PM | Instruksi PM terbaru 8 Oktober: deploy sendiri, merge sekarang; BR-02 | main memuat UI polish + Supabase/Dalang, remote sinkron, checkout bersih; tidak mengklaim deployment dari main atau UAT |
 
 ### Fokus demo satu emiten — keputusan PM 7 Oktober
 

@@ -1,0 +1,32 @@
+{
+  "status": "handed_to_pm",
+  "source_commit": "4588681",
+  "env": {
+    "BACKEND_URL": {
+      "type": "Config",
+      "targets": [
+        "preview",
+        "production"
+      ]
+    },
+    "HORIZON_API_KEY": {
+      "type": "Secret",
+      "targets": [
+        "preview",
+        "production"
+      ]
+    }
+  },
+  "deployment_already_in_flight": {
+    "id": "dpl_9n4FifdytrSNHRdS4JdFRpuwtryi",
+    "target": "production",
+    "requested_target": "preview",
+    "state": "READY",
+    "url": "https://horizon-ky05g5s3z-vitos-projects-c7162407.vercel.app",
+    "alias": "https://horizon-nu-kohl.vercel.app"
+  },
+  "cloud_end_to_end": "not run",
+  "git_integration": "not connected; automatic approval review rejected cross-service access change",
+  "latest_pm_instruction": "Deployment by PM; merge integration into main now",
+  "new_deployments_after_handoff": 0
+}

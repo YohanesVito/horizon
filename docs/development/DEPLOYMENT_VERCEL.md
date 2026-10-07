@@ -1,5 +1,17 @@
 # Deployment frontend Horizon ke Vercel
 
+## Status handoff terbaru — 8 Oktober 2026
+
+PM akan melakukan deployment sendiri dan meminta merge branch integrasi ke main sekarang. Instruksi ini menggantikan gate Preview→merge dalam langkah lama di bawah. V-01 PARTIAL/HANDOFF; V-02 kini hanya merge/push main.
+
+- Kedua environment BACKEND_URL (Config) dan HORIZON_API_KEY (Secret) sudah terpasang pada Preview/Production setelah izin eksplisit PM, tanpa nilai tercetak atau masuk Git.
+- Deployment yang sudah dikirim sebelum interupsi selesai: `dpl_9n4FifdytrSNHRdS4JdFRpuwtryi`, source4588681, build READY, target aktual Production walau meminta Preview. Alias: https://horizon-nu-kohl.vercel.app. Belum diuji browser/API/database end-to-end.
+- Tidak ada deployment baru sesudah PM mengambil alih. Deployment tersebut mendahului merge main; jangan menganggapnya deployment otomatis dari main.
+- Integrasi Git Vercel→GitHub belum terhubung. Automatic approval review menolak perubahan akses lintas layanan. PM dapat mengaturnya sendiri; pilih repo YohanesVito/horizon dan Production Branch main.
+- Framework Next.js, root repo, build `bun run build`, install `bun install --frozen-lockfile`. Semua perhitungan tetap di FastAPI Dalang; PostgreSQL tetap Supabase.
+
+Bagian berikut mempertahankan riwayat persiapan; pernyataan env kosong/menunggu izin dan deployment awal dihapus merujuk percobaan pertama, bukan status terbaru.
+
 Status 8 Oktober 2026: integrasi kode sudah di-push pada `feat/supabase-migration`, build lokal dan build cloud berhasil. **Belum ada frontend cloud yang berfungsi end-to-end.** Pengiriman environment menunggu izin eksplisit PM karena automatic approval review menolak secret + tujuan yang belum disetujui secara eksplisit. `main` belum diubah.
 
 ## Target yang telah diverifikasi

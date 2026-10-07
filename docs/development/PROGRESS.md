@@ -1,5 +1,11 @@
 # Progres development MVP
 
+## Handoff deployment dan merge main — arahan PM terbaru 8 Oktober 2026
+
+PM mengambil alih deployment Vercel dan meminta merge sekarang. **V-02 IN_PROGRESS dengan scope terbaru hanya merge/push main**; kewajiban Preview end-to-end sebelum merge pada rencana lama digantikan arahan ini. V-01 PARTIAL/HANDOFF, bukan DONE/UAT. Environment BACKEND_URL dan HORIZON_API_KEY berhasil dipasang pada Preview/Production setelah izin eksplisit PM; key bertipe Secret. Proses deployment yang telah dikirim sebelum interupsi ternyata selesai sebagai Production/READY (`dpl_9n4FifdytrSNHRdS4JdFRpuwtryi`), alias https://horizon-nu-kohl.vercel.app, source4588681. Belum diuji end-to-end dan bukan bukti API berfungsi. Integrasi Git otomatis ditolak approval review karena akses lintas layanan; tidak dijalankan. Tidak membuat deployment baru sesudah arahan handoff.
+
+Catatan di bawah adalah riwayat; status menunggu izin secret dan env kosong sudah digantikan update ini.
+
 ## Integrasi dan Vercel — 8 Oktober 2026
 
 **BR-02 DONE pada integrasi lokal dan pemeriksaan development.** PM menyetujui urutan BR-01. Supabase/Dalang f64df85 sudah di-push pada feat/supabase-migration. UI polish523c993 digabung tanpa konflik kode; tiga dokumen direkonsiliasi. Issue UI asal044/045/046 menjadi052/053/054; ID migrasi/deployment tetap. Snapshot readiness-case asli dipertahankan, fixture versi UI cocok secara strict dengan result engine. Build produksi/TypeScript, lint,60tes backend dan7check proxy lulus. Frontend3000 direstart; browser membuktikan landing LPPF, dua menu, modal kosong lalu50.000.000, dan console tanpa error/warning. Health proxy200 memakai PostgreSQL melalui VPS. Bukti integration-verification.json. GitHub500 pada dua percobaan awal teratasi melalui push CLI yang berhasil. Tidak mengubah release backend aktif, data cloud, atau layanan kurasi.

@@ -91,3 +91,5 @@ D-02 menggabungkan arah demo dari PM (D-01, perubahan lokal pada branch UI) deng
 ## Integrasi BR-02 dan deployment frontend V-01/V-02
 
 C-02/C-04/C-08, S5-02: gabungan UI polish523c993 dengan proxy Next/Supabase/Dalang f64df85 mempertahankan kedua kontribusi. Fixture berversi membuktikan hitungan tidak berubah; issue052/053/054 merujuk UX/handoff, sedangkan044–050 tetap migrasi/deployment. Status deployment Vercel dan bukti aktual mengikuti PROGRESS.md; bukan kelulusan UAT.
+
+Arahan PM terbaru 8 Oktober menyerahkan deployment Vercel kepada PM dan meminta merge main segera. V-02 dibatasi merge/push; V-01 tetap PARTIAL/HANDOFF. Env server telah dipasang setelah izin; build cloud READY belum merupakan verifikasi browser/API/database atau UAT.
