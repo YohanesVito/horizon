@@ -67,3 +67,7 @@ Sprint intelligence memperluas baseline C-04 dengan stress test **satu posisi**,
 [PM_REVIEW.md](./PM_REVIEW.md) mengusulkan alur diskusi serta calon acceptance checks. R-05 tidak menutup S5-03/S6 atau menyatakan PRD/UAT sudah selesai.
 
 U-01 menambah bukti C-04/C-07/C-08: hasil manual menampilkan snapshot aturan/event/versi, form dibedakan dari hasil, dan salinan input menjadi run baru. U-02 menyediakan [UAT_SESSION.md](./UAT_SESSION.md); penilaian pemahaman pengguna serta coverage PRD belum dinyatakan lulus.
+
+## Timeline T-03–T-05
+
+C-02/C-06/C-08: menu Timeline dengan overlay lima periode satu emiten, fokus hover/klik/keyboard, hargaRp/perubahan%, fase dividen per tahun dan lapisan aktual2026dengan placeholder prediksi. API memisahkan katalog histori lengkap dari pratinjau riset LPPF.46tesbackend,build/lint/typecheck,API dan browser diperiksa; lihat [TIMELINE_IMPLEMENTATION.md](./TIMELINE_IMPLEMENTATION.md). Dataset lengkap masih gap ISS-041; engine prediksi ditunda oleh PM pada ISS-042. Bukan klaim coverage PRD final atau UAT lulus.

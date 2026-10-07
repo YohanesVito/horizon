@@ -1,0 +1,142 @@
+[
+  {
+    "symbol": "LPPF",
+    "ex_date": "2021-11-11",
+    "calendar": {
+      "symbol": "LPPF.JK",
+      "ex_date": "2021-11-11",
+      "cum_date": "2021-11-10",
+      "recording_date": "2021-11-12",
+      "payment_date": "2021-12-02",
+      "dividend_amount": 100.0,
+      "dividend_yield": 0.0436967
+    },
+    "price_file": "outputs/timeline-audit/raw/prices-LPPF-2021-11-11.json",
+    "bar_count": 63,
+    "first_bar": "2021-10-21",
+    "last_bar": "2022-01-18",
+    "duplicate_dates": 0,
+    "invalid_ohlc": 0,
+    "milestone_bars_found": {
+      "cum_date": true,
+      "ex_date": true,
+      "recording_date": true,
+      "payment_date": true
+    },
+    "all_market_sessions_verified": false,
+    "adjustment_basis_verified": false,
+    "declaration_link_verified": false
+  },
+  {
+    "symbol": "LPPF",
+    "ex_date": "2022-04-14",
+    "calendar": {
+      "symbol": "LPPF.JK",
+      "ex_date": "2022-04-14",
+      "cum_date": "2022-04-13",
+      "recording_date": "2022-04-18",
+      "payment_date": "2022-04-28",
+      "dividend_amount": 250.0,
+      "dividend_yield": 0.0529501
+    },
+    "price_file": "outputs/intelligence/raw/prices-LPPF-2022-04-14.json",
+    "bar_count": 54,
+    "first_bar": "2022-03-24",
+    "last_bar": "2022-06-21",
+    "duplicate_dates": 0,
+    "invalid_ohlc": 0,
+    "milestone_bars_found": {
+      "cum_date": true,
+      "ex_date": true,
+      "recording_date": true,
+      "payment_date": true
+    },
+    "all_market_sessions_verified": false,
+    "adjustment_basis_verified": false,
+    "declaration_link_verified": false
+  },
+  {
+    "symbol": "LPPF",
+    "ex_date": "2023-04-10",
+    "calendar": {
+      "symbol": "LPPF.JK",
+      "ex_date": "2023-04-10",
+      "cum_date": "2023-04-06",
+      "recording_date": "2023-04-11",
+      "payment_date": "2023-04-17",
+      "dividend_amount": 525.0,
+      "dividend_yield": 0.158095
+    },
+    "price_file": "outputs/intelligence/raw/prices-LPPF-2023-04-10.json",
+    "bar_count": 53,
+    "first_bar": "2023-03-20",
+    "last_bar": "2023-06-16",
+    "duplicate_dates": 0,
+    "invalid_ohlc": 0,
+    "milestone_bars_found": {
+      "cum_date": true,
+      "ex_date": true,
+      "recording_date": true,
+      "payment_date": true
+    },
+    "all_market_sessions_verified": false,
+    "adjustment_basis_verified": false,
+    "declaration_link_verified": false
+  },
+  {
+    "symbol": "LPPF",
+    "ex_date": "2024-04-22",
+    "calendar": {
+      "symbol": "LPPF.JK",
+      "ex_date": "2024-04-22",
+      "cum_date": "2024-04-19",
+      "recording_date": "2024-04-23",
+      "payment_date": "2024-04-29",
+      "dividend_amount": 200.0,
+      "dividend_yield": 0.122768
+    },
+    "price_file": "outputs/intelligence/raw/prices-LPPF-2024-04-22.json",
+    "bar_count": 52,
+    "first_bar": "2024-04-01",
+    "last_bar": "2024-06-28",
+    "duplicate_dates": 0,
+    "invalid_ohlc": 0,
+    "milestone_bars_found": {
+      "cum_date": true,
+      "ex_date": true,
+      "recording_date": true,
+      "payment_date": true
+    },
+    "all_market_sessions_verified": false,
+    "adjustment_basis_verified": false,
+    "declaration_link_verified": false
+  },
+  {
+    "symbol": "LPPF",
+    "ex_date": "2025-04-22",
+    "calendar": {
+      "symbol": "LPPF.JK",
+      "ex_date": "2025-04-22",
+      "cum_date": "2025-04-21",
+      "recording_date": "2025-04-23",
+      "payment_date": "2025-04-29",
+      "dividend_amount": 300.0,
+      "dividend_yield": 0.178185
+    },
+    "price_file": "outputs/intelligence/raw/prices-LPPF-2025-04-22.json",
+    "bar_count": 50,
+    "first_bar": "2025-04-08",
+    "last_bar": "2025-06-26",
+    "duplicate_dates": 0,
+    "invalid_ohlc": 0,
+    "milestone_bars_found": {
+      "cum_date": true,
+      "ex_date": true,
+      "recording_date": true,
+      "payment_date": true
+    },
+    "all_market_sessions_verified": false,
+    "adjustment_basis_verified": false,
+    "declaration_link_verified": false
+  }
+]

@@ -151,3 +151,15 @@ Task development berstatus `DONE` setelah hasil implementasinya ada dan pemeriks
 | Task | Scope | Bukti selesai |
 |---|---|---|
 | G-01 | Commit dan push proyek horizon ke YohanesVito/horizon | Tidak membawa key/database runtime/dependensi, snapshot yang diperlukan lengkap, commit remote sama dengan lokal |
+
+### Overlay timeline — diskusi desain dan audit data
+
+| Task | Scope | Requirement | Bukti selesai |
+|---|---|---|---|
+| T-01 | Audit kelengkapan lima tahun untuk overlay satu emiten, definisi periode dan eligibility | C-02/C-06/C-08 | Sumber MCP/REST, tabel tahun/field/harga/gap, status boleh tampil yang tidak mengabaikan missing; rancangan perilaku, tanpa perubahan UI |
+| T-02 | Catat perilaku periode berjalan: aktual + prediksi; perhitungan ditunda sesuai arahan PM | C-02/C-06/C-08 | Spesifikasi status, batas data aktual, tampilan belum tersedia, dan pemisahan kelengkapan histori; engine DEFERRED (ISS-042) |
+| T-03 | API timeline dengan sumber snapshot, filter histori lengkap dan pratinjau LPPF terpisah | C-02/C-08 | Normalisasi relatif ex-date, provenance, gate server, harga aktual periode berjalan, tanpa angka forecast |
+| T-04 | UI overlay area, fokus hover/klik/tap, satu emiten, tooltip tanggal/harga, fase dividen dan mode prediksi | C-02/C-06 | Navigasi Timeline, lima periode historis, pemisahan aktual/prediksi dan gap data terlihat |
+| T-05 | Pemeriksaan kalkulasi/gate, build/lint, browser desktop/mobile dan handoff | C-02/C-08 | Bukti yang dijalankan, isu/bypass tercatat; tidak mengklaim UAT final |
+| T-06 | Label fase langsung pada grafik dan warna area cum→ex menurut arah perubahan close | C-02/C-06 | Label tidak bertumpuk; negatif merah, positif hijau, nol netral; mengikuti periode fokus dan modeRp/% |
+| T-07 | Simpan implementasi chart pada branch `feat/chart` sesuai permintaan PM | C-02/C-06/C-08 | Commit lokal berisi kode, snapshot yang diperlukan, dokumentasi dan bukti pemeriksaan; tidak memuat kredensial |

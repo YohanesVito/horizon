@@ -1,0 +1,44 @@
+[
+  {
+    "file": "calendar-2021-01-01.json",
+    "cached": true
+  },
+  {
+    "file": "calendar-2021-04-01.json",
+    "cached": true
+  },
+  {
+    "file": "calendar-2021-06-30.json",
+    "cached": true
+  },
+  {
+    "file": "calendar-2021-09-28.json",
+    "cached": true
+  },
+  {
+    "file": "calendar-2021-12-27.json",
+    "cached": true
+  },
+  {
+    "file": "five-year-dividend-payers.json",
+    "cached": true
+  },
+  {
+    "file": "news-BBCA-2021.json",
+    "cached": true
+  },
+  {
+    "file": "news-BBCA-2025.json",
+    "cached": true
+  },
+  {
+    "file": "prices-LPPF-2021-11-11.json",
+    "ok": true,
+    "rows": null
+  },
+  {
+    "file": "actions-LPPF.json",
+    "ok": true,
+    "rows": null
+  }
+]

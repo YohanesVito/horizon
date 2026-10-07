@@ -1,0 +1,18 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "retrieved_at": "2026-10-07T04:53:38.074571+00:00",
+  "tool": "fetch-daily-price",
+  "arguments": {
+    "symbol": "LPPF",
+    "start": "2026-09-30",
+    "end": "2026-10-07"
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[\n  {\n    \"symbol\": \"LPPF.JK\",\n    \"date\": \"2026-09-30\",\n    \"close\": 1575,\n    \"open\": 1575,\n    \"high\": 1585,\n    \"low\": 1570,\n    \"volume\": 1031000,\n    \"market_cap\": 3507964866000\n  },\n  {\n    \"symbol\": \"LPPF.JK\",\n    \"date\": \"2026-10-01\",\n    \"close\": 1565,\n    \"open\": 1575,\n    \"high\": 1575,\n    \"low\": 1550,\n    \"volume\": 3682900,\n    \"market_cap\": 3485692073200\n  },\n  {\n    \"symbol\": \"LPPF.JK\",\n    \"date\": \"2026-10-02\",\n    \"close\": 1585,\n    \"open\": 1565,\n    \"high\": 1585,\n    \"low\": 1550,\n    \"volume\": 1105400,\n    \"market_cap\": 3530237658800\n  },\n  {\n    \"symbol\": \"LPPF.JK\",\n    \"date\": \"2026-10-05\",\n    \"close\": 1585,\n    \"open\": 1585,\n    \"high\": 1590,\n    \"low\": 1575,\n    \"volume\": 1243500,\n    \"market_cap\": 3530237658800\n  },\n  {\n    \"symbol\": \"LPPF.JK\",\n    \"date\": \"2026-10-06\",\n    \"close\": 1595,\n    \"open\": 1585,\n    \"high\": 1600,\n    \"low\": 1585,\n    \"volume\": 714900,\n    \"market_cap\": 3552510451600\n  }\n]"
+      }
+    ]
+  }
+}

@@ -35,6 +35,8 @@ Repository: https://github.com/YohanesVito/horizon. Pada clone baru, snapshot ri
 
 ## Fitur yang dapat dicoba
 
+**Timeline lima periode:** buka menu **Timeline → Buka pratinjau LPPF**. Bandingkan2021–2025dengan hover/fokus tahun dan modeRp/%. Tab2026memuat harga aktual sampai6Oktober2026serta panel prediksi yang belum tersedia. Katalog hanya menerima histori lengkap; sekarang belum ada emiten yang lolos seluruh verifikasi. Pratinjau LPPF terpisah dan diberi label gap data. [Runbook dan bukti pemeriksaan](docs/development/TIMELINE_IMPLEMENTATION.md).
+
 1. **Peluang:** sembilan emiten, pencarian, sorting, filter yield/frekuensi/kelengkapan data dan aturan screening tersimpan.
 2. **Detail & kalender:** 12 event kanonis tahun 2025 dari sembilan emiten yang juga ada di Intelligence; lima tahap tanggal, grafik harga setahun, riwayat dividen, null jelas.
 3. **Watchlist:** tambah/hapus tersimpan di database lokal. Belum ada login/multi-user.

@@ -1,0 +1,2127 @@
+{
+  "transport": "Sectors REST GET; endpoint absent from inspected MCP registry",
+  "url": "https://api.sectors.app/v2/corporate-actions/?start=2026-04-01&end=2026-06-29&type=dividend",
+  "retrieved_at": "2026-10-07T12:53:42.526223+08:00",
+  "http_status": 200,
+  "result": {
+    "start": "2026-04-01",
+    "end": "2026-06-29",
+    "dividend": [
+      {
+        "symbol": "TEBE.JK",
+        "ex_date": "2026-04-09",
+        "cum_date": "2026-04-08",
+        "recording_date": "2026-04-10",
+        "payment_date": "2026-04-24",
+        "dividend_amount": 156.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "WOMF.JK",
+        "ex_date": "2026-04-09",
+        "cum_date": "2026-04-08",
+        "recording_date": "2026-04-10",
+        "payment_date": "2026-04-30",
+        "dividend_amount": 12.28,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BDMN.JK",
+        "ex_date": "2026-04-10",
+        "cum_date": "2026-04-09",
+        "recording_date": "2026-04-13",
+        "payment_date": "2026-04-30",
+        "dividend_amount": 142.19,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MEGA.JK",
+        "ex_date": "2026-04-10",
+        "cum_date": "2026-04-09",
+        "recording_date": "2026-04-13",
+        "payment_date": "2026-04-30",
+        "dividend_amount": 171.947,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ADMF.JK",
+        "ex_date": "2026-04-15",
+        "cum_date": "2026-04-14",
+        "recording_date": "2026-04-16",
+        "payment_date": "2026-04-30",
+        "dividend_amount": 630.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "CNMA.JK",
+        "ex_date": "2026-04-15",
+        "cum_date": "2026-04-14",
+        "recording_date": "2026-04-16",
+        "payment_date": "2026-04-28",
+        "dividend_amount": 7.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BNLI.JK",
+        "ex_date": "2026-04-16",
+        "cum_date": "2026-04-15",
+        "recording_date": "2026-04-17",
+        "payment_date": "2026-05-07",
+        "dividend_amount": 35.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ROTI.JK",
+        "ex_date": "2026-04-16",
+        "cum_date": "2026-04-15",
+        "recording_date": "2026-04-17",
+        "payment_date": "2026-04-24",
+        "dividend_amount": 80.04,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ARNA.JK",
+        "ex_date": "2026-04-17",
+        "cum_date": "2026-04-16",
+        "recording_date": "2026-04-20",
+        "payment_date": "2026-04-28",
+        "dividend_amount": 45.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "AVIA.JK",
+        "ex_date": "2026-04-20",
+        "cum_date": "2026-04-17",
+        "recording_date": "2026-04-21",
+        "payment_date": "2026-04-28",
+        "dividend_amount": 12.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "CMRY.JK",
+        "ex_date": "2026-04-20",
+        "cum_date": "2026-04-17",
+        "recording_date": "2026-04-21",
+        "payment_date": "2026-04-30",
+        "dividend_amount": 100.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "NISP.JK",
+        "ex_date": "2026-04-20",
+        "cum_date": "2026-04-17",
+        "recording_date": "2026-04-21",
+        "payment_date": "2026-05-04",
+        "dividend_amount": 45.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "SICO.JK",
+        "ex_date": "2026-04-20",
+        "cum_date": "2026-04-17",
+        "recording_date": "2026-04-21",
+        "payment_date": "2026-05-08",
+        "dividend_amount": 2.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "SIDO.JK",
+        "ex_date": "2026-04-20",
+        "cum_date": "2026-04-17",
+        "recording_date": "2026-04-21",
+        "payment_date": "2026-05-07",
+        "dividend_amount": 15.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BBRI.JK",
+        "ex_date": "2026-04-21",
+        "cum_date": "2026-04-20",
+        "recording_date": "2026-04-22",
+        "payment_date": "2026-05-08",
+        "dividend_amount": 209.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "YULE.JK",
+        "ex_date": "2026-04-21",
+        "cum_date": "2026-04-20",
+        "recording_date": "2026-04-22",
+        "payment_date": "2026-05-13",
+        "dividend_amount": 10.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "PJAA.JK",
+        "ex_date": "2026-04-23",
+        "cum_date": "2026-04-22",
+        "recording_date": "2026-04-24",
+        "payment_date": "2026-05-13",
+        "dividend_amount": 26.05,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "AALI.JK",
+        "ex_date": "2026-04-24",
+        "cum_date": "2026-04-23",
+        "recording_date": "2026-04-27",
+        "payment_date": "2026-05-13",
+        "dividend_amount": 335.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ASGR.JK",
+        "ex_date": "2026-04-24",
+        "cum_date": "2026-04-23",
+        "recording_date": "2026-04-27",
+        "payment_date": "2026-05-13",
+        "dividend_amount": 211.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "LPPF.JK",
+        "ex_date": "2026-04-24",
+        "cum_date": "2026-04-23",
+        "recording_date": "2026-04-27",
+        "payment_date": "2026-05-04",
+        "dividend_amount": 250.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BTPS.JK",
+        "ex_date": "2026-04-27",
+        "cum_date": "2026-04-24",
+        "recording_date": "2026-04-28",
+        "payment_date": "2026-05-19",
+        "dividend_amount": 46.2,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "TLDN.JK",
+        "ex_date": "2026-04-27",
+        "cum_date": "2026-04-24",
+        "recording_date": "2026-04-28",
+        "payment_date": "2026-05-19",
+        "dividend_amount": 38.65,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "UNTR.JK",
+        "ex_date": "2026-04-27",
+        "cum_date": "2026-04-24",
+        "recording_date": "2026-04-28",
+        "payment_date": "2026-05-18",
+        "dividend_amount": 1096.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "AUTO.JK",
+        "ex_date": "2026-04-28",
+        "cum_date": "2026-04-27",
+        "recording_date": "2026-04-29",
+        "payment_date": "2026-05-18",
+        "dividend_amount": 170.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BNGA.JK",
+        "ex_date": "2026-04-28",
+        "cum_date": "2026-04-27",
+        "recording_date": "2026-04-29",
+        "payment_date": "2026-05-13",
+        "dividend_amount": 161.77,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BNII.JK",
+        "ex_date": "2026-04-28",
+        "cum_date": "2026-04-27",
+        "recording_date": "2026-04-29",
+        "payment_date": "2026-05-13",
+        "dividend_amount": 7.61106,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "DRMA.JK",
+        "ex_date": "2026-04-28",
+        "cum_date": "2026-04-27",
+        "recording_date": "2026-04-29",
+        "payment_date": "2026-05-07",
+        "dividend_amount": 70.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ITMG.JK",
+        "ex_date": "2026-04-28",
+        "cum_date": "2026-04-27",
+        "recording_date": "2026-04-29",
+        "payment_date": "2026-05-19",
+        "dividend_amount": 0.05712,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "KEJU.JK",
+        "ex_date": "2026-04-30",
+        "cum_date": "2026-04-29",
+        "recording_date": "2026-05-04",
+        "payment_date": "2026-05-13",
+        "dividend_amount": 16.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "NAIK.JK",
+        "ex_date": "2026-04-30",
+        "cum_date": "2026-04-29",
+        "recording_date": "2026-05-04",
+        "payment_date": "2026-05-22",
+        "dividend_amount": 3.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BELL.JK",
+        "ex_date": "2026-05-04",
+        "cum_date": "2026-04-30",
+        "recording_date": "2026-05-05",
+        "payment_date": "2026-05-22",
+        "dividend_amount": 1.38,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "CINT.JK",
+        "ex_date": "2026-05-04",
+        "cum_date": "2026-04-30",
+        "recording_date": "2026-05-05",
+        "payment_date": "2026-05-25",
+        "dividend_amount": 13.7775,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "DKFT.JK",
+        "ex_date": "2026-05-04",
+        "cum_date": "2026-04-30",
+        "recording_date": "2026-05-05",
+        "payment_date": "2026-05-12",
+        "dividend_amount": 35.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "KDSI.JK",
+        "ex_date": "2026-05-04",
+        "cum_date": "2026-04-30",
+        "recording_date": "2026-05-05",
+        "payment_date": "2026-05-22",
+        "dividend_amount": 20.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MINE.JK",
+        "ex_date": "2026-05-04",
+        "cum_date": "2026-04-30",
+        "recording_date": "2026-05-05",
+        "payment_date": "2026-05-22",
+        "dividend_amount": 14.75,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ULTJ.JK",
+        "ex_date": "2026-05-04",
+        "cum_date": "2026-04-30",
+        "recording_date": "2026-05-05",
+        "payment_date": "2026-05-22",
+        "dividend_amount": 130.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ASII.JK",
+        "ex_date": "2026-05-05",
+        "cum_date": "2026-05-04",
+        "recording_date": "2026-05-06",
+        "payment_date": "2026-05-25",
+        "dividend_amount": 292.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BTPN.JK",
+        "ex_date": "2026-05-05",
+        "cum_date": "2026-05-04",
+        "recording_date": "2026-05-06",
+        "payment_date": "2026-05-22",
+        "dividend_amount": 9.49764,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "GOOD.JK",
+        "ex_date": "2026-05-05",
+        "cum_date": "2026-05-04",
+        "recording_date": "2026-05-06",
+        "payment_date": "2026-05-20",
+        "dividend_amount": 9.5,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "HEAL.JK",
+        "ex_date": "2026-05-05",
+        "cum_date": "2026-05-04",
+        "recording_date": "2026-05-06",
+        "payment_date": "2026-05-22",
+        "dividend_amount": 13.5,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "PRDA.JK",
+        "ex_date": "2026-05-05",
+        "cum_date": "2026-05-04",
+        "recording_date": "2026-05-06",
+        "payment_date": "2026-05-22",
+        "dividend_amount": 162.683,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "TRIS.JK",
+        "ex_date": "2026-05-05",
+        "cum_date": "2026-05-04",
+        "recording_date": "2026-05-06",
+        "payment_date": "2026-05-29",
+        "dividend_amount": 7.74436,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "GMTD.JK",
+        "ex_date": "2026-05-06",
+        "cum_date": "2026-05-05",
+        "recording_date": "2026-05-07",
+        "payment_date": "2026-05-22",
+        "dividend_amount": 4.04,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "AKRA.JK",
+        "ex_date": "2026-05-07",
+        "cum_date": "2026-05-06",
+        "recording_date": "2026-05-08",
+        "payment_date": "2026-05-21",
+        "dividend_amount": 50.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "AMAG.JK",
+        "ex_date": "2026-05-07",
+        "cum_date": "2026-05-06",
+        "recording_date": "2026-05-08",
+        "payment_date": "2026-05-26",
+        "dividend_amount": 30.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ASJT.JK",
+        "ex_date": "2026-05-07",
+        "cum_date": "2026-05-06",
+        "recording_date": "2026-05-08",
+        "payment_date": "2026-05-26",
+        "dividend_amount": 0.9574,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BOLT.JK",
+        "ex_date": "2026-05-07",
+        "cum_date": "2026-05-06",
+        "recording_date": "2026-05-08",
+        "payment_date": "2026-05-26",
+        "dividend_amount": 50.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BJBR.JK",
+        "ex_date": "2026-05-08",
+        "cum_date": "2026-05-07",
+        "recording_date": "2026-05-11",
+        "payment_date": "2026-05-26",
+        "dividend_amount": 85.54,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "EAST.JK",
+        "ex_date": "2026-05-08",
+        "cum_date": "2026-05-07",
+        "recording_date": "2026-05-11",
+        "payment_date": "2026-05-22",
+        "dividend_amount": 3.8,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "LIFE.JK",
+        "ex_date": "2026-05-08",
+        "cum_date": "2026-05-07",
+        "recording_date": "2026-05-11",
+        "payment_date": "2026-05-26",
+        "dividend_amount": 96.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "LPIN.JK",
+        "ex_date": "2026-05-08",
+        "cum_date": "2026-05-07",
+        "recording_date": "2026-05-11",
+        "payment_date": "2026-05-25",
+        "dividend_amount": 45.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "SKLT.JK",
+        "ex_date": "2026-05-08",
+        "cum_date": "2026-05-07",
+        "recording_date": "2026-05-11",
+        "payment_date": "2026-05-29",
+        "dividend_amount": 8.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ABMM.JK",
+        "ex_date": "2026-05-11",
+        "cum_date": "2026-05-08",
+        "recording_date": "2026-05-12",
+        "payment_date": "2026-05-26",
+        "dividend_amount": 97.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BMRI.JK",
+        "ex_date": "2026-05-11",
+        "cum_date": "2026-05-08",
+        "recording_date": "2026-05-12",
+        "payment_date": "2026-05-25",
+        "dividend_amount": 376.957,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "JPFA.JK",
+        "ex_date": "2026-05-11",
+        "cum_date": "2026-05-08",
+        "recording_date": "2026-05-12",
+        "payment_date": "2026-05-19",
+        "dividend_amount": 140.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "LPGI.JK",
+        "ex_date": "2026-05-11",
+        "cum_date": "2026-05-08",
+        "recording_date": "2026-05-12",
+        "payment_date": "2026-05-29",
+        "dividend_amount": 10.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MLPT.JK",
+        "ex_date": "2026-05-11",
+        "cum_date": "2026-05-08",
+        "recording_date": "2026-05-12",
+        "payment_date": "2026-06-03",
+        "dividend_amount": 3.2,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "PZZA.JK",
+        "ex_date": "2026-05-11",
+        "cum_date": "2026-05-08",
+        "recording_date": "2026-05-12",
+        "payment_date": "2026-06-03",
+        "dividend_amount": 1.66,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "SMSM.JK",
+        "ex_date": "2026-05-11",
+        "cum_date": "2026-05-08",
+        "recording_date": "2026-05-12",
+        "payment_date": "2026-05-26",
+        "dividend_amount": 25.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "TUGU.JK",
+        "ex_date": "2026-05-11",
+        "cum_date": "2026-05-08",
+        "recording_date": "2026-05-12",
+        "payment_date": "2026-06-03",
+        "dividend_amount": 99.9918,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ZYRX.JK",
+        "ex_date": "2026-05-11",
+        "cum_date": "2026-05-08",
+        "recording_date": "2026-05-12",
+        "payment_date": "2026-05-29",
+        "dividend_amount": 4.9,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MSJA.JK",
+        "ex_date": "2026-05-12",
+        "cum_date": "2026-05-11",
+        "recording_date": "2026-05-13",
+        "payment_date": "2026-06-04",
+        "dividend_amount": 15.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "SSMS.JK",
+        "ex_date": "2026-05-12",
+        "cum_date": "2026-05-11",
+        "recording_date": "2026-05-13",
+        "payment_date": "2026-06-04",
+        "dividend_amount": 83.99,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "NICL.JK",
+        "ex_date": "2026-05-13",
+        "cum_date": "2026-05-12",
+        "recording_date": "2026-05-18",
+        "payment_date": "2026-05-26",
+        "dividend_amount": 6.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BRIS.JK",
+        "ex_date": "2026-05-18",
+        "cum_date": "2026-05-13",
+        "recording_date": "2026-05-19",
+        "payment_date": "2026-06-05",
+        "dividend_amount": 32.8101,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ISAT.JK",
+        "ex_date": "2026-05-18",
+        "cum_date": "2026-05-13",
+        "recording_date": "2026-05-19",
+        "payment_date": "2026-06-05",
+        "dividend_amount": 111.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BJTM.JK",
+        "ex_date": "2026-05-19",
+        "cum_date": "2026-05-18",
+        "recording_date": "2026-05-20",
+        "payment_date": "2026-06-05",
+        "dividend_amount": 56.62,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "SHIP.JK",
+        "ex_date": "2026-05-19",
+        "cum_date": "2026-05-18",
+        "recording_date": "2026-05-20",
+        "payment_date": "2026-05-26",
+        "dividend_amount": 35.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "TOTL.JK",
+        "ex_date": "2026-05-19",
+        "cum_date": "2026-05-18",
+        "recording_date": "2026-05-20",
+        "payment_date": "2026-06-05",
+        "dividend_amount": 110.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "YUPI.JK",
+        "ex_date": "2026-05-19",
+        "cum_date": "2026-05-18",
+        "recording_date": "2026-05-20",
+        "payment_date": "2026-05-29",
+        "dividend_amount": 16.5742,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ARCI.JK",
+        "ex_date": "2026-05-20",
+        "cum_date": "2026-05-19",
+        "recording_date": "2026-05-21",
+        "payment_date": "2026-06-09",
+        "dividend_amount": 20.69,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BAYU.JK",
+        "ex_date": "2026-05-20",
+        "cum_date": "2026-05-19",
+        "recording_date": "2026-05-21",
+        "payment_date": "2026-06-10",
+        "dividend_amount": 100.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "KUAS.JK",
+        "ex_date": "2026-05-20",
+        "cum_date": "2026-05-19",
+        "recording_date": "2026-05-21",
+        "payment_date": "2026-06-10",
+        "dividend_amount": 1.5,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "LTLS.JK",
+        "ex_date": "2026-05-20",
+        "cum_date": "2026-05-19",
+        "recording_date": "2026-05-21",
+        "payment_date": "2026-05-29",
+        "dividend_amount": 31.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MARK.JK",
+        "ex_date": "2026-05-20",
+        "cum_date": "2026-05-19",
+        "recording_date": "2026-05-21",
+        "payment_date": "2026-06-10",
+        "dividend_amount": 50.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "RATU.JK",
+        "ex_date": "2026-05-20",
+        "cum_date": "2026-05-19",
+        "recording_date": "2026-05-21",
+        "payment_date": "2026-06-10",
+        "dividend_amount": 45.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "CDIA.JK",
+        "ex_date": "2026-05-21",
+        "cum_date": "2026-05-20",
+        "recording_date": "2026-05-22",
+        "payment_date": "2026-06-09",
+        "dividend_amount": 5.56343,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "PANR.JK",
+        "ex_date": "2026-05-21",
+        "cum_date": "2026-05-20",
+        "recording_date": "2026-05-22",
+        "payment_date": "2026-06-11",
+        "dividend_amount": 30.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "PBID.JK",
+        "ex_date": "2026-05-21",
+        "cum_date": "2026-05-20",
+        "recording_date": "2026-05-22",
+        "payment_date": "2026-06-04",
+        "dividend_amount": 53.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "PDES.JK",
+        "ex_date": "2026-05-21",
+        "cum_date": "2026-05-20",
+        "recording_date": "2026-05-22",
+        "payment_date": "2026-06-11",
+        "dividend_amount": 1.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "POWR.JK",
+        "ex_date": "2026-05-21",
+        "cum_date": "2026-05-20",
+        "recording_date": "2026-05-22",
+        "payment_date": "2026-06-05",
+        "dividend_amount": 49.5272,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "PSSI.JK",
+        "ex_date": "2026-05-21",
+        "cum_date": "2026-05-20",
+        "recording_date": "2026-05-22",
+        "payment_date": "2026-06-11",
+        "dividend_amount": 5.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "SMGR.JK",
+        "ex_date": "2026-05-21",
+        "cum_date": "2026-05-20",
+        "recording_date": "2026-05-22",
+        "payment_date": "2026-06-11",
+        "dividend_amount": 28.33,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "WEHA.JK",
+        "ex_date": "2026-05-21",
+        "cum_date": "2026-05-20",
+        "recording_date": "2026-05-22",
+        "payment_date": "2026-06-11",
+        "dividend_amount": 6.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MCOL.JK",
+        "ex_date": "2026-05-22",
+        "cum_date": "2026-05-21",
+        "recording_date": "2026-05-25",
+        "payment_date": "2026-06-08",
+        "dividend_amount": 200.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "OBAT.JK",
+        "ex_date": "2026-05-22",
+        "cum_date": "2026-05-21",
+        "recording_date": "2026-05-25",
+        "payment_date": "2026-06-12",
+        "dividend_amount": 7.548,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "PMUI.JK",
+        "ex_date": "2026-05-22",
+        "cum_date": "2026-05-21",
+        "recording_date": "2026-05-25",
+        "payment_date": "2026-06-12",
+        "dividend_amount": 5.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "RALS.JK",
+        "ex_date": "2026-05-22",
+        "cum_date": "2026-05-21",
+        "recording_date": "2026-05-25",
+        "payment_date": "2026-06-12",
+        "dividend_amount": 50.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "CHEM.JK",
+        "ex_date": "2026-05-25",
+        "cum_date": "2026-05-22",
+        "recording_date": "2026-05-26",
+        "payment_date": "2026-06-17",
+        "dividend_amount": 0.33,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "CITA.JK",
+        "ex_date": "2026-05-25",
+        "cum_date": "2026-05-22",
+        "recording_date": "2026-05-26",
+        "payment_date": "2026-06-12",
+        "dividend_amount": 351.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MDLA.JK",
+        "ex_date": "2026-05-25",
+        "cum_date": "2026-05-22",
+        "recording_date": "2026-05-26",
+        "payment_date": "2026-06-17",
+        "dividend_amount": 12.6,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "PLIN.JK",
+        "ex_date": "2026-05-25",
+        "cum_date": "2026-05-22",
+        "recording_date": "2026-05-26",
+        "payment_date": "2026-06-04",
+        "dividend_amount": 79.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "TGKA.JK",
+        "ex_date": "2026-05-25",
+        "cum_date": "2026-05-22",
+        "recording_date": "2026-05-26",
+        "payment_date": "2026-06-05",
+        "dividend_amount": 285.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "GGRP.JK",
+        "ex_date": "2026-05-26",
+        "cum_date": "2026-05-25",
+        "recording_date": "2026-05-29",
+        "payment_date": "2026-06-18",
+        "dividend_amount": 28.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "HYGN.JK",
+        "ex_date": "2026-05-26",
+        "cum_date": "2026-05-25",
+        "recording_date": "2026-05-29",
+        "payment_date": "2026-06-18",
+        "dividend_amount": 3.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "NTBK.JK",
+        "ex_date": "2026-05-26",
+        "cum_date": "2026-05-25",
+        "recording_date": "2026-05-29",
+        "payment_date": "2026-06-08",
+        "dividend_amount": 0.0524,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "TPIA.JK",
+        "ex_date": "2026-05-26",
+        "cum_date": "2026-05-25",
+        "recording_date": "2026-05-29",
+        "payment_date": "2026-06-17",
+        "dividend_amount": 6.07341,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "WINS.JK",
+        "ex_date": "2026-05-26",
+        "cum_date": "2026-05-25",
+        "recording_date": "2026-05-29",
+        "payment_date": "2026-06-18",
+        "dividend_amount": 2.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "WTON.JK",
+        "ex_date": "2026-05-26",
+        "cum_date": "2026-05-25",
+        "recording_date": "2026-05-29",
+        "payment_date": "2026-06-12",
+        "dividend_amount": 0.46,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BBLD.JK",
+        "ex_date": "2026-05-29",
+        "cum_date": "2026-05-26",
+        "recording_date": "2026-06-02",
+        "payment_date": "2026-06-18",
+        "dividend_amount": 2.5,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "HMSP.JK",
+        "ex_date": "2026-05-29",
+        "cum_date": "2026-05-26",
+        "recording_date": "2026-06-02",
+        "payment_date": "2026-06-19",
+        "dividend_amount": 56.3,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "IFSH.JK",
+        "ex_date": "2026-05-29",
+        "cum_date": "2026-05-26",
+        "recording_date": "2026-06-02",
+        "payment_date": "2026-06-17",
+        "dividend_amount": 26.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "IRSX.JK",
+        "ex_date": "2026-05-29",
+        "cum_date": "2026-05-26",
+        "recording_date": "2026-06-02",
+        "payment_date": "2026-06-10",
+        "dividend_amount": 0.17,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "PTPS.JK",
+        "ex_date": "2026-05-29",
+        "cum_date": "2026-05-26",
+        "recording_date": "2026-06-02",
+        "payment_date": "2026-06-11",
+        "dividend_amount": 4.5,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "SKRN.JK",
+        "ex_date": "2026-05-29",
+        "cum_date": "2026-05-26",
+        "recording_date": "2026-06-02",
+        "payment_date": "2026-06-05",
+        "dividend_amount": 18.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "SMBR.JK",
+        "ex_date": "2026-05-29",
+        "cum_date": "2026-05-26",
+        "recording_date": "2026-06-02",
+        "payment_date": "2026-06-17",
+        "dividend_amount": 3.46185,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "SRTG.JK",
+        "ex_date": "2026-05-29",
+        "cum_date": "2026-05-26",
+        "recording_date": "2026-06-02",
+        "payment_date": "2026-06-12",
+        "dividend_amount": 103.3,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "UNIC.JK",
+        "ex_date": "2026-05-29",
+        "cum_date": "2026-05-26",
+        "recording_date": "2026-06-02",
+        "payment_date": "2026-06-09",
+        "dividend_amount": 1447.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "WIIM.JK",
+        "ex_date": "2026-05-29",
+        "cum_date": "2026-05-26",
+        "recording_date": "2026-06-02",
+        "payment_date": "2026-06-12",
+        "dividend_amount": 104.4,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "APLI.JK",
+        "ex_date": "2026-06-08",
+        "cum_date": "2026-06-05",
+        "recording_date": "2026-06-09",
+        "payment_date": "2026-06-26",
+        "dividend_amount": 44.03,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MAIN.JK",
+        "ex_date": "2026-06-08",
+        "cum_date": "2026-06-05",
+        "recording_date": "2026-06-09",
+        "payment_date": "2026-06-26",
+        "dividend_amount": 52.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MERK.JK",
+        "ex_date": "2026-06-08",
+        "cum_date": "2026-06-05",
+        "recording_date": "2026-06-09",
+        "payment_date": "2026-06-24",
+        "dividend_amount": 275.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MSTI.JK",
+        "ex_date": "2026-06-08",
+        "cum_date": "2026-06-05",
+        "recording_date": "2026-06-09",
+        "payment_date": "2026-06-25",
+        "dividend_amount": 106.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "SDPC.JK",
+        "ex_date": "2026-06-08",
+        "cum_date": "2026-06-05",
+        "recording_date": "2026-06-09",
+        "payment_date": "2026-06-26",
+        "dividend_amount": 3.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "AXIO.JK",
+        "ex_date": "2026-06-09",
+        "cum_date": "2026-06-08",
+        "recording_date": "2026-06-10",
+        "payment_date": "2026-07-02",
+        "dividend_amount": 4.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BUAH.JK",
+        "ex_date": "2026-06-09",
+        "cum_date": "2026-06-08",
+        "recording_date": "2026-06-10",
+        "payment_date": "2026-06-26",
+        "dividend_amount": 12.5,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "CTBN.JK",
+        "ex_date": "2026-06-09",
+        "cum_date": "2026-06-08",
+        "recording_date": "2026-06-10",
+        "payment_date": "2026-07-02",
+        "dividend_amount": 465.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "KOCI.JK",
+        "ex_date": "2026-06-09",
+        "cum_date": "2026-06-08",
+        "recording_date": "2026-06-10",
+        "payment_date": "2026-07-02",
+        "dividend_amount": 2.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "META.JK",
+        "ex_date": "2026-06-09",
+        "cum_date": "2026-06-08",
+        "recording_date": "2026-06-10",
+        "payment_date": "2026-07-02",
+        "dividend_amount": 2.62,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MPMX.JK",
+        "ex_date": "2026-06-09",
+        "cum_date": "2026-06-08",
+        "recording_date": "2026-06-10",
+        "payment_date": "2026-06-25",
+        "dividend_amount": 170.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MTLA.JK",
+        "ex_date": "2026-06-09",
+        "cum_date": "2026-06-08",
+        "recording_date": "2026-06-10",
+        "payment_date": "2026-07-02",
+        "dividend_amount": 9.7,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "VICI.JK",
+        "ex_date": "2026-06-09",
+        "cum_date": "2026-06-08",
+        "recording_date": "2026-06-10",
+        "payment_date": "2026-06-23",
+        "dividend_amount": 5.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "GUNA.JK",
+        "ex_date": "2026-06-10",
+        "cum_date": "2026-06-09",
+        "recording_date": "2026-06-11",
+        "payment_date": "2026-06-26",
+        "dividend_amount": 7.46,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "JTPE.JK",
+        "ex_date": "2026-06-10",
+        "cum_date": "2026-06-09",
+        "recording_date": "2026-06-11",
+        "payment_date": "2026-06-26",
+        "dividend_amount": 31.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BLOG.JK",
+        "ex_date": "2026-06-11",
+        "cum_date": "2026-06-10",
+        "recording_date": "2026-06-12",
+        "payment_date": "2026-07-03",
+        "dividend_amount": 21.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "EURO.JK",
+        "ex_date": "2026-06-11",
+        "cum_date": "2026-06-10",
+        "recording_date": "2026-06-12",
+        "payment_date": "2026-07-01",
+        "dividend_amount": 0.8,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "GOLF.JK",
+        "ex_date": "2026-06-11",
+        "cum_date": "2026-06-10",
+        "recording_date": "2026-06-12",
+        "payment_date": "2026-06-29",
+        "dividend_amount": 0.53174,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MDKI.JK",
+        "ex_date": "2026-06-11",
+        "cum_date": "2026-06-10",
+        "recording_date": "2026-06-12",
+        "payment_date": "2026-07-03",
+        "dividend_amount": 9.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "SPTO.JK",
+        "ex_date": "2026-06-11",
+        "cum_date": "2026-06-10",
+        "recording_date": "2026-06-12",
+        "payment_date": "2026-06-24",
+        "dividend_amount": 35.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "TMAS.JK",
+        "ex_date": "2026-06-11",
+        "cum_date": "2026-06-10",
+        "recording_date": "2026-06-12",
+        "payment_date": "2026-07-03",
+        "dividend_amount": 4.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "AKPI.JK",
+        "ex_date": "2026-06-12",
+        "cum_date": "2026-06-11",
+        "recording_date": "2026-06-15",
+        "payment_date": "2026-07-03",
+        "dividend_amount": 8.27,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "FISH.JK",
+        "ex_date": "2026-06-12",
+        "cum_date": "2026-06-11",
+        "recording_date": "2026-06-15",
+        "payment_date": "2026-07-03",
+        "dividend_amount": 14.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "HRTA.JK",
+        "ex_date": "2026-06-12",
+        "cum_date": "2026-06-11",
+        "recording_date": "2026-06-15",
+        "payment_date": "2026-07-03",
+        "dividend_amount": 40.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "JKON.JK",
+        "ex_date": "2026-06-12",
+        "cum_date": "2026-06-11",
+        "recording_date": "2026-06-15",
+        "payment_date": "2026-07-03",
+        "dividend_amount": 2.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MTWI.JK",
+        "ex_date": "2026-06-12",
+        "cum_date": "2026-06-11",
+        "recording_date": "2026-06-15",
+        "payment_date": "2026-07-03",
+        "dividend_amount": 2.13674,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "PSAB.JK",
+        "ex_date": "2026-06-12",
+        "cum_date": "2026-06-11",
+        "recording_date": "2026-06-15",
+        "payment_date": "2026-06-30",
+        "dividend_amount": 105.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "TOTO.JK",
+        "ex_date": "2026-06-12",
+        "cum_date": "2026-06-11",
+        "recording_date": "2026-06-15",
+        "payment_date": "2026-06-25",
+        "dividend_amount": 13.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ZONE.JK",
+        "ex_date": "2026-06-12",
+        "cum_date": "2026-06-11",
+        "recording_date": "2026-06-15",
+        "payment_date": "2026-06-26",
+        "dividend_amount": 12.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "AMRT.JK",
+        "ex_date": "2026-06-15",
+        "cum_date": "2026-06-12",
+        "recording_date": "2026-06-17",
+        "payment_date": "2026-06-25",
+        "dividend_amount": 41.5,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ATLA.JK",
+        "ex_date": "2026-06-15",
+        "cum_date": "2026-06-12",
+        "recording_date": "2026-06-17",
+        "payment_date": "2026-06-26",
+        "dividend_amount": 0.564555,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BLUE.JK",
+        "ex_date": "2026-06-15",
+        "cum_date": "2026-06-12",
+        "recording_date": "2026-06-17",
+        "payment_date": "2026-06-23",
+        "dividend_amount": 34.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BRAM.JK",
+        "ex_date": "2026-06-15",
+        "cum_date": "2026-06-12",
+        "recording_date": "2026-06-17",
+        "payment_date": "2026-06-22",
+        "dividend_amount": 200.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "CBDK.JK",
+        "ex_date": "2026-06-15",
+        "cum_date": "2026-06-12",
+        "recording_date": "2026-06-17",
+        "payment_date": "2026-07-08",
+        "dividend_amount": 5.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "JRPT.JK",
+        "ex_date": "2026-06-15",
+        "cum_date": "2026-06-12",
+        "recording_date": "2026-06-17",
+        "payment_date": "2026-07-03",
+        "dividend_amount": 31.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "KEEN.JK",
+        "ex_date": "2026-06-15",
+        "cum_date": "2026-06-12",
+        "recording_date": "2026-06-17",
+        "payment_date": "2026-07-03",
+        "dividend_amount": 8.22,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MEDC.JK",
+        "ex_date": "2026-06-15",
+        "cum_date": "2026-06-12",
+        "recording_date": "2026-06-17",
+        "payment_date": "2026-07-03",
+        "dividend_amount": 32.252,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MIDI.JK",
+        "ex_date": "2026-06-15",
+        "cum_date": "2026-06-12",
+        "recording_date": "2026-06-17",
+        "payment_date": "2026-06-25",
+        "dividend_amount": 11.85,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MUTU.JK",
+        "ex_date": "2026-06-15",
+        "cum_date": "2026-06-12",
+        "recording_date": "2026-06-17",
+        "payment_date": "2026-07-08",
+        "dividend_amount": 2.31,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MYOR.JK",
+        "ex_date": "2026-06-15",
+        "cum_date": "2026-06-12",
+        "recording_date": "2026-06-17",
+        "payment_date": "2026-07-07",
+        "dividend_amount": 60.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "PANI.JK",
+        "ex_date": "2026-06-15",
+        "cum_date": "2026-06-12",
+        "recording_date": "2026-06-17",
+        "payment_date": "2026-07-08",
+        "dividend_amount": 5.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "PUDP.JK",
+        "ex_date": "2026-06-15",
+        "cum_date": "2026-06-12",
+        "recording_date": "2026-06-17",
+        "payment_date": "2026-07-01",
+        "dividend_amount": 1.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "UNVR.JK",
+        "ex_date": "2026-06-15",
+        "cum_date": "2026-06-12",
+        "recording_date": "2026-06-17",
+        "payment_date": "2026-06-30",
+        "dividend_amount": 114.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "AMIN.JK",
+        "ex_date": "2026-06-17",
+        "cum_date": "2026-06-15",
+        "recording_date": "2026-06-18",
+        "payment_date": "2026-07-08",
+        "dividend_amount": 10.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BALI.JK",
+        "ex_date": "2026-06-17",
+        "cum_date": "2026-06-15",
+        "recording_date": "2026-06-18",
+        "payment_date": "2026-07-02",
+        "dividend_amount": 30.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BBCA.JK",
+        "ex_date": "2026-06-17",
+        "cum_date": "2026-06-15",
+        "recording_date": "2026-06-18",
+        "payment_date": "2026-06-26",
+        "dividend_amount": 20.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BPII.JK",
+        "ex_date": "2026-06-17",
+        "cum_date": "2026-06-15",
+        "recording_date": "2026-06-18",
+        "payment_date": "2026-07-09",
+        "dividend_amount": 2.78,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "GHON.JK",
+        "ex_date": "2026-06-17",
+        "cum_date": "2026-06-15",
+        "recording_date": "2026-06-18",
+        "payment_date": "2026-06-24",
+        "dividend_amount": 178.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "IDEA.JK",
+        "ex_date": "2026-06-17",
+        "cum_date": "2026-06-15",
+        "recording_date": "2026-06-18",
+        "payment_date": "2026-07-09",
+        "dividend_amount": 0.5,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "IFII.JK",
+        "ex_date": "2026-06-17",
+        "cum_date": "2026-06-15",
+        "recording_date": "2026-06-18",
+        "payment_date": "2026-07-06",
+        "dividend_amount": 6.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "KIJA.JK",
+        "ex_date": "2026-06-17",
+        "cum_date": "2026-06-15",
+        "recording_date": "2026-06-18",
+        "payment_date": "2026-07-09",
+        "dividend_amount": 2.0349,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "SBMA.JK",
+        "ex_date": "2026-06-17",
+        "cum_date": "2026-06-15",
+        "recording_date": "2026-06-18",
+        "payment_date": "2026-07-08",
+        "dividend_amount": 1.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "SMSM.JK",
+        "ex_date": "2026-06-17",
+        "cum_date": "2026-06-15",
+        "recording_date": "2026-06-18",
+        "payment_date": "2026-07-02",
+        "dividend_amount": 40.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "TOSK.JK",
+        "ex_date": "2026-06-17",
+        "cum_date": "2026-06-15",
+        "recording_date": "2026-06-18",
+        "payment_date": "2026-07-07",
+        "dividend_amount": 0.45,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "TSPC.JK",
+        "ex_date": "2026-06-17",
+        "cum_date": "2026-06-15",
+        "recording_date": "2026-06-18",
+        "payment_date": "2026-07-09",
+        "dividend_amount": 50.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ELSA.JK",
+        "ex_date": "2026-06-18",
+        "cum_date": "2026-06-17",
+        "recording_date": "2026-06-19",
+        "payment_date": "2026-07-08",
+        "dividend_amount": 44.29,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ISSP.JK",
+        "ex_date": "2026-06-18",
+        "cum_date": "2026-06-17",
+        "recording_date": "2026-06-19",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 20.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "KBLM.JK",
+        "ex_date": "2026-06-18",
+        "cum_date": "2026-06-17",
+        "recording_date": "2026-06-19",
+        "payment_date": "2026-07-08",
+        "dividend_amount": 7.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "OMED.JK",
+        "ex_date": "2026-06-18",
+        "cum_date": "2026-06-17",
+        "recording_date": "2026-06-19",
+        "payment_date": "2026-07-09",
+        "dividend_amount": 4.08,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "PTSN.JK",
+        "ex_date": "2026-06-18",
+        "cum_date": "2026-06-17",
+        "recording_date": "2026-06-19",
+        "payment_date": "2026-06-26",
+        "dividend_amount": 7.03521,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "TLKM.JK",
+        "ex_date": "2026-06-18",
+        "cum_date": "2026-06-17",
+        "recording_date": "2026-06-19",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 223.166,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ASPR.JK",
+        "ex_date": "2026-06-19",
+        "cum_date": "2026-06-18",
+        "recording_date": "2026-06-22",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 0.64,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BBMD.JK",
+        "ex_date": "2026-06-19",
+        "cum_date": "2026-06-18",
+        "recording_date": "2026-06-22",
+        "payment_date": "2026-07-09",
+        "dividend_amount": 22.33,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BLES.JK",
+        "ex_date": "2026-06-19",
+        "cum_date": "2026-06-18",
+        "recording_date": "2026-06-22",
+        "payment_date": "2026-07-07",
+        "dividend_amount": 1.89,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "DAAZ.JK",
+        "ex_date": "2026-06-19",
+        "cum_date": "2026-06-18",
+        "recording_date": "2026-06-22",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 39.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "DSNG.JK",
+        "ex_date": "2026-06-19",
+        "cum_date": "2026-06-18",
+        "recording_date": "2026-06-22",
+        "payment_date": "2026-07-08",
+        "dividend_amount": 47.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "HATM.JK",
+        "ex_date": "2026-06-19",
+        "cum_date": "2026-06-18",
+        "recording_date": "2026-06-22",
+        "payment_date": "2026-07-08",
+        "dividend_amount": 2.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "IGAR.JK",
+        "ex_date": "2026-06-19",
+        "cum_date": "2026-06-18",
+        "recording_date": "2026-06-22",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 5.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "JSPT.JK",
+        "ex_date": "2026-06-19",
+        "cum_date": "2026-06-18",
+        "recording_date": "2026-06-22",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 25.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "LAJU.JK",
+        "ex_date": "2026-06-19",
+        "cum_date": "2026-06-18",
+        "recording_date": "2026-06-22",
+        "payment_date": "2026-07-09",
+        "dividend_amount": 0.1488,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MFMI.JK",
+        "ex_date": "2026-06-19",
+        "cum_date": "2026-06-18",
+        "recording_date": "2026-06-22",
+        "payment_date": "2026-06-26",
+        "dividend_amount": 29.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MIKA.JK",
+        "ex_date": "2026-06-19",
+        "cum_date": "2026-06-18",
+        "recording_date": "2026-06-22",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 43.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MOLI.JK",
+        "ex_date": "2026-06-19",
+        "cum_date": "2026-06-18",
+        "recording_date": "2026-06-22",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 7.34,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MTDL.JK",
+        "ex_date": "2026-06-19",
+        "cum_date": "2026-06-18",
+        "recording_date": "2026-06-22",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 27.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "SCCO.JK",
+        "ex_date": "2026-06-19",
+        "cum_date": "2026-06-18",
+        "recording_date": "2026-06-22",
+        "payment_date": "2026-07-07",
+        "dividend_amount": 100.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "SCNP.JK",
+        "ex_date": "2026-06-19",
+        "cum_date": "2026-06-18",
+        "recording_date": "2026-06-22",
+        "payment_date": "2026-07-03",
+        "dividend_amount": 4.33338,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "TBIG.JK",
+        "ex_date": "2026-06-19",
+        "cum_date": "2026-06-18",
+        "recording_date": "2026-06-22",
+        "payment_date": "2026-07-09",
+        "dividend_amount": 47.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ACES.JK",
+        "ex_date": "2026-06-22",
+        "cum_date": "2026-06-19",
+        "recording_date": "2026-06-23",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 32.01,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ANTM.JK",
+        "ex_date": "2026-06-22",
+        "cum_date": "2026-06-19",
+        "recording_date": "2026-06-23",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 209.989,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ASBI.JK",
+        "ex_date": "2026-06-22",
+        "cum_date": "2026-06-19",
+        "recording_date": "2026-06-23",
+        "payment_date": "2026-07-02",
+        "dividend_amount": 5.7,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ASRI.JK",
+        "ex_date": "2026-06-22",
+        "cum_date": "2026-06-19",
+        "recording_date": "2026-06-23",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 1.5,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BYAN.JK",
+        "ex_date": "2026-06-22",
+        "cum_date": "2026-06-19",
+        "recording_date": "2026-06-23",
+        "payment_date": "2026-07-08",
+        "dividend_amount": 267.285,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "IPCC.JK",
+        "ex_date": "2026-06-22",
+        "cum_date": "2026-06-19",
+        "recording_date": "2026-06-23",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 86.6901,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MKTR.JK",
+        "ex_date": "2026-06-22",
+        "cum_date": "2026-06-19",
+        "recording_date": "2026-06-23",
+        "payment_date": "2026-07-02",
+        "dividend_amount": 1.86,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MLBI.JK",
+        "ex_date": "2026-06-22",
+        "cum_date": "2026-06-19",
+        "recording_date": "2026-06-23",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 371.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "AGII.JK",
+        "ex_date": "2026-06-23",
+        "cum_date": "2026-06-22",
+        "recording_date": "2026-06-24",
+        "payment_date": "2026-07-15",
+        "dividend_amount": 11.42,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BATR.JK",
+        "ex_date": "2026-06-23",
+        "cum_date": "2026-06-22",
+        "recording_date": "2026-06-24",
+        "payment_date": "2026-07-15",
+        "dividend_amount": 2.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BMHS.JK",
+        "ex_date": "2026-06-23",
+        "cum_date": "2026-06-22",
+        "recording_date": "2026-06-24",
+        "payment_date": "2026-07-14",
+        "dividend_amount": 1.03,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "CEKA.JK",
+        "ex_date": "2026-06-23",
+        "cum_date": "2026-06-22",
+        "recording_date": "2026-06-24",
+        "payment_date": "2026-07-15",
+        "dividend_amount": 150.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "DGWG.JK",
+        "ex_date": "2026-06-23",
+        "cum_date": "2026-06-22",
+        "recording_date": "2026-06-24",
+        "payment_date": "2026-07-15",
+        "dividend_amount": 6.5,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ESTI.JK",
+        "ex_date": "2026-06-23",
+        "cum_date": "2026-06-22",
+        "recording_date": "2026-06-24",
+        "payment_date": "2026-07-15",
+        "dividend_amount": 2.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "HGII.JK",
+        "ex_date": "2026-06-23",
+        "cum_date": "2026-06-22",
+        "recording_date": "2026-06-24",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 0.43,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MDIY.JK",
+        "ex_date": "2026-06-23",
+        "cum_date": "2026-06-22",
+        "recording_date": "2026-06-24",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 17.62,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MKPI.JK",
+        "ex_date": "2026-06-23",
+        "cum_date": "2026-06-22",
+        "recording_date": "2026-06-24",
+        "payment_date": "2026-07-15",
+        "dividend_amount": 950.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "PEHA.JK",
+        "ex_date": "2026-06-23",
+        "cum_date": "2026-06-22",
+        "recording_date": "2026-06-24",
+        "payment_date": "2026-07-15",
+        "dividend_amount": 5.01,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "PTBA.JK",
+        "ex_date": "2026-06-23",
+        "cum_date": "2026-06-22",
+        "recording_date": "2026-06-24",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 114.508,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "PWON.JK",
+        "ex_date": "2026-06-23",
+        "cum_date": "2026-06-22",
+        "recording_date": "2026-06-24",
+        "payment_date": "2026-07-15",
+        "dividend_amount": 13.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "SMRA.JK",
+        "ex_date": "2026-06-23",
+        "cum_date": "2026-06-22",
+        "recording_date": "2026-06-24",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 5.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "TIFA.JK",
+        "ex_date": "2026-06-23",
+        "cum_date": "2026-06-22",
+        "recording_date": "2026-06-24",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 4.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BDKR.JK",
+        "ex_date": "2026-06-24",
+        "cum_date": "2026-06-23",
+        "recording_date": "2026-06-25",
+        "payment_date": "2026-07-17",
+        "dividend_amount": 2.65,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "GLVA.JK",
+        "ex_date": "2026-06-24",
+        "cum_date": "2026-06-23",
+        "recording_date": "2026-06-25",
+        "payment_date": "2026-07-16",
+        "dividend_amount": 10.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "MTMH.JK",
+        "ex_date": "2026-06-24",
+        "cum_date": "2026-06-23",
+        "recording_date": "2026-06-25",
+        "payment_date": "2026-07-15",
+        "dividend_amount": 2.42,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "NSSS.JK",
+        "ex_date": "2026-06-24",
+        "cum_date": "2026-06-23",
+        "recording_date": "2026-06-25",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 5.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "TBMS.JK",
+        "ex_date": "2026-06-24",
+        "cum_date": "2026-06-23",
+        "recording_date": "2026-06-25",
+        "payment_date": "2026-07-15",
+        "dividend_amount": 28.73,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "TINS.JK",
+        "ex_date": "2026-06-24",
+        "cum_date": "2026-06-23",
+        "recording_date": "2026-06-25",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 88.189,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BSSR.JK",
+        "ex_date": "2026-06-25",
+        "cum_date": "2026-06-24",
+        "recording_date": "2026-06-26",
+        "payment_date": "2026-07-08",
+        "dividend_amount": 486.13,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "CGAS.JK",
+        "ex_date": "2026-06-25",
+        "cum_date": "2026-06-24",
+        "recording_date": "2026-06-26",
+        "payment_date": "2026-07-16",
+        "dividend_amount": 4.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "DMAS.JK",
+        "ex_date": "2026-06-25",
+        "cum_date": "2026-06-24",
+        "recording_date": "2026-06-26",
+        "payment_date": "2026-07-09",
+        "dividend_amount": 16.5,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "SONA.JK",
+        "ex_date": "2026-06-25",
+        "cum_date": "2026-06-24",
+        "recording_date": "2026-06-26",
+        "payment_date": "2026-07-17",
+        "dividend_amount": 52.83,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "UCID.JK",
+        "ex_date": "2026-06-25",
+        "cum_date": "2026-06-24",
+        "recording_date": "2026-06-26",
+        "payment_date": "2026-07-02",
+        "dividend_amount": 6.67184,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "WINE.JK",
+        "ex_date": "2026-06-25",
+        "cum_date": "2026-06-24",
+        "recording_date": "2026-06-26",
+        "payment_date": "2026-07-17",
+        "dividend_amount": 3.5,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ASSA.JK",
+        "ex_date": "2026-06-26",
+        "cum_date": "2026-06-25",
+        "recording_date": "2026-06-29",
+        "payment_date": "2026-07-17",
+        "dividend_amount": 30.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "CLPI.JK",
+        "ex_date": "2026-06-26",
+        "cum_date": "2026-06-25",
+        "recording_date": "2026-06-29",
+        "payment_date": "2026-07-17",
+        "dividend_amount": 170.51,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "DOSS.JK",
+        "ex_date": "2026-06-26",
+        "cum_date": "2026-06-25",
+        "recording_date": "2026-06-29",
+        "payment_date": "2026-07-17",
+        "dividend_amount": 3.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "DUTI.JK",
+        "ex_date": "2026-06-26",
+        "cum_date": "2026-06-25",
+        "recording_date": "2026-06-29",
+        "payment_date": "2026-07-16",
+        "dividend_amount": 480.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "JARR.JK",
+        "ex_date": "2026-06-26",
+        "cum_date": "2026-06-25",
+        "recording_date": "2026-06-29",
+        "payment_date": "2026-07-17",
+        "dividend_amount": 6.5,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "PALM.JK",
+        "ex_date": "2026-06-26",
+        "cum_date": "2026-06-25",
+        "recording_date": "2026-06-29",
+        "payment_date": "2026-07-17",
+        "dividend_amount": 3.2,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "PNBN.JK",
+        "ex_date": "2026-06-26",
+        "cum_date": "2026-06-25",
+        "recording_date": "2026-06-29",
+        "payment_date": "2026-07-17",
+        "dividend_amount": 42.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ALII.JK",
+        "ex_date": "2026-06-29",
+        "cum_date": "2026-06-26",
+        "recording_date": "2026-06-30",
+        "payment_date": "2026-07-20",
+        "dividend_amount": 13.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "AMAR.JK",
+        "ex_date": "2026-06-29",
+        "cum_date": "2026-06-26",
+        "recording_date": "2026-06-30",
+        "payment_date": "2026-07-17",
+        "dividend_amount": 6.11,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "BIRD.JK",
+        "ex_date": "2026-06-29",
+        "cum_date": "2026-06-26",
+        "recording_date": "2026-06-30",
+        "payment_date": "2026-07-10",
+        "dividend_amount": 166.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "CFIN.JK",
+        "ex_date": "2026-06-29",
+        "cum_date": "2026-06-26",
+        "recording_date": "2026-06-30",
+        "payment_date": "2026-07-22",
+        "dividend_amount": 50.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "DMMX.JK",
+        "ex_date": "2026-06-29",
+        "cum_date": "2026-06-26",
+        "recording_date": "2026-06-30",
+        "payment_date": "2026-07-22",
+        "dividend_amount": 5.5,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "ESSA.JK",
+        "ex_date": "2026-06-29",
+        "cum_date": "2026-06-26",
+        "recording_date": "2026-06-30",
+        "payment_date": "2026-07-15",
+        "dividend_amount": 52.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "KKGI.JK",
+        "ex_date": "2026-06-29",
+        "cum_date": "2026-06-26",
+        "recording_date": "2026-06-30",
+        "payment_date": "2026-07-20",
+        "dividend_amount": 12.0,
+        "dividend_yield": null
+      },
+      {
+        "symbol": "SAMF.JK",
+        "ex_date": "2026-06-29",
+        "cum_date": "2026-06-26",
+        "recording_date": "2026-06-30",
+        "payment_date": "2026-07-22",
+        "dividend_amount": 10.5,
+        "dividend_yield": null
+      }
+    ]
+  }
+}

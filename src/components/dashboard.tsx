@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   ArrowDownWideNarrow,
@@ -18,6 +19,7 @@ import {
   Route,
   Search,
   SlidersHorizontal,
+  ScanLine,
   Sparkles,
 } from "lucide-react";
 import { api, dt, money, pct } from "@/lib/api";
@@ -33,9 +35,11 @@ import CompanyDialog from "./detail";
 import Simulator from "./simulator";
 import Intelligence from "./intelligence";
 import RotationPlanner from "./rotation-planner";
+const DividendTimeline = dynamic(() => import("./dividend-timeline"));
 type View =
   | "Peluang"
   | "Kalender"
+  | "Timeline"
   | "Simulator"
   | "Intelligence"
   | "Rencana rotasi"
@@ -44,6 +48,7 @@ type View =
 const nav = [
   { name: "Peluang", icon: LayoutGrid },
   { name: "Kalender", icon: CalendarDays },
+  { name: "Timeline", icon: ScanLine },
   { name: "Simulator", icon: Route },
   { name: "Intelligence", icon: ChartNoAxesCombined },
   { name: "Rencana rotasi", icon: Layers3 },
@@ -233,7 +238,9 @@ export default function Dashboard() {
           <div>
             <span className="badge">
               <span className="small-dot" />
-              Riset historis · {view === "Intelligence" ? "2022–2025" : "2025"}
+              {view === "Timeline"
+                ? "Histori 2021–2025 + 2026"
+                : `Riset historis · ${view === "Intelligence" ? "2022–2025" : "2025"}`}
             </span>
             <span className="avatar">DL</span>
           </div>
@@ -259,6 +266,10 @@ export default function Dashboard() {
                   "Pilihan dalam pantauan."
                 ) : view === "Kalender" ? (
                   "Ruang untuk setiap peluang."
+                ) : view === "Timeline" ? (
+                  <>
+                    Satu emiten. <span>Lima perspektif.</span>
+                  </>
                 ) : view === "Simulator" ? (
                   "Uji strategi. Pahami hasilnya."
                 ) : view === "Intelligence" ? (
@@ -274,15 +285,17 @@ export default function Dashboard() {
                   ? "Dari kandidat dividen hingga strategi rotasi, dalam satu workspace."
                   : view === "Kalender"
                     ? "Jelajahi jadwal historis sebelum menyusun urutan perpindahan modal."
-                    : view === "Watchlist"
-                      ? "Simpan emiten, lalu kembali untuk menguji strategi yang berbeda."
-                      : view === "Simulator"
-                        ? "Bandingkan all-in, pembagian modal, dan rotasi dengan harga historis."
-                        : view === "Intelligence"
-                          ? "Telusuri risiko dan pemulihan, susun ranking, lalu uji asumsi modalmu."
-                          : view === "Rencana rotasi"
-                            ? "Susun kandidat dari logika tim, lalu bandingkan hasil dan waktu modal tertahan."
-                            : "Sumber, asumsi, dan batas penelitian yang bisa kamu telusuri."}
+                    : view === "Timeline"
+                      ? "Lihat pergerakan harga di sekitar dividen. Bandingkan tahunnya, telusuri setiap fasenya."
+                      : view === "Watchlist"
+                        ? "Simpan emiten, lalu kembali untuk menguji strategi yang berbeda."
+                        : view === "Simulator"
+                          ? "Bandingkan all-in, pembagian modal, dan rotasi dengan harga historis."
+                          : view === "Intelligence"
+                            ? "Telusuri risiko dan pemulihan, susun ranking, lalu uji asumsi modalmu."
+                            : view === "Rencana rotasi"
+                              ? "Susun kandidat dari logika tim, lalu bandingkan hasil dan waktu modal tertahan."
+                              : "Sumber, asumsi, dan batas penelitian yang bisa kamu telusuri."}
               </p>
             </div>
             {view !== "Rencana rotasi" && (
@@ -324,6 +337,7 @@ export default function Dashboard() {
               {message}
             </div>
           )}
+          {view === "Timeline" && <DividendTimeline />}
           {data && (view === "Peluang" || view === "Watchlist") && (
             <>
               {view === "Peluang" && (
