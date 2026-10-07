@@ -13,9 +13,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Database,
-  FlaskConical,
   Layers3,
-  LayoutGrid,
   Route,
   Search,
   SlidersHorizontal,
@@ -45,14 +43,9 @@ type View =
   | "Watchlist"
   | "Metodologi";
 const nav = [
-  { name: "Peluang", icon: LayoutGrid },
-  { name: "Kalender", icon: CalendarDays },
-  { name: "Timeline", icon: ScanLine },
-  { name: "Simulator", icon: Route },
-  { name: "Intelligence", icon: ChartNoAxesCombined },
-  { name: "Rencana rotasi", icon: Layers3 },
-  { name: "Watchlist", icon: Bookmark },
-  { name: "Metodologi", icon: FlaskConical },
+  // Fitur lain tetap tersedia di kode, tetapi tidak mengalihkan alur demo.
+  { name: "Timeline", label: "Analisis emiten", icon: ScanLine },
+  { name: "Simulator", label: "Simulator", icon: Route },
 ] as const;
 export const defaults: Rules = {
   name: "Logika dividen saya",
@@ -93,7 +86,7 @@ export function Empty({
   );
 }
 export default function Dashboard() {
-  const [view, setView] = useState<View>("Peluang"),
+  const [view, setView] = useState<View>("Timeline"),
     [plannerSymbols, setPlannerSymbols] = useState<string[] | undefined>(),
     [simulationEvent, setSimulationEvent] = useState<string | undefined>(),
     [evidenceSymbol, setEvidenceSymbol] = useState("BBCA"),
@@ -178,11 +171,11 @@ export default function Dashboard() {
         </Link>
         <p className="nav-label">MENU</p>
         <nav aria-label="Navigasi utama">
-          {nav.map(({ name, icon: Icon }) => (
+          {nav.map(({ name, label, icon: Icon }) => (
             <button
               key={name}
-              aria-label={name}
-              title={name}
+              aria-label={label}
+              title={label}
               onClick={() => {
                 if (name === "Simulator") setSimulationEvent(undefined);
                 changeView(name);
@@ -191,10 +184,7 @@ export default function Dashboard() {
               aria-current={view === name ? "page" : undefined}
             >
               <Icon size={19} />
-              <span>{name}</span>
-              {name === "Watchlist" && !!watches.data?.symbols.length && (
-                <span className="count">{watches.data.symbols.length}</span>
-              )}
+              <span>{label}</span>
             </button>
           ))}
         </nav>
@@ -212,13 +202,13 @@ export default function Dashboard() {
       <main id="main" className="main">
         <header className="topbar">
           <div>
-            <span>{view}</span>
+            <span>{view === "Timeline" ? "Analisis emiten" : view}</span>
           </div>
           <div>
             <span className="badge">
               <span className="small-dot" />
               {view === "Timeline"
-                ? "Histori 2021–2025 + 2026"
+                ? "Data Sectors · analisis emiten"
                 : `Riset historis · ${view === "Intelligence" ? "2022–2025" : "2025"}`}
             </span>
           </div>
@@ -226,18 +216,26 @@ export default function Dashboard() {
         <div className="page-content">
           <div className="page-heading">
             <div>
-              <h1>{view}</h1>
+              <h1>
+                {view === "Timeline" ? (
+                  <>
+                    Harga saham <span>di sekitar dividen.</span>
+                  </>
+                ) : (
+                  view
+                )}
+              </h1>
               <p className="subtitle">
                 {view === "Peluang"
                   ? "Saring emiten dari yield dan riwayat dividen."
                   : view === "Kalender"
                     ? "Jadwal dividen historis per emiten."
                     : view === "Timeline"
-                      ? "Bandingkan harga harian di sekitar dividen antar-tahun."
+                      ? "Bandingkan peristiwa sebelumnya, lihat periode berjalan, lalu uji asumsi di simulator."
                       : view === "Watchlist"
                         ? "Emiten yang kamu simpan untuk dipantau."
                         : view === "Simulator"
-                          ? "Pilih event sendiri, lalu bandingkan tiga strategi dengan harga historis."
+                          ? "Replay historis 2025 dengan modal dan aturan yang bisa kamu ubah."
                           : view === "Intelligence"
                             ? "Statistik risiko dan pemulihan historis, ranking, serta skenario asumsi."
                             : view === "Rencana rotasi"
@@ -245,17 +243,6 @@ export default function Dashboard() {
                               : "Sumber data, cara menghitung, dan batas model."}
               </p>
             </div>
-            {view !== "Rencana rotasi" && (
-              <button
-                className="btn primary"
-                onClick={() => {
-                  setPlannerSymbols(undefined);
-                  changeView("Rencana rotasi");
-                }}
-              >
-                Rencanakan rotasi <ArrowUpRight size={17} />
-              </button>
-            )}
           </div>
           {catalog.isPending && (
             <div className="loading glass">Memuat workspace Sectors…</div>
@@ -566,6 +553,16 @@ export default function Dashboard() {
           {data && view === "Metodologi" && <Methodology catalog={data} />}
           <footer className="footer">
             <span>Dividen Lab</span>
+            <button
+              className="text-button"
+              onClick={() =>
+                changeView(view === "Metodologi" ? "Timeline" : "Metodologi")
+              }
+            >
+              {view === "Metodologi"
+                ? "Kembali ke analisis"
+                : "Sumber & metodologi"}
+            </button>
             <span>
               Seluruh hasil di luar biaya transaksi, pajak, dan slippage.
             </span>

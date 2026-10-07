@@ -71,3 +71,9 @@ U-01 menambah bukti C-04/C-07/C-08: hasil manual menampilkan snapshot aturan/eve
 ## Timeline T-03–T-05
 
 C-02/C-06/C-08: menu Timeline dengan overlay lima periode satu emiten, fokus hover/klik/keyboard, hargaRp/perubahan%, fase dividen per tahun dan lapisan aktual2026dengan placeholder prediksi. API memisahkan katalog histori lengkap dari pratinjau riset LPPF.46tesbackend,build/lint/typecheck,API dan browser diperiksa; lihat [TIMELINE_IMPLEMENTATION.md](./TIMELINE_IMPLEMENTATION.md). Dataset lengkap masih gap ISS-041; engine prediksi ditunda oleh PM pada ISS-042. Bukan klaim coverage PRD final atau UAT lulus.
+
+## Fokus demo D-01
+
+Instruksi PM 7 Oktober memprioritaskan satu alur: analisis emiten (histori dan periode berjalan) lalu simulator. D-01 mengubah pintu masuk dan navigasi demo, bukan menghapus C-01/C-03/C-05 atau implementasinya. Pratinjau LPPF tetap berlabel belum terverifikasi (ISS-041); simulator satu-emiten belum terhubung dan masih perlu pekerjaan terpisah (ISS-046). Sumber/metodologi tersedia sebagai tautan sekunder.
+
+D-02 menggabungkan arah demo dari PM (D-01, perubahan lokal pada branch UI) dengan implementasi Sammy pada `feat/chart-sammy` (UX-01–UX-04: input modal, pilihan strategi, klik chart, dan copy/istilah). `dashboard.tsx` diselaraskan manual agar pemangkasan copy/sidebar Sammy tidak mengembalikan delapan menu atau landing Peluang. Ini sinkronisasi kontribusi, bukan bukti bahwa simulator satu-emiten, data lengkap, atau forecast sudah selesai.

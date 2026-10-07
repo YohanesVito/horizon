@@ -163,3 +163,12 @@ Task development berstatus `DONE` setelah hasil implementasinya ada dan pemeriks
 | T-05 | Pemeriksaan kalkulasi/gate, build/lint, browser desktop/mobile dan handoff | C-02/C-08 | Bukti yang dijalankan, isu/bypass tercatat; tidak mengklaim UAT final |
 | T-06 | Label fase langsung pada grafik dan warna area cum→ex menurut arah perubahan close | C-02/C-06 | Label tidak bertumpuk; negatif merah, positif hijau, nol netral; mengikuti periode fokus dan modeRp/% |
 | T-07 | Simpan implementasi chart pada branch `feat/chart` sesuai permintaan PM | C-02/C-06/C-08 | Commit lokal berisi kode, snapshot yang diperlukan, dokumentasi dan bukti pemeriksaan; tidak memuat kredensial |
+
+### Fokus demo satu emiten — keputusan PM 7 Oktober
+
+Instruksi PM terbaru memprioritaskan chart histori, periode dividen berikutnya, lalu simulator satu dividend play. Fitur discovery, kalender pasar, intelligence, rotasi, dan watchlist tetap di kode tetapi tidak perlu muncul dalam navigasi demo. Ini keputusan presentasi/alur, bukan penghapusan requirement lama atau klaim kesiapan model prediksi.
+
+| Task | Scope | Requirement | Bukti selesai |
+|---|---|---|---|
+| D-01 | Navigasi demo dua area, landing analisis emiten, pratinjau LPPF langsung terbuka dengan caveat, metodologi sebagai tautan sekunder | Instruksi PM terbaru; C-02/C-08; S5-02 | Browser landing dan perpindahan area, lint/typecheck/build, tidak ada fitur lama dihapus |
+| D-02 | Sinkronkan branch UI dengan `feat/chart-sammy` sambil mempertahankan D-01; jelaskan asal kontribusi dan resolusi konflik | Instruksi PM terbaru; D-01; UX-01–UX-04 | HEAD mengikuti commit Sammy, alur D-01 tetap ada, ID issue unik, pemeriksaan integrasi lulus; tanpa commit/push baru |
