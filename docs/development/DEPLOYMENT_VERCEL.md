@@ -2,7 +2,7 @@
 
 ## Status handoff terbaru — 8 Oktober 2026
 
-PM akan melakukan deployment sendiri dan meminta merge branch integrasi ke main sekarang. Instruksi ini menggantikan gate Preview→merge dalam langkah lama di bawah. V-01 PARTIAL/HANDOFF; V-02 kini hanya merge/push main.
+PM akan melakukan deployment sendiri dan meminta merge branch integrasi ke main sekarang. Instruksi ini menggantikan gate Preview→merge dalam langkah lama di bawah. V-01 PARTIAL/HANDOFF; V-02 DONE pada scope merge/push main. Merge90e07c1 sudah terverifikasi di GitHub; pilih branch main untuk deployment berikutnya.
 
 - Kedua environment BACKEND_URL (Config) dan HORIZON_API_KEY (Secret) sudah terpasang pada Preview/Production setelah izin eksplisit PM, tanpa nilai tercetak atau masuk Git.
 - Deployment yang sudah dikirim sebelum interupsi selesai: `dpl_9n4FifdytrSNHRdS4JdFRpuwtryi`, source4588681, build READY, target aktual Production walau meminta Preview. Alias: https://horizon-nu-kohl.vercel.app. Belum diuji browser/API/database end-to-end.
