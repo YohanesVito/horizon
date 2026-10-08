@@ -1,0 +1,31 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "retrieved_at": "2026-10-08T16:16:03.102531+08:00",
+  "initialization": {
+    "protocolVersion": "2025-03-26",
+    "capabilities": {
+      "tools": {
+        "listChanged": true
+      }
+    },
+    "serverInfo": {
+      "name": "sectors-mcp",
+      "version": "1.0.0"
+    }
+  },
+  "method": "tools/call",
+  "tool": "fetch-daily-price",
+  "arguments": {
+    "symbol": "TLDN",
+    "start": "2026-10-01",
+    "end": "2026-10-07"
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[\n  {\n    \"symbol\": \"TLDN.JK\",\n    \"date\": \"2026-10-01\",\n    \"close\": 575,\n    \"open\": 590,\n    \"high\": 590,\n    \"low\": 570,\n    \"volume\": 687900,\n    \"market_cap\": 7444254865000\n  },\n  {\n    \"symbol\": \"TLDN.JK\",\n    \"date\": \"2026-10-02\",\n    \"close\": 595,\n    \"open\": 575,\n    \"high\": 595,\n    \"low\": 560,\n    \"volume\": 1677400,\n    \"market_cap\": 7703185469000\n  },\n  {\n    \"symbol\": \"TLDN.JK\",\n    \"date\": \"2026-10-05\",\n    \"close\": 595,\n    \"open\": 595,\n    \"high\": 610,\n    \"low\": 595,\n    \"volume\": 1337400,\n    \"market_cap\": 7703185469000\n  },\n  {\n    \"symbol\": \"TLDN.JK\",\n    \"date\": \"2026-10-06\",\n    \"close\": 600,\n    \"open\": 600,\n    \"high\": 605,\n    \"low\": 595,\n    \"volume\": 1674600,\n    \"market_cap\": 7767918120000\n  },\n  {\n    \"symbol\": \"TLDN.JK\",\n    \"date\": \"2026-10-07\",\n    \"close\": 600,\n    \"open\": 600,\n    \"high\": 605,\n    \"low\": 600,\n    \"volume\": 1054200,\n    \"market_cap\": 7767918120000\n  }\n]"
+      }
+    ]
+  }
+}

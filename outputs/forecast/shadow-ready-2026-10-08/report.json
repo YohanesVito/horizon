@@ -1,0 +1,74 @@
+{
+  "prepared_at": "2026-10-08T08:31:41.906976+00:00",
+  "ready": [
+    {
+      "symbol": "ASII",
+      "cum_date": "2026-10-12",
+      "ex_date": "2026-10-13",
+      "last_price_date": "2026-10-07",
+      "last_close": "4780",
+      "dps": "98.0",
+      "calendar_snapshot": "outputs/forecast/calendar-upcoming-2026-10-08.json",
+      "price_snapshot": "outputs/forecast/price-ASII-2026-10-08.json",
+      "notice_file": "outputs/forecast/ksei-ASII-2026-10.pdf",
+      "notice_url": "https://web.ksei.co.id/Announcement/Files/ASII_DIV_20261014_ID.pdf",
+      "notice_document_date": "2026-10-05"
+    },
+    {
+      "symbol": "TLDN",
+      "cum_date": "2026-10-12",
+      "ex_date": "2026-10-13",
+      "last_price_date": "2026-10-07",
+      "last_close": "600",
+      "dps": "20.0",
+      "calendar_snapshot": "outputs/forecast/calendar-upcoming-2026-10-08.json",
+      "price_snapshot": "outputs/forecast/price-TLDN-2026-10-08.json",
+      "notice_file": "outputs/forecast/ksei-TLDN-2026-10.pdf",
+      "notice_url": "https://web.ksei.co.id/Announcement/Files/TLDN_DIV_20261014_ID.pdf",
+      "notice_document_date": "2026-10-05"
+    },
+    {
+      "symbol": "AMRT",
+      "cum_date": "2026-10-13",
+      "ex_date": "2026-10-14",
+      "last_price_date": "2026-10-07",
+      "last_close": "1225",
+      "dps": "14.5",
+      "calendar_snapshot": "outputs/forecast/calendar-upcoming-2026-10-08.json",
+      "price_snapshot": "outputs/forecast/price-AMRT-2026-10-08.json",
+      "notice_file": "outputs/forecast/ksei-AMRT-2026-10.pdf",
+      "notice_url": "https://web.ksei.co.id/Announcement/Files/AMRT_DIV_20261015_ID.pdf",
+      "notice_document_date": "2026-10-06"
+    },
+    {
+      "symbol": "BSBK",
+      "cum_date": "2026-10-13",
+      "ex_date": "2026-10-14",
+      "last_price_date": "2026-10-07",
+      "last_close": "45",
+      "dps": "1.0",
+      "calendar_snapshot": "outputs/forecast/calendar-upcoming-2026-10-08.json",
+      "price_snapshot": "outputs/forecast/price-BSBK-2026-10-08.json",
+      "notice_file": "outputs/forecast/ksei-BSBK-2026-10.pdf",
+      "notice_url": "https://web.ksei.co.id/Announcement/Files/BSBK_DIV_20261015_ID.pdf",
+      "notice_document_date": "2026-10-06"
+    }
+  ],
+  "skipped": [
+    {
+      "symbol": "AALI",
+      "cum_date": "2026-10-08",
+      "reason": "cum-date tidak lagi di masa depan WIB"
+    },
+    {
+      "symbol": "GEMS",
+      "cum_date": "2026-10-08",
+      "reason": "cum-date tidak lagi di masa depan WIB"
+    },
+    {
+      "symbol": "AUTO",
+      "cum_date": "2026-10-13",
+      "reason": "snapshot harga MCP belum tersedia"
+    }
+  ]
+}

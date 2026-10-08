@@ -1,0 +1,41 @@
+{
+  "status": "research_only",
+  "target": "ex_date_close_from_pre_cum_last_close",
+  "forecast_count": 4,
+  "observed": [],
+  "pending": [
+    {
+      "symbol": "ASII",
+      "ex_date": "2026-10-13",
+      "scorable_after": "2026-10-13",
+      "state": "awaiting_ex_date"
+    },
+    {
+      "symbol": "TLDN",
+      "ex_date": "2026-10-13",
+      "scorable_after": "2026-10-13",
+      "state": "awaiting_ex_date"
+    },
+    {
+      "symbol": "AMRT",
+      "ex_date": "2026-10-14",
+      "scorable_after": "2026-10-14",
+      "state": "awaiting_ex_date"
+    },
+    {
+      "symbol": "BSBK",
+      "ex_date": "2026-10-14",
+      "scorable_after": "2026-10-14",
+      "state": "awaiting_ex_date"
+    }
+  ],
+  "summary": null,
+  "performance_claim_allowed": false,
+  "limitations": [
+    "Sampel terpilih; bukan bukti akurasi umum.",
+    "Basis harga Sectors, revisi notice dan sumber close independen belum diaudit.",
+    "Metrik deskriptif tidak sama dengan probabilitas atau hasil trading neto."
+  ],
+  "checked_at": "2026-10-08T08:49:51.715292+00:00",
+  "collection_errors": []
+}

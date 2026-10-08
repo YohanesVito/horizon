@@ -472,6 +472,77 @@
   color: var(--muted);
   max-width: 580px;
 }
+.ex-date-scenario {
+  padding: clamp(20px, 3vw, 36px);
+  margin-top: 24px;
+}
+.ex-date-scenario-heading,
+.ex-date-scenario-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.ex-date-scenario-heading h3 {
+  margin: 6px 0 12px;
+}
+.ex-date-scenario > .muted {
+  max-width: 720px;
+  line-height: 1.6;
+}
+.ex-date-scenario-inputs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 22px 0;
+}
+.ex-date-scenario-inputs label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+}
+.ex-date-scenario-inputs input {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+.ex-date-scenario-results {
+  border-top: 1px solid var(--line);
+  margin-top: 22px;
+  padding-top: 20px;
+}
+.ex-date-scenario-results dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.ex-date-scenario-results dt,
+.ex-date-scenario-results > p {
+  font-size: 12px;
+  color: var(--muted);
+}
+.ex-date-scenario-results dd {
+  margin: 6px 0 0;
+  font-weight: 700;
+}
+.ex-date-scenario-results > p {
+  margin-top: 20px;
+  line-height: 1.6;
+}
+@media (max-width: 900px) {
+  .ex-date-scenario-inputs,
+  .ex-date-scenario-results dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 540px) {
+  .ex-date-scenario-inputs,
+  .ex-date-scenario-results dl { grid-template-columns: 1fr; }
+}
 .timeline-dashed-key {
   font-size: 10px;
   color: var(--muted);

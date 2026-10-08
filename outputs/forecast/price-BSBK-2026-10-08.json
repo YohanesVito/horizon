@@ -1,0 +1,31 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "retrieved_at": "2026-10-08T16:16:03.716800+08:00",
+  "initialization": {
+    "protocolVersion": "2025-03-26",
+    "capabilities": {
+      "tools": {
+        "listChanged": true
+      }
+    },
+    "serverInfo": {
+      "name": "sectors-mcp",
+      "version": "1.0.0"
+    }
+  },
+  "method": "tools/call",
+  "tool": "fetch-daily-price",
+  "arguments": {
+    "symbol": "BSBK",
+    "start": "2026-10-01",
+    "end": "2026-10-07"
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[\n  {\n    \"symbol\": \"BSBK.JK\",\n    \"date\": \"2026-10-01\",\n    \"close\": 39,\n    \"open\": 41,\n    \"high\": 41,\n    \"low\": 38,\n    \"volume\": 10983300,\n    \"market_cap\": 978583412625\n  },\n  {\n    \"symbol\": \"BSBK.JK\",\n    \"date\": \"2026-10-02\",\n    \"close\": 39,\n    \"open\": 39,\n    \"high\": 40,\n    \"low\": 38,\n    \"volume\": 10069400,\n    \"market_cap\": 978583412625\n  },\n  {\n    \"symbol\": \"BSBK.JK\",\n    \"date\": \"2026-10-05\",\n    \"close\": 40,\n    \"open\": 39,\n    \"high\": 42,\n    \"low\": 38,\n    \"volume\": 22001700,\n    \"market_cap\": 1003675295000\n  },\n  {\n    \"symbol\": \"BSBK.JK\",\n    \"date\": \"2026-10-06\",\n    \"close\": 44,\n    \"open\": 41,\n    \"high\": 45,\n    \"low\": 41,\n    \"volume\": 33566100,\n    \"market_cap\": 1104042824500\n  },\n  {\n    \"symbol\": \"BSBK.JK\",\n    \"date\": \"2026-10-07\",\n    \"close\": 45,\n    \"open\": 44,\n    \"high\": 46,\n    \"low\": 43,\n    \"volume\": 29667400,\n    \"market_cap\": 1129134706875\n  }\n]"
+      }
+    ]
+  }
+}
