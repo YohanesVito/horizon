@@ -2355,3 +2355,21 @@ body {
     gap: 10px;
   }
 }
+
+.editorial-app .observation-final {
+  padding: 18px 20px;
+  margin: 20px 0;
+  border-left: 3px solid #ff4713;
+  background: #f3f5f2;
+}
+.editorial-app .observation-final > span { display: block; color: #69747c; font-size: 13px; }
+.editorial-app .observation-final > strong { display: block; font-size: 25px; margin: 8px 0; }
+.editorial-app .observation-final p { margin: 6px 0; font-size: 13px; }
+.editorial-app .observation-legend { color: #69747c; }
+
+.editorial-app .event-insight-accordion { border-top: 1px solid #d5d9d9; margin-top: 24px; }
+.editorial-app .event-insight-toggle { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; background: transparent; border: 0; color: #131e29; font: inherit; font-weight: 600; cursor: pointer; text-align: left; }
+.editorial-app .event-insight-toggle[aria-expanded="true"] > svg { transform: rotate(180deg); }
+.editorial-app .event-insight-toggle:focus-visible { outline: 2px solid #ff4713; outline-offset: 4px; }
+.editorial-app .event-insight-content { padding: 0 0 18px; }
+.editorial-app .event-insight-content .insight-findings { margin-top: 0; }

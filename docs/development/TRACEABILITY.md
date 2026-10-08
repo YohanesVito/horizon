@@ -1,5 +1,13 @@
 # Pemetaan kebutuhan ke pekerjaan development
 
+## SIM-OBS-03 — keputusan terbaru multi-event independen
+
+Instruksi PM terbaru (C-04/C-05/C-08) menggantikan batas satu event: sampai10event dapat dianalisis, setiap event all-in modal awal penuh secara independen. Bukan portfolio gabungan; equal/rotation tetap tidak aktif. AI ditampilkan per emiten/event. History UI dipertahankan dan cleanup lokal dilakukan setelah E2E terbaru.
+
+## SIM-OBS-02 — scope final satu event all-in, 8 Oktober 2026
+
+Instruksi terbaru PM (C-04/C-05/C-08) menggantikan asumsi beberapa event: satu event saja, all-in modal penuh, mean lima close sebelum cum, pengamatan sampai payment+2, tanpa jual otomatis. Equal/rotation dikeluarkan dari alur/API aktif; equal disimpan sebagai komentar. History UI dan legacy GET dipertahankan. History replay lokal saja diotorisasi untuk dibersihkan; cloud dan dataset/settings tidak termasuk.
+
 ## SIM-OBS-01 — 8 Oktober 2026
 
 Instruksi langsung PM (C-04/C-05/C-08): entry dibedakan tanggal/harga/jumlah lot, hapus status jual/holding dan timeline keluar/settlement dari kartu, tampilkan chart OHLC cum-date sampai payment + dua hari bursa serta rentang nilai posisi termasuk dividen. AI menjelaskan hasil dengan horizon yang sama. Arahan lanjutan PM menghapus input timing simulator: entry memakai mean lima close sebelum cum, booking sintetis cum dan exit payment+2; NAV/rotasi otomatis mengikuti aturan ini. Planner custom dan run lama tetap kompatibel. Data parsial dan run lama tanpa observation harus diberi konteks.

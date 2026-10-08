@@ -9,7 +9,6 @@ from .domain import SimulationRequest, WatchlistRequest, ScreenRules, FinancialL
 from . import store
 from .simulator import compare
 from .intelligence import IntelligenceDataset, rank, scenario
-from .planner import plan_routes, replay_routes
 from .timeline import TimelineDataset
 from .discovery import top_dividend_yield
 from .ex_date_forecast import retrospective_diagnostic
@@ -34,7 +33,9 @@ async def lifespan(app):
             for insight in store.list_records('simulation-insight', limit=10000):
                 if insight.get('status') == 'processing' and (store.engine.dialect.name == 'postgresql' or time.time() - insight.get('started_at', 0) > 100):
                     insight.update(status='unavailable', summary='Proses analisis terhenti. Percobaan AI untuk simulasi ini sudah digunakan.')
-                    store.save(f"ai-run:{insight['provenance']['run_id']}", 'simulation-insight', insight)
+                    provenance = insight['provenance']
+                    key = f"ai-run:{provenance['run_id']}" + (f":ticker:{provenance['symbol']}" if provenance.get('symbol') else '')
+                    store.save(key, 'simulation-insight', insight)
             # The lease prevents a second cloud-backed process failing active jobs.
             for kind in ('run', 'rotation-run'):
                 for job in store.list_records(kind, limit=1000):
@@ -227,12 +228,19 @@ async def simulation_insights(job_id: str, body: InsightRequest):
     selected = next((option for option in options if option['allocation'] == body.allocation), None)
     if selected is None:
         raise HTTPException(422, 'Strategi tidak tersedia pada hasil simulasi ini.')
-    return await generate_insights(run, selected, timeline_dataset, background=True)
+    if selected.get('analysis_mode') == 'independent_events' and body.symbol is None:
+        raise HTTPException(422, 'Pilih emiten untuk analisis AI terpisah.')
+    if body.symbol is not None and body.symbol not in {t['symbol'] for t in run['result']['primary']['trades']}:
+        raise HTTPException(422, 'Emiten tidak tersedia pada hasil analisis ini.')
+    return await generate_insights(run, selected, timeline_dataset, background=True, symbol=body.symbol)
 
 
 @app.get('/api/simulations/{job_id}/insights')
-def simulation_insight_status(job_id: str):
-    saved = insight_status(result(job_id))
+def simulation_insight_status(job_id: str, symbol: str | None = None):
+    run = result(job_id)
+    if symbol is not None and symbol not in {t['symbol'] for t in run.get('result', {}).get('primary', {}).get('trades', [])}:
+        raise HTTPException(422, 'Emiten tidak tersedia pada hasil analisis ini.')
+    saved = insight_status(run, symbol=symbol)
     if saved is None:
         raise HTTPException(404, 'Analisis AI belum dimulai untuk simulasi ini.')
     return saved
@@ -240,13 +248,7 @@ def simulation_insight_status(job_id: str):
 
 @app.post('/api/rotation-plans', status_code=201)
 def create_rotation_plan(body: RotationRequest):
-    try:
-        plan = plan_routes(dataset, body)
-    except ValueError as error:
-        raise HTTPException(422, str(error))
-    plan.update(id=str(uuid4()), created_at=datetime.now(timezone.utc).isoformat())
-    store.save(plan['id'], 'rotation-plan', plan)
-    return plan
+    raise HTTPException(410, 'Rotasi modal tidak tersedia; gunakan analisis peristiwa independen.')
 
 
 @app.get('/api/rotation-plans')
@@ -262,33 +264,9 @@ def rotation_plan(plan_id: str):
     return plan
 
 
-def run_rotation_job(job_id, plan):
-    job = store.get(job_id)
-    job.update(status='running')
-    store.save(job_id, 'rotation-run', job)
-    try:
-        job.update(status='completed', result=replay_routes(dataset, plan), finished_at=datetime.now(timezone.utc).isoformat())
-    except ValueError as error:
-        job.update(status='failed', error=str(error))
-    except Exception:
-        job.update(status='failed', error='Replay rute gagal diproses. Periksa input dan data lalu coba lagi.')
-        import logging
-        logging.getLogger(__name__).exception('Rotation replay failed')
-    store.save(job_id, 'rotation-run', job)
-
-
 @app.post('/api/rotation-plans/{plan_id}/replay', status_code=202)
 def start_rotation_replay(plan_id: str):
-    plan = rotation_plan(plan_id)
-    if plan['dataset_version'] != dataset.version:
-        raise HTTPException(409, 'Dataset berubah; buat ulang rencana.')
-    if not plan['routes']:
-        raise HTTPException(422, 'Tidak ada rute yang lolos untuk diuji.')
-    job = {'id': str(uuid4()), 'plan_id': plan_id, 'status': 'queued', 'input': plan['input'],
-           'dataset_version': plan['dataset_version'], 'created_at': datetime.now(timezone.utc).isoformat()}
-    store.save(job['id'], 'rotation-run', job)
-    pool.submit(run_rotation_job, job['id'], plan)
-    return job
+    raise HTTPException(410, 'Replay rotasi tidak tersedia; gunakan analisis peristiwa independen.')
 
 
 @app.get('/api/rotation-runs')

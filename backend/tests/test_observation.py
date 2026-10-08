@@ -77,10 +77,11 @@ def test_automatic_mean_excludes_cum_and_ignores_old_timing_defaults():
                      event_ids=[event['id']], compare=False))
     trade = result['primary']['trades'][0]
     assert trade['shares'] == 100
-    assert trade['exit_date'] == days[10]
-    assert trade['settlement_date'] == days[12]
-    assert result['primary']['pending_sales'] == 12000
-    assert result['primary']['gross_pnl'] == 2780
+    assert trade['exit_date'] is None
+    assert trade['observation']['end_date'] == days[10]
+    assert trade['settlement_date'] is None
+    assert result['primary']['pending_sales'] is None
+    assert trade['end_valuation']['pnl'] == 2780
 
 
 def test_automatic_partial_window_stays_open_and_missing_reference_fails():
@@ -92,26 +93,9 @@ def test_automatic_partial_window_stays_open_and_missing_reference_fails():
     req = SimulationRequest(timing_mode='payment_plus_2', capital=10220, event_ids=[event['id']])
     result = simulate(dataset, req)
     assert result['end_date'] == days[-1]
-    assert result['trades'][0]['status'] == 'holding'
+    assert result['trades'][0]['status'] == 'partial'
     assert result['trades'][0]['exit_date'] is None
     assert not result['trades'][0]['observation']['complete']
     del dataset.prices['TEST'][days[0]]
     with pytest.raises(ValueError, match='Tidak ada peristiwa'):
         simulate(dataset, req)
-
-
-def test_automatic_rotation_cannot_reuse_unsettled_sale():
-    from backend.domain import SimulationRequest
-    from backend.simulator import simulate
-    dataset, first, days = automatic_data()
-    second = {**first, 'id': 'NEXT:auto', 'symbol': 'NEXT', 'cum_date': days[11],
-              'ex_date': days[12], 'payment_date': days[12]}
-    dataset.events[second['id']] = second
-    dataset.prices['NEXT'] = {d: {'open': 120, 'high': 125, 'low': 115, 'close': 120, 'volume': 1000} for d in days}
-    result = simulate(dataset, SimulationRequest(timing_mode='payment_plus_2', capital=10220,
-                      event_ids=[first['id'], second['id']], allocation='rotation'))
-    assert result['trades'][0]['exit_date'] == days[10]
-    assert result['trades'][0]['settlement_date'] == days[12]
-    assert result['trades'][1]['status'] == 'skipped'
-    assert result['ending_cash'] == 13000
-    assert result['gross_pnl'] == 2780

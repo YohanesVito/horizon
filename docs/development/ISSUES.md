@@ -1,5 +1,13 @@
 # Log bug TODO dan blocker
 
+## SIM-OBS-03 — perubahan batas event
+
+Batas satu event SIM-OBS-02 di bawah sudah digantikan persetujuan eksplisit PM untuk multi-event independen. Mode baru `independent_events` menerima hingga10event, masing-masing fullcapital tanpa gating kas event lain; equal/rotation tetap ditolak. Legacy history tidak dimigrasikan. AI ticker berbeda memakai call paralel dan cache/retry/status terpisah; fresh independent request tanpa symbol ditolak untuk menghindari call gabungan. E2E provider mock membuktikan BBCA sukses tetap terlihat ketika ADRO gagal, retry ADRO saja, dan reload cache. Deployment/live bukan bukti checkout.
+
+## SIM-OBS-02 — batas kompatibilitas, 8 Oktober 2026
+
+**LEGACY-STRATEGY / SUPERSEDED oleh SIM-OBS-03:** pada scope satu event sebelumnya, request multi-event/equal/rotation ditolak 422; POST planner/replay rotasi 410. JSON history lama tetap dibaca tanpa validasi ulang ke request baru. Run baru memakai `single_event` dan tidak punya transaksi jual otomatis atau aggregate NAV. Belum ada deployment; produk live tidak otomatis mengikuti checkout.
+
 ## Cakupan analisis posisi SIM-OBS-01 — 8 Oktober 2026
 
 **SIM-OBS-01-DATA / OPEN:** snapshot rotasi berakhir 9 Januari 2026, sedangkan payment ADRO Desember 2025 jatuh 15 Januari 2026. Dua sesi setelah payment belum dapat ditentukan dari kalender tersedia. Payload memberi `end_date: null`, rentang tersedia dan gap; ekstrem hanya observasi parsial, bukan rentang lengkap. Run historis tersimpan sebelum fitur tidak mempunyai `trade.observation`; UI/AI harus menampilkan belum tersedia, tanpa mengisi ulang memakai snapshot terbaru. Pengambilan data baru/deployment bukan scope perubahan kartu ini.

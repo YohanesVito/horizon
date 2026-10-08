@@ -30,7 +30,6 @@ import Chart, { lineOption, Sparkline } from "./chart";
 import CompanyDialog from "./detail";
 import Simulator from "./simulator";
 import Intelligence from "./intelligence";
-import RotationPlanner from "./rotation-planner";
 const DividendTimeline = dynamic(() => import("./dividend-timeline"));
 type View =
   | "Peluang"
@@ -38,7 +37,6 @@ type View =
   | "Timeline"
   | "Simulator"
   | "Intelligence"
-  | "Rencana rotasi"
   | "Watchlist"
   | "Metodologi";
 const nav = [
@@ -86,7 +84,6 @@ export function Empty({
 }
 export default function Dashboard() {
   const [view, setView] = useState<View>("Timeline"),
-    [plannerSymbols, setPlannerSymbols] = useState<string[] | undefined>(),
     [simulationEvent, setSimulationEvent] = useState<string | undefined>(),
     [evidenceSymbol, setEvidenceSymbol] = useState("BBCA"),
     [detail, setDetail] = useState<string | null>(null),
@@ -236,10 +233,7 @@ export default function Dashboard() {
                   ? "Bandingkan harga sebelum dan sesudah ex-date berdasarkan riwayat peristiwa dividen. Gunakan sebagai konteks untuk menilai skenario Anda."
                   : "Pilih modal dan peristiwa dividen. Lihat hasil historis sampai dua hari bursa setelah payment."}
               </p>
-              <a
-                href="#workspace-content"
-                className="hero-scroll-btn"
-              >
+              <a href="#workspace-content" className="hero-scroll-btn">
                 {view === "Timeline" ? "Jelajahi data" : "Mulai simulasi"}
                 <ArrowDown size={18} strokeWidth={2} aria-hidden="true" />
               </a>
@@ -524,16 +518,7 @@ export default function Dashboard() {
                   )}
                   <div className="table-footer">
                     <span>{companies.length} emiten ditampilkan</span>
-                    <button
-                      className="text-button"
-                      disabled={!companies.length}
-                      onClick={() => {
-                        setPlannerSymbols(companies.map((c) => c.symbol));
-                        changeView("Rencana rotasi");
-                      }}
-                    >
-                      Gunakan emiten ini untuk rencana →
-                    </button>
+
                     <span>
                       Yield historis dari Sectors · bukan proyeksi return
                     </span>
@@ -556,16 +541,7 @@ export default function Dashboard() {
               />
             )}
             {data && view === "Intelligence" && (
-              <Intelligence
-                initialSymbol={evidenceSymbol}
-                onPlan={() => {
-                  setPlannerSymbols(undefined);
-                  changeView("Rencana rotasi");
-                }}
-              />
-            )}
-            {data && view === "Rencana rotasi" && (
-              <RotationPlanner catalog={data} initialSymbols={plannerSymbols} />
+              <Intelligence initialSymbol={evidenceSymbol} />
             )}
             {data && view === "Metodologi" && <Methodology catalog={data} />}
           </div>

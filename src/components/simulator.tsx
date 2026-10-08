@@ -1,15 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import {
-  ArrowUpRight,
-  Check,
-  ChevronDown,
-  Clock3,
-  Copy,
-  Play,
-  Route,
-} from "lucide-react";
+import { Check, ChevronDown, Clock3, Copy, Play, Route } from "lucide-react";
 import { api, dt, money, pct, tradingDayText } from "@/lib/api";
 import type {
   Allocation,
@@ -66,14 +58,8 @@ export default function Simulator({
     timing_mode: "payment_plus_2",
     event_ids: initialEvent
       ? [initialEvent.id]
-      : events
-          .filter((e) =>
-            ["BBCA:2025-03-21", "BMRI:2025-04-14", "LPPF:2025-04-22"].includes(
-              e.id,
-            ),
-          )
-          .map((e) => e.id),
-    allocation: "rotation",
+      : events.filter((e) => e.id === "BBCA:2025-03-21").map((e) => e.id),
+    allocation: "single",
     entry_sessions_before_cum: 5,
     exit_rule: "price_bep",
     max_holding_sessions: 20,
@@ -83,10 +69,10 @@ export default function Simulator({
     start_date: initialEvent
       ? (catalog.meta.replay_start ?? "2025-01-01")
       : "2025-03-01",
-    compare: true,
+    compare: false,
   });
   const [jobId, setJobId] = useState<string | null>(null),
-    [chosen, setChosen] = useState<Allocation>("rotation");
+    [chosen, setChosen] = useState<Allocation>("single");
   const [copiedFrom, setCopiedFrom] = useState<string | null>(null);
   const [capitalResetKey, setCapitalResetKey] = useState(0);
   const [showAllHistory, setShowAllHistory] = useState(false);
@@ -146,24 +132,12 @@ export default function Simulator({
     key: K,
     value: SimulationDraft[K],
   ) => setInput({ ...input, [key]: value });
-  const chooseAllocation = (allocation: Allocation) => {
-    setInput((current) => ({
-      ...current,
-      allocation,
-      event_ids:
-        allocation === "single"
-          ? current.event_ids.slice(0, 1)
-          : current.event_ids,
-    }));
-  };
   const toggle = (id: string) =>
     set(
       "event_ids",
       input.event_ids.includes(id)
         ? input.event_ids.filter((e) => e !== id)
-        : input.allocation === "single"
-          ? [id]
-          : [...input.event_ids, id],
+        : [...input.event_ids, id],
     );
   return (
     <div className="simulator">
@@ -198,10 +172,9 @@ export default function Simulator({
               const form = new FormData(e.currentTarget);
               const next = {
                 ...input,
-                event_ids:
-                  input.allocation === "single"
-                    ? input.event_ids.slice(0, 1)
-                    : [...input.event_ids],
+                event_ids: [...input.event_ids],
+                allocation: "single" as const,
+                compare: false,
                 timing_mode: "payment_plus_2" as const,
                 capital: String(form.get("capital")),
               };
@@ -209,8 +182,8 @@ export default function Simulator({
               submit.mutate({
                 capital: Number(next.capital),
                 event_ids: next.event_ids,
-                allocation: next.allocation,
-                compare: next.compare,
+                allocation: "single",
+                compare: false,
                 timing_mode: "payment_plus_2",
               });
             }}
@@ -245,65 +218,18 @@ export default function Simulator({
               <div className="sim-step-heading">
                 <span className="sim-step-number">02</span>
                 <div>
-                  <h3>Pilih strategi alokasi</h3>
-                  <p>Tentukan cara modal bergerak di antara event.</p>
-                </div>
-              </div>
-              <fieldset className="strategy-picker">
-                <legend>Strategi utama</legend>
-                <div className="strategy-cards">
-                  {(
-                    [
-                      [
-                        "single",
-                        "Seluruh modal pada event dengan cum date pertama.",
-                      ],
-                      ["equal", "Porsi modal tetap untuk setiap event."],
-                      [
-                        "rotation",
-                        "Kas yang tersedia dipakai untuk event berikutnya.",
-                      ],
-                    ] as const
-                  ).map(([mode, explanation]) => (
-                    <label
-                      className={`strategy-card ${input.allocation === mode ? "selected" : ""}`}
-                      key={mode}
-                    >
-                      <span className="strategy-choice">
-                        <input
-                          type="radio"
-                          name="allocation"
-                          value={mode}
-                          checked={input.allocation === mode}
-                          onChange={() => chooseAllocation(mode)}
-                        />
-                        <strong>{labels[mode]}</strong>
-                      </span>
-                      <span>{explanation}</span>
-                    </label>
-                  ))}
-                </div>
-              </fieldset>
-            </div>
-            <div className="sim-step">
-              <div className="sim-step-heading">
-                <span className="sim-step-number">03</span>
-                <div>
                   <h3>Pilih peristiwa</h3>
                   <p>
-                    {input.allocation === "single"
-                      ? "Strategi all-in pertama hanya memakai satu event."
-                      : "Pilih event historis yang ingin diuji, maksimal 10."}
+                    Pilih sampai 10 peristiwa dividen. Setiap peristiwa
+                    menggunakan seluruh modal secara independen; nilainya tidak
+                    dijumlahkan.
                   </p>
                 </div>
               </div>
               <fieldset className="sim-event-fieldset">
                 <legend>
                   Event terpilih{" "}
-                  <span className="muted">
-                    · {input.event_ids.length}/
-                    {input.allocation === "single" ? 1 : 10}
-                  </span>
+                  <span className="muted">· {input.event_ids.length}/10</span>
                 </legend>
                 <div className="event-picker">
                   {events.map((e) => (
@@ -313,10 +239,10 @@ export default function Simulator({
                     >
                       <input
                         type="checkbox"
+                        name="dividend-event"
                         checked={input.event_ids.includes(e.id)}
                         disabled={
                           !input.event_ids.includes(e.id) &&
-                          input.allocation !== "single" &&
                           input.event_ids.length >= 10
                         }
                         onChange={() => toggle(e.id)}
@@ -339,10 +265,10 @@ export default function Simulator({
               Harga masuk memakai rata-rata harga penutupan 5 hari bursa sebelum
               cum-date (tidak termasuk cum-date), sebagai harga referensi
               simulasi. Jumlah saham mengikuti lot 100 saham. Pengamatan sampai
-              2 hari bursa setelah payment, lalu penjualan simulasi pada harga
-              penutupan. Periode ditentukan otomatis dari peristiwa terpilih;
-              data yang belum lengkap ditandai parsial. Ini bukan transaksi
-              nyata atau strategi beli bertahap.
+              2 hari bursa setelah payment, tanpa transaksi keluar. Periode
+              ditentukan otomatis dari peristiwa terpilih; data yang belum
+              lengkap ditandai parsial. Ini bukan transaksi nyata atau strategi
+              beli bertahap.
             </p>
             <button
               className="btn primary full sim-submit"
@@ -399,7 +325,12 @@ export default function Simulator({
                   }}
                 >
                   <span>
-                    <strong>{labels[r.input.allocation]}</strong>
+                    <strong>
+                      {r.input.timing_mode === "payment_plus_2" &&
+                      !r.input.compare
+                        ? "All-in tiap peristiwa"
+                        : labels[r.input.allocation]}
+                    </strong>
                     <small>
                       {money(r.input.capital, true)} ·{" "}
                       {r.input.event_ids.length} event
@@ -459,7 +390,7 @@ export default function Simulator({
         <section className="results">
           <div className="sim-results-intro">
             <span className="sim-section-label">02 / HASIL REPLAY</span>
-            <h2>Apa yang terjadi dengan modal?</h2>
+            <h2>Bagaimana hasil tiap peristiwa?</h2>
             <p>
               {dt(result.primary.start_date, true)} –{" "}
               {dt(result.input.end_date, true)} · Historis, sebelum biaya dan
@@ -472,40 +403,6 @@ export default function Simulator({
               tersimpan saat replay dijalankan.
             </p>
           )}
-          <div className="sim-results-heading">
-            <span className="sim-section-label">PERBANDINGAN ALOKASI</span>
-            <p>Pilih strategi untuk melihat rinciannya.</p>
-          </div>
-          <div className="comparison-grid">
-            {result.alternatives.map((r) => (
-              <button
-                className={`glass comparison ${chosen === r.allocation ? "selected" : ""}`}
-                key={r.allocation}
-                onClick={() => setChosen(r.allocation)}
-                aria-pressed={chosen === r.allocation}
-              >
-                <div className="spread">
-                  <span>{labels[r.allocation]}</span>
-                  {chosen === r.allocation ? (
-                    <Check size={17} />
-                  ) : (
-                    <ArrowUpRight size={17} />
-                  )}
-                </div>
-                <strong className={r.gross_pnl >= 0 ? "positive" : "negative"}>
-                  {r.gross_pnl > 0 ? "+" : ""}
-                  {money(r.gross_pnl)}
-                </strong>
-                <small>{pct(r.return_pct)} return total</small>
-                <div className="comparison-footer">
-                  <span>Drawdown {pct(r.max_drawdown_pct)}</span>
-                  <span>
-                    {r.trades.filter((t) => t.shares > 0).length} posisi dalam simulasi
-                  </span>
-                </div>
-              </button>
-            ))}
-          </div>
           <ResultView
             replay={selected}
             alternatives={result.alternatives}
@@ -534,12 +431,11 @@ export default function Simulator({
                   onClick={() => {
                     setInput({
                       ...result.input,
+                      allocation: "single",
+                      compare: false,
                       capital: String(result.input.capital),
                       timing_mode: "payment_plus_2",
-                      event_ids:
-                        result.input.allocation === "single"
-                          ? result.input.event_ids.slice(0, 1)
-                          : [...result.input.event_ids],
+                      event_ids: [...result.input.event_ids],
                       start_date:
                         result.input.start_date ?? result.primary.start_date,
                     });
@@ -570,9 +466,11 @@ export default function Simulator({
                 <div>
                   <dt>Aturan keluar</dt>
                   <dd>
-                    {result.input.timing_mode === "payment_plus_2"
-                      ? "Close payment +2 hari bursa"
-                      : exitLabels[result.input.exit_rule]}
+                    {result.primary.analysis_mode === "independent_events"
+                      ? "Tanpa transaksi keluar; valuasi akhir pengamatan"
+                      : result.input.timing_mode === "payment_plus_2"
+                        ? "Close payment +2 hari bursa"
+                        : exitLabels[result.input.exit_rule]}
                   </dd>
                 </div>
                 <div>
@@ -585,14 +483,20 @@ export default function Simulator({
                 </div>
                 <div>
                   <dt>Strategi utama</dt>
-                  <dd>{labels[result.input.allocation]}</dd>
+                  <dd>
+                    {result.primary.analysis_mode === "independent_events"
+                      ? "All-in tiap peristiwa"
+                      : labels[result.input.allocation]}
+                  </dd>
                 </div>
                 <div>
                   <dt>Perbandingan alokasi</dt>
                   <dd>
-                    {result.input.compare
-                      ? "Tiga strategi"
-                      : "Strategi utama saja"}
+                    {result.primary.analysis_mode === "independent_events"
+                      ? "Modal penuh pada tiap peristiwa; hasil tidak dijumlahkan"
+                      : result.input.compare
+                        ? "Tiga strategi (hasil lama)"
+                        : "Strategi utama saja (hasil lama)"}
                   </dd>
                 </div>
               </dl>
@@ -648,7 +552,6 @@ export default function Simulator({
 }
 export function ResultView({
   replay: r,
-  alternatives,
   simulationId,
   showAssumptions = true,
   simulationAllocation,
@@ -659,69 +562,13 @@ export function ResultView({
   showAssumptions?: boolean;
   simulationAllocation?: Allocation;
 }) {
-  const dates = [
-    ...new Set(alternatives.flatMap((a) => a.curve.map((c) => c.date))),
-  ].sort();
-  const colors = ["#FF4713", "#66B2BF", "#D9AF59"];
   return (
     <>
-      <div className="glass pad result-chart">
-        <div className="section-head">
-          <div>
-            <span className="sim-section-label">LINTASAN MODAL</span>
-            <h3>Bagaimana nilainya bergerak?</h3>
-            <p className="small muted">
-              Nilai portofolio historis: kas, saham, dan piutang.
-            </p>
-          </div>
-          <div className="chart-legend">
-            {alternatives.map((a, i) => (
-              <span key={a.allocation}>
-                <i style={{ background: colors[i] }} />
-                {labels[a.allocation]}
-              </span>
-            ))}
-          </div>
-        </div>
-        <Chart
-          label="Perbandingan nilai portofolio tiga strategi historis"
-          height={380}
-          option={lineOption(
-            dates,
-            alternatives.map((a, i) => ({
-              name: labels[a.allocation],
-              color: colors[i],
-              values: dates.map(
-                (d) =>
-                  a.curve.filter((p) => p.date <= d).at(-1)?.nav ?? a.capital,
-              ),
-            })),
-          )}
-        />
-      </div>
-      <div className="result-metrics">
-        <div className="glass pad">
-          <small>Nilai akhir</small>
-          <strong>{money(r.ending_nav)}</strong>
-          <span>Termasuk saham dan piutang</span>
-        </div>
-        <div className="glass pad">
-          <small>Hak dividen</small>
-          <strong>{money(r.dividends)}</strong>
-          <span>Belum dibayar: {money(r.pending_dividends)}</span>
-        </div>
-        <div className="glass pad">
-          <small>Kas tersedia</small>
-          <strong>{money(r.ending_cash)}</strong>
-          <span>Piutang jual: {money(r.pending_sales)}</span>
-        </div>
-      </div>
-      {simulationId && (
-        <SimulationInsights
-          simulationId={simulationId}
-          trades={r.trades}
-          allocation={simulationAllocation ?? r.allocation}
-        />
+      {r.analysis_mode !== "independent_events" && (
+        <p className="notice">
+          Hasil arsip ini memakai aturan simulasi lama. Analisis baru memakai
+          modal penuh secara independen pada setiap peristiwa.
+        </p>
       )}
       <section className="glass pad result-route">
         <div className="section-head">
@@ -729,56 +576,72 @@ export function ResultView({
             <span className="sim-section-label">
               PERGERAKAN SEKITAR DIVIDEN
             </span>
-            <h3>
-              {labels[r.allocation]}: bagaimana jika posisi tetap dipegang?
-            </h3>
+            <h3>Bagaimana nilai posisi bergerak?</h3>
             <p className="small muted">
               Pengamatan historis dari cum-date sampai 2 hari bursa setelah
-              payment. Skenario posisi ini terpisah dari aturan keluar replay.
+              payment. Nilai posisi mencakup saham dan hak dividen; pengamatan
+              ini tidak mensimulasikan transaksi keluar.
             </p>
           </div>
         </div>
         <div className="route-list">
           {r.trades.map((t, i) => (
-            <PositionObservationCard key={t.event_id} trade={t} index={i} />
+            <PositionObservationCard
+              key={t.event_id}
+              trade={t}
+              index={i}
+              insight={
+                simulationId ? (
+                  <SimulationInsights
+                    simulationId={simulationId}
+                    allocation={simulationAllocation ?? r.allocation}
+                    trades={r.trades}
+                    analysisMode={r.analysis_mode}
+                    eventId={t.event_id}
+                  />
+                ) : undefined
+              }
+            />
           ))}
         </div>
       </section>
-      <details className="glass result-disclosure cash-flow-disclosure">
-        <summary>
-          <span className="disclosure-title">Rincian arus kas & dividen</span>
-          <small>{r.ledger.length} aktivitas</small>
-          <ChevronDown size={18} aria-hidden="true" />
-        </summary>
-        <div className="disclosure-content">
-          <div className="table-scroll">
-            <table>
-              <thead>
-                <tr>
-                  <th>Tanggal</th>
-                  <th>Aktivitas</th>
-                  <th>Emiten</th>
-                  <th>Jumlah</th>
-                  <th>Catatan</th>
-                </tr>
-              </thead>
-              <tbody>
-                {r.ledger.map((l, i) => (
-                  <tr key={i}>
-                    <td>{dt(l.date, true)}</td>
-                    <td>{l.kind}</td>
-                    <td>{l.symbol}</td>
-                    <td>{money(l.amount)}</td>
-                    <td className="ledger-detail">
-                      {tradingDayText(l.detail)}
-                    </td>
+      {r.analysis_mode !== "independent_events" && (
+        <details className="glass result-disclosure cash-flow-disclosure">
+          <summary>
+            <span className="disclosure-title">Rincian arus kas & dividen</span>
+            <small>{r.ledger.length} aktivitas</small>
+            <ChevronDown size={18} aria-hidden="true" />
+          </summary>
+          <div className="disclosure-content">
+            <div className="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Tanggal</th>
+                    <th>Aktivitas</th>
+                    <th>Emiten</th>
+                    <th>Jumlah</th>
+                    <th>Catatan</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {r.ledger.map((l, i) => (
+                    <tr key={i}>
+                      <td>{dt(l.date, true)}</td>
+                      <td>{l.kind}</td>
+                      <td>{l.symbol}</td>
+                      <td>{money(l.amount)}</td>
+                      <td className="ledger-detail">
+                        {tradingDayText(l.detail)}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
-      </details>
+        </details>
+      )}
       {showAssumptions && <ReplayAssumptions replay={r} />}
     </>
   );
@@ -798,8 +661,8 @@ function ReplayAssumptions({ replay: r }: { replay: Replay }) {
           ))}
         </ul>
         <p>
-          Angka kerugian historis bukan probabilitas trap. Strategi terbaik pada
-          replay ini belum tentu terbaik di masa depan.
+          Angka kerugian historis bukan peluang kerugian pada peristiwa
+          berikutnya. Hasil historis tidak menjamin hasil di masa depan.
         </p>
       </div>
     </details>
@@ -809,10 +672,29 @@ function ReplayAssumptions({ replay: r }: { replay: Replay }) {
 function PositionObservationCard({
   trade: t,
   index,
+  insight,
 }: {
   trade: Trade;
   index: number;
+  insight?: React.ReactNode;
 }) {
+  if (t.status === "unavailable")
+    return (
+      <div className="route-step observation-step">
+        <div className="route-index">{String(index + 1).padStart(2, "0")}</div>
+        <div className="route-body">
+          <h3>{t.symbol}</h3>
+          <p className="notice">
+            Analisis belum tersedia: {tradingDayText(t.reason)}
+          </p>
+          <p className="small muted">
+            Harga masuk dan hasil tidak dihitung karena data yang dibutuhkan
+            belum lengkap.
+          </p>
+          {insight}
+        </div>
+      </div>
+    );
   const averageEntry = t.entry_price_basis === "prior5_close_mean";
   const referenceDates = t.entry_reference_dates ?? [];
   const o = t.observation;
@@ -875,6 +757,26 @@ function PositionObservationCard({
             <strong>{money(o?.invested ?? t.entry_price * t.shares)}</strong>
           </div>
         </div>
+        {t.end_valuation && (
+          <div className="observation-final">
+            <span>
+              {o?.complete
+                ? "Nilai akhir pengamatan"
+                : "Nilai pada akhir data tersedia (parsial)"}{" "}
+              · {dt(t.end_valuation.date, true)}
+            </span>
+            <strong>{money(t.end_valuation.total_value)}</strong>
+            <p>
+              Saham {money(t.end_valuation.position_value)} + hak dividen{" "}
+              {money(t.end_valuation.dividend_entitled)} + sisa kas{" "}
+              {money(t.residual_cash)}.
+            </p>
+            <p className={t.end_valuation.pnl >= 0 ? "positive" : "negative"}>
+              Laba/rugi terhadap modal awal {money(t.end_valuation.pnl)} (
+              {pct(t.end_valuation.return_pct)})
+            </p>
+          </div>
+        )}
         {!o ? (
           <p className="notice">
             Analisis rentang harga belum tersedia untuk replay ini. Jalankan
@@ -977,6 +879,7 @@ function PositionObservationCard({
             </p>
           </>
         )}
+        {insight}
       </div>
     </div>
   );

@@ -150,3 +150,17 @@ def test_research_window_includes_payment_observation_beyond_actual_sale():
         'end_date': '2021-06-03', 'highest': {'date': '2021-05-25'},
         'lowest': {'date': '2021-04-16'}}
     assert ai_research._window(run, stats) == ('2021-03-17', '2021-06-17')
+
+
+def test_research_cache_separate_by_ticker(storage, monkeypatch):
+    from backend.insights import ticker_run
+    run, stats = inputs()
+    run['input']['event_ids'] = ['TEST:a', 'OTHR:b']
+    run['result']['primary']['trades'] = [{'event_id': 'TEST:a', 'symbol': 'TEST', 'shares': 100}, {'event_id': 'OTHR:b', 'symbol': 'OTHR', 'shares': 100}]
+    monkeypatch.setattr(ai_research, '_key', lambda: None)
+    for symbol in ['TEST', 'OTHR']:
+        scoped = ticker_run(run, symbol)
+        result = asyncio.run(ai_research.research_context(scoped, {'companies': []}))
+        assert result == store.get(f"ai-research:{run['id']}:ticker:{symbol}", kind='simulation-research')
+        assert [trade['symbol'] for trade in scoped['result']['primary']['trades']] == [symbol]
+    assert store.get(f"ai-research:{run['id']}", kind='simulation-research') is None
