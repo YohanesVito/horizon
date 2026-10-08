@@ -1,5 +1,9 @@
 # Progres development MVP
 
+## Sinkronisasi backend produksi — 8 Oktober 2026
+
+**DEP-04 IN_PROGRESS (C-01/C-02/C-06/C-08; BR-04/ISS-060).** Audit live menunjukkan frontend editorial terbaru tetapi `/api/dividend-candidates` 404 dan katalog timeline masih hanya menyediakan pratinjau LPPF. Snapshot Dalang 05:29 UTC mengonfirmasi image Horizon lama `sha256:4cec060...` masih healthy, PostgreSQL sehat, dan kelima layanan kurasi inactive/dead. Tes backend source terbaru 62/62 lulus (satu warning deprecation Starlette yang sudah dikenal). Rilis image baru, cutover, dan verifikasi URL Vercel belum dijalankan pada status ini.
+
 ## Handoff deployment dan merge main — arahan PM terbaru 8 Oktober 2026
 
 PM mengambil alih deployment Vercel dan meminta merge sekarang. **V-02 DONE dengan scope terbaru hanya merge/push main**; kewajiban Preview end-to-end sebelum merge pada rencana lama digantikan arahan ini. V-01 PARTIAL/HANDOFF, bukan DONE/UAT. Environment BACKEND_URL dan HORIZON_API_KEY berhasil dipasang pada Preview/Production setelah izin eksplisit PM; key bertipe Secret. Proses deployment yang telah dikirim sebelum interupsi ternyata selesai sebagai Production/READY (`dpl_9n4FifdytrSNHRdS4JdFRpuwtryi`), alias https://horizon-nu-kohl.vercel.app, source4588681. Belum diuji end-to-end dan bukan bukti API berfungsi. Integrasi Git otomatis ditolak approval review karena akses lintas layanan; tidak dijalankan. Tidak membuat deployment baru sesudah arahan handoff.

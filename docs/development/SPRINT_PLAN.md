@@ -191,6 +191,7 @@ Docker belum tersedia; instalasi dan deployment Horizon adalah pekerjaan lanjuta
 | DEP-01 | Instalasi Docker dan kemasan runtime/release tanpa kredensial dalam image | Instruksi deploy PM; S1-01/S5-02 | Docker berfungsi, build dari snapshot sumber terpilih, manifest dan konfigurasi tersimpan |
 | DEP-02 | FastAPI satu proses, Supabase, HTTPS provider dan proxy frontend dengan key server-only | C-03/C-04/C-08; S3-04 | Backend sehat, key tidak di browser, koneksi database dan alur API berjalan |
 | DEP-03 | Verifikasi deployment, simulasi, runbook upgrade/rollback, catatan batas | S5-02/S5-03 | Bukti aktual; deployment frontend publik dan UAT dibedakan |
+| DEP-04 | Sinkronkan rilis FastAPI produksi dengan frontend editorial setelah ISS-060; verifikasi kandidat, timeline parsial, panel risiko, serta integritas Supabase | Instruksi perbaikan PM 8 Oktober; C-01/C-02/C-06/C-08, BR-04/ISS-060 | Image baru lulus smoke; cutover dan rollback tercatat; URL Vercel menampilkan lima kandidat dan detailnya; layanan kurasi tetap tidak tersentuh |
 
 ### Review branch sebelum Vercel — permintaan PM 8 Oktober 2026
 
