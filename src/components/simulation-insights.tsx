@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Sparkles } from "lucide-react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { api, dt } from "@/lib/api";
 import type { Allocation, Trade } from "@/lib/types";
@@ -100,8 +100,13 @@ function InsightAccordion({
         aria-controls={id}
         onClick={() => setOpen(!open)}
       >
-        <span>Ringkasan AI · {trade.symbol}</span>
-        <ChevronDown size={18} aria-hidden="true" />
+        <span className="event-insight-label">
+          <span className="event-insight-icon" aria-hidden="true">
+            <Sparkles size={18} strokeWidth={2} />
+          </span>
+          Ringkasan AI · {trade.symbol}
+        </span>
+        <ChevronDown className="event-insight-chevron" size={18} aria-hidden="true" />
       </button>
       <div id={id} hidden={!open}>
         <InsightPanel

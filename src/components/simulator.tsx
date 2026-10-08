@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Check, ChevronDown, Clock3, Copy, Play, Route } from "lucide-react";
+import { ChevronDown, Clock3, Copy, FlaskConical, Route } from "lucide-react";
 import { api, dt, money, pct, tradingDayText } from "@/lib/api";
 import type {
   Allocation,
@@ -147,8 +147,8 @@ export default function Simulator({
           aria-labelledby="sim-form-title"
         >
           <div className="sim-panel-heading">
-            <span className="sim-section-label">01 / ATUR SKENARIO</span>
-            <h2 id="sim-form-title">Bangun skenario replay.</h2>
+            <span className="sim-section-label">SIMULASI HISTORIS</span>
+            <h2 id="sim-form-title">Bangun simulasi historis.</h2>
           </div>
           {initialEvent && (
             <p className="notice">
@@ -162,7 +162,7 @@ export default function Simulator({
           {copiedFrom && (
             <p className="notice" role="status">
               Draf disalin dari hasil {copiedFrom.slice(0, 8)}. Hasil asal tidak
-              berubah. Replay baru memakai harga masuk rata-rata 5 hari bursa
+              berubah. Simulasi baru memakai harga masuk rata-rata 5 hari bursa
               dan pengamatan payment +2 hari bursa.
             </p>
           )}
@@ -192,25 +192,27 @@ export default function Simulator({
               <div className="sim-step-heading">
                 <span className="sim-step-number">01</span>
                 <div>
-                  <h3>Tentukan modal awal</h3>
-                  <p>Berapa dana yang ingin kamu uji?</p>
+                  <h3>Modal awal</h3>
                 </div>
               </div>
               <div className="form-grid">
                 <label className="sim-capital-field">
-                  Modal awal (Rp)
-                  <MoneyInput
-                    inputRef={capitalField}
-                    resetKey={capitalResetKey}
-                    name="capital"
-                    required
-                    min="1"
-                    max="1000000000000"
-                    step="1"
-                    placeholder="Masukkan modal"
-                    value={input.capital}
-                    onValueChange={(value) => set("capital", value)}
-                  />
+                  <span>Jumlah yang ingin diuji</span>
+                  <span className="sim-capital-control">
+                    <span aria-hidden="true">Rp</span>
+                    <MoneyInput
+                      inputRef={capitalField}
+                      resetKey={capitalResetKey}
+                      name="capital"
+                      required
+                      min="1"
+                      max="1000000000000"
+                      step="1"
+                      placeholder="0"
+                      value={input.capital}
+                      onValueChange={(value) => set("capital", value)}
+                    />
+                  </span>
                 </label>
               </div>
             </div>
@@ -218,18 +220,14 @@ export default function Simulator({
               <div className="sim-step-heading">
                 <span className="sim-step-number">02</span>
                 <div>
-                  <h3>Pilih peristiwa</h3>
-                  <p>
-                    Pilih sampai 10 peristiwa dividen. Setiap peristiwa
-                    menggunakan seluruh modal secara independen; nilainya tidak
-                    dijumlahkan.
-                  </p>
+                  <h3>Pilih dividen</h3>
+                  <p>Modal yang sama diuji terpisah pada setiap peristiwa.</p>
                 </div>
               </div>
               <fieldset className="sim-event-fieldset">
                 <legend>
-                  Event terpilih{" "}
-                  <span className="muted">· {input.event_ids.length}/10</span>
+                  Peristiwa dividen{" "}
+                  <span className="muted">· {input.event_ids.length} dari 10 dipilih</span>
                 </legend>
                 <div className="event-picker">
                   {events.map((e) => (
@@ -255,21 +253,22 @@ export default function Simulator({
                         {money(e.dps)}
                         <small>/ saham</small>
                       </span>
-                      {input.event_ids.includes(e.id) && <Check size={16} />}
                     </label>
                   ))}
                 </div>
               </fieldset>
             </div>
-            <p className="small muted sim-auto-method">
-              Harga masuk memakai rata-rata harga penutupan 5 hari bursa sebelum
-              cum-date (tidak termasuk cum-date), sebagai harga referensi
-              simulasi. Jumlah saham mengikuti lot 100 saham. Pengamatan sampai
-              2 hari bursa setelah payment, tanpa transaksi keluar. Periode
-              ditentukan otomatis dari peristiwa terpilih; data yang belum
-              lengkap ditandai parsial. Ini bukan transaksi nyata atau strategi
-              beli bertahap.
-            </p>
+            <details className="sim-method-details">
+              <summary>Cara simulasi dihitung</summary>
+              <p>
+                Harga masuk memakai rata-rata harga penutupan 5 hari bursa
+                sebelum cum-date.
+                Jumlah saham dibulatkan ke lot 100. Setiap peristiwa memakai
+                seluruh modal secara independen, bukan dijumlahkan sebagai
+                portofolio. Harga diamati sampai 2 hari bursa setelah payment,
+                tanpa transaksi jual. Data yang belum lengkap ditandai parsial.
+              </p>
+            </details>
             <button
               className="btn primary full sim-submit"
               disabled={busy || !input.event_ids.length}
@@ -281,19 +280,15 @@ export default function Simulator({
                 </>
               ) : (
                 <>
-                  <Play size={16} /> Lihat hasil replay
+                  <FlaskConical size={18} strokeWidth={2.2} aria-hidden="true" /> Simulasikan
                 </>
               )}
             </button>
-            <p className="sim-note">
-              Replay historis, bukan proyeksi. Hasil di luar biaya transaksi,
-              pajak, dan slippage.
-            </p>
           </form>
         </section>
         <aside className="glass pad history-panel">
           <span className="sim-section-label">ARSIP</span>
-          <h2>Riwayat replay</h2>
+          <h2>Riwayat simulasi</h2>
           {history.isError ? (
             <div className="notice error">Riwayat belum dapat dimuat.</div>
           ) : history.isPending ? (
@@ -389,7 +384,7 @@ export default function Simulator({
       {selected && result && (
         <section className="results">
           <div className="sim-results-intro">
-            <span className="sim-section-label">02 / HASIL REPLAY</span>
+            <span className="sim-section-label">02 / HASIL SIMULASI</span>
             <h2>Bagaimana hasil tiap peristiwa?</h2>
             <p>
               {dt(result.primary.start_date, true)} –{" "}
@@ -400,7 +395,7 @@ export default function Simulator({
           {draftDiffers && (
             <p className="notice sim-draft-warning" role="status">
               Form sekarang berbeda. Hasil ini tetap memakai aturan yang
-              tersimpan saat replay dijalankan.
+              tersimpan saat simulasi dijalankan.
             </p>
           )}
           <ResultView
@@ -527,7 +522,7 @@ export default function Simulator({
               {unavailableEvents.length > 0 && (
                 <p className="notice">
                   Input belum bisa disalin: event {unavailableEvents.join(", ")}{" "}
-                  tidak tersedia untuk replay pada dataset aktif.
+                  tidak tersedia untuk simulasi pada dataset aktif.
                 </p>
               )}
             </div>
@@ -539,10 +534,10 @@ export default function Simulator({
         <div className="glass sim-empty">
           <Route size={32} aria-hidden="true" />
           <div>
-            <span className="sim-section-label">HASIL REPLAY</span>
+            <span className="sim-section-label">HASIL SIMULASI</span>
             <h2>Hasilnya akan muncul di sini.</h2>
             <p className="muted">
-              Atur modal dan peristiwa, lalu jalankan replay.
+              Atur modal dan peristiwa, lalu simulasikan.
             </p>
           </div>
         </div>
@@ -699,18 +694,25 @@ function PositionObservationCard({
   const referenceDates = t.entry_reference_dates ?? [];
   const o = t.observation;
   const points = o?.points ?? [];
+  const dateMarkers = [
+    { label: "Cum date", date: o?.cum_date, color: "#D8A85A" },
+    { label: "Ex date", date: o?.ex_date, color: "#FF4713" },
+    { label: "Payment", date: o?.payment_date, color: "#8CA5D2" },
+  ].filter((marker): marker is { label: string; date: string; color: string } =>
+    Boolean(marker.date && points.some((point) => point.date === marker.date)),
+  );
   const option = lineOption(
     points.map((p) => p.date),
     [
       {
         name: "Harga penutupan",
         values: points.map((p) => p.close),
-        color: "#FF4713",
+        color: "#FF7853",
       },
       {
         name: "Tertinggi harian",
         values: points.map((p) => p.high),
-        color: "#397d60",
+        color: "#9BAF83",
       },
       {
         name: "Terendah harian",
@@ -718,6 +720,8 @@ function PositionObservationCard({
         color: "#66B2BF",
       },
     ],
+    true,
+    dateMarkers,
   );
   return (
     <div className="route-step observation-step">
@@ -779,8 +783,8 @@ function PositionObservationCard({
         )}
         {!o ? (
           <p className="notice">
-            Analisis rentang harga belum tersedia untuk replay ini. Jalankan
-            replay baru untuk melihat pengamatan sampai payment +2 hari bursa.
+            Analisis rentang harga belum tersedia untuk simulasi ini. Jalankan
+            simulasi baru untuk melihat pengamatan sampai payment +2 hari bursa.
           </p>
         ) : (
           <>
@@ -806,25 +810,27 @@ function PositionObservationCard({
             )}
             {points.length ? (
               <>
-                <div className="chart-legend observation-legend">
-                  <span>
-                    <i style={{ background: "#FF4713" }} />
-                    Penutupan
-                  </span>
-                  <span>
-                    <i style={{ background: "#397d60" }} />
-                    Tertinggi harian
-                  </span>
-                  <span>
-                    <i style={{ background: "#66B2BF" }} />
-                    Terendah harian
-                  </span>
+                <div className="observation-chart-card">
+                  <div className="chart-legend observation-legend">
+                    <span>
+                      <i style={{ background: "#FF7853" }} />
+                      Penutupan
+                    </span>
+                    <span>
+                      <i style={{ background: "#9BAF83" }} />
+                      Tertinggi harian
+                    </span>
+                    <span>
+                      <i style={{ background: "#66B2BF" }} />
+                      Terendah harian
+                    </span>
+                  </div>
+                  <Chart
+                    label={`Pergerakan harga ${t.symbol}. ${dateMarkers.map((marker) => `${marker.label} ${dt(marker.date, true)}`).join(", ")}.`}
+                    height={340}
+                    option={option}
+                  />
                 </div>
-                <Chart
-                  label={`Pergerakan harga ${t.symbol} dari cum-date hingga dua hari bursa setelah payment`}
-                  height={280}
-                  option={option}
-                />
                 <div className="observation-extremes">
                   {(
                     [

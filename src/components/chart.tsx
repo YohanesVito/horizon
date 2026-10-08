@@ -40,7 +40,32 @@ export function lineOption(
   dates: string[],
   series: { name: string; values: number[]; color: string }[],
   currency = true,
+  markers: { date: string; label: string; color: string }[] = [],
 ): EChartsOption {
+  const visibleMarkers = markers.flatMap((marker) => {
+    const index = dates.indexOf(marker.date);
+    return index < 0
+      ? []
+      : [{
+          xAxis: index,
+          lineStyle: { color: marker.color, type: "dashed" as const, width: 1.5 },
+          label: {
+            show: true,
+            formatter: marker.label,
+            position: "insideEndTop" as const,
+            rotate: 0,
+            offset: [marker.label === "Cum date" ? 25 : 0, marker.label === "Ex date" ? 26 : 0],
+            color: "#131e29",
+            backgroundColor: "#f7f7f3",
+            borderColor: marker.color,
+            borderWidth: 1,
+            borderRadius: 4,
+            padding: [3, 6],
+            fontSize: 11,
+            fontWeight: 600,
+          },
+        }];
+  });
   return {
     animationDuration: 300,
     textStyle: { fontFamily: "Manrope", color: "#c4d0d5", fontSize: 13 },
@@ -54,7 +79,7 @@ export function lineOption(
           Number(v),
         ),
     },
-    grid: { left: 60, right: 18, top: 24, bottom: 30 },
+    grid: { left: 60, right: 18, top: visibleMarkers.length ? 44 : 24, bottom: 30 },
     xAxis: {
       type: "category",
       data: dates.map((d) =>
@@ -90,6 +115,15 @@ export function lineOption(
       lineStyle: { width: i === 0 ? 2.5 : 1.7, color: s.color },
       itemStyle: { color: s.color },
       areaStyle: series.length === 1 ? { color: "#ff471326" } : undefined,
+      ...(i === 0 && visibleMarkers.length
+        ? {
+            markLine: {
+              silent: true,
+              symbol: "none" as const,
+              data: visibleMarkers,
+            },
+          }
+        : {}),
     })),
   };
 }

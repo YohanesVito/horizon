@@ -1,5 +1,13 @@
 # Progres development MVP
 
+## SIM-UX-03 — form simulasi historis, 8 Oktober 2026
+
+**DONE untuk polesan UI lokal (C-04/C-08; bukan UAT).** Form simulator memakai judul “Bangun simulasi historis” dan aksi “Simulasikan”. Hierarki judul/langkah, ukuran input modal berawalan Rp, kartu peristiwa, radius, dan jarak diselaraskan dengan halaman Analisis. Judul langkah “01 Modal awal” dan “02 Pilih dividen” kemudian disamakan dengan tipografi angka dan judul “01 Lintasan Harga” pada chart Analisis. Penjelasan metode dipindah ke disclosure agar form ringkas; aturan modal independen dan penanda data parsial tetap tersedia. Ikon tombol diganti menjadi lab; catatan di bawah tombol dihapus sesuai instruksi PM, sementara batas biaya/pajak/slippage tetap tercantum pada hasil. Label “replay” yang terlihat pada riwayat/hasil diganti “simulasi” tanpa mengubah API, pilihan event, atau perhitungan. Lint, typecheck, build Next, `git diff --check`, serta inspeksi visual desktop dan mobile 390 px lulus. Belum ada deployment atau UAT.
+
+## SIM-OBS-04 — penanda tanggal pada grafik simulator, 8 Oktober 2026
+
+Grafik harga pada setiap kartu hasil simulasi menandai cum-date, ex-date, dan payment dengan garis vertikal putus-putus berlabel langsung di grafik. Penanda ditampilkan hanya untuk tanggal yang mempunyai titik harga dalam jendela pengamatan; tanggal di luar jendela tetap tersedia pada ringkasan peristiwa. Perubahan memakai tanggal dari observasi tiap event, sehingga hasil multi-event tidak mencampur penanda antar saham. Pemeriksaan: lint, typecheck, `git diff --check`, dan inspeksi visual hasil BBCA pada browser lokal desktop serta viewport 390 px.
+
 ## Sinkronisasi scope multi-event dari main — 8 Oktober 2026
 
 `origin/main` `7703b82` digabung ke `feat/timeline-ui-polish`. Konflik hanya pada catatan progres; riwayat sinkronisasi lokal dan status terbaru SIM-OBS-03 sama-sama dipertahankan. Polishing timeline tetap ada. Lint, typecheck, build Next, `git diff --check`, dan 133 tes backend lulus (satu warning deprecation Starlette). Tidak ada push atau deployment dari sesi ini; pemeriksaan ini bukan UAT.
