@@ -1,6 +1,6 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { api, dt } from "@/lib/api";
 import type { Allocation } from "@/lib/types";
 
@@ -23,6 +23,8 @@ type SimulationInsight = {
   configured?: boolean;
 };
 
+const MAX_STATUS_READS = 80;
+
 function safeSourceUrl(url: string): string | null {
   try {
     const parsed = new URL(url);
@@ -39,16 +41,25 @@ export default function SimulationInsights({
   simulationId: string;
   allocation: Allocation;
 }) {
+  const client = useQueryClient();
+  const queryKey = ["simulation-insights", simulationId];
   const insight = useQuery({
-    queryKey: ["simulation-insights", simulationId],
-    queryFn: () =>
-      api<SimulationInsight>(
+    queryKey,
+    queryFn: () => {
+      const current = client.getQueryData<SimulationInsight>(queryKey);
+      return api<SimulationInsight>(
         `/simulations/${encodeURIComponent(simulationId)}/insights`,
-        {
-          method: "POST",
-          body: JSON.stringify({ allocation }),
-        },
-      ),
+        current?.status === "processing"
+          ? undefined
+          : { method: "POST", body: JSON.stringify({ allocation }) },
+      );
+    },
+    refetchInterval: (query) =>
+      query.state.status !== "error" &&
+      query.state.data?.status === "processing" &&
+      query.state.dataUpdateCount < MAX_STATUS_READS
+        ? 1500
+        : false,
     staleTime: Infinity,
     gcTime: 30 * 60 * 1000,
     retry: false,
@@ -57,6 +68,9 @@ export default function SimulationInsights({
     refetchOnReconnect: false,
   });
   const data = insight.data;
+  const pollingPaused =
+    data?.status === "processing" &&
+    (client.getQueryState(queryKey)?.dataUpdateCount ?? 0) >= MAX_STATUS_READS;
   if (data?.status === "unavailable" && data.exhausted) return null;
   const sources =
     data?.sources.flatMap((source) => {
@@ -80,9 +94,19 @@ export default function SimulationInsights({
           </p>
         </div>
       </div>
-      {insight.isFetching ? (
+      {insight.isPending ||
+      (!insight.isError && data?.status === "processing") ? (
         <p className="muted" role="status">
           Menyusun analisis…
+          {pollingPaused && (
+            <button
+              type="button"
+              className="btn secondary"
+              onClick={() => void insight.refetch()}
+            >
+              Periksa status
+            </button>
+          )}
         </p>
       ) : insight.isError ? (
         <div role="status">
@@ -164,8 +188,7 @@ export default function SimulationInsights({
               </ul>
             </details>
           )}
-          {(data.status === "processing" ||
-            (data.attempts === 0 && !data.exhausted)) && (
+          {data.status === "unavailable" && !data.exhausted && (
             <button
               type="button"
               className="btn secondary"

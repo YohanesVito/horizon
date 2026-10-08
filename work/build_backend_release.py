@@ -10,7 +10,7 @@ from dotenv import dotenv_values
 ROOT = Path(__file__).resolve().parents[1]
 patterns = [
     'Dockerfile', '.dockerignore', 'deploy/compose.yaml',
-    'backend/*.py', 'backend/requirements.lock', 'backend/migrations/*.sql',
+    'backend/*.py', 'backend/data/*.json', 'backend/requirements.lock', 'backend/migrations/*.sql',
     'outputs/dividend-research/*.json', 'outputs/mvp-sectors/*.json',
     'outputs/sectors-live/bbca-dividend.json',
     'outputs/dividend-discovery/*.json',

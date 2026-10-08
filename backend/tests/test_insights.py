@@ -82,22 +82,22 @@ def test_endpoint_cache_and_run_isolation(client, monkeypatch):
     monkeypatch.setattr(ai, 'generate_structured', generate)
     store.save('run-1', 'run', run_record())
     endpoint = '/api/simulations/run-1/insights'
-    result = client.post(endpoint, json={'allocation': 'equal'})
+    result = request_insight(client, endpoint, json={'allocation': 'equal'})
     assert result.status_code == 200
     assert result.json()['status'] == 'completed'
-    assert client.post(endpoint, json={'allocation': 'equal'}).json() == result.json()
+    assert request_insight(client, endpoint, json={'allocation': 'equal'}).json() == result.json()
     assert len(calls) == 1
     assert store.get('run-1', kind='run')['status'] == 'completed'
-    assert client.post(endpoint, json={'allocation': 'single'}).status_code == 422
-    assert client.post(endpoint, json={'allocation': 'equal', 'capital': 900}).status_code == 422
-    assert client.post('/api/simulations/absent/insights', json={'allocation': 'equal'}).status_code == 404
+    assert request_insight(client, endpoint, json={'allocation': 'single'}).status_code == 422
+    assert request_insight(client, endpoint, json={'allocation': 'equal', 'capital': 900}).status_code == 422
+    assert request_insight(client, '/api/simulations/absent/insights', json={'allocation': 'equal'}).status_code == 404
     store.save('queued', 'run', {**run_record('queued'), 'status': 'queued'})
-    assert client.post('/api/simulations/queued/insights', json={'allocation': 'equal'}).status_code == 409
+    assert request_insight(client, '/api/simulations/queued/insights', json={'allocation': 'equal'}).status_code == 409
     store.save('other-kind', 'scenario', run_record('other-kind'))
-    assert client.post('/api/simulations/other-kind/insights', json={'allocation': 'equal'}).status_code == 404
+    assert request_insight(client, '/api/simulations/other-kind/insights', json={'allocation': 'equal'}).status_code == 404
     # Same run with changed historical source should not reuse older explanation.
     main.timeline_dataset.companies['TEST']['history'][0]['points'][2]['close'] = 50
-    assert client.post(endpoint, json={'allocation': 'equal'}).json()['status'] == 'completed'
+    assert request_insight(client, endpoint, json={'allocation': 'equal'}).json()['status'] == 'completed'
     assert len(calls) == 1
 
 
@@ -114,8 +114,8 @@ def test_failure_retry_and_inflight_dedup(client, monkeypatch):
     run = run_record()
     store.save(run['id'], 'run', run)
     endpoint = '/api/simulations/run-1/insights'
-    assert client.post(endpoint, json={'allocation': 'equal'}).json()['status'] == 'unavailable'
-    assert client.post(endpoint, json={'allocation': 'equal'}).json()['status'] == 'unavailable'
+    assert request_insight(client, endpoint, json={'allocation': 'equal'}).json()['status'] == 'unavailable'
+    assert request_insight(client, endpoint, json={'allocation': 'equal'}).json()['status'] == 'unavailable'
     assert len(calls) == 3
     # A failed attempt stays unavailable despite clearing all process state.
     async def good(*args, **kwargs):
@@ -140,7 +140,7 @@ def test_missing_key_does_not_fetch_news_or_mutate_run(client, monkeypatch):
     monkeypatch.setattr(insights, 'news_context', no_call)
     run = run_record()
     store.save(run['id'], 'run', run)
-    response = client.post('/api/simulations/run-1/insights', json={'allocation': 'equal'})
+    response = request_insight(client, '/api/simulations/run-1/insights', json={'allocation': 'equal'})
     assert response.json()['status'] == 'unavailable'
     assert store.get(run['id'], kind='run') == run
 
@@ -247,9 +247,9 @@ def test_same_id_cannot_retry_failure_even_different_strategy(client, monkeypatc
     run['result']['alternatives'].append({**run['result']['primary'], 'allocation': 'single'})
     store.save(run['id'], 'run', run)
     path = '/api/simulations/run-1/insights'
-    initial = client.post(path, json={'allocation': 'equal'}).json()
+    initial = request_insight(client, path, json={'allocation': 'equal'}).json()
     monkeypatch.setattr(insights, 'VERSION', 'new-version')
-    later = client.post(path, json={'allocation': 'single'}).json()
+    later = request_insight(client, path, json={'allocation': 'single'}).json()
     assert initial == later
     assert later['status'] == 'unavailable'
     assert calls == [1, 1, 1]
@@ -285,11 +285,11 @@ def test_two_failures_then_success_lock_result(client, monkeypatch):
     run = run_record()
     store.save(run['id'], 'run', run)
     path = '/api/simulations/run-1/insights'
-    first = client.post(path, json={'allocation': 'equal'}).json()
+    first = request_insight(client, path, json={'allocation': 'equal'}).json()
     assert first['status'] == 'completed'
     assert first['attempts'] == 3
     assert first['exhausted'] is False
-    assert client.post(path, json={'allocation': 'equal'}).json() == first
+    assert request_insight(client, path, json={'allocation': 'equal'}).json() == first
     assert len(calls) == 3
     assert len(news_calls) == 1
 
@@ -326,7 +326,7 @@ def test_missing_key_has_zero_budget_and_recovers_after_configuration(client, mo
         raise ai.AIError('missing')
     monkeypatch.setattr(ai, '_api_key', missing)
     path = '/api/simulations/config-run/insights'
-    missing_result = client.post(path, json={'allocation': 'equal'}).json()
+    missing_result = request_insight(client, path, json={'allocation': 'equal'}).json()
     assert missing_result['configured'] is False
     assert missing_result['attempts'] == 0
     assert store.get('ai-run:config-run', kind='simulation-insight') is None
@@ -337,6 +337,17 @@ def test_missing_key_has_zero_budget_and_recovers_after_configuration(client, mo
         return {'summary': 'Configured now', 'findings': []}
     monkeypatch.setattr(insights, 'news_context', news)
     monkeypatch.setattr(ai, 'generate_structured', generate)
-    response = client.post(path, json={'allocation': 'equal'}).json()
+    response = request_insight(client, path, json={'allocation': 'equal'}).json()
     assert response['status'] == 'completed'
     assert response['attempts'] == 1
+
+
+def request_insight(client, path, **kwargs):
+    from time import sleep
+    response = client.post(path, **kwargs)
+    for _ in range(200):
+        if response.status_code != 200 or response.json().get('status') != 'processing':
+            return response
+        sleep(.005)
+        response = client.get(path)
+    raise AssertionError('Insight worker did not finish')

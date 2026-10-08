@@ -15,7 +15,7 @@ from .discovery import top_dividend_yield
 from .ex_date_forecast import retrospective_diagnostic
 from .ex_date_scenario import ExDateScenarioInput, calculate_ex_date_scenario
 from .security import require_api_key, validate_api_key_config
-from .insights import InsightRequest, generate_insights
+from .insights import InsightRequest, generate_insights, insight_status
 
 intelligence_dataset = IntelligenceDataset()
 dataset = UnifiedDataset(intelligence_dataset)
@@ -227,7 +227,15 @@ async def simulation_insights(job_id: str, body: InsightRequest):
     selected = next((option for option in options if option['allocation'] == body.allocation), None)
     if selected is None:
         raise HTTPException(422, 'Strategi tidak tersedia pada hasil simulasi ini.')
-    return await generate_insights(run, selected, timeline_dataset)
+    return await generate_insights(run, selected, timeline_dataset, background=True)
+
+
+@app.get('/api/simulations/{job_id}/insights')
+def simulation_insight_status(job_id: str):
+    saved = insight_status(result(job_id))
+    if saved is None:
+        raise HTTPException(404, 'Analisis AI belum dimulai untuk simulasi ini.')
+    return saved
 
 
 @app.post('/api/rotation-plans', status_code=201)

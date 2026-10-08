@@ -18,6 +18,7 @@ from .sectors_context import corporate_context
 from .ai_research import research_context
 
 VERSION = 'insights-v3'
+_background_tasks = set()
 
 
 class InsightRequest(BaseModel):
@@ -172,7 +173,7 @@ async def _generate(run, selected, timeline, cache_key, context=None):
         return base
 
 
-async def generate_insights(run, selected, timeline):
+async def generate_insights(run, selected, timeline, *, background=False):
     cache_key = f"ai-run:{run['id']}"
     saved = store.get(cache_key, kind='simulation-insight')
     if saved and saved.get('status') == 'processing' and time.time() - saved.get('started_at', time.time()) > 100:
@@ -203,8 +204,25 @@ async def generate_insights(run, selected, timeline):
         pending = store.claim_retry(cache_key)
         if pending is None:
             return store.get(cache_key, kind='simulation-insight')
+    if background:
+        task = asyncio.create_task(_complete_insights(run, selected, timeline, cache_key, pending))
+        _background_tasks.add(task)
+        task.add_done_callback(_background_tasks.discard)
+        return pending
+    return await _complete_insights(run, selected, timeline, cache_key, pending)
+
+
+def insight_status(run):
+    """Read-only: status polling never claims work or calls any provider."""
+    return store.get(f"ai-run:{run['id']}", kind='simulation-insight')
+
+
+async def _complete_insights(run, selected, timeline, cache_key, pending):
     stats = historical_statistics(timeline, {t['symbol'] for t in selected['trades'] if t.get('shares', 0) > 0})
-    research = await research_context(run, stats)
+    try:
+        research = await research_context(run, stats)
+    except Exception:
+        research = {'sources': [], 'gaps': ['Riset sumber belum tersedia; analisis memakai statistik run.'], 'status': 'partial'}
     context = (research['sources'], research['gaps'])
     while pending:
         attempt = pending['attempts']
