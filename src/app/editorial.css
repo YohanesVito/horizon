@@ -2356,3 +2356,16 @@ body {
 .editorial-app .event-insight-toggle:focus-visible { outline: 2px solid #ff4713; outline-offset: 4px; }
 .editorial-app .event-insight-content { padding: 0 0 18px; }
 .editorial-app .event-insight-content .insight-findings { margin-top: 0; }
+
+.editorial-app .sim-auto-method {
+  margin: 24px 0;
+}
+
+.editorial-app .sim-auto-method summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.editorial-app .sim-auto-method p {
+  margin: 12px 0 0;
+}

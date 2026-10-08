@@ -490,3 +490,8 @@ Hasil gabungan diuji pada worktree terisolasi: **138tes backend lulus**, lint, p
 ## BRAND-01 — Horizon — 8 Oktober 2026
 
 **DONE lokal (instruksi PM; C-08):** branding header/footer, metadata halaman, nama API/package dan dokumentasi produk aktif menjadi Horizon. Logo PNG PM disalin tanpa perubahan untuk header, icon tab dan Apple touch icon. Build dan lint lulus. Playwright production lokal3108 pada1440px/390px memverifikasi nama Horizon, tidak ada nama UI lama, gambar berhasil decode, wordmark terlihat, tanpa overflow horizontal; kedua endpoint icon HTTP200. API diintersep503 untuk pemeriksaan branding saja; bukan verifikasi backend/UAT. Belum deploy. Catatan bukti historis tetap memakai nama saat pemeriksaan aslinya.
+
+
+## UI-COPY-05 — Ringkas Simulasi — 8 Oktober 2026
+
+**DONE lokal (instruksi PM; C-08):** metode masuk menjadi disclosure tertutup “Bagaimana simulasi dihitung?”; kalimat transaksi nyata/beli bertahap dihapus; CTA Simulasikan/loading Menjalankan simulasi…. Panel aturan hasil (termasuk aksi salin input di dalamnya) dan asumsi hasil di halaman Simulasi dihapus; batas data/analisis AI tidak dirender. Data/backend tidak diubah. README memakai problem statement PM dan nama Horizon. Typecheck, lint komponen, build, diff check lulus. Playwright production3109 dengan API fixture: disclosure tertutup→terbuka→tertutup, input Rp10 juta/BBCA memicu tombol loading disabled, kalimat terhapus tidak ada. Panel hasil/AI diperiksa melalui diff/source, bukan E2E hasil nyata. Belum deploy/UAT.

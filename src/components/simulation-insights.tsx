@@ -310,14 +310,6 @@ function InsightPanel({
                 ))}
               </div>
             )}
-          {data.limitations.length > 0 && (
-            <details className="insight-limitations small muted">
-              <summary>Batas data dan analisis</summary>
-              {data.limitations.map((limitation, index) => (
-                <p key={index}>{aiProse(limitation)}</p>
-              ))}
-            </details>
-          )}
           {data.status === "unavailable" && !data.exhausted && (
             <button
               type="button"

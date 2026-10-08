@@ -4,7 +4,7 @@
 
 Horizon adalah alat analisis dan simulasi untuk investor ritel saham Indonesia yang mengejar dividen. Pengguna dapat mempelajari pergerakan harga di sekitar dividen, menguji aturan masuk–keluar, lalu membandingkan konsekuensi menaruh modal pada satu peristiwa, membaginya, atau merotasikan kas yang tersedia.
 
-Dibangun untuk **Sectors Hackathon · Track 03: Market Intelligence**. Data finansial berasal dari Sectors. Nama yang masih tampil pada antarmuka adalah **Dividen Lab**; aplikasi tersebut adalah proyek Horizon dalam repository ini.
+Dibangun untuk **Sectors Hackathon · Track 03: Market Intelligence**. Data finansial berasal dari Sectors.
 
 > Versi ini menggunakan snapshot dan replay historis. Hasilnya **di luar biaya transaksi, pajak, dan slippage**. Prediksi harga, tanggal dividen, dan probabilitas dividend trap yang tervalidasi belum tersedia. Pengguna mengambil keputusan dan mengeksekusi transaksi sendiri.
 
@@ -12,11 +12,9 @@ Dibangun untuk **Sectors Hackathon · Track 03: Market Intelligence**. Data fina
 
 ## Untuk siapa dan masalah apa?
 
-Horizon ditujukan untuk investor ritel yang ingin menguji strategi dividen sebelum menentukan penggunaan modal. Pertanyaan utamanya:
+**Problem Statement:**
 
-> **“Kalau saya membeli untuk menerima dividen, bagaimana hasil akhirnya setelah harga saham berubah, dan kapan modal saya tersedia untuk peluang berikutnya?”**
-
-Besarnya dividen saja belum menjawab pertanyaan itu. Pengguna juga perlu melihat perubahan nilai saham, posisi yang belum terjual, serta kapan hasil penjualan dan dividen menjadi kas. Horizon menampilkan komponen-komponen tersebut dalam satu replay yang dapat ditelusuri.
+Investor ritel pemburu dividen (Dividend Hunter) kesulitan membandingkan strategi penggunaan modal karena yield saja tidak menunjukkan potensi kerugian harga saham dan berapa lama modal tertahan sebelum bisa digunakan kembali.
 
 ## Yang bisa dilakukan sekarang
 
@@ -68,7 +66,7 @@ Setelah aplikasi berjalan, buka **Simulasi** dan gunakan input berikut. Pemiliha
 | Batas pengamatan | 20 hari bursa setelah ex-date |
 | Periode | 1 Maret–20 Mei 2025 |
 
-Klik **Lihat hasil replay**. Dengan snapshot pada commit `8a8b5a6`, hasil yang diverifikasi adalah:
+Klik **Simulasikan**. Dengan snapshot pada commit `8a8b5a6`, hasil yang diverifikasi adalah:
 
 | Alokasi | Nilai portofolio akhir | Untung/rugi gross | Penurunan maksimum |
 |---|---:|---:|---:|
