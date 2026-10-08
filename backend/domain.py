@@ -5,6 +5,7 @@ from pydantic import BaseModel, Field, model_validator
 
 
 class SimulationRequest(BaseModel):
+    timing_mode: Literal['custom', 'payment_plus_2'] = 'custom'
     capital: Decimal = Field(default=Decimal('100000000'), gt=0, le=Decimal('1000000000000'))
     event_ids: list[str] = Field(min_length=1, max_length=10)
     allocation: Literal['rotation', 'equal', 'single'] = 'rotation'

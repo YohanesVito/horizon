@@ -341,7 +341,6 @@ function TimelineExplorer({ data }: { data: TimelineDetail }) {
             <p className="eyebrow">03 / ENGINE RISET</p>
             <h3>Risiko historis, belum prediksi.</h3>
           </div>
-          <span className="badge">Formula v0.1 · riset</span>
         </div>
         <p className="timeline-model-intro">
           Engine membaca peristiwa historis yang memenuhi aturan masuk dan batas pengamatan.

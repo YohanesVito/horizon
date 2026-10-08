@@ -2,7 +2,6 @@
 import { useRef, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
-  ArrowRight,
   ArrowUpRight,
   Check,
   ChevronDown,
@@ -12,7 +11,14 @@ import {
   Route,
 } from "lucide-react";
 import { api, dt, money, pct, tradingDayText } from "@/lib/api";
-import type { Allocation, Catalog, Replay, Run, SimInput } from "@/lib/types";
+import type {
+  Allocation,
+  Catalog,
+  Replay,
+  Run,
+  SimInput,
+  Trade,
+} from "@/lib/types";
 import Chart, { lineOption } from "./chart";
 import MoneyInput from "./money-input";
 import SimulationInsights from "./simulation-insights";
@@ -33,12 +39,17 @@ function inputSignature(input: SimInput | SimulationDraft, startDate?: string) {
     Number(input.capital),
     [...input.event_ids].sort(),
     input.allocation,
-    input.entry_sessions_before_cum,
-    input.exit_rule,
-    input.max_holding_sessions,
-    input.start_date ?? startDate,
-    input.end_date,
     input.compare,
+    input.timing_mode ?? "custom",
+    ...(input.timing_mode === "payment_plus_2"
+      ? []
+      : [
+          input.entry_sessions_before_cum,
+          input.exit_rule,
+          input.max_holding_sessions,
+          input.start_date ?? startDate,
+          input.end_date,
+        ]),
   ]);
 }
 export default function Simulator({
@@ -52,6 +63,7 @@ export default function Simulator({
   const initialEvent = events.find((e) => e.id === initialEventId);
   const [input, setInput] = useState<SimulationDraft>({
     capital: "",
+    timing_mode: "payment_plus_2",
     event_ids: initialEvent
       ? [initialEvent.id]
       : events
@@ -100,7 +112,12 @@ export default function Simulator({
   });
   const visibleHistory = history.data?.filter((r) => r.status !== "failed");
   const submit = useMutation({
-    mutationFn: (body: SimInput) =>
+    mutationFn: (
+      body: Pick<
+        SimInput,
+        "capital" | "event_ids" | "allocation" | "compare" | "timing_mode"
+      >,
+    ) =>
       api<Run>("/simulations", { method: "POST", body: JSON.stringify(body) }),
     onSuccess: (r) => {
       setJobId(r.id);
@@ -165,13 +182,14 @@ export default function Simulator({
               <strong>
                 {initialEvent.symbol} · ex {dt(initialEvent.ex_date, true)}
               </strong>
-              . Periksa periode replay sebelum menjalankan.
+              . Periode pengamatan mengikuti jadwal dividen secara otomatis.
             </p>
           )}
           {copiedFrom && (
             <p className="notice" role="status">
               Draf disalin dari hasil {copiedFrom.slice(0, 8)}. Hasil asal tidak
-              berubah.
+              berubah. Replay baru memakai harga masuk rata-rata 5 hari bursa
+              dan pengamatan payment +2 hari bursa.
             </p>
           )}
           <form
@@ -184,13 +202,17 @@ export default function Simulator({
                   input.allocation === "single"
                     ? input.event_ids.slice(0, 1)
                     : [...input.event_ids],
-                end_date: String(form.get("end_date")),
-                start_date: String(form.get("start_date")),
+                timing_mode: "payment_plus_2" as const,
                 capital: String(form.get("capital")),
-                max_holding_sessions: Number(form.get("max_holding_sessions")),
               };
               setInput(next);
-              submit.mutate({ ...next, capital: Number(next.capital) });
+              submit.mutate({
+                capital: Number(next.capital),
+                event_ids: next.event_ids,
+                allocation: next.allocation,
+                compare: next.compare,
+                timing_mode: "payment_plus_2",
+              });
             }}
           >
             <div className="sim-step sim-step-first">
@@ -313,97 +335,15 @@ export default function Simulator({
                 </div>
               </fieldset>
             </div>
-            <div className="sim-step sim-step-rules">
-              <div className="sim-step-heading">
-                <span className="sim-step-number">04</span>
-                <div>
-                  <h3>Tentukan waktu masuk dan keluar</h3>
-                  <p>Aturan yang sama berlaku untuk setiap event.</p>
-                </div>
-              </div>
-              <div className="form-grid sim-rules">
-                <label>
-                  Masuk sebelum cum date
-                  <select
-                    value={input.entry_sessions_before_cum}
-                    onChange={(e) =>
-                      set("entry_sessions_before_cum", Number(e.target.value))
-                    }
-                  >
-                    <option value={0}>Close pada cum date</option>
-                    <option value={5}>5 hari bursa sebelumnya</option>
-                    <option value={10}>10 hari bursa sebelumnya</option>
-                  </select>
-                </label>
-                <label>
-                  Aturan keluar
-                  <select
-                    value={input.exit_rule}
-                    onChange={(e) =>
-                      set("exit_rule", e.target.value as SimInput["exit_rule"])
-                    }
-                  >
-                    <option value="price_bep">Setelah sinyal BEP harga</option>
-                    <option value="ex_close">Close ex-date</option>
-                    <option value="payment_close">Close payment date</option>
-                    <option value="holding_period">
-                      Batas hari bursa pengamatan
-                    </option>
-                  </select>
-                </label>
-                <label>
-                  Batas hari bursa setelah ex-date
-                  <input
-                    type="number"
-                    name="max_holding_sessions"
-                    min="1"
-                    max="60"
-                    required
-                    value={input.max_holding_sessions}
-                    onChange={(e) =>
-                      set("max_holding_sessions", Number(e.target.value))
-                    }
-                  />
-                </label>
-                <label>
-                  Awal replay
-                  <input
-                    type="date"
-                    name="start_date"
-                    min="2025-01-01"
-                    max={input.end_date}
-                    required
-                    value={input.start_date}
-                    onInput={(e) => set("start_date", e.currentTarget.value)}
-                    onChange={(e) => set("start_date", e.target.value)}
-                  />
-                </label>
-                <label>
-                  Akhir replay
-                  <input
-                    type="date"
-                    name="end_date"
-                    min={input.start_date}
-                    max="2025-12-31"
-                    required
-                    value={input.end_date}
-                    onInput={(e) => set("end_date", e.currentTarget.value)}
-                    onChange={(e) => set("end_date", e.target.value)}
-                  />
-                </label>
-              </div>
-              <details className="sim-method-details">
-                <summary>Bagaimana aturan ini dihitung?</summary>
-                <p>
-                  Pembelian mengikuti lot 100 saham dan close pada tanggal
-                  masuk. Urutan event mengikuti cum date; jika sama, kode
-                  emiten. Sinyal BEP pada close dieksekusi pada open sesi
-                  berikutnya. Batas hari bursa berlaku untuk BEP, payment, dan
-                  pengamatan. Dana jual tersedia setelah T+2 sesi dataset;
-                  dividen pada payment date.
-                </p>
-              </details>
-            </div>
+            <p className="small muted sim-auto-method">
+              Harga masuk memakai rata-rata harga penutupan 5 hari bursa sebelum
+              cum-date (tidak termasuk cum-date), sebagai harga referensi
+              simulasi. Jumlah saham mengikuti lot 100 saham. Pengamatan sampai
+              2 hari bursa setelah payment, lalu penjualan simulasi pada harga
+              penutupan. Periode ditentukan otomatis dari peristiwa terpilih;
+              data yang belum lengkap ditandai parsial. Ini bukan transaksi
+              nyata atau strategi beli bertahap.
+            </p>
             <button
               className="btn primary full sim-submit"
               disabled={busy || !input.event_ids.length}
@@ -560,7 +500,7 @@ export default function Simulator({
                 <div className="comparison-footer">
                   <span>Drawdown {pct(r.max_drawdown_pct)}</span>
                   <span>
-                    {r.trades.filter((t) => t.shares > 0).length} posisi dibeli
+                    {r.trades.filter((t) => t.shares > 0).length} posisi dalam simulasi
                   </span>
                 </div>
               </button>
@@ -595,6 +535,7 @@ export default function Simulator({
                     setInput({
                       ...result.input,
                       capital: String(result.input.capital),
+                      timing_mode: "payment_plus_2",
                       event_ids:
                         result.input.allocation === "single"
                           ? result.input.event_ids.slice(0, 1)
@@ -619,18 +560,28 @@ export default function Simulator({
                 <div>
                   <dt>Aturan masuk</dt>
                   <dd>
-                    {result.input.entry_sessions_before_cum === 0
-                      ? "Close pada cum date"
-                      : `${result.input.entry_sessions_before_cum} hari bursa sebelum cum date`}
+                    {result.input.timing_mode === "payment_plus_2"
+                      ? "Rata-rata 5 close sebelum cum-date"
+                      : result.input.entry_sessions_before_cum === 0
+                        ? "Close pada cum date"
+                        : `${result.input.entry_sessions_before_cum} hari bursa sebelum cum date`}
                   </dd>
                 </div>
                 <div>
                   <dt>Aturan keluar</dt>
-                  <dd>{exitLabels[result.input.exit_rule]}</dd>
+                  <dd>
+                    {result.input.timing_mode === "payment_plus_2"
+                      ? "Close payment +2 hari bursa"
+                      : exitLabels[result.input.exit_rule]}
+                  </dd>
                 </div>
                 <div>
-                  <dt>Batas setelah ex-date</dt>
-                  <dd>{result.input.max_holding_sessions} hari bursa</dd>
+                  <dt>Periode pengamatan</dt>
+                  <dd>
+                    {result.input.timing_mode === "payment_plus_2"
+                      ? "Otomatis mengikuti jadwal dividen"
+                      : `${result.input.max_holding_sessions} hari bursa setelah ex-date`}
+                  </dd>
                 </div>
                 <div>
                   <dt>Strategi utama</dt>
@@ -768,79 +719,28 @@ export function ResultView({
       {simulationId && (
         <SimulationInsights
           simulationId={simulationId}
+          trades={r.trades}
           allocation={simulationAllocation ?? r.allocation}
         />
       )}
       <section className="glass pad result-route">
         <div className="section-head">
           <div>
-            <span className="sim-section-label">JEJAK TRANSAKSI</span>
-            <h3>{labels[r.allocation]}: dari masuk hingga kas kembali</h3>
+            <span className="sim-section-label">
+              PERGERAKAN SEKITAR DIVIDEN
+            </span>
+            <h3>
+              {labels[r.allocation]}: bagaimana jika posisi tetap dipegang?
+            </h3>
+            <p className="small muted">
+              Pengamatan historis dari cum-date sampai 2 hari bursa setelah
+              payment. Skenario posisi ini terpisah dari aturan keluar replay.
+            </p>
           </div>
         </div>
         <div className="route-list">
           {r.trades.map((t, i) => (
-            <div className="route-step" key={t.event_id}>
-              <div className="route-index">
-                {String(i + 1).padStart(2, "0")}
-              </div>
-              <div className="route-body">
-                <div className="spread">
-                  <h3>
-                    {t.symbol}{" "}
-                    <span className="badge mini">
-                      {t.status === "sold"
-                        ? "Terjual"
-                        : t.status === "holding"
-                          ? "Masih dipegang"
-                          : "Terlewat"}
-                    </span>
-                  </h3>
-                  <strong
-                    className={t.gross_pnl >= 0 ? "positive" : "negative"}
-                  >
-                    {money(t.gross_pnl)}
-                  </strong>
-                </div>
-                <div className="route-dates">
-                  <span>
-                    Masuk <strong>{dt(t.entry_date, true)}</strong>
-                    <small>
-                      {money(t.entry_price)} ·{" "}
-                      {t.shares.toLocaleString("id-ID")} saham
-                    </small>
-                  </span>
-                  <ArrowRight size={17} />
-                  <span>
-                    Keluar{" "}
-                    <strong>{t.exit_date ? dt(t.exit_date, true) : "—"}</strong>
-                    <small>
-                      {t.exit_price
-                        ? money(t.exit_price)
-                        : t.status === "holding"
-                          ? "Dinilai dengan harga terakhir"
-                          : "Tidak ada posisi"}
-                    </small>
-                  </span>
-                  <ArrowRight size={17} />
-                  <span>
-                    Kas jual tersedia{" "}
-                    <strong>
-                      {t.settlement_date ? dt(t.settlement_date, true) : "—"}
-                    </strong>
-                    <small>
-                      {t.capital_days} hari modal tertahan / diamati
-                    </small>
-                  </span>
-                </div>
-                <p className="small muted">{tradingDayText(t.reason)}</p>
-                <div className="route-foot">
-                  <span>Dividen {money(t.dividend)}</span>
-                  <span>PnL saham {money(t.capital_pnl)}</span>
-                  <span>Payment {dt(t.payment_date, true)}</span>
-                </div>
-              </div>
-            </div>
+            <PositionObservationCard key={t.event_id} trade={t} index={i} />
           ))}
         </div>
       </section>
@@ -903,5 +803,181 @@ function ReplayAssumptions({ replay: r }: { replay: Replay }) {
         </p>
       </div>
     </details>
+  );
+}
+
+function PositionObservationCard({
+  trade: t,
+  index,
+}: {
+  trade: Trade;
+  index: number;
+}) {
+  const averageEntry = t.entry_price_basis === "prior5_close_mean";
+  const referenceDates = t.entry_reference_dates ?? [];
+  const o = t.observation;
+  const points = o?.points ?? [];
+  const option = lineOption(
+    points.map((p) => p.date),
+    [
+      {
+        name: "Harga penutupan",
+        values: points.map((p) => p.close),
+        color: "#FF4713",
+      },
+      {
+        name: "Tertinggi harian",
+        values: points.map((p) => p.high),
+        color: "#397d60",
+      },
+      {
+        name: "Terendah harian",
+        values: points.map((p) => p.low),
+        color: "#66B2BF",
+      },
+    ],
+  );
+  return (
+    <div className="route-step observation-step">
+      <div className="route-index">{String(index + 1).padStart(2, "0")}</div>
+      <div className="route-body">
+        <h3>{t.symbol}</h3>
+        <div className="observation-entry">
+          <div>
+            <span>
+              {averageEntry ? "Rentang harga masuk" : "Tanggal masuk"}
+            </span>
+            <strong>
+              {averageEntry && referenceDates.length
+                ? `${dt(referenceDates[0], true)} — ${dt(referenceDates.at(-1), true)}`
+                : dt(t.entry_date, true)}
+            </strong>
+            {averageEntry && (
+              <small>
+                Rata-rata 5 hari bursa · pencatatan simulasi pada cum-date{" "}
+                {dt(t.entry_date, true)}
+              </small>
+            )}
+          </div>
+          <div>
+            <span>
+              {averageEntry ? "Harga masuk rata-rata" : "Harga beli per saham"}
+            </span>
+            <strong>{money(t.entry_price)}</strong>
+          </div>
+          <div>
+            <span>Jumlah</span>
+            <strong>{(t.shares / 100).toLocaleString("id-ID")} lot</strong>
+            <small>{t.shares.toLocaleString("id-ID")} saham</small>
+          </div>
+          <div>
+            <span>Modal posisi</span>
+            <strong>{money(o?.invested ?? t.entry_price * t.shares)}</strong>
+          </div>
+        </div>
+        {!o ? (
+          <p className="notice">
+            Analisis rentang harga belum tersedia untuk replay ini. Jalankan
+            replay baru untuk melihat pengamatan sampai payment +2 hari bursa.
+          </p>
+        ) : (
+          <>
+            <div className="observation-window">
+              <strong>
+                {dt(o.cum_date, true)} —{" "}
+                {o.end_date
+                  ? dt(o.end_date, true)
+                  : "Akhir rentang belum tersedia"}
+              </strong>
+              <span>Cum-date → payment +2 hari bursa</span>
+              <span>Payment {dt(o.payment_date, true)}</span>
+            </div>
+            {!o.complete && (
+              <p className="notice">
+                Data pengamatan parsial
+                {o.available_end_date
+                  ? `, tersedia sampai ${dt(o.available_end_date, true)}`
+                  : ""}
+                . Nilai tertinggi dan terendah hanya berdasarkan data yang
+                tersedia.
+              </p>
+            )}
+            {points.length ? (
+              <>
+                <div className="chart-legend observation-legend">
+                  <span>
+                    <i style={{ background: "#FF4713" }} />
+                    Penutupan
+                  </span>
+                  <span>
+                    <i style={{ background: "#397d60" }} />
+                    Tertinggi harian
+                  </span>
+                  <span>
+                    <i style={{ background: "#66B2BF" }} />
+                    Terendah harian
+                  </span>
+                </div>
+                <Chart
+                  label={`Pergerakan harga ${t.symbol} dari cum-date hingga dua hari bursa setelah payment`}
+                  height={280}
+                  option={option}
+                />
+                <div className="observation-extremes">
+                  {(
+                    [
+                      ["Nilai posisi tertinggi", o.highest],
+                      ["Nilai posisi terendah", o.lowest],
+                    ] as const
+                  ).map(([label, extreme]) => (
+                    <div key={label}>
+                      <span>{label}</span>
+                      <strong>
+                        {extreme
+                          ? money(extreme.total_value)
+                          : "Belum tersedia"}
+                      </strong>
+                      {extreme && (
+                        <>
+                          <p>
+                            {dt(extreme.date, true)} · harga{" "}
+                            {money(extreme.price)} / saham
+                          </p>
+                          <p
+                            className={
+                              extreme.pnl >= 0 ? "positive" : "negative"
+                            }
+                          >
+                            Laba/rugi {money(extreme.pnl)} (
+                            {pct(extreme.return_pct)})
+                          </p>
+                        </>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <p className="muted">
+                Harga harian untuk rentang ini belum tersedia.
+              </p>
+            )}
+            <p className="small muted observation-basis">
+              Nilai posisi = jumlah saham × harga tertinggi/terendah harian +
+              dividen {money(o.dividend_amount)}. Mengasumsikan posisi tetap
+              dipegang hingga berhak menerima dividen; sebelum payment, dividen
+              belum berupa kas. Tidak termasuk sisa kas di luar posisi. Harga
+              ekstrem historis bukan jaminan harga transaksi.{" "}
+              {averageEntry
+                ? "Harga masuk adalah referensi rata-rata 5 close, bukan harga transaksi pada satu tanggal."
+                : "Harga tertinggi pada cum-date dapat terjadi sebelum harga masuk penutupan."}
+            </p>
+            <p className="small muted">
+              Di luar biaya transaksi, pajak, dan slippage.
+            </p>
+          </>
+        )}
+      </div>
+    </div>
   );
 }

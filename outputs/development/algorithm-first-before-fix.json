@@ -1,0 +1,34 @@
+{
+  "fixture": true,
+  "started_at": "2026-10-08T09:50:31.375Z",
+  "events": [
+    {
+      "event": "algorithm_queued",
+      "ms": 7626
+    },
+    {
+      "event": "algorithm_completed_response",
+      "ms": 8165
+    },
+    {
+      "event": "AI_request_held",
+      "ms": 8259
+    },
+    {
+      "event": "chart_metrics_transactions_cashflow_visible_before_AI_release",
+      "ms": 8484
+    },
+    {
+      "event": "AI_released",
+      "ms": 9185
+    },
+    {
+      "event": "AI_summary_visible",
+      "ms": 9214
+    }
+  ],
+  "status": "passed",
+  "submitted_allocation": "rotation",
+  "ai_calls": 1,
+  "conclusion": "Original frontend already shows algorithm results while the AI HTTP response is withheld."
+}

@@ -1,0 +1,39 @@
+{
+  "fixture": true,
+  "started_at": "2026-10-08T09:56:00.448Z",
+  "events": [
+    {
+      "event": "algorithm_queued",
+      "ms": 1490
+    },
+    {
+      "event": "algorithm_completed_response",
+      "ms": 2017
+    },
+    {
+      "event": "AI_background_kickoff",
+      "ms": 2108
+    },
+    {
+      "event": "chart_metrics_transactions_cashflow_visible_before_AI_release",
+      "ms": 2345
+    },
+    {
+      "event": "AI_status_GET_held",
+      "ms": 3624
+    },
+    {
+      "event": "AI_released",
+      "ms": 4054
+    },
+    {
+      "event": "exhausted_AI_hidden_algorithm_still_visible",
+      "ms": 4116
+    }
+  ],
+  "status": "passed",
+  "submitted_allocation": "rotation",
+  "ai_calls": 1,
+  "status_reads": 1,
+  "conclusion": "Algorithm visible before AI completes; single kickoff POST and read-only GET automatically hide exhausted AI, preserving algorithm, and stop polling."
+}

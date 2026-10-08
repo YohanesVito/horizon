@@ -1,0 +1,46 @@
+{
+  "read_only": true,
+  "url": "https://horizon-dividend.vercel.app/",
+  "responses": [
+    {
+      "path": "/api/dividend-candidates",
+      "status": 200
+    },
+    {
+      "path": "/api/catalog",
+      "status": 200
+    },
+    {
+      "path": "/api/timeline",
+      "status": 200
+    },
+    {
+      "path": "/api/watchlist",
+      "status": 200
+    },
+    {
+      "path": "/api/rules",
+      "status": 200
+    },
+    {
+      "path": "/api/simulations",
+      "status": 200
+    }
+  ],
+  "first_history_label": "Buka hasil bb49bf89",
+  "history_count": 10,
+  "insight_safe_get": {
+    "status": 404,
+    "detail": "Not Found"
+  },
+  "screen_headings": [
+    "Bangun skenario replay.",
+    "Tentukan modal awal",
+    "Pilih strategi alokasi",
+    "Pilih peristiwa",
+    "Tentukan waktu masuk dan keluar",
+    "Riwayat replay",
+    "Hasilnya akan muncul di sini."
+  ],
+  "status": "observed"
+}

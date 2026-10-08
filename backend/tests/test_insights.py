@@ -82,22 +82,22 @@ def test_endpoint_cache_and_run_isolation(client, monkeypatch):
     monkeypatch.setattr(ai, 'generate_structured', generate)
     store.save('run-1', 'run', run_record())
     endpoint = '/api/simulations/run-1/insights'
-    result = client.post(endpoint, json={'allocation': 'equal'})
+    result = request_insight(client, endpoint, json={'allocation': 'equal'})
     assert result.status_code == 200
     assert result.json()['status'] == 'completed'
-    assert client.post(endpoint, json={'allocation': 'equal'}).json() == result.json()
+    assert request_insight(client, endpoint, json={'allocation': 'equal'}).json() == result.json()
     assert len(calls) == 1
     assert store.get('run-1', kind='run')['status'] == 'completed'
-    assert client.post(endpoint, json={'allocation': 'single'}).status_code == 422
-    assert client.post(endpoint, json={'allocation': 'equal', 'capital': 900}).status_code == 422
-    assert client.post('/api/simulations/absent/insights', json={'allocation': 'equal'}).status_code == 404
+    assert request_insight(client, endpoint, json={'allocation': 'single'}).status_code == 422
+    assert request_insight(client, endpoint, json={'allocation': 'equal', 'capital': 900}).status_code == 422
+    assert request_insight(client, '/api/simulations/absent/insights', json={'allocation': 'equal'}).status_code == 404
     store.save('queued', 'run', {**run_record('queued'), 'status': 'queued'})
-    assert client.post('/api/simulations/queued/insights', json={'allocation': 'equal'}).status_code == 409
+    assert request_insight(client, '/api/simulations/queued/insights', json={'allocation': 'equal'}).status_code == 409
     store.save('other-kind', 'scenario', run_record('other-kind'))
-    assert client.post('/api/simulations/other-kind/insights', json={'allocation': 'equal'}).status_code == 404
+    assert request_insight(client, '/api/simulations/other-kind/insights', json={'allocation': 'equal'}).status_code == 404
     # Same run with changed historical source should not reuse older explanation.
     main.timeline_dataset.companies['TEST']['history'][0]['points'][2]['close'] = 50
-    assert client.post(endpoint, json={'allocation': 'equal'}).json()['status'] == 'completed'
+    assert request_insight(client, endpoint, json={'allocation': 'equal'}).json()['status'] == 'completed'
     assert len(calls) == 1
 
 
@@ -114,8 +114,8 @@ def test_failure_retry_and_inflight_dedup(client, monkeypatch):
     run = run_record()
     store.save(run['id'], 'run', run)
     endpoint = '/api/simulations/run-1/insights'
-    assert client.post(endpoint, json={'allocation': 'equal'}).json()['status'] == 'unavailable'
-    assert client.post(endpoint, json={'allocation': 'equal'}).json()['status'] == 'unavailable'
+    assert request_insight(client, endpoint, json={'allocation': 'equal'}).json()['status'] == 'unavailable'
+    assert request_insight(client, endpoint, json={'allocation': 'equal'}).json()['status'] == 'unavailable'
     assert len(calls) == 3
     # A failed attempt stays unavailable despite clearing all process state.
     async def good(*args, **kwargs):
@@ -140,7 +140,7 @@ def test_missing_key_does_not_fetch_news_or_mutate_run(client, monkeypatch):
     monkeypatch.setattr(insights, 'news_context', no_call)
     run = run_record()
     store.save(run['id'], 'run', run)
-    response = client.post('/api/simulations/run-1/insights', json={'allocation': 'equal'})
+    response = request_insight(client, '/api/simulations/run-1/insights', json={'allocation': 'equal'})
     assert response.json()['status'] == 'unavailable'
     assert store.get(run['id'], kind='run') == run
 
@@ -247,9 +247,9 @@ def test_same_id_cannot_retry_failure_even_different_strategy(client, monkeypatc
     run['result']['alternatives'].append({**run['result']['primary'], 'allocation': 'single'})
     store.save(run['id'], 'run', run)
     path = '/api/simulations/run-1/insights'
-    initial = client.post(path, json={'allocation': 'equal'}).json()
+    initial = request_insight(client, path, json={'allocation': 'equal'}).json()
     monkeypatch.setattr(insights, 'VERSION', 'new-version')
-    later = client.post(path, json={'allocation': 'single'}).json()
+    later = request_insight(client, path, json={'allocation': 'single'}).json()
     assert initial == later
     assert later['status'] == 'unavailable'
     assert calls == [1, 1, 1]
@@ -285,11 +285,11 @@ def test_two_failures_then_success_lock_result(client, monkeypatch):
     run = run_record()
     store.save(run['id'], 'run', run)
     path = '/api/simulations/run-1/insights'
-    first = client.post(path, json={'allocation': 'equal'}).json()
+    first = request_insight(client, path, json={'allocation': 'equal'}).json()
     assert first['status'] == 'completed'
     assert first['attempts'] == 3
     assert first['exhausted'] is False
-    assert client.post(path, json={'allocation': 'equal'}).json() == first
+    assert request_insight(client, path, json={'allocation': 'equal'}).json() == first
     assert len(calls) == 3
     assert len(news_calls) == 1
 
@@ -326,7 +326,7 @@ def test_missing_key_has_zero_budget_and_recovers_after_configuration(client, mo
         raise ai.AIError('missing')
     monkeypatch.setattr(ai, '_api_key', missing)
     path = '/api/simulations/config-run/insights'
-    missing_result = client.post(path, json={'allocation': 'equal'}).json()
+    missing_result = request_insight(client, path, json={'allocation': 'equal'}).json()
     assert missing_result['configured'] is False
     assert missing_result['attempts'] == 0
     assert store.get('ai-run:config-run', kind='simulation-insight') is None
@@ -337,6 +337,102 @@ def test_missing_key_has_zero_budget_and_recovers_after_configuration(client, mo
         return {'summary': 'Configured now', 'findings': []}
     monkeypatch.setattr(insights, 'news_context', news)
     monkeypatch.setattr(ai, 'generate_structured', generate)
-    response = client.post(path, json={'allocation': 'equal'}).json()
+    response = request_insight(client, path, json={'allocation': 'equal'}).json()
     assert response['status'] == 'completed'
     assert response['attempts'] == 1
+
+
+def request_insight(client, path, **kwargs):
+    from time import sleep
+    response = client.post(path, **kwargs)
+    for _ in range(200):
+        if response.status_code != 200 or response.json().get('status') != 'processing':
+            return response
+        sleep(.005)
+        response = client.get(path)
+    raise AssertionError('Insight worker did not finish')
+
+
+def test_holding_payload_uses_persisted_values_and_marks_old_runs(monkeypatch):
+    from types import SimpleNamespace
+    run = run_record('holding-payload')
+    run['input']['timing_mode'] = 'payment_plus_2'
+    observation = {'cum_date': '2025-03-13', 'payment_date': '2025-04-11',
+                   'end_date': '2025-04-15', 'horizon_sessions': 2, 'complete': False,
+                   'gaps': ['One session unavailable'], 'shares': 100, 'invested': 10000,
+                   'dividend_amount': 1000,
+                   'highest': {'price': 110, 'total_value': 12000, 'pnl': 2000},
+                   'lowest': {'price': 80, 'total_value': 9000, 'pnl': -1000},
+                   'points': [{'date': '2025-03-13', 'close': 100}]}
+    selected = run['result']['primary']
+    selected['trades'][0].update(observation=observation, entry_price=100,
+                                entry_price_basis='prior5_close_mean',
+                                entry_reference_dates=['2025-03-06', '2025-03-07', '2025-03-10', '2025-03-11', '2025-03-12'])
+    monkeypatch.setattr(ai, '_api_key', lambda: 'test')
+    async def model(prompt, schema, **kwargs):
+        payload = json.loads(prompt)
+        actual = payload['holding_analysis'][0]['observation']
+        assert payload['input']['timing_mode'] == 'payment_plus_2'
+        assert payload['simulation']['trades'][0]['entry_price'] == 100
+        assert payload['holding_analysis'][0]['entry_price_basis'] == 'prior5_close_mean'
+        assert len(payload['holding_analysis'][0]['entry_reference_dates']) == 5
+        assert 'rata-rata ini harga pembelian historis nyata' in kwargs['instructions']
+        assert 'bukan lima transaksi' in kwargs['instructions']
+        assert actual['highest']['total_value'] == 12000
+        assert actual['lowest']['pnl'] == -1000
+        assert actual['complete'] is False and actual['gaps']
+        assert 'points' not in actual
+        assert 'observation' not in payload['simulation']['trades'][0]
+        assert 'bukan kas yang sudah diterima' in kwargs['instructions']
+        assert 'bukan laba maksimum yang pasti bisa dieksekusi' in kwargs['instructions']
+        assert '21 close' in kwargs['instructions']
+        return {'summary': 'Fixture holding valuation', 'findings': []}
+    monkeypatch.setattr(ai, 'generate_structured', model)
+    result = asyncio.run(insights._generate(run, selected, SimpleNamespace(companies={}), 'unused', context=([], [])))
+    assert result['status'] == 'completed'
+    assert result['provenance']['holding_analysis_version'] == 1
+    assert result['provenance']['date_grounding_version'] == 1
+    assert result['provenance']['timing_mode'] == 'payment_plus_2'
+    legacy = insights.holding_analysis(run_record()['result']['primary'])[0]
+    assert legacy['observation'] is None and legacy['availability'] == 'unavailable_legacy_run'
+
+
+def test_real_bbca_automatic_engine_observation_reaches_ai_prompt(monkeypatch):
+    """Exercise bundled market snapshot -> engine -> actual AI request, without paid calls."""
+    from backend.main import dataset, timeline_dataset
+    from backend.domain import SimulationRequest
+    from backend.simulator import compare
+    from decimal import Decimal
+    event = next(e for e in dataset.events.values() if e['symbol'] == 'BBCA' and e['cum_date'].startswith('2025') and e['replay_available'])
+    result = compare(dataset, SimulationRequest(timing_mode='payment_plus_2', capital=15000000,
+                     event_ids=[event['id']], compare=False))
+    trade = result['primary']['trades'][0]
+    dates = dataset.market_sessions
+    cum_index = dates.index(event['cum_date'])
+    expected_dates = dates[cum_index-5:cum_index]
+    expected_price = sum(Decimal(str(dataset.prices['BBCA'][d]['close'])) for d in expected_dates) / 5
+    assert trade['entry_reference_dates'] == expected_dates
+    assert trade['entry_price'] == float(expected_price)
+    run = {'id': 'bbca-integration', 'input': result['input'], 'result': result, 'dataset_version': dataset.version}
+    monkeypatch.setattr(ai, '_api_key', lambda: 'fixture')
+    observed = []
+    async def model(prompt, schema, **kwargs):
+        payload = json.loads(prompt)
+        actual = payload['holding_analysis'][0]
+        assert actual['event_dates']['cum_date'] == event['cum_date']
+        assert actual['event_dates']['ex_date'] == event['ex_date']
+        assert actual['event_dates']['cum_date'] != actual['event_dates']['ex_date']
+        assert actual['synthetic_booking_date'] == event['cum_date']
+        assert 'tanggal di dalam ID bukan tanggal cum' in kwargs['instructions']
+        assert actual['entry_reference_dates'] == expected_dates
+        assert actual['entry_price_basis'] == 'prior5_close_mean'
+        assert actual['observation']['highest'] == trade['observation']['highest']
+        assert actual['observation']['lowest'] == trade['observation']['lowest']
+        assert payload['simulation']['trades'][0]['entry_price'] == float(expected_price)
+        assert payload['input']['timing_mode'] == 'payment_plus_2'
+        assert 'harga pembelian historis nyata' in kwargs['instructions']
+        observed.append(payload)
+        return {'summary': 'Reference entry, hypothetical holding valuation.', 'findings': []}
+    monkeypatch.setattr(ai, 'generate_structured', model)
+    insight = asyncio.run(insights._generate(run, result['primary'], timeline_dataset, 'unused', context=([], [])))
+    assert insight['status'] == 'completed' and len(observed) == 1
