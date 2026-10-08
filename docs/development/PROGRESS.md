@@ -495,3 +495,8 @@ Hasil gabungan diuji pada worktree terisolasi: **138tes backend lulus**, lint, p
 ## UI-COPY-05 — Ringkas Simulasi — 8 Oktober 2026
 
 **DONE lokal (instruksi PM; C-08):** metode masuk menjadi disclosure tertutup “Bagaimana simulasi dihitung?”; kalimat transaksi nyata/beli bertahap dihapus; CTA Simulasikan/loading Menjalankan simulasi…. Panel aturan hasil (termasuk aksi salin input di dalamnya) dan asumsi hasil di halaman Simulasi dihapus; batas data/analisis AI tidak dirender. Data/backend tidak diubah. README memakai problem statement PM dan nama Horizon. Typecheck, lint komponen, build, diff check lulus. Playwright production3109 dengan API fixture: disclosure tertutup→terbuka→tertutup, input Rp10 juta/BBCA memicu tombol loading disabled, kalimat terhapus tidak ada. Panel hasil/AI diperiksa melalui diff/source, bukan E2E hasil nyata. Belum deploy/UAT.
+
+
+## DOC-DEMO-01 — README dan demo CFIN — 8 Oktober 2026
+
+**DONE lokal (instruksi PM; C-08):** README diselaraskan ke all-in independen tiap peristiwa: pembuka, form, hasil, walkthrough, diagram Sectors, batas valuasi tanpa exit, serta screenshot/provenance. Live web diuji dengan Rp10 juta pada lima kandidat; CFIN dipilih karena dividen Rp1.285.000 tidak menutup penurunan nilai saham Rp2.014.880. Run tunggal `7768ae04-704b-4163-96ab-9a966bdfb8f1` selesai dan dibuka ulang melalui browser: nilai akhir Rp9.270.120, hasil −Rp729.880 (−7,30%). API run/timeline/kandidat diarsipkan pada `outputs/development/cfin-demo-20261008.json`; jumlah saham, nilai saham, dividen, sisa kas, return dan penurunan ex-date direkonsiliasi. Link lokal README dan diff check lulus. Snapshot lama dipertahankan. Perubahan dokumentasi saja; tidak ada build, push, deploy atau klaim UAT baru.

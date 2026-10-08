@@ -1,5 +1,13 @@
 # Screenshot README
 
+## Demo CFIN terbaru — 8 Oktober 2026
+
+`cfin-demo-results-20261008.png` berasal dari web publik https://horizon-dividend.vercel.app/, arsip run `7768ae04-704b-4163-96ab-9a966bdfb8f1`: modal Rp10 juta, hanya CFIN ex-date 11 Juni 2025, all-in independen, pengamatan sampai 1 Juli 2025. Nilai akhir Rp9.270.120; hasil −Rp729.880. Screenshot ini menggantikan ilustrasi tiga strategi pada README utama. Angka dicocokkan dengan API live dan perhitungan komponennya di `outputs/development/cfin-demo-20261008.json`.
+
+## Arsip screenshot lokal sebelumnya
+
+Gambar di bawah tetap dipertahankan sebagai bukti lama; form dan tiga alokasinya bukan alur Simulasi saat ini.
+
 Diambil pada 8 Oktober 2026 dari source aplikasi `8a8b5a6` menggunakan browser pada preview lokal Next.js → FastAPI, dengan SQLite terpisah. Gambar adalah screenshot antarmuka nyata; tidak memakai mockup atau gambar generatif.
 
 | Berkas | Isi | Konteks |
