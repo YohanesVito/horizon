@@ -1,6 +1,7 @@
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import asynccontextmanager
 from uuid import uuid4
+import time
 from datetime import datetime, timezone
 from fastapi import FastAPI, HTTPException
 from .unified import UnifiedDataset
@@ -11,7 +12,10 @@ from .intelligence import IntelligenceDataset, rank, scenario
 from .planner import plan_routes, replay_routes
 from .timeline import TimelineDataset
 from .discovery import top_dividend_yield
+from .ex_date_forecast import retrospective_diagnostic
+from .ex_date_scenario import ExDateScenarioInput, calculate_ex_date_scenario
 from .security import require_api_key, validate_api_key_config
+from .insights import InsightRequest, generate_insights
 
 intelligence_dataset = IntelligenceDataset()
 dataset = UnifiedDataset(intelligence_dataset)
@@ -27,6 +31,10 @@ async def lifespan(app):
     with store.worker_lease():
         pool = ThreadPoolExecutor(max_workers=2, thread_name_prefix='dividen-replay')
         try:
+            for insight in store.list_records('simulation-insight', limit=10000):
+                if insight.get('status') == 'processing' and (store.engine.dialect.name == 'postgresql' or time.time() - insight.get('started_at', 0) > 100):
+                    insight.update(status='unavailable', summary='Proses analisis terhenti. Percobaan AI untuk simulasi ini sudah digunakan.')
+                    store.save(f"ai-run:{insight['provenance']['run_id']}", 'simulation-insight', insight)
             # The lease prevents a second cloud-backed process failing active jobs.
             for kind in ('run', 'rotation-run'):
                 for job in store.list_records(kind, limit=1000):
@@ -48,6 +56,20 @@ def intelligence():
     logic = FinancialLogic.model_validate(saved)
     analysis = intelligence_dataset.analyze(logic.entry_offset, logic.horizon)
     return {**analysis, 'ranking': rank(analysis, logic), 'rules': saved}
+
+
+@app.get('/api/research/ex-date')
+def ex_date_research():
+    """Historical model comparison; no live price forecast is served here."""
+    return retrospective_diagnostic(intelligence_dataset)
+
+
+@app.post('/api/ex-date/scenario')
+def ex_date_scenario(body: ExDateScenarioInput):
+    try:
+        return calculate_ex_date_scenario(body)
+    except ValueError as error:
+        raise HTTPException(422, str(error)) from None
 
 
 @app.put('/api/intelligence/rules')
@@ -194,6 +216,18 @@ def result(job_id: str):
     if not run or 'status' not in run:
         raise HTTPException(404, 'Simulasi tidak ditemukan.')
     return run
+
+
+@app.post('/api/simulations/{job_id}/insights')
+async def simulation_insights(job_id: str, body: InsightRequest):
+    run = result(job_id)
+    if run['status'] != 'completed':
+        raise HTTPException(409, 'Simulasi belum selesai.')
+    options = [run['result']['primary'], *run['result'].get('alternatives', [])]
+    selected = next((option for option in options if option['allocation'] == body.allocation), None)
+    if selected is None:
+        raise HTTPException(422, 'Strategi tidak tersedia pada hasil simulasi ini.')
+    return await generate_insights(run, selected, timeline_dataset)
 
 
 @app.post('/api/rotation-plans', status_code=201)

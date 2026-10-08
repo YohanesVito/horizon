@@ -1,0 +1,13 @@
+{
+  "symbol": "ASII",
+  "cum_date": "2026-10-12",
+  "ex_date": "2026-10-13",
+  "last_price_date": "2026-10-07",
+  "last_close": "4780",
+  "dps": "98.0",
+  "calendar_snapshot": "outputs/forecast/calendar-upcoming-2026-10-08.json",
+  "price_snapshot": "outputs/forecast/price-ASII-2026-10-08.json",
+  "notice_file": "outputs/forecast/ksei-ASII-2026-10.pdf",
+  "notice_url": "https://web.ksei.co.id/Announcement/Files/ASII_DIV_20261014_ID.pdf",
+  "notice_document_date": "2026-10-05"
+}

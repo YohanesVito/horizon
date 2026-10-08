@@ -1,0 +1,68 @@
+{
+  "transport": "Sectors REST GET; endpoint absent from inspected MCP registry",
+  "url": "https://api.sectors.app/v2/corporate-actions/?start=2026-10-09&end=2026-12-31&type=upcoming_dividend",
+  "retrieved_at": "2026-10-08T16:15:04.906168+08:00",
+  "http_status": 200,
+  "result": {
+    "start": "2026-10-09",
+    "end": "2026-12-31",
+    "upcoming_dividend": [
+      {
+        "symbol": "AALI.JK",
+        "ex_date": "2026-10-09",
+        "cum_date": "2026-10-08",
+        "recording_date": "2026-10-12",
+        "payment_date": "2026-10-26",
+        "dividend_amount": 233.0
+      },
+      {
+        "symbol": "GEMS.JK",
+        "ex_date": "2026-10-09",
+        "cum_date": "2026-10-08",
+        "recording_date": "2026-10-12",
+        "payment_date": "2026-10-22",
+        "dividend_amount": 611.93
+      },
+      {
+        "symbol": "ASII.JK",
+        "ex_date": "2026-10-13",
+        "cum_date": "2026-10-12",
+        "recording_date": "2026-10-14",
+        "payment_date": "2026-10-30",
+        "dividend_amount": 98.0
+      },
+      {
+        "symbol": "TLDN.JK",
+        "ex_date": "2026-10-13",
+        "cum_date": "2026-10-12",
+        "recording_date": "2026-10-14",
+        "payment_date": "2026-10-22",
+        "dividend_amount": 20.0
+      },
+      {
+        "symbol": "AMRT.JK",
+        "ex_date": "2026-10-14",
+        "cum_date": "2026-10-13",
+        "recording_date": "2026-10-15",
+        "payment_date": "2026-10-27",
+        "dividend_amount": 14.5
+      },
+      {
+        "symbol": "AUTO.JK",
+        "ex_date": "2026-10-14",
+        "cum_date": "2026-10-13",
+        "recording_date": "2026-10-15",
+        "payment_date": "2026-10-26",
+        "dividend_amount": 72.52
+      },
+      {
+        "symbol": "BSBK.JK",
+        "ex_date": "2026-10-14",
+        "cum_date": "2026-10-13",
+        "recording_date": "2026-10-15",
+        "payment_date": "2026-10-20",
+        "dividend_amount": 1.0
+      }
+    ]
+  }
+}

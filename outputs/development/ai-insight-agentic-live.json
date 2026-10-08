@@ -1,0 +1,556 @@
+{
+  "verification": "Fresh local SQLite run; live OpenAI planning/final + Sectors MCP, cached repeated allocation request",
+  "run_id": "f272006d-7a93-496f-b27a-c12245763c36",
+  "http_status": 200,
+  "elapsed_seconds": 37.721,
+  "cached_identical": true,
+  "result": {
+    "status": "completed",
+    "summary": "Replay dengan alokasi merata berakhir dengan NAV Rp75,02 juta dari modal Rp69 juta, atau hasil kotor 8,72%. Sebagian posisi LPPF masih terbuka, jadi hasil akhir belum seluruhnya terealisasi.",
+    "findings": [
+      {
+        "title": "Dividen menopang hasil saat pergerakan harga beragam",
+        "detail": "Dividen yang tercatat berjumlah Rp6,10 juta, sementara untung-rugi dari perubahan harga saham beragam. BBCA dijual di bawah harga masuk, BMRI dijual setelah sinyal impas harga, dan LPPF masih terbuka dengan harga terakhir di bawah harga masuk. Karena itu, hasil replay mencakup nilai posisi LPPF yang belum dijual.",
+        "source_ids": []
+      },
+      {
+        "title": "Alokasi merata unggul dalam replay ini",
+        "detail": "Di antara tiga skenario yang disajikan, alokasi merata mencatat hasil 8,72% dan penurunan maksimum 6,50%. Skenario satu saham dan rotasi masing-masing mencatat hasil 1,10% dan 1,53%, dengan penurunan maksimum 10,46% dan 10,53%. Ini hanya perbandingan pada replay tersebut, bukan jaminan untuk periode lain.",
+        "source_ids": []
+      },
+      {
+        "title": "Penurunan LPPF tersebar di beberapa sampel, bukan satu kejadian menyimpang",
+        "detail": "Dalam lima sampel historis LPPF, penurunan rata-rata 15,30% dan median 17,68%; penurunan terbesar terjadi pada event 10 April 2023, sebesar 22,97%. Median yang lebih tinggi daripada rata-rata menunjukkan penurunan cukup luas dalam sampel, bukan rata-rata yang terdorong satu event ekstrem. Ini pratinjau: jenis dividen, basis harga, kelengkapan sesi, dan keterkaitan pengumuman belum diverifikasi. Catatan penyedia mencantumkan dividen LPPF pada event-event tersebut; data harga menunjukkan titik rendah sampel terbesar pada 26 April 2023.",
+        "source_ids": [
+          "sectors-01",
+          "sectors-02"
+        ]
+      },
+      {
+        "title": "IHSG memberi konteks pasar untuk penurunan LPPF pada 2023",
+        "detail": "Pada jendela yang sama, dari cum-date 6 April hingga titik rendah LPPF pada 26 April 2023, data IHSG mencatat 6.792,765 pada awal jendela dan 6.910,147 pada tanggal titik rendah. Indeks tercatat lebih tinggi pada tanggal tersebut, tetapi perbandingan ini hanya konteks waktu dan tidak menjelaskan penyebab pergerakan LPPF.",
+        "source_ids": [
+          "sectors-02",
+          "sectors-03"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "sectors-01",
+        "provider": "Sectors",
+        "source_kind": "provider_record",
+        "tool": "fetch-corporate-actions",
+        "title": "Sectors corporate actions · LPPF",
+        "query": {
+          "symbol": "LPPF"
+        },
+        "retrieved_at": "2026-10-08T08:59:40.518473+00:00",
+        "url": "https://api.sectors.app/v2/company/corporate-actions/LPPF/",
+        "temporal_scope": "provider record for requested historical dates",
+        "published_at": null,
+        "truncated": false,
+        "untrusted_data": true
+      },
+      {
+        "id": "sectors-02",
+        "provider": "Sectors",
+        "source_kind": "provider_record",
+        "tool": "fetch-daily-price",
+        "title": "Sectors daily price · LPPF",
+        "query": {
+          "symbol": "LPPF",
+          "start": "2023-04-06",
+          "end": "2023-05-16"
+        },
+        "retrieved_at": "2026-10-08T08:59:50.376488+00:00",
+        "url": "https://api.sectors.app/v2/daily/LPPF/?start=2023-04-06&end=2023-05-16",
+        "temporal_scope": "provider record for requested historical dates",
+        "published_at": null,
+        "truncated": false,
+        "untrusted_data": true
+      },
+      {
+        "id": "sectors-03",
+        "provider": "Sectors",
+        "source_kind": "provider_record",
+        "tool": "fetch-index-daily",
+        "title": "Sectors index daily",
+        "query": {
+          "index_code": "ihsg",
+          "start": "2023-04-06",
+          "end": "2023-05-16"
+        },
+        "retrieved_at": "2026-10-08T08:59:50.468662+00:00",
+        "url": "https://docs.sectors.app/api-references/v2/indonesia/indices/index-daily",
+        "temporal_scope": "provider record for requested historical dates",
+        "published_at": null,
+        "truncated": false,
+        "untrusted_data": true
+      }
+    ],
+    "limitations": [
+      "Replay historis, bukan prediksi; di luar biaya transaksi, pajak dan slippage.",
+      "Konteks memakai snapshot historis tersedia dan dapat melampaui tanggal replay; bukan backtest informasi yang tersedia saat keputusan.",
+      "Histori yang belum diverifikasi adalah pratinjau; basis split, kelengkapan sesi dan identitas siklus dapat membatasi perbandingan.",
+      "Berita menunjukkan konteks waktu, bukan kepastian penyebab penurunan.",
+      "Data fundamental tanpa tanggal publikasi/vintage hanya konteks retrospektif; coverage tool/sumber yang tidak tersedia tidak membuktikan penyebab.",
+      "Pencarian fetch-daily-price tidak menghasilkan bukti yang dapat digunakan.",
+      "Data fetch-news belum tersedia atau tidak cukup untuk kesimpulan.",
+      "Pencarian fetch-news tidak menghasilkan bukti yang dapat digunakan."
+    ],
+    "statistics": {
+      "metric": "Maximum decline from cum close over first 21 available closes on/after ex-date; sessions may be incomplete. Event-weighted, not annual averages.",
+      "observed_closes_after_ex": 21,
+      "as_of_policy": "All available historical snapshot events; descriptive context may postdate replay and is not a decision-time backtest.",
+      "historical_years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "companies": [
+        {
+          "symbol": "BBCA",
+          "groups": [],
+          "unclassified_samples": [],
+          "unclassified_distribution": {
+            "count": 0,
+            "mean_pct": null,
+            "median_pct": null,
+            "maximum": null,
+            "mean_without_maximum_pct": null,
+            "upper_outlier": null,
+            "outlier_method": "Insufficient event samples.",
+            "comparability": "Descriptive preview only: dividend cycles, split basis and session coverage are unverified; not a comparable annual risk estimate."
+          },
+          "excluded": [],
+          "missing_years": [
+            2021,
+            2022,
+            2023,
+            2024,
+            2025
+          ]
+        },
+        {
+          "symbol": "BMRI",
+          "groups": [],
+          "unclassified_samples": [],
+          "unclassified_distribution": {
+            "count": 0,
+            "mean_pct": null,
+            "median_pct": null,
+            "maximum": null,
+            "mean_without_maximum_pct": null,
+            "upper_outlier": null,
+            "outlier_method": "Insufficient event samples.",
+            "comparability": "Descriptive preview only: dividend cycles, split basis and session coverage are unverified; not a comparable annual risk estimate."
+          },
+          "excluded": [],
+          "missing_years": [
+            2021,
+            2022,
+            2023,
+            2024,
+            2025
+          ]
+        },
+        {
+          "symbol": "LPPF",
+          "groups": [],
+          "unclassified_samples": [
+            {
+              "event_id": "LPPF:2021-11-11",
+              "year": 2021,
+              "ex_date": "2021-11-11",
+              "window_end": "2021-12-09",
+              "observed_close_count": 21,
+              "cum_date": "2021-11-10",
+              "low_date": "2021-12-01",
+              "drop_pct": 6.25,
+              "cycle_key": null,
+              "verified": false,
+              "issues": [
+                "Basis harga, DPS dan mata uang belum diverifikasi.",
+                "Hubungan pengumuman dan event belum diverifikasi.",
+                "Identitas siklus pembanding belum tersedia.",
+                "Jenis siklus dividen belum diverifikasi.",
+                "Kelengkapan data harga per hari bursa belum diverifikasi.",
+                "Tanggal RUPS/declaration terkait event belum terverifikasi."
+              ]
+            },
+            {
+              "event_id": "LPPF:2022-04-14",
+              "year": 2022,
+              "ex_date": "2022-04-14",
+              "window_end": "2022-05-24",
+              "observed_close_count": 21,
+              "cum_date": "2022-04-13",
+              "low_date": "2022-05-12",
+              "drop_pct": 10.833333,
+              "cycle_key": null,
+              "verified": false,
+              "issues": [
+                "Basis harga, DPS dan mata uang belum diverifikasi.",
+                "Hubungan pengumuman dan event belum diverifikasi.",
+                "Identitas siklus pembanding belum tersedia.",
+                "Jenis siklus dividen belum diverifikasi.",
+                "Kelengkapan data harga per hari bursa belum diverifikasi.",
+                "Tanggal RUPS/declaration terkait event belum terverifikasi."
+              ]
+            },
+            {
+              "event_id": "LPPF:2023-04-10",
+              "year": 2023,
+              "ex_date": "2023-04-10",
+              "window_end": "2023-05-16",
+              "observed_close_count": 21,
+              "cum_date": "2023-04-06",
+              "low_date": "2023-04-26",
+              "drop_pct": 22.970297,
+              "cycle_key": null,
+              "verified": false,
+              "issues": [
+                "Basis harga, DPS dan mata uang belum diverifikasi.",
+                "Hubungan pengumuman dan event belum diverifikasi.",
+                "Identitas siklus pembanding belum tersedia.",
+                "Jenis siklus dividen belum diverifikasi.",
+                "Kelengkapan data harga per hari bursa belum diverifikasi.",
+                "Tanggal RUPS/declaration terkait event belum terverifikasi."
+              ]
+            },
+            {
+              "event_id": "LPPF:2024-04-22",
+              "year": 2024,
+              "ex_date": "2024-04-22",
+              "window_end": "2024-05-27",
+              "observed_close_count": 21,
+              "cum_date": "2024-04-19",
+              "low_date": "2024-05-16",
+              "drop_pct": 18.767507,
+              "cycle_key": null,
+              "verified": false,
+              "issues": [
+                "Basis harga, DPS dan mata uang belum diverifikasi.",
+                "Hubungan pengumuman dan event belum diverifikasi.",
+                "Identitas siklus pembanding belum tersedia.",
+                "Jenis siklus dividen belum diverifikasi.",
+                "Kelengkapan data harga per hari bursa belum diverifikasi.",
+                "Tanggal RUPS/declaration terkait event belum terverifikasi."
+              ]
+            },
+            {
+              "event_id": "LPPF:2025-04-22",
+              "year": 2025,
+              "ex_date": "2025-04-22",
+              "window_end": "2025-05-23",
+              "observed_close_count": 21,
+              "cum_date": "2025-04-21",
+              "low_date": "2025-04-24",
+              "drop_pct": 17.676768,
+              "cycle_key": null,
+              "verified": false,
+              "issues": [
+                "Basis harga, DPS dan mata uang belum diverifikasi.",
+                "Hubungan pengumuman dan event belum diverifikasi.",
+                "Identitas siklus pembanding belum tersedia.",
+                "Jenis siklus dividen belum diverifikasi.",
+                "Kelengkapan data harga per hari bursa belum diverifikasi.",
+                "Tanggal RUPS/declaration terkait event belum terverifikasi."
+              ]
+            }
+          ],
+          "unclassified_distribution": {
+            "upper_outlier": false,
+            "outlier_method": "Tukey upper fence Q3 + 1.5 IQR, inclusive quartiles; at least 5 event samples. Descriptive only.",
+            "count": 5,
+            "mean_pct": 15.299581,
+            "median_pct": 17.676768,
+            "maximum": {
+              "event_id": "LPPF:2023-04-10",
+              "year": 2023,
+              "ex_date": "2023-04-10",
+              "window_end": "2023-05-16",
+              "observed_close_count": 21,
+              "cum_date": "2023-04-06",
+              "low_date": "2023-04-26",
+              "drop_pct": 22.970297,
+              "cycle_key": null,
+              "verified": false,
+              "issues": [
+                "Basis harga, DPS dan mata uang belum diverifikasi.",
+                "Hubungan pengumuman dan event belum diverifikasi.",
+                "Identitas siklus pembanding belum tersedia.",
+                "Jenis siklus dividen belum diverifikasi.",
+                "Kelengkapan data harga per hari bursa belum diverifikasi.",
+                "Tanggal RUPS/declaration terkait event belum terverifikasi."
+              ]
+            },
+            "mean_without_maximum_pct": 13.381902,
+            "comparability": "Descriptive preview only: dividend cycles, split basis and session coverage are unverified; not a comparable annual risk estimate."
+          },
+          "excluded": [],
+          "missing_years": []
+        }
+      ]
+    },
+    "provenance": {
+      "analysis_version": "insights-v3",
+      "run_id": "f272006d-7a93-496f-b27a-c12245763c36",
+      "dataset_version": "unified-b749e08ddb769800",
+      "allocation": "equal"
+    },
+    "research": {
+      "version": "idx-agentic-v1",
+      "status": "completed",
+      "model_calls": 2,
+      "tool_calls": 6,
+      "provider_calls": 4,
+      "provider_credits": 4
+    },
+    "attempts": 1,
+    "exhausted": false
+  },
+  "research_evidence": {
+    "version": "idx-agentic-v1",
+    "status": "completed",
+    "sources": [
+      {
+        "id": "sectors-01",
+        "provider": "Sectors",
+        "source_kind": "provider_record",
+        "tool": "fetch-corporate-actions",
+        "title": "Sectors corporate actions · LPPF",
+        "query": {
+          "symbol": "LPPF"
+        },
+        "retrieved_at": "2026-10-08T08:59:40.518473+00:00",
+        "url": "https://api.sectors.app/v2/company/corporate-actions/LPPF/",
+        "excerpt": "{\"symbol\":\"LPPF.JK\",\"corporate_actions\":{\"agm\":[{\"agm_date\":\"2022-04-05\",\"agm_time\":\"10:00:00\",\"agm_place\":\"Cyber 2 Tower Jl. H. R. Rasuna Said, Blok X – 5 Jakartadki Jakarta, Kota Adm. Jakarta Selatan\",\"agm_result\":null},{\"agm_date\":\"2022-06-06\",\"agm_time\":\"10:00:00\",\"agm_place\":\"DKI Jakarta\",\"agm_result\":null},{\"agm_date\":\"2023-03-29\",\"agm_time\":\"09:00:00\",\"agm_place\":\"Cyber 2 Towerjl. H. R. Rasuna Said, Blok X – 5 Jakartadki Jakarta, Kota Adm. Jakarta Selatan\",\"agm_result\":null},{\"agm_date\":\"2023-11-30\",\"agm_time\":\"13:00:00\",\"agm_place\":\"Virtual Melalui Fasilitas Yangdisediakan Oleh Idx-Pubexlive 2023\",\"agm_result\":null},{\"agm_date\":\"2023-12-22\",\"agm_time\":\"09:30:00\",\"agm_place\":\"Cyber 2 Towerjl. H. R. Rasuna Said, Blok X – 5 Jakartadki Jakarta, Kota Adm. Jakarta Selatan\",\"agm_result\":null},{\"agm_date\":\"2024-04-03\",\"agm_time\":\"10:00:00\",\"agm_place\":\"Cyber 2 Tower Lantai 17Jl. H. R Rasuna Said, Blok X-5Jakarta Selatan, 12950\",\"agm_result\":null},{\"agm_date\":\"2025-04-10\",\"agm_time\":\"10:00:00\",\"agm_place\":\"Cyber 2 Tower Lantai 17. Jl. H. R. Rasuna Said, Blok X ? 5 Jakarta, Indonesia Kota Adm. Jakartaselatan\",\"agm_result\":null}],\"bonus\":null,\"warrant\":null,\"dividend\":[{\"ex_date\":\"2025-04-22\",\"payment_date\":\"2025-04-29\",\"dividend_yield\":0.178185,\"dividend_amount\":300},{\"ex_date\":\"2024-04-22\",\"payment_date\":\"2024-04-29\",\"dividend_yield\":0.122768,\"dividend_amount\":200},{\"ex_date\":\"2023-04-10\",\"payment_date\":\"2023-04-17\",\"dividend_yield\":0.158095,\"dividend_amount\":525},{\"ex_date\":\"2022-04-14\",\"payment_date\":\"2022-04-28\",\"dividend_yield\":0.0529501,\"dividend_amount\":250},{\"ex_date\":\"2021-11-11\",\"payment_date\":\"2021-12-02\",\"dividend_yield\":0.0436967,\"dividend_amount\":100}],\"right_issue\":null,\"stock_split\":[],\"upcoming_dividend\":null},\"historical_filter_applied\":\"Future/unanchored dates after 2025-05-08 were omitted.\"}",
+        "temporal_scope": "provider record for requested historical dates",
+        "published_at": null,
+        "truncated": false,
+        "untrusted_data": true
+      },
+      {
+        "id": "sectors-02",
+        "provider": "Sectors",
+        "source_kind": "provider_record",
+        "tool": "fetch-daily-price",
+        "title": "Sectors daily price · LPPF",
+        "query": {
+          "symbol": "LPPF",
+          "start": "2023-04-06",
+          "end": "2023-05-16"
+        },
+        "retrieved_at": "2026-10-08T08:59:50.376488+00:00",
+        "url": "https://api.sectors.app/v2/daily/LPPF/?start=2023-04-06&end=2023-05-16",
+        "excerpt": "[{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-06\",\"close\":5050,\"open\":5000,\"high\":5125,\"low\":4990,\"volume\":13534900,\"market_cap\":11940339079000},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-10\",\"close\":4700,\"open\":4870,\"high\":4900,\"low\":4700,\"volume\":510200,\"market_cap\":11112790826000},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-11\",\"close\":4380,\"open\":4550,\"high\":4550,\"low\":4380,\"volume\":6006400,\"market_cap\":10356175280400},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-12\",\"close\":4190,\"open\":4200,\"high\":4350,\"low\":4150,\"volume\":6598600,\"market_cap\":9906934800200},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-13\",\"close\":4110,\"open\":4200,\"high\":4240,\"low\":4110,\"volume\":3732400,\"market_cap\":9717780913800},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-14\",\"close\":4170,\"open\":4120,\"high\":4230,\"low\":4110,\"volume\":2109800,\"market_cap\":9859646328600},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-17\",\"close\":4060,\"open\":4200,\"high\":4270,\"low\":4050,\"volume\":3423300,\"market_cap\":9599559734800},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-18\",\"close\":4030,\"open\":4050,\"high\":4130,\"low\":3990,\"volume\":3655000,\"market_cap\":9528627027400},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-26\",\"close\":3890,\"open\":4010,\"high\":4010,\"low\":3750,\"volume\":7706100,\"market_cap\":9197607726200},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-27\",\"close\":4000,\"open\":3900,\"high\":4050,\"low\":3900,\"volume\":3185800,\"market_cap\":9457694320000},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-28\",\"close\":4050,\"open\":4000,\"high\":4100,\"low\":3980,\"volume\":2189200,\"market_cap\":9575915499000},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-02\",\"close\":4090,\"open\":4050,\"high\":4120,\"low\":4050,\"volume\":2167200,\"market_cap\":9670492442200},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-03\",\"close\":4080,\"open\":4110,\"high\":4140,\"low\":4010,\"volume\":1830000,\"market_cap\":9646848206400},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-04\",\"close\":3990,\"open\":4110,\"high\":4110,\"low\":3960,\"volume\":2414800,\"market_cap\":9434050084200},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-05\",\"close\":4030,\"open\":4000,\"high\":4070,\"low\":3980,\"volume\":1275900,\"market_cap\":9528627027400},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-08\",\"close\":4200,\"open\":4030,\"high\":4210,\"low\":4030,\"volume\":2255600,\"market_cap\":9930579036000},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-09\",\"close\":4180,\"open\":4210,\"high\":4230,\"low\":4120,\"volume\":1010100,\"market_cap\":9883290564400},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-10\",\"close\":4160,\"open\":4180,\"high\":4200,\"low\":4140,\"volume\":720100,\"market_cap\":9836002092800},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-11\",\"close\":4120,\"open\":4200,\"high\":4200,\"low\":4100,\"volume\":861300,\"market_cap\":9741425149600},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-12\",\"close\":4170,\"open\":4110,\"high\":4200,\"low\":4110,\"volume\":812300,\"market_cap\":9859646328600},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-15\",\"close\":4100,\"open\":4170,\"high\":4170,\"low\":4100,\"volume\":883800,\"market_cap\":9694136678000},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-16\",\"close\":4030,\"open\":4100,\"high\":4130,\"low\":4030,\"volume\":1872300,\"market_cap\":9528627027400}]",
+        "temporal_scope": "provider record for requested historical dates",
+        "published_at": null,
+        "truncated": false,
+        "untrusted_data": true
+      },
+      {
+        "id": "sectors-03",
+        "provider": "Sectors",
+        "source_kind": "provider_record",
+        "tool": "fetch-index-daily",
+        "title": "Sectors index daily",
+        "query": {
+          "index_code": "ihsg",
+          "start": "2023-04-06",
+          "end": "2023-05-16"
+        },
+        "retrieved_at": "2026-10-08T08:59:50.468662+00:00",
+        "url": "https://docs.sectors.app/api-references/v2/indonesia/indices/index-daily",
+        "excerpt": "[{\"index_code\":\"IHSG\",\"date\":\"2023-04-06\",\"price\":6792.765},{\"index_code\":\"IHSG\",\"date\":\"2023-04-10\",\"price\":6771.235},{\"index_code\":\"IHSG\",\"date\":\"2023-04-11\",\"price\":6811.314},{\"index_code\":\"IHSG\",\"date\":\"2023-04-12\",\"price\":6798.964},{\"index_code\":\"IHSG\",\"date\":\"2023-04-13\",\"price\":6785.598},{\"index_code\":\"IHSG\",\"date\":\"2023-04-14\",\"price\":6818.574},{\"index_code\":\"IHSG\",\"date\":\"2023-04-17\",\"price\":6787.582},{\"index_code\":\"IHSG\",\"date\":\"2023-04-18\",\"price\":6821.807},{\"index_code\":\"IHSG\",\"date\":\"2023-04-26\",\"price\":6910.147},{\"index_code\":\"IHSG\",\"date\":\"2023-04-27\",\"price\":6945.477},{\"index_code\":\"IHSG\",\"date\":\"2023-04-28\",\"price\":6915.716},{\"index_code\":\"IHSG\",\"date\":\"2023-05-02\",\"price\":6863.302},{\"index_code\":\"IHSG\",\"date\":\"2023-05-03\",\"price\":6812.722},{\"index_code\":\"IHSG\",\"date\":\"2023-05-04\",\"price\":6844.027},{\"index_code\":\"IHSG\",\"date\":\"2023-05-05\",\"price\":6787.631},{\"index_code\":\"IHSG\",\"date\":\"2023-05-08\",\"price\":6769.631},{\"index_code\":\"IHSG\",\"date\":\"2023-05-09\",\"price\":6779.98},{\"index_code\":\"IHSG\",\"date\":\"2023-05-10\",\"price\":6811.905},{\"index_code\":\"IHSG\",\"date\":\"2023-05-11\",\"price\":6755.938},{\"index_code\":\"IHSG\",\"date\":\"2023-05-12\",\"price\":6707.763},{\"index_code\":\"IHSG\",\"date\":\"2023-05-15\",\"price\":6711.74},{\"index_code\":\"IHSG\",\"date\":\"2023-05-16\",\"price\":6676.564}]",
+        "temporal_scope": "provider record for requested historical dates",
+        "published_at": null,
+        "truncated": false,
+        "untrusted_data": true
+      }
+    ],
+    "gaps": [
+      "Pencarian fetch-daily-price tidak menghasilkan bukti yang dapat digunakan.",
+      "Data fetch-news belum tersedia atau tidak cukup untuk kesimpulan.",
+      "Pencarian fetch-news tidak menghasilkan bukti yang dapat digunakan."
+    ],
+    "rounds": [
+      {
+        "round": 1,
+        "plan": {
+          "complete": false,
+          "calls": [
+            {
+              "tool": "fetch-corporate-actions",
+              "arguments_json": "{\"symbol\":\"LPPF\"}",
+              "reason": "Cocokkan event LPPF 2025 dan siklus historisnya dengan catatan aksi korporasi/dividen resmi yang tersedia; ini membantu menilai keterbatasan statistik penurunan historis."
+            },
+            {
+              "tool": "fetch-daily-price",
+              "arguments_json": "{\"symbol\":\"LPPF\",\"start\":\"2025-04-21\",\"end\":\"2025-05-20\"}",
+              "reason": "Periksa lintasan harga LPPF di sekitar ex-date 2025 dan sisa masa replay, termasuk penurunan dari cum-date serta status posisi yang masih terbuka."
+            },
+            {
+              "tool": "fetch-news",
+              "arguments_json": "{\"extension\":\"idx\",\"symbols\":\"LPPF\",\"start\":\"2023-04-06\",\"end\":\"2023-05-16\",\"limit\":30}",
+              "reason": "Cari konteks IDX yang dapat diverifikasi pada siklus LPPF 2023 dengan penurunan 21-sesi terbesar dalam sampel; berita adalah konteks, bukan bukti kausal."
+            }
+          ]
+        },
+        "results": [
+          {
+            "status": "completed",
+            "ok": true,
+            "tool": "fetch-corporate-actions",
+            "credits_used": 1,
+            "source": {
+              "id": "sectors-01",
+              "provider": "Sectors",
+              "source_kind": "provider_record",
+              "tool": "fetch-corporate-actions",
+              "title": "Sectors corporate actions · LPPF",
+              "query": {
+                "symbol": "LPPF"
+              },
+              "retrieved_at": "2026-10-08T08:59:40.518473+00:00",
+              "url": "https://api.sectors.app/v2/company/corporate-actions/LPPF/",
+              "excerpt": "{\"symbol\":\"LPPF.JK\",\"corporate_actions\":{\"agm\":[{\"agm_date\":\"2022-04-05\",\"agm_time\":\"10:00:00\",\"agm_place\":\"Cyber 2 Tower Jl. H. R. Rasuna Said, Blok X – 5 Jakartadki Jakarta, Kota Adm. Jakarta Selatan\",\"agm_result\":null},{\"agm_date\":\"2022-06-06\",\"agm_time\":\"10:00:00\",\"agm_place\":\"DKI Jakarta\",\"agm_result\":null},{\"agm_date\":\"2023-03-29\",\"agm_time\":\"09:00:00\",\"agm_place\":\"Cyber 2 Towerjl. H. R. Rasuna Said, Blok X – 5 Jakartadki Jakarta, Kota Adm. Jakarta Selatan\",\"agm_result\":null},{\"agm_date\":\"2023-11-30\",\"agm_time\":\"13:00:00\",\"agm_place\":\"Virtual Melalui Fasilitas Yangdisediakan Oleh Idx-Pubexlive 2023\",\"agm_result\":null},{\"agm_date\":\"2023-12-22\",\"agm_time\":\"09:30:00\",\"agm_place\":\"Cyber 2 Towerjl. H. R. Rasuna Said, Blok X – 5 Jakartadki Jakarta, Kota Adm. Jakarta Selatan\",\"agm_result\":null},{\"agm_date\":\"2024-04-03\",\"agm_time\":\"10:00:00\",\"agm_place\":\"Cyber 2 Tower Lantai 17Jl. H. R Rasuna Said, Blok X-5Jakarta Selatan, 12950\",\"agm_result\":null},{\"agm_date\":\"2025-04-10\",\"agm_time\":\"10:00:00\",\"agm_place\":\"Cyber 2 Tower Lantai 17. Jl. H. R. Rasuna Said, Blok X ? 5 Jakarta, Indonesia Kota Adm. Jakartaselatan\",\"agm_result\":null}],\"bonus\":null,\"warrant\":null,\"dividend\":[{\"ex_date\":\"2025-04-22\",\"payment_date\":\"2025-04-29\",\"dividend_yield\":0.178185,\"dividend_amount\":300},{\"ex_date\":\"2024-04-22\",\"payment_date\":\"2024-04-29\",\"dividend_yield\":0.122768,\"dividend_amount\":200},{\"ex_date\":\"2023-04-10\",\"payment_date\":\"2023-04-17\",\"dividend_yield\":0.158095,\"dividend_amount\":525},{\"ex_date\":\"2022-04-14\",\"payment_date\":\"2022-04-28\",\"dividend_yield\":0.0529501,\"dividend_amount\":250},{\"ex_date\":\"2021-11-11\",\"payment_date\":\"2021-12-02\",\"dividend_yield\":0.0436967,\"dividend_amount\":100}],\"right_issue\":null,\"stock_split\":[],\"upcoming_dividend\":null},\"historical_filter_applied\":\"Future/unanchored dates after 2025-05-08 were omitted.\"}",
+              "temporal_scope": "provider record for requested historical dates",
+              "published_at": null,
+              "truncated": false,
+              "untrusted_data": true
+            }
+          },
+          {
+            "tool": "fetch-daily-price",
+            "arguments": {
+              "symbol": "LPPF",
+              "start": "2025-04-21",
+              "end": "2025-05-20"
+            },
+            "status": "processing"
+          },
+          {
+            "tool": "fetch-daily-price",
+            "status": "rejected_or_unavailable"
+          },
+          {
+            "status": "unavailable",
+            "error": "No matching Sectors records.",
+            "tool": "fetch-news",
+            "credits_used": 1
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "plan": {
+          "complete": false,
+          "calls": [
+            {
+              "tool": "fetch-daily-price",
+              "arguments_json": "{\"symbol\":\"LPPF\",\"start\":\"2023-04-06\",\"end\":\"2023-05-16\"}",
+              "reason": "Menguji apakah data harga harian dapat memeriksa ulang penurunan 22,97% pada jendela 21 penutupan 2023; pencarian untuk April–Mei 2025 sebelumnya tidak menghasilkan bukti yang dapat digunakan."
+            },
+            {
+              "tool": "fetch-news",
+              "arguments_json": "{\"extension\":\"idx\",\"keyword\":\"Matahari\",\"start\":\"2023-04-06\",\"end\":\"2023-05-16\",\"limit\":30}",
+              "reason": "Mencari konteks berita IDX bertajuk Matahari dalam periode penurunan historis ter-ekstrem yang tercatat; hasilnya hanya konteks, bukan bukti sebab-akibat."
+            },
+            {
+              "tool": "fetch-index-daily",
+              "arguments_json": "{\"index_code\":\"ihsg\",\"start\":\"2023-04-06\",\"end\":\"2023-05-16\"}",
+              "reason": "Membandingkan pergerakan IHSG pada jendela yang sama untuk menilai apakah penurunan LPPF beriringan dengan pelemahan pasar yang lebih luas."
+            }
+          ]
+        },
+        "results": [
+          {
+            "status": "completed",
+            "ok": true,
+            "tool": "fetch-daily-price",
+            "credits_used": 1,
+            "source": {
+              "id": "sectors-02",
+              "provider": "Sectors",
+              "source_kind": "provider_record",
+              "tool": "fetch-daily-price",
+              "title": "Sectors daily price · LPPF",
+              "query": {
+                "symbol": "LPPF",
+                "start": "2023-04-06",
+                "end": "2023-05-16"
+              },
+              "retrieved_at": "2026-10-08T08:59:50.376488+00:00",
+              "url": "https://api.sectors.app/v2/daily/LPPF/?start=2023-04-06&end=2023-05-16",
+              "excerpt": "[{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-06\",\"close\":5050,\"open\":5000,\"high\":5125,\"low\":4990,\"volume\":13534900,\"market_cap\":11940339079000},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-10\",\"close\":4700,\"open\":4870,\"high\":4900,\"low\":4700,\"volume\":510200,\"market_cap\":11112790826000},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-11\",\"close\":4380,\"open\":4550,\"high\":4550,\"low\":4380,\"volume\":6006400,\"market_cap\":10356175280400},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-12\",\"close\":4190,\"open\":4200,\"high\":4350,\"low\":4150,\"volume\":6598600,\"market_cap\":9906934800200},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-13\",\"close\":4110,\"open\":4200,\"high\":4240,\"low\":4110,\"volume\":3732400,\"market_cap\":9717780913800},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-14\",\"close\":4170,\"open\":4120,\"high\":4230,\"low\":4110,\"volume\":2109800,\"market_cap\":9859646328600},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-17\",\"close\":4060,\"open\":4200,\"high\":4270,\"low\":4050,\"volume\":3423300,\"market_cap\":9599559734800},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-18\",\"close\":4030,\"open\":4050,\"high\":4130,\"low\":3990,\"volume\":3655000,\"market_cap\":9528627027400},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-26\",\"close\":3890,\"open\":4010,\"high\":4010,\"low\":3750,\"volume\":7706100,\"market_cap\":9197607726200},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-27\",\"close\":4000,\"open\":3900,\"high\":4050,\"low\":3900,\"volume\":3185800,\"market_cap\":9457694320000},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-04-28\",\"close\":4050,\"open\":4000,\"high\":4100,\"low\":3980,\"volume\":2189200,\"market_cap\":9575915499000},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-02\",\"close\":4090,\"open\":4050,\"high\":4120,\"low\":4050,\"volume\":2167200,\"market_cap\":9670492442200},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-03\",\"close\":4080,\"open\":4110,\"high\":4140,\"low\":4010,\"volume\":1830000,\"market_cap\":9646848206400},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-04\",\"close\":3990,\"open\":4110,\"high\":4110,\"low\":3960,\"volume\":2414800,\"market_cap\":9434050084200},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-05\",\"close\":4030,\"open\":4000,\"high\":4070,\"low\":3980,\"volume\":1275900,\"market_cap\":9528627027400},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-08\",\"close\":4200,\"open\":4030,\"high\":4210,\"low\":4030,\"volume\":2255600,\"market_cap\":9930579036000},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-09\",\"close\":4180,\"open\":4210,\"high\":4230,\"low\":4120,\"volume\":1010100,\"market_cap\":9883290564400},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-10\",\"close\":4160,\"open\":4180,\"high\":4200,\"low\":4140,\"volume\":720100,\"market_cap\":9836002092800},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-11\",\"close\":4120,\"open\":4200,\"high\":4200,\"low\":4100,\"volume\":861300,\"market_cap\":9741425149600},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-12\",\"close\":4170,\"open\":4110,\"high\":4200,\"low\":4110,\"volume\":812300,\"market_cap\":9859646328600},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-15\",\"close\":4100,\"open\":4170,\"high\":4170,\"low\":4100,\"volume\":883800,\"market_cap\":9694136678000},{\"symbol\":\"LPPF.JK\",\"date\":\"2023-05-16\",\"close\":4030,\"open\":4100,\"high\":4130,\"low\":4030,\"volume\":1872300,\"market_cap\":9528627027400}]",
+              "temporal_scope": "provider record for requested historical dates",
+              "published_at": null,
+              "truncated": false,
+              "untrusted_data": true
+            }
+          },
+          {
+            "tool": "fetch-news",
+            "arguments": {
+              "extension": "idx",
+              "keyword": "Matahari",
+              "start": "2023-04-06",
+              "end": "2023-05-16",
+              "limit": 30
+            },
+            "status": "processing"
+          },
+          {
+            "tool": "fetch-news",
+            "status": "rejected_or_unavailable"
+          },
+          {
+            "status": "completed",
+            "ok": true,
+            "tool": "fetch-index-daily",
+            "credits_used": 1,
+            "source": {
+              "id": "sectors-03",
+              "provider": "Sectors",
+              "source_kind": "provider_record",
+              "tool": "fetch-index-daily",
+              "title": "Sectors index daily",
+              "query": {
+                "index_code": "ihsg",
+                "start": "2023-04-06",
+                "end": "2023-05-16"
+              },
+              "retrieved_at": "2026-10-08T08:59:50.468662+00:00",
+              "url": "https://docs.sectors.app/api-references/v2/indonesia/indices/index-daily",
+              "excerpt": "[{\"index_code\":\"IHSG\",\"date\":\"2023-04-06\",\"price\":6792.765},{\"index_code\":\"IHSG\",\"date\":\"2023-04-10\",\"price\":6771.235},{\"index_code\":\"IHSG\",\"date\":\"2023-04-11\",\"price\":6811.314},{\"index_code\":\"IHSG\",\"date\":\"2023-04-12\",\"price\":6798.964},{\"index_code\":\"IHSG\",\"date\":\"2023-04-13\",\"price\":6785.598},{\"index_code\":\"IHSG\",\"date\":\"2023-04-14\",\"price\":6818.574},{\"index_code\":\"IHSG\",\"date\":\"2023-04-17\",\"price\":6787.582},{\"index_code\":\"IHSG\",\"date\":\"2023-04-18\",\"price\":6821.807},{\"index_code\":\"IHSG\",\"date\":\"2023-04-26\",\"price\":6910.147},{\"index_code\":\"IHSG\",\"date\":\"2023-04-27\",\"price\":6945.477},{\"index_code\":\"IHSG\",\"date\":\"2023-04-28\",\"price\":6915.716},{\"index_code\":\"IHSG\",\"date\":\"2023-05-02\",\"price\":6863.302},{\"index_code\":\"IHSG\",\"date\":\"2023-05-03\",\"price\":6812.722},{\"index_code\":\"IHSG\",\"date\":\"2023-05-04\",\"price\":6844.027},{\"index_code\":\"IHSG\",\"date\":\"2023-05-05\",\"price\":6787.631},{\"index_code\":\"IHSG\",\"date\":\"2023-05-08\",\"price\":6769.631},{\"index_code\":\"IHSG\",\"date\":\"2023-05-09\",\"price\":6779.98},{\"index_code\":\"IHSG\",\"date\":\"2023-05-10\",\"price\":6811.905},{\"index_code\":\"IHSG\",\"date\":\"2023-05-11\",\"price\":6755.938},{\"index_code\":\"IHSG\",\"date\":\"2023-05-12\",\"price\":6707.763},{\"index_code\":\"IHSG\",\"date\":\"2023-05-15\",\"price\":6711.74},{\"index_code\":\"IHSG\",\"date\":\"2023-05-16\",\"price\":6676.564}]",
+              "temporal_scope": "provider record for requested historical dates",
+              "published_at": null,
+              "truncated": false,
+              "untrusted_data": true
+            }
+          }
+        ]
+      }
+    ],
+    "model_calls": 2,
+    "tool_calls": 6,
+    "provider_credits": 4,
+    "provider_calls": 4,
+    "run_id": "f272006d-7a93-496f-b27a-c12245763c36"
+  },
+  "post_smoke_fixes": {
+    "regenerated": false,
+    "preserved_success": true,
+    "verified_fixes": [
+      "Research window includes replay start/end; April21-May20 price query accepted by deterministic regression.",
+      "Index source uses canonical API /v2/index-daily/{code}/ with query dates, overriding wrong embedded URLs.",
+      "Rejected audit dispatch replaced with rejection and safe specific feedback."
+    ],
+    "full_backend_tests": 115
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "fixture": true,
+  "checks": [
+    "Configured=false attempts=0 renders plain unavailable state, no automatic request and no implementation key copy",
+    "Explicit status check recovers once backend configured, completed has no retry"
+  ],
+  "requests": 2,
+  "status": "passed"
+}

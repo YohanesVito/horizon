@@ -1,5 +1,7 @@
 # Dividen Lab
 
+Helper AI backend: [setup AI_KEY dan contoh JSON schema](docs/development/AI_HELPER.md).
+
 Workspace lokal untuk riset dan replay rotasi dividen saham Indonesia. Frontend demo memakai desain editorial dari `feat/timeline-ui-polish`; backend tetap FastAPI. **Versi awal memakai snapshot historis Sectors, bukan harga live atau model prediksi terkalibrasi.**
 
 ## Jalankan

@@ -1,0 +1,31 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "retrieved_at": "2026-10-08T16:16:06.901854+08:00",
+  "initialization": {
+    "protocolVersion": "2025-03-26",
+    "capabilities": {
+      "tools": {
+        "listChanged": true
+      }
+    },
+    "serverInfo": {
+      "name": "sectors-mcp",
+      "version": "1.0.0"
+    }
+  },
+  "method": "tools/call",
+  "tool": "fetch-daily-price",
+  "arguments": {
+    "symbol": "ASII",
+    "start": "2026-10-01",
+    "end": "2026-10-07"
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[\n  {\n    \"symbol\": \"ASII.JK\",\n    \"date\": \"2026-10-01\",\n    \"close\": 4510,\n    \"open\": 4610,\n    \"high\": 4640,\n    \"low\": 4510,\n    \"volume\": 86157700,\n    \"market_cap\": 182580824661400\n  },\n  {\n    \"symbol\": \"ASII.JK\",\n    \"date\": \"2026-10-02\",\n    \"close\": 4630,\n    \"open\": 4540,\n    \"high\": 4630,\n    \"low\": 4540,\n    \"volume\": 34548100,\n    \"market_cap\": 187438851038200\n  },\n  {\n    \"symbol\": \"ASII.JK\",\n    \"date\": \"2026-10-05\",\n    \"close\": 4750,\n    \"open\": 4670,\n    \"high\": 4770,\n    \"low\": 4660,\n    \"volume\": 59764300,\n    \"market_cap\": 192296877415000\n  },\n  {\n    \"symbol\": \"ASII.JK\",\n    \"date\": \"2026-10-06\",\n    \"close\": 4820,\n    \"open\": 4770,\n    \"high\": 4850,\n    \"low\": 4750,\n    \"volume\": 35508900,\n    \"market_cap\": 195130726134800\n  },\n  {\n    \"symbol\": \"ASII.JK\",\n    \"date\": \"2026-10-07\",\n    \"close\": 4780,\n    \"open\": 4820,\n    \"high\": 4830,\n    \"low\": 4770,\n    \"volume\": 18474300,\n    \"market_cap\": 193511384009200\n  }\n]"
+      }
+    ]
+  }
+}

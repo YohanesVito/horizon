@@ -5,6 +5,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   Check,
+  ChevronDown,
   Clock3,
   Copy,
   Play,
@@ -14,6 +15,7 @@ import { api, dt, money, pct, tradingDayText } from "@/lib/api";
 import type { Allocation, Catalog, Replay, Run, SimInput } from "@/lib/types";
 import Chart, { lineOption } from "./chart";
 import MoneyInput from "./money-input";
+import SimulationInsights from "./simulation-insights";
 const labels: Record<Allocation, string> = {
   single: "All-in pertama",
   equal: "Bagi rata",
@@ -96,6 +98,7 @@ export default function Simulator({
         ? 1500
         : false,
   });
+  const visibleHistory = history.data?.filter((r) => r.status !== "failed");
   const submit = useMutation({
     mutationFn: (body: SimInput) =>
       api<Run>("/simulations", { method: "POST", body: JSON.stringify(body) }),
@@ -126,12 +129,24 @@ export default function Simulator({
     key: K,
     value: SimulationDraft[K],
   ) => setInput({ ...input, [key]: value });
+  const chooseAllocation = (allocation: Allocation) => {
+    setInput((current) => ({
+      ...current,
+      allocation,
+      event_ids:
+        allocation === "single"
+          ? current.event_ids.slice(0, 1)
+          : current.event_ids,
+    }));
+  };
   const toggle = (id: string) =>
     set(
       "event_ids",
       input.event_ids.includes(id)
         ? input.event_ids.filter((e) => e !== id)
-        : [...input.event_ids, id],
+        : input.allocation === "single"
+          ? [id]
+          : [...input.event_ids, id],
     );
   return (
     <div className="simulator">
@@ -142,7 +157,7 @@ export default function Simulator({
         >
           <div className="sim-panel-heading">
             <span className="sim-section-label">01 / ATUR SKENARIO</span>
-            <h2 id="sim-form-title">Mulai dari modal dan peristiwa.</h2>
+            <h2 id="sim-form-title">Bangun skenario replay.</h2>
           </div>
           {initialEvent && (
             <p className="notice">
@@ -165,6 +180,10 @@ export default function Simulator({
               const form = new FormData(e.currentTarget);
               const next = {
                 ...input,
+                event_ids:
+                  input.allocation === "single"
+                    ? input.event_ids.slice(0, 1)
+                    : [...input.event_ids],
                 end_date: String(form.get("end_date")),
                 start_date: String(form.get("start_date")),
                 capital: String(form.get("capital")),
@@ -178,8 +197,8 @@ export default function Simulator({
               <div className="sim-step-heading">
                 <span className="sim-step-number">01</span>
                 <div>
-                  <h3>Modal & peristiwa</h3>
-                  <p>Event historis mana yang ingin diuji?</p>
+                  <h3>Tentukan modal awal</h3>
+                  <p>Berapa dana yang ingin kamu uji?</p>
                 </div>
               </div>
               <div className="form-grid">
@@ -199,46 +218,13 @@ export default function Simulator({
                   />
                 </label>
               </div>
-              <fieldset className="sim-event-fieldset">
-                <legend>
-                  Pilih peristiwa{" "}
-                  <span className="muted">· {input.event_ids.length}/10</span>
-                </legend>
-                <div className="event-picker">
-                  {events.map((e) => (
-                    <label
-                      className={`event-option ${input.event_ids.includes(e.id) ? "checked" : ""}`}
-                      key={e.id}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={input.event_ids.includes(e.id)}
-                        disabled={
-                          !input.event_ids.includes(e.id) &&
-                          input.event_ids.length >= 10
-                        }
-                        onChange={() => toggle(e.id)}
-                      />
-                      <span>
-                        <strong>{e.symbol}</strong>
-                        <small>Ex {dt(e.ex_date)}</small>
-                      </span>
-                      <span className="event-dps">
-                        {money(e.dps)}
-                        <small>/ saham</small>
-                      </span>
-                      {input.event_ids.includes(e.id) && <Check size={16} />}
-                    </label>
-                  ))}
-                </div>
-              </fieldset>
             </div>
             <div className="sim-step">
               <div className="sim-step-heading">
                 <span className="sim-step-number">02</span>
                 <div>
-                  <h3>Atur penggunaan modal</h3>
-                  <p>Tiga pendekatan, satu periode yang sama.</p>
+                  <h3>Pilih strategi alokasi</h3>
+                  <p>Tentukan cara modal bergerak di antara event.</p>
                 </div>
               </div>
               <fieldset className="strategy-picker">
@@ -267,7 +253,7 @@ export default function Simulator({
                           name="allocation"
                           value={mode}
                           checked={input.allocation === mode}
-                          onChange={() => set("allocation", mode)}
+                          onChange={() => chooseAllocation(mode)}
                         />
                         <strong>{labels[mode]}</strong>
                       </span>
@@ -277,9 +263,59 @@ export default function Simulator({
                 </div>
               </fieldset>
             </div>
-            <div className="sim-step sim-step-rules">
+            <div className="sim-step">
               <div className="sim-step-heading">
                 <span className="sim-step-number">03</span>
+                <div>
+                  <h3>Pilih peristiwa</h3>
+                  <p>
+                    {input.allocation === "single"
+                      ? "Strategi all-in pertama hanya memakai satu event."
+                      : "Pilih event historis yang ingin diuji, maksimal 10."}
+                  </p>
+                </div>
+              </div>
+              <fieldset className="sim-event-fieldset">
+                <legend>
+                  Event terpilih{" "}
+                  <span className="muted">
+                    · {input.event_ids.length}/
+                    {input.allocation === "single" ? 1 : 10}
+                  </span>
+                </legend>
+                <div className="event-picker">
+                  {events.map((e) => (
+                    <label
+                      className={`event-option ${input.event_ids.includes(e.id) ? "checked" : ""}`}
+                      key={e.id}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={input.event_ids.includes(e.id)}
+                        disabled={
+                          !input.event_ids.includes(e.id) &&
+                          input.allocation !== "single" &&
+                          input.event_ids.length >= 10
+                        }
+                        onChange={() => toggle(e.id)}
+                      />
+                      <span>
+                        <strong>{e.symbol}</strong>
+                        <small>Ex {dt(e.ex_date)}</small>
+                      </span>
+                      <span className="event-dps">
+                        {money(e.dps)}
+                        <small>/ saham</small>
+                      </span>
+                      {input.event_ids.includes(e.id) && <Check size={16} />}
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+            </div>
+            <div className="sim-step sim-step-rules">
+              <div className="sim-step-heading">
+                <span className="sim-step-number">04</span>
                 <div>
                   <h3>Tentukan waktu masuk dan keluar</h3>
                   <p>Aturan yang sama berlaku untuk setiap event.</p>
@@ -396,7 +432,7 @@ export default function Simulator({
             <div className="notice error">Riwayat belum dapat dimuat.</div>
           ) : history.isPending ? (
             <p className="muted">Memuat…</p>
-          ) : !history.data?.length ? (
+          ) : !visibleHistory?.length ? (
             <div className="empty compact">
               <Clock3 size={25} />
               <p>
@@ -407,50 +443,52 @@ export default function Simulator({
             </div>
           ) : (
             <div className="run-list">
-              {(showAllHistory ? history.data : history.data.slice(0, 6)).map(
-                (r) => (
-                  <button
-                    className={jobId === r.id ? "active" : ""}
-                    key={r.id}
-                    aria-label={`Buka hasil ${r.id.slice(0, 8)}`}
-                    aria-pressed={jobId === r.id}
-                    onClick={() => {
-                      setJobId(r.id);
-                      setChosen(r.input.allocation);
-                    }}
+              {(showAllHistory
+                ? visibleHistory
+                : visibleHistory.slice(0, 6)
+              ).map((r) => (
+                <button
+                  className={jobId === r.id ? "active" : ""}
+                  key={r.id}
+                  aria-label={`Buka hasil ${r.id.slice(0, 8)}`}
+                  aria-pressed={jobId === r.id}
+                  aria-current={jobId === r.id ? "true" : undefined}
+                  onClick={() => {
+                    setJobId(r.id);
+                    setChosen(r.input.allocation);
+                  }}
+                >
+                  <span>
+                    <strong>{labels[r.input.allocation]}</strong>
+                    <small>
+                      {money(r.input.capital, true)} ·{" "}
+                      {r.input.event_ids.length} event
+                    </small>
+                    <small>
+                      {[
+                        ...new Set(
+                          r.input.event_ids.map((id) => id.split(":")[0]),
+                        ),
+                      ].join(", ")}
+                    </small>
+                    <small>
+                      s.d. {dt(r.input.end_date, true)} · {r.id.slice(0, 8)}
+                    </small>
+                  </span>
+                  <span
+                    className={`status ${r.status === "completed" ? "ready" : ""}`}
                   >
-                    <span>
-                      <strong>{labels[r.input.allocation]}</strong>
-                      <small>
-                        {money(r.input.capital, true)} ·{" "}
-                        {r.input.event_ids.length} event
-                      </small>
-                      <small>
-                        {[
-                          ...new Set(
-                            r.input.event_ids.map((id) => id.split(":")[0]),
-                          ),
-                        ].join(", ")}
-                      </small>
-                      <small>
-                        s.d. {dt(r.input.end_date, true)} · {r.id.slice(0, 8)}
-                      </small>
-                    </span>
-                    <span
-                      className={`status ${r.status === "completed" ? "ready" : ""}`}
-                    >
-                      {r.status === "completed"
-                        ? "Selesai"
-                        : r.status === "failed"
-                          ? "Gagal"
-                          : "Proses"}
-                    </span>
-                  </button>
-                ),
-              )}
+                    {r.status === "completed"
+                      ? "Selesai"
+                      : r.status === "failed"
+                        ? "Gagal"
+                        : "Proses"}
+                  </span>
+                </button>
+              ))}
             </div>
           )}
-          {!!history.data && history.data.length > 6 && (
+          {!!visibleHistory && visibleHistory.length > 6 && (
             <button
               className="btn subtle full"
               aria-expanded={showAllHistory}
@@ -458,7 +496,7 @@ export default function Simulator({
             >
               {showAllHistory
                 ? "Tampilkan 6 terbaru"
-                : `Lihat semua (${history.data.length})`}
+                : `Lihat semua (${visibleHistory.length})`}
             </button>
           )}
           <div className="history-foot">
@@ -528,101 +566,118 @@ export default function Simulator({
               </button>
             ))}
           </div>
-          <ResultView replay={selected} alternatives={result.alternatives} />
+          <ResultView
+            replay={selected}
+            alternatives={result.alternatives}
+            showAssumptions={false}
+            simulationAllocation={result.input.allocation}
+            simulationId={
+              run.data?.status === "completed" ? run.data.id : undefined
+            }
+          />
           <details
-            className="glass pad run-snapshot"
+            className="glass result-disclosure run-snapshot"
             aria-label="Input asli hasil"
           >
             <summary>
-              <span>Aturan yang dipakai pada hasil ini</span>
-              <small>ID {run.data?.id.slice(0, 8)} · Lihat detail</small>
+              <span className="disclosure-title">
+                Aturan yang dipakai pada hasil ini
+              </span>
+              <small>ID {run.data?.id.slice(0, 8)}</small>
+              <ChevronDown size={18} aria-hidden="true" />
             </summary>
-            <div className="run-snapshot-actions">
-              <button
-                className="btn subtle"
-                disabled={busy || unavailableEvents.length > 0}
-                onClick={() => {
-                  setInput({
-                    ...result.input,
-                    capital: String(result.input.capital),
-                    event_ids: [...result.input.event_ids],
-                    start_date:
-                      result.input.start_date ?? result.primary.start_date,
-                  });
-                  setCopiedFrom(run.data!.id);
-                  setCapitalResetKey((revision) => revision + 1);
-                  capitalField.current?.focus({ preventScroll: true });
-                  capitalField.current?.scrollIntoView({ block: "center" });
-                }}
-              >
-                <Copy size={15} /> Gunakan input hasil ini
-              </button>
-            </div>
-            <dl className="run-input-grid">
-              <div>
-                <dt>Modal awal</dt>
-                <dd>{money(result.input.capital)}</dd>
+            <div className="disclosure-content">
+              <div className="run-snapshot-actions">
+                <button
+                  className="btn subtle"
+                  disabled={busy || unavailableEvents.length > 0}
+                  onClick={() => {
+                    setInput({
+                      ...result.input,
+                      capital: String(result.input.capital),
+                      event_ids:
+                        result.input.allocation === "single"
+                          ? result.input.event_ids.slice(0, 1)
+                          : [...result.input.event_ids],
+                      start_date:
+                        result.input.start_date ?? result.primary.start_date,
+                    });
+                    setCopiedFrom(run.data!.id);
+                    setCapitalResetKey((revision) => revision + 1);
+                    capitalField.current?.focus({ preventScroll: true });
+                    capitalField.current?.scrollIntoView({ block: "center" });
+                  }}
+                >
+                  <Copy size={15} /> Gunakan input hasil ini
+                </button>
               </div>
-              <div>
-                <dt>Aturan masuk</dt>
-                <dd>
-                  {result.input.entry_sessions_before_cum === 0
-                    ? "Close pada cum date"
-                    : `${result.input.entry_sessions_before_cum} hari bursa sebelum cum date`}
-                </dd>
+              <dl className="run-input-grid">
+                <div>
+                  <dt>Modal awal</dt>
+                  <dd>{money(result.input.capital)}</dd>
+                </div>
+                <div>
+                  <dt>Aturan masuk</dt>
+                  <dd>
+                    {result.input.entry_sessions_before_cum === 0
+                      ? "Close pada cum date"
+                      : `${result.input.entry_sessions_before_cum} hari bursa sebelum cum date`}
+                  </dd>
+                </div>
+                <div>
+                  <dt>Aturan keluar</dt>
+                  <dd>{exitLabels[result.input.exit_rule]}</dd>
+                </div>
+                <div>
+                  <dt>Batas setelah ex-date</dt>
+                  <dd>{result.input.max_holding_sessions} hari bursa</dd>
+                </div>
+                <div>
+                  <dt>Strategi utama</dt>
+                  <dd>{labels[result.input.allocation]}</dd>
+                </div>
+                <div>
+                  <dt>Perbandingan alokasi</dt>
+                  <dd>
+                    {result.input.compare
+                      ? "Tiga strategi"
+                      : "Strategi utama saja"}
+                  </dd>
+                </div>
+              </dl>
+              <div className="run-events">
+                <p className="small muted">
+                  Event yang dipilih (tanggal ex-dividen)
+                </p>
+                <ul>
+                  {result.input.event_ids.map((id) => {
+                    const event = catalog.events.find((e) => e.id === id);
+                    return (
+                      <li key={id}>
+                        {event
+                          ? `${event.symbol} · ${dt(event.ex_date, true)}`
+                          : id}
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
-              <div>
-                <dt>Aturan keluar</dt>
-                <dd>{exitLabels[result.input.exit_rule]}</dd>
-              </div>
-              <div>
-                <dt>Batas setelah ex-date</dt>
-                <dd>{result.input.max_holding_sessions} hari bursa</dd>
-              </div>
-              <div>
-                <dt>Strategi utama</dt>
-                <dd>{labels[result.input.allocation]}</dd>
-              </div>
-              <div>
-                <dt>Perbandingan alokasi</dt>
-                <dd>
-                  {result.input.compare
-                    ? "Tiga strategi"
-                    : "Strategi utama saja"}
-                </dd>
-              </div>
-            </dl>
-            <div className="run-events">
-              <p className="small muted">
-                Event yang dipilih (tanggal ex-dividen)
+              <p className="tiny muted run-version">
+                Engine {result.primary.rules_version} · Data{" "}
+                {result.primary.dataset_version ??
+                  run.data?.dataset_version ??
+                  "Versi tidak tercatat"}
+                . Simulasi baru memakai engine dan dataset aktif.
               </p>
-              <ul>
-                {result.input.event_ids.map((id) => {
-                  const event = catalog.events.find((e) => e.id === id);
-                  return (
-                    <li key={id}>
-                      {event
-                        ? `${event.symbol} · ${dt(event.ex_date, true)}`
-                        : id}
-                    </li>
-                  );
-                })}
-              </ul>
+              {unavailableEvents.length > 0 && (
+                <p className="notice">
+                  Input belum bisa disalin: event {unavailableEvents.join(", ")}{" "}
+                  tidak tersedia untuk replay pada dataset aktif.
+                </p>
+              )}
             </div>
-            <p className="tiny muted run-version">
-              Engine {result.primary.rules_version} · Data{" "}
-              {result.primary.dataset_version ??
-                run.data?.dataset_version ??
-                "Versi tidak tercatat"}
-              . Simulasi baru memakai engine dan dataset aktif.
-            </p>
-            {unavailableEvents.length > 0 && (
-              <p className="notice">
-                Input belum bisa disalin: event {unavailableEvents.join(", ")}{" "}
-                tidak tersedia untuk replay pada dataset aktif.
-              </p>
-            )}
           </details>
+          <ReplayAssumptions replay={selected} />
         </section>
       )}
       {!selected && !busy && (
@@ -643,11 +698,16 @@ export default function Simulator({
 export function ResultView({
   replay: r,
   alternatives,
+  simulationId,
+  showAssumptions = true,
+  simulationAllocation,
 }: {
   replay: Replay;
   alternatives: Replay[];
+  simulationId?: string;
+  showAssumptions?: boolean;
+  simulationAllocation?: Allocation;
 }) {
-  const [ledger, setLedger] = useState(false);
   const dates = [
     ...new Set(alternatives.flatMap((a) => a.curve.map((c) => c.date))),
   ].sort();
@@ -705,6 +765,12 @@ export function ResultView({
           <span>Piutang jual: {money(r.pending_sales)}</span>
         </div>
       </div>
+      {simulationId && (
+        <SimulationInsights
+          simulationId={simulationId}
+          allocation={simulationAllocation ?? r.allocation}
+        />
+      )}
       <section className="glass pad result-route">
         <div className="section-head">
           <div>
@@ -778,19 +844,13 @@ export function ResultView({
           ))}
         </div>
       </section>
-      <section className="glass pad">
-        <button
-          className="section-toggle"
-          onClick={() => setLedger(!ledger)}
-          aria-expanded={ledger}
-        >
-          <h3>Ledger kas & hak dividen</h3>
-          <span>
-            {ledger ? "Tutup" : "Telusuri"} {r.ledger.length} aktivitas{" "}
-            <ArrowUpRight size={15} />
-          </span>
-        </button>
-        {ledger && (
+      <details className="glass result-disclosure cash-flow-disclosure">
+        <summary>
+          <span className="disclosure-title">Rincian arus kas & dividen</span>
+          <small>{r.ledger.length} aktivitas</small>
+          <ChevronDown size={18} aria-hidden="true" />
+        </summary>
+        <div className="disclosure-content">
           <div className="table-scroll">
             <table>
               <thead>
@@ -817,10 +877,21 @@ export function ResultView({
               </tbody>
             </table>
           </div>
-        )}
-      </section>
-      <details className="glass pad assumptions">
-        <summary>Asumsi dan batas hasil ini</summary>
+        </div>
+      </details>
+      {showAssumptions && <ReplayAssumptions replay={r} />}
+    </>
+  );
+}
+
+function ReplayAssumptions({ replay: r }: { replay: Replay }) {
+  return (
+    <details className="glass result-disclosure assumptions">
+      <summary>
+        <span className="disclosure-title">Asumsi dan batas hasil ini</span>
+        <ChevronDown size={18} aria-hidden="true" />
+      </summary>
+      <div className="disclosure-content">
         <ul>
           {r.assumptions.map((s) => (
             <li key={s}>{tradingDayText(s)}</li>
@@ -830,7 +901,7 @@ export function ResultView({
           Angka kerugian historis bukan probabilitas trap. Strategi terbaik pada
           replay ini belum tentu terbaik di masa depan.
         </p>
-      </details>
-    </>
+      </div>
+    </details>
   );
 }

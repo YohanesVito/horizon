@@ -1,0 +1,51 @@
+{
+  "mocked": false,
+  "base": "http://127.0.0.1:3001",
+  "run_id": "86b03837-6969-43da-b28b-0ff14ea394d8",
+  "requests": [
+    {
+      "url": "http://127.0.0.1:3001/api/simulations/86b03837-6969-43da-b28b-0ff14ea394d8/insights",
+      "body": {
+        "allocation": "equal"
+      }
+    }
+  ],
+  "errors": [],
+  "candidate_count": 5,
+  "removed_copy": {
+    "candidate_disclaimer_absent": true,
+    "footer_disclaimer_absent": true,
+    "methodology_button_present": true
+  },
+  "http_status": 200,
+  "section_text": "RINGKASAN AI\nYang perlu kamu perhatikan.\n\nHasil utama dan perbandingan strategi replay · di luar biaya transaksi, pajak, dan slippage.\n\nReplay menghasilkan laba kotor Rp6,02 juta (8,72%). Namun hasil akhir masih mencakup posisi LPPF yang belum dijual, dan dividen menjadi komponen penting dalam hasil tersebut.\n\nHasil belum sepenuhnya terealisasi\n\nDividen tercatat Rp6,10 juta, sementara laba kotor keseluruhan Rp6,02 juta. LPPF masih dipegang hingga akhir replay dengan nilai posisi Rp22,00 juta; penurunan harga terhadap modal masuknya Rp912 ribu tertutup oleh dividen Rp3,42 juta, sehingga hasil kotor lot itu tercatat Rp2,51 juta. Jadi angka akhir masih mencakup posisi yang belum keluar.\n\nPenurunan LPPF muncul pada beberapa event, bukan hanya satu event terbesar\n\nDalam lima pratinjau historis LPPF, penurunan berkisar 6,25%–22,97%; rata-ratanya 15,30% dan mediannya 17,68%. Penurunan terbesar terjadi pada event 10 April 2023, dengan titik rendah 26 April sebesar 22,97%, tetapi tidak ditandai menyimpang. Pola ini menggambarkan penurunan pada beberapa event dalam sampel, bukan rata-rata yang terutama terangkat oleh satu event. Jenis dividen, basis harga, dan kelengkapan sesi belum diverifikasi, sehingga ini hanya gambaran pratinjau, bukan perbandingan tahunan yang setara.\n\nIHSG naik pada jendela penurunan terbesar LPPF\n\nPada jendela yang sama dari tanggal cum-date 6 April hingga titik rendah LPPF 26 April 2023, IHSG tercatat naik 1,73%. Ini memberi konteks pasar luas untuk periode tersebut, tetapi tidak membuktikan penyebab penurunan LPPF.\n\nIHSG 2023-04-06–2023-04-26 · 6792.77 → 6910.15 (+1.73%) · jendela cum-date ke low saham ↗\nBatas data dan analisis\nSumber konteks (1)",
+  "response_status": "completed",
+  "disclosure_order": [
+    "Rincian arus kas & dividen",
+    "Aturan yang dipakai pada hasil ini",
+    "Asumsi dan batas hasil ini"
+  ],
+  "disclosures": [
+    {
+      "title": "Rincian arus kas & dividen",
+      "closed_height": 70,
+      "data_text_length": 1235
+    },
+    {
+      "title": "Aturan yang dipakai pada hasil ini",
+      "closed_height": 70,
+      "data_text_length": 426
+    },
+    {
+      "title": "Asumsi dan batas hasil ini",
+      "closed_height": 70,
+      "data_text_length": 737
+    }
+  ],
+  "mobile": {
+    "width": 390,
+    "scrollWidth": 390
+  },
+  "overflow": [],
+  "status": "passed"
+}

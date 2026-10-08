@@ -1,5 +1,24 @@
 # Pemetaan kebutuhan ke pekerjaan development
 
+## Insight AI dan interaksi simulator — 8 Oktober 2026
+
+- AI-02 (instruksi PM; C-04/C-08): statistik pola/kejadian ekstrem dihitung kode,
+  AI menjelaskan hasil dan konteks bersumber; endpoint backend dan section sebelum
+  Jejak Transaksi. Bukan forecast atau klaim penyebab pasar terverifikasi.
+- SIM-UX-02 (instruksi PM; C-04/C-05): pilih strategi sebelum peristiwa, all-in
+  satu peristiwa, highlight run aktif, hilangkan run gagal dari daftar riwayat.
+
+## Fondasi AI — 8 Oktober 2026
+
+AI-01 mengacu instruksi langsung PM: baca `AI_KEY`, helper OpenAI `gpt-6-luna`
+dengan JSON schema yang diberikan caller, tanpa integrasi tampilan. Bukti dan
+cara pakai: [AI_HELPER.md](./AI_HELPER.md), `backend/ai.py`, `backend/tests/test_ai.py`.
+Ini fondasi S1-01, bukan implementasi prediksi F-02 atau requirement PRD baru.
+
+## Integrasi UI BR-07 dan batas backend skenario
+
+BR-07 menggabungkan UI polish terbaru dengan pekerjaan F-02 lokal untuk C-02/C-08. Alur kandidat/timeline historis terverifikasi pada backend aktif dan browser lokal, sedangkan form skenario ex-date sementara tidak ditampilkan karena endpoint FastAPI terkait belum ada pada image produksi (ISS-067 BYPASSED). Kode engine dan komponen tetap disimpan untuk rilis backend berikutnya; ini belum memenuhi fitur skenario live ataupun validasi prediksi.
+
 ## Keputusan operasi terbaru — 8 Oktober 2026
 
 DEP-01–DEP-03 DONE: FastAPI/Docker Dalang healthy, Supabase Session Pooler, HTTPS provider dan proxy Next server-only terverifikasi. Smoke image, delapan endpoint, penolakan401, replay identik fixture, preservasi20record, frontend→VPS dan browser Peluang/Timeline lulus. Kelima layanan kurasi tetapinactive. Bukti `outputs/deployment/deployment.json` dan laporan terkait; [DEPLOYMENT_DALANG.md](./DEPLOYMENT_DALANG.md). Frontend publik, UAT, login, durablequeue serta gap data/model bukan hasil deployment ini. ISS-048 storage tetap OPEN.
@@ -98,6 +117,12 @@ Arahan PM berikutnya pada 8 Oktober mengubah batas grafik juga: C-02/C-08 melalu
 
 C-02/C-04/C-06/C-07: [PREDICTION_FORMULA.md](./PREDICTION_FORMULA.md) mendefinisikan input point-in-time, target harga/trap/BEP/waktu pulih, hipotesis model dan cara menguji sebelum angka prediksi ditampilkan. Ini **dokumen proposal**, bukan implementasi S4-02 atau penyelesaian ISS-024/ISS-042; statusnya tetap mengikuti PROGRESS.md dan ISSUES.md.
 
+F-02a menambahkan eksperimen ex-date v0.2 untuk C-02/C-06/C-07: pasangan harga cum/ex Sectors, model pooled PDR dan dua pembanding diuji per tahun melalui `/api/research/ex-date`. Angka tersebut adalah diagnostik retrospektif karena vintage DPS/jadwal tidak ada dan sampel telah dipilih/ditinjau sebelumnya. F-02, ISS-024/ISS-042, dan forecast timeline live tetap terbuka; hasil dan batasnya tercatat di PROGRESS.md, ISSUES.md, dan formula v0.2.
+
+F-02b menambah pemeriksaan C-02/C-06/C-07 pada LPPF ex-date 2026: pengumuman emiten dan KSEI membuktikan DPS/jadwal dipublikasikan sebelum cum-date, Sectors MCP menyediakan dua harga OHLCV, dan model 44-event v0.2 diuji tanpa retuning. Pada satu event ini full-DPS lebih akurat daripada pooled-PDR. Basis adjustment/close independen belum terverifikasi, sampel bukan holdout blind, dan ISS-041/ISS-042 tetap terbuka. Rincian protokol, artefak dan keputusan ada pada formula v0.3 serta PROGRESS.md; tidak ada perubahan angka prediksi live atau status UAT.
+
+F-02c melanjutkan C-02/C-06/C-07 dengan audit 48 event sumber (44 pasangan eligible) dan pembanding issuer-shrunk yang diprapilih. Tiga notice LPPF 2023–2025 cocok dengan Sectors; jadwal pembayaran LPPF 2022 memiliki versi awal dan final yang berbeda (ISS-062). Perbandingan model pada 36 event lama dan satu LPPF 2026 tidak melewati gate point-in-time, basis harga, atau holdout blind. Formula v0.4 dan artefak F-02c menyimpan status per event; F-02/ISS-041/ISS-042 dan forecast live tetap terbuka, tanpa klaim UAT.
+
 ## Integrasi BR-02 dan deployment frontend V-01/V-02
 
 C-02/C-04/C-08, S5-02: gabungan UI polish523c993 dengan proxy Next/Supabase/Dalang f64df85 mempertahankan kedua kontribusi. Fixture berversi membuktikan hitungan tidak berubah; issue052/053/054 merujuk UX/handoff, sedangkan044–050 tetap migrasi/deployment. Status deployment Vercel dan bukti aktual mengikuti PROGRESS.md; bukan kelulusan UAT.
@@ -121,3 +146,21 @@ D-07 menggabungkan main terbaru secara lokal dengan UI D-05. C-02/C-04/C-08 kini
 ## Integrasi desain dan data BR-04
 
 C-01/C-02/C-08: desain editorial `feat/timeline-ui-polish` menjadi dasar tampilan; lima kandidat D-03 dan grafik parsial T-08 ditambahkan tanpa menyingkirkan toolbar, panel harga, kronologi, maupun layar Simulasi. Fokus berubah dari tahun ke ID event agar dua pembayaran satu emiten pada tahun sama tetap terpisah. C-06/C-07: panel Engine Riset membaca statistik empiris lama beserta aturan, ukuran sampel, dan rentang Wilson; ini belum menjalankan hipotesis prediksi harga/probabilitas F-01. `forecast.status` tetap `not_available` sesuai ISS-042. Perubahan dan bukti integrasi mengikuti PROGRESS.md; bukan penutupan PRD/UAT.
+
+## AI-02 — Penjelasan hasil dan pola historis
+
+C-04/C-08 mengikuti instruksi PM8Oktober: endpoint backend membaca snapshot run selesai, statistik deterministik menunjukkan pola/outlier tanpa menyamakan event dengan tahun, dan GPT-6 Luna menyusun penjelasan compact di atas Jejak Transaksi. Sectors MCP menyediakan news/corporate action/IHSG bertanggal; sumber dan gap tetap terlihat, perbandingan siklus belum terverifikasi berlabel pratinjau. Hasil gross tetap di luar biaya/pajak/slippage. Ini deskripsi replay dan konteks historis, bukan rekomendasi order, kausalitas, forecast F-01/F-02, atau backtest informasi saat keputusan. Fundamental time-aligned/benchmark sektor dan kualitas arsip tetap ISS-068; status detail serta bukti live/cache mengikuti [AI_INSIGHTS.md](./AI_INSIGHTS.md) dan PROGRESS.md.
+
+AI-02 revisi instruksi terbaru PM: guard biaya bersifat per ID simulasi, maksimal tiga attempt total hanya ketika failure. Klaim/counter/CAS durable, bukan hanya query cache frontend; success tidak diulang, exhausted3failures menyembunyikan hasil AI. Bukti dan batas waktu mengikuti AI_INSIGHTS.md/PROGRESS.md.
+
+AI-02 instruksi PM terbaru: riset agentic IDX-only terpisah,32tool schema server, dua ronde berdasarkan hasil terdahulu, sourceID server dan evidence durable; SGX/KLSE/mining dilarang. Maksimal2planning+3finalOpenAI calls/run (budget3hanyafinal),6tool dispatch12credit40detik research; final3x20detik. MissingAIkey tidakconsumeattempt; successfulrun cached tidakdigenerateulang. Liveadaptive37,721detik/cachedrepeat serta115tes backend/regression menunjang implementasi development, bukan causal proof atau research tanpa batas. Bukti PROGRESS.md/AI_INSIGHTS.md dan ISS-068.
+
+## Sinkronisasi produksi DEP-04
+
+C-01/C-02/C-06/C-08 melalui BR-04 akhirnya terhubung end-to-end pada URL Vercel setelah FastAPI Dalang dinaikkan dari release awal ke `20261008T053018Z-8544ed8b61` (ISS-061). Lima kandidat, preview parsial, detail grafik yang dapat dipilih, dan statistik risiko historis terbukti melalui browser dan API; perhitungan replay API→worker→Supabase identik dengan fixture, tanpa perubahan 20 record awal. Bukti ada di `outputs/deployment/deployment.json`, `live-editorial-verification.json`, dan `dalang-api-verification.json`. Ini hanya menutup ketidakcocokan versi produksi; validasi data per event ISS-041, forecast ISS-042, I/O ISS-048, PRD/user story asli, serta UAT tetap terbuka.
+
+F-02d menambah C-02/C-04/C-06: API skenario ex-date dan form Analisis menghitung hasil gross, dividen dan dua BEP dari input pengguna. Ini uji asumsi, bukan sumber harga live atau probabilitas. F-02e menambah C-02/C-06/C-07: CLI privat membekukan baseline pre-cum dengan hash snapshot Sectors serta append outcome setelah ex-date. Kode/gate diuji lokal; kandidat nyata dan validasi sumber belum tersedia (ISS-063), sehingga F-02/ISS-042 dan `forecast.status=not_available` tetap terbuka. Formula v0.5, runbook dan bukti ada di PROGRESS.md; belum dideploy/UAT.
+
+F-02f melanjutkan C-02/C-06/C-07: kalender REST v2 Sectors yang baru dan harga/aksi korporasi MCP dipasangkan dengan PDF KSEI. Empat baseline ASII/TLDN/AMRT/BSBK dibekukan pada 8 Oktober sebelum cum-date; timestamp capture, hash file serta alasan tiga event lain tidak masuk disimpan sebagai artefak. `notice_document_date` tidak disamakan dengan waktu publikasi. Belum ada outcome atau akurasi; AMRT memiliki gap di MCP corporate actions, AUTO memiliki revisi rasio KSEI, dan basis harga tetap belum diaudit (ISS-064/ISS-065). F-02/ISS-042 serta `forecast.status=not_available` tetap terbuka; formula v0.6 dan PROGRESS.md memuat rinciannya. Tidak ada perubahan UI/deployment/UAT.
+
+F-02g melanjutkan C-02/C-06/C-07: protokol evaluasi menetapkan target, error ternormalisasi, pembanding flat, dan aturan tidak membuang event buruk sebelum close ex-date tersedia. CLI privat `status` memvalidasi DB terhadap ekspor kohort dan semua hash sumber; `collect-score` hanya mengambil MCP price setelah ex-date WIB, mengarsipkan response dan memanggil score append-only. Uji fixture mengonfirmasi gate waktu, validasi hash, idempotensi dan perhitungan report; status nyata tetap 0/4 outcome. Tidak ada probabilitas baru, klaim performa, endpoint/UI atau deployment; F-02/ISS-042/ISS-063/ISS-064 tetap terbuka.

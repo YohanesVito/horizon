@@ -2,6 +2,7 @@
 from contextlib import contextmanager
 from datetime import datetime, timezone
 from sqlalchemy import Column, String, Text, DateTime, text, select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.orm import declarative_base, sessionmaker
 import json
@@ -76,6 +77,17 @@ def save(key, kind, payload):
             s.add(Record(key=key, kind=kind, payload=serialized))
 
 
+def insert_once(key, kind, payload):
+    """Persist an immutable research observation; a duplicate key never updates it."""
+    serialized = json.dumps(payload, ensure_ascii=False, default=str, sort_keys=True)
+    try:
+        with Session.begin() as s:
+            s.add(Record(key=key, kind=kind, payload=serialized))
+            s.flush()
+    except IntegrityError:
+        raise ValueError('Rekaman sudah ada; versi sebelumnya tidak boleh ditimpa.') from None
+
+
 def get(key, default=None, *, kind=None):
     with Session() as s:
         row = s.get(Record, key)
@@ -86,3 +98,52 @@ def list_records(kind, limit=20):
     with Session() as s:
         rows = s.query(Record).filter_by(kind=kind).order_by(Record.created_at.desc()).limit(limit).all()
         return [json.loads(r.payload) for r in rows]
+
+
+def claim_once(key, kind, payload):
+    """Atomically insert a durable claim; only the inserted owner may do work."""
+    from sqlalchemy.dialects.sqlite import insert as sqlite_insert
+    insert = pg_insert if engine.dialect.name == 'postgresql' else sqlite_insert
+    statement = insert(Record).values(key=key, kind=kind, payload=json.dumps(payload, ensure_ascii=False))
+    statement = statement.on_conflict_do_nothing(index_elements=[Record.key]).returning(Record.key)
+    with Session.begin() as session:
+        return session.execute(statement).scalar_one_or_none() == key
+
+
+def insight_for_run(run_id, allocation=None):
+    """Find pre-guard cached success without repeating an already billed run."""
+    with Session() as session:
+        rows = session.query(Record).filter_by(kind='simulation-insight').order_by(Record.created_at.asc(), Record.key).all()
+        matches = [json.loads(row.payload) for row in rows if json.loads(row.payload).get('provenance', {}).get('run_id') == run_id and json.loads(row.payload).get('status') == 'completed']
+        return next((payload for payload in matches if payload.get('provenance', {}).get('allocation') == allocation), matches[0] if matches else None)
+    return None
+
+
+def claim_retry(key):
+    """CAS a failed record into the next attempt; never exceed three owners."""
+    from sqlalchemy import update
+    with Session.begin() as session:
+        row = session.get(Record, key)
+        if not row or row.kind != 'simulation-insight':
+            raise ValueError('Invalid insight claim.')
+        previous = row.payload
+        payload = json.loads(previous)
+        if payload.get('status') != 'unavailable' or payload.get('attempts', 3) >= 3:
+            return None
+        import time
+        payload.update(status='processing', started_at=time.time(), attempts=payload['attempts']+1, exhausted=False)
+        statement = update(Record).where(Record.key == key, Record.kind == 'simulation-insight', Record.payload == previous).values(payload=json.dumps(payload, ensure_ascii=False)).returning(Record.key)
+        return payload if session.execute(statement).scalar_one_or_none() else None
+
+
+def finish_attempt(key, attempt, result):
+    """Only the current attempt owner can publish; reject late completion."""
+    from sqlalchemy import update
+    with Session.begin() as session:
+        row = session.get(Record, key)
+        previous = row.payload if row and row.kind == 'simulation-insight' else None
+        current = json.loads(previous) if previous else {}
+        if current.get('status') != 'processing' or current.get('attempts') != attempt:
+            return False
+        statement = update(Record).where(Record.key == key, Record.kind == 'simulation-insight', Record.payload == previous).values(payload=json.dumps(result, ensure_ascii=False)).returning(Record.key)
+        return session.execute(statement).scalar_one_or_none() == key

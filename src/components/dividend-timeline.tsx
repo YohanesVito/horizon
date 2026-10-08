@@ -272,9 +272,6 @@ export default function DividendTimeline() {
                 </li>
               ))}
             </ol>
-            <p className="muted dividend-candidates-source">
-              {candidates.data.basis} Snapshot {dt(candidates.data.as_of, true)}. Peringkat ini bukan proyeksi keuntungan strategi.
-            </p>
           </>
         )}
       </section>

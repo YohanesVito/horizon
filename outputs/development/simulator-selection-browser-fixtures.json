@@ -1,0 +1,27 @@
+{
+  "fixture": true,
+  "checks": [
+    "Strategy appears before event picker",
+    "Failed replay hidden, successful history preserved",
+    "Selecting single trims existing selection; choosing another replaces it",
+    "Equal and rotation preserve multiple selection",
+    "Copy legacy single run with 3 original events produces one selected draft event, original fixture unchanged",
+    "Submit payload for single contains exactly one event",
+    "390px no horizontal overflow"
+  ],
+  "errors": [],
+  "historyActive": {
+    "bg": "rgba(255, 240, 233, 0.47)",
+    "color": "rgb(19, 30, 41)",
+    "border": "rgb(130, 49, 31)",
+    "borderWidth": "3px",
+    "shadow": "none"
+  },
+  "submitted": {
+    "allocation": "single",
+    "event_ids": [
+      "BBCA:2025-03-21"
+    ]
+  },
+  "status": "passed"
+}

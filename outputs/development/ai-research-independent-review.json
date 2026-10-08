@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "review": "independent read-only mocked gateway probes",
+  "checks": [
+    "Aggregated news has exact provider query URL, not unrelated first-article link; external instruction remains marked untrusted data",
+    "SGX/other ticker/arbitrary URL rejected before provider dispatch",
+    "Empty news marked unavailable without invented source, attempted credit counted",
+    "Failed provider request consumes and reports credit; next request blocked by exhausted budget",
+    "Current report explicitly labeled current snapshot, not historical event-time evidence"
+  ],
+  "backend_tests": {
+    "passed": 113,
+    "command": ".runtime/ui-feedback-venv/bin/python -m pytest backend/tests -q"
+  },
+  "limits": [
+    "Model factual or causal claim correctness and prompt-injection obedience are not proven by schema/boundary tests; final narration still requires source review.",
+    "Some generic provider links are attribution or documentation, not a public permalink for the returned historical record."
+  ],
+  "no_live_provider_calls": true,
+  "final_regressions": {
+    "passed": 14,
+    "command": ".runtime/ui-feedback-venv/bin/python -m pytest backend/tests/test_ai_research.py backend/tests/test_sectors_tools.py -q",
+    "checks": [
+      "Actual replay end 2025-05-20 extends research window to 2025-06-03; daily-price query 2025-04-21 through 2025-05-20 accepted.",
+      "IHSG citation URL canonical /v2/index-daily/ihsg/?start=...&end=... ignores provider-embedded wrong URL."
+    ],
+    "new_live_ai_calls": 0
+  },
+  "preview_handoff": {
+    "latest_url": "http://127.0.0.1:3001",
+    "latest_backend": "http://127.0.0.1:8001",
+    "existing_preview": "http://127.0.0.1:3000",
+    "existing_configured_backend": "Dalang HTTPS service from BACKEND_URL configuration; no key values read or printed",
+    "safe_GET_insights_status": {
+      "3000": 404,
+      "3001": 405
+    },
+    "existing_processes_untouched": true,
+    "note": "405 confirms the POST-only route exists without executing it; 404 indicates existing preview backend lacks this route. Deployment was not updated."
+  }
+}

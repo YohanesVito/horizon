@@ -1,0 +1,35 @@
+Thu Oct  8 06:22:00 UTC 2026
+procs -----------memory---------- ---swap-- -----io---- -system-- -------cpu-------
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st gu
+ 0  1      0 229604  10528 1250168    0    0     6   136  475    1  7  0 48 44  1  0
+ 0  1      0 229380  10540 1250156    0    0     4    96 2339 4024  6  3 45 45  2  0
+ 0  1      0 229380  10540 1250172    0    0     0     0  245  223  0  0 50 50  1  0
+COMMAND         STAT WCHAN
+jbd2/sda2-8     D    wait_on_buffer
+unattended-upgr Ssl  do_poll.constprop.0
+containerd      Ssl  futex_wait_queue
+dockerd         Ssl  futex_wait_queue
+containerd-shim Sl   futex_wait_queue
+python          Ssl  ep_poll
+unattended-upgr Sl   do_select
+unattended-upgr S    do_select
+dpkg            Ds+  jbd2_log_wait_commit
+some avg10=88.80 avg60=88.54 avg300=79.11 total=619368280765
+full avg10=85.78 avg60=85.19 avg300=76.72 total=577916321323
+usage_usec 1170844551
+user_usec 1073916249
+system_usec 96928302
+core_sched.force_idle_usec 0
+nr_periods 343352
+nr_throttled 0
+throttled_usec 0
+nr_bursts 0
+burst_usec 0
+low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+94908416
+health_http=200 total_seconds=1.350214

@@ -1,6 +1,7 @@
 // Runs only on the Next.js server. Never expose backend credentials to the browser.
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+export const maxDuration = 125;
 
 async function proxy(request: Request) {
   try {
@@ -28,13 +29,15 @@ async function proxy(request: Request) {
         return Response.json({ detail: "Request terlalu besar." }, { status: 413 });
       }
     }
+    const insightRequest = request.method === "POST" &&
+      /^\/api\/simulations\/[^/]+\/insights\/?$/.test(incoming.pathname);
     const upstream = await fetch(target, {
       method: request.method,
       headers,
       body,
       cache: "no-store",
       redirect: "manual",
-      signal: AbortSignal.timeout(30_000),
+      signal: AbortSignal.timeout(insightRequest ? 120_000 : 30_000),
     });
     // Do not relay redirects (or credentials) to another host.
     if (upstream.status >= 300 && upstream.status < 400) {

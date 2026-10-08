@@ -1,0 +1,11 @@
+{
+  "transport": "Sectors REST GET; endpoint absent from inspected MCP registry",
+  "url": "https://api.sectors.app/v2/corporate-actions/?start=2026-10-09&end=2026-12-31&type=dividend",
+  "retrieved_at": "2026-10-08T16:14:41.057281+08:00",
+  "http_status": 200,
+  "result": {
+    "start": "2026-10-09",
+    "end": "2026-12-31",
+    "dividend": []
+  }
+}
