@@ -3,6 +3,7 @@
 import { useId, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { aiProse } from "@/lib/ai-prose";
 import { api, dt } from "@/lib/api";
 import type { Allocation, Trade } from "@/lib/types";
 
@@ -39,15 +40,6 @@ type SimulationInsight = {
 };
 
 const MAX_STATUS_READS = 80;
-
-function safeSourceUrl(url: string): string | null {
-  try {
-    const parsed = new URL(url);
-    return ["http:", "https:"].includes(parsed.protocol) ? parsed.href : null;
-  } catch {
-    return null;
-  }
-}
 
 type InsightProps = {
   simulationId: string;
@@ -171,11 +163,6 @@ function InsightPanel({
     data?.status === "processing" &&
     (client.getQueryState(queryKey)?.dataUpdateCount ?? 0) >= MAX_STATUS_READS;
   if (data?.status === "unavailable" && data.exhausted && !symbol) return null;
-  const sources =
-    data?.sources.flatMap((source) => {
-      const url = safeSourceUrl(source.url);
-      return url ? [{ ...source, url }] : [];
-    }) ?? [];
 
   return (
     <section
@@ -285,29 +272,16 @@ function InsightPanel({
                       </h4>
                     )}
                     <p>
-                      {section?.summary ||
+                      {aiProse(section?.summary ||
                         (data.exhausted
                           ? "Ringkasan AI ticker ini gagal setelah tiga percobaan. Analisis angka tetap tersedia."
-                          : "Ringkasan AI peristiwa ini belum tersedia.")}
+                          : "Ringkasan AI peristiwa ini belum tersedia."))}
                     </p>
                     {section?.findings.map((finding, index) => (
                       <div key={index}>
-                        <h5>{finding.title}</h5>
-                        <p>{finding.detail}</p>
-                        {sources
-                          .filter((source) =>
-                            finding.source_ids.includes(source.id),
-                          )
-                          .map((source) => (
-                            <a
-                              key={source.id}
-                              href={source.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {source.title} ↗{" "}
-                            </a>
-                          ))}
+                        <h5>{aiProse(finding.title)}</h5>
+                        <p>{aiProse(finding.detail)}</p>
+
                       </div>
                     ))}
                   </article>
@@ -318,37 +292,20 @@ function InsightPanel({
           {(analysisMode !== "independent_events" ||
             (!embedded && !data.sections)) && (
             <p className="insight-summary">
-              {(data.configured === false
+              {aiProse((data.configured === false
                 ? "Analisis AI belum tersedia untuk replay ini."
                 : data.summary) ||
-                "Ringkasan AI belum tersedia untuk hasil ini."}
+                "Ringkasan AI belum tersedia untuk hasil ini.")}
             </p>
           )}
           {analysisMode !== "independent_events" &&
             data.findings.length > 0 && (
               <div className="insight-findings">
                 {data.findings.map((finding, index) => (
-                  <article key={`${index}-${finding.title}`}>
-                    <h4>{finding.title}</h4>
-                    <p>{finding.detail}</p>
-                    {finding.source_ids.length > 0 && (
-                      <div className="insight-links">
-                        {sources
-                          .filter((source) =>
-                            finding.source_ids.includes(source.id),
-                          )
-                          .map((source) => (
-                            <a
-                              key={source.id}
-                              href={source.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {source.title} ↗
-                            </a>
-                          ))}
-                      </div>
-                    )}
+                  <article key={`${index}-${aiProse(finding.title)}`}>
+                    <h4>{aiProse(finding.title)}</h4>
+                    <p>{aiProse(finding.detail)}</p>
+
                   </article>
                 ))}
               </div>
@@ -357,32 +314,8 @@ function InsightPanel({
             <details className="insight-limitations small muted">
               <summary>Batas data dan analisis</summary>
               {data.limitations.map((limitation, index) => (
-                <p key={index}>{limitation}</p>
+                <p key={index}>{aiProse(limitation)}</p>
               ))}
-            </details>
-          )}
-          {sources.length > 0 && (
-            <details className="insight-sources small">
-              <summary>Sumber konteks ({sources.length})</summary>
-              <ul>
-                {sources.map((source) => (
-                  <li key={source.id}>
-                    <a
-                      href={source.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {source.title} ↗
-                    </a>
-                    {source.published_at && (
-                      <span className="muted">
-                        {" "}
-                        · {dt(source.published_at, true)}
-                      </span>
-                    )}
-                  </li>
-                ))}
-              </ul>
             </details>
           )}
           {data.status === "unavailable" && !data.exhausted && (
