@@ -1,9 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
+  ArrowDown,
   ArrowDownWideNarrow,
   ArrowRight,
   ArrowUpRight,
@@ -126,9 +127,42 @@ export default function Dashboard() {
     },
   });
   const data = catalog.data;
+  const [navVisible, setNavVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const threshold = 8;
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Always show near top of page
+      if (currentScrollY <= 60) {
+        setNavVisible(true);
+        lastScrollY.current = currentScrollY;
+        return;
+      }
+
+      const delta = currentScrollY - lastScrollY.current;
+      if (Math.abs(delta) < threshold) return;
+
+      if (delta > 0) {
+        // Scrolling down / baca konten ke bawah -> hide
+        setNavVisible(false);
+      } else {
+        // Scrolling up / geser ke atas -> show
+        setNavVisible(true);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const changeView = (next: View) => {
     setView(next);
     setMessage("");
+    setNavVisible(true);
     window.scrollTo({ top: 0, behavior: "instant" });
   };
   const toggleWatch = (symbol: string) =>
@@ -154,7 +188,7 @@ export default function Dashboard() {
       <a className="skip-link" href="#main">
         Ke konten utama
       </a>
-      <header className="site-header">
+      <header className={`site-header ${navVisible ? "" : "nav-hidden"}`}>
         <Link
           href="/"
           className="brand"
@@ -165,6 +199,7 @@ export default function Dashboard() {
             <i aria-hidden="true">.</i>
           </span>
         </Link>
+        <span className="site-header-divider" aria-hidden="true" />
         <nav aria-label="Navigasi utama">
           {nav.map(({ name, label }) => (
             <button
@@ -191,36 +226,23 @@ export default function Dashboard() {
               className="page-heading editorial-hero"
               aria-label="Pengantar"
             >
-              <p className="eyebrow editorial-kicker">
-                {view === "Timeline"
-                  ? "Riset peristiwa dividen"
-                  : "Replay historis"}
-              </p>
               <h1>
-                {view === "Timeline" ? (
-                  <>
-                    Lihat harga <em>di sekitar</em> dividen.
-                  </>
-                ) : (
-                  <>
-                    Uji strategi. <em>Baca konsekuensinya.</em>
-                  </>
-                )}
+                {view === "Timeline"
+                  ? "Lihat harga di sekitar dividen."
+                  : "Uji strategi. Baca konsekuensinya."}
               </h1>
               <p className="subtitle">
                 {view === "Timeline"
-                  ? "Bandingkan lintasan harga sebelum dan sesudah ex-date. Data historis, tanpa janji hasil berikutnya."
+                  ? "Bandingkan harga sebelum dan sesudah ex-date berdasarkan riwayat peristiwa dividen. Gunakan sebagai konteks untuk menilai skenario Anda."
                   : "Atur modal dan aturan keluar. Lihat hasil replay, risiko, dan kapan kas tersedia."}
               </p>
-              <div className="editorial-hero-foot">
-                <span>
-                  {view === "Timeline" ? "01 / Analisis" : "02 / Simulasi"}
-                </span>
-                <a href="#workspace-content" className="hero-scroll-link">
-                  {view === "Timeline" ? "Jelajahi data" : "Mulai simulasi"}
-                  <ArrowRight size={19} aria-hidden="true" />
-                </a>
-              </div>
+              <a
+                href="#workspace-content"
+                className="hero-scroll-btn"
+              >
+                {view === "Timeline" ? "Jelajahi data" : "Mulai simulasi"}
+                <ArrowDown size={18} strokeWidth={2} aria-hidden="true" />
+              </a>
             </section>
           ) : (
             <div className="page-heading">

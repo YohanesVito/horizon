@@ -2,11 +2,16 @@
 
 ## Audit integrasi pekerjaan lokal — 8 Oktober 2026
 
-- **ISS-066 — Rekonsiliasi dokumen merge / P2 / OPEN:** dry run commit seluruh pekerjaan lokal lalu merge `feat/timeline-ui-polish` pada clone sementara menyisakan konflik di `ISSUES.md` dan `PROGRESS.md`. Ringkasan UI tentang 404 backend lama harus dipertahankan sebagai riwayat, sementara status terbaru ISS-061/DEP-04 mencatat backend sudah diperbarui. Kode auto-merge dan pemeriksaan lint/typecheck/build/85 tes backend lulus, tetapi merge final serta smoke browser/API belum dilakukan. Tindak lanjut: selesaikan konflik secara semantik, audit staging/secret, lalu verifikasi hasil final sebelum push `main`.
+- **ISS-066 — Rekonsiliasi dokumen merge / P2 / RESOLVED:** merge `feat/timeline-ui-polish` dengan commit lokal `12f87fc` berkonflik hanya di `ISSUES.md` dan `PROGRESS.md`. Catatan 404 D-08 dipertahankan sebagai riwayat sebelum DEP-04; status terbaru tetap ISS-061 RESOLVED karena backend kandidat/timeline sudah diperbarui. Tidak ada konflik kode. Lint, build, 85 tes backend, dan smoke HTTP katalog kandidat serta detail timeline lulus pada hasil gabungan. Ini bukan UAT akhir.
+- **ISS-067 — Endpoint skenario ex-date belum ada di backend aktif / P2 / BYPASSED:** backend aktif melayani `/api/dividend-candidates` dan detail timeline (200), tetapi POST `/api/ex-date/scenario` masih 404 pada smoke melalui proxy lokal. Kode FastAPI dan komponen skenario tetap tersimpan pada commit F-02, namun komponen tidak dirender pada UI gabungan agar pengguna tidak menemui formulir yang pasti gagal. Rilis FastAPI yang memuat endpoint ini dan smoke ulang diperlukan sebelum komponen diaktifkan; bypass bukan penyelesaian fitur.
 
 ## Audit situs live — 8 Oktober 2026
 
 - **ISS-061 — Versi frontend/backend produksi tidak cocok / P1 / RESOLVED:** Setelah `main` dipush pada `a20d32c`, frontend editorial live memanggil `/api/dividend-candidates` yang pada image Dalang lama `sha256:4cec060...` masih 404; `/api/timeline` hanya menyediakan LPPF. DEP-04 membangun release `20261008T053018Z-8544ed8b61` dari source gabungan (213 file, secret scan dan dua smoke packaged lulus), menghentikan hanya API lama secara graceful, lalu mengaktifkan image `sha256:adf13f...`. URL Vercel kini mengembalikan lima kandidat DMAS/LPPF/ADRO/CFIN/RALS dan 5/5/9/2/4 event preview; browser membuktikan pemilihan DMAS dan panel risiko historis. Verifier HTTPS→API→worker→Supabase lulus, replay fixture identik, probe sementara dihapus, dan checksum 20 record awal tetap sama. Snapshot pasca-cutover 06:54 UTC menunjukkan image baru healthy/restart 0, kelima layanan kurasi inactive/PID 0, dan pointer `/opt/horizon/current` ke release baru. Bukti: `outputs/deployment/deployment.json`, `live-editorial-verification.json`, `dalang-api-verification.json`. ID temuan ini menjadi ISS-061 karena audit performa paralel memakai ISS-060. I/O storage ISS-048 dan forecast ISS-042 tetap OPEN; ini bukan UAT final.
+## Temuan D-08 sebelum pembaruan backend — historis
+
+Pada pemeriksaan UI sebelum DEP-04, proxy ke VPS menjawab 404 untuk `/api/dividend-candidates` sedangkan `/api/timeline/LPPF?preview=true` menjawab 200. Saat itu panel kandidat menampilkan error karena versi backend lama. Temuan branch UI semula memakai ID ISS-060, yang bertabrakan dengan audit performa; catatan integrasi final memakai **ISS-061**. Backend kemudian diperbarui dan mismatch ditutup oleh DEP-04, sebagaimana bukti pada ISS-061 di atas.
+
 
 ## Review integrasi UI dan deployment — 8 Oktober 2026
 

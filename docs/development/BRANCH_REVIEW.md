@@ -1,5 +1,11 @@
 # Review branch untuk Vercel — 8 Oktober 2026
 
+## BR-07 — integrasi aktual, status sebelum main
+
+Pekerjaan lokal yang tidak diabaikan Git disimpan pada commit `12f87fc`, kemudian `origin/feat/timeline-ui-polish` `2cb8d96` digabung ke `codex/backend-release-sync`. Dua konflik dokumen ISSUES/PROGRESS direkonsiliasi: 404 kandidat pada D-08 menjadi riwayat sebelum DEP-04, sementara backend aktif sekarang mengembalikan lima kandidat dan detail LPPF. Lint, typecheck, build, 85 tes backend, smoke HTTP, dan pemilihan LPPF→DMAS dalam browser lulus tanpa error console.
+
+Smoke juga membuktikan POST `/api/ex-date/scenario` pada backend aktif masih 404. Karena itu komponen skenario F-02 tetap berada di source tetapi tidak dirender pada UI sampai backend baru dirilis; ISS-067 mencatat bypass ini. Forecast numerik tetap research-only. Merge ke `main`, push dan deployment belum tercakup oleh status integrasi branch ini; lihat PROGRESS untuk tahap berikutnya.
+
 ## BR-06 — simulasi commit pekerjaan lokal lalu merge UI
 
 Seluruh perubahan tracked dan 54 file untracked pada checkout `codex/backend-release-sync` disalin ke clone sementara dari `a79ba02`, lalu dibuat commit audit **hanya di clone**. Merge `2cb8d96` menghasilkan dua konflik konten: `docs/development/ISSUES.md` dan `docs/development/PROGRESS.md`. Kode aplikasi, CSS, dan dokumen lain auto-merge. Pada hasil gabungan sementara, `npm run lint`, `npm run typecheck`, `npm run build` Next.js 16.3.8, dan 85 tes backend lulus (satu warning deprecation Starlette lama). Ini membuktikan kode gabungan dapat dibangun, tetapi dokumen yang konflik belum diselesaikan dan perilaku browser belum diuji.

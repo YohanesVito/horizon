@@ -1,5 +1,9 @@
 # Pemetaan kebutuhan ke pekerjaan development
 
+## Integrasi UI BR-07 dan batas backend skenario
+
+BR-07 menggabungkan UI polish terbaru dengan pekerjaan F-02 lokal untuk C-02/C-08. Alur kandidat/timeline historis terverifikasi pada backend aktif dan browser lokal, sedangkan form skenario ex-date sementara tidak ditampilkan karena endpoint FastAPI terkait belum ada pada image produksi (ISS-067 BYPASSED). Kode engine dan komponen tetap disimpan untuk rilis backend berikutnya; ini belum memenuhi fitur skenario live ataupun validasi prediksi.
+
 ## Keputusan operasi terbaru — 8 Oktober 2026
 
 DEP-01–DEP-03 DONE: FastAPI/Docker Dalang healthy, Supabase Session Pooler, HTTPS provider dan proxy Next server-only terverifikasi. Smoke image, delapan endpoint, penolakan401, replay identik fixture, preservasi20record, frontend→VPS dan browser Peluang/Timeline lulus. Kelima layanan kurasi tetapinactive. Bukti `outputs/deployment/deployment.json` dan laporan terkait; [DEPLOYMENT_DALANG.md](./DEPLOYMENT_DALANG.md). Frontend publik, UAT, login, durablequeue serta gap data/model bukan hasil deployment ini. ISS-048 storage tetap OPEN.

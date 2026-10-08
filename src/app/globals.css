@@ -237,8 +237,7 @@
   cursor: pointer;
   transition: all 0.15s ease;
 }
-.timeline-legend i,
-.timeline-tooltip i {
+.timeline-legend i {
   display: inline-block;
   border-radius: 50%;
   width: 7px;
@@ -308,40 +307,6 @@
 }
 .timeline-series {
   transition: opacity 0.15s;
-}
-.timeline-tooltip {
-  pointer-events: none;
-  position: absolute;
-  width: 196px;
-  display: grid;
-  gap: 5px;
-  border: 1px solid;
-  background: #24312b;
-  box-shadow: 0 12px 32px #0b110e99;
-  border-radius: 8px;
-  padding: 14px;
-  font-size: 10px;
-  color: var(--muted);
-  z-index: 2;
-}
-.timeline-tooltip strong {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  color: var(--text);
-}
-.timeline-tooltip b {
-  color: #fff;
-  font:
-    500 18px Sora,
-    sans-serif;
-}
-.timeline-axis-note {
-  text-align: center;
-  color: var(--muted);
-  font-size: 10px;
-  margin-top: 2px;
 }
 .timeline-focus-heading {
   display: flex;
