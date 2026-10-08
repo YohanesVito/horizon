@@ -43,12 +43,12 @@ export function lineOption(
 ): EChartsOption {
   return {
     animationDuration: 300,
-    textStyle: { fontFamily: "Manrope", color: "#bdb0be" },
+    textStyle: { fontFamily: "Manrope", color: "#c4d0d5", fontSize: 13 },
     tooltip: {
       trigger: "axis",
-      backgroundColor: "#271d29",
-      borderColor: "#5d3a50",
-      textStyle: { color: "#fff" },
+      backgroundColor: "#f7f7f3",
+      borderColor: "#ff4713",
+      textStyle: { color: "#131e29", fontSize: 13 },
       valueFormatter: (v) =>
         new Intl.NumberFormat("id-ID", { maximumFractionDigits: 0 }).format(
           Number(v),
@@ -63,22 +63,23 @@ export function lineOption(
           month: "short",
         }),
       ),
-      axisLine: { lineStyle: { color: "#ffffff12" } },
+      axisLine: { lineStyle: { color: "#ffffff2a" } },
       axisTick: { show: false },
-      axisLabel: { color: "#9e929f", hideOverlap: true },
+      axisLabel: { color: "#b9c6cb", fontSize: 12, hideOverlap: true },
     },
     yAxis: {
       type: "value",
       scale: true,
       splitNumber: 4,
       axisLabel: {
-        color: "#9e929f",
+        color: "#b9c6cb",
+        fontSize: 12,
         formatter: (v: number) =>
           currency && Math.abs(v) >= 1e6
             ? `${(v / 1e6).toFixed(1)} jt`
             : new Intl.NumberFormat("id-ID").format(v),
       },
-      splitLine: { lineStyle: { color: "#ffffff0a", type: "dashed" } },
+      splitLine: { lineStyle: { color: "#ffffff20", type: "dashed" } },
     },
     series: series.map((s, i) => ({
       name: s.name,
@@ -88,15 +89,7 @@ export function lineOption(
       smooth: false,
       lineStyle: { width: i === 0 ? 2.5 : 1.7, color: s.color },
       itemStyle: { color: s.color },
-      areaStyle:
-        series.length === 1
-          ? {
-              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                { offset: 0, color: "#a64d7940" },
-                { offset: 1, color: "#a64d7900" },
-              ]),
-            }
-          : undefined,
+      areaStyle: series.length === 1 ? { color: "#ff471326" } : undefined,
     })),
   };
 }
@@ -115,7 +108,7 @@ export function Sparkline({ values }: { values: number[] }) {
     >
       <polyline
         fill="none"
-        stroke="#c886aa"
+        stroke="#ff4713"
         strokeWidth="1.6"
         points={values
           .map(

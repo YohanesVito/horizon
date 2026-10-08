@@ -103,3 +103,21 @@ C-02/C-04/C-06/C-07: [PREDICTION_FORMULA.md](./PREDICTION_FORMULA.md) mendefinis
 C-02/C-04/C-08, S5-02: gabungan UI polish523c993 dengan proxy Next/Supabase/Dalang f64df85 mempertahankan kedua kontribusi. Fixture berversi membuktikan hitungan tidak berubah; issue052/053/054 merujuk UX/handoff, sedangkan044–050 tetap migrasi/deployment. Status deployment Vercel dan bukti aktual mengikuti PROGRESS.md; bukan kelulusan UAT.
 
 Arahan PM terbaru 8 Oktober menyerahkan deployment Vercel kepada PM dan meminta merge main segera. V-02 dibatasi merge/push; V-01 tetap PARTIAL/HANDOFF. Env server telah dipasang setelah izin; build cloud READY belum merupakan verifikasi browser/API/database atau UAT.
+
+## Hierarki chart UI-03 (Chunk 2; D-03 pada branch UI asal)
+
+UI-03 merapikan hirarki visual timeline agar grafik historis menjadi fokus utama layar. Header/picker emiten dibuat kompak, kontrol grafik disatukan dalam dua baris terstruktur (`timeline-toolbar` untuk legenda peristiwa dan sakelar mode/satuan; `timeline-status-bar` untuk sinyal pergerakan Cum → Ex dan instruksi interaksi). Fitur interaksi Sammy (klik/tap chart untuk mengunci fokus, tombol peristiwa, opasitas seri, istilah hari bursa, dan form simulator) tetap bekerja; T-08 memperluas fokus dari tahun ke ID peristiwa agar beberapa dividen pada satu tahun dapat dibaca terpisah. ID UI-03 dipakai agar tidak bertabrakan dengan D-03 penemuan emiten. Pemisahan tegas aktual vs prediksi dan handoff emiten ke simulator masih terbuka.
+
+## Penyederhanaan UI D-04
+
+D-04 menindaklanjuti keputusan PM 8 Oktober untuk memprioritaskan alur dan tampilan dibanding algoritme proyeksi. C-02/C-04 tetap lewat Analisis dan Simulasi; C-08 tetap terlihat melalui label sumber, caveat preview, serta metodologi. Mode periode berjalan diberi label aktual, bukan prediksi. Detail keputusan, referensi, dan pemeriksaan ada di [UI_REDESIGN.md](./UI_REDESIGN.md). D-04 tidak menutup ISS-041/042/054 atau menyelesaikan PRD/UAT.
+
+## Revisi editorial D-05
+
+D-05 mengubah hierarki visual dua layar demo atas contoh Arcturis dari PM, tanpa memperluas cakupan produk. C-02 tetap melalui grafik multi-tahun beserta kontrol fokus/satuan dan detail event; C-04 melalui form replay, pembanding, dan hasil gross; C-08 melalui sumber, caveat pratinjau LPPF, dan metodologi. Hero yang besar menempatkan chart/form di bawah fold secara sengaja. Tidak ada requirement yang ditutup oleh styling ini: ISS-041/042/054 dan UAT tetap terbuka. Detail keputusan dan bukti pemeriksaan ada di [UI_REDESIGN.md](./UI_REDESIGN.md) dan [PROGRESS.md](./PROGRESS.md).
+
+D-07 menggabungkan main terbaru secara lokal dengan UI D-05. C-02/C-04/C-08 kini berada bersama backend Supabase dan proxy server Next tanpa mengubah rumus atau data. Build dan tes development lulus; browser/API lokal gabungan belum diuji karena server tidak berjalan. Merge ini tidak mempublikasikan branch atau mengubah status deployment/UAT.
+
+## Integrasi desain dan data BR-04
+
+C-01/C-02/C-08: desain editorial `feat/timeline-ui-polish` menjadi dasar tampilan; lima kandidat D-03 dan grafik parsial T-08 ditambahkan tanpa menyingkirkan toolbar, panel harga, kronologi, maupun layar Simulasi. Fokus berubah dari tahun ke ID event agar dua pembayaran satu emiten pada tahun sama tetap terpisah. C-06/C-07: panel Engine Riset membaca statistik empiris lama beserta aturan, ukuran sampel, dan rentang Wilson; ini belum menjalankan hipotesis prediksi harga/probabilitas F-01. `forecast.status` tetap `not_available` sesuai ISS-042. Perubahan dan bukti integrasi mengikuti PROGRESS.md; bukan penutupan PRD/UAT.

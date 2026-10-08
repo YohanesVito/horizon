@@ -1,6 +1,6 @@
 # Dividen Lab
 
-Workspace lokal untuk riset dan replay rotasi dividen saham Indonesia. Frontend glassmorphism/dark mengikuti palette PM; backend FastAPI. **Versi awal memakai data historis Sectors, bukan harga live atau model prediksi.**
+Workspace lokal untuk riset dan replay rotasi dividen saham Indonesia. Frontend demo memakai desain editorial dari `feat/timeline-ui-polish`; backend tetap FastAPI. **Versi awal memakai snapshot historis Sectors, bukan harga live atau model prediksi terkalibrasi.**
 
 ## Jalankan
 
@@ -65,7 +65,7 @@ Frontend meneruskan `/api/*` melalui Route Handler server ke `BACKEND_URL`. Untu
 
 ## Fitur yang dapat dicoba
 
-**Timeline kandidat:** buka **Analisis emiten** dan pilih DMAS, LPPF, ADRO, CFIN, atau RALS. Grafik menampilkan jendela event/harga historis yang tersedia apa adanya; tahun kosong diberi label, beberapa pembayaran pada satu tahun dapat dipilih berdasarkan ex-date, dan mode Rp/% tetap ada. Semua grafik masih pratinjau karena verifikasi peristiwa/basis data belum selesai. Tab2026 hanya aktif pada LPPF dengan harga aktual sampai6Oktober2026; panel prediksi belum tersedia. [Runbook dan bukti pemeriksaan](docs/development/TIMELINE_IMPLEMENTATION.md).
+**Timeline kandidat:** buka **Analisis** dan pilih DMAS, LPPF, ADRO, CFIN, atau RALS. Grafik menampilkan jendela event/harga historis yang tersedia apa adanya; tahun kosong diberi label, beberapa pembayaran pada satu tahun dapat dipilih berdasarkan ex-date, dan mode Rp/% tetap ada. Semua grafik masih pratinjau karena verifikasi peristiwa/basis data belum selesai. Tab2026 hanya aktif pada LPPF dengan harga aktual sampai6Oktober2026. Panel Engine Riset menampilkan frekuensi trap dan waktu BEP historis sesuai aturan aktif, ukuran sampel, dan batas ketidakpastian; itu **bukan probabilitas atau jalur harga masa depan**. Formula v0.1 masih hipotesis riset dan prediksi numerik belum tersedia. [Runbook dan bukti pemeriksaan](docs/development/TIMELINE_IMPLEMENTATION.md).
 
 1. **Peluang:** sembilan emiten, pencarian, sorting, filter yield/frekuensi/kelengkapan data dan aturan screening tersimpan.
 2. **Detail & kalender:** 12 event kanonis tahun 2025 dari sembilan emiten yang juga ada di Intelligence; lima tahap tanggal, grafik harga setahun, riwayat dividen, null jelas.

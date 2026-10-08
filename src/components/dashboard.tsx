@@ -12,12 +12,10 @@ import {
   ChartNoAxesCombined,
   ChevronLeft,
   ChevronRight,
-  Database,
   Layers3,
   Route,
   Search,
   SlidersHorizontal,
-  ScanLine,
 } from "lucide-react";
 import { api, dt, money, pct } from "@/lib/api";
 import type {
@@ -44,8 +42,8 @@ type View =
   | "Metodologi";
 const nav = [
   // Fitur lain tetap tersedia di kode, tetapi tidak mengalihkan alur demo.
-  { name: "Timeline", label: "Analisis emiten", icon: ScanLine },
-  { name: "Simulator", label: "Simulator", icon: Route },
+  { name: "Timeline", label: "Analisis" },
+  { name: "Simulator", label: "Simulasi" },
 ] as const;
 export const defaults: Rules = {
   name: "Logika dividen saya",
@@ -152,26 +150,23 @@ export default function Dashboard() {
           : (b.annual_yield_pct ?? 0) - (a.annual_yield_pct ?? 0),
     );
   return (
-    <div className="app-shell">
+    <div className="app-shell editorial-app" data-view={view}>
       <a className="skip-link" href="#main">
         Ke konten utama
       </a>
-      <aside className="sidebar">
+      <header className="site-header">
         <Link
           href="/"
           className="brand"
           aria-label="Dividen Lab — halaman utama"
         >
-          <span className="brand-icon">
-            <Layers3 size={23} />
-          </span>
-          <span>
-            dividen<span className="brand-light">lab</span>
+          <span className="brand-wordmark">
+            DIVIDEN<span>LAB</span>
+            <i aria-hidden="true">.</i>
           </span>
         </Link>
-        <p className="nav-label">MENU</p>
         <nav aria-label="Navigasi utama">
-          {nav.map(({ name, label, icon: Icon }) => (
+          {nav.map(({ name, label }) => (
             <button
               key={name}
               aria-label={label}
@@ -183,374 +178,375 @@ export default function Dashboard() {
               className={`nav-item ${view === name ? "active" : ""}`}
               aria-current={view === name ? "page" : undefined}
             >
-              <Icon size={19} />
               <span>{label}</span>
             </button>
           ))}
         </nav>
-        <div className="sidebar-bottom">
-          <div className="sidebar-note">
-            <button onClick={() => changeView("Metodologi")}>
-              Lihat metodologi <ArrowUpRight size={15} />
-            </button>
-          </div>
-          <div className="provider">
-            <Database size={15} /> Sumber: <strong>Sectors</strong>
-          </div>
-        </div>
-      </aside>
+        <span className="site-header-source">Powered by Sectors</span>
+      </header>
       <main id="main" className="main">
-        <header className="topbar">
-          <div>
-            <span>{view === "Timeline" ? "Analisis emiten" : view}</span>
-          </div>
-          <div>
-            <span className="badge">
-              <span className="small-dot" />
-              {view === "Timeline"
-                ? "Data Sectors · analisis emiten"
-                : `Riset historis · ${view === "Intelligence" ? "2022–2025" : "2025"}`}
-            </span>
-          </div>
-        </header>
         <div className="page-content">
-          <div className="page-heading">
-            <div>
+          {view === "Timeline" || view === "Simulator" ? (
+            <section
+              className="page-heading editorial-hero"
+              aria-label="Pengantar"
+            >
+              <p className="eyebrow editorial-kicker">
+                {view === "Timeline"
+                  ? "Riset peristiwa dividen"
+                  : "Replay historis"}
+              </p>
               <h1>
                 {view === "Timeline" ? (
                   <>
-                    Harga saham <span>di sekitar dividen.</span>
+                    Lihat harga <em>di sekitar</em> dividen.
                   </>
                 ) : (
-                  view
+                  <>
+                    Uji strategi. <em>Baca konsekuensinya.</em>
+                  </>
                 )}
               </h1>
               <p className="subtitle">
-                {view === "Peluang"
-                  ? "Saring emiten dari yield dan riwayat dividen."
-                  : view === "Kalender"
-                    ? "Jadwal dividen historis per emiten."
-                    : view === "Timeline"
-                      ? "Bandingkan peristiwa sebelumnya, lihat periode berjalan, lalu uji asumsi di simulator."
-                      : view === "Watchlist"
-                        ? "Emiten yang kamu simpan untuk dipantau."
-                        : view === "Simulator"
-                          ? "Replay historis 2025 dengan modal dan aturan yang bisa kamu ubah."
-                          : view === "Intelligence"
-                            ? "Statistik risiko dan pemulihan historis, ranking, serta skenario asumsi."
-                            : view === "Rencana rotasi"
-                              ? "Buat usulan rute dari aturan tim, lalu bandingkan replay tiap rute."
-                              : "Sumber data, cara menghitung, dan batas model."}
+                {view === "Timeline"
+                  ? "Bandingkan lintasan harga sebelum dan sesudah ex-date. Data historis, tanpa janji hasil berikutnya."
+                  : "Atur modal dan aturan keluar. Lihat hasil replay, risiko, dan kapan kas tersedia."}
               </p>
-            </div>
-          </div>
-          {catalog.isPending && (
-            <div className="loading glass">Memuat workspace Sectors…</div>
-          )}
-          {catalog.isError && (
-            <Notice error>
-              {catalog.error.message}{" "}
-              <button className="text-button" onClick={() => catalog.refetch()}>
-                Coba lagi
-              </button>
-            </Notice>
-          )}
-          {(watch.isError ||
-            saveRules.isError ||
-            watches.isError ||
-            rulesQuery.isError) && (
-            <Notice error>
-              {watch.error?.message ??
-                saveRules.error?.message ??
-                watches.error?.message ??
-                rulesQuery.error?.message}
-            </Notice>
-          )}
-          {message && (
-            <div role="status" className="notice success">
-              {message}
+              <div className="editorial-hero-foot">
+                <span>
+                  {view === "Timeline" ? "01 / Analisis" : "02 / Simulasi"}
+                </span>
+                <a href="#workspace-content" className="hero-scroll-link">
+                  {view === "Timeline" ? "Jelajahi data" : "Mulai simulasi"}
+                  <ArrowRight size={19} aria-hidden="true" />
+                </a>
+              </div>
+            </section>
+          ) : (
+            <div className="page-heading">
+              <div>
+                <p className="eyebrow">{view.toUpperCase()}</p>
+                <h1>{view}</h1>
+              </div>
             </div>
           )}
-          {view === "Timeline" && <DividendTimeline />}
-          {data && (view === "Peluang" || view === "Watchlist") && (
-            <>
-              {view === "Peluang" && (
-                <>
-                  <section className="metrics">
-                    <Metric
-                      label="Emiten dalam riset"
-                      value={String(data.companies.length).padStart(2, "0")}
-                      note="Sampel terpilih · bukan seluruh IDX"
-                      icon={<Layers3 size={18} />}
-                    />
-                    <Metric
-                      label="Yield tahunan tertinggi"
-                      value={pct(
-                        Math.max(
-                          ...data.companies.map((c) => c.annual_yield_pct ?? 0),
-                        ),
-                      )}
-                      note="DMAS · historis 2025"
-                      icon={<ChartNoAxesCombined size={18} />}
-                    />
-                    <Metric
-                      label="Event dividen"
-                      value={String(data.events.length)}
-                      note="Jadwal dan histori tahun 2025"
-                      icon={<CalendarDays size={18} />}
-                    />
-                    <Metric
-                      label="Siap untuk replay"
-                      value={String(
-                        data.companies.filter((c) => c.replay_available).length,
-                      ).padStart(2, "0")}
-                      note="Emiten dengan harga dan jadwal"
-                      icon={<Route size={18} />}
-                    />
-                  </section>
-                  <div className="overview-grid">
-                    <PricePanel onDetail={() => setDetail("BBCA")} />
-                    <Season
-                      events={data.events}
-                      onView={() => changeView("Kalender")}
-                    />
-                  </div>
-                </>
-              )}
-              <section className="glass company-section">
-                <div className="section-head">
-                  <div>
-                    <p className="eyebrow">
-                      {view === "Watchlist"
-                        ? "YOUR COLLECTION"
-                        : "DIVIDEND DISCOVERY"}
-                    </p>
-                    <h2>
-                      {view === "Watchlist"
-                        ? "Watchlist kamu"
-                        : "Kandidat pilihan riset"}
-                    </h2>
-                  </div>
-                  <button
-                    className={`btn subtle ${showRules ? "selected" : ""}`}
-                    onClick={() => setShowRules(!showRules)}
-                    aria-expanded={showRules}
-                  >
-                    <SlidersHorizontal size={15} /> Logika screening
-                  </button>
-                </div>
-                {showRules && (
-                  <div className="rule-panel">
-                    <div className="form-grid">
-                      <label>
-                        Nama logika
-                        <input
-                          value={rules.name}
-                          maxLength={80}
-                          onChange={(e) =>
-                            setDraft({ ...rules, name: e.target.value })
-                          }
-                        />
-                      </label>
-                      <label>
-                        Yield tahunan minimum (%)
-                        <input
-                          type="number"
-                          min="0"
-                          max="100"
-                          value={rules.minimum_yield}
-                          onChange={(e) =>
-                            setDraft({
-                              ...rules,
-                              minimum_yield: Number(e.target.value),
-                            })
-                          }
-                        />
-                      </label>
-                      <label>
-                        Pembagian minimum / tahun
-                        <input
-                          type="number"
-                          min="0"
-                          max="12"
-                          value={rules.minimum_frequency}
-                          onChange={(e) =>
-                            setDraft({
-                              ...rules,
-                              minimum_frequency: Number(e.target.value),
-                            })
-                          }
-                        />
-                      </label>
+          <div id="workspace-content" className="workspace-content">
+            {catalog.isPending && (
+              <div className="loading glass">Memuat workspace Sectors…</div>
+            )}
+            {catalog.isError && (
+              <Notice error>
+                {catalog.error.message}{" "}
+                <button
+                  className="text-button"
+                  onClick={() => catalog.refetch()}
+                >
+                  Coba lagi
+                </button>
+              </Notice>
+            )}
+            {(watch.isError ||
+              saveRules.isError ||
+              watches.isError ||
+              rulesQuery.isError) && (
+              <Notice error>
+                {watch.error?.message ??
+                  saveRules.error?.message ??
+                  watches.error?.message ??
+                  rulesQuery.error?.message}
+              </Notice>
+            )}
+            {message && (
+              <div role="status" className="notice success">
+                {message}
+              </div>
+            )}
+            {view === "Timeline" && <DividendTimeline />}
+            {data && (view === "Peluang" || view === "Watchlist") && (
+              <>
+                {view === "Peluang" && (
+                  <>
+                    <section className="metrics">
+                      <Metric
+                        label="Emiten dalam riset"
+                        value={String(data.companies.length).padStart(2, "0")}
+                        note="Sampel terpilih · bukan seluruh IDX"
+                        icon={<Layers3 size={18} />}
+                      />
+                      <Metric
+                        label="Yield tahunan tertinggi"
+                        value={pct(
+                          Math.max(
+                            ...data.companies.map(
+                              (c) => c.annual_yield_pct ?? 0,
+                            ),
+                          ),
+                        )}
+                        note="DMAS · historis 2025"
+                        icon={<ChartNoAxesCombined size={18} />}
+                      />
+                      <Metric
+                        label="Event dividen"
+                        value={String(data.events.length)}
+                        note="Jadwal dan histori tahun 2025"
+                        icon={<CalendarDays size={18} />}
+                      />
+                      <Metric
+                        label="Siap untuk replay"
+                        value={String(
+                          data.companies.filter((c) => c.replay_available)
+                            .length,
+                        ).padStart(2, "0")}
+                        note="Emiten dengan harga dan jadwal"
+                        icon={<Route size={18} />}
+                      />
+                    </section>
+                    <div className="overview-grid">
+                      <PricePanel onDetail={() => setDetail("BBCA")} />
+                      <Season
+                        events={data.events}
+                        onView={() => changeView("Kalender")}
+                      />
                     </div>
-                    <div className="spread">
-                      <label className="check-label">
-                        <input
-                          type="checkbox"
-                          checked={rules.require_replay}
-                          onChange={(e) =>
-                            setDraft({
-                              ...rules,
-                              require_replay: e.target.checked,
-                            })
-                          }
-                        />{" "}
-                        Hanya emiten dengan data replay
-                      </label>
+                  </>
+                )}
+                <section className="glass company-section">
+                  <div className="section-head">
+                    <div>
+                      <p className="eyebrow">
+                        {view === "Watchlist"
+                          ? "YOUR COLLECTION"
+                          : "DIVIDEND DISCOVERY"}
+                      </p>
+                      <h2>
+                        {view === "Watchlist"
+                          ? "Watchlist kamu"
+                          : "Kandidat pilihan riset"}
+                      </h2>
+                    </div>
+                    <button
+                      className={`btn subtle ${showRules ? "selected" : ""}`}
+                      onClick={() => setShowRules(!showRules)}
+                      aria-expanded={showRules}
+                    >
+                      <SlidersHorizontal size={15} /> Logika screening
+                    </button>
+                  </div>
+                  {showRules && (
+                    <div className="rule-panel">
+                      <div className="form-grid">
+                        <label>
+                          Nama logika
+                          <input
+                            value={rules.name}
+                            maxLength={80}
+                            onChange={(e) =>
+                              setDraft({ ...rules, name: e.target.value })
+                            }
+                          />
+                        </label>
+                        <label>
+                          Yield tahunan minimum (%)
+                          <input
+                            type="number"
+                            min="0"
+                            max="100"
+                            value={rules.minimum_yield}
+                            onChange={(e) =>
+                              setDraft({
+                                ...rules,
+                                minimum_yield: Number(e.target.value),
+                              })
+                            }
+                          />
+                        </label>
+                        <label>
+                          Pembagian minimum / tahun
+                          <input
+                            type="number"
+                            min="0"
+                            max="12"
+                            value={rules.minimum_frequency}
+                            onChange={(e) =>
+                              setDraft({
+                                ...rules,
+                                minimum_frequency: Number(e.target.value),
+                              })
+                            }
+                          />
+                        </label>
+                      </div>
+                      <div className="spread">
+                        <label className="check-label">
+                          <input
+                            type="checkbox"
+                            checked={rules.require_replay}
+                            onChange={(e) =>
+                              setDraft({
+                                ...rules,
+                                require_replay: e.target.checked,
+                              })
+                            }
+                          />{" "}
+                          Hanya emiten dengan data replay
+                        </label>
+                        <button
+                          className="btn primary small"
+                          disabled={saveRules.isPending || !rules.name.trim()}
+                          onClick={() => saveRules.mutate()}
+                        >
+                          Simpan logika
+                        </button>
+                      </div>
+                      <p className="tiny muted">
+                        Filter ini memakai yield tahunan versi Sectors.
+                        Urutannya bukan estimasi keuntungan strategi.
+                      </p>
+                    </div>
+                  )}
+                  <div className="table-controls">
+                    <div className="segmented">
                       <button
-                        className="btn primary small"
-                        disabled={saveRules.isPending || !rules.name.trim()}
-                        onClick={() => saveRules.mutate()}
+                        className={!replayOnly ? "selected" : ""}
+                        onClick={() => setReplayOnly(false)}
                       >
-                        Simpan logika
+                        Semua emiten{" "}
+                        <span>
+                          {view === "Watchlist"
+                            ? (watches.data?.symbols.length ?? 0)
+                            : data.companies.length}
+                        </span>
+                      </button>
+                      <button
+                        className={replayOnly ? "selected" : ""}
+                        onClick={() => setReplayOnly(true)}
+                      >
+                        Siap replay
                       </button>
                     </div>
-                    <p className="tiny muted">
-                      Filter ini memakai yield tahunan versi Sectors. Urutannya
-                      bukan estimasi keuntungan strategi.
-                    </p>
+                    <div className="search-sort">
+                      <label className="search">
+                        <Search size={16} />
+                        <input
+                          aria-label="Cari emiten"
+                          value={query}
+                          onChange={(e) => setQuery(e.target.value)}
+                          placeholder="Cari nama atau kode…"
+                        />
+                      </label>
+                      <label className="sort">
+                        <ArrowDownWideNarrow size={15} />
+                        <select
+                          aria-label="Urutkan emiten"
+                          value={rules.sort_by}
+                          onChange={(e) =>
+                            setDraft({
+                              ...rules,
+                              sort_by: e.target.value as Rules["sort_by"],
+                            })
+                          }
+                        >
+                          <option value="yield">Yield tertinggi</option>
+                          <option value="frequency">Paling sering</option>
+                          <option value="symbol">Kode A–Z</option>
+                        </select>
+                      </label>
+                    </div>
                   </div>
-                )}
-                <div className="table-controls">
-                  <div className="segmented">
-                    <button
-                      className={!replayOnly ? "selected" : ""}
-                      onClick={() => setReplayOnly(false)}
+                  {companies.length ? (
+                    <div className="table-scroll">
+                      <table className="company-table">
+                        <thead>
+                          <tr>
+                            <th>Emiten</th>
+                            <th>
+                              Yield 2025 <span className="muted">↓</span>
+                            </th>
+                            <th>Dividen / saham</th>
+                            <th>Frekuensi</th>
+                            <th>Tren harga</th>
+                            <th>Data replay</th>
+                            <th>
+                              <span className="sr-only">Aksi</span>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {companies.map((c) => (
+                            <CompanyRow
+                              key={c.symbol}
+                              company={c}
+                              watched={
+                                !!watches.data?.symbols.includes(c.symbol)
+                              }
+                              busy={watch.isPending}
+                              onWatch={() => toggleWatch(c.symbol)}
+                              onDetail={() => setDetail(c.symbol)}
+                            />
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ) : (
+                    <Empty
+                      title={
+                        view === "Watchlist"
+                          ? "Belum ada emiten yang tampil"
+                          : "Belum ada yang sesuai"
+                      }
                     >
-                      Semua emiten{" "}
-                      <span>
-                        {view === "Watchlist"
-                          ? (watches.data?.symbols.length ?? 0)
-                          : data.companies.length}
-                      </span>
-                    </button>
+                      {view === "Watchlist"
+                        ? "Tambahkan emiten lewat ikon bookmark di Peluang, atau longgarkan filter."
+                        : "Coba ubah kata pencarian atau logika screening."}
+                    </Empty>
+                  )}
+                  <div className="table-footer">
+                    <span>{companies.length} emiten ditampilkan</span>
                     <button
-                      className={replayOnly ? "selected" : ""}
-                      onClick={() => setReplayOnly(true)}
+                      className="text-button"
+                      disabled={!companies.length}
+                      onClick={() => {
+                        setPlannerSymbols(companies.map((c) => c.symbol));
+                        changeView("Rencana rotasi");
+                      }}
                     >
-                      Siap replay
+                      Gunakan emiten ini untuk rencana →
                     </button>
+                    <span>
+                      Yield historis dari Sectors · bukan proyeksi return
+                    </span>
                   </div>
-                  <div className="search-sort">
-                    <label className="search">
-                      <Search size={16} />
-                      <input
-                        aria-label="Cari emiten"
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                        placeholder="Cari nama atau kode…"
-                      />
-                    </label>
-                    <label className="sort">
-                      <ArrowDownWideNarrow size={15} />
-                      <select
-                        aria-label="Urutkan emiten"
-                        value={rules.sort_by}
-                        onChange={(e) =>
-                          setDraft({
-                            ...rules,
-                            sort_by: e.target.value as Rules["sort_by"],
-                          })
-                        }
-                      >
-                        <option value="yield">Yield tertinggi</option>
-                        <option value="frequency">Paling sering</option>
-                        <option value="symbol">Kode A–Z</option>
-                      </select>
-                    </label>
-                  </div>
-                </div>
-                {companies.length ? (
-                  <div className="table-scroll">
-                    <table className="company-table">
-                      <thead>
-                        <tr>
-                          <th>Emiten</th>
-                          <th>
-                            Yield 2025 <span className="muted">↓</span>
-                          </th>
-                          <th>Dividen / saham</th>
-                          <th>Frekuensi</th>
-                          <th>Tren harga</th>
-                          <th>Data replay</th>
-                          <th>
-                            <span className="sr-only">Aksi</span>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {companies.map((c) => (
-                          <CompanyRow
-                            key={c.symbol}
-                            company={c}
-                            watched={!!watches.data?.symbols.includes(c.symbol)}
-                            busy={watch.isPending}
-                            onWatch={() => toggleWatch(c.symbol)}
-                            onDetail={() => setDetail(c.symbol)}
-                          />
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                ) : (
-                  <Empty
-                    title={
-                      view === "Watchlist"
-                        ? "Belum ada emiten yang tampil"
-                        : "Belum ada yang sesuai"
-                    }
-                  >
-                    {view === "Watchlist"
-                      ? "Tambahkan emiten lewat ikon bookmark di Peluang, atau longgarkan filter."
-                      : "Coba ubah kata pencarian atau logika screening."}
-                  </Empty>
-                )}
-                <div className="table-footer">
-                  <span>{companies.length} emiten ditampilkan</span>
-                  <button
-                    className="text-button"
-                    disabled={!companies.length}
-                    onClick={() => {
-                      setPlannerSymbols(companies.map((c) => c.symbol));
-                      changeView("Rencana rotasi");
-                    }}
-                  >
-                    Gunakan emiten ini untuk rencana →
-                  </button>
-                  <span>
-                    Yield historis dari Sectors · bukan proyeksi return
-                  </span>
-                </div>
-              </section>
-            </>
-          )}
-          {data && view === "Kalender" && (
-            <Calendar
-              events={data.events}
-              known={data.companies.map((c) => c.symbol)}
-              onDetail={setDetail}
-            />
-          )}
-          {data && view === "Simulator" && (
-            <Simulator
-              key={simulationEvent ?? "manual"}
-              catalog={data}
-              initialEventId={simulationEvent}
-            />
-          )}
-          {data && view === "Intelligence" && (
-            <Intelligence
-              initialSymbol={evidenceSymbol}
-              onPlan={() => {
-                setPlannerSymbols(undefined);
-                changeView("Rencana rotasi");
-              }}
-            />
-          )}
-          {data && view === "Rencana rotasi" && (
-            <RotationPlanner catalog={data} initialSymbols={plannerSymbols} />
-          )}
-          {data && view === "Metodologi" && <Methodology catalog={data} />}
+                </section>
+              </>
+            )}
+            {data && view === "Kalender" && (
+              <Calendar
+                events={data.events}
+                known={data.companies.map((c) => c.symbol)}
+                onDetail={setDetail}
+              />
+            )}
+            {data && view === "Simulator" && (
+              <Simulator
+                key={simulationEvent ?? "manual"}
+                catalog={data}
+                initialEventId={simulationEvent}
+              />
+            )}
+            {data && view === "Intelligence" && (
+              <Intelligence
+                initialSymbol={evidenceSymbol}
+                onPlan={() => {
+                  setPlannerSymbols(undefined);
+                  changeView("Rencana rotasi");
+                }}
+              />
+            )}
+            {data && view === "Rencana rotasi" && (
+              <RotationPlanner catalog={data} initialSymbols={plannerSymbols} />
+            )}
+            {data && view === "Metodologi" && <Methodology catalog={data} />}
+          </div>
           <footer className="footer">
             <span>Dividen Lab</span>
             <button

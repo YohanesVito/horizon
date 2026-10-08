@@ -1,5 +1,11 @@
 # Review branch untuk Vercel — 8 Oktober 2026
 
+## Pembaruan BR-04 — integrasi desain dan data lokal
+
+Branch lokal `codex/editorial-data-integration` menyimpan pekerjaan data/grafik dalam commit `95962d9` lalu mengambil desain editorial dari `origin/feat/timeline-ui-polish` `dbf21b6`. Konflik empat file BR-03 diselesaikan dengan memakai markup dan palet UI branch sebagai dasar, lalu menambahkan daftar lima kandidat, jendela grafik parsial, fokus berdasarkan ID event, gap tahun, dan tab 2026 yang mengikuti ketersediaan snapshot. Halaman Simulasi, dashboard, komponen chart lama, dan layout branch UI tidak diganti. Panel Engine Riset menampilkan statistik historis `IntelligenceDataset`; formula prediksi v0.1 tetap riset dan tidak menghasilkan angka forecast. ID hierarki chart dari branch UI diberi alias `UI-03` agar `D-03` discovery tetap unik.
+
+Pemeriksaan development gabungan dan browser dicatat di PROGRESS.md. Ini integrasi **lokal** pada branch terpisah; `main`, branch tim, Supabase, VPS, dan Vercel belum diubah oleh BR-04. Bagian BR-03/BR-01 di bawah adalah riwayat sebelum integrasi ini.
+
 ## Pembaruan BR-03 — branch UI terbaru vs grafik parsial lokal
 
 Bagian BR-01 di bawah adalah snapshot historis sebelum integrasi awal ke `main`; jangan gunakan hash atau rekomendasi deployment lamanya sebagai status terkini. Untuk BR-03, `git ls-remote` dan fetch 8 Oktober memverifikasi `origin/main` = `598e135` serta `origin/feat/timeline-ui-polish` = `dbf21b6`. Branch UI terbaru sudah memasukkan `main` melalui merge `dbf21b6` dan menambah redesain editorial `95ced66`. Working tree `main` masih memuat perubahan lokal D-03/F-01/T-08 yang belum di-commit; tidak ada merge atau checkout yang dilakukan pada repo aktif.

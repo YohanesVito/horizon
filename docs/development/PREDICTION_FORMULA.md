@@ -103,6 +103,8 @@ Yang **sudah ada sekarang** adalah proporsi trap historis per definisi/horizon b
 
 Setiap hasil kelak menyimpan `ticker`, aturan entry/exit/H, modal, `as_of`, tanggal data harga terakhir, event dan jadwal dengan statusnya, sumber/vintage, versi formula/dataset, ukuran sampel, status validasi, dan asumsi biaya. Timeline menampilkan aktual serta, hanya jika layak, median/rentang prediksi dan pemisah eksplisit. Panel risiko membedakan `frekuensi historis`, `skenario`, dan `probabilitas terkalibrasi`; panel BEP membedakan BEP harga vs total dan menampilkan horizon/censoring. Simulator menghitung nominal dari jalur/aturan yang sama, sehingga grafik dan angka risiko tidak saling bertentangan.
 
+Pada integrasi UI BR-04, panel Engine Riset menampilkan keluaran `IntelligenceDataset` yang **sudah ada**: jumlah event lengkap, frekuensi trap historis dengan rentang Wilson, serta median BEP harga/total dari kurva pemulihan. Aturan entry dan horizon aktif ditampilkan. Ini penggunaan baseline deskriptif, bukan implementasi persamaan harga di bagian 4 atau probabilitas masa depan di bagian 5. Endpoint timeline tetap mengembalikan `forecast.status = not_available` dan `points = []`; tidak ada garis atau angka prediksi numerik yang dibuat dari sampel kecil ini.
+
 ## 8. Pertanyaan terbuka untuk iterasi
 
 | Keputusan berikutnya | Bukti yang dibutuhkan |
