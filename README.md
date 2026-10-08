@@ -48,7 +48,7 @@ Jika layanan tersedia, buka **Ringkasan AI · [ticker]** untuk membaca penjelasa
 
 ## Coba satu simulasi
 
-Di [web Horizon](https://horizon-dividend.vercel.app/), buka **Simulasi**, kosongkan pilihan BBCA bawaan, lalu pilih hanya CFIN dan masukkan modal berikut. Skenario ini juga menjadi acuan demo video.
+Di [web Horizon](https://horizon-dividend.vercel.app/), buka **Simulasi**, lalu pilih hanya CFIN dan masukkan modal berikut. Skenario ini juga menjadi acuan demo video.
 
 | Input / aturan otomatis | Nilai |
 |---|---|
