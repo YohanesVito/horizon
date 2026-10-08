@@ -225,6 +225,7 @@ Keputusan PM 8 Oktober: syarat histori lima tahun lengkap hanya berlaku saat **m
 | Task | Scope | Requirement | Bukti selesai |
 |---|---|---|---|
 | F-01 | Simpan hipotesis formula harga, trap, BEP dan waktu pulih beserta data, asumsi, rencana validasi, serta batas tampilnya prediksi | C-02/C-04/C-06/C-07; S4-02/T-02; instruksi PM | [PREDICTION_FORMULA.md](./PREDICTION_FORMULA.md) versi awal dan log status; dokumentasi tidak mengubah status engine prediksi |
+| F-02 | Uji dan implementasikan keluaran prediksi numerik dari formula v0.1 setelah dataset point-in-time, kecukupan sampel dan validasi walk-forward tersedia | Permintaan integrasi engine PM 8 Oktober; C-02/C-06/C-07; F-01/ISS-042 | Protokol, baseline, hasil out-of-sample dan kalibrasi ditinjau; nilai baru hanya tampil dengan status/asumsi yang dapat diaudit |
 
 ### Preview lokal — permintaan PM 8 Oktober 2026
 
