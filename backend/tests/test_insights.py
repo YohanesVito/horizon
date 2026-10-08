@@ -351,3 +351,88 @@ def request_insight(client, path, **kwargs):
         sleep(.005)
         response = client.get(path)
     raise AssertionError('Insight worker did not finish')
+
+
+def test_holding_payload_uses_persisted_values_and_marks_old_runs(monkeypatch):
+    from types import SimpleNamespace
+    run = run_record('holding-payload')
+    run['input']['timing_mode'] = 'payment_plus_2'
+    observation = {'cum_date': '2025-03-13', 'payment_date': '2025-04-11',
+                   'end_date': '2025-04-15', 'horizon_sessions': 2, 'complete': False,
+                   'gaps': ['One session unavailable'], 'shares': 100, 'invested': 10000,
+                   'dividend_amount': 1000,
+                   'highest': {'price': 110, 'total_value': 12000, 'pnl': 2000},
+                   'lowest': {'price': 80, 'total_value': 9000, 'pnl': -1000},
+                   'points': [{'date': '2025-03-13', 'close': 100}]}
+    selected = run['result']['primary']
+    selected['trades'][0].update(observation=observation, entry_price=100,
+                                entry_price_basis='prior5_close_mean',
+                                entry_reference_dates=['2025-03-06', '2025-03-07', '2025-03-10', '2025-03-11', '2025-03-12'])
+    monkeypatch.setattr(ai, '_api_key', lambda: 'test')
+    async def model(prompt, schema, **kwargs):
+        payload = json.loads(prompt)
+        actual = payload['holding_analysis'][0]['observation']
+        assert payload['input']['timing_mode'] == 'payment_plus_2'
+        assert payload['simulation']['trades'][0]['entry_price'] == 100
+        assert payload['holding_analysis'][0]['entry_price_basis'] == 'prior5_close_mean'
+        assert len(payload['holding_analysis'][0]['entry_reference_dates']) == 5
+        assert 'rata-rata ini harga pembelian historis nyata' in kwargs['instructions']
+        assert 'bukan lima transaksi' in kwargs['instructions']
+        assert actual['highest']['total_value'] == 12000
+        assert actual['lowest']['pnl'] == -1000
+        assert actual['complete'] is False and actual['gaps']
+        assert 'points' not in actual
+        assert 'observation' not in payload['simulation']['trades'][0]
+        assert 'bukan kas yang sudah diterima' in kwargs['instructions']
+        assert 'bukan laba maksimum yang pasti bisa dieksekusi' in kwargs['instructions']
+        assert '21 close' in kwargs['instructions']
+        return {'summary': 'Fixture holding valuation', 'findings': []}
+    monkeypatch.setattr(ai, 'generate_structured', model)
+    result = asyncio.run(insights._generate(run, selected, SimpleNamespace(companies={}), 'unused', context=([], [])))
+    assert result['status'] == 'completed'
+    assert result['provenance']['holding_analysis_version'] == 1
+    assert result['provenance']['date_grounding_version'] == 1
+    assert result['provenance']['timing_mode'] == 'payment_plus_2'
+    legacy = insights.holding_analysis(run_record()['result']['primary'])[0]
+    assert legacy['observation'] is None and legacy['availability'] == 'unavailable_legacy_run'
+
+
+def test_real_bbca_automatic_engine_observation_reaches_ai_prompt(monkeypatch):
+    """Exercise bundled market snapshot -> engine -> actual AI request, without paid calls."""
+    from backend.main import dataset, timeline_dataset
+    from backend.domain import SimulationRequest
+    from backend.simulator import compare
+    from decimal import Decimal
+    event = next(e for e in dataset.events.values() if e['symbol'] == 'BBCA' and e['cum_date'].startswith('2025') and e['replay_available'])
+    result = compare(dataset, SimulationRequest(timing_mode='payment_plus_2', capital=15000000,
+                     event_ids=[event['id']], compare=False))
+    trade = result['primary']['trades'][0]
+    dates = dataset.market_sessions
+    cum_index = dates.index(event['cum_date'])
+    expected_dates = dates[cum_index-5:cum_index]
+    expected_price = sum(Decimal(str(dataset.prices['BBCA'][d]['close'])) for d in expected_dates) / 5
+    assert trade['entry_reference_dates'] == expected_dates
+    assert trade['entry_price'] == float(expected_price)
+    run = {'id': 'bbca-integration', 'input': result['input'], 'result': result, 'dataset_version': dataset.version}
+    monkeypatch.setattr(ai, '_api_key', lambda: 'fixture')
+    observed = []
+    async def model(prompt, schema, **kwargs):
+        payload = json.loads(prompt)
+        actual = payload['holding_analysis'][0]
+        assert actual['event_dates']['cum_date'] == event['cum_date']
+        assert actual['event_dates']['ex_date'] == event['ex_date']
+        assert actual['event_dates']['cum_date'] != actual['event_dates']['ex_date']
+        assert actual['synthetic_booking_date'] == event['cum_date']
+        assert 'tanggal di dalam ID bukan tanggal cum' in kwargs['instructions']
+        assert actual['entry_reference_dates'] == expected_dates
+        assert actual['entry_price_basis'] == 'prior5_close_mean'
+        assert actual['observation']['highest'] == trade['observation']['highest']
+        assert actual['observation']['lowest'] == trade['observation']['lowest']
+        assert payload['simulation']['trades'][0]['entry_price'] == float(expected_price)
+        assert payload['input']['timing_mode'] == 'payment_plus_2'
+        assert 'harga pembelian historis nyata' in kwargs['instructions']
+        observed.append(payload)
+        return {'summary': 'Reference entry, hypothetical holding valuation.', 'findings': []}
+    monkeypatch.setattr(ai, 'generate_structured', model)
+    insight = asyncio.run(insights._generate(run, result['primary'], timeline_dataset, 'unused', context=([], [])))
+    assert insight['status'] == 'completed' and len(observed) == 1

@@ -141,3 +141,12 @@ def test_research_window_includes_replay_end_beyond_historical_samples():
     gateway = SectorsResearchGateway(MCP(), allowed_symbols={'TEST'}, window_start=start, window_end=end)
     result = asyncio.run(gateway.execute('fetch-daily-price', {'symbol': 'TEST', 'start': '2025-04-21', 'end': '2025-05-20'}))
     assert result['status'] == 'completed'
+
+
+def test_research_window_includes_payment_observation_beyond_actual_sale():
+    run, stats = inputs()
+    run['result']['primary']['trades'][0]['observation'] = {
+        'cum_date': '2021-03-31', 'payment_date': '2021-06-01',
+        'end_date': '2021-06-03', 'highest': {'date': '2021-05-25'},
+        'lowest': {'date': '2021-04-16'}}
+    assert ai_research._window(run, stats) == ('2021-03-17', '2021-06-17')

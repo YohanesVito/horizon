@@ -1,5 +1,17 @@
 # Progres development MVP
 
+## Analisis posisi cum sampai payment + 2 — 8 Oktober 2026
+
+**SIM-OBS-01 DONE (implementasi + E2E lokal; bukan UAT/deployment) (instruksi PM; C-04/C-05):** kartu transaksi dan AI memakai analisis historis hipotetis setiap posisi, cum-date sampai dua hari bursa setelah payment. Timing input simulator utama dihapus: mode `payment_plus_2` memakai rata-rata aritmetika lima close sesi pasar sebelum cum (cum dikecualikan), pencatatan posisi sintetis pada cum, dan jual close dua sesi setelah payment. Settlement/rotasi tetap T+2 dan kas aktual; planner custom/run lama tetap kompatibel. Window akhir otomatis mengikuti event; event terlambat tetap posisi terbuka parsial, event tanpa lima close/payment dilewati dengan alasan, semua event tidak valid ditolak. Backend menyimpan OHLC, harga high/low serta nilai posisi + dividen peristiwa terpilih pada `trade.observation`; nilai itu skenario hak dividen penuh, bukan kas cair atau harga eksekusi yang dijamin. Run lama tanpa payload tetap belum tersedia.
+
+Verifikasi backend: pemeriksaan observation/simulator dan rotasi dijalankan oleh implementer; suite backend gabungan 146 lulus sebelum tes rotasi tambahan. Verifikasi frontend final: `npm run typecheck` dan ESLint pada komponen terkait lulus.
+
+E2E lokal 8 Oktober 2026 menggunakan browser Chrome, frontend localhost3000 dan backend localhost8000 dengan SQLite terpisah `/private/tmp/horizon-observation-e2e.db`. Submit form nyata Rp15.000.000 / all-in / BBCA ex21Mar2025 menghasilkan referensi lima close 13,14,17,18,19Mar rata-rata Rp8.590,17lot,modal posisi Rp14.603.000, pengamatan cum20Mar hingga15Apr (payment11Apr+2 sesi). High harian Rp8.650 pada26Mar memberi nilai termasuk dividen Rp15.130.000/laba Rp527.000; low Rp7.275 pada8Apr memberi Rp12.792.500/rugi Rp1.810.500. Angka terlihat di kartu dan dicocokkan dengan respons API serta rumus saham×high/low+dividen Rp425.000. Run `fe773045-07ae-4077-84f1-d15fb495de93` dibuka kembali dari riwayat dan mempertahankan hasil.
+
+Submit form nyata Rp15.000.000 / all-in / ADRO ex30Des2025 menghasilkan rata-rata Rp1.898,79lot, dan posisi terbuka hingga9Jan2026. Payment15Jan belum tercakup, target akhir null; kartu memberi notice parsial dan hanya ekstrem yang teramati. Desktop1512px dan mobile390×844px dicek visual; lebar dokumen sama dengan viewport, chart high/low/close terlihat dan extrema tersusun vertikal di mobile. Fixture lokal berbentuk run lama tanpa observation dibuka dari riwayat dan menampilkan analisis belum tersedia tanpa mengisi data ulang. Bukti screenshot sementara: `/private/tmp/horizon-observation-e2e/bbca-desktop.png`, `adro-mobile.png`, `bbca-ai-date-notice.png`.
+
+Satu AI live otomatis terpicu dari komponen saat E2E BBCA karena kredensial server tersedia. Narasi holding dan rentang benar, tetapi intro salah menyebut cum21Mar (tanggal ex) sementara payload cum20Mar benar. Paket/prompt baru memakai tanggal bernama eksplisit; UI menampilkan tanggal otoritatif Cum20Mar/Ex21Mar/Payment11Apr dan notice narasi cache lama belum memakai acuan tanggal baru. Cache dipertahankan tanpa regenerasi. Provider dinonaktifkan (`AI_KEY` kosong) untuk run E2E berikutnya; perubahan prompt tanggal divalidasi dengan mock, belum dicoba ulang provider live. UAT manusia dan deployment tidak dilakukan.
+
 ## Insight AI dan interaksi simulator — 8 Oktober 2026
 
 **AI-02 IN_PROGRESS (instruksi PM; S1-01/C-04/C-08):** endpoint insight untuk run

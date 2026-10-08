@@ -1,5 +1,9 @@
 # Pemetaan kebutuhan ke pekerjaan development
 
+## SIM-OBS-01 — 8 Oktober 2026
+
+Instruksi langsung PM (C-04/C-05/C-08): entry dibedakan tanggal/harga/jumlah lot, hapus status jual/holding dan timeline keluar/settlement dari kartu, tampilkan chart OHLC cum-date sampai payment + dua hari bursa serta rentang nilai posisi termasuk dividen. AI menjelaskan hasil dengan horizon yang sama. Arahan lanjutan PM menghapus input timing simulator: entry memakai mean lima close sebelum cum, booking sintetis cum dan exit payment+2; NAV/rotasi otomatis mengikuti aturan ini. Planner custom dan run lama tetap kompatibel. Data parsial dan run lama tanpa observation harus diberi konteks.
+
 ## Insight AI dan interaksi simulator — 8 Oktober 2026
 
 - AI-02 (instruksi PM; C-04/C-08): statistik pola/kejadian ekstrem dihitung kode,

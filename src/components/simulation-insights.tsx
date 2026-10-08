@@ -2,7 +2,7 @@
 
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { api, dt } from "@/lib/api";
-import type { Allocation } from "@/lib/types";
+import type { Allocation, Trade } from "@/lib/types";
 
 type InsightSource = {
   id: string;
@@ -21,6 +21,7 @@ type SimulationInsight = {
   attempts: number;
   exhausted: boolean;
   configured?: boolean;
+  provenance?: { holding_analysis_version?: number; date_grounding_version?: number };
 };
 
 const MAX_STATUS_READS = 80;
@@ -37,9 +38,11 @@ function safeSourceUrl(url: string): string | null {
 export default function SimulationInsights({
   simulationId,
   allocation,
+  trades = [],
 }: {
   simulationId: string;
   allocation: Allocation;
+  trades?: Trade[];
 }) {
   const client = useQueryClient();
   const queryKey = ["simulation-insights", simulationId];
@@ -89,8 +92,8 @@ export default function SimulationInsights({
           <span className="sim-section-label">RINGKASAN AI</span>
           <h3>Yang perlu kamu perhatikan.</h3>
           <p className="small muted">
-            Hasil utama dan perbandingan strategi replay · di luar biaya
-            transaksi, pajak, dan slippage.
+            Rentang nilai posisi dengan harga masuk referensi sampai dua hari bursa setelah payment
+            dan konteks strategi replay · di luar biaya transaksi, pajak, dan slippage.
           </p>
         </div>
       </div>
@@ -123,6 +126,25 @@ export default function SimulationInsights({
         </div>
       ) : data ? (
         <div className="insight-content">
+          {trades.filter((trade) => trade.shares > 0 && trade.observation).map((trade) => (
+            <p className="small muted" key={trade.event_id}>
+              {trade.symbol} · Cum {dt(trade.observation!.cum_date, true)} · Ex{" "}
+              {dt(trade.observation!.ex_date, true)} · Payment{" "}
+              {dt(trade.observation!.payment_date, true)}
+            </p>
+          ))}
+          {data.status === "completed" && !data.provenance?.holding_analysis_version && (
+            <p className="small muted">
+              Ringkasan tersimpan ini membahas strategi simulasi; belum mencakup
+              rentang nilai posisi sampai dua hari bursa setelah payment.
+            </p>
+          )}
+          {data.status === "completed" && !data.provenance?.date_grounding_version && (
+            <p className="small muted">
+              Tanggal peristiwa mengacu pada data di kartu; narasi AI lama belum
+              melalui pembaruan acuan tanggal.
+            </p>
+          )}
           <p className="insight-summary">
             {(data.configured === false
               ? "Analisis AI belum tersedia untuk replay ini."

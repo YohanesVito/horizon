@@ -234,7 +234,7 @@ export default function Dashboard() {
               <p className="subtitle">
                 {view === "Timeline"
                   ? "Bandingkan harga sebelum dan sesudah ex-date berdasarkan riwayat peristiwa dividen. Gunakan sebagai konteks untuk menilai skenario Anda."
-                  : "Atur modal dan aturan keluar. Lihat hasil replay, risiko, dan kapan kas tersedia."}
+                  : "Pilih modal dan peristiwa dividen. Lihat hasil historis sampai dua hari bursa setelah payment."}
               </p>
               <a
                 href="#workspace-content"

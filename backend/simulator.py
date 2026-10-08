@@ -3,6 +3,7 @@ from decimal import Decimal, ROUND_FLOOR
 from bisect import bisect_right
 from datetime import date
 from .domain import SimulationRequest
+from .observation import observe_holding
 
 D = lambda value: Decimal(str(value))
 
@@ -13,43 +14,52 @@ def number(value):
 
 def simulate(dataset, request: SimulationRequest, allocation=None):
     allocation = allocation or request.allocation
+    automatic = request.timing_mode == 'payment_plus_2'
     end = request.end_date.isoformat()
     unified = getattr(dataset, 'multi_event', False)
     selected = []
     for event_id in request.event_ids:
         event = dataset.events.get(event_id)
-        if not event or not event['replay_available']:
+        if not event or (not automatic and not event['replay_available']):
             raise ValueError('Event tidak memiliki harga dan jadwal yang cukup untuk replay: ' + event_id)
-        if not unified and not '2025-03-01' <= event['ex_date'] <= '2025-05-20':
+        if not automatic and not unified and not '2025-03-01' <= event['ex_date'] <= '2025-05-20':
             raise ValueError('Event di luar jendela replay Maret–Mei 2025.')
-        if event['ex_date'] > end:
+        if not automatic and event['ex_date'] > end:
             raise ValueError('Tanggal akhir harus setelah ex-date semua event yang dipilih.')
         selected.append(event)
-    if not unified and len({e['symbol'] for e in selected}) != len(selected):
+    if not automatic and not unified and len({e['symbol'] for e in selected}) != len(selected):
         raise ValueError('Pilih satu event per emiten untuk replay MVP ini.')
-    if not unified and (end > '2025-05-20' or end < '2025-03-21'):
+    if not automatic and not unified and (end > '2025-05-20' or end < '2025-03-21'):
         raise ValueError('Dataset replay ini mendukung tanggal akhir 21 Maret–20 Mei 2025.')
-    if unified and not dataset.replay_start <= end <= dataset.replay_end:
+    if not automatic and unified and not dataset.replay_start <= end <= dataset.replay_end:
             raise ValueError('Dataset terpadu mendukung replay dalam tahun 2025.')
     selected.sort(key=lambda e: (e['cum_date'], e['symbol']))
     if allocation == 'single':
         selected = selected[:1]
+    if automatic:
+        endpoints = []
+        for e in selected:
+            after = [d for d in dataset.market_sessions if e.get('payment_date') and d > e['payment_date']]
+            endpoints.append(after[1] if len(after) >= 2 else dataset.market_sessions[-1])
+        end = max(endpoints)
     plans = []
     for event in selected:
         bars = dataset.prices[event['symbol']]
-        dates = dataset.market_sessions if unified else sorted(bars)
+        dates = dataset.market_sessions if unified or automatic else sorted(bars)
+        if event['cum_date'] not in dates or event['ex_date'] not in dates:
+            raise ValueError(f"Hari bursa cum/ex {event['id']} belum tercakup dataset.")
         cum_idx, ex_idx = dates.index(event['cum_date']), dates.index(event['ex_date'])
-        entry_idx = cum_idx - request.entry_sessions_before_cum
+        entry_idx = cum_idx if automatic else cum_idx - request.entry_sessions_before_cum
         if entry_idx < 0:
             raise ValueError(f"Harga sebelum cum {event['symbol']} belum cukup.")
         entry = dates[entry_idx]
-        if request.start_date and entry < request.start_date.isoformat():
+        if not automatic and request.start_date and entry < request.start_date.isoformat():
             raise ValueError(f"Entry {event['id']} mendahului awal periode.")
         if entry > end:
             raise ValueError('Tanggal masuk berada setelah akhir simulasi.')
         last_idx = min(ex_idx + request.max_holding_sessions, len(dates) - 1)
         limit = min(dates[last_idx], end)
-        if unified:
+        if unified and not automatic:
             coverage_end = event['ex_date'] if request.exit_rule == 'ex_close' else limit
             if request.exit_rule == 'payment_close' and event.get('payment_date'):
                 payment_session = next((d for d in dates if d >= event['payment_date']), None)
@@ -58,7 +68,28 @@ def simulate(dataset, request: SimulationRequest, allocation=None):
             dataset.validate_coverage(event, entry, coverage_end)
         exit_date, price_field, exit_reason = None, 'close', 'Belum keluar'
         signal_date = None
-        if request.exit_rule == 'ex_close':
+        invalid_reason = ('Data event belum tervalidasi: ' + '; '.join(event.get('reasons', []))) if automatic and not event['replay_available'] else None
+        reference_dates = dates[max(0, cum_idx - 5):cum_idx] if automatic else []
+        if automatic:
+            reference_bars = [bars.get(d, {}) for d in reference_dates]
+            from math import isfinite
+            if len(reference_dates) != 5 or any(type(b.get('close')) not in (int, float) or not isfinite(b['close']) or b['close'] <= 0 for b in reference_bars):
+                invalid_reason = 'Lima harga close sebelum cum belum lengkap; posisi dilewati.'
+                entry_price = D(bars.get(entry, {}).get('close', 1))
+            else:
+                entry_price = sum((D(b['close']) for b in reference_bars), Decimal(0)) / 5
+            if not event.get('payment_date'):
+                invalid_reason = 'Payment date belum tersedia; posisi dilewati.'
+            after = [d for d in dates if event.get('payment_date') and d > event['payment_date']]
+            exit_date = after[1] if len(after) >= 2 else None
+            if exit_date:
+                from .intelligence import valid_bar
+                if not valid_bar(bars.get(exit_date, {})):
+                    exit_date = None
+            exit_reason = 'Close dua hari bursa setelah payment' if exit_date else 'Jendela payment + 2 hari bursa belum lengkap; posisi dinilai dari harga tersedia'
+            if invalid_reason:
+                exit_reason = invalid_reason
+        elif request.exit_rule == 'ex_close':
             exit_date, exit_reason = event['ex_date'], 'Close ex-date'
         elif request.exit_rule == 'payment_close':
             payment = event.get('payment_date')
@@ -89,12 +120,17 @@ def simulate(dataset, request: SimulationRequest, allocation=None):
                 exit_date, price_field, exit_reason = dates[ex_idx + request.max_holding_sessions], 'close', 'Batas waktu; BEP tidak menjamin fill'
         if exit_date and exit_date > end:
             exit_date = None
-        plans.append({'event': event, 'entry_date': entry, 'entry_price': D(bars[entry]['close']),
+        if not automatic:
+            entry_price = D(bars[entry]['close'])
+        plans.append({'event': event, 'entry_date': entry, 'entry_price': entry_price,
+                      'invalid_reason': invalid_reason, 'entry_reference_dates': reference_dates,
                       'exit_date': exit_date, 'exit_field': price_field, 'exit_reason': exit_reason,
                       'signal_date': signal_date, 'shares': 0, 'status': 'waiting',
                       'dividend': Decimal(0), 'realized_pnl': Decimal(0), 'last_price': D(bars[entry]['close']),
                       'settlement_date': None})
-    start = request.start_date.isoformat() if request.start_date else min(p['entry_date'] for p in plans)
+    if automatic and all(p['invalid_reason'] for p in plans):
+        raise ValueError('Tidak ada peristiwa yang dapat dianalisis: ' + '; '.join(p['invalid_reason'] for p in plans))
+    start = request.start_date.isoformat() if request.start_date and not automatic else min(p['entry_date'] for p in plans)
     if start > end or (unified and start < dataset.replay_start):
         raise ValueError('Awal periode tidak valid.')
     sessions = [d for d in dataset.market_sessions if start <= d <= end]
@@ -156,7 +192,10 @@ def simulate(dataset, request: SimulationRequest, allocation=None):
                 budget = min(budget, cash)
                 lot_cost = plan['entry_price'] * 100
                 shares = int((budget / lot_cost).to_integral_value(rounding=ROUND_FLOOR)) * 100
-                if shares == 0:
+                if plan['invalid_reason']:
+                    plan['status'] = 'skipped'
+                    log(day, 'skipped', plan['event']['symbol'], 0, plan['invalid_reason'])
+                elif shares == 0:
                     plan['status'] = 'skipped'
                     plan['exit_reason'] = 'Kas tersedia tidak cukup untuk satu lot pada tanggal masuk'
                     log(day, 'skipped', plan['event']['symbol'], 0, plan['exit_reason'])
@@ -164,7 +203,7 @@ def simulate(dataset, request: SimulationRequest, allocation=None):
                     plan['shares'], plan['status'] = shares, 'holding'
                     amount = shares * plan['entry_price']
                     cash -= amount
-                    log(day, 'buy', plan['event']['symbol'], -amount, f'{shares:,} saham pada close hari bursa masuk')
+                    log(day, 'buy', plan['event']['symbol'], -amount, (f'{shares:,} saham dengan referensi rata-rata 5 close sebelum cum; pencatatan sintetis pada cum' if automatic else f'{shares:,} saham pada close hari bursa masuk'))
         for plan in plans:
             if plan['status'] == 'holding':
                 bar = dataset.prices[plan['event']['symbol']].get(day)
@@ -189,6 +228,9 @@ def simulate(dataset, request: SimulationRequest, allocation=None):
         unrealized = (p['last_price'] - p['entry_price']) * p['shares'] if p['status'] == 'holding' else Decimal(0)
         results.append({'event_id': e['id'], 'symbol': e['symbol'], 'status': p['status'], 'shares': p['shares'],
                         'entry_date': p['entry_date'], 'entry_price': number(p['entry_price']),
+                        'entry_price_basis': 'prior5_close_mean' if automatic else 'entry_close',
+                        'entry_reference_dates': p['entry_reference_dates'],
+                        'observation': observe_holding(dataset, e, p['shares'], p['entry_price']),
                         'exit_date': p['exit_date'] if p['status'] == 'sold' else None,
                         'exit_price': number(exit_price) if exit_price is not None else None,
                         'settlement_date': p['settlement_date'], 'payment_date': e['payment_date'],
@@ -205,12 +247,12 @@ def simulate(dataset, request: SimulationRequest, allocation=None):
             'dividends': number(sum((p['dividend'] for p in plans), Decimal(0))),
             'max_drawdown_pct': number(max_drawdown * 100), 'trades': results, 'ledger': ledger, 'curve': curve,
             'open_below_entry': sum(p['status'] == 'holding' and p['last_price'] < p['entry_price'] for p in plans),
-            'method': 'historical_replay', 'rules_version': 'replay-v2.1' if unified else 'replay-v1.2', 'model_version': None,
+            'method': 'historical_replay', 'rules_version': 'replay-auto-v1' if automatic else ('replay-v2.1' if unified else 'replay-v1.2'), 'model_version': None,
             'dataset_version': getattr(dataset, 'version', 'synthetic-test-fixture'),
             'assumptions': ['Harga aktual Sectors; replay bersyarat pada kalender yang tersedia sekarang.',
                             'Di luar biaya transaksi, pajak, dan slippage.',
                             ('Beberapa event/lot per emiten; split anggaran per event; lot 100, tanpa margin. T+2 hari bursa IHSG dan konsensus sembilan feed emiten; kalender resmi belum diverifikasi.' if unified else 'Satu event per emiten; lot 100 saham; tanpa margin. Hasil jual tersedia setelah T+2 hari bursa dataset.'),
-                            'Entry dan exit terjadwal memakai close. Sinyal BEP dieksekusi pada open hari bursa berikutnya; hasilnya bisa di bawah BEP.',
+                            ('Harga masuk referensi: rata-rata lima close hari bursa sebelum cum, dicatat pada cum; bukan harga satu transaksi atau DCA. Keluar close dua hari bursa setelah payment jika data lengkap.' if automatic else 'Entry dan exit terjadwal memakai close. Sinyal BEP dieksekusi pada open hari bursa berikutnya; hasilnya bisa di bawah BEP.'),
                             'Posisi yang belum keluar pada tanggal akhir tetap dinilai dengan harga terakhir yang tersedia.',
                             'Urutan saham mengikuti tanggal masuk; saham pertama adalah baseline all-in. Ini bukan optimasi rute global.']}
 
@@ -218,4 +260,7 @@ def simulate(dataset, request: SimulationRequest, allocation=None):
 def compare(dataset, request):
     primary = simulate(dataset, request)
     alternatives = [simulate(dataset, request, mode) for mode in ['single', 'equal', 'rotation']] if request.compare else [primary]
-    return {'primary': primary, 'alternatives': alternatives, 'input': request.model_dump(mode='json')}
+    inputs = request.model_dump(mode='json')
+    if request.timing_mode == 'payment_plus_2':
+        inputs.update(start_date=primary['start_date'], end_date=primary['end_date'], entry_sessions_before_cum=0, entry_price_basis='prior5_close_mean')
+    return {'primary': primary, 'alternatives': alternatives, 'input': inputs}

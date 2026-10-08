@@ -1,11 +1,16 @@
 # Log bug TODO dan blocker
 
+## Cakupan analisis posisi SIM-OBS-01 — 8 Oktober 2026
+
+**SIM-OBS-01-DATA / OPEN:** snapshot rotasi berakhir 9 Januari 2026, sedangkan payment ADRO Desember 2025 jatuh 15 Januari 2026. Dua sesi setelah payment belum dapat ditentukan dari kalender tersedia. Payload memberi `end_date: null`, rentang tersedia dan gap; ekstrem hanya observasi parsial, bukan rentang lengkap. Run historis tersimpan sebelum fitur tidak mempunyai `trade.observation`; UI/AI harus menampilkan belum tersedia, tanpa mengisi ulang memakai snapshot terbaru. Pengambilan data baru/deployment bukan scope perubahan kartu ini.
+
+## Acuan tanggal narasi AI SIM-OBS-01 — 8 Oktober 2026
+
+**SIM-OBS-01-AI-DATE / MITIGATED, live ulang belum diverifikasi:** E2E live run BBCA `fe773045-07ae-4077-84f1-d15fb495de93` menghasilkan narasi “cum-date21Maret2025” meskipun `observation.cum_date=2025-03-20` dan ex21Mar benar. Dugaan model mengambil tanggal dari event ID adalah hipotesis, bukan penyebab terbukti. Paket/prompt kini memakai named event dates, melarang menyimpulkan tanggal dari ID, dan provenance versi acuan tanggal. UI menampilkan tanggal otoritatif serta notice pada cache lama; hasil cache tidak diubah/regenerasi. Browser membuktikan row Cum20Mar/Ex21Mar/Payment11Apr dan notice terlihat. Tes mock paket/prompt lulus; provider live dengan prompt baru belum dijalankan ulang.
+
 ## Gap verifikasi AI-01 — 8 Oktober 2026
 
-**AI-01-LIVE / OPEN:** helper structured output diuji dengan mock HTTP dan key
-dummy. Kredensial, billing, akses `gpt-6-luna`, dan respons provider live belum
-diverifikasi. Saat fitur AI diintegrasikan, jalankan smoke dengan input minimal
-pada environment target. Ini batas bukti, bukan kegagalan provider yang diamati.
+**AI-01-LIVE / PARTIAL:** helper structured output diuji dengan mock HTTP dan key dummy. E2E lokal8Oktober2026 juga menerima satu respons provider live dari run BBCA; ini membuktikan akses pada environment lokal saat itu, bukan status deployment, mutu seluruh narasi, atau verifikasi billing. Kesalahan tanggal narasi dan mitigasinya dicatat pada SIM-OBS-01-AI-DATE. Prompt tanggal terbaru belum diuji ulang live.
 Schema harus mengikuti subset strict OpenAI; schema di luar subset ditolak API,
 tanpa fallback ke output bebas. F-02 tetap pekerjaan terpisah.
 

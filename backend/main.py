@@ -180,7 +180,7 @@ def run_job(job_id, body):
     store.save(job_id, 'run', job)
     try:
         result = compare(dataset, body)
-        job.update(status='completed', result=result, finished_at=datetime.now(timezone.utc).isoformat())
+        job.update(status='completed', result=result, input=result['input'], finished_at=datetime.now(timezone.utc).isoformat())
     except ValueError as error:
         job.update(status='failed', error=str(error))
     except Exception:

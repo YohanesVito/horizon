@@ -79,6 +79,7 @@ export interface Rules {
 }
 export type Allocation = "rotation" | "equal" | "single";
 export interface SimInput {
+  timing_mode?: "custom" | "payment_plus_2";
   capital: number;
   event_ids: string[];
   allocation: Allocation;
@@ -89,6 +90,41 @@ export interface SimInput {
   start_date?: string;
   compare: boolean;
 }
+export interface PositionExtreme {
+  date: string;
+  price: number;
+  position_value: number;
+  total_value: number;
+  pnl: number;
+  return_pct: number;
+}
+export interface PositionObservation {
+  cum_date: string | null;
+  ex_date: string;
+  payment_date: string | null;
+  end_date: string | null;
+  available_end_date: string | null;
+  horizon_sessions: number;
+  complete: boolean;
+  gaps: string[];
+  invested: number;
+  shares: number;
+  dividend_amount: number;
+  dividend_per_share: number;
+  points: {
+    date: string;
+    open: number;
+    high: number;
+    low: number;
+    close: number;
+    dividend_entitled: number;
+    dividend_paid: number;
+    position_value: number;
+    total_value: number;
+  }[];
+  highest: PositionExtreme | null;
+  lowest: PositionExtreme | null;
+}
 export interface Trade {
   event_id: string;
   symbol: string;
@@ -96,6 +132,8 @@ export interface Trade {
   shares: number;
   entry_date: string;
   entry_price: number;
+  entry_price_basis?: "prior5_close_mean";
+  entry_reference_dates?: string[];
   exit_date: string | null;
   exit_price: number | null;
   settlement_date: string | null;
@@ -106,6 +144,7 @@ export interface Trade {
   reason: string;
   signal_date: string | null;
   capital_days: number;
+  observation?: PositionObservation;
 }
 export interface Replay {
   allocation: Allocation;
