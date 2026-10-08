@@ -88,6 +88,16 @@ Instruksi PM 7 Oktober memprioritaskan satu alur: analisis emiten (histori dan p
 
 D-02 menggabungkan arah demo dari PM (D-01, perubahan lokal pada branch UI) dengan implementasi Sammy pada `feat/chart-sammy` (UX-01–UX-04: input modal, pilihan strategi, klik chart, dan copy/istilah). `dashboard.tsx` diselaraskan manual agar pemangkasan copy/sidebar Sammy tidak mengembalikan delapan menu atau landing Peluang. Ini sinkronisasi kontribusi, bukan bukti bahwa simulator satu-emiten, data lengkap, atau forecast sudah selesai.
 
+## Penemuan emiten D-03 — perubahan syarat PM 8 Oktober
+
+C-01/C-02: kelengkapan histori overlay lima tahun tidak lagi menjadi filter untuk menemukan **nama emiten**. D-03 mengambil peringkat yield tahunan 2025 dari MCP Sectors untuk seluruh emiten dengan dividen/yield positif yang dikembalikan screener, dan menampilkan lima teratas sebagai kandidat historis. Tahun, waktu snapshot, DPS dan batas interpretasi terlihat. `history_eligible` serta katalog grafik terverifikasi tetap dipakai hanya untuk overlay; emiten tanpa grafik dapat tetap muncul dalam daftar kandidat. ISS-041 sekarang membatasi grafik, bukan penemuan nama. Peringkat ini belum mengukur keuntungan strategi, keamanan dividen, atau kondisi pasar saat ini (ISS-057).
+
+Arahan PM berikutnya pada 8 Oktober mengubah batas grafik juga: C-02/C-08 melalui T-08 menampilkan **semua jendela peristiwa yang mempunyai event dan harga dalam snapshot** untuk lima kandidat, tanpa mewajibkan lima tahun penuh. Tahun tanpa kurva ditandai sebagai kekosongan snapshot; beberapa pembayaran pada satu tahun tetap terpisah menurut ex-date. `eligible` kini menguji verifikasi setiap periode yang ditampilkan, bukan jumlah tahun. Semua kandidat saat ini masih berstatus pratinjau karena gap verifikasi ISS-041; peringkat yield historis D-03 tidak berubah.
+
+## Formula prediksi F-01 — rancangan riset 8 Oktober
+
+C-02/C-04/C-06/C-07: [PREDICTION_FORMULA.md](./PREDICTION_FORMULA.md) mendefinisikan input point-in-time, target harga/trap/BEP/waktu pulih, hipotesis model dan cara menguji sebelum angka prediksi ditampilkan. Ini **dokumen proposal**, bukan implementasi S4-02 atau penyelesaian ISS-024/ISS-042; statusnya tetap mengikuti PROGRESS.md dan ISSUES.md.
+
 ## Integrasi BR-02 dan deployment frontend V-01/V-02
 
 C-02/C-04/C-08, S5-02: gabungan UI polish523c993 dengan proxy Next/Supabase/Dalang f64df85 mempertahankan kedua kontribusi. Fixture berversi membuktikan hitungan tidak berubah; issue052/053/054 merujuk UX/handoff, sedangkan044–050 tetap migrasi/deployment. Status deployment Vercel dan bukti aktual mengikuti PROGRESS.md; bukan kelulusan UAT.

@@ -6,6 +6,42 @@
   gap: 20px;
   min-width: 0;
 }
+.dividend-candidates {
+  padding: 22px 26px;
+  display: grid;
+  gap: 14px;
+}
+.dividend-candidates-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.dividend-candidates-heading h2 {
+  font: 500 clamp(17px, 2vw, 22px) Sora, sans-serif;
+  margin-top: 5px;
+}
+.dividend-candidates-list {
+  display: grid;
+  gap: 7px;
+}
+.dividend-candidates-list li {
+  display: grid;
+  grid-template-columns: 34px minmax(150px, 1fr) minmax(145px, auto) minmax(125px, auto);
+  align-items: center;
+  gap: 12px;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #ffffff07;
+}
+.dividend-candidate-rank { color: var(--accent); font: 600 12px Sora, sans-serif; }
+.dividend-candidate-name, .dividend-candidate-values { display: grid; gap: 3px; min-width: 0; }
+.dividend-candidate-name strong, .dividend-candidate-values strong { font-size: 13px; }
+.dividend-candidate-name span, .dividend-candidate-values span,
+.dividend-candidate-chart-status { font-size: 11px; color: var(--muted); }
+.dividend-candidates-list .text-button { text-align: left; }
 .timeline-catalog {
   padding: 22px 26px;
   display: flex;
@@ -213,6 +249,20 @@
   color: var(--year-color);
   background: #ffffff05;
   border-color: #ffffff12;
+}
+.timeline-gap-note {
+  margin: -9px 0 18px;
+  padding: 10px 12px;
+  border: 1px solid #a64d7933;
+  border-radius: 10px;
+  background: #3b1c322b;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.timeline-segment button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 .timeline-chart-meta {
   display: flex;
@@ -454,6 +504,10 @@
   margin: 12px 0;
 }
 @media (max-width: 700px) {
+  .dividend-candidates { padding: 18px; }
+  .dividend-candidates-list li { grid-template-columns: 25px minmax(0, 1fr) auto; gap: 8px; }
+  .dividend-candidate-values { text-align: right; }
+  .dividend-candidate-chart-status, .dividend-candidates-list .text-button { grid-column: 2 / -1; }
   .timeline-panel {
     padding: 18px 13px;
   }

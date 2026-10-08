@@ -13,6 +13,7 @@ patterns = [
     'backend/*.py', 'backend/requirements.lock', 'backend/migrations/*.sql',
     'outputs/dividend-research/*.json', 'outputs/mvp-sectors/*.json',
     'outputs/sectors-live/bbca-dividend.json',
+    'outputs/dividend-discovery/*.json',
     'outputs/intelligence/raw/*.json', 'outputs/rotation/raw/*.json',
     'outputs/timeline-audit/*.json', 'outputs/timeline-audit/raw/*.json',
 ]

@@ -52,15 +52,13 @@ def test_bad_prices_dates_and_missing_window_cannot_pass_gate():
     assert not make_period(event, bars[1:], ['source.json'], review)['eligible']
 
 
-def test_five_year_gate_rejects_missing_duplicate_or_unreviewed_cycles():
+def test_verified_partial_history_does_not_need_five_years():
     event, bars, review = reviewed_period()
     valid = make_period(event, bars, ['source.json'], review)
-    periods = [{**valid, 'year': year} for year in range(2021, 2026)]
-    assert history_eligible(periods)
-    assert not history_eligible(periods[:-1])
-    assert not history_eligible(periods + [periods[0]])
-    assert not history_eligible([{**p, 'cycle_key': 'interim'} if p['year'] == 2023 else p for p in periods])
-    assert not history_eligible([{**p, 'eligible': False} if p['year'] == 2023 else p for p in periods])
+    assert history_eligible([valid])
+    assert history_eligible([valid, {**valid, 'id': 'TEST:2025-10-01'}])
+    assert not history_eligible([])
+    assert not history_eligible([valid, {**valid, 'eligible': False}])
 
 
 def test_sourced_preview_is_separate_from_catalog_and_forecast_is_empty():
@@ -80,6 +78,34 @@ def test_sourced_preview_is_separate_from_catalog_and_forecast_is_empty():
     assert all(p['year'] == 2026 for p in payload['current'])
     assert all(p['actual_through'] == max(b['date'] for b in p['points']) for p in payload['current'])
     assert all(p['sources'] for p in payload['history'])
+
+
+def test_all_five_yield_candidates_have_as_is_timeline_previews():
+    client = TestClient(app)
+    catalog = client.get('/api/timeline').json()
+    assert set(catalog['preview_symbols']) == {'DMAS', 'LPPF', 'ADRO', 'CFIN', 'RALS'}
+    expected = {
+        'DMAS': {2022: 2, 2023: 2, 2025: 1},
+        'LPPF': {2021: 1, 2022: 1, 2023: 1, 2024: 1, 2025: 1},
+        'ADRO': {2022: 1, 2023: 3, 2024: 3, 2025: 2},
+        'CFIN': {2023: 1, 2025: 1},
+        'RALS': {2022: 1, 2023: 1, 2024: 1, 2025: 1},
+    }
+    for symbol, year_counts in expected.items():
+        response = client.get(f'/api/timeline/{symbol}?preview=true')
+        assert response.status_code == 200
+        data = response.json()
+        assert data['preview'] and not data['eligible']
+        assert {year: sum(p['year'] == year for p in data['history']) for year in year_counts} == year_counts
+        assert len(data['history']) == sum(year_counts.values())
+        assert len({p['id'] for p in data['history']}) == len(data['history'])
+        assert all(p['cum_close'] > 0 and p['points'] and p['sources'] for p in data['history'])
+        assert all(p['year'] in year_counts for p in data['history'])
+        assert (bool(data['current']) == (symbol == 'LPPF'))
+        if symbol == 'ADRO':
+            november = next(p for p in data['history'] if p['ex_date'] == '2024-11-28')
+            assert november['actual_through'] < '2024-12-30'
+            assert 'Jendela harga berhenti sebelum ex-date dividen berikutnya.' in november['issues']
 
 
 def test_missing_snapshot_keeps_catalog_empty(tmp_path):

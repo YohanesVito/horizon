@@ -10,11 +10,12 @@ from .simulator import compare
 from .intelligence import IntelligenceDataset, rank, scenario
 from .planner import plan_routes, replay_routes
 from .timeline import TimelineDataset
+from .discovery import top_dividend_yield
 from .security import require_api_key, validate_api_key_config
 
 intelligence_dataset = IntelligenceDataset()
 dataset = UnifiedDataset(intelligence_dataset)
-timeline_dataset = TimelineDataset()
+timeline_dataset = TimelineDataset(intelligence_events=intelligence_dataset.events)
 pool = ThreadPoolExecutor(max_workers=2, thread_name_prefix='dividen-replay')
 
 
@@ -86,6 +87,11 @@ def health():
 @app.get('/api/catalog')
 def catalog():
     return dataset.catalog()
+
+
+@app.get('/api/dividend-candidates')
+def dividend_candidates():
+    return top_dividend_yield()
 
 
 @app.get('/api/timeline')
