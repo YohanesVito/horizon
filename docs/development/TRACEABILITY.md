@@ -121,3 +121,7 @@ D-07 menggabungkan main terbaru secara lokal dengan UI D-05. C-02/C-04/C-08 kini
 ## Integrasi desain dan data BR-04
 
 C-01/C-02/C-08: desain editorial `feat/timeline-ui-polish` menjadi dasar tampilan; lima kandidat D-03 dan grafik parsial T-08 ditambahkan tanpa menyingkirkan toolbar, panel harga, kronologi, maupun layar Simulasi. Fokus berubah dari tahun ke ID event agar dua pembayaran satu emiten pada tahun sama tetap terpisah. C-06/C-07: panel Engine Riset membaca statistik empiris lama beserta aturan, ukuran sampel, dan rentang Wilson; ini belum menjalankan hipotesis prediksi harga/probabilitas F-01. `forecast.status` tetap `not_available` sesuai ISS-042. Perubahan dan bukti integrasi mengikuti PROGRESS.md; bukan penutupan PRD/UAT.
+
+## Sinkronisasi produksi DEP-04
+
+C-01/C-02/C-06/C-08 melalui BR-04 akhirnya terhubung end-to-end pada URL Vercel setelah FastAPI Dalang dinaikkan dari release awal ke `20261008T053018Z-8544ed8b61` (ISS-061). Lima kandidat, preview parsial, detail grafik yang dapat dipilih, dan statistik risiko historis terbukti melalui browser dan API; perhitungan replay API→worker→Supabase identik dengan fixture, tanpa perubahan 20 record awal. Bukti ada di `outputs/deployment/deployment.json`, `live-editorial-verification.json`, dan `dalang-api-verification.json`. Ini hanya menutup ketidakcocokan versi produksi; validasi data per event ISS-041, forecast ISS-042, I/O ISS-048, PRD/user story asli, serta UAT tetap terbuka.
