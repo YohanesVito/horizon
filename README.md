@@ -2,17 +2,17 @@
 
 **Lihat apakah dividen menutup penurunan harga saham.**
 
-Horizon adalah alat analisis dan simulasi untuk investor ritel saham Indonesia yang mengejar dividen. Pengguna mempelajari harga di sekitar dividen dan menguji seluruh modal pada tiap peristiwa secara independen. Hasil memperlihatkan nilai saham, dividen, sisa kas, serta laba/rugi historis sampai dua hari bursa setelah pembayaran.
+Horizon membantu investor ritel saham Indonesia mempelajari harga di sekitar pembagian dividen. Kamu bisa memasukkan modal dan melihat hasilnya pada peristiwa historis: berapa nilai saham yang tersisa, dividen yang diperoleh, dan laba atau ruginya. Setiap peristiwa diuji dengan modal penuh yang sama, termasuk sisa kas, sampai dua hari bursa setelah pembayaran.
 
-Dibangun untuk **Sectors Hackathon · Track 03: Market Intelligence**. Data finansial berasal dari Sectors.
+Proyek ini dibuat untuk **Sectors Hackathon · Track 03: Market Intelligence**, dengan data finansial dari Sectors.
 
-> Versi ini menggunakan snapshot dan replay historis. Hasilnya **di luar biaya transaksi, pajak, dan slippage**. Prediksi harga, tanggal dividen, dan probabilitas dividend trap yang tervalidasi belum tersedia. Pengguna mengambil keputusan dan mengeksekusi transaksi sendiri.
+> Simulasi memakai snapshot data historis dan **belum menghitung biaya transaksi, pajak, atau slippage**. Prediksi harga, tanggal dividen, dan probabilitas dividend trap yang tervalidasi belum tersedia. Keputusan dan transaksi tetap dilakukan oleh pengguna.
 
 [Mulai menjalankan](#jalankan-di-komputer-sendiri) · [Coba satu simulasi](#coba-satu-simulasi) · [Cara kerja teknis](docs/TECHNICAL_GUIDE.md) · [Batas produk](#batas-produk)
 
 ## Untuk siapa dan masalah apa?
 
-**Problem Statement:**
+**Problem statement:**
 
 Investor ritel pemburu dividen (Dividend Hunter) kesulitan membandingkan strategi penggunaan modal karena yield saja tidak menunjukkan potensi kerugian harga saham dan berapa lama modal tertahan sebelum bisa digunakan kembali.
 
@@ -20,7 +20,7 @@ Investor ritel pemburu dividen (Dividend Hunter) kesulitan membandingkan strateg
 
 ### 1. Pelajari harga di sekitar peristiwa dividen
 
-Buka **Analisis**, pilih emiten, lalu bandingkan lintasan harga historis dalam rupiah atau persentase. Detail peristiwa membedakan cum-date, ex-date, recording date, dan payment date. Panel risiko menampilkan hasil historis, ukuran sampel, serta perbedaan BEP harga dan BEP termasuk dividen.
+Buka **Analisis** dan pilih emiten untuk membandingkan pergerakan harga historis dalam rupiah atau persentase. Kamu bisa melihat tanggal cum-date, ex-date, recording date, dan payment date pada detail peristiwa. Panel risiko memuat hasil historis beserta jumlah sampelnya, termasuk perbedaan BEP harga dan BEP yang memperhitungkan dividen.
 
 ![Grafik LPPF: lintasan harga historis di sekitar ex-date](docs/images/analysis.jpg)
 
@@ -28,23 +28,23 @@ Buka **Analisis**, pilih emiten, lalu bandingkan lintasan harga historis dalam r
 
 ### 2. Tentukan modal dan peristiwa simulasi
 
-Buka **Simulasi**, masukkan modal, lalu pilih 1–10 peristiwa dividen. Klik **Simulasikan**; saat proses berlangsung tombol menampilkan **Menjalankan simulasi…**.
+Buka **Simulasi**, masukkan modal, lalu pilih 1 sampai 10 peristiwa dividen. Klik **Simulasikan**. Selama proses berjalan, label tombol berubah menjadi **Menjalankan simulasi…**.
 
-Simulasi memakai **all-in tiap peristiwa**: seluruh modal awal yang sama diuji secara independen pada setiap peristiwa, dengan pembelian dalam kelipatan 100 saham. Sisa dana tetap menjadi kas. Jika memilih beberapa peristiwa, hasilnya dibandingkan satu per satu, tidak dijumlahkan menjadi satu portofolio. Form saat ini tidak menawarkan bagi rata atau rotasi modal.
+Setiap peristiwa memakai **seluruh modal awal secara terpisah (all-in)**, dengan pembelian dalam kelipatan 100 saham. Dana yang tidak cukup untuk membeli satu lot lagi tetap menjadi kas. Jika kamu memilih beberapa peristiwa, bandingkan hasilnya satu per satu. Hasil tersebut tidak dijumlahkan menjadi satu portofolio. Pilihan bagi rata dan rotasi modal tidak tersedia di form saat ini.
 
-Buka **Bagaimana simulasi dihitung?** untuk melihat aturan tetap: harga masuk adalah rata-rata lima harga penutupan hari bursa sebelum cum-date, tidak termasuk cum-date. Pengamatan berlangsung dari cum-date hingga dua hari bursa setelah payment; tidak ada transaksi keluar. Tanggal pengamatan ditentukan otomatis dan data yang belum lengkap ditandai parsial.
+Aturan perhitungannya bisa dibuka melalui **Bagaimana simulasi dihitung?** Harga masuk memakai rata-rata lima harga penutupan hari bursa sebelum cum-date, tanpa memasukkan cum-date. Aplikasi menentukan periode pengamatan secara otomatis, dari cum-date hingga dua hari bursa setelah payment. Saham tetap dipegang selama pengamatan, tanpa transaksi keluar. Data yang belum lengkap ditandai parsial.
 
 ### 3. Bandingkan hasil tiap peristiwa dan pahami komponennya
 
-Setiap kartu emiten menampilkan harga masuk rata-rata, jumlah lot/saham, modal posisi, serta nilai akhir pengamatan. Nilai akhir terdiri dari **nilai saham + hak dividen + sisa kas**. Laba/rugi membandingkan nilai akhir tersebut dengan modal awal.
+Pada kartu tiap emiten, kamu bisa melihat harga masuk rata-rata dan jumlah saham atau lot yang terbeli, beserta modal posisi dan nilai akhirnya. Nilai akhir dihitung dari **nilai saham + hak dividen + sisa kas**. Selisihnya terhadap modal awal menjadi laba atau rugi.
 
-Grafik memperlihatkan harga selama pengamatan. Nilai posisi tertinggi/terendah memakai harga high/low historis ditambah dividen hipotetis dan tidak memasukkan sisa kas. Angka ekstrem ini berbeda dari nilai akhir portofolio dan bukan harga jual yang dijamin.
+Grafik menampilkan harga selama pengamatan. Untuk nilai posisi tertinggi dan terendah, perhitungan memakai harga high/low historis ditambah dividen hipotetis, tanpa sisa kas. Karena komponennya berbeda, angka ini perlu dibaca terpisah dari nilai akhir portofolio. Harga tersebut juga bukan jaminan harga jual yang bisa diperoleh.
 
 ![Hasil live CFIN: modal Rp10 juta dan nilai akhir pengamatan](docs/images/cfin-demo-results-20261008.png)
 
 *Contoh CFIN, ex-date 11 Juni 2025. Hasil diamati sampai 1 Juli 2025. Posisi tidak dijual; laba/rugi merupakan valuasi historis di luar biaya transaksi, pajak, dan slippage.*
 
-Buka **Ringkasan AI · [ticker]** untuk penjelasan hasil dan konteks ketika layanan tersedia. Angka dihitung engine Python; AI membantu menjelaskan, bukan menentukan hasil atau menjamin penyebab perubahan harga.
+Jika layanan tersedia, buka **Ringkasan AI · [ticker]** untuk membaca penjelasan hasil dan konteksnya. Engine Python menghitung angkanya. AI menjelaskan hasil tersebut, tetapi tidak menentukan perhitungan atau memastikan penyebab perubahan harga.
 
 ## Coba satu simulasi
 
@@ -75,7 +75,7 @@ Klik **Simulasikan**. Run live `7768ae04-704b-4163-96ab-9a966bdfb8f1`, diperiksa
 | Nilai akhir termasuk dividen dan kas | **Rp9.270.120** |
 | Laba/rugi terhadap modal awal | **−Rp729.880 (−7,30%)** |
 
-**Dividen Rp1.285.000 belum menutup penurunan nilai saham Rp2.014.880.** Ini contoh mengapa yield saja belum cukup untuk menilai hasil. Nilai akhir bukan seluruhnya kas karena saham masih dipegang.
+**Dividen Rp1.285.000 belum menutup penurunan nilai saham Rp2.014.880**, sehingga yield saja belum cukup untuk menilai hasilnya. Saham masih dipegang pada akhir pengamatan; sebagian nilai akhir itu belum berupa kas.
 
 Pada Analisis, CFIN berada di peringkat empat kandidat yield historis 2025 dengan **15,94%**. Angka itu adalah yield pada daftar kandidat, bukan return simulasi. Close cum-date Rp398 turun menjadi Rp346 pada ex-date: **−Rp52 (−13,07%)**. Penurunan satu hari ini berbeda dari perubahan nilai saham sepanjang simulasi yang memakai harga masuk rata-rata Rp388,40.
 
@@ -95,15 +95,15 @@ flowchart LR
   R --> AI["Opsional: penjelasan AI dan konteks Sectors"]
 ```
 
-Sectors menyediakan data harga dan dividen yang menjadi dasar analisis. Engine menentukan jumlah lot dari modal dan harga masuk rata-rata, menghitung nilai saham selama pengamatan, lalu menambahkan hak dividen dan sisa kas untuk nilai akhir. Setiap peristiwa memakai modal penuh secara independen; tidak ada perpindahan kas antarperistiwa atau penjualan otomatis dalam alur ini.
+Data harga dan dividen berasal dari Sectors. Dari modal dan harga masuk rata-rata, engine menghitung jumlah lot yang terbeli dan nilai saham selama pengamatan. Hak dividen dan sisa kas kemudian ditambahkan untuk mendapatkan nilai akhir. Perhitungan diulang dengan modal penuh pada setiap peristiwa. Kas tidak berpindah antarperistiwa, dan saham tidak dijual otomatis.
 
-AI membantu membaca hasil dan menelusuri konteks tambahan ketika tersedia. Statistik, konteks bersumber, dan dugaan penyebab harus dibedakan. Data atau berita yang berdekatan waktunya tidak membuktikan kausalitas; hasil historis bukan prediksi.
+AI membantu menjelaskan hasil dan menelusuri konteks tambahan yang tersedia. Penjelasannya perlu membedakan hasil statistik, konteks dari sumber, dan dugaan penyebab. Data atau berita yang berdekatan waktunya belum membuktikan hubungan sebab-akibat. Hasil historis ini bukan prediksi.
 
 Kode/API dan arsip hasil masih memuat simulasi tiga alokasi, aturan keluar, settlement, planner rute, dan eksperimen prediksi. Itu bukan pilihan pada form Simulasi saat ini. Peta modul dan metode tersedia di [panduan teknis](docs/TECHNICAL_GUIDE.md); angka contoh lama tetap disimpan sebagai bukti historis.
 
 ## Jalankan di komputer sendiri
 
-Kebutuhan: **Node.js ≥20.9, Bun, dan Python ≥3.11**. Jalankan perintah dari akar repository. Snapshot Sectors sudah disertakan; replay dasar tidak memerlukan API key atau koneksi ke Supabase.
+Siapkan **Node.js ≥20.9, Bun, dan Python ≥3.11**, lalu jalankan perintah berikut dari akar repository. Snapshot Sectors sudah disertakan, sehingga replay dasar bisa berjalan tanpa API key atau koneksi ke Supabase.
 
 ```sh
 git clone https://github.com/YohanesVito/horizon.git
@@ -114,7 +114,7 @@ python3 -m venv .venv
 mkdir -p .runtime
 ```
 
-**Terminal 1 — backend lokal dengan database demo terpisah:**
+**Terminal 1: jalankan backend lokal dengan database demo terpisah.**
 
 ```sh
 DATABASE_URL=sqlite:///.runtime/readme-demo.db \
@@ -122,7 +122,7 @@ HORIZON_API_KEY='' HORIZON_REQUIRE_API_KEY=0 AI_KEY='' SECTORS_API_KEY='' \
 .venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
 ```
 
-**Terminal 2 — frontend:**
+**Terminal 2: jalankan frontend.**
 
 ```sh
 bun run build
@@ -148,11 +148,11 @@ Screenshot Analisis berasal dari preview lokal terdahulu; screenshot CFIN berasa
 
 ## Batas produk
 
-- **Historis dan cakupan terbatas.** Analisis menampilkan lima kandidat; engine replay mencakup 12 event tahun 2025 pada sembilan emiten. Dataset intelligence mencakup 48 event 2022–2025 sebelum penyaringan. Cakupan tersebut bukan seluruh IDX atau kalender dividen terkini.
-- **Statistik belum menjadi prediksi tervalidasi.** Timeline masih pratinjau; gap tahun, konflik jadwal, dan kesetaraan basis harga/dividen belum seluruhnya selesai diaudit. Sampel kecil dan emiten terpilih membatasi generalisasi.
-- **BEP harga berbeda dari BEP total.** BEP harga berarti harga mencapai harga beli. BEP total memperhitungkan dividen. Alur simulasi saat ini tidak menjual pada sinyal BEP.
+- **Historis dan cakupan terbatas.** Analisis menampilkan lima kandidat. Engine replay mencakup 12 event tahun 2025 pada sembilan emiten, sedangkan dataset intelligence memuat 48 event 2022 sampai 2025 sebelum penyaringan. Data ini belum mencakup seluruh IDX atau kalender dividen terkini.
+- **Statistik belum menjadi prediksi tervalidasi.** Statistik belum tervalidasi untuk prediksi. Timeline masih berupa pratinjau karena audit gap tahun, konflik jadwal, dan kesetaraan basis harga/dividen belum selesai. Sampelnya kecil dan hanya mencakup emiten terpilih, sehingga hasilnya belum bisa digeneralisasi.
+- **BEP harga berbeda dari BEP total.** BEP harga tercapai ketika harga kembali ke harga beli, sedangkan BEP total memperhitungkan dividen. Simulasi saat ini tidak menjual saham pada sinyal BEP.
 - **Asumsi simulasi tetap penting.** Biaya, pajak, dan slippage belum dihitung. Harga masuk rata-rata lima close adalah referensi, bukan harga eksekusi pada satu tanggal. Akhir pengamatan bukan tanggal modal otomatis kembali menjadi kas; tidak ada penjualan atau settlement dalam alur ini. Timestamp pengumuman belum memadai untuk membuktikan seluruh informasi tersedia saat keputusan historis.
-- **Masih MVP.** Belum ada akun terpisah, optimizer rute global, atau eksekusi order. Pekerjaan background memakai thread lokal; proses yang terputus perlu dijalankan ulang. Pengujian penerimaan bersama PM belum dinyatakan selesai.
+- **Masih MVP.** Aplikasi masih MVP, tanpa akun terpisah, optimizer rute global, atau eksekusi order. Pekerjaan di latar belakang memakai thread lokal. Jika proses terputus, proses tersebut perlu dijalankan ulang. Pengujian penerimaan bersama PM belum dinyatakan selesai.
 
 ## Dokumentasi lanjutan
 
