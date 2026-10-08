@@ -326,7 +326,6 @@ function TimelineExplorer({ data }: { data: TimelineDetail }) {
           mode={mode}
           setMode={setMode}
           currentYear={data.current_year}
-          historyYears={data.history_years}
           hasCurrentData={data.current.some((period) => period.points.length > 0)}
           symbol={data.symbol}
         />
@@ -436,7 +435,6 @@ function TimelinePlot({
   mode,
   setMode,
   currentYear,
-  historyYears,
   hasCurrentData,
   symbol,
 }: {
@@ -446,7 +444,6 @@ function TimelinePlot({
   mode: "history" | "current";
   setMode: (m: "history" | "current") => void;
   currentYear: number;
-  historyYears: number[];
   hasCurrentData: boolean;
   symbol: string;
 }) {
@@ -482,11 +479,6 @@ function TimelinePlot({
     (yearCounts.get(period.year) ?? 0) > 1
       ? `${period.year} · ${dt(period.ex_date)}`
       : String(period.year);
-  const missingYears = mode === "current"
-    ? []
-    : historyYears.filter(
-        (year) => !periods.some((period) => period.year === year && period.points.length),
-      );
   const movement = cumExMovement(active);
   const left = width < 550 ? 58 : 72,
     right = width < 550 ? 18 : 28;
@@ -658,10 +650,11 @@ function TimelinePlot({
   }
   const observed =
     hover && (pinned === null || hover.period.id === pinned) ? hover : null;
+  const cardWidth = 240;
   const cardLeft = observed
     ? Math.min(
-        Math.max(0, x(sessionOf(observed.period, observed.point)!) - 100),
-        Math.max(0, width - 200),
+        Math.max(0, x(sessionOf(observed.period, observed.point)!) - cardWidth / 2),
+        Math.max(0, width - cardWidth),
       )
     : 0;
   const ticks = Array.from(
@@ -753,12 +746,6 @@ function TimelinePlot({
             </div>
           </div>
         </div>
-        {missingYears.length > 0 && (
-          <p className="timeline-gap-note" role="note">
-            Belum ada kurva harga untuk {missingYears.join(", ")} pada snapshot ini.
-            Tahun kosong bukan bukti tidak ada pembagian dividen.
-          </p>
-        )}
         <div ref={setContainer} className="timeline-chart-wrap">
           {available.length ? (
             <>
@@ -970,16 +957,19 @@ function TimelinePlot({
                     borderTopColor: color(observed.period.year),
                   }}
                 >
-                  <div className="timeline-point-card-meta">
-                    <span>{dt(observed.point.date, true)}</span>
-                    <span>
-                      {sessionLabel(
-                        sessionOf(observed.period, observed.point)!,
-                      )}
-                    </span>
-                  </div>
-                  <strong>{money(observed.point.close)}</strong>
-                  <span>{pct(observed.point.change_pct)} dari cum-date</span>
+                  <strong className="timeline-point-card-price" aria-label={`Harga Rp ${observed.point.close}`}>
+                    {new Intl.NumberFormat("id-ID", { maximumFractionDigits: 0 }).format(observed.point.close)}
+                  </strong>
+                  <span className="timeline-point-card-date">
+                    {dt(observed.point.date, true)}
+                  </span>
+                  <span className="timeline-point-card-change">
+                    <b>{pct(observed.point.change_pct)}</b>
+                    <small>dari cum-date</small>
+                  </span>
+                  <span className="timeline-point-card-session">
+                    {sessionLabel(sessionOf(observed.period, observed.point)!)}
+                  </span>
                 </div>
               )}
             </>

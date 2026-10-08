@@ -502,16 +502,6 @@ body {
   line-height: 1.5;
 }
 
-.editorial-app .timeline-gap-note {
-  margin: 0 0 20px;
-  padding: 13px 17px;
-  border-left: 3px solid #d9af59;
-  background: #1e2b39;
-  color: #d2dce0;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
 .editorial-app .timeline-model-evidence {
   padding: clamp(48px, 6vw, 92px) clamp(24px, 5vw, 80px);
   border-bottom: 1px solid #c5ccce;
@@ -883,9 +873,10 @@ body {
   z-index: 2;
   top: 0;
   display: grid;
-  gap: 4px;
-  width: 200px;
-  padding: 10px 12px;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  gap: 8px 12px;
+  width: 240px;
+  padding: 12px 14px;
   border: 1px solid #d5dcdb;
   border-top: 2px solid;
   border-radius: 8px;
@@ -896,16 +887,41 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-.editorial-app .timeline-point-card-meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
+.editorial-app .timeline-point-card-date,
+.editorial-app .timeline-point-card-session {
+  text-align: right;
 }
 
-.editorial-app .timeline-point-card strong {
+.editorial-app .timeline-point-card-price {
+  align-self: end;
   color: #131e29;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 600;
+  line-height: 1;
+}
+
+.editorial-app .timeline-point-card-change {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  align-self: end;
+  white-space: nowrap;
+}
+
+.editorial-app .timeline-point-card-session {
+  align-self: end;
+}
+
+.editorial-app .timeline-point-card-change b {
+  color: #131e29;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.editorial-app .timeline-point-card-change small {
+  font-size: 11px;
+  line-height: 1.1;
 }
 
 .editorial-app .timeline-chronology {
