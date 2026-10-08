@@ -1,0 +1,784 @@
+{
+  "verified_at": "2026-10-08",
+  "source": "https://horizon-dividend.vercel.app/",
+  "run": {
+    "id": "7768ae04-704b-4163-96ab-9a966bdfb8f1",
+    "status": "completed",
+    "input": {
+      "timing_mode": "payment_plus_2",
+      "capital": "10000000",
+      "event_ids": [
+        "CFIN:2025-06-11"
+      ],
+      "allocation": "single",
+      "entry_sessions_before_cum": 0,
+      "exit_rule": "price_bep",
+      "max_holding_sessions": 20,
+      "end_date": "2025-07-01",
+      "start_date": "2025-06-10",
+      "compare": false,
+      "entry_price_basis": "prior5_close_mean"
+    },
+    "screening_rules": {
+      "name": "Logika dividen saya",
+      "minimum_yield": 4.0,
+      "minimum_frequency": 1,
+      "require_replay": true,
+      "sort_by": "yield",
+      "version": "2026-10-06T05:23:04.002432+00:00"
+    },
+    "dataset_version": "unified-b749e08ddb769800",
+    "created_at": "2026-10-08T12:23:09.932569+00:00",
+    "result": {
+      "primary": {
+        "analysis_mode": "independent_events",
+        "allocation": "single",
+        "capital": 10000000.0,
+        "start_date": "2025-06-10",
+        "end_date": "2025-07-01",
+        "ending_nav": null,
+        "ending_cash": null,
+        "remaining_positions": null,
+        "pending_sales": null,
+        "pending_dividends": null,
+        "gross_pnl": null,
+        "return_pct": null,
+        "dividends": null,
+        "max_drawdown_pct": null,
+        "trades": [
+          {
+            "event_id": "CFIN:2025-06-11",
+            "symbol": "CFIN",
+            "status": "observed",
+            "shares": 25700,
+            "entry_date": "2025-06-10",
+            "entry_price": 388.4,
+            "entry_price_basis": "prior5_close_mean",
+            "entry_reference_dates": [
+              "2025-05-28",
+              "2025-06-02",
+              "2025-06-03",
+              "2025-06-04",
+              "2025-06-05"
+            ],
+            "entry_booking": "synthetic_cum_reference",
+            "starting_capital": 10000000.0,
+            "residual_cash": 18120.0,
+            "end_valuation": {
+              "date": "2025-07-01",
+              "position_value": 7967000.0,
+              "dividend_entitled": 1285000.0,
+              "dividend_paid": 1285000.0,
+              "residual_cash": 18120.0,
+              "total_value": 9270120.0,
+              "pnl": -729880.0,
+              "return_pct": -7.2988
+            },
+            "observation": {
+              "cum_date": "2025-06-10",
+              "ex_date": "2025-06-11",
+              "payment_date": "2025-06-26",
+              "end_date": "2025-07-01",
+              "available_end_date": "2025-07-01",
+              "horizon_sessions": 2,
+              "complete": true,
+              "gaps": [],
+              "invested": 9981880.0,
+              "shares": 25700,
+              "dividend_amount": 1285000.0,
+              "dividend_per_share": 50.0,
+              "points": [
+                {
+                  "open": 398,
+                  "high": 400,
+                  "low": 392,
+                  "close": 398,
+                  "date": "2025-06-10",
+                  "dividend_entitled": 0.0,
+                  "dividend_paid": 0.0,
+                  "position_value": 10228600.0,
+                  "total_value": 10228600.0
+                },
+                {
+                  "open": 344,
+                  "high": 350,
+                  "low": 340,
+                  "close": 346,
+                  "date": "2025-06-11",
+                  "dividend_entitled": 1285000.0,
+                  "dividend_paid": 0.0,
+                  "position_value": 8892200.0,
+                  "total_value": 10177200.0
+                },
+                {
+                  "open": 346,
+                  "high": 346,
+                  "low": 330,
+                  "close": 334,
+                  "date": "2025-06-12",
+                  "dividend_entitled": 1285000.0,
+                  "dividend_paid": 0.0,
+                  "position_value": 8583800.0,
+                  "total_value": 9868800.0
+                },
+                {
+                  "open": 332,
+                  "high": 334,
+                  "low": 320,
+                  "close": 324,
+                  "date": "2025-06-13",
+                  "dividend_entitled": 1285000.0,
+                  "dividend_paid": 0.0,
+                  "position_value": 8326800.0,
+                  "total_value": 9611800.0
+                },
+                {
+                  "open": 324,
+                  "high": 328,
+                  "low": 316,
+                  "close": 322,
+                  "date": "2025-06-16",
+                  "dividend_entitled": 1285000.0,
+                  "dividend_paid": 0.0,
+                  "position_value": 8275400.0,
+                  "total_value": 9560400.0
+                },
+                {
+                  "open": 328,
+                  "high": 328,
+                  "low": 322,
+                  "close": 324,
+                  "date": "2025-06-17",
+                  "dividend_entitled": 1285000.0,
+                  "dividend_paid": 0.0,
+                  "position_value": 8326800.0,
+                  "total_value": 9611800.0
+                },
+                {
+                  "open": 324,
+                  "high": 328,
+                  "low": 320,
+                  "close": 320,
+                  "date": "2025-06-18",
+                  "dividend_entitled": 1285000.0,
+                  "dividend_paid": 0.0,
+                  "position_value": 8224000.0,
+                  "total_value": 9509000.0
+                },
+                {
+                  "open": 322,
+                  "high": 326,
+                  "low": 306,
+                  "close": 308,
+                  "date": "2025-06-19",
+                  "dividend_entitled": 1285000.0,
+                  "dividend_paid": 0.0,
+                  "position_value": 7915600.0,
+                  "total_value": 9200600.0
+                },
+                {
+                  "open": 306,
+                  "high": 306,
+                  "low": 300,
+                  "close": 304,
+                  "date": "2025-06-20",
+                  "dividend_entitled": 1285000.0,
+                  "dividend_paid": 0.0,
+                  "position_value": 7812800.0,
+                  "total_value": 9097800.0
+                },
+                {
+                  "open": 304,
+                  "high": 304,
+                  "low": 286,
+                  "close": 294,
+                  "date": "2025-06-23",
+                  "dividend_entitled": 1285000.0,
+                  "dividend_paid": 0.0,
+                  "position_value": 7555800.0,
+                  "total_value": 8840800.0
+                },
+                {
+                  "open": 294,
+                  "high": 312,
+                  "low": 294,
+                  "close": 302,
+                  "date": "2025-06-24",
+                  "dividend_entitled": 1285000.0,
+                  "dividend_paid": 0.0,
+                  "position_value": 7761400.0,
+                  "total_value": 9046400.0
+                },
+                {
+                  "open": 302,
+                  "high": 310,
+                  "low": 302,
+                  "close": 302,
+                  "date": "2025-06-25",
+                  "dividend_entitled": 1285000.0,
+                  "dividend_paid": 0.0,
+                  "position_value": 7761400.0,
+                  "total_value": 9046400.0
+                },
+                {
+                  "open": 302,
+                  "high": 310,
+                  "low": 298,
+                  "close": 306,
+                  "date": "2025-06-26",
+                  "dividend_entitled": 1285000.0,
+                  "dividend_paid": 1285000.0,
+                  "position_value": 7864200.0,
+                  "total_value": 9149200.0
+                },
+                {
+                  "open": 308,
+                  "high": 318,
+                  "low": 306,
+                  "close": 312,
+                  "date": "2025-06-30",
+                  "dividend_entitled": 1285000.0,
+                  "dividend_paid": 1285000.0,
+                  "position_value": 8018400.0,
+                  "total_value": 9303400.0
+                },
+                {
+                  "open": 314,
+                  "high": 316,
+                  "low": 308,
+                  "close": 310,
+                  "date": "2025-07-01",
+                  "dividend_entitled": 1285000.0,
+                  "dividend_paid": 1285000.0,
+                  "position_value": 7967000.0,
+                  "total_value": 9252000.0
+                }
+              ],
+              "highest": {
+                "date": "2025-06-10",
+                "price": 400,
+                "position_value": 10280000.0,
+                "total_value": 11565000.0,
+                "pnl": 1583120.0,
+                "return_pct": 15.8599
+              },
+              "lowest": {
+                "date": "2025-06-23",
+                "price": 286,
+                "position_value": 7350200.0,
+                "total_value": 8635200.0,
+                "pnl": -1346680.0,
+                "return_pct": -13.4912
+              }
+            },
+            "exit_date": null,
+            "exit_price": null,
+            "settlement_date": null,
+            "payment_date": "2025-06-26",
+            "dividend": 1285000.0,
+            "capital_pnl": -2014880.0,
+            "gross_pnl": -729880.0,
+            "reason": "Periode lengkap",
+            "signal_date": null,
+            "capital_days": null
+          }
+        ],
+        "ledger": [],
+        "curve": [],
+        "open_below_entry": null,
+        "method": "independent_historical_observation",
+        "rules_version": "observation-v1",
+        "model_version": null,
+        "dataset_version": "unified-b749e08ddb769800",
+        "assumptions": [
+          "Setiap peristiwa dianalisis independen dengan modal awal penuh yang sama; hasil tidak dijumlahkan. Pembulatan lot menyisakan kas.",
+          "Harga masuk referensi: rata-rata aritmetika lima close sesi pasar sebelum cum, tanpa cum. Bukan harga eksekusi satu transaksi atau DCA.",
+          "Pencatatan referensi pada cum; observasi sampai dua hari bursa setelah payment. Tidak ada transaksi jual otomatis.",
+          "Rentang nilai posisi menggunakan high/low historis ditambah dividen peristiwa terpilih dengan asumsi hak dividen diperoleh; bukan kas cair atau laba eksekusi yang dijamin.",
+          "Nilai akhir per peristiwa memakai close terakhir teramati, sisa kas, dan hak dividen yang telah timbul.",
+          "Di luar biaya transaksi, pajak, dan slippage."
+        ]
+      },
+      "alternatives": [],
+      "input": {
+        "timing_mode": "payment_plus_2",
+        "capital": "10000000",
+        "event_ids": [
+          "CFIN:2025-06-11"
+        ],
+        "allocation": "single",
+        "entry_sessions_before_cum": 0,
+        "exit_rule": "price_bep",
+        "max_holding_sessions": 20,
+        "end_date": "2025-07-01",
+        "start_date": "2025-06-10",
+        "compare": false,
+        "entry_price_basis": "prior5_close_mean"
+      }
+    },
+    "finished_at": "2026-10-08T12:23:13.930722+00:00"
+  },
+  "timeline_event": {
+    "id": "CFIN:2025-06-11",
+    "year": 2025,
+    "ex_date": "2025-06-11",
+    "dps": 50,
+    "cum_close": 398,
+    "cycle": "Pembayaran tercatat · jenis belum terverifikasi",
+    "cycle_key": null,
+    "points": [
+      {
+        "date": "2025-05-21",
+        "day": -21,
+        "close": 326,
+        "change_pct": -18.090452
+      },
+      {
+        "date": "2025-05-22",
+        "day": -20,
+        "close": 328,
+        "change_pct": -17.58794
+      },
+      {
+        "date": "2025-05-23",
+        "day": -19,
+        "close": 326,
+        "change_pct": -18.090452
+      },
+      {
+        "date": "2025-05-26",
+        "day": -16,
+        "close": 350,
+        "change_pct": -12.060302
+      },
+      {
+        "date": "2025-05-27",
+        "day": -15,
+        "close": 370,
+        "change_pct": -7.035176
+      },
+      {
+        "date": "2025-05-28",
+        "day": -14,
+        "close": 366,
+        "change_pct": -8.040201
+      },
+      {
+        "date": "2025-06-02",
+        "day": -9,
+        "close": 394,
+        "change_pct": -1.005025
+      },
+      {
+        "date": "2025-06-03",
+        "day": -8,
+        "close": 396,
+        "change_pct": -0.502513
+      },
+      {
+        "date": "2025-06-04",
+        "day": -7,
+        "close": 394,
+        "change_pct": -1.005025
+      },
+      {
+        "date": "2025-06-05",
+        "day": -6,
+        "close": 392,
+        "change_pct": -1.507538
+      },
+      {
+        "date": "2025-06-10",
+        "day": -1,
+        "close": 398,
+        "change_pct": 0.0
+      },
+      {
+        "date": "2025-06-11",
+        "day": 0,
+        "close": 346,
+        "change_pct": -13.065327
+      },
+      {
+        "date": "2025-06-12",
+        "day": 1,
+        "close": 334,
+        "change_pct": -16.080402
+      },
+      {
+        "date": "2025-06-13",
+        "day": 2,
+        "close": 324,
+        "change_pct": -18.592965
+      },
+      {
+        "date": "2025-06-16",
+        "day": 5,
+        "close": 322,
+        "change_pct": -19.095477
+      },
+      {
+        "date": "2025-06-17",
+        "day": 6,
+        "close": 324,
+        "change_pct": -18.592965
+      },
+      {
+        "date": "2025-06-18",
+        "day": 7,
+        "close": 320,
+        "change_pct": -19.59799
+      },
+      {
+        "date": "2025-06-19",
+        "day": 8,
+        "close": 308,
+        "change_pct": -22.613065
+      },
+      {
+        "date": "2025-06-20",
+        "day": 9,
+        "close": 304,
+        "change_pct": -23.61809
+      },
+      {
+        "date": "2025-06-23",
+        "day": 12,
+        "close": 294,
+        "change_pct": -26.130653
+      },
+      {
+        "date": "2025-06-24",
+        "day": 13,
+        "close": 302,
+        "change_pct": -24.120603
+      },
+      {
+        "date": "2025-06-25",
+        "day": 14,
+        "close": 302,
+        "change_pct": -24.120603
+      },
+      {
+        "date": "2025-06-26",
+        "day": 15,
+        "close": 306,
+        "change_pct": -23.115578
+      },
+      {
+        "date": "2025-06-30",
+        "day": 19,
+        "close": 312,
+        "change_pct": -21.60804
+      },
+      {
+        "date": "2025-07-01",
+        "day": 20,
+        "close": 310,
+        "change_pct": -22.110553
+      },
+      {
+        "date": "2025-07-02",
+        "day": 21,
+        "close": 308,
+        "change_pct": -22.613065
+      },
+      {
+        "date": "2025-07-03",
+        "day": 22,
+        "close": 308,
+        "change_pct": -22.613065
+      },
+      {
+        "date": "2025-07-04",
+        "day": 23,
+        "close": 304,
+        "change_pct": -23.61809
+      },
+      {
+        "date": "2025-07-07",
+        "day": 26,
+        "close": 306,
+        "change_pct": -23.115578
+      },
+      {
+        "date": "2025-07-08",
+        "day": 27,
+        "close": 308,
+        "change_pct": -22.613065
+      },
+      {
+        "date": "2025-07-09",
+        "day": 28,
+        "close": 310,
+        "change_pct": -22.110553
+      },
+      {
+        "date": "2025-07-10",
+        "day": 29,
+        "close": 318,
+        "change_pct": -20.100503
+      },
+      {
+        "date": "2025-07-11",
+        "day": 30,
+        "close": 316,
+        "change_pct": -20.603015
+      },
+      {
+        "date": "2025-07-14",
+        "day": 33,
+        "close": 314,
+        "change_pct": -21.105528
+      },
+      {
+        "date": "2025-07-15",
+        "day": 34,
+        "close": 308,
+        "change_pct": -22.613065
+      },
+      {
+        "date": "2025-07-16",
+        "day": 35,
+        "close": 310,
+        "change_pct": -22.110553
+      },
+      {
+        "date": "2025-07-17",
+        "day": 36,
+        "close": 312,
+        "change_pct": -21.60804
+      },
+      {
+        "date": "2025-07-18",
+        "day": 37,
+        "close": 312,
+        "change_pct": -21.60804
+      },
+      {
+        "date": "2025-07-21",
+        "day": 40,
+        "close": 314,
+        "change_pct": -21.105528
+      },
+      {
+        "date": "2025-07-22",
+        "day": 41,
+        "close": 312,
+        "change_pct": -21.60804
+      },
+      {
+        "date": "2025-07-23",
+        "day": 42,
+        "close": 310,
+        "change_pct": -22.110553
+      },
+      {
+        "date": "2025-07-24",
+        "day": 43,
+        "close": 316,
+        "change_pct": -20.603015
+      },
+      {
+        "date": "2025-07-25",
+        "day": 44,
+        "close": 312,
+        "change_pct": -21.60804
+      },
+      {
+        "date": "2025-07-28",
+        "day": 47,
+        "close": 318,
+        "change_pct": -20.100503
+      },
+      {
+        "date": "2025-07-29",
+        "day": 48,
+        "close": 314,
+        "change_pct": -21.105528
+      },
+      {
+        "date": "2025-07-30",
+        "day": 49,
+        "close": 316,
+        "change_pct": -20.603015
+      },
+      {
+        "date": "2025-07-31",
+        "day": 50,
+        "close": 310,
+        "change_pct": -22.110553
+      },
+      {
+        "date": "2025-08-01",
+        "day": 51,
+        "close": 312,
+        "change_pct": -21.60804
+      },
+      {
+        "date": "2025-08-04",
+        "day": 54,
+        "close": 316,
+        "change_pct": -20.603015
+      },
+      {
+        "date": "2025-08-05",
+        "day": 55,
+        "close": 314,
+        "change_pct": -21.105528
+      },
+      {
+        "date": "2025-08-06",
+        "day": 56,
+        "close": 314,
+        "change_pct": -21.105528
+      },
+      {
+        "date": "2025-08-07",
+        "day": 57,
+        "close": 314,
+        "change_pct": -21.105528
+      },
+      {
+        "date": "2025-08-08",
+        "day": 58,
+        "close": 312,
+        "change_pct": -21.60804
+      },
+      {
+        "date": "2025-08-11",
+        "day": 61,
+        "close": 314,
+        "change_pct": -21.105528
+      },
+      {
+        "date": "2025-08-12",
+        "day": 62,
+        "close": 320,
+        "change_pct": -19.59799
+      },
+      {
+        "date": "2025-08-13",
+        "day": 63,
+        "close": 322,
+        "change_pct": -19.095477
+      },
+      {
+        "date": "2025-08-14",
+        "day": 64,
+        "close": 318,
+        "change_pct": -20.100503
+      },
+      {
+        "date": "2025-08-15",
+        "day": 65,
+        "close": 316,
+        "change_pct": -20.603015
+      }
+    ],
+    "phases": [
+      {
+        "key": "rups_date",
+        "label": "RUPS",
+        "date": null,
+        "day": null,
+        "status": "unavailable"
+      },
+      {
+        "key": "declaration_date",
+        "label": "Declaration",
+        "date": null,
+        "day": null,
+        "status": "unavailable"
+      },
+      {
+        "key": "cum_date",
+        "label": "Cum",
+        "date": "2025-06-10",
+        "day": -1,
+        "status": "recorded"
+      },
+      {
+        "key": "ex_date",
+        "label": "Ex",
+        "date": "2025-06-11",
+        "day": 0,
+        "status": "recorded"
+      },
+      {
+        "key": "recording_date",
+        "label": "Recording",
+        "date": "2025-06-12",
+        "day": 1,
+        "status": "recorded"
+      },
+      {
+        "key": "payment_date",
+        "label": "Payment",
+        "date": "2025-06-26",
+        "day": 15,
+        "status": "recorded"
+      }
+    ],
+    "sources": [
+      "outputs/intelligence/raw/actions-CFIN.json",
+      "outputs/intelligence/raw/calendar-2025-03-16.json",
+      "outputs/intelligence/raw/prices-CFIN-2025-06-11.json"
+    ],
+    "actual_through": "2025-08-15",
+    "issues": [
+      "Basis harga, DPS dan mata uang belum diverifikasi.",
+      "Hubungan pengumuman dan event belum diverifikasi.",
+      "Identitas siklus pembanding belum tersedia.",
+      "Jenis siklus dividen belum diverifikasi.",
+      "Kelengkapan data harga per hari bursa belum diverifikasi.",
+      "Tanggal RUPS/declaration terkait event belum terverifikasi."
+    ],
+    "eligible": false
+  },
+  "candidates": {
+    "year": 2025,
+    "as_of": "2026-10-08T02:35:32.214040+08:00",
+    "source": "Sectors MCP · fetch-companies",
+    "basis": "Total yield tahunan 2025 menurut Sectors; bukan yield mendatang atau proyeksi laba.",
+    "universe_count": 368,
+    "candidates": [
+      {
+        "symbol": "DMAS",
+        "name": "PT Puradelta Lestari Tbk",
+        "dps": 29,
+        "yield_pct": 20.8766743540764
+      },
+      {
+        "symbol": "LPPF",
+        "name": "PT MDS Retailing Tbk",
+        "dps": 300,
+        "yield_pct": 17.8184926509857
+      },
+      {
+        "symbol": "ADRO",
+        "name": "Alamtri Resources Indonesia Tbk",
+        "dps": 311.84,
+        "yield_pct": 16.220562905073198
+      },
+      {
+        "symbol": "CFIN",
+        "name": "Clipan Finance Indonesia Tbk",
+        "dps": 50,
+        "yield_pct": 15.9412071108818
+      },
+      {
+        "symbol": "RALS",
+        "name": "Ramayana Lestari Sentosa Tbk",
+        "dps": 60,
+        "yield_pct": 15.185312926769301
+      }
+    ]
+  },
+  "derived": {
+    "share_value_change": -2014880.0,
+    "ex_date_price_drop": 52,
+    "ex_date_price_drop_pct": 13.06532663316583
+  },
+  "verification": "Live browser run, archived result reopened, API response and arithmetic reconciled. Not a prediction or executed trade."
+}

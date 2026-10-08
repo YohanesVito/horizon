@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "dividen-lab",
+      "name": "horizon",
       "dependencies": {
         "@fontsource/manrope": "^5.2.0",
         "@fontsource/sora": "^5.2.0",

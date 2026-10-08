@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { ChevronDown, Clock3, Copy, FlaskConical, Route } from "lucide-react";
+import { ChevronDown, Clock3, FlaskConical, Route } from "lucide-react";
 import { api, dt, money, pct, tradingDayText } from "@/lib/api";
 import type {
   Allocation,
@@ -18,12 +18,6 @@ const labels: Record<Allocation, string> = {
   single: "All-in pertama",
   equal: "Bagi rata",
   rotation: "Rotasi modal",
-};
-const exitLabels: Record<SimInput["exit_rule"], string> = {
-  price_bep: "Setelah sinyal BEP harga",
-  ex_close: "Close ex-date",
-  payment_close: "Close payment date",
-  holding_period: "Batas hari bursa pengamatan",
 };
 type SimulationDraft = Omit<SimInput, "capital"> & { capital: string };
 function inputSignature(input: SimInput | SimulationDraft, startDate?: string) {
@@ -73,8 +67,6 @@ export default function Simulator({
   });
   const [jobId, setJobId] = useState<string | null>(null),
     [chosen, setChosen] = useState<Allocation>("single");
-  const [copiedFrom, setCopiedFrom] = useState<string | null>(null);
-  const [capitalResetKey, setCapitalResetKey] = useState(0);
   const [showAllHistory, setShowAllHistory] = useState(false);
   const capitalField = useRef<HTMLInputElement>(null);
   const client = useQueryClient();
@@ -124,10 +116,6 @@ export default function Simulator({
     ? inputSignature(input) !==
       inputSignature(result.input, result.primary.start_date)
     : false;
-  const unavailableEvents =
-    result?.input.event_ids.filter(
-      (id) => !events.some((event) => event.id === id),
-    ) ?? [];
   const set = <K extends keyof SimulationDraft>(
     key: K,
     value: SimulationDraft[K],
@@ -157,13 +145,6 @@ export default function Simulator({
                 {initialEvent.symbol} · ex {dt(initialEvent.ex_date, true)}
               </strong>
               . Periode pengamatan mengikuti jadwal dividen secara otomatis.
-            </p>
-          )}
-          {copiedFrom && (
-            <p className="notice" role="status">
-              Draf disalin dari hasil {copiedFrom.slice(0, 8)}. Hasil asal tidak
-              berubah. Simulasi baru memakai harga masuk rata-rata 5 hari bursa
-              dan pengamatan payment +2 hari bursa.
             </p>
           )}
           <form
@@ -202,7 +183,6 @@ export default function Simulator({
                     <span aria-hidden="true">Rp</span>
                     <MoneyInput
                       inputRef={capitalField}
-                      resetKey={capitalResetKey}
                       name="capital"
                       required
                       min="1"
@@ -262,11 +242,12 @@ export default function Simulator({
               <summary>Cara simulasi dihitung</summary>
               <p>
                 Harga masuk memakai rata-rata harga penutupan 5 hari bursa
-                sebelum cum-date.
-                Jumlah saham dibulatkan ke lot 100. Setiap peristiwa memakai
-                seluruh modal secara independen, bukan dijumlahkan sebagai
-                portofolio. Harga diamati sampai 2 hari bursa setelah payment,
-                tanpa transaksi jual. Data yang belum lengkap ditandai parsial.
+                sebelum cum-date (tidak termasuk cum-date). Jumlah saham
+                dibulatkan ke lot 100. Setiap peristiwa memakai seluruh modal
+                secara independen, bukan dijumlahkan sebagai portofolio. Harga
+                diamati sampai 2 hari bursa setelah payment, tanpa transaksi
+                jual. Periode mengikuti peristiwa yang dipilih; data yang belum
+                lengkap ditandai parsial.
               </p>
             </details>
             <button
@@ -276,7 +257,7 @@ export default function Simulator({
             >
               {busy ? (
                 <>
-                  <span className="spinner" /> Menghitung simulasi…
+                  <span className="spinner" /> Menjalankan simulasi…
                 </>
               ) : (
                 <>
@@ -407,127 +388,6 @@ export default function Simulator({
               run.data?.status === "completed" ? run.data.id : undefined
             }
           />
-          <details
-            className="glass result-disclosure run-snapshot"
-            aria-label="Input asli hasil"
-          >
-            <summary>
-              <span className="disclosure-title">
-                Aturan yang dipakai pada hasil ini
-              </span>
-              <small>ID {run.data?.id.slice(0, 8)}</small>
-              <ChevronDown size={18} aria-hidden="true" />
-            </summary>
-            <div className="disclosure-content">
-              <div className="run-snapshot-actions">
-                <button
-                  className="btn subtle"
-                  disabled={busy || unavailableEvents.length > 0}
-                  onClick={() => {
-                    setInput({
-                      ...result.input,
-                      allocation: "single",
-                      compare: false,
-                      capital: String(result.input.capital),
-                      timing_mode: "payment_plus_2",
-                      event_ids: [...result.input.event_ids],
-                      start_date:
-                        result.input.start_date ?? result.primary.start_date,
-                    });
-                    setCopiedFrom(run.data!.id);
-                    setCapitalResetKey((revision) => revision + 1);
-                    capitalField.current?.focus({ preventScroll: true });
-                    capitalField.current?.scrollIntoView({ block: "center" });
-                  }}
-                >
-                  <Copy size={15} /> Gunakan input hasil ini
-                </button>
-              </div>
-              <dl className="run-input-grid">
-                <div>
-                  <dt>Modal awal</dt>
-                  <dd>{money(result.input.capital)}</dd>
-                </div>
-                <div>
-                  <dt>Aturan masuk</dt>
-                  <dd>
-                    {result.input.timing_mode === "payment_plus_2"
-                      ? "Rata-rata 5 close sebelum cum-date"
-                      : result.input.entry_sessions_before_cum === 0
-                        ? "Close pada cum date"
-                        : `${result.input.entry_sessions_before_cum} hari bursa sebelum cum date`}
-                  </dd>
-                </div>
-                <div>
-                  <dt>Aturan keluar</dt>
-                  <dd>
-                    {result.primary.analysis_mode === "independent_events"
-                      ? "Tanpa transaksi keluar; valuasi akhir pengamatan"
-                      : result.input.timing_mode === "payment_plus_2"
-                        ? "Close payment +2 hari bursa"
-                        : exitLabels[result.input.exit_rule]}
-                  </dd>
-                </div>
-                <div>
-                  <dt>Periode pengamatan</dt>
-                  <dd>
-                    {result.input.timing_mode === "payment_plus_2"
-                      ? "Otomatis mengikuti jadwal dividen"
-                      : `${result.input.max_holding_sessions} hari bursa setelah ex-date`}
-                  </dd>
-                </div>
-                <div>
-                  <dt>Strategi utama</dt>
-                  <dd>
-                    {result.primary.analysis_mode === "independent_events"
-                      ? "All-in tiap peristiwa"
-                      : labels[result.input.allocation]}
-                  </dd>
-                </div>
-                <div>
-                  <dt>Perbandingan alokasi</dt>
-                  <dd>
-                    {result.primary.analysis_mode === "independent_events"
-                      ? "Modal penuh pada tiap peristiwa; hasil tidak dijumlahkan"
-                      : result.input.compare
-                        ? "Tiga strategi (hasil lama)"
-                        : "Strategi utama saja (hasil lama)"}
-                  </dd>
-                </div>
-              </dl>
-              <div className="run-events">
-                <p className="small muted">
-                  Event yang dipilih (tanggal ex-dividen)
-                </p>
-                <ul>
-                  {result.input.event_ids.map((id) => {
-                    const event = catalog.events.find((e) => e.id === id);
-                    return (
-                      <li key={id}>
-                        {event
-                          ? `${event.symbol} · ${dt(event.ex_date, true)}`
-                          : id}
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-              <p className="tiny muted run-version">
-                Engine {result.primary.rules_version} · Data{" "}
-                {result.primary.dataset_version ??
-                  run.data?.dataset_version ??
-                  "Versi tidak tercatat"}
-                . Simulasi baru memakai engine dan dataset aktif.
-              </p>
-              {unavailableEvents.length > 0 && (
-                <p className="notice">
-                  Input belum bisa disalin: event {unavailableEvents.join(", ")}{" "}
-                  tidak tersedia untuk simulasi pada dataset aktif.
-                </p>
-              )}
-            </div>
-          </details>
-          <ReplayAssumptions replay={selected} />
         </section>
       )}
       {!selected && !busy && (

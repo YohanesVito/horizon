@@ -10,7 +10,7 @@ import "./globals.css";
 import "./editorial.css";
 import Providers from "@/components/providers";
 export const metadata: Metadata = {
-  title: "Dividen Lab — Analisis peristiwa dividen",
+  title: "Horizon — Analisis peristiwa dividen",
   description:
     "Analisis harga saham di sekitar dividen dan uji asumsi dengan data historis Sectors.",
 };

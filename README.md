@@ -1,148 +1,139 @@
-# Dividen Lab
+# Horizon
 
-Helper AI backend: [setup AI_KEY dan contoh JSON schema](docs/development/AI_HELPER.md).
+**Lihat apakah dividen menutup penurunan harga saham.**
 
-Workspace lokal untuk riset dan replay rotasi dividen saham Indonesia. Frontend demo memakai desain editorial dari `feat/timeline-ui-polish`; backend tetap FastAPI. **Versi awal memakai snapshot historis Sectors, bukan harga live atau model prediksi terkalibrasi.**
+Horizon membantu investor ritel saham Indonesia mempelajari harga di sekitar pembagian dividen. Kamu bisa memasukkan modal dan melihat hasilnya pada peristiwa historis: berapa nilai saham yang tersisa, dividen yang diperoleh, dan laba atau ruginya. Setiap peristiwa diuji dengan modal penuh yang sama, termasuk sisa kas, sampai dua hari bursa setelah pembayaran.
 
-## Jalankan
+Proyek ini dibuat untuk **Sectors Hackathon · Track 03: Market Intelligence**, dengan data finansial dari Sectors.
 
-Kebutuhan: Node ≥20.9, Bun, Python 3.11+. Implementasi diperiksa dengan Node25, Bun1.3.10 dan Python3.13 di macOS.
+> Simulasi memakai snapshot data historis dan **belum menghitung biaya transaksi, pajak, atau slippage**. Prediksi harga, tanggal dividen, dan probabilitas dividend trap yang tervalidasi belum tersedia. Keputusan dan transaksi tetap dilakukan oleh pengguna.
+
+[Mulai menjalankan](#jalankan-di-komputer-sendiri) · [Coba satu simulasi](#coba-satu-simulasi) · [Cara kerja teknis](docs/TECHNICAL_GUIDE.md) · [Batas produk](#batas-produk)
+
+## Untuk siapa dan masalah apa?
+
+**Problem statement:**
+
+Investor ritel pemburu dividen (Dividend Hunter) kesulitan membandingkan strategi penggunaan modal karena yield saja tidak menunjukkan potensi kerugian harga saham dan berapa lama modal tertahan sebelum bisa digunakan kembali.
+
+## Yang bisa dilakukan sekarang
+
+### 1. Pelajari harga di sekitar peristiwa dividen
+
+Buka **Analisis** dan pilih emiten untuk membandingkan pergerakan harga historis dalam rupiah atau persentase. Kamu bisa melihat tanggal cum-date, ex-date, recording date, dan payment date pada detail peristiwa. Panel risiko memuat hasil historis beserta jumlah sampelnya, termasuk perbedaan BEP harga dan BEP yang memperhitungkan dividen.
+
+![Grafik LPPF: lintasan harga historis di sekitar ex-date](docs/images/analysis.jpg)
+
+*Contoh LPPF pada preview lokal. Garis menunjukkan peristiwa historis yang tersedia, bukan jalur harga masa depan. Sumbu horizontal mengikuti urutan titik harga yang tersedia relatif terhadap ex-date; kelengkapan sesi dan basis data masih perlu verifikasi.*
+
+### 2. Tentukan modal dan peristiwa simulasi
+
+Buka **Simulasi**, masukkan modal, lalu pilih 1 sampai 10 peristiwa dividen. Klik **Simulasikan**. Selama proses berjalan, label tombol berubah menjadi **Menjalankan simulasi…**.
+
+Setiap peristiwa memakai **seluruh modal awal secara terpisah (all-in)**, dengan pembelian dalam kelipatan 100 saham. Dana yang tidak cukup untuk membeli satu lot lagi tetap menjadi kas. Jika kamu memilih beberapa peristiwa, bandingkan hasilnya satu per satu. Hasil tersebut tidak dijumlahkan menjadi satu portofolio. Pilihan bagi rata dan rotasi modal tidak tersedia di form saat ini.
+
+Aturan perhitungannya bisa dibuka melalui **Bagaimana simulasi dihitung?** Harga masuk memakai rata-rata lima harga penutupan hari bursa sebelum cum-date, tanpa memasukkan cum-date. Aplikasi menentukan periode pengamatan secara otomatis, dari cum-date hingga dua hari bursa setelah payment. Saham tetap dipegang selama pengamatan, tanpa transaksi keluar. Data yang belum lengkap ditandai parsial.
+
+### 3. Bandingkan hasil tiap peristiwa dan pahami komponennya
+
+Pada kartu tiap emiten, kamu bisa melihat harga masuk rata-rata dan jumlah saham atau lot yang terbeli, beserta modal posisi dan nilai akhirnya. Nilai akhir dihitung dari **nilai saham + hak dividen + sisa kas**. Selisihnya terhadap modal awal menjadi laba atau rugi.
+
+Grafik menampilkan harga selama pengamatan. Untuk nilai posisi tertinggi dan terendah, perhitungan memakai harga high/low historis ditambah dividen hipotetis, tanpa sisa kas. Karena komponennya berbeda, angka ini perlu dibaca terpisah dari nilai akhir portofolio. Harga tersebut juga bukan jaminan harga jual yang bisa diperoleh.
+
+![Hasil live CFIN: modal Rp10 juta dan nilai akhir pengamatan](docs/images/cfin-demo-results-20261008.png)
+
+*Contoh CFIN, ex-date 11 Juni 2025. Hasil diamati sampai 1 Juli 2025. Posisi tidak dijual; laba/rugi merupakan valuasi historis di luar biaya transaksi, pajak, dan slippage.*
+
+Jika layanan tersedia, buka **Ringkasan AI · [ticker]** untuk membaca penjelasan hasil dan konteksnya. Engine Python menghitung angkanya. AI menjelaskan hasil tersebut, tetapi tidak menentukan perhitungan atau memastikan penyebab perubahan harga.
+
+## Coba satu simulasi
+
+Di [web Horizon](https://horizon-dividend.vercel.app/), buka **Simulasi**, lalu pilih hanya CFIN dan masukkan modal berikut. Skenario ini juga menjadi acuan demo video.
+
+| Input / aturan otomatis | Nilai |
+|---|---|
+| Modal | Rp10.000.000 |
+| Peristiwa | CFIN — ex-date 11 Juni 2025 |
+| Alokasi | All-in pada satu peristiwa |
+| Referensi harga masuk | Rata-rata lima close, 28 Mei–5 Juni 2025: Rp388,40 |
+| Cum-date | 10 Juni 2025 |
+| Payment | 26 Juni 2025 |
+| Akhir pengamatan | 1 Juli 2025 — payment +2 hari bursa |
+
+Klik **Simulasikan**. Run live `7768ae04-704b-4163-96ab-9a966bdfb8f1`, diperiksa 8 Oktober 2026, menghasilkan:
+
+| Komponen | Nilai |
+|---|---:|
+| Jumlah saham | 25.700 saham / 257 lot |
+| Modal posisi | Rp9.981.880 |
+| Sisa kas | Rp18.120 |
+| Dividen per saham | Rp50 |
+| Total dividen | Rp1.285.000 |
+| Harga akhir pengamatan | Rp310 |
+| Nilai saham akhir | Rp7.967.000 |
+| Perubahan nilai saham dari harga masuk | −Rp2.014.880 |
+| Nilai akhir termasuk dividen dan kas | **Rp9.270.120** |
+| Laba/rugi terhadap modal awal | **−Rp729.880 (−7,30%)** |
+
+**Dividen Rp1.285.000 belum menutup penurunan nilai saham Rp2.014.880**, sehingga yield saja belum cukup untuk menilai hasilnya. Saham masih dipegang pada akhir pengamatan; sebagian nilai akhir itu belum berupa kas.
+
+Pada Analisis, CFIN berada di peringkat empat kandidat yield historis 2025 dengan **15,94%**. Angka itu adalah yield pada daftar kandidat, bukan return simulasi. Close cum-date Rp398 turun menjadi Rp346 pada ex-date: **−Rp52 (−13,07%)**. Penurunan satu hari ini berbeda dari perubahan nilai saham sepanjang simulasi yang memakai harga masuk rata-rata Rp388,40.
+
+[Bukti run dan rekonsiliasi angka](outputs/development/cfin-demo-20261008.json). Ubah modal atau peristiwa untuk menguji skenario lain. Contoh ini dipilih untuk menunjukkan risiko; bukan rekomendasi saham atau hasil yang mewakili semua peristiwa.
+
+## Bagaimana Sectors menjadi insight?
+
+```mermaid
+flowchart LR
+  M["Sectors MCP: harga dan aksi korporasi"] --> D["Snapshot historis dan pemeriksaan data"]
+  C["Sectors REST: kalender dan data dividen"] --> D
+  D --> A["Analisis: kandidat yield dan lintasan harga"]
+  D --> E["Engine Python: all-in tiap peristiwa"]
+  U["Input modal dan pilihan peristiwa"] --> E
+  E --> R["Nilai saham, dividen, sisa kas, laba/rugi"]
+  R --> UI["Hasil per emiten dan grafik pengamatan"]
+  R --> AI["Opsional: penjelasan AI dan konteks Sectors"]
+```
+
+Data harga dan dividen berasal dari Sectors. Dari modal dan harga masuk rata-rata, engine menghitung jumlah lot yang terbeli dan nilai saham selama pengamatan. Hak dividen dan sisa kas kemudian ditambahkan untuk mendapatkan nilai akhir. Perhitungan diulang dengan modal penuh pada setiap peristiwa. Kas tidak berpindah antarperistiwa, dan saham tidak dijual otomatis.
+
+AI membantu menjelaskan hasil dan menelusuri konteks tambahan yang tersedia. Penjelasannya perlu membedakan hasil statistik, konteks dari sumber, dan dugaan penyebab. Data atau berita yang berdekatan waktunya belum membuktikan hubungan sebab-akibat. Hasil historis ini bukan prediksi.
+
+Kode/API dan arsip hasil masih memuat simulasi tiga alokasi, aturan keluar, settlement, planner rute, dan eksperimen prediksi. Itu bukan pilihan pada form Simulasi saat ini. Peta modul dan metode tersedia di [panduan teknis](docs/TECHNICAL_GUIDE.md); angka contoh lama tetap disimpan sebagai bukti historis.
+
+## Jalankan di komputer sendiri
+
+Siapkan **Node.js ≥20.9, Bun, dan Python ≥3.11**, lalu jalankan perintah berikut dari akar repository. Snapshot Sectors sudah disertakan, sehingga replay dasar bisa berjalan tanpa API key atau koneksi ke Supabase.
 
 ```sh
+git clone https://github.com/YohanesVito/horizon.git
+cd horizon
 bun install --frozen-lockfile
 python3 -m venv .venv
 .venv/bin/python -m pip install -r backend/requirements.lock
+mkdir -p .runtime
 ```
 
-Terminal backend:
+**Terminal 1: jalankan backend lokal dengan database demo terpisah.**
 
 ```sh
+DATABASE_URL=sqlite:///.runtime/readme-demo.db \
+HORIZON_API_KEY='' HORIZON_REQUIRE_API_KEY=0 AI_KEY='' SECTORS_API_KEY='' \
 .venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
 ```
 
-Terminal frontend, preview stabil tanpa watcher:
+**Terminal 2: jalankan frontend.**
 
 ```sh
 bun run build
-bun run start
+BACKEND_URL=http://127.0.0.1:8000 HORIZON_API_KEY='' bun run start
 ```
 
-Buka http://127.0.0.1:3000. API/OpenAPI tersedia di http://127.0.0.1:8000/docs. Untuk mengubah UI dengan hot reload, gunakan `bun run dev` sebagai pengganti `start`. Dev memakai webpack polling untuk menghindari EMFILE pada workspace campuran Python/Node.
+Buka **http://127.0.0.1:3000**. Dokumentasi API lokal tersedia di **http://127.0.0.1:8000/docs**. Perintah di atas memakai SQLite lokal dan menonaktifkan panggilan AI/provider baru, termasuk jika checkout memiliki `.env.local` untuk cloud. Bila port sudah dipakai, pilih port kosong untuk kedua server dan sesuaikan `BACKEND_URL`.
 
-Setup lokal checkout `horizon` pada 7 Oktober memakai npm dan Python 3.12 yang dikelola uv. Ini juga menjadi alternatif bila Python sistem gagal membuat virtualenv karena `pyexpat`/`libexpat`:
+Untuk mengaktifkan penjelasan AI atau mengumpulkan snapshot baru, ikuti [konfigurasi server dan panduan teknis](docs/TECHNICAL_GUIDE.md#konfigurasi-dan-operasi). Jangan menaruh key dalam variabel `NEXT_PUBLIC_*` atau commit. Riwayat demo tersimpan lokal; akun dan data pribadi antar-pengguna belum dipisahkan.
 
-```sh
-npm install --package-lock=false
-/opt/homebrew/bin/uv python install 3.12
-/opt/homebrew/bin/uv venv --python 3.12 .runtime/ui-feedback-venv
-/opt/homebrew/bin/uv pip install --python .runtime/ui-feedback-venv/bin/python -r backend/requirements.lock
-```
-
-Jalankan backend dan frontend di dua terminal dari akar proyek:
-
-```sh
-# Terminal backend
-.runtime/ui-feedback-venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
-```
-
-```sh
-# Terminal frontend
-npm run build
-npm run start
-```
-
-Keduanya memakai loopback lokal. Buka http://localhost:3000/; frontend meneruskan `/api` ke backend. Snapshot yang disertakan cukup, tanpa mengambil data provider baru. Virtualenv alternatif ini tersimpan di `.runtime` yang diabaikan Git. **Pada checkout yang `.env.local`-nya mengarah ke Supabase/Dalang**, jangan jalankan dua perintah generik di atas tanpa override: gunakan `DATABASE_URL=sqlite:////private/tmp/horizon-local-preview.db .venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000` dan `BACKEND_URL=http://127.0.0.1:8000 npm run start` agar preview memakai database terpisah, bukan worker kedua pada Supabase.
-
-Untuk berbagi demo dengan perangkat di jaringan lokal yang sama, jalankan `bun run start:lan` sebagai pengganti `bun run start`. Buka `http://<IP-LAN-komputer>:3000` dari perangkat teman. Backend tetap berjalan pada127.0.0.1:8000; frontend meneruskan `/api` melalui port3000. Komputer host harus tetap menyala dan terhubung. Semua pengunjung memakai watchlist/rules/riwayat lokal yang sama karena akun terpisah belum tersedia. Hentikan proses LAN dan jalankan `bun run start` untuk kembali ke akses komputer sendiri.
-
-Snapshot yang disertakan cukup untuk menjalankan aplikasi tanpa panggilan provider baru. `.env.local` yang sudah ada memuat kunci Sectors dan tidak boleh dicetak, disalin ke frontend, atau masuk Git. Contoh variabel tanpa rahasia ada di `.env.local.example`. Jangan menimpa file `.env.local` yang sudah berisi key.
-
-Repository: https://github.com/YohanesVito/horizon. Pada clone baru, snapshot riset dan bukti development ikut tersedia; database `.runtime` dibuat lokal saat backend mulai berjalan. Watchlist dan riwayat simulasi pribadi dari komputer lain tidak ikut tersalin. Replay dari snapshot tidak memerlukan API key; isi konfigurasi server sendiri bila akan mengambil data Sectors baru.
-
-## Backend Docker di Dalang
-
-Deployment FastAPI dalam Docker di VPS Dalang memakai Supabase melalui Session Pooler; [health backend](https://10e0ff54-f828-44de-a965-5671328a08d3.svc.dalang.io/api/health). Preview lokal terbaru pada8Oktober2026 menjalankan FastAPI sendiri dengan SQLite terpisah dan frontend3000 yang diproxy ke localhost8000, agar perubahan UI/API yang belum dideploy dapat diperiksa tanpa berbagi worker cloud. Jangan menjalankan backend kedua pada database Supabase yang sama. Status deployment frontend publik/Vercel harus diverifikasi terpisah. Release, bukti pengujian, kendala storage dan prosedur rollback berada di [DEPLOYMENT_DALANG.md](docs/development/DEPLOYMENT_DALANG.md).
-
-Frontend meneruskan `/api/*` melalui Route Handler server ke `BACKEND_URL`. Untuk backend remote, URL harus HTTPS dan `HORIZON_API_KEY` harus sama pada server Next.js dan FastAPI. Jangan menggunakan awalan `NEXT_PUBLIC_` untuk key. Jika key diaktifkan, akses langsung data API/OpenAPI memerlukan header `Authorization: Bearer ...`; hanya `/api/health` terbuka. Ini proteksi antarlayanan, bukan implementasi akun pengguna. Jalankan hanya satu proses backend untuk database Supabase yang sama.
-
-## Fitur yang dapat dicoba
-
-**Timeline kandidat:** buka **Analisis** dan pilih DMAS, LPPF, ADRO, CFIN, atau RALS. Grafik menampilkan jendela event/harga historis yang tersedia apa adanya; tahun kosong diberi label, beberapa pembayaran pada satu tahun dapat dipilih berdasarkan ex-date, dan mode Rp/% tetap ada. Semua grafik masih pratinjau karena verifikasi peristiwa/basis data belum selesai. Tab2026 hanya aktif pada LPPF dengan harga aktual sampai6Oktober2026. Panel Engine Riset menampilkan frekuensi trap dan waktu BEP historis sesuai aturan aktif, ukuran sampel, dan batas ketidakpastian; itu **bukan probabilitas atau jalur harga masa depan**. Formula v0.1 masih hipotesis riset dan prediksi numerik belum tersedia. [Runbook dan bukti pemeriksaan](docs/development/TIMELINE_IMPLEMENTATION.md).
-
-1. **Peluang:** sembilan emiten, pencarian, sorting, filter yield/frekuensi/kelengkapan data dan aturan screening tersimpan.
-2. **Detail & kalender:** 12 event kanonis tahun 2025 dari sembilan emiten yang juga ada di Intelligence; lima tahap tanggal, grafik harga setahun, riwayat dividen, null jelas.
-3. **Watchlist:** tambah/hapus tersimpan di database server (Supabase atau SQLite lokal). Belum ada login/multi-user.
-4. **Simulator:** modal, pilihan event, entry0/5/10 sesi sebelum cum, exit ex-close/payment-close/BEP/holding-limit. Bandingkan all-in pada event pertama, split merata, dan rotasi seluruh kas tersedia.
-5. **Hasil:** grafik NAV, dividen, PnL saham, drawdown, lama modal tertahan, kesempatan terlewat, posisi terbuka, ledger, dan riwayat run persisten.
-6. **Risiko:** studi delapan event BBCA 2022–2025, BEP harga dan total terpisah; tiga event belum pulih pada t+20 tetap ditampilkan.
-7. **Intelligence:** audit48 event pada9 emiten2022–2025, frekuensi rugi dengan interval Wilson95%, kurva Kaplan–Meier BEP harga/total, perbandingan periode, serta ranking dengan objective dan batas risiko milik tim. Default entry5 sesi sebelum cum dan horizon20:43 event lengkap,4 dikarantina,1 tersensor dini. Studi pilot di detail memakai entry cum sehingga angkanya tidak identik.
-8. **Skenario modal:** masukkan modal, harga entry, DPS dan tanggal hipotetis. Delapan analog BBCA atau analog emiten lain menghasilkan PnL/valuasi, piutang dividen, P10/median/P90 sampel, perjalanan PnL dan riwayat persisten. Ini stress test satu posisi; perubahan DPS asumsi tidak memodelkan ulang hubungan DPS dengan penurunan ex-date.
-
-9. **Rencana rotasi:** pilih modal, periode 2025, emiten dan salinan financial logic tim. Statistik dipotong sebelum awal periode. Tiga aturan menyusun kandidat rute; audit menjelaskan event yang lolos, ditolak, atau tidak masuk rute. Uji semua rute terhadap all-in event pertama, split per event, dan rotasi kas. Tabel hasil mempunyai modal/periode sama, PnL gross, drawdown, lama modal tertahan, posisi terbuka/di bawah entry, dan kesempatan terlewat. Rencana serta replay tersimpan terpisah.
-
-Contoh awal: Rp100 juta, BBCA→BMRI→LPPF, masuk5 sesi sebelum cum, keluar setelah sinyal BEP dengan batas20 sesi, akhir20 Mei2025. Rotasi melewatkan BMRI karena kas belum tersedia; posisi LPPF masih terbuka pada akhir replay. Hasil akhir termasuk nilai posisi dan piutang, bukan hanya uang tunai.
-
-Katalog, kalender, dan replay kini memakai subset 12 event tahun 2025 dari sumber kanonis Intelligence (48 event 2022–2025). Harga kontinu mendukung replay sepanjang 2025; hasil lama tetap disimpan dengan versi aslinya. Belum ada forecast terkalibrasi, jadwal masa depan terkonfirmasi, atau optimizer rotasi forward. Seluruh nominal gross di luar biaya, pajak dan slippage.
-
-### Reproduksi intelligence
-
-Snapshot sudah tersedia; ketiga kolektor berikut hanya perlu dijalankan bila akan melengkapi cache. Tidak menyegarkan snapshot lama secara diam-diam. Restart backend setelah dataset diubah.
-
-```sh
-python3 work/collect_intelligence.py actions
-python3 work/collect_intelligence.py calendar
-python3 work/collect_intelligence.py prices
-.venv/bin/python work/build_intelligence.py
-```
-
-74 snapshot sumber ada di `outputs/intelligence/raw/` (9 corporate actions,17 kalender,48 harga). Harga/actions lewat MCP; kalender lewat REST resmi karena tidak tersedia dalam registry66 tools MCP yang diperiksa. `baseline-analysis.json` dan `event-audit.csv` menyimpan hasil baseline; fingerprint mencakup byte snapshot serta provenance. Aturan metode ada di [INTELLIGENCE_POLICY.md](docs/development/INTELLIGENCE_POLICY.md).
-
-API baru: `GET /api/intelligence`, `PUT /api/intelligence/rules`, `POST /api/scenarios`, `GET /api/scenarios`. Financial logic dan skenario disimpan pada database server yang dikonfigurasi. Tidak ada API key pada client atau panggilan provider dari browser.
-
-```mermaid
-flowchart LR
-  M[Sectors MCP: corporate actions + OHLCV] --> R[74 immutable raw snapshots]
-  C[Sectors REST: calendar] --> R
-  R --> A[IntelligenceDataset: merge, conflict/split audit]
-  A --> O[Entry dan horizon tetap: event observations]
-  O --> K[Wilson + KM + temporal diagnostics]
-  K --> F[Ranking objective + filter tim]
-  O --> S[Stress test analog: modal, harga, DPS, tanggal input]
-  F --> API[FastAPI]
-  S --> API
-  API --> DB[(Supabase / SQLite: rules, scenario input/result/version)]
-  API --> UI[Next.js Intelligence: ranking, kurva, audit, skenario]
-```
-
-## Data dan kalkulasi
-
-```mermaid
-flowchart LR
-  MCP[Sectors MCP: harga dan laporan dividen] --> RAW[Snapshot JSON + metadata]
-  REST[Sectors Corporate Actions REST: kalender] --> RAW
-  RAW --> D[Python Dataset: normalisasi, validasi, fingerprint]
-  D --> API[FastAPI: catalog, detail]
-  API --> UI[Next.js: discovery, kalender, detail]
-  UI --> JOB[POST simulation: input dan rules snapshot]
-  JOB --> W[Local thread worker]
-  D --> W
-  W --> ENGINE[Decimal replay: lot, posisi, hak, kas, settlement]
-  ENGINE --> DB[(Supabase / SQLite: run, ledger, results)]
-  DB --> RESULT[GET run: status dan hasil]
-  RESULT --> UI
-```
-
-- Harga aktual dan 12 event 2025: BBCA, BBRI, BMRI, BBNI, LPPF, DMAS, ADRO, RALS, CFIN. Cakupan harga 1 Des2024–10 Jan2026 untuk lookback/settlement; periode replay hanya tahun2025. Validasi cakupan dilakukan lagi sesuai tanggal entry dan exit pengguna.
-- `work/collect_mvp_data.py` mengambil tujuh respons baru lewat **MCP Sectors**, dengan cache file; tidak meminta ulang file yang sudah ada. Jalankan `python3 work/collect_mvp_data.py` hanya saat perlu mengisi snapshot yang belum ada. Adapter MCP dan REST sebelumnya tetap berada di `work/`.
-- Harga/dataset di `outputs/dividend-research/`, `outputs/sectors-live/`, `outputs/mvp-sectors/`. Raw responses mencatat tool/endpoint, arguments dan waktu pengambilan. Backend tidak mengubah raw data.
-- Nilai portofolio = kas + saham + piutang hasil jual + piutang dividen. Lot100, tanpa leverage. Hasil jual tersedia T+2 **sesi teramati dataset**, dividen menjadi kas pada payment date.
-- BEP harga memakai entry price. Sinyal close baru dapat dijual pada open sesi berikutnya; gap turun masih mungkin. Bila batas pengamatan tercapai, exit memakai close. Jika akhir replay lebih cepat, posisi tetap terbuka dan dinilai dengan harga terakhir.
-- Durasi modal tertahan dihitung sampai settlement atau akhir pengamatan. Ini hari kalender; parameter holding memakai sesi harga setelah ex-date.
-- Dividen dibukukan sebagai hak pada ex-date, kemudian pindah ke kas saat payment. Dividen tidak hilang saat saham dijual sebelum payment dan tidak dihitung dua kali.
-- Semua angka **di luar biaya transaksi, pajak, dan slippage**. Tampilan uang maksimal empat desimal agar DPS pecahan tidak terlihat nol; engine menggunakan Decimal.
-- Run menyimpan input, snapshot screening rules, versi engine, fingerprint dataset, ledger dan hasil. Fingerprint memungkinkan perubahan dataset terdeteksi; versi hasil lama tidak ditimpa saat aturan baru disimpan.
-
-## Pemeriksaan development
+## Pemeriksaan
 
 ```sh
 .venv/bin/python -m pytest backend/tests -q
@@ -151,47 +142,22 @@ bun run typecheck
 bun run build
 ```
 
-Uji keuangan memakai fixture sintetis yang tidak ditampilkan sebagai data pasar, serta satu replay Sectors nyata. Uji API memakai database sementara; tidak mengubah watchlist pengguna. Pemeriksaan browser manual memverifikasi alur API–hasil, watchlist, detail, kalender dan layout. Bukti/status aktual tercatat di `docs/development/VERIFICATION.md`.
+Pada source `8a8b5a6` (8 Oktober 2026): **138 tes backend, lint, TypeScript, dan build produksi lulus**. Tes backend juga lulus dari ekspor file Git bersih menggunakan lingkungan dependensi yang sudah terpasang. Satu warning deprecation Starlette tercatat. Ini pemeriksaan development, bukan bukti akurasi prediksi atau kelulusan UAT.
 
-## Batas MVP saat ini
+Screenshot Analisis berasal dari preview lokal terdahulu; screenshot CFIN berasal dari web publik pada 8 Oktober 2026. [Asal screenshot dan bukti](docs/images/README.md).
 
-- PRD dan user story lampiran belum tersedia; implementasi mengikuti baseline percakapan. **Belum dinyatakan memenuhi seluruh PRD atau lulus UAT.** Testing akhir menunggu pembahasan dengan PM.
-- Belum ada prediksi tanggal, jalur harga, probabilitas trap terkalibrasi, model lapkeu, optimizer rute global, maupun otomatisasi perdagangan. Statistik delapan event tidak menggantikan model tervalidasi.
-- Belum ada declaration timestamp yang memadai atau lapkeu dengan timestamp publikasi terverifikasi. Replay bersyarat pada kalender yang diketahui saat riset; belum merupakan backtest point-in-time bebas look-ahead.
-- Snapshot terbatas; kalender bukan coverage IDX lengkap. DPS berbeda basis/currency/split dan jadwal konflik tidak boleh ditambahkan ke replay tanpa validasi baru. Harga replay tidak dividend-adjusted ulang; penambahan histori memerlukan audit corporate actions.
-- Penyimpanan record mendukung PostgreSQL Supabase dengan schema privat/migrasi berversi dan SQLite untuk lokal. Schema domain ternormalisasi serta autentikasi multi-user belum ada. Local-thread worker tetap bypass Redis/RQ; satu backend aktif per database cloud dijaga advisory lock. Restart menandai job yang terputus sebagai gagal agar bisa dijalankan ulang.
-- Backend membaca `.env.local` otomatis; environment proses mengungguli file. `DATABASE_URL` menentukan koneksi runtime, `MIGRATION_DATABASE_URL` hanya untuk migrasi. Hosting frontend/FastAPI tetap terpisah dari database cloud. Kedua server default bind127.0.0.1; `start:lan` membuka frontend pada0.0.0.0:3000 untuk demo jaringan lokal.
+## Batas produk
 
-Rencana dan log: [SPRINT_PLAN](docs/development/SPRINT_PLAN.md), [PROGRESS](docs/development/PROGRESS.md), [ISSUES](docs/development/ISSUES.md), [TRACEABILITY](docs/development/TRACEABILITY.md), [DESIGN](docs/development/DESIGN.md).
+- **Historis dan cakupan terbatas.** Analisis menampilkan lima kandidat. Engine replay mencakup 12 event tahun 2025 pada sembilan emiten, sedangkan dataset intelligence memuat 48 event 2022 sampai 2025 sebelum penyaringan. Data ini belum mencakup seluruh IDX atau kalender dividen terkini.
+- **Statistik belum menjadi prediksi tervalidasi.** Statistik belum tervalidasi untuk prediksi. Timeline masih berupa pratinjau karena audit gap tahun, konflik jadwal, dan kesetaraan basis harga/dividen belum selesai. Sampelnya kecil dan hanya mencakup emiten terpilih, sehingga hasilnya belum bisa digeneralisasi.
+- **BEP harga berbeda dari BEP total.** BEP harga tercapai ketika harga kembali ke harga beli, sedangkan BEP total memperhitungkan dividen. Simulasi saat ini tidak menjual saham pada sinyal BEP.
+- **Asumsi simulasi tetap penting.** Biaya, pajak, dan slippage belum dihitung. Harga masuk rata-rata lima close adalah referensi, bukan harga eksekusi pada satu tanggal. Akhir pengamatan bukan tanggal modal otomatis kembali menjadi kas; tidak ada penjualan atau settlement dalam alur ini. Timestamp pengumuman belum memadai untuk membuktikan seluruh informasi tersedia saat keputusan historis.
+- **Masih MVP.** Aplikasi masih MVP, tanpa akun terpisah, optimizer rute global, atau eksekusi order. Pekerjaan di latar belakang memakai thread lokal. Jika proses terputus, proses tersebut perlu dijalankan ulang. Pengujian penerimaan bersama PM belum dinyatakan selesai.
 
-Konfigurasi Supabase, migrasi SQLite, pemeriksaan dan rollback: [SUPABASE_MIGRATION.md](docs/development/SUPABASE_MIGRATION.md). Migrasi hanya memindahkan record aplikasi; harga/kalender tetap snapshot Sectors di repository.
+## Dokumentasi lanjutan
 
-## Reproduksi dan review rencana rotasi
-
-`python3 work/collect_rotation.py` melengkapi cache melalui MCP Sectors: 45 respons harga sembilan emiten dan 5 IHSG, semuanya interval maksimal 90 hari. Cache berada di `outputs/rotation/raw`; tidak perlu key untuk menjalankan aplikasi dengan snapshot yang sudah ada. Gap IHSG pada 2/6/7 Mei dan 20 Oktober dilengkapi hanya dari tanggal OHLCV valid yang dimiliki seluruh sembilan feed emiten. Metadata `session_repairs` dan fingerprint mencatatnya; kalender settlement resmi tetap belum diverifikasi.
-
-API: `POST/GET /api/rotation-plans`, `GET /api/rotation-plans/{id}`, `POST /api/rotation-plans/{id}/replay`, `GET /api/rotation-runs`, `GET /api/rotation-runs/{id}`. Rencana menyimpan financial logic, cutoff, evidence IDs, alasan dan versi. Perubahan dataset mengharuskan rencana baru; hasil replay lama tetap dapat dilihat.
-
-```mermaid
-flowchart LR
-  S[Sectors MCP harga + IHSG] --> U[UnifiedDataset: 12 event kanonis 2025]
-  I[Intelligence: 48 event + audit + harga] --> U
-  F[Modal, periode, emiten, financial logic] --> P[Planner: cutoff sebelum keputusan]
-  I --> P
-  U --> P
-  P --> D[(Snapshot rencana: evidence + routes + assumptions)]
-  D --> J[Worker: setiap rute x 3 alokasi]
-  U --> J
-  J --> E[Decimal ledger: lot, hak, payment, T+2]
-  E --> R[(Hasil, kurva, ledger, versi)]
-  R --> UI[Next.js: perbandingan dan riwayat]
-```
-
-Metode: [ROTATION_POLICY](docs/development/ROTATION_POLICY.md). Panduan diskusi berikutnya: [PM_REVIEW](docs/development/PM_REVIEW.md). Statistik sebelum keputusan mencegah kebocoran harga/outcome dalam ranking; kalender yang belum memiliki declaration timestamp tetap asumsi. Universe dipilih setelah periode riset. Karena itu hasil belum membuktikan strategi bisa dipilih secara point-in-time pada 2025.
-
-
-### Pemeriksaan kesiapan lanjutan
-
-Jalankan `.venv/bin/python work/verify_mvp.py` untuk mengulang1.620 kombinasi replay dari snapshot lokal tanpa memanggil provider atau mengubah riwayat pengguna. Laporan tersimpan di `outputs/development/mvp-readiness.json`. Tambahan pemeriksaan backend membawa total menjadi40tes; enginev2.1 menghitung return sebelum pembulatan tampilan.
-
-Detail emiten menyediakan tombol **Simulasikan event ini** per tanggal ex; ID itu diteruskan ke form dengan satu event terpilih. Tahun selalu ditampilkan pada timeline/settlement/payment, termasuk saat melintasi pergantian tahun. Panduan uji dan status sebenarnya ada di [TEST_MATRIX.md](docs/development/TEST_MATRIX.md); pengujian bersama PM masih menunggu pelaksanaan.
+- [Panduan teknis: modul, metode, data, dan operasi](docs/TECHNICAL_GUIDE.md)
+- [Metode statistik risiko](docs/development/INTELLIGENCE_POLICY.md) dan [metode rotasi](docs/development/ROTATION_POLICY.md)
+- [Kontrak dan batas analisis AI](docs/development/AI_INSIGHTS.md)
+- [Progres development](docs/development/PROGRESS.md), [issue dan gap](docs/development/ISSUES.md), serta [pemetaan kebutuhan](docs/development/TRACEABILITY.md)
+- [Panduan pengujian bersama PM](docs/development/UAT_SESSION.md)

@@ -1,0 +1,2134 @@
+{
+  "task": "DOC-01",
+  "source_commit": "8a8b5a6",
+  "captured_on": "2026-10-08",
+  "environment": "local Next.js -> FastAPI -> isolated SQLite",
+  "ai_provider_calls": 0,
+  "browser_console_errors_or_warnings": [],
+  "screenshots": [
+    "docs/images/analysis.jpg",
+    "docs/images/simulation-input.jpg",
+    "docs/images/simulation-results.jpg"
+  ],
+  "run": {
+    "id": "21f1727e-3634-4c91-a17f-7d9a1475d9a7",
+    "status": "completed",
+    "input": {
+      "capital": "100000000",
+      "event_ids": [
+        "BBCA:2025-03-21",
+        "BMRI:2025-04-14",
+        "LPPF:2025-04-22"
+      ],
+      "allocation": "rotation",
+      "entry_sessions_before_cum": 5,
+      "exit_rule": "price_bep",
+      "max_holding_sessions": 20,
+      "end_date": "2025-05-20",
+      "start_date": "2025-03-01",
+      "compare": true
+    },
+    "screening_rules": {
+      "name": "Logika dividen saya",
+      "minimum_yield": 0,
+      "minimum_frequency": 0,
+      "require_replay": false,
+      "sort_by": "yield"
+    },
+    "dataset_version": "unified-b749e08ddb769800",
+    "created_at": "2026-10-08T10:14:25.507262+00:00",
+    "result": {
+      "primary": {
+        "allocation": "rotation",
+        "capital": 100000000.0,
+        "end_date": "2025-05-20",
+        "start_date": "2025-03-01",
+        "ending_nav": 101440000.0,
+        "ending_cash": 98545000.0,
+        "remaining_positions": 2895000.0,
+        "pending_sales": 0.0,
+        "pending_dividends": 0.0,
+        "gross_pnl": 1440000.0,
+        "return_pct": 1.44,
+        "dividends": 3225000.0,
+        "max_drawdown_pct": -10.545,
+        "trades": [
+          {
+            "event_id": "BBCA:2025-03-21",
+            "symbol": "BBCA",
+            "status": "sold",
+            "shares": 11100,
+            "entry_date": "2025-03-13",
+            "entry_price": 8975.0,
+            "exit_date": "2025-04-30",
+            "exit_price": 8825.0,
+            "settlement_date": "2025-05-05",
+            "payment_date": "2025-04-11",
+            "dividend": 2775000.0,
+            "capital_pnl": -1665000.0,
+            "gross_pnl": 1110000.0,
+            "reason": "Batas waktu; BEP tidak menjamin fill",
+            "signal_date": null,
+            "capital_days": 53
+          },
+          {
+            "event_id": "BMRI:2025-04-14",
+            "symbol": "BMRI",
+            "status": "skipped",
+            "shares": 0,
+            "entry_date": "2025-03-26",
+            "entry_price": 5150.0,
+            "exit_date": null,
+            "exit_price": null,
+            "settlement_date": null,
+            "payment_date": "2025-04-23",
+            "dividend": 0.0,
+            "capital_pnl": 0.0,
+            "gross_pnl": 0.0,
+            "reason": "Kas tersedia tidak cukup untuk satu lot pada tanggal masuk",
+            "signal_date": "2025-05-15",
+            "capital_days": 0
+          },
+          {
+            "event_id": "LPPF:2025-04-22",
+            "symbol": "LPPF",
+            "status": "holding",
+            "shares": 1500,
+            "entry_date": "2025-04-11",
+            "entry_price": 2010.0,
+            "exit_date": null,
+            "exit_price": null,
+            "settlement_date": null,
+            "payment_date": "2025-04-29",
+            "dividend": 450000.0,
+            "capital_pnl": -120000.0,
+            "gross_pnl": 330000.0,
+            "reason": "Belum keluar",
+            "signal_date": null,
+            "capital_days": 39
+          }
+        ],
+        "ledger": [
+          {
+            "date": "2025-03-13",
+            "kind": "buy",
+            "symbol": "BBCA",
+            "amount": -99622500.0,
+            "detail": "11,100 saham pada close hari bursa masuk"
+          },
+          {
+            "date": "2025-03-21",
+            "kind": "entitlement",
+            "symbol": "BBCA",
+            "amount": 2775000.0,
+            "detail": "Hak dividen BBCA:2025-03-21 untuk lot BBCA:2025-03-21; belum menjadi kas"
+          },
+          {
+            "date": "2025-03-26",
+            "kind": "skipped",
+            "symbol": "BMRI",
+            "amount": 0.0,
+            "detail": "Kas tersedia tidak cukup untuk satu lot pada tanggal masuk"
+          },
+          {
+            "date": "2025-04-11",
+            "kind": "dividend",
+            "symbol": "BBCA",
+            "amount": 2775000.0,
+            "detail": "Dividen berpindah dari piutang ke kas"
+          },
+          {
+            "date": "2025-04-11",
+            "kind": "buy",
+            "symbol": "LPPF",
+            "amount": -3015000.0,
+            "detail": "1,500 saham pada close hari bursa masuk"
+          },
+          {
+            "date": "2025-04-22",
+            "kind": "entitlement",
+            "symbol": "LPPF",
+            "amount": 450000.0,
+            "detail": "Hak dividen LPPF:2025-04-22 untuk lot LPPF:2025-04-22; belum menjadi kas"
+          },
+          {
+            "date": "2025-04-29",
+            "kind": "dividend",
+            "symbol": "LPPF",
+            "amount": 450000.0,
+            "detail": "Dividen berpindah dari piutang ke kas"
+          },
+          {
+            "date": "2025-04-30",
+            "kind": "sell",
+            "symbol": "BBCA",
+            "amount": 97957500.0,
+            "detail": "11,100 saham × Rp8825; Batas waktu; BEP tidak menjamin fill"
+          },
+          {
+            "date": "2025-05-05",
+            "kind": "settlement",
+            "symbol": "BBCA",
+            "amount": 97957500.0,
+            "detail": "Hasil jual menjadi kas tersedia (T+2 hari bursa dataset)"
+          }
+        ],
+        "curve": [
+          {
+            "date": "2025-03-01",
+            "nav": 100000000.0,
+            "cash": 100000000.0,
+            "positions": 0.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-03-03",
+            "nav": 100000000.0,
+            "cash": 100000000.0,
+            "positions": 0.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-03-04",
+            "nav": 100000000.0,
+            "cash": 100000000.0,
+            "positions": 0.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-03-05",
+            "nav": 100000000.0,
+            "cash": 100000000.0,
+            "positions": 0.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-03-06",
+            "nav": 100000000.0,
+            "cash": 100000000.0,
+            "positions": 0.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-03-07",
+            "nav": 100000000.0,
+            "cash": 100000000.0,
+            "positions": 0.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-03-10",
+            "nav": 100000000.0,
+            "cash": 100000000.0,
+            "positions": 0.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-03-11",
+            "nav": 100000000.0,
+            "cash": 100000000.0,
+            "positions": 0.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-03-12",
+            "nav": 100000000.0,
+            "cash": 100000000.0,
+            "positions": 0.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-03-13",
+            "nav": 100000000.0,
+            "cash": 377500.0,
+            "positions": 99622500.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-03-14",
+            "nav": 97502500.0,
+            "cash": 377500.0,
+            "positions": 97125000.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-03-17",
+            "nav": 95837500.0,
+            "cash": 377500.0,
+            "positions": 95460000.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-03-18",
+            "nav": 92507500.0,
+            "cash": 377500.0,
+            "positions": 92130000.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-03-19",
+            "nav": 92785000.0,
+            "cash": 377500.0,
+            "positions": 92407500.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-03-20",
+            "nav": 93340000.0,
+            "cash": 377500.0,
+            "positions": 92962500.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-03-21",
+            "nav": 90842500.0,
+            "cash": 377500.0,
+            "positions": 87690000.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 2775000.0
+          },
+          {
+            "date": "2025-03-24",
+            "nav": 91397500.0,
+            "cash": 377500.0,
+            "positions": 88245000.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 2775000.0
+          },
+          {
+            "date": "2025-03-25",
+            "nav": 92507500.0,
+            "cash": 377500.0,
+            "positions": 89355000.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 2775000.0
+          },
+          {
+            "date": "2025-03-26",
+            "nav": 97780000.0,
+            "cash": 377500.0,
+            "positions": 94627500.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 2775000.0
+          },
+          {
+            "date": "2025-03-27",
+            "nav": 97502500.0,
+            "cash": 377500.0,
+            "positions": 94350000.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 2775000.0
+          },
+          {
+            "date": "2025-04-08",
+            "nav": 89455000.0,
+            "cash": 377500.0,
+            "positions": 86302500.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 2775000.0
+          },
+          {
+            "date": "2025-04-09",
+            "nav": 91120000.0,
+            "cash": 377500.0,
+            "positions": 87967500.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 2775000.0
+          },
+          {
+            "date": "2025-04-10",
+            "nav": 94450000.0,
+            "cash": 377500.0,
+            "positions": 91297500.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 2775000.0
+          },
+          {
+            "date": "2025-04-11",
+            "nav": 95005000.0,
+            "cash": 137500.0,
+            "positions": 94867500.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-04-14",
+            "nav": 96452500.0,
+            "cash": 137500.0,
+            "positions": 96315000.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-04-15",
+            "nav": 98365000.0,
+            "cash": 137500.0,
+            "positions": 98227500.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-04-16",
+            "nav": 97225000.0,
+            "cash": 137500.0,
+            "positions": 97087500.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-04-17",
+            "nav": 97480000.0,
+            "cash": 137500.0,
+            "positions": 97342500.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-04-21",
+            "nav": 95237500.0,
+            "cash": 137500.0,
+            "positions": 95100000.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-04-22",
+            "nav": 97465000.0,
+            "cash": 137500.0,
+            "positions": 96877500.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 450000.0
+          },
+          {
+            "date": "2025-04-23",
+            "nav": 99955000.0,
+            "cash": 137500.0,
+            "positions": 99367500.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 450000.0
+          },
+          {
+            "date": "2025-04-24",
+            "nav": 97105000.0,
+            "cash": 137500.0,
+            "positions": 96517500.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 450000.0
+          },
+          {
+            "date": "2025-04-25",
+            "nav": 98537500.0,
+            "cash": 137500.0,
+            "positions": 97950000.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 450000.0
+          },
+          {
+            "date": "2025-04-28",
+            "nav": 100525000.0,
+            "cash": 137500.0,
+            "positions": 99937500.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 450000.0
+          },
+          {
+            "date": "2025-04-29",
+            "nav": 100015000.0,
+            "cash": 587500.0,
+            "positions": 99427500.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-04-30",
+            "nav": 101170000.0,
+            "cash": 587500.0,
+            "positions": 2625000.0,
+            "sale_receivable": 97957500.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-05-02",
+            "nav": 101275000.0,
+            "cash": 587500.0,
+            "positions": 2730000.0,
+            "sale_receivable": 97957500.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-05-05",
+            "nav": 101410000.0,
+            "cash": 98545000.0,
+            "positions": 2865000.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-05-06",
+            "nav": 101410000.0,
+            "cash": 98545000.0,
+            "positions": 2865000.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-05-07",
+            "nav": 101425000.0,
+            "cash": 98545000.0,
+            "positions": 2880000.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-05-08",
+            "nav": 101440000.0,
+            "cash": 98545000.0,
+            "positions": 2895000.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-05-09",
+            "nav": 101440000.0,
+            "cash": 98545000.0,
+            "positions": 2895000.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-05-14",
+            "nav": 101462500.0,
+            "cash": 98545000.0,
+            "positions": 2917500.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-05-15",
+            "nav": 101485000.0,
+            "cash": 98545000.0,
+            "positions": 2940000.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-05-16",
+            "nav": 101455000.0,
+            "cash": 98545000.0,
+            "positions": 2910000.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-05-19",
+            "nav": 101507500.0,
+            "cash": 98545000.0,
+            "positions": 2962500.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          },
+          {
+            "date": "2025-05-20",
+            "nav": 101440000.0,
+            "cash": 98545000.0,
+            "positions": 2895000.0,
+            "sale_receivable": 0.0,
+            "dividend_receivable": 0.0
+          }
+        ],
+        "open_below_entry": 1,
+        "method": "historical_replay",
+        "rules_version": "replay-v2.1",
+        "model_version": null,
+        "dataset_version": "unified-b749e08ddb769800",
+        "assumptions": [
+          "Harga aktual Sectors; replay bersyarat pada kalender yang tersedia sekarang.",
+          "Di luar biaya transaksi, pajak, dan slippage.",
+          "Beberapa event/lot per emiten; split anggaran per event; lot 100, tanpa margin. T+2 hari bursa IHSG dan konsensus sembilan feed emiten; kalender resmi belum diverifikasi.",
+          "Entry dan exit terjadwal memakai close. Sinyal BEP dieksekusi pada open hari bursa berikutnya; hasilnya bisa di bawah BEP.",
+          "Posisi yang belum keluar pada tanggal akhir tetap dinilai dengan harga terakhir yang tersedia.",
+          "Urutan saham mengikuti tanggal masuk; saham pertama adalah baseline all-in. Ini bukan optimasi rute global."
+        ]
+      },
+      "alternatives": [
+        {
+          "allocation": "single",
+          "capital": 100000000.0,
+          "end_date": "2025-05-20",
+          "start_date": "2025-03-01",
+          "ending_nav": 101110000.0,
+          "ending_cash": 101110000.0,
+          "remaining_positions": 0.0,
+          "pending_sales": 0.0,
+          "pending_dividends": 0.0,
+          "gross_pnl": 1110000.0,
+          "return_pct": 1.11,
+          "dividends": 2775000.0,
+          "max_drawdown_pct": -10.545,
+          "trades": [
+            {
+              "event_id": "BBCA:2025-03-21",
+              "symbol": "BBCA",
+              "status": "sold",
+              "shares": 11100,
+              "entry_date": "2025-03-13",
+              "entry_price": 8975.0,
+              "exit_date": "2025-04-30",
+              "exit_price": 8825.0,
+              "settlement_date": "2025-05-05",
+              "payment_date": "2025-04-11",
+              "dividend": 2775000.0,
+              "capital_pnl": -1665000.0,
+              "gross_pnl": 1110000.0,
+              "reason": "Batas waktu; BEP tidak menjamin fill",
+              "signal_date": null,
+              "capital_days": 53
+            }
+          ],
+          "ledger": [
+            {
+              "date": "2025-03-13",
+              "kind": "buy",
+              "symbol": "BBCA",
+              "amount": -99622500.0,
+              "detail": "11,100 saham pada close hari bursa masuk"
+            },
+            {
+              "date": "2025-03-21",
+              "kind": "entitlement",
+              "symbol": "BBCA",
+              "amount": 2775000.0,
+              "detail": "Hak dividen BBCA:2025-03-21 untuk lot BBCA:2025-03-21; belum menjadi kas"
+            },
+            {
+              "date": "2025-04-11",
+              "kind": "dividend",
+              "symbol": "BBCA",
+              "amount": 2775000.0,
+              "detail": "Dividen berpindah dari piutang ke kas"
+            },
+            {
+              "date": "2025-04-30",
+              "kind": "sell",
+              "symbol": "BBCA",
+              "amount": 97957500.0,
+              "detail": "11,100 saham × Rp8825; Batas waktu; BEP tidak menjamin fill"
+            },
+            {
+              "date": "2025-05-05",
+              "kind": "settlement",
+              "symbol": "BBCA",
+              "amount": 97957500.0,
+              "detail": "Hasil jual menjadi kas tersedia (T+2 hari bursa dataset)"
+            }
+          ],
+          "curve": [
+            {
+              "date": "2025-03-01",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-03",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-04",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-05",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-06",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-07",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-10",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-11",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-12",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-13",
+              "nav": 100000000.0,
+              "cash": 377500.0,
+              "positions": 99622500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-14",
+              "nav": 97502500.0,
+              "cash": 377500.0,
+              "positions": 97125000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-17",
+              "nav": 95837500.0,
+              "cash": 377500.0,
+              "positions": 95460000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-18",
+              "nav": 92507500.0,
+              "cash": 377500.0,
+              "positions": 92130000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-19",
+              "nav": 92785000.0,
+              "cash": 377500.0,
+              "positions": 92407500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-20",
+              "nav": 93340000.0,
+              "cash": 377500.0,
+              "positions": 92962500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-21",
+              "nav": 90842500.0,
+              "cash": 377500.0,
+              "positions": 87690000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2775000.0
+            },
+            {
+              "date": "2025-03-24",
+              "nav": 91397500.0,
+              "cash": 377500.0,
+              "positions": 88245000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2775000.0
+            },
+            {
+              "date": "2025-03-25",
+              "nav": 92507500.0,
+              "cash": 377500.0,
+              "positions": 89355000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2775000.0
+            },
+            {
+              "date": "2025-03-26",
+              "nav": 97780000.0,
+              "cash": 377500.0,
+              "positions": 94627500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2775000.0
+            },
+            {
+              "date": "2025-03-27",
+              "nav": 97502500.0,
+              "cash": 377500.0,
+              "positions": 94350000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2775000.0
+            },
+            {
+              "date": "2025-04-08",
+              "nav": 89455000.0,
+              "cash": 377500.0,
+              "positions": 86302500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2775000.0
+            },
+            {
+              "date": "2025-04-09",
+              "nav": 91120000.0,
+              "cash": 377500.0,
+              "positions": 87967500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2775000.0
+            },
+            {
+              "date": "2025-04-10",
+              "nav": 94450000.0,
+              "cash": 377500.0,
+              "positions": 91297500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2775000.0
+            },
+            {
+              "date": "2025-04-11",
+              "nav": 95005000.0,
+              "cash": 3152500.0,
+              "positions": 91852500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-14",
+              "nav": 96392500.0,
+              "cash": 3152500.0,
+              "positions": 93240000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-15",
+              "nav": 98335000.0,
+              "cash": 3152500.0,
+              "positions": 95182500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-16",
+              "nav": 97225000.0,
+              "cash": 3152500.0,
+              "positions": 94072500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-17",
+              "nav": 97502500.0,
+              "cash": 3152500.0,
+              "positions": 94350000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-21",
+              "nav": 95282500.0,
+              "cash": 3152500.0,
+              "positions": 92130000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-22",
+              "nav": 97502500.0,
+              "cash": 3152500.0,
+              "positions": 94350000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-23",
+              "nav": 100000000.0,
+              "cash": 3152500.0,
+              "positions": 96847500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-24",
+              "nav": 97225000.0,
+              "cash": 3152500.0,
+              "positions": 94072500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-25",
+              "nav": 98612500.0,
+              "cash": 3152500.0,
+              "positions": 95460000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-28",
+              "nav": 100555000.0,
+              "cash": 3152500.0,
+              "positions": 97402500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-29",
+              "nav": 100000000.0,
+              "cash": 3152500.0,
+              "positions": 96847500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-30",
+              "nav": 101110000.0,
+              "cash": 3152500.0,
+              "positions": 0.0,
+              "sale_receivable": 97957500.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-02",
+              "nav": 101110000.0,
+              "cash": 3152500.0,
+              "positions": 0.0,
+              "sale_receivable": 97957500.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-05",
+              "nav": 101110000.0,
+              "cash": 101110000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-06",
+              "nav": 101110000.0,
+              "cash": 101110000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-07",
+              "nav": 101110000.0,
+              "cash": 101110000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-08",
+              "nav": 101110000.0,
+              "cash": 101110000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-09",
+              "nav": 101110000.0,
+              "cash": 101110000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-14",
+              "nav": 101110000.0,
+              "cash": 101110000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-15",
+              "nav": 101110000.0,
+              "cash": 101110000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-16",
+              "nav": 101110000.0,
+              "cash": 101110000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-19",
+              "nav": 101110000.0,
+              "cash": 101110000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-20",
+              "nav": 101110000.0,
+              "cash": 101110000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            }
+          ],
+          "open_below_entry": 0,
+          "method": "historical_replay",
+          "rules_version": "replay-v2.1",
+          "model_version": null,
+          "dataset_version": "unified-b749e08ddb769800",
+          "assumptions": [
+            "Harga aktual Sectors; replay bersyarat pada kalender yang tersedia sekarang.",
+            "Di luar biaya transaksi, pajak, dan slippage.",
+            "Beberapa event/lot per emiten; split anggaran per event; lot 100, tanpa margin. T+2 hari bursa IHSG dan konsensus sembilan feed emiten; kalender resmi belum diverifikasi.",
+            "Entry dan exit terjadwal memakai close. Sinyal BEP dieksekusi pada open hari bursa berikutnya; hasilnya bisa di bawah BEP.",
+            "Posisi yang belum keluar pada tanggal akhir tetap dinilai dengan harga terakhir yang tersedia.",
+            "Urutan saham mengikuti tanggal masuk; saham pertama adalah baseline all-in. Ini bukan optimasi rute global."
+          ]
+        },
+        {
+          "allocation": "equal",
+          "capital": 100000000.0,
+          "end_date": "2025-05-20",
+          "start_date": "2025-03-01",
+          "ending_nav": 108743577.6,
+          "ending_cash": 76898577.6,
+          "remaining_positions": 31845000.0,
+          "pending_sales": 0.0,
+          "pending_dividends": 0.0,
+          "gross_pnl": 8743577.6,
+          "return_pct": 8.7436,
+          "dividends": 8858577.6,
+          "max_drawdown_pct": -6.587,
+          "trades": [
+            {
+              "event_id": "BBCA:2025-03-21",
+              "symbol": "BBCA",
+              "status": "sold",
+              "shares": 3700,
+              "entry_date": "2025-03-13",
+              "entry_price": 8975.0,
+              "exit_date": "2025-04-30",
+              "exit_price": 8825.0,
+              "settlement_date": "2025-05-05",
+              "payment_date": "2025-04-11",
+              "dividend": 925000.0,
+              "capital_pnl": -555000.0,
+              "gross_pnl": 370000.0,
+              "reason": "Batas waktu; BEP tidak menjamin fill",
+              "signal_date": null,
+              "capital_days": 53
+            },
+            {
+              "event_id": "BMRI:2025-04-14",
+              "symbol": "BMRI",
+              "status": "sold",
+              "shares": 6400,
+              "entry_date": "2025-03-26",
+              "entry_price": 5150.0,
+              "exit_date": "2025-05-16",
+              "exit_price": 5425.0,
+              "settlement_date": "2025-05-20",
+              "payment_date": "2025-04-23",
+              "dividend": 2983577.6,
+              "capital_pnl": 1760000.0,
+              "gross_pnl": 4743577.6,
+              "reason": "Open hari bursa setelah sinyal BEP harga",
+              "signal_date": "2025-05-15",
+              "capital_days": 55
+            },
+            {
+              "event_id": "LPPF:2025-04-22",
+              "symbol": "LPPF",
+              "status": "holding",
+              "shares": 16500,
+              "entry_date": "2025-04-11",
+              "entry_price": 2010.0,
+              "exit_date": null,
+              "exit_price": null,
+              "settlement_date": null,
+              "payment_date": "2025-04-29",
+              "dividend": 4950000.0,
+              "capital_pnl": -1320000.0,
+              "gross_pnl": 3630000.0,
+              "reason": "Belum keluar",
+              "signal_date": null,
+              "capital_days": 39
+            }
+          ],
+          "ledger": [
+            {
+              "date": "2025-03-13",
+              "kind": "buy",
+              "symbol": "BBCA",
+              "amount": -33207500.0,
+              "detail": "3,700 saham pada close hari bursa masuk"
+            },
+            {
+              "date": "2025-03-21",
+              "kind": "entitlement",
+              "symbol": "BBCA",
+              "amount": 925000.0,
+              "detail": "Hak dividen BBCA:2025-03-21 untuk lot BBCA:2025-03-21; belum menjadi kas"
+            },
+            {
+              "date": "2025-03-26",
+              "kind": "buy",
+              "symbol": "BMRI",
+              "amount": -32960000.0,
+              "detail": "6,400 saham pada close hari bursa masuk"
+            },
+            {
+              "date": "2025-04-11",
+              "kind": "dividend",
+              "symbol": "BBCA",
+              "amount": 925000.0,
+              "detail": "Dividen berpindah dari piutang ke kas"
+            },
+            {
+              "date": "2025-04-11",
+              "kind": "buy",
+              "symbol": "LPPF",
+              "amount": -33165000.0,
+              "detail": "16,500 saham pada close hari bursa masuk"
+            },
+            {
+              "date": "2025-04-14",
+              "kind": "entitlement",
+              "symbol": "BMRI",
+              "amount": 2983577.6,
+              "detail": "Hak dividen BMRI:2025-04-14 untuk lot BMRI:2025-04-14; belum menjadi kas"
+            },
+            {
+              "date": "2025-04-22",
+              "kind": "entitlement",
+              "symbol": "LPPF",
+              "amount": 4950000.0,
+              "detail": "Hak dividen LPPF:2025-04-22 untuk lot LPPF:2025-04-22; belum menjadi kas"
+            },
+            {
+              "date": "2025-04-23",
+              "kind": "dividend",
+              "symbol": "BMRI",
+              "amount": 2983577.6,
+              "detail": "Dividen berpindah dari piutang ke kas"
+            },
+            {
+              "date": "2025-04-29",
+              "kind": "dividend",
+              "symbol": "LPPF",
+              "amount": 4950000.0,
+              "detail": "Dividen berpindah dari piutang ke kas"
+            },
+            {
+              "date": "2025-04-30",
+              "kind": "sell",
+              "symbol": "BBCA",
+              "amount": 32652500.0,
+              "detail": "3,700 saham × Rp8825; Batas waktu; BEP tidak menjamin fill"
+            },
+            {
+              "date": "2025-05-05",
+              "kind": "settlement",
+              "symbol": "BBCA",
+              "amount": 32652500.0,
+              "detail": "Hasil jual menjadi kas tersedia (T+2 hari bursa dataset)"
+            },
+            {
+              "date": "2025-05-16",
+              "kind": "sell",
+              "symbol": "BMRI",
+              "amount": 34720000.0,
+              "detail": "6,400 saham × Rp5425; Open hari bursa setelah sinyal BEP harga"
+            },
+            {
+              "date": "2025-05-20",
+              "kind": "settlement",
+              "symbol": "BMRI",
+              "amount": 34720000.0,
+              "detail": "Hasil jual menjadi kas tersedia (T+2 hari bursa dataset)"
+            }
+          ],
+          "curve": [
+            {
+              "date": "2025-03-01",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-03",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-04",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-05",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-06",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-07",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-10",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-11",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-12",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-13",
+              "nav": 100000000.0,
+              "cash": 66792500.0,
+              "positions": 33207500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-14",
+              "nav": 99167500.0,
+              "cash": 66792500.0,
+              "positions": 32375000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-17",
+              "nav": 98612500.0,
+              "cash": 66792500.0,
+              "positions": 31820000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-18",
+              "nav": 97502500.0,
+              "cash": 66792500.0,
+              "positions": 30710000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-19",
+              "nav": 97595000.0,
+              "cash": 66792500.0,
+              "positions": 30802500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-20",
+              "nav": 97780000.0,
+              "cash": 66792500.0,
+              "positions": 30987500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-21",
+              "nav": 96947500.0,
+              "cash": 66792500.0,
+              "positions": 29230000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 925000.0
+            },
+            {
+              "date": "2025-03-24",
+              "nav": 97132500.0,
+              "cash": 66792500.0,
+              "positions": 29415000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 925000.0
+            },
+            {
+              "date": "2025-03-25",
+              "nav": 97502500.0,
+              "cash": 66792500.0,
+              "positions": 29785000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 925000.0
+            },
+            {
+              "date": "2025-03-26",
+              "nav": 99260000.0,
+              "cash": 33832500.0,
+              "positions": 64502500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 925000.0
+            },
+            {
+              "date": "2025-03-27",
+              "nav": 99487500.0,
+              "cash": 33832500.0,
+              "positions": 64730000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 925000.0
+            },
+            {
+              "date": "2025-04-08",
+              "nav": 93413000.0,
+              "cash": 33832500.0,
+              "positions": 58655500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 925000.0
+            },
+            {
+              "date": "2025-04-09",
+              "nav": 94224000.0,
+              "cash": 33832500.0,
+              "positions": 59466500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 925000.0
+            },
+            {
+              "date": "2025-04-10",
+              "nav": 97350000.0,
+              "cash": 33832500.0,
+              "positions": 62592500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 925000.0
+            },
+            {
+              "date": "2025-04-11",
+              "nav": 98015000.0,
+              "cash": 1592500.0,
+              "positions": 96422500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-14",
+              "nav": 99881077.6,
+              "cash": 1592500.0,
+              "positions": 95305000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2983577.6
+            },
+            {
+              "date": "2025-04-15",
+              "nav": 99942577.6,
+              "cash": 1592500.0,
+              "positions": 95366500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2983577.6
+            },
+            {
+              "date": "2025-04-16",
+              "nav": 98730577.6,
+              "cash": 1592500.0,
+              "positions": 94154500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2983577.6
+            },
+            {
+              "date": "2025-04-17",
+              "nav": 98383577.6,
+              "cash": 1592500.0,
+              "positions": 93807500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2983577.6
+            },
+            {
+              "date": "2025-04-21",
+              "nav": 97460077.6,
+              "cash": 1592500.0,
+              "positions": 92884000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2983577.6
+            },
+            {
+              "date": "2025-04-22",
+              "nav": 98986577.6,
+              "cash": 1592500.0,
+              "positions": 89460500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 7933577.6
+            },
+            {
+              "date": "2025-04-23",
+              "nav": 100888577.6,
+              "cash": 4576077.6,
+              "positions": 91362500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 4950000.0
+            },
+            {
+              "date": "2025-04-24",
+              "nav": 99074577.6,
+              "cash": 4576077.6,
+              "positions": 89548500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 4950000.0
+            },
+            {
+              "date": "2025-04-25",
+              "nav": 100096077.6,
+              "cash": 4576077.6,
+              "positions": 90570000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 4950000.0
+            },
+            {
+              "date": "2025-04-28",
+              "nav": 101366577.6,
+              "cash": 4576077.6,
+              "positions": 91840500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 4950000.0
+            },
+            {
+              "date": "2025-04-29",
+              "nav": 101804577.6,
+              "cash": 9526077.6,
+              "positions": 92278500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-30",
+              "nav": 102349577.6,
+              "cash": 9526077.6,
+              "positions": 60171000.0,
+              "sale_receivable": 32652500.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-02",
+              "nav": 103952577.6,
+              "cash": 9526077.6,
+              "positions": 61774000.0,
+              "sale_receivable": 32652500.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-05",
+              "nav": 105565577.6,
+              "cash": 42178577.6,
+              "positions": 63387000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-06",
+              "nav": 105565577.6,
+              "cash": 42178577.6,
+              "positions": 63387000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-07",
+              "nav": 105538577.6,
+              "cash": 42178577.6,
+              "positions": 63360000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-08",
+              "nav": 104679577.6,
+              "cash": 42178577.6,
+              "positions": 62501000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-09",
+              "nav": 104551577.6,
+              "cash": 42178577.6,
+              "positions": 62373000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-14",
+              "nav": 106591077.6,
+              "cash": 42178577.6,
+              "positions": 64412500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-15",
+              "nav": 108598577.6,
+              "cash": 42178577.6,
+              "positions": 66420000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-16",
+              "nav": 108908577.6,
+              "cash": 42178577.6,
+              "positions": 32010000.0,
+              "sale_receivable": 34720000.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-19",
+              "nav": 109486077.6,
+              "cash": 42178577.6,
+              "positions": 32587500.0,
+              "sale_receivable": 34720000.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-20",
+              "nav": 108743577.6,
+              "cash": 76898577.6,
+              "positions": 31845000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            }
+          ],
+          "open_below_entry": 1,
+          "method": "historical_replay",
+          "rules_version": "replay-v2.1",
+          "model_version": null,
+          "dataset_version": "unified-b749e08ddb769800",
+          "assumptions": [
+            "Harga aktual Sectors; replay bersyarat pada kalender yang tersedia sekarang.",
+            "Di luar biaya transaksi, pajak, dan slippage.",
+            "Beberapa event/lot per emiten; split anggaran per event; lot 100, tanpa margin. T+2 hari bursa IHSG dan konsensus sembilan feed emiten; kalender resmi belum diverifikasi.",
+            "Entry dan exit terjadwal memakai close. Sinyal BEP dieksekusi pada open hari bursa berikutnya; hasilnya bisa di bawah BEP.",
+            "Posisi yang belum keluar pada tanggal akhir tetap dinilai dengan harga terakhir yang tersedia.",
+            "Urutan saham mengikuti tanggal masuk; saham pertama adalah baseline all-in. Ini bukan optimasi rute global."
+          ]
+        },
+        {
+          "allocation": "rotation",
+          "capital": 100000000.0,
+          "end_date": "2025-05-20",
+          "start_date": "2025-03-01",
+          "ending_nav": 101440000.0,
+          "ending_cash": 98545000.0,
+          "remaining_positions": 2895000.0,
+          "pending_sales": 0.0,
+          "pending_dividends": 0.0,
+          "gross_pnl": 1440000.0,
+          "return_pct": 1.44,
+          "dividends": 3225000.0,
+          "max_drawdown_pct": -10.545,
+          "trades": [
+            {
+              "event_id": "BBCA:2025-03-21",
+              "symbol": "BBCA",
+              "status": "sold",
+              "shares": 11100,
+              "entry_date": "2025-03-13",
+              "entry_price": 8975.0,
+              "exit_date": "2025-04-30",
+              "exit_price": 8825.0,
+              "settlement_date": "2025-05-05",
+              "payment_date": "2025-04-11",
+              "dividend": 2775000.0,
+              "capital_pnl": -1665000.0,
+              "gross_pnl": 1110000.0,
+              "reason": "Batas waktu; BEP tidak menjamin fill",
+              "signal_date": null,
+              "capital_days": 53
+            },
+            {
+              "event_id": "BMRI:2025-04-14",
+              "symbol": "BMRI",
+              "status": "skipped",
+              "shares": 0,
+              "entry_date": "2025-03-26",
+              "entry_price": 5150.0,
+              "exit_date": null,
+              "exit_price": null,
+              "settlement_date": null,
+              "payment_date": "2025-04-23",
+              "dividend": 0.0,
+              "capital_pnl": 0.0,
+              "gross_pnl": 0.0,
+              "reason": "Kas tersedia tidak cukup untuk satu lot pada tanggal masuk",
+              "signal_date": "2025-05-15",
+              "capital_days": 0
+            },
+            {
+              "event_id": "LPPF:2025-04-22",
+              "symbol": "LPPF",
+              "status": "holding",
+              "shares": 1500,
+              "entry_date": "2025-04-11",
+              "entry_price": 2010.0,
+              "exit_date": null,
+              "exit_price": null,
+              "settlement_date": null,
+              "payment_date": "2025-04-29",
+              "dividend": 450000.0,
+              "capital_pnl": -120000.0,
+              "gross_pnl": 330000.0,
+              "reason": "Belum keluar",
+              "signal_date": null,
+              "capital_days": 39
+            }
+          ],
+          "ledger": [
+            {
+              "date": "2025-03-13",
+              "kind": "buy",
+              "symbol": "BBCA",
+              "amount": -99622500.0,
+              "detail": "11,100 saham pada close hari bursa masuk"
+            },
+            {
+              "date": "2025-03-21",
+              "kind": "entitlement",
+              "symbol": "BBCA",
+              "amount": 2775000.0,
+              "detail": "Hak dividen BBCA:2025-03-21 untuk lot BBCA:2025-03-21; belum menjadi kas"
+            },
+            {
+              "date": "2025-03-26",
+              "kind": "skipped",
+              "symbol": "BMRI",
+              "amount": 0.0,
+              "detail": "Kas tersedia tidak cukup untuk satu lot pada tanggal masuk"
+            },
+            {
+              "date": "2025-04-11",
+              "kind": "dividend",
+              "symbol": "BBCA",
+              "amount": 2775000.0,
+              "detail": "Dividen berpindah dari piutang ke kas"
+            },
+            {
+              "date": "2025-04-11",
+              "kind": "buy",
+              "symbol": "LPPF",
+              "amount": -3015000.0,
+              "detail": "1,500 saham pada close hari bursa masuk"
+            },
+            {
+              "date": "2025-04-22",
+              "kind": "entitlement",
+              "symbol": "LPPF",
+              "amount": 450000.0,
+              "detail": "Hak dividen LPPF:2025-04-22 untuk lot LPPF:2025-04-22; belum menjadi kas"
+            },
+            {
+              "date": "2025-04-29",
+              "kind": "dividend",
+              "symbol": "LPPF",
+              "amount": 450000.0,
+              "detail": "Dividen berpindah dari piutang ke kas"
+            },
+            {
+              "date": "2025-04-30",
+              "kind": "sell",
+              "symbol": "BBCA",
+              "amount": 97957500.0,
+              "detail": "11,100 saham × Rp8825; Batas waktu; BEP tidak menjamin fill"
+            },
+            {
+              "date": "2025-05-05",
+              "kind": "settlement",
+              "symbol": "BBCA",
+              "amount": 97957500.0,
+              "detail": "Hasil jual menjadi kas tersedia (T+2 hari bursa dataset)"
+            }
+          ],
+          "curve": [
+            {
+              "date": "2025-03-01",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-03",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-04",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-05",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-06",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-07",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-10",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-11",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-12",
+              "nav": 100000000.0,
+              "cash": 100000000.0,
+              "positions": 0.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-13",
+              "nav": 100000000.0,
+              "cash": 377500.0,
+              "positions": 99622500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-14",
+              "nav": 97502500.0,
+              "cash": 377500.0,
+              "positions": 97125000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-17",
+              "nav": 95837500.0,
+              "cash": 377500.0,
+              "positions": 95460000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-18",
+              "nav": 92507500.0,
+              "cash": 377500.0,
+              "positions": 92130000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-19",
+              "nav": 92785000.0,
+              "cash": 377500.0,
+              "positions": 92407500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-20",
+              "nav": 93340000.0,
+              "cash": 377500.0,
+              "positions": 92962500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-03-21",
+              "nav": 90842500.0,
+              "cash": 377500.0,
+              "positions": 87690000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2775000.0
+            },
+            {
+              "date": "2025-03-24",
+              "nav": 91397500.0,
+              "cash": 377500.0,
+              "positions": 88245000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2775000.0
+            },
+            {
+              "date": "2025-03-25",
+              "nav": 92507500.0,
+              "cash": 377500.0,
+              "positions": 89355000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2775000.0
+            },
+            {
+              "date": "2025-03-26",
+              "nav": 97780000.0,
+              "cash": 377500.0,
+              "positions": 94627500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2775000.0
+            },
+            {
+              "date": "2025-03-27",
+              "nav": 97502500.0,
+              "cash": 377500.0,
+              "positions": 94350000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2775000.0
+            },
+            {
+              "date": "2025-04-08",
+              "nav": 89455000.0,
+              "cash": 377500.0,
+              "positions": 86302500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2775000.0
+            },
+            {
+              "date": "2025-04-09",
+              "nav": 91120000.0,
+              "cash": 377500.0,
+              "positions": 87967500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2775000.0
+            },
+            {
+              "date": "2025-04-10",
+              "nav": 94450000.0,
+              "cash": 377500.0,
+              "positions": 91297500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 2775000.0
+            },
+            {
+              "date": "2025-04-11",
+              "nav": 95005000.0,
+              "cash": 137500.0,
+              "positions": 94867500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-14",
+              "nav": 96452500.0,
+              "cash": 137500.0,
+              "positions": 96315000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-15",
+              "nav": 98365000.0,
+              "cash": 137500.0,
+              "positions": 98227500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-16",
+              "nav": 97225000.0,
+              "cash": 137500.0,
+              "positions": 97087500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-17",
+              "nav": 97480000.0,
+              "cash": 137500.0,
+              "positions": 97342500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-21",
+              "nav": 95237500.0,
+              "cash": 137500.0,
+              "positions": 95100000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-22",
+              "nav": 97465000.0,
+              "cash": 137500.0,
+              "positions": 96877500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 450000.0
+            },
+            {
+              "date": "2025-04-23",
+              "nav": 99955000.0,
+              "cash": 137500.0,
+              "positions": 99367500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 450000.0
+            },
+            {
+              "date": "2025-04-24",
+              "nav": 97105000.0,
+              "cash": 137500.0,
+              "positions": 96517500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 450000.0
+            },
+            {
+              "date": "2025-04-25",
+              "nav": 98537500.0,
+              "cash": 137500.0,
+              "positions": 97950000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 450000.0
+            },
+            {
+              "date": "2025-04-28",
+              "nav": 100525000.0,
+              "cash": 137500.0,
+              "positions": 99937500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 450000.0
+            },
+            {
+              "date": "2025-04-29",
+              "nav": 100015000.0,
+              "cash": 587500.0,
+              "positions": 99427500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-04-30",
+              "nav": 101170000.0,
+              "cash": 587500.0,
+              "positions": 2625000.0,
+              "sale_receivable": 97957500.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-02",
+              "nav": 101275000.0,
+              "cash": 587500.0,
+              "positions": 2730000.0,
+              "sale_receivable": 97957500.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-05",
+              "nav": 101410000.0,
+              "cash": 98545000.0,
+              "positions": 2865000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-06",
+              "nav": 101410000.0,
+              "cash": 98545000.0,
+              "positions": 2865000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-07",
+              "nav": 101425000.0,
+              "cash": 98545000.0,
+              "positions": 2880000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-08",
+              "nav": 101440000.0,
+              "cash": 98545000.0,
+              "positions": 2895000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-09",
+              "nav": 101440000.0,
+              "cash": 98545000.0,
+              "positions": 2895000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-14",
+              "nav": 101462500.0,
+              "cash": 98545000.0,
+              "positions": 2917500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-15",
+              "nav": 101485000.0,
+              "cash": 98545000.0,
+              "positions": 2940000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-16",
+              "nav": 101455000.0,
+              "cash": 98545000.0,
+              "positions": 2910000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-19",
+              "nav": 101507500.0,
+              "cash": 98545000.0,
+              "positions": 2962500.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            },
+            {
+              "date": "2025-05-20",
+              "nav": 101440000.0,
+              "cash": 98545000.0,
+              "positions": 2895000.0,
+              "sale_receivable": 0.0,
+              "dividend_receivable": 0.0
+            }
+          ],
+          "open_below_entry": 1,
+          "method": "historical_replay",
+          "rules_version": "replay-v2.1",
+          "model_version": null,
+          "dataset_version": "unified-b749e08ddb769800",
+          "assumptions": [
+            "Harga aktual Sectors; replay bersyarat pada kalender yang tersedia sekarang.",
+            "Di luar biaya transaksi, pajak, dan slippage.",
+            "Beberapa event/lot per emiten; split anggaran per event; lot 100, tanpa margin. T+2 hari bursa IHSG dan konsensus sembilan feed emiten; kalender resmi belum diverifikasi.",
+            "Entry dan exit terjadwal memakai close. Sinyal BEP dieksekusi pada open hari bursa berikutnya; hasilnya bisa di bawah BEP.",
+            "Posisi yang belum keluar pada tanggal akhir tetap dinilai dengan harga terakhir yang tersedia.",
+            "Urutan saham mengikuti tanggal masuk; saham pertama adalah baseline all-in. Ini bukan optimasi rute global."
+          ]
+        }
+      ],
+      "input": {
+        "capital": "100000000",
+        "event_ids": [
+          "BBCA:2025-03-21",
+          "BMRI:2025-04-14",
+          "LPPF:2025-04-22"
+        ],
+        "allocation": "rotation",
+        "entry_sessions_before_cum": 5,
+        "exit_rule": "price_bep",
+        "max_holding_sessions": 20,
+        "end_date": "2025-05-20",
+        "start_date": "2025-03-01",
+        "compare": true
+      }
+    },
+    "finished_at": "2026-10-08T10:14:25.515458+00:00"
+  },
+  "scope": "Historical replay, outside transaction costs, taxes and slippage. Not production or predictive validation."
+}

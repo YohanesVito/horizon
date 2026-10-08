@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
@@ -189,12 +190,10 @@ export default function Dashboard() {
         <Link
           href="/"
           className="brand"
-          aria-label="Dividen Lab — halaman utama"
+          aria-label="Horizon — halaman utama"
         >
-          <span className="brand-wordmark">
-            DIVIDEN<span>LAB</span>
-            <i aria-hidden="true">.</i>
-          </span>
+          <Image src="/horizon-logo.png" alt="" width={44} height={44} className="horizon-brand-icon" />
+          <span className="brand-wordmark">Horizon</span>
         </Link>
         <span className="site-header-divider" aria-hidden="true" />
         <nav aria-label="Navigasi utama">
@@ -546,7 +545,7 @@ export default function Dashboard() {
             {data && view === "Metodologi" && <Methodology catalog={data} />}
           </div>
           <footer className="footer">
-            <span>Dividen Lab</span>
+            <span>Horizon</span>
             <button
               className="text-button"
               onClick={() =>

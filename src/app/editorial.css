@@ -90,15 +90,11 @@ body {
   white-space: nowrap;
 }
 
-.editorial-app .brand-wordmark > span {
-  font-weight: 400;
-}
-
-.editorial-app .brand-wordmark > i {
-  color: #ff4713;
-  font-style: normal;
-  font-size: 1.4em;
-  line-height: 0;
+.editorial-app .site-header .horizon-brand-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 
 .editorial-app .site-header-divider {
@@ -2452,3 +2448,16 @@ body {
 .editorial-app .event-insight-toggle:focus-visible { outline: 2px solid #6945a8; outline-offset: 3px; }
 .editorial-app .event-insight-content { padding: 0 0 18px; }
 .editorial-app .event-insight-content .insight-findings { margin-top: 0; }
+
+.editorial-app .sim-auto-method {
+  margin: 24px 0;
+}
+
+.editorial-app .sim-auto-method summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.editorial-app .sim-auto-method p {
+  margin: 12px 0 0;
+}
