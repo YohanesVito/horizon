@@ -10,6 +10,7 @@ from .simulator import compare
 from .intelligence import IntelligenceDataset, rank, scenario
 from .planner import plan_routes, replay_routes
 from .timeline import TimelineDataset
+from .security import require_api_key, validate_api_key_config
 
 intelligence_dataset = IntelligenceDataset()
 dataset = UnifiedDataset(intelligence_dataset)
@@ -20,19 +21,24 @@ pool = ThreadPoolExecutor(max_workers=2, thread_name_prefix='dividen-replay')
 @asynccontextmanager
 async def lifespan(app):
     global pool
-    pool = ThreadPoolExecutor(max_workers=2, thread_name_prefix='dividen-replay')
+    validate_api_key_config()
     store.init_store()
-    # Interrupted jobs cannot remain "running" forever after a local restart.
-    for kind in ('run', 'rotation-run'):
-        for job in store.list_records(kind, limit=1000):
-            if job['status'] in ('queued', 'running'):
-                job.update(status='failed', error='Proses lokal terhenti. Jalankan ulang simulasi.')
-                store.save(job['id'], kind, job)
-    yield
-    pool.shutdown(wait=True)
+    with store.worker_lease():
+        pool = ThreadPoolExecutor(max_workers=2, thread_name_prefix='dividen-replay')
+        try:
+            # The lease prevents a second cloud-backed process failing active jobs.
+            for kind in ('run', 'rotation-run'):
+                for job in store.list_records(kind, limit=1000):
+                    if job['status'] in ('queued', 'running'):
+                        job.update(status='failed', error='Proses lokal terhenti. Jalankan ulang simulasi.')
+                        store.save(job['id'], kind, job)
+            yield
+        finally:
+            pool.shutdown(wait=True)
 
 
 app = FastAPI(title='Dividen Lab', version='0.1.0', lifespan=lifespan)
+app.middleware('http')(require_api_key)
 
 
 @app.get('/api/intelligence')
@@ -70,7 +76,11 @@ def scenario_history():
 
 @app.get('/api/health')
 def health():
-    return {'status': 'ok', 'source': 'Sectors snapshots', 'storage': 'sqlite-local' if store.URL.startswith('sqlite') else 'postgresql', 'worker': 'local-thread', 'mode': 'research-mvp'}
+    try:
+        storage = store.healthcheck()
+    except Exception:
+        raise HTTPException(503, 'Database tidak dapat diakses.') from None
+    return {'status': 'ok', 'source': 'Sectors snapshots', 'storage': storage, 'worker': 'local-thread', 'mode': 'research-mvp'}
 
 
 @app.get('/api/catalog')

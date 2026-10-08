@@ -1,0 +1,8 @@
+{
+  "deployed_source_matches_workspace": true,
+  "release_files": 211,
+  "secret_scan_files": 403,
+  "private_values_found": false,
+  "env_mode": "0600",
+  "status": "passed"
+}

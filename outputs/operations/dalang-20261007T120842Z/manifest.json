@@ -1,0 +1,12 @@
+{
+  "local_dir": "outputs/operations/dalang-20261007T120842Z",
+  "remote_dir": "/root/horizon-ops/20261007T120842Z",
+  "vps_name": "hyperliquid-engine",
+  "units": [
+    "curation-realtime.service",
+    "curation-recorder.service",
+    "curation-reversal-paper.service",
+    "curation-reversal-paper-v2.service",
+    "curation-zone-paper.service"
+  ]
+}

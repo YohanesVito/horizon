@@ -1,0 +1,11 @@
+{
+  "connection": "session-pooler",
+  "host": "aws-0-ap-southeast-2.pooler.supabase.com",
+  "port": 5432,
+  "database_role": "horizon_app",
+  "records": 20,
+  "status": "passed",
+  "source": "Supabase project Connect dialog, Session pooler, 8 October 2026 WITA",
+  "pooler_to_database_ssl": false,
+  "client_to_pooler_ssl": true
+}

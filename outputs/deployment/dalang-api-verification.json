@@ -1,0 +1,33 @@
+{
+  "base_url": "https://10e0ff54-f828-44de-a965-5671328a08d3.svc.dalang.io",
+  "verified_at_utc": "2026-10-07T16:14:01.592960+00:00",
+  "checks": {
+    "unauthorized_read_and_write_rejected": true,
+    "/api/catalog": 200,
+    "/api/intelligence": 200,
+    "/api/timeline": 200,
+    "/api/timeline/LPPF?preview=true": 200,
+    "/api/watchlist": 200,
+    "/api/simulations": 200,
+    "/api/rotation-plans": 200,
+    "/api/rotation-runs": 200,
+    "api_worker_supabase_replay_parity": true
+  },
+  "health": {
+    "status": "ok",
+    "source": "Sectors snapshots",
+    "storage": "postgresql",
+    "worker": "local-thread",
+    "mode": "research-mvp"
+  },
+  "replay": {
+    "probe_id": "9478dfb6-732c-4bd5-b71a-fd37428c1223",
+    "gross_pnl": 2900364.0,
+    "ending_nav": 102900364.0,
+    "label": "Historical replay, outside fees, tax and slippage"
+  },
+  "temporary_probe_removed": true,
+  "original_records": 20,
+  "original_records_preserved": true,
+  "status": "passed"
+}

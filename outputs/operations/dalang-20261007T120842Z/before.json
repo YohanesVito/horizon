@@ -1,0 +1,53 @@
+{
+  "observed_at_utc": "2026-10-07T12:08:44.487624+00:00",
+  "vps_name": "hyperliquid-engine",
+  "vps_id": "10e0ff54-f828-44de-a965-5671328a08d3",
+  "hostname": "vps-10e0ff54",
+  "docker_binary": null,
+  "podman_binary": null,
+  "actions_taken": [],
+  "stopped_containers": [],
+  "stopped_services": [],
+  "docker_processes": {
+    "returncode": 1,
+    "stdout": "",
+    "stderr": ""
+  },
+  "docker_units": {
+    "returncode": 0,
+    "stdout": "Id=docker.service\nLoadState=not-found\nActiveState=inactive\nSubState=dead\n\nId=docker.socket\nLoadState=not-found\nActiveState=inactive\nSubState=dead\n\nId=containerd.service\nLoadState=not-found\nActiveState=inactive\nSubState=dead",
+    "stderr": ""
+  },
+  "services": [
+    {
+      "unit": "curation-realtime.service",
+      "returncode": 0,
+      "stdout": "Restart=always\nMainPID=20495\nNRestarts=641\nId=curation-realtime.service\nRequires=system.slice sysinit.target -.mount\nWants=tmp.mount\nBefore=multi-user.target shutdown.target\nAfter=sysinit.target systemd-journald.socket basic.target tmp.mount system.slice systemd-tmpfiles-setup.service network-online.target -.mount\nDescription=Persistent read-only curation producer\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/etc/systemd/system/curation-realtime.service\nUnitFileState=enabled\nCanStop=yes",
+      "stderr": ""
+    },
+    {
+      "unit": "curation-recorder.service",
+      "returncode": 0,
+      "stdout": "Restart=always\nMainPID=502\nNRestarts=0\nId=curation-recorder.service\nRequires=sysinit.target -.mount system.slice\nWants=network-online.target\nBefore=multi-user.target shutdown.target\nAfter=-.mount sysinit.target system.slice basic.target network-online.target\nDescription=Curation engine recorder\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/etc/systemd/system/curation-recorder.service\nUnitFileState=enabled\nCanStop=yes",
+      "stderr": ""
+    },
+    {
+      "unit": "curation-reversal-paper.service",
+      "returncode": 0,
+      "stdout": "Restart=on-failure\nMainPID=503\nNRestarts=0\nId=curation-reversal-paper.service\nRequires=system.slice sysinit.target -.mount\nWants=tmp.mount\nBefore=multi-user.target shutdown.target\nAfter=basic.target tmp.mount systemd-tmpfiles-setup.service system.slice sysinit.target network-online.target -.mount systemd-journald.socket\nDescription=Read-only forward reversal paper experiment\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/etc/systemd/system/curation-reversal-paper.service\nUnitFileState=enabled\nCanStop=yes",
+      "stderr": ""
+    },
+    {
+      "unit": "curation-reversal-paper-v2.service",
+      "returncode": 0,
+      "stdout": "Restart=on-failure\nMainPID=1204\nNRestarts=0\nId=curation-reversal-paper-v2.service\nRequires=system.slice -.mount sysinit.target\nWants=tmp.mount\nBefore=multi-user.target shutdown.target\nAfter=systemd-tmpfiles-setup.service network-online.target basic.target -.mount system.slice systemd-journald.socket sysinit.target tmp.mount\nDescription=Read-only forward reversal paper v2 experiment\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/etc/systemd/system/curation-reversal-paper-v2.service\nUnitFileState=enabled\nCanStop=yes",
+      "stderr": ""
+    },
+    {
+      "unit": "curation-zone-paper.service",
+      "returncode": 0,
+      "stdout": "Restart=on-failure\nMainPID=3621\nNRestarts=0\nId=curation-zone-paper.service\nRequires=system.slice sysinit.target -.mount\nWants=tmp.mount\nBefore=multi-user.target shutdown.target\nAfter=system.slice tmp.mount -.mount sysinit.target basic.target systemd-tmpfiles-setup.service network-online.target systemd-journald.socket\nDescription=Read-only forward zone reversal paper experiment\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/etc/systemd/system/curation-zone-paper.service\nUnitFileState=enabled\nCanStop=yes",
+      "stderr": ""
+    }
+  ]
+}

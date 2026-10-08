@@ -1,0 +1,117 @@
+{
+  "review_only": true,
+  "candidate": "/private/tmp/horizon-branch-review.i7Vt4x/candidate",
+  "polish_sha": "523c9938dde3f35ddd3c56111f1ab0afcfdef90c",
+  "local_base": "9cc1c81",
+  "overlap": [
+    "README.md",
+    "docs/development/ISSUES.md",
+    "docs/development/PROGRESS.md",
+    "docs/development/SPRINT_PLAN.md",
+    "docs/development/TRACEABILITY.md"
+  ],
+  "merge_conflicts": [
+    "docs/development/ISSUES.md",
+    "docs/development/SPRINT_PLAN.md",
+    "docs/development/TRACEABILITY.md"
+  ],
+  "application_conflicts": [],
+  "private_environment_copied": false,
+  "reviewed_at_utc": "2026-10-07T16:45:04.226692+00:00",
+  "remote_refs": {
+    "main": "d3d64c78e5273a887a6a9d527af3f333c15aec80",
+    "feat/chart": "9cc1c81d44712749b18377adc4e6f53953928123",
+    "feat/chart-sammy": "9fdf32b6a423a86174405d427f4a17242054d88c",
+    "feat/timeline-ui-polish": "523c9938dde3f35ddd3c56111f1ab0afcfdef90c"
+  },
+  "local_branch": "feat/supabase-migration",
+  "local_branch_pushed": false,
+  "local_deployment_changes_committed": false,
+  "checks": {
+    "combined_production_build": "passed, includes TypeScript",
+    "combined_lint": "passed",
+    "combined_backend_tests": "60 passed, 1 upstream warning",
+    "direct_vps_without_key": 401,
+    "combined_preview_health": 200,
+    "browser": [
+      "Default LPPF preview loads from existing VPS",
+      "Two main navigation items",
+      "Simulator modal starts blank; 50000000 displays 50.000.000",
+      "Simulator still defaults BBCA/BMRI/LPPF after issuer analysis"
+    ],
+    "browser_console_errors_or_warnings": [],
+    "browser_mutations_submitted": false
+  },
+  "fixture": {
+    "status": "passed",
+    "text_difference_count": 12,
+    "numeric_and_structure_equal": true,
+    "strict_deployment_fixture_equal": false,
+    "differences": [
+      {
+        "path": "result.alternatives[0].assumptions[2]",
+        "old": "Beberapa event/lot per emiten; split anggaran per event; lot 100, tanpa margin. T+2 sesi IHSG dan konsensus sembilan feed emiten; kalender resmi belum diverifikasi.",
+        "new": "Beberapa event/lot per emiten; split anggaran per event; lot 100, tanpa margin. T+2 hari bursa IHSG dan konsensus sembilan feed emiten; kalender resmi belum diverifikasi."
+      },
+      {
+        "path": "result.alternatives[0].assumptions[3]",
+        "old": "Entry dan exit terjadwal memakai close. Sinyal BEP dieksekusi pada open sesi berikutnya; hasilnya bisa di bawah BEP.",
+        "new": "Entry dan exit terjadwal memakai close. Sinyal BEP dieksekusi pada open hari bursa berikutnya; hasilnya bisa di bawah BEP."
+      },
+      {
+        "path": "result.alternatives[0].ledger[0].detail",
+        "old": "52,600 saham pada close sesi masuk",
+        "new": "52,600 saham pada close hari bursa masuk"
+      },
+      {
+        "path": "result.alternatives[1].assumptions[2]",
+        "old": "Beberapa event/lot per emiten; split anggaran per event; lot 100, tanpa margin. T+2 sesi IHSG dan konsensus sembilan feed emiten; kalender resmi belum diverifikasi.",
+        "new": "Beberapa event/lot per emiten; split anggaran per event; lot 100, tanpa margin. T+2 hari bursa IHSG dan konsensus sembilan feed emiten; kalender resmi belum diverifikasi."
+      },
+      {
+        "path": "result.alternatives[1].assumptions[3]",
+        "old": "Entry dan exit terjadwal memakai close. Sinyal BEP dieksekusi pada open sesi berikutnya; hasilnya bisa di bawah BEP.",
+        "new": "Entry dan exit terjadwal memakai close. Sinyal BEP dieksekusi pada open hari bursa berikutnya; hasilnya bisa di bawah BEP."
+      },
+      {
+        "path": "result.alternatives[1].ledger[0].detail",
+        "old": "52,600 saham pada close sesi masuk",
+        "new": "52,600 saham pada close hari bursa masuk"
+      },
+      {
+        "path": "result.alternatives[2].assumptions[2]",
+        "old": "Beberapa event/lot per emiten; split anggaran per event; lot 100, tanpa margin. T+2 sesi IHSG dan konsensus sembilan feed emiten; kalender resmi belum diverifikasi.",
+        "new": "Beberapa event/lot per emiten; split anggaran per event; lot 100, tanpa margin. T+2 hari bursa IHSG dan konsensus sembilan feed emiten; kalender resmi belum diverifikasi."
+      },
+      {
+        "path": "result.alternatives[2].assumptions[3]",
+        "old": "Entry dan exit terjadwal memakai close. Sinyal BEP dieksekusi pada open sesi berikutnya; hasilnya bisa di bawah BEP.",
+        "new": "Entry dan exit terjadwal memakai close. Sinyal BEP dieksekusi pada open hari bursa berikutnya; hasilnya bisa di bawah BEP."
+      },
+      {
+        "path": "result.alternatives[2].ledger[0].detail",
+        "old": "52,600 saham pada close sesi masuk",
+        "new": "52,600 saham pada close hari bursa masuk"
+      },
+      {
+        "path": "result.primary.assumptions[2]",
+        "old": "Beberapa event/lot per emiten; split anggaran per event; lot 100, tanpa margin. T+2 sesi IHSG dan konsensus sembilan feed emiten; kalender resmi belum diverifikasi.",
+        "new": "Beberapa event/lot per emiten; split anggaran per event; lot 100, tanpa margin. T+2 hari bursa IHSG dan konsensus sembilan feed emiten; kalender resmi belum diverifikasi."
+      },
+      {
+        "path": "result.primary.assumptions[3]",
+        "old": "Entry dan exit terjadwal memakai close. Sinyal BEP dieksekusi pada open sesi berikutnya; hasilnya bisa di bawah BEP.",
+        "new": "Entry dan exit terjadwal memakai close. Sinyal BEP dieksekusi pada open hari bursa berikutnya; hasilnya bisa di bawah BEP."
+      },
+      {
+        "path": "result.primary.ledger[0].detail",
+        "old": "52,600 saham pada close sesi masuk",
+        "new": "52,600 saham pada close hari bursa masuk"
+      }
+    ],
+    "verification_database": "temporary SQLite file; deleted after verification",
+    "initial_probe_note": "First attempt used per-thread in-memory SQLite and failed to share the records table; corrected harness to a temporary file."
+  },
+  "actual_merge_performed": false,
+  "actual_checkout_changed": false
+}

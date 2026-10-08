@@ -1,5 +1,11 @@
 # Pemetaan kebutuhan ke pekerjaan development
 
+## Keputusan operasi terbaru — 8 Oktober 2026
+
+DEP-01–DEP-03 DONE: FastAPI/Docker Dalang healthy, Supabase Session Pooler, HTTPS provider dan proxy Next server-only terverifikasi. Smoke image, delapan endpoint, penolakan401, replay identik fixture, preservasi20record, frontend→VPS dan browser Peluang/Timeline lulus. Kelima layanan kurasi tetapinactive. Bukti `outputs/deployment/deployment.json` dan laporan terkait; [DEPLOYMENT_DALANG.md](./DEPLOYMENT_DALANG.md). Frontend publik, UAT, login, durablequeue serta gap data/model bukan hasil deployment ini. ISS-048 storage tetap OPEN.
+
+Instruksi langsung PM: FastAPI tetap dipakai, target deployment Docker pada VPS Dalang, database Supabase; proposal rewrite Next.js + ORM TypeScript tidak dilanjutkan. OPS-01 menangani penghentian sementara dan pencatatan restart. Setelah ditemukan bahwa layanan lama berjalan melalui systemd, PM mengotorisasi penghentian tepat lima layanan kurasi. Bukti dan runbook berada di [DALANG_SERVICE_PAUSE.md](./DALANG_SERVICE_PAUSE.md). Keputusan hosting bukan bukti deployment selesai atau kesesuaian PRD yang belum diterima.
+
 Tanggal: 6 Oktober 2026. Status: pemetaan sementara dari percakapan; menunggu PRD dan user story lampiran. ID `C-*` adalah referensi internal untuk kebutuhan percakapan, bukan ID resmi dokumen pengguna.
 
 ## Daftar sumber
@@ -72,11 +78,21 @@ U-01 menambah bukti C-04/C-07/C-08: hasil manual menampilkan snapshot aturan/eve
 
 C-02/C-06/C-08: menu Timeline dengan overlay lima periode satu emiten, fokus hover/klik/keyboard, hargaRp/perubahan%, fase dividen per tahun dan lapisan aktual2026dengan placeholder prediksi. API memisahkan katalog histori lengkap dari pratinjau riset LPPF.46tesbackend,build/lint/typecheck,API dan browser diperiksa; lihat [TIMELINE_IMPLEMENTATION.md](./TIMELINE_IMPLEMENTATION.md). Dataset lengkap masih gap ISS-041; engine prediksi ditunda oleh PM pada ISS-042. Bukan klaim coverage PRD final atau UAT lulus.
 
+## Migrasi Supabase DB-01–DB-03
+
+C-03/C-04/C-05/C-07/C-08 dan S1-02: penyimpanan watchlist, rules, scenario, rencana dan hasil dipindahkan dari SQLite ke schema privat PostgreSQL. Migrasi berversi mempertahankan ID/payload/timestamp, memiliki backup, deteksi konflik dan pemeriksaan checksum; akun backend terpisah dari admin. [Runbook](./SUPABASE_MIGRATION.md) menjelaskan batas: market snapshots tetap file, workspace masih bersama, local worker belum durable, dan frontend/backend tetap berjalan lokal. Status pemeriksaan aktual di PROGRESS.md; tidak mengubah klaim coverage PRD/UAT.
+
 ## Fokus demo D-01
 
-Instruksi PM 7 Oktober memprioritaskan satu alur: analisis emiten (histori dan periode berjalan) lalu simulator. D-01 mengubah pintu masuk dan navigasi demo, bukan menghapus C-01/C-03/C-05 atau implementasinya. Pratinjau LPPF tetap berlabel belum terverifikasi (ISS-041); simulator satu-emiten belum terhubung dan masih perlu pekerjaan terpisah (ISS-046). Sumber/metodologi tersedia sebagai tautan sekunder.
+Instruksi PM 7 Oktober memprioritaskan satu alur: analisis emiten (histori dan periode berjalan) lalu simulator. D-01 mengubah pintu masuk dan navigasi demo, bukan menghapus C-01/C-03/C-05 atau implementasinya. Pratinjau LPPF tetap berlabel belum terverifikasi (ISS-041); simulator satu-emiten belum terhubung dan masih perlu pekerjaan terpisah (ISS-054). Sumber/metodologi tersedia sebagai tautan sekunder.
 
 D-02 menggabungkan arah demo dari PM (D-01, perubahan lokal pada branch UI) dengan implementasi Sammy pada `feat/chart-sammy` (UX-01–UX-04: input modal, pilihan strategi, klik chart, dan copy/istilah). `dashboard.tsx` diselaraskan manual agar pemangkasan copy/sidebar Sammy tidak mengembalikan delapan menu atau landing Peluang. Ini sinkronisasi kontribusi, bukan bukti bahwa simulator satu-emiten, data lengkap, atau forecast sudah selesai.
+
+## Integrasi BR-02 dan deployment frontend V-01/V-02
+
+C-02/C-04/C-08, S5-02: gabungan UI polish523c993 dengan proxy Next/Supabase/Dalang f64df85 mempertahankan kedua kontribusi. Fixture berversi membuktikan hitungan tidak berubah; issue052/053/054 merujuk UX/handoff, sedangkan044–050 tetap migrasi/deployment. Status deployment Vercel dan bukti aktual mengikuti PROGRESS.md; bukan kelulusan UAT.
+
+Arahan PM terbaru 8 Oktober menyerahkan deployment Vercel kepada PM dan meminta merge main segera. V-02 dibatasi merge/push; V-01 tetap PARTIAL/HANDOFF. Env server telah dipasang setelah izin; build cloud READY belum merupakan verifikasi browser/API/database atau UAT.
 
 ## Hierarki chart D-03 (Chunk 2)
 
@@ -84,8 +100,10 @@ D-03 merapikan hirarki visual timeline agar grafik lima tahun menjadi fokus utam
 
 ## Penyederhanaan UI D-04
 
-D-04 menindaklanjuti keputusan PM 8 Oktober untuk memprioritaskan alur dan tampilan dibanding algoritme proyeksi. C-02/C-04 tetap lewat Analisis dan Simulasi; C-08 tetap terlihat melalui label sumber, caveat preview, serta metodologi. Mode periode berjalan diberi label aktual, bukan prediksi. Detail keputusan, referensi, dan pemeriksaan ada di [UI_REDESIGN.md](./UI_REDESIGN.md). D-04 tidak menutup ISS-041/042/046 atau menyelesaikan PRD/UAT.
+D-04 menindaklanjuti keputusan PM 8 Oktober untuk memprioritaskan alur dan tampilan dibanding algoritme proyeksi. C-02/C-04 tetap lewat Analisis dan Simulasi; C-08 tetap terlihat melalui label sumber, caveat preview, serta metodologi. Mode periode berjalan diberi label aktual, bukan prediksi. Detail keputusan, referensi, dan pemeriksaan ada di [UI_REDESIGN.md](./UI_REDESIGN.md). D-04 tidak menutup ISS-041/042/054 atau menyelesaikan PRD/UAT.
 
 ## Revisi editorial D-05
 
-D-05 mengubah hierarki visual dua layar demo atas contoh Arcturis dari PM, tanpa memperluas cakupan produk. C-02 tetap melalui grafik multi-tahun beserta kontrol fokus/satuan dan detail event; C-04 melalui form replay, pembanding, dan hasil gross; C-08 melalui sumber, caveat pratinjau LPPF, dan metodologi. Hero yang besar menempatkan chart/form di bawah fold secara sengaja. Tidak ada requirement yang ditutup oleh styling ini: ISS-041/042/046 dan UAT tetap terbuka. Detail keputusan dan bukti pemeriksaan ada di [UI_REDESIGN.md](./UI_REDESIGN.md) dan [PROGRESS.md](./PROGRESS.md).
+D-05 mengubah hierarki visual dua layar demo atas contoh Arcturis dari PM, tanpa memperluas cakupan produk. C-02 tetap melalui grafik multi-tahun beserta kontrol fokus/satuan dan detail event; C-04 melalui form replay, pembanding, dan hasil gross; C-08 melalui sumber, caveat pratinjau LPPF, dan metodologi. Hero yang besar menempatkan chart/form di bawah fold secara sengaja. Tidak ada requirement yang ditutup oleh styling ini: ISS-041/042/054 dan UAT tetap terbuka. Detail keputusan dan bukti pemeriksaan ada di [UI_REDESIGN.md](./UI_REDESIGN.md) dan [PROGRESS.md](./PROGRESS.md).
+
+D-07 menggabungkan main terbaru secara lokal dengan UI D-05. C-02/C-04/C-08 kini berada bersama backend Supabase dan proxy server Next tanpa mengubah rumus atau data. Build dan tes development lulus; browser/API lokal gabungan belum diuji karena server tidak berjalan. Merge ini tidak mempublikasikan branch atau mengubah status deployment/UAT.

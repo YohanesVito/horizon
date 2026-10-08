@@ -164,6 +164,44 @@ Task development berstatus `DONE` setelah hasil implementasinya ada dan pemeriks
 | T-06 | Label fase langsung pada grafik dan warna area cum→ex menurut arah perubahan close | C-02/C-06 | Label tidak bertumpuk; negatif merah, positif hijau, nol netral; mengikuti periode fokus dan modeRp/% |
 | T-07 | Simpan implementasi chart pada branch `feat/chart` sesuai permintaan PM | C-02/C-06/C-08 | Commit lokal berisi kode, snapshot yang diperlukan, dokumentasi dan bukti pemeriksaan; tidak memuat kredensial |
 
+### Migrasi Supabase — 7 Oktober 2026
+
+| Task | Scope | Requirement | Bukti selesai |
+|---|---|---|---|
+| DB-01 | Konfigurasi PostgreSQL/Supabase dan schema privat berversi | S1-02/C-03/C-07/C-08 | Env server, SSL, akun backend terbatas, startup memeriksa versi schema |
+| DB-02 | Migrasi record SQLite dengan backup, deteksi konflik dan verifikasi | S1-02/C-04/C-05 | Semua ID/payload/timestamp cocok; rerun tidak menduplikasi atau menimpa konflik |
+| DB-03 | Alihkan runtime, regression/API dan runbook | S3-04/S5-02/C-08 | Backend memakai Supabase, riwayat terbaca, read/write teruji; rollback dan batas scope jelas |
+
+Tahap ini memindahkan penyimpanan aplikasi (watchlist, rules, skenario, rencana dan hasil). Snapshot harga/kalender Sectors tetap sumber immutable di repo; pemindahan dataset pasar, autentikasi multi-user dan deployment frontend/backend bukan bagian migrasi record ini.
+
+### Operasi VPS Dalang — keputusan PM 7 Oktober 2026
+
+Backend tetap FastAPI, dengan target hosting Docker pada VPS Dalang; proposal rewrite Next.js + ORM TypeScript tidak dilanjutkan. Database tetap Supabase. Scope saat ini hanya penghentian sementara layanan lama dan pencatatan pemulihan.
+
+| Task | Scope | Sumber | Bukti selesai |
+|---|---|---|---|
+| OPS-01 | Inventaris VPS, penghentian lima layanan kurasi systemd setelah konfirmasi PM, dan runbook restart | Instruksi langsung PM; S5-02 | Snapshot sebelum/perintah/sesudah, kelima unit inactive/dead, catatan lokal + VPS + memori |
+
+Docker belum tersedia; instalasi dan deployment Horizon adalah pekerjaan lanjutan. Detail: [DALANG_SERVICE_PAUSE.md](./DALANG_SERVICE_PAUSE.md).
+
+### Deployment backend Dalang — diotorisasi PM 7 Oktober 2026
+
+| Task | Scope | Sumber | Bukti selesai |
+|---|---|---|---|
+| DEP-01 | Instalasi Docker dan kemasan runtime/release tanpa kredensial dalam image | Instruksi deploy PM; S1-01/S5-02 | Docker berfungsi, build dari snapshot sumber terpilih, manifest dan konfigurasi tersimpan |
+| DEP-02 | FastAPI satu proses, Supabase, HTTPS provider dan proxy frontend dengan key server-only | C-03/C-04/C-08; S3-04 | Backend sehat, key tidak di browser, koneksi database dan alur API berjalan |
+| DEP-03 | Verifikasi deployment, simulasi, runbook upgrade/rollback, catatan batas | S5-02/S5-03 | Bukti aktual; deployment frontend publik dan UAT dibedakan |
+
+### Review branch sebelum Vercel — permintaan PM 8 Oktober 2026
+
+| Task | Scope | Sumber | Bukti selesai |
+|---|---|---|---|
+| BR-01 | Bandingkan ancestry, perubahan polish dan kesiapan gabungan deployment tanpa mengubah checkout | Permintaan review PM; DEP-02/DEP-03, S5-02 | BRANCH_REVIEW.md, branch-review.json, build/lint/60tes/preview browser gabungan; merge dan deploy tetap langkah berikutnya |
+
+| BR-02 | Commit deployment, integrasikan UI polish, rekonsiliasi issue/fixture dan verifikasi gabungan | Persetujuan PM 8 Oktober; BR-01, C-02/C-04/C-08 | Kedua parent commit terpelihara, fixture strict berversi, build/lint/backend/proxy lulus |
+| V-01 | Konfigurasi server-only dan deploy Preview Vercel dari branch gabungan | BR-02, DEP-02, S5-02 | Project/scope terverifikasi, URL Preview, browser/API sampai backend berfungsi |
+| V-02 | Merge dan push branch integrasi ke main; deployment Vercel diserahkan kepada PM | Instruksi PM terbaru 8 Oktober: deploy sendiri, merge sekarang; BR-02 | main memuat UI polish + Supabase/Dalang, remote sinkron, checkout bersih; tidak mengklaim deployment dari main atau UAT |
+
 ### Fokus demo satu emiten — keputusan PM 7 Oktober
 
 Instruksi PM terbaru memprioritaskan chart histori, periode dividen berikutnya, lalu simulator satu dividend play. Fitur discovery, kalender pasar, intelligence, rotasi, dan watchlist tetap di kode tetapi tidak perlu muncul dalam navigasi demo. Ini keputusan presentasi/alur, bukan penghapusan requirement lama atau klaim kesiapan model prediksi.
@@ -175,3 +213,4 @@ Instruksi PM terbaru memprioritaskan chart histori, periode dividen berikutnya, 
 | D-03 | Rapikan hierarki informasi chart horizon: satukan toolbar & status bar, jadikan chart hero, kurangi clutter sebelum fold, pertahankan interaksi Sammy | Chunk 2; C-02/C-06/C-08; UX-01–UX-04 | Lint, typecheck, build, 46 pytest backend lulus; toolbar/legend dan status bar terintegrasi, chart terangkat ~180px tanpa overflow horizontal |
 | D-04 | Fokuskan UI demo pada alur Analisis dan Simulasi, hilangkan sidebar dua-menu, sederhanakan palet/permukaan/copy, pertahankan caveat data dan fungsi | Instruksi PM 8 Oktober; C-02/C-04/C-08; D-03 | Browser desktop/mobile dan fokus keyboard, lint/typecheck/build/backend tests; alasan desain dan batas ada di UI_REDESIGN.md |
 | D-05 | Revisi editorial terinspirasi Arcturis: hero per viewport, palet terang/navy/jingga, tipografi besar, chart dan form/hasil lebih berjenjang; pertahankan interaksi serta caveat | Instruksi PM 8 Oktober; C-02/C-04/C-08; D-04 | Browser desktop/mobile untuk navigasi, chart, form dan metodologi; tanpa overflow, lint/typecheck/build; alasan dan batas di UI_REDESIGN.md |
+| D-07 | Gabungkan `origin/main` terbaru ke branch UI lokal tanpa push/deploy, pertahankan D-05 dan perubahan Supabase/proxy/backend main | Instruksi PM 8 Oktober; C-02/C-04/C-08; D-05 | Konflik dokumentasi diselesaikan, issue ID diselaraskan, lint/typecheck/build dan tes backend lulus; deployment live tidak disentuh |

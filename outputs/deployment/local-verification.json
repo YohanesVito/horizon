@@ -1,0 +1,28 @@
+{
+  "scope": "Local proxy/frontend and backend tests, not VPS deployment",
+  "pytest": {
+    "passed": 60,
+    "warning": "Starlette TestClient httpx deprecation"
+  },
+  "proxy_checks": 7,
+  "lint": "passed",
+  "typecheck": "passed",
+  "production_build": "passed",
+  "browser_assets_secret_scan": {
+    "files": 83,
+    "status": "passed"
+  },
+  "browser_reload": {
+    "url": "http://127.0.0.1:3000/",
+    "catalog_companies": 9,
+    "events": 12,
+    "console_errors_warnings": 0
+  },
+  "health": {
+    "status": "ok",
+    "storage": "postgresql",
+    "backend_location": "local"
+  },
+  "vps_api_verified": false,
+  "compose_schema_validation": "passed (service env resolution deferred to VPS)"
+}

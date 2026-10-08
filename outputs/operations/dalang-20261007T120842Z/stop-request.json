@@ -1,0 +1,29 @@
+{
+  "requested_at_utc": "2026-10-07T12:09:29.327303+00:00",
+  "authorization": "PM explicitly confirmed stopping these five systemd curation services in the Horizon chat.",
+  "command": [
+    "systemctl",
+    "stop",
+    "--no-block",
+    "curation-realtime.service",
+    "curation-recorder.service",
+    "curation-reversal-paper.service",
+    "curation-reversal-paper-v2.service",
+    "curation-zone-paper.service"
+  ],
+  "units": [
+    "curation-realtime.service",
+    "curation-recorder.service",
+    "curation-reversal-paper.service",
+    "curation-reversal-paper-v2.service",
+    "curation-zone-paper.service"
+  ],
+  "previous_inventory": "/root/horizon-ops/20261007T120842Z/before.json",
+  "startup_enablement_changed": false,
+  "files_or_data_deleted": false,
+  "state": "stop_dispatched",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "dispatched_at_utc": "2026-10-07T12:09:29.356307+00:00"
+}
