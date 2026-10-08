@@ -8,9 +8,6 @@ import {
   CheckCheck,
   FlaskConical,
   LockKeyhole,
-  ScanLine,
-  Sparkles,
-  X,
 } from "lucide-react";
 import { api, dt, money, pct, tradingDayText } from "@/lib/api";
 import { cumExMovement, phaseLabel } from "@/lib/timeline-chart";
@@ -22,12 +19,12 @@ import type {
 } from "@/lib/timeline-types";
 
 const COLORS = [
-  "#bc9ce4",
-  "#e8ba79",
-  "#db89b6",
-  "#50d5b0",
-  "#64acff",
-  "#f3c4df",
+  "#A7B9C8",
+  "#D9AF59",
+  "#66B2BF",
+  "#9BAF83",
+  "#FF7853",
+  "#E3D9CE",
 ];
 const color = (year: number) =>
   COLORS[(((year - 2021) % COLORS.length) + COLORS.length) % COLORS.length];
@@ -85,18 +82,14 @@ export default function DividendTimeline() {
     <div className="timeline-workspace">
       <section className="glass timeline-catalog" aria-label="Pilih emiten">
         <div className="timeline-catalog-title">
-          <ScanLine size={20} />
           <div>
-            <h2>Emiten yang dianalisis</h2>
-            <p className="small muted">
-              {data.history_years[0]}–{data.history_years.at(-1)} · satu emiten
-              dalam satu grafik
-            </p>
+            <p className="eyebrow">EMITEN</p>
+            <h2>Pilih saham untuk dianalisis</h2>
           </div>
         </div>
         {data.companies.length || data.preview_symbols.length ? (
           <label className="timeline-picker">
-            Pilih emiten
+            <span className="sr-only">Emiten</span>
             <select
               value={
                 selection
@@ -118,7 +111,7 @@ export default function DividendTimeline() {
               ))}
               {data.preview_symbols.map((symbol) => (
                 <option key={`preview:${symbol}`} value={`preview:${symbol}`}>
-                  {symbol} — pratinjau, belum terverifikasi
+                  {symbol} — pratinjau
                 </option>
               ))}
             </select>
@@ -185,7 +178,6 @@ export default function DividendTimeline() {
             <TimelineExplorer
               key={`${selection.symbol}-${selection.preview}`}
               data={detail.data}
-              onClose={() => chooseSelection(null)}
             />
           )}
         </>
@@ -215,108 +207,58 @@ function LayersGlyph() {
   );
 }
 
-function TimelineExplorer({
-  data,
-  onClose,
-}: {
-  data: TimelineDetail;
-  onClose: () => void;
-}) {
+function TimelineExplorer({ data }: { data: TimelineDetail }) {
   const [mode, setMode] = useState<"history" | "current">("history");
   const [units, setUnits] = useState<Units>("percent");
   return (
     <>
-      {data.preview && (
-        <div className="timeline-preview-banner" role="note">
-          <FlaskConical size={18} />
-          <div>
-            <strong>Pratinjau riset · belum lolos data lengkap</strong>
-            <p>
-              Harga bersumber dari Sectors. Declaration, jenis siklus, dan basis
-              penyesuaian belum terverifikasi.
-            </p>
-          </div>
-          <button
-            className="icon-btn"
-            aria-label="Tutup pratinjau"
-            onClick={onClose}
-          >
-            <X size={18} />
-          </button>
-        </div>
-      )}
       <section className="glass timeline-panel">
-        <div className="timeline-company-head">
+        <header className="timeline-company-head timeline-editorial-head">
           <div className="timeline-company">
-            <span className="timeline-ticker">L</span>
             <div>
-              <p className="eyebrow">DIVIDEND TIMELINE</p>
-              <h2>
-                {data.symbol} <span className="muted">/ {data.name}</span>
-              </h2>
+              <p className="eyebrow">ANALISIS EMITEN / {data.symbol}</p>
+              <h2>{data.symbol}</h2>
+              <p className="timeline-company-name">{data.name}</p>
             </div>
           </div>
-          <span className="badge">{data.source}</span>
-        </div>
-        <div className="timeline-controls">
-          <div
-            className="timeline-segment"
-            role="group"
-            aria-label="Rentang timeline"
-          >
-            <button
-              aria-pressed={mode === "history"}
-              onClick={() => setMode("history")}
-            >
-              Histori 2021–2025
-            </button>
-            <button
-              aria-pressed={mode === "current"}
-              onClick={() => setMode("current")}
-            >
-              {data.current_year} <span>Aktual + Prediksi</span>
-            </button>
+          <div className="timeline-company-provenance">
+            <span className="badge">Sumber: {data.source}</span>
+            {data.preview && (
+              <div className="timeline-preview-banner" role="note">
+                <FlaskConical size={15} aria-hidden="true" />
+                <p>
+                  <strong>Pratinjau.</strong> Kelengkapan dan basis harga belum
+                  terverifikasi.
+                </p>
+              </div>
+            )}
           </div>
-          <div
-            className="timeline-segment compact"
-            role="group"
-            aria-label="Satuan harga"
-          >
-            <button
-              aria-pressed={units === "percent"}
-              onClick={() => setUnits("percent")}
-            >
-              Perubahan %
-            </button>
-            <button
-              aria-pressed={units === "price"}
-              onClick={() => setUnits("price")}
-            >
-              Harga Rp
-            </button>
-          </div>
+        </header>
+        <div className="timeline-editorial-copy">
+          <p className="eyebrow">01 / LINTASAN HARGA</p>
+          <h3>Harga di sekitar ex-date.</h3>
+          <p>
+            Bandingkan peristiwa dividen pada garis waktu yang sama. Pilih tahun
+            untuk membaca detailnya.
+          </p>
         </div>
         <TimelinePlot
-          key={mode}
           periods={mode === "history" ? data.history : data.current}
           units={units}
+          setUnits={setUnits}
+          mode={mode}
+          setMode={setMode}
+          currentYear={data.current_year}
           symbol={data.symbol}
           current={mode === "current"}
         />
         {mode === "current" && (
           <div className="timeline-forecast">
-            <div className="timeline-forecast-icon">
-              <Sparkles size={22} />
-            </div>
             <div>
-              <p className="eyebrow">PERIODE BERJALAN / PREDIKSI</p>
-              <h3>Prediksi belum tersedia</h3>
-              <p>
-                Harga pada grafik adalah data aktual. Bagian mendatang akan
-                ditampilkan terpisah setelah perhitungan prediksi tersedia.
-              </p>
+              <p className="eyebrow">PERIODE BERJALAN / DATA AKTUAL</p>
+              <h3>Grafik berhenti di harga terakhir.</h3>
+              <p>Belum ada proyeksi untuk pergerakan setelah titik tersebut.</p>
             </div>
-            <span className="timeline-dashed-key">Garis prediksi</span>
           </div>
         )}
       </section>
@@ -361,11 +303,19 @@ function TimelineExplorer({
 function TimelinePlot({
   periods,
   units,
+  setUnits,
+  mode,
+  setMode,
+  currentYear,
   symbol,
   current,
 }: {
   periods: TimelinePeriod[];
   units: Units;
+  setUnits: (u: Units) => void;
+  mode: "history" | "current";
+  setMode: (m: "history" | "current") => void;
+  currentYear: number;
   symbol: string;
   current: boolean;
 }) {
@@ -390,8 +340,8 @@ function TimelinePlot({
   const active =
     available.find((p) => p.year === activeYear) ?? available.at(-1);
   const movement = cumExMovement(active);
-  const left = width < 550 ? 48 : 60,
-    right = 20;
+  const left = width < 550 ? 58 : 72,
+    right = width < 550 ? 18 : 28;
   const plotWidth = width - left - right;
   const value = (point: TimelinePoint) =>
     units === "price" ? point.close : point.change_pct;
@@ -412,18 +362,25 @@ function TimelinePlot({
       .filter(
         (phase) => phase.day !== null && phase.day >= minX && phase.day <= maxX,
       )
+      // On narrow screens the full chronology below keeps the other dates visible.
+      .filter(
+        (phase) =>
+          width >= 550 ||
+          phase.key === "cum_date" ||
+          phase.key === "ex_date",
+      )
       .toSorted((a, b) => a.day! - b.day!)
       .map((phase) => {
         const label = phaseLabel(phase.key, phase.label);
-        const labelWidth = Math.max(66, label.length * 6.5 + 18);
+        const labelWidth = Math.max(84, label.length * 7.5 + 20);
         const labelX = Math.max(
           left,
           Math.min(width - right - labelWidth, x(phase.day!) - labelWidth / 2),
         );
-        let lane = laneEnds.findIndex((end) => end + 8 <= labelX);
+        let lane = laneEnds.findIndex((end) => end + 10 <= labelX);
         if (lane === -1) lane = laneEnds.length;
         laneEnds[lane] = labelX + labelWidth;
-        return { ...phase, label, labelX, labelWidth, labelY: 8 + lane * 25 };
+        return { ...phase, label, labelX, labelWidth, labelY: 10 + lane * 34 };
       });
   };
   const annotations = phaseLayout(active);
@@ -431,11 +388,11 @@ function TimelinePlot({
   const top = Math.max(
     30,
     ...available.flatMap((period) =>
-      phaseLayout(period).map((label) => label.labelY + 34),
+      phaseLayout(period).map((label) => label.labelY + 44),
     ),
   );
-  const height = (width < 550 ? 300 : 370) + top - 30;
-  const bottom = height - 43;
+  const height = (width < 550 ? 430 : 540) + top - 30;
+  const bottom = height - 54;
   const y = (v: number) =>
     bottom - ((v - minY) / (maxY - minY)) * (bottom - top);
   const line = (p: TimelinePeriod) =>
@@ -450,6 +407,11 @@ function TimelinePlot({
     setPinned(null);
     setLegendYear(null);
     setHover(null);
+  };
+  const switchMode = (next: "history" | "current") => {
+    if (next === mode) return;
+    reset();
+    setMode(next);
   };
   function closestAt(
     event: PointerEvent<SVGSVGElement> | MouseEvent<SVGSVGElement>,
@@ -528,305 +490,359 @@ function TimelinePlot({
     );
   return (
     <>
-      <div className="timeline-legend" aria-label="Fokus periode">
-        <div>
-          {years.map((year) => (
-            <button
-              key={year}
-              style={{ "--year-color": color(year) } as React.CSSProperties}
-              className={activeYear === year ? "focused" : ""}
-              aria-pressed={pinned === year}
-              aria-label={`Fokus tahun ${year}`}
-              onMouseEnter={() => setLegendYear(year)}
-              onMouseLeave={() => setLegendYear(null)}
-              onFocus={() => setLegendYear(year)}
-              onBlur={() => setLegendYear(null)}
-              onClick={() => {
-                setPinned(pinned === year ? null : year);
-                setHover(null);
-              }}
+      <div className="timeline-chart-stage">
+        <div className="timeline-toolbar">
+          <div className="timeline-controls">
+            <div
+              className="timeline-segment"
+              role="group"
+              aria-label="Rentang timeline"
             >
-              <i />
-              {year}
-              {pinned === year && <LockKeyhole size={11} />}
-            </button>
-          ))}
-        </div>
-        <button className="text-button small" onClick={reset}>
-          Bandingkan semua
-        </button>
-      </div>
-      <div className="timeline-chart-meta">
-        <span>
-          {units === "price"
-            ? "Harga penutupan (Rp) · basis sumber"
-            : "Perubahan harga dari close cum-date (%)"}
-        </span>
-        <span>
-          {pinned
-            ? `Fokus ${pinned} terkunci · klik grafik lagi untuk melepas`
-            : "Hover garis / area · klik grafik atau tahun untuk mengunci"}
-        </span>
-      </div>
-      {active && (
-        <div
-          className="timeline-cum-ex"
-          data-direction={movement?.direction ?? "unavailable"}
-          style={{ color: movement?.color }}
-        >
-          <span className="timeline-range-key" aria-hidden="true" />
-          <span>Cum → Ex · {active.year}</span>
-          <strong>
-            {movement
-              ? `${movement.changePct > 0 ? "+" : ""}${pct(movement.changePct)}`
-              : "Harga belum lengkap"}
-          </strong>
-          <span className="muted">perubahan harga penutupan</span>
-        </div>
-      )}
-      <div ref={container} className="timeline-chart-wrap">
-        {available.length ? (
-          <>
-            <svg
-              width="100%"
-              height={height}
-              viewBox={`0 0 ${width} ${height}`}
-              role="img"
-              aria-label={`Overlay harga ${symbol}, ${years.join(", ")}; ${units === "price" ? "rupiah" : "perubahan persen"}; hari kalender relatif ex-date`}
-              onPointerMove={onPointerMove}
-              onClick={onChartClick}
-              onPointerLeave={() => setHover(null)}
+              <button
+                aria-pressed={mode === "history"}
+                onClick={() => switchMode("history")}
+              >
+                Histori 2021–2025
+              </button>
+              <button
+                aria-pressed={mode === "current"}
+                onClick={() => switchMode("current")}
+              >
+                {currentYear} <span>Aktual</span>
+              </button>
+            </div>
+            <div
+              className="timeline-segment compact"
+              role="group"
+              aria-label="Satuan harga"
             >
-              <title>Harga historis {symbol} pada periode dividen</title>
-              <desc>
-                Klik garis atau area grafik, atau pilih tahun pada tombol
-                legenda, untuk mengunci fokus dan membaca timeline tanggal di
-                bawah grafik. Klik grafik lagi untuk melepas fokus.
-              </desc>
-              {[0, 1, 2, 3, 4].map((i) => {
-                const v = minY + ((maxY - minY) * i) / 4;
-                return (
-                  <g key={i}>
-                    <line
-                      x1={left}
-                      x2={width - right}
-                      y1={y(v)}
-                      y2={y(v)}
-                      stroke="#ffffff0c"
-                    />
-                    <text
-                      x={left - 9}
-                      y={y(v) + 4}
-                      textAnchor="end"
-                      fill="#b6a7ba"
-                      fontSize="10"
-                    >
-                      {new Intl.NumberFormat("id-ID", {
-                        maximumFractionDigits: units === "price" ? 0 : 1,
-                      }).format(v)}
-                      {units === "percent" ? "%" : ""}
-                    </text>
-                  </g>
-                );
-              })}
-              {units === "percent" && (
-                <line
-                  x1={left}
-                  x2={width - right}
-                  y1={y(0)}
-                  y2={y(0)}
-                  stroke="#ffffff33"
-                  strokeDasharray="3 4"
-                />
-              )}
-              {[...available]
-                .sort(
-                  (a, b) =>
-                    Number(a.year === activeYear) -
-                    Number(b.year === activeYear),
-                )
-                .map((period) => {
-                  const points = period.points.filter((p) => value(p) !== null);
-                  const fade =
-                    activeYear !== null && period.year !== activeYear;
+              <button
+                aria-pressed={units === "percent"}
+                onClick={() => setUnits("percent")}
+              >
+                Perubahan %
+              </button>
+              <button
+                aria-pressed={units === "price"}
+                onClick={() => setUnits("price")}
+              >
+                Harga Rp
+              </button>
+            </div>
+          </div>
+          <div className="timeline-legend" aria-label="Fokus periode">
+            <div>
+              {years.map((year) => (
+                <button
+                  key={year}
+                  style={{ "--year-color": color(year) } as React.CSSProperties}
+                  className={activeYear === year ? "focused" : ""}
+                  aria-pressed={pinned === year}
+                  aria-label={`Fokus tahun ${year}`}
+                  onMouseEnter={() => setLegendYear(year)}
+                  onMouseLeave={() => setLegendYear(null)}
+                  onFocus={() => setLegendYear(year)}
+                  onBlur={() => setLegendYear(null)}
+                  onClick={() => {
+                    setPinned(pinned === year ? null : year);
+                    setHover(null);
+                  }}
+                >
+                  <i />
+                  {year}
+                  {pinned === year && <LockKeyhole size={13} />}
+                </button>
+              ))}
+            </div>
+            {pinned !== null && (
+              <button className="text-button small" onClick={reset}>
+                Bandingkan semua
+              </button>
+            )}
+          </div>
+        </div>
+        <div className="timeline-status-bar timeline-insight-grid">
+          {active ? (
+            <div
+              className="timeline-cum-ex"
+              data-direction={movement?.direction ?? "unavailable"}
+              style={{ color: movement?.color }}
+            >
+              <span className="timeline-range-key" aria-hidden="true" />
+              <span>Cum → Ex · {active.year}</span>
+              <strong>
+                {movement
+                  ? `${movement.changePct > 0 ? "+" : ""}${pct(movement.changePct)}`
+                  : "Harga belum lengkap"}
+              </strong>
+              <span className="muted">perubahan harga penutupan</span>
+            </div>
+          ) : (
+            <div />
+          )}
+          <div className="timeline-chart-meta">
+            <span>
+              {units === "price"
+                ? "Harga penutupan (Rp) · basis sumber"
+                : "Perubahan harga dari close cum-date (%)"}
+            </span>
+            <span>
+              {pinned
+                ? `Fokus ${pinned} terkunci · pilih lagi untuk melepas`
+                : "Pilih tahun atau titik grafik untuk fokus"}
+            </span>
+          </div>
+        </div>
+        <div ref={container} className="timeline-chart-wrap">
+          {available.length ? (
+            <>
+              <svg
+                width="100%"
+                height={height}
+                viewBox={`0 0 ${width} ${height}`}
+                role="img"
+                aria-label={`Overlay harga ${symbol}, ${years.join(", ")}; ${units === "price" ? "rupiah" : "perubahan persen"}; hari kalender relatif ex-date`}
+                onPointerMove={onPointerMove}
+                onClick={onChartClick}
+                onPointerLeave={() => setHover(null)}
+              >
+                <title>Harga historis {symbol} pada periode dividen</title>
+                <desc>
+                  Klik garis atau area grafik, atau pilih tahun pada tombol
+                  legenda, untuk mengunci fokus dan membaca timeline tanggal di
+                  bawah grafik. Klik grafik lagi untuk melepas fokus.
+                </desc>
+                {[0, 1, 2, 3, 4].map((i) => {
+                  const v = minY + ((maxY - minY) * i) / 4;
                   return (
-                    <g
-                      key={period.id}
-                      data-period={period.year}
-                      opacity={fade ? 0.25 : 1}
-                      className="timeline-series"
-                    >
-                      <path
-                        d={`${line(period)} L${x(points.at(-1)!.day)},${bottom} L${x(points[0].day)},${bottom} Z`}
-                        fill={color(period.year)}
-                        fillOpacity={fade ? 0.09 : 0.12}
+                    <g key={i}>
+                      <line
+                        x1={left}
+                        x2={width - right}
+                        y1={y(v)}
+                        y2={y(v)}
+                        stroke="#ffffff24"
                       />
-                      <path
-                        d={line(period)}
-                        stroke={color(period.year)}
-                        strokeWidth={period.year === activeYear ? 2.8 : 1.8}
-                        fill="none"
-                        strokeLinejoin="round"
-                      />
+                      <text
+                        x={left - 9}
+                        y={y(v) + 4}
+                        textAnchor="end"
+                        fill="#B9C6CB"
+                        fontSize="12"
+                      >
+                        {new Intl.NumberFormat("id-ID", {
+                          maximumFractionDigits: units === "price" ? 0 : 1,
+                        }).format(v)}
+                        {units === "percent" ? "%" : ""}
+                      </text>
                     </g>
                   );
                 })}
-              {movement &&
-                value(movement.cum) !== null &&
-                value(movement.ex) !== null && (
-                  <g
-                    data-cum-ex-area={movement.direction}
-                    aria-label={`Area cum ke ex-date ${active?.year}: ${pct(movement.changePct)}`}
-                  >
-                    <rect
-                      x={x(movement.cum.day)}
-                      y={top}
-                      width={x(movement.ex.day) - x(movement.cum.day)}
-                      height={bottom - top}
-                      fill={movement.color}
-                      fillOpacity=".09"
-                    />
-                    <path
-                      d={`${line({ ...active!, points: movement.points })} L${x(movement.ex.day)},${bottom} L${x(movement.cum.day)},${bottom} Z`}
-                      fill={movement.color}
-                      fillOpacity=".46"
-                    />
-                    <path
-                      d={line({ ...active!, points: movement.points })}
-                      fill="none"
-                      stroke={movement.color}
-                      strokeWidth="3"
-                      strokeLinejoin="round"
-                    />
-                    {[movement.cum, movement.ex].map((point) => (
-                      <circle
-                        key={point.date}
-                        cx={x(point.day)}
-                        cy={y(value(point)!)}
-                        r="3.3"
-                        fill={movement.color}
-                        stroke="#211b26"
-                        strokeWidth="1.5"
-                      />
-                    ))}
-                  </g>
-                )}
-              {annotations.map((phase) => (
-                <path
-                  key={phase.key}
-                  d={`M${phase.labelX + phase.labelWidth / 2},${phase.labelY + 20} L${x(phase.day!)},${top - 5} V${bottom}`}
-                  fill="none"
-                  stroke={
-                    phase.key === "ex_date" ? "#e6d5e2" : color(active!.year)
-                  }
-                  strokeOpacity={phase.key === "ex_date" ? 0.7 : 0.4}
-                  strokeDasharray="3 4"
-                />
-              ))}
-              {annotations.map((phase) => (
-                <g key={phase.key} data-phase-label={phase.key}>
-                  <title>
-                    {phase.label} · {dt(phase.date, true)} · {active?.year}
-                  </title>
-                  <rect
-                    x={phase.labelX}
-                    y={phase.labelY}
-                    width={phase.labelWidth}
-                    height="20"
-                    rx="5"
-                    fill="#302333"
-                    stroke="#c9a0c52e"
-                  />
-                  <text
-                    x={phase.labelX + phase.labelWidth / 2}
-                    y={phase.labelY + 13.5}
-                    textAnchor="middle"
-                    fill="#eddfeb"
-                    fontSize="10.5"
-                  >
-                    {phase.label}
-                  </text>
-                </g>
-              ))}
-              {ticks.map((tick) => (
-                <text
-                  key={tick}
-                  x={x(tick)}
-                  y={bottom + 23}
-                  textAnchor="middle"
-                  fill={tick === 0 ? "#f3d2e6" : "#aa9bb0"}
-                  fontSize="10"
-                >
-                  {dayLabel(tick)}
-                </text>
-              ))}
-              {observed && (
-                <g>
+                {units === "percent" && (
                   <line
-                    x1={x(observed.point.day)}
-                    x2={x(observed.point.day)}
-                    y1={top}
-                    y2={bottom}
-                    stroke={color(observed.period.year)}
+                    x1={left}
+                    x2={width - right}
+                    y1={y(0)}
+                    y2={y(0)}
+                    stroke="#F7F7F355"
                     strokeDasharray="3 4"
                   />
-                  <circle
-                    cx={x(observed.point.day)}
-                    cy={y(value(observed.point)!)}
-                    r="4.5"
-                    fill={color(observed.period.year)}
-                    stroke="#201c25"
-                    strokeWidth="2"
+                )}
+                {[...available]
+                  .sort(
+                    (a, b) =>
+                      Number(a.year === activeYear) -
+                      Number(b.year === activeYear),
+                  )
+                  .map((period) => {
+                    const points = period.points.filter(
+                      (p) => value(p) !== null,
+                    );
+                    const fade =
+                      activeYear !== null && period.year !== activeYear;
+                    return (
+                      <g
+                        key={period.id}
+                        data-period={period.year}
+                        opacity={fade ? 0.25 : 1}
+                        className="timeline-series"
+                      >
+                        <path
+                          d={`${line(period)} L${x(points.at(-1)!.day)},${bottom} L${x(points[0].day)},${bottom} Z`}
+                          fill={color(period.year)}
+                          fillOpacity={period.year === activeYear ? 0.06 : 0}
+                        />
+                        <path
+                          d={line(period)}
+                          stroke={color(period.year)}
+                          strokeWidth={period.year === activeYear ? 3 : 2.1}
+                          fill="none"
+                          strokeLinejoin="round"
+                        />
+                      </g>
+                    );
+                  })}
+                {movement &&
+                  value(movement.cum) !== null &&
+                  value(movement.ex) !== null && (
+                    <g
+                      data-cum-ex-area={movement.direction}
+                      aria-label={`Area cum ke ex-date ${active?.year}: ${pct(movement.changePct)}`}
+                    >
+                      <rect
+                        x={x(movement.cum.day)}
+                        y={top}
+                        width={x(movement.ex.day) - x(movement.cum.day)}
+                        height={bottom - top}
+                        fill={movement.color}
+                        fillOpacity=".09"
+                      />
+                      <path
+                        d={`${line({ ...active!, points: movement.points })} L${x(movement.ex.day)},${bottom} L${x(movement.cum.day)},${bottom} Z`}
+                        fill={movement.color}
+                        fillOpacity=".46"
+                      />
+                      <path
+                        d={line({ ...active!, points: movement.points })}
+                        fill="none"
+                        stroke={movement.color}
+                        strokeWidth="3"
+                        strokeLinejoin="round"
+                      />
+                      {[movement.cum, movement.ex].map((point) => (
+                        <circle
+                          key={point.date}
+                          cx={x(point.day)}
+                          cy={y(value(point)!)}
+                          r="3.3"
+                          fill={movement.color}
+                          stroke="#131E29"
+                          strokeWidth="1.5"
+                        />
+                      ))}
+                    </g>
+                  )}
+                {annotations.map((phase) => (
+                  <path
+                    key={phase.key}
+                    d={`M${phase.labelX + phase.labelWidth / 2},${phase.labelY + 26} L${x(phase.day!)},${top - 5} V${bottom}`}
+                    fill="none"
+                    stroke={
+                      phase.key === "ex_date" ? "#F7F7F3" : color(active!.year)
+                    }
+                    strokeOpacity={phase.key === "ex_date" ? 0.7 : 0.4}
+                    strokeDasharray="3 4"
                   />
-                </g>
+                ))}
+                {annotations.map((phase) => (
+                  <g key={phase.key} data-phase-label={phase.key}>
+                    <title>
+                      {phase.label} · {dt(phase.date, true)} · {active?.year}
+                    </title>
+                    <rect
+                      x={phase.labelX}
+                      y={phase.labelY}
+                      width={phase.labelWidth}
+                      height="26"
+                      rx="3"
+                      fill="#22303B"
+                      stroke="#F7F7F344"
+                    />
+                    <text
+                      x={phase.labelX + phase.labelWidth / 2}
+                      y={phase.labelY + 18}
+                      textAnchor="middle"
+                      fill="#F7F7F3"
+                      fontSize="12"
+                    >
+                      {phase.label}
+                    </text>
+                  </g>
+                ))}
+                {ticks.map((tick) => (
+                  <text
+                    key={tick}
+                    x={x(tick)}
+                    y={bottom + 23}
+                    textAnchor="middle"
+                    fill={tick === 0 ? "#F7F7F3" : "#B9C6CB"}
+                    fontSize="12"
+                  >
+                    {dayLabel(tick)}
+                  </text>
+                ))}
+                {observed && (
+                  <g>
+                    <line
+                      x1={x(observed.point.day)}
+                      x2={x(observed.point.day)}
+                      y1={top}
+                      y2={bottom}
+                      stroke={color(observed.period.year)}
+                      strokeDasharray="3 4"
+                    />
+                    <circle
+                      cx={x(observed.point.day)}
+                      cy={y(value(observed.point)!)}
+                      r="4.5"
+                      fill={color(observed.period.year)}
+                      stroke="#131E29"
+                      strokeWidth="2"
+                    />
+                  </g>
+                )}
+              </svg>
+              {observed && (
+                <div
+                  role="status"
+                  className="timeline-tooltip"
+                  style={{
+                    left: tooltipLeft,
+                    top: top + 8,
+                    borderColor: color(observed.period.year),
+                  }}
+                >
+                  <strong>
+                    <i style={{ background: color(observed.period.year) }} />
+                    {observed.period.year} · {current ? "Aktual" : "Historis"}
+                  </strong>
+                  <span>
+                    {dt(observed.point.date, true)} ·{" "}
+                    {dayLabel(observed.point.day)}
+                  </span>
+                  <b>{money(observed.point.close)}</b>
+                  <span>{pct(observed.point.change_pct)} dari cum-date</span>
+                  <small>
+                    {observed.period.phases
+                      .filter((p) => p.date === observed.point.date)
+                      .map((p) => phaseLabel(p.key, p.label))
+                      .join(" · ") ||
+                      (observed.point.day < 0
+                        ? "Sebelum ex-date"
+                        : "Setelah ex-date")}
+                  </small>
+                </div>
               )}
-            </svg>
-            {observed && (
-              <div
-                role="status"
-                className="timeline-tooltip"
-                style={{
-                  left: tooltipLeft,
-                  top: top + 8,
-                  borderColor: color(observed.period.year),
-                }}
-              >
-                <strong>
-                  <i style={{ background: color(observed.period.year) }} />
-                  {observed.period.year} · {current ? "Aktual" : "Historis"}
-                </strong>
-                <span>
-                  {dt(observed.point.date, true)} ·{" "}
-                  {dayLabel(observed.point.day)}
-                </span>
-                <b>{money(observed.point.close)}</b>
-                <span>{pct(observed.point.change_pct)} dari cum-date</span>
-                <small>
-                  {observed.period.phases
-                    .filter((p) => p.date === observed.point.date)
-                    .map((p) => phaseLabel(p.key, p.label))
-                    .join(" · ") ||
-                    (observed.point.day < 0
-                      ? "Sebelum ex-date"
-                      : "Setelah ex-date")}
-                </small>
-              </div>
-            )}
-          </>
-        ) : (
-          <div className="empty">
-            <h3>Harga periode ini belum tersedia</h3>
-            <p>Grafik akan muncul setelah data aktual dimuat.</p>
-          </div>
-        )}
+            </>
+          ) : (
+            <div className="empty">
+              <h3>Harga periode ini belum tersedia</h3>
+              <p>Grafik akan muncul setelah data aktual dimuat.</p>
+            </div>
+          )}
+        </div>
+        <p className="timeline-axis-note">
+          Hari kalender relatif terhadap ex-date · H0 = ex-date · titik
+          mengikuti harga penutupan yang tersedia
+        </p>
       </div>
-      <p className="timeline-axis-note">
-        Hari kalender relatif terhadap ex-date · H0 = ex-date · titik mengikuti
-        harga penutupan yang tersedia
-      </p>
       {active && (
-        <>
+        <section
+          className="timeline-chronology"
+          aria-label={`Detail peristiwa ${active.year}`}
+        >
           <div className="timeline-focus-heading">
+            <p className="eyebrow">02 / DETAIL PERISTIWA</p>
             <h3>
               Jejak dividen{" "}
               <span style={{ color: color(active.year) }}>{active.year}</span>
@@ -899,7 +915,7 @@ function TimelinePlot({
               </table>
             </div>
           </details>
-        </>
+        </section>
       )}
     </>
   );

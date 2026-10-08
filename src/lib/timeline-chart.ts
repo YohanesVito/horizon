@@ -24,10 +24,10 @@ export function cumExMovement(period: TimelinePeriod | undefined) {
     changePct: (change / cum.close) * 100,
     color:
       direction === "down"
-        ? "#f17786"
+        ? "#e49a94"
         : direction === "up"
-          ? "#51d6a0"
-          : "#b6a7ba",
+          ? "#95c2a9"
+          : "#aebbb2",
     points: period.points.filter(
       (point) => point.day >= cum.day && point.day <= ex.day,
     ),

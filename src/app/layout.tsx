@@ -7,6 +7,7 @@ import "@fontsource/sora/400.css";
 import "@fontsource/sora/500.css";
 import "@fontsource/sora/600.css";
 import "./globals.css";
+import "./editorial.css";
 import Providers from "@/components/providers";
 export const metadata: Metadata = {
   title: "Dividen Lab — Analisis peristiwa dividen",

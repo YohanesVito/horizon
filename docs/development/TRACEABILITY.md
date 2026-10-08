@@ -77,3 +77,15 @@ C-02/C-06/C-08: menu Timeline dengan overlay lima periode satu emiten, fokus hov
 Instruksi PM 7 Oktober memprioritaskan satu alur: analisis emiten (histori dan periode berjalan) lalu simulator. D-01 mengubah pintu masuk dan navigasi demo, bukan menghapus C-01/C-03/C-05 atau implementasinya. Pratinjau LPPF tetap berlabel belum terverifikasi (ISS-041); simulator satu-emiten belum terhubung dan masih perlu pekerjaan terpisah (ISS-046). Sumber/metodologi tersedia sebagai tautan sekunder.
 
 D-02 menggabungkan arah demo dari PM (D-01, perubahan lokal pada branch UI) dengan implementasi Sammy pada `feat/chart-sammy` (UX-01–UX-04: input modal, pilihan strategi, klik chart, dan copy/istilah). `dashboard.tsx` diselaraskan manual agar pemangkasan copy/sidebar Sammy tidak mengembalikan delapan menu atau landing Peluang. Ini sinkronisasi kontribusi, bukan bukti bahwa simulator satu-emiten, data lengkap, atau forecast sudah selesai.
+
+## Hierarki chart D-03 (Chunk 2)
+
+D-03 merapikan hirarki visual timeline agar grafik lima tahun menjadi fokus utama layar. Header/picker emiten dibuat kompak, kontrol grafik disatukan dalam dua baris terstruktur (`timeline-toolbar` untuk legenda tahun dan sakelar mode/satuan; `timeline-status-bar` untuk sinyal pergerakan Cum → Ex dan instruksi interaksi). Fitur interaksi Sammy (klik/tap chart untuk mengunci fokus, tombol tahun, opasitas seri, istilah hari bursa, dan form simulator) tetap bekerja tanpa perubahan rumus/data. Sisa pekerjaan dialihkan ke Chunk 3 (pemisahan tegas 2026 aktual vs future) dan Chunk 4 (handoff emiten ke simulator).
+
+## Penyederhanaan UI D-04
+
+D-04 menindaklanjuti keputusan PM 8 Oktober untuk memprioritaskan alur dan tampilan dibanding algoritme proyeksi. C-02/C-04 tetap lewat Analisis dan Simulasi; C-08 tetap terlihat melalui label sumber, caveat preview, serta metodologi. Mode periode berjalan diberi label aktual, bukan prediksi. Detail keputusan, referensi, dan pemeriksaan ada di [UI_REDESIGN.md](./UI_REDESIGN.md). D-04 tidak menutup ISS-041/042/046 atau menyelesaikan PRD/UAT.
+
+## Revisi editorial D-05
+
+D-05 mengubah hierarki visual dua layar demo atas contoh Arcturis dari PM, tanpa memperluas cakupan produk. C-02 tetap melalui grafik multi-tahun beserta kontrol fokus/satuan dan detail event; C-04 melalui form replay, pembanding, dan hasil gross; C-08 melalui sumber, caveat pratinjau LPPF, dan metodologi. Hero yang besar menempatkan chart/form di bawah fold secara sengaja. Tidak ada requirement yang ditutup oleh styling ini: ISS-041/042/046 dan UAT tetap terbuka. Detail keputusan dan bukti pemeriksaan ada di [UI_REDESIGN.md](./UI_REDESIGN.md) dan [PROGRESS.md](./PROGRESS.md).

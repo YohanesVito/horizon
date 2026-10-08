@@ -7,7 +7,6 @@ import {
   Check,
   Clock3,
   Copy,
-  History,
   Play,
   Route,
 } from "lucide-react";
@@ -137,27 +136,27 @@ export default function Simulator({
   return (
     <div className="simulator">
       <div className="sim-setup">
-        <section className="glass pad">
-          <div className="section-head">
-            <div>
-              <h2>Aturan simulasi</h2>
-            </div>
-            <Route size={21} className="accent" />
+        <section
+          className="glass pad sim-form-panel"
+          aria-labelledby="sim-form-title"
+        >
+          <div className="sim-panel-heading">
+            <span className="sim-section-label">01 / ATUR SKENARIO</span>
+            <h2 id="sim-form-title">Mulai dari modal dan peristiwa.</h2>
           </div>
           {initialEvent && (
             <p className="notice">
-              Pilihan dari detail:{" "}
+              Peristiwa terpilih:{" "}
               <strong>
                 {initialEvent.symbol} · ex {dt(initialEvent.ex_date, true)}
               </strong>
-              . Periode awal mencakup tahun 2025; sesuaikan sebelum menjalankan
-              simulasi.
+              . Periksa periode replay sebelum menjalankan.
             </p>
           )}
           {copiedFrom && (
             <p className="notice" role="status">
-              Draf dari hasil {copiedFrom.slice(0, 8)}. Ubah aturan lalu
-              jalankan untuk menyimpan hasil baru. Hasil asal tetap tersimpan.
+              Draf disalin dari hasil {copiedFrom.slice(0, 8)}. Hasil asal tidak
+              berubah.
             </p>
           )}
           <form
@@ -175,182 +174,202 @@ export default function Simulator({
               submit.mutate({ ...next, capital: Number(next.capital) });
             }}
           >
-            <div className="form-grid">
-              <label className="sim-capital-field">
-                Modal awal (Rp)
-                <MoneyInput
-                  inputRef={capitalField}
-                  resetKey={capitalResetKey}
-                  name="capital"
-                  required
-                  min="1"
-                  max="1000000000000"
-                  step="1"
-                  placeholder="Masukkan modal"
-                  value={input.capital}
-                  onValueChange={(value) => set("capital", value)}
-                />
-              </label>
-            </div>
-            <fieldset className="strategy-picker">
-              <legend>Strategi utama</legend>
-              <div className="strategy-cards">
-                {(
-                  [
-                    [
-                      "single",
-                      "Pakai seluruh modal untuk satu event dengan cum date paling awal. Event lain dilewati.",
-                    ],
-                    [
-                      "equal",
-                      "Bagi modal awal sama rata untuk setiap event. Jatah tiap event tetap, meski waktunya berbeda.",
-                    ],
-                    [
-                      "rotation",
-                      "Pakai kas yang tersedia untuk event berikutnya. Dana jual menunggu T+2; dividen menunggu payment date.",
-                    ],
-                  ] as const
-                ).map(([mode, explanation]) => (
-                  <label
-                    className={`strategy-card ${input.allocation === mode ? "selected" : ""}`}
-                    key={mode}
-                  >
-                    <span className="strategy-choice">
+            <div className="sim-step sim-step-first">
+              <div className="sim-step-heading">
+                <span className="sim-step-number">01</span>
+                <div>
+                  <h3>Modal & peristiwa</h3>
+                  <p>Event historis mana yang ingin diuji?</p>
+                </div>
+              </div>
+              <div className="form-grid">
+                <label className="sim-capital-field">
+                  Modal awal (Rp)
+                  <MoneyInput
+                    inputRef={capitalField}
+                    resetKey={capitalResetKey}
+                    name="capital"
+                    required
+                    min="1"
+                    max="1000000000000"
+                    step="1"
+                    placeholder="Masukkan modal"
+                    value={input.capital}
+                    onValueChange={(value) => set("capital", value)}
+                  />
+                </label>
+              </div>
+              <fieldset className="sim-event-fieldset">
+                <legend>
+                  Pilih peristiwa{" "}
+                  <span className="muted">· {input.event_ids.length}/10</span>
+                </legend>
+                <div className="event-picker">
+                  {events.map((e) => (
+                    <label
+                      className={`event-option ${input.event_ids.includes(e.id) ? "checked" : ""}`}
+                      key={e.id}
+                    >
                       <input
-                        type="radio"
-                        name="allocation"
-                        value={mode}
-                        checked={input.allocation === mode}
-                        onChange={() => set("allocation", mode)}
+                        type="checkbox"
+                        checked={input.event_ids.includes(e.id)}
+                        disabled={
+                          !input.event_ids.includes(e.id) &&
+                          input.event_ids.length >= 10
+                        }
+                        onChange={() => toggle(e.id)}
                       />
-                      <strong>{labels[mode]}</strong>
-                    </span>
-                    <span>{explanation}</span>
-                  </label>
-                ))}
-              </div>
-              <p className="tiny muted">
-                Urutan mengikuti cum date, lalu kode emiten bila tanggal sama.
-                Pembelian mengikuti lot 100 saham dan kas tersedia.
-              </p>
-            </fieldset>
-            <fieldset>
-              <legend>
-                Event dalam rute (maks. 10){" "}
-                <span className="muted">
-                  · {input.event_ids.length} dipilih
-                </span>
-              </legend>
-              <div className="event-picker">
-                {events.map((e) => (
-                  <label
-                    className={`event-option ${input.event_ids.includes(e.id) ? "checked" : ""}`}
-                    key={e.id}
-                  >
-                    <input
-                      type="checkbox"
-                      checked={input.event_ids.includes(e.id)}
-                      disabled={
-                        !input.event_ids.includes(e.id) &&
-                        input.event_ids.length >= 10
-                      }
-                      onChange={() => toggle(e.id)}
-                    />
-                    <span>
-                      <strong>{e.symbol}</strong>
-                      <small>Ex {dt(e.ex_date)}</small>
-                    </span>
-                    <span className="event-dps">
-                      {money(e.dps)}
-                      <small>/ saham</small>
-                    </span>
-                    {input.event_ids.includes(e.id) && <Check size={16} />}
-                  </label>
-                ))}
-              </div>
-            </fieldset>
-            <div className="form-grid">
-              <label>
-                Masuk sebelum cum date
-                <select
-                  value={input.entry_sessions_before_cum}
-                  onChange={(e) =>
-                    set("entry_sessions_before_cum", Number(e.target.value))
-                  }
-                >
-                  <option value={0}>Close pada cum date</option>
-                  <option value={5}>5 hari bursa sebelumnya</option>
-                  <option value={10}>10 hari bursa sebelumnya</option>
-                </select>
-              </label>
-              <label>
-                Aturan keluar
-                <select
-                  value={input.exit_rule}
-                  onChange={(e) =>
-                    set("exit_rule", e.target.value as SimInput["exit_rule"])
-                  }
-                >
-                  <option value="price_bep">Setelah sinyal BEP harga</option>
-                  <option value="ex_close">Close ex-date</option>
-                  <option value="payment_close">Close payment date</option>
-                  <option value="holding_period">
-                    Batas hari bursa pengamatan
-                  </option>
-                </select>
-              </label>
-              <label>
-                Batas hari bursa setelah ex-date
-                <input
-                  type="number"
-                  name="max_holding_sessions"
-                  min="1"
-                  max="60"
-                  required
-                  value={input.max_holding_sessions}
-                  onChange={(e) =>
-                    set("max_holding_sessions", Number(e.target.value))
-                  }
-                />
-              </label>
-              <label>
-                Awal replay
-                <input
-                  type="date"
-                  name="start_date"
-                  min="2025-01-01"
-                  max={input.end_date}
-                  required
-                  value={input.start_date}
-                  onInput={(e) => set("start_date", e.currentTarget.value)}
-                  onChange={(e) => set("start_date", e.target.value)}
-                />
-              </label>
-              <label>
-                Akhir replay
-                <input
-                  type="date"
-                  name="end_date"
-                  min={input.start_date}
-                  max="2025-12-31"
-                  required
-                  value={input.end_date}
-                  onInput={(e) => set("end_date", e.currentTarget.value)}
-                  onChange={(e) => set("end_date", e.target.value)}
-                />
-              </label>
+                      <span>
+                        <strong>{e.symbol}</strong>
+                        <small>Ex {dt(e.ex_date)}</small>
+                      </span>
+                      <span className="event-dps">
+                        {money(e.dps)}
+                        <small>/ saham</small>
+                      </span>
+                      {input.event_ids.includes(e.id) && <Check size={16} />}
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
             </div>
-            <p className="tiny muted">
-              Batas hari bursa berlaku untuk BEP, payment, dan pengamatan. Entry
-              memakai close; sinyal BEP pada close dieksekusi pada open hari
-              bursa berikutnya.
-            </p>
-            <div className="notice">
-              Replay historis · Lot 100 saham · Dana jual T+2 hari bursa dataset
-              · Dividen tersedia pada payment date.
+            <div className="sim-step">
+              <div className="sim-step-heading">
+                <span className="sim-step-number">02</span>
+                <div>
+                  <h3>Atur penggunaan modal</h3>
+                  <p>Tiga pendekatan, satu periode yang sama.</p>
+                </div>
+              </div>
+              <fieldset className="strategy-picker">
+                <legend>Strategi utama</legend>
+                <div className="strategy-cards">
+                  {(
+                    [
+                      [
+                        "single",
+                        "Seluruh modal pada event dengan cum date pertama.",
+                      ],
+                      ["equal", "Porsi modal tetap untuk setiap event."],
+                      [
+                        "rotation",
+                        "Kas yang tersedia dipakai untuk event berikutnya.",
+                      ],
+                    ] as const
+                  ).map(([mode, explanation]) => (
+                    <label
+                      className={`strategy-card ${input.allocation === mode ? "selected" : ""}`}
+                      key={mode}
+                    >
+                      <span className="strategy-choice">
+                        <input
+                          type="radio"
+                          name="allocation"
+                          value={mode}
+                          checked={input.allocation === mode}
+                          onChange={() => set("allocation", mode)}
+                        />
+                        <strong>{labels[mode]}</strong>
+                      </span>
+                      <span>{explanation}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+            </div>
+            <div className="sim-step sim-step-rules">
+              <div className="sim-step-heading">
+                <span className="sim-step-number">03</span>
+                <div>
+                  <h3>Tentukan waktu masuk dan keluar</h3>
+                  <p>Aturan yang sama berlaku untuk setiap event.</p>
+                </div>
+              </div>
+              <div className="form-grid sim-rules">
+                <label>
+                  Masuk sebelum cum date
+                  <select
+                    value={input.entry_sessions_before_cum}
+                    onChange={(e) =>
+                      set("entry_sessions_before_cum", Number(e.target.value))
+                    }
+                  >
+                    <option value={0}>Close pada cum date</option>
+                    <option value={5}>5 hari bursa sebelumnya</option>
+                    <option value={10}>10 hari bursa sebelumnya</option>
+                  </select>
+                </label>
+                <label>
+                  Aturan keluar
+                  <select
+                    value={input.exit_rule}
+                    onChange={(e) =>
+                      set("exit_rule", e.target.value as SimInput["exit_rule"])
+                    }
+                  >
+                    <option value="price_bep">Setelah sinyal BEP harga</option>
+                    <option value="ex_close">Close ex-date</option>
+                    <option value="payment_close">Close payment date</option>
+                    <option value="holding_period">
+                      Batas hari bursa pengamatan
+                    </option>
+                  </select>
+                </label>
+                <label>
+                  Batas hari bursa setelah ex-date
+                  <input
+                    type="number"
+                    name="max_holding_sessions"
+                    min="1"
+                    max="60"
+                    required
+                    value={input.max_holding_sessions}
+                    onChange={(e) =>
+                      set("max_holding_sessions", Number(e.target.value))
+                    }
+                  />
+                </label>
+                <label>
+                  Awal replay
+                  <input
+                    type="date"
+                    name="start_date"
+                    min="2025-01-01"
+                    max={input.end_date}
+                    required
+                    value={input.start_date}
+                    onInput={(e) => set("start_date", e.currentTarget.value)}
+                    onChange={(e) => set("start_date", e.target.value)}
+                  />
+                </label>
+                <label>
+                  Akhir replay
+                  <input
+                    type="date"
+                    name="end_date"
+                    min={input.start_date}
+                    max="2025-12-31"
+                    required
+                    value={input.end_date}
+                    onInput={(e) => set("end_date", e.currentTarget.value)}
+                    onChange={(e) => set("end_date", e.target.value)}
+                  />
+                </label>
+              </div>
+              <details className="sim-method-details">
+                <summary>Bagaimana aturan ini dihitung?</summary>
+                <p>
+                  Pembelian mengikuti lot 100 saham dan close pada tanggal
+                  masuk. Urutan event mengikuti cum date; jika sama, kode
+                  emiten. Sinyal BEP pada close dieksekusi pada open sesi
+                  berikutnya. Batas hari bursa berlaku untuk BEP, payment, dan
+                  pengamatan. Dana jual tersedia setelah T+2 sesi dataset;
+                  dividen pada payment date.
+                </p>
+              </details>
             </div>
             <button
-              className="btn primary full"
+              className="btn primary full sim-submit"
               disabled={busy || !input.event_ids.length}
               type="submit"
             >
@@ -360,22 +379,19 @@ export default function Simulator({
                 </>
               ) : (
                 <>
-                  <Play size={16} /> Jalankan & bandingkan strategi
+                  <Play size={16} /> Lihat hasil replay
                 </>
               )}
             </button>
-            <p className="tiny muted center">
-              Di luar biaya transaksi, pajak, dan slippage.
+            <p className="sim-note">
+              Replay historis, bukan proyeksi. Hasil di luar biaya transaksi,
+              pajak, dan slippage.
             </p>
           </form>
         </section>
         <aside className="glass pad history-panel">
-          <h2>
-            <History size={18} /> Riwayat simulasi
-          </h2>
-          <p className="small muted">
-            Input dan hasil tersimpan sebagai run terpisah.
-          </p>
+          <span className="sim-section-label">ARSIP</span>
+          <h2>Riwayat replay</h2>
           {history.isError ? (
             <div className="notice error">Riwayat belum dapat dimuat.</div>
           ) : history.isPending ? (
@@ -463,30 +479,65 @@ export default function Simulator({
       )}
       {selected && result && (
         <section className="results">
-          <div className="section-head">
-            <div>
-              <h2>Hasil replay strategi</h2>
-              <p className="small muted">
-                {dt(result.primary.start_date, true)} –{" "}
-                {dt(result.input.end_date, true)} · ID{" "}
-                {run.data?.id.slice(0, 8)}
-              </p>
-            </div>
-            <span className="badge">Historis · gross</span>
+          <div className="sim-results-intro">
+            <span className="sim-section-label">02 / HASIL REPLAY</span>
+            <h2>Apa yang terjadi dengan modal?</h2>
+            <p>
+              {dt(result.primary.start_date, true)} –{" "}
+              {dt(result.input.end_date, true)} · Historis, sebelum biaya dan
+              pajak.
+            </p>
           </div>
-          <section
+          {draftDiffers && (
+            <p className="notice sim-draft-warning" role="status">
+              Form sekarang berbeda. Hasil ini tetap memakai aturan yang
+              tersimpan saat replay dijalankan.
+            </p>
+          )}
+          <div className="sim-results-heading">
+            <span className="sim-section-label">PERBANDINGAN ALOKASI</span>
+            <p>Pilih strategi untuk melihat rinciannya.</p>
+          </div>
+          <div className="comparison-grid">
+            {result.alternatives.map((r) => (
+              <button
+                className={`glass comparison ${chosen === r.allocation ? "selected" : ""}`}
+                key={r.allocation}
+                onClick={() => setChosen(r.allocation)}
+                aria-pressed={chosen === r.allocation}
+              >
+                <div className="spread">
+                  <span>{labels[r.allocation]}</span>
+                  {chosen === r.allocation ? (
+                    <Check size={17} />
+                  ) : (
+                    <ArrowUpRight size={17} />
+                  )}
+                </div>
+                <strong className={r.gross_pnl >= 0 ? "positive" : "negative"}>
+                  {r.gross_pnl > 0 ? "+" : ""}
+                  {money(r.gross_pnl)}
+                </strong>
+                <small>{pct(r.return_pct)} return total</small>
+                <div className="comparison-footer">
+                  <span>Drawdown {pct(r.max_drawdown_pct)}</span>
+                  <span>
+                    {r.trades.filter((t) => t.shares > 0).length} posisi dibeli
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
+          <ResultView replay={selected} alternatives={result.alternatives} />
+          <details
             className="glass pad run-snapshot"
             aria-label="Input asli hasil"
           >
-            <div className="section-head">
-              <div>
-                <h3>Input asli hasil ini</h3>
-                <p className="small muted">
-                  {draftDiffers
-                    ? "Form saat ini berbeda. Angka di bawah tetap memakai input tersimpan ini."
-                    : "Form sesuai input hasil ini. Mengubah form tidak menghitung ulang hasil."}
-                </p>
-              </div>
+            <summary>
+              <span>Aturan yang dipakai pada hasil ini</span>
+              <small>ID {run.data?.id.slice(0, 8)} · Lihat detail</small>
+            </summary>
+            <div className="run-snapshot-actions">
               <button
                 className="btn subtle"
                 disabled={busy || unavailableEvents.length > 0}
@@ -571,49 +622,17 @@ export default function Simulator({
                 tidak tersedia untuk replay pada dataset aktif.
               </p>
             )}
-          </section>
-          <div className="comparison-grid">
-            {result.alternatives.map((r) => (
-              <button
-                className={`glass comparison ${chosen === r.allocation ? "selected" : ""}`}
-                key={r.allocation}
-                onClick={() => setChosen(r.allocation)}
-                aria-pressed={chosen === r.allocation}
-              >
-                <div className="spread">
-                  <span>{labels[r.allocation]}</span>
-                  {chosen === r.allocation ? (
-                    <Check size={17} />
-                  ) : (
-                    <ArrowUpRight size={17} />
-                  )}
-                </div>
-                <strong className={r.gross_pnl >= 0 ? "positive" : "negative"}>
-                  {r.gross_pnl > 0 ? "+" : ""}
-                  {money(r.gross_pnl)}
-                </strong>
-                <small>{pct(r.return_pct)} return total</small>
-                <div className="comparison-footer">
-                  <span>Drawdown {pct(r.max_drawdown_pct)}</span>
-                  <span>
-                    {r.trades.filter((t) => t.shares > 0).length} posisi dibeli
-                  </span>
-                </div>
-              </button>
-            ))}
-          </div>
-          <ResultView replay={selected} alternatives={result.alternatives} />
+          </details>
         </section>
       )}
       {!selected && !busy && (
         <div className="glass sim-empty">
-          <div className="orbit-visual">
-            <Route size={32} />
-          </div>
+          <Route size={32} aria-hidden="true" />
           <div>
-            <h2>Belum ada hasil simulasi</h2>
+            <span className="sim-section-label">HASIL REPLAY</span>
+            <h2>Hasilnya akan muncul di sini.</h2>
             <p className="muted">
-              Pilih event dan aturan, lalu jalankan replay historis.
+              Atur modal dan peristiwa, lalu jalankan replay.
             </p>
           </div>
         </div>
@@ -632,16 +651,16 @@ export function ResultView({
   const dates = [
     ...new Set(alternatives.flatMap((a) => a.curve.map((c) => c.date))),
   ].sort();
-  const colors = ["#8b8096", "#e5bd98", "#d77da9"];
+  const colors = ["#FF4713", "#66B2BF", "#D9AF59"];
   return (
     <>
       <div className="glass pad result-chart">
         <div className="section-head">
           <div>
-            <h3>Perjalanan nilai portofolio</h3>
+            <span className="sim-section-label">LINTASAN MODAL</span>
+            <h3>Bagaimana nilainya bergerak?</h3>
             <p className="small muted">
-              Kas + saham + piutang. Garis memakai jalur harga historis yang
-              sama.
+              Nilai portofolio historis: kas, saham, dan piutang.
             </p>
           </div>
           <div className="chart-legend">
@@ -655,7 +674,7 @@ export function ResultView({
         </div>
         <Chart
           label="Perbandingan nilai portofolio tiga strategi historis"
-          height={290}
+          height={380}
           option={lineOption(
             dates,
             alternatives.map((a, i) => ({
@@ -671,27 +690,27 @@ export function ResultView({
       </div>
       <div className="result-metrics">
         <div className="glass pad">
-          <small>Nilai akhir portofolio</small>
+          <small>Nilai akhir</small>
           <strong>{money(r.ending_nav)}</strong>
-          <span>Termasuk posisi & piutang</span>
+          <span>Termasuk saham dan piutang</span>
         </div>
         <div className="glass pad">
-          <small>Dividen menjadi hak</small>
+          <small>Hak dividen</small>
           <strong>{money(r.dividends)}</strong>
           <span>Belum dibayar: {money(r.pending_dividends)}</span>
         </div>
         <div className="glass pad">
-          <small>Kas tersedia di akhir</small>
+          <small>Kas tersedia</small>
           <strong>{money(r.ending_cash)}</strong>
           <span>Piutang jual: {money(r.pending_sales)}</span>
         </div>
       </div>
-      <section className="glass pad">
+      <section className="glass pad result-route">
         <div className="section-head">
           <div>
-            <h3>{labels[r.allocation]} · jejak perpindahan</h3>
+            <span className="sim-section-label">JEJAK TRANSAKSI</span>
+            <h3>{labels[r.allocation]}: dari masuk hingga kas kembali</h3>
           </div>
-          <span className="badge">{r.rules_version}</span>
         </div>
         <div className="route-list">
           {r.trades.map((t, i) => (
