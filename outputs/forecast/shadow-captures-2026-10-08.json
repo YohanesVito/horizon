@@ -1,0 +1,149 @@
+{
+  "status": "research_shadow_only",
+  "records": [
+    {
+      "baseline_ex_close": "1210.5",
+      "calendar_source": {
+        "path": "outputs/forecast/calendar-upcoming-2026-10-08.json",
+        "retrieved_at": "2026-10-08T16:15:04.906168+08:00",
+        "sha256": "90f6c6b351f6446173f0282860536ca5641bec13caca3bd1d15f3a68f86e5a6d"
+      },
+      "captured_at": "2026-10-08T08:31:50.433303+00:00",
+      "cum_date": "2026-10-13",
+      "dps": "14.5",
+      "ex_date": "2026-10-14",
+      "id": "shadow:AMRT:2026-10-14:pre-cum-full-dps-baseline-v0.1",
+      "last_close": "1225",
+      "last_price_date": "2026-10-07",
+      "limitations": [
+        "Baseline riset sebelum cum-date; bukan prediksi tervalidasi.",
+        "Tanggal dokumen bukan bukti waktu publikasi; basis harga masih perlu audit independen."
+      ],
+      "model_version": "pre-cum-full-dps-baseline-v0.1",
+      "official_notice": {
+        "document_date_claim": "2026-10-06",
+        "file": "outputs/forecast/ksei-AMRT-2026-10.pdf",
+        "observed_at_capture": "2026-10-08T08:31:50.433303+00:00",
+        "publication_time_verified": false,
+        "sha256": "dd13add215105753601c366d513b2845eec31e42c2536eb9337cf948887cb3b7",
+        "url": "https://web.ksei.co.id/Announcement/Files/AMRT_DIV_20261015_ID.pdf"
+      },
+      "price_source": {
+        "path": "outputs/forecast/price-AMRT-2026-10-08.json",
+        "retrieved_at": "2026-10-08T16:16:03.393988+08:00",
+        "sha256": "1ac55740b4006730c2746def914b5447e5bd69510115120aaf5c2475a76acb94"
+      },
+      "status": "research_shadow",
+      "symbol": "AMRT",
+      "target": "ex_date_close_from_pre_cum_last_close"
+    },
+    {
+      "baseline_ex_close": "4682.0",
+      "calendar_source": {
+        "path": "outputs/forecast/calendar-upcoming-2026-10-08.json",
+        "retrieved_at": "2026-10-08T16:15:04.906168+08:00",
+        "sha256": "90f6c6b351f6446173f0282860536ca5641bec13caca3bd1d15f3a68f86e5a6d"
+      },
+      "captured_at": "2026-10-08T08:31:49.772481+00:00",
+      "cum_date": "2026-10-12",
+      "dps": "98.0",
+      "ex_date": "2026-10-13",
+      "id": "shadow:ASII:2026-10-13:pre-cum-full-dps-baseline-v0.1",
+      "last_close": "4780",
+      "last_price_date": "2026-10-07",
+      "limitations": [
+        "Baseline riset sebelum cum-date; bukan prediksi tervalidasi.",
+        "Tanggal dokumen bukan bukti waktu publikasi; basis harga masih perlu audit independen."
+      ],
+      "model_version": "pre-cum-full-dps-baseline-v0.1",
+      "official_notice": {
+        "document_date_claim": "2026-10-05",
+        "file": "outputs/forecast/ksei-ASII-2026-10.pdf",
+        "observed_at_capture": "2026-10-08T08:31:49.772481+00:00",
+        "publication_time_verified": false,
+        "sha256": "0c568a4c0fa2fcb4e415314b7a69dbe0df5771f3d0b7e781a445658d4c27226c",
+        "url": "https://web.ksei.co.id/Announcement/Files/ASII_DIV_20261014_ID.pdf"
+      },
+      "price_source": {
+        "path": "outputs/forecast/price-ASII-2026-10-08.json",
+        "retrieved_at": "2026-10-08T16:16:06.901854+08:00",
+        "sha256": "a0e73226ef7003ef3e9fe0419f57938cf13ae5ab2ec2b5afbb3f03ba56a75b5b"
+      },
+      "status": "research_shadow",
+      "symbol": "ASII",
+      "target": "ex_date_close_from_pre_cum_last_close"
+    },
+    {
+      "baseline_ex_close": "44.0",
+      "calendar_source": {
+        "path": "outputs/forecast/calendar-upcoming-2026-10-08.json",
+        "retrieved_at": "2026-10-08T16:15:04.906168+08:00",
+        "sha256": "90f6c6b351f6446173f0282860536ca5641bec13caca3bd1d15f3a68f86e5a6d"
+      },
+      "captured_at": "2026-10-08T08:31:50.753018+00:00",
+      "cum_date": "2026-10-13",
+      "dps": "1.0",
+      "ex_date": "2026-10-14",
+      "id": "shadow:BSBK:2026-10-14:pre-cum-full-dps-baseline-v0.1",
+      "last_close": "45",
+      "last_price_date": "2026-10-07",
+      "limitations": [
+        "Baseline riset sebelum cum-date; bukan prediksi tervalidasi.",
+        "Tanggal dokumen bukan bukti waktu publikasi; basis harga masih perlu audit independen."
+      ],
+      "model_version": "pre-cum-full-dps-baseline-v0.1",
+      "official_notice": {
+        "document_date_claim": "2026-10-06",
+        "file": "outputs/forecast/ksei-BSBK-2026-10.pdf",
+        "observed_at_capture": "2026-10-08T08:31:50.753018+00:00",
+        "publication_time_verified": false,
+        "sha256": "6359d87ad363060af1b95e973c19799c05875ec26f382a49eebaf7794f8a27e8",
+        "url": "https://web.ksei.co.id/Announcement/Files/BSBK_DIV_20261015_ID.pdf"
+      },
+      "price_source": {
+        "path": "outputs/forecast/price-BSBK-2026-10-08.json",
+        "retrieved_at": "2026-10-08T16:16:03.716800+08:00",
+        "sha256": "09fb4a4cea730a9fb8616cc0df87978d169c75b1cafcabeb117bb70095b35502"
+      },
+      "status": "research_shadow",
+      "symbol": "BSBK",
+      "target": "ex_date_close_from_pre_cum_last_close"
+    },
+    {
+      "baseline_ex_close": "580.0",
+      "calendar_source": {
+        "path": "outputs/forecast/calendar-upcoming-2026-10-08.json",
+        "retrieved_at": "2026-10-08T16:15:04.906168+08:00",
+        "sha256": "90f6c6b351f6446173f0282860536ca5641bec13caca3bd1d15f3a68f86e5a6d"
+      },
+      "captured_at": "2026-10-08T08:31:50.114920+00:00",
+      "cum_date": "2026-10-12",
+      "dps": "20.0",
+      "ex_date": "2026-10-13",
+      "id": "shadow:TLDN:2026-10-13:pre-cum-full-dps-baseline-v0.1",
+      "last_close": "600",
+      "last_price_date": "2026-10-07",
+      "limitations": [
+        "Baseline riset sebelum cum-date; bukan prediksi tervalidasi.",
+        "Tanggal dokumen bukan bukti waktu publikasi; basis harga masih perlu audit independen."
+      ],
+      "model_version": "pre-cum-full-dps-baseline-v0.1",
+      "official_notice": {
+        "document_date_claim": "2026-10-05",
+        "file": "outputs/forecast/ksei-TLDN-2026-10.pdf",
+        "observed_at_capture": "2026-10-08T08:31:50.114920+00:00",
+        "publication_time_verified": false,
+        "sha256": "0eaef7d981753d660afd6884d18863dd25d658aaa5a67249f484069eaedea88b",
+        "url": "https://web.ksei.co.id/Announcement/Files/TLDN_DIV_20261014_ID.pdf"
+      },
+      "price_source": {
+        "path": "outputs/forecast/price-TLDN-2026-10-08.json",
+        "retrieved_at": "2026-10-08T16:16:03.102531+08:00",
+        "sha256": "65e77d1b1beb9311aa3732c4e3ebd8b9a07a224f0d1c558d7e0b2698c4a1f0ca"
+      },
+      "status": "research_shadow",
+      "symbol": "TLDN",
+      "target": "ex_date_close_from_pre_cum_last_close"
+    }
+  ]
+}

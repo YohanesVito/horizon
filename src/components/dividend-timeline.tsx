@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import {
   ArrowUpRight,
   CheckCheck,
-  FlaskConical,
+  ChevronDown,
   LockKeyhole,
 } from "lucide-react";
 import { api, dt, money, pct, tradingDayText } from "@/lib/api";
@@ -28,12 +28,17 @@ const COLORS = [
   "#FF7853",
   "#E3D9CE",
 ];
+const previewCompanyNames: Record<string, string> = {
+  LPPF: "PT MDS Retailing Tbk",
+};
 const color = (year: number) =>
   COLORS[(((year - 2021) % COLORS.length) + COLORS.length) % COLORS.length];
 type Units = "percent" | "price";
 type Hover = { period: TimelinePeriod; point: TimelinePoint };
 const dayLabel = (day: number) =>
   day === 0 ? "Ex · H0" : `H${day > 0 ? "+" : "−"}${Math.abs(day)}`;
+const sessionLabel = (session: number) =>
+  session === 0 ? "H0" : `H${session > 0 ? "+" : "−"}${Math.abs(session)}`;
 
 export default function DividendTimeline() {
   const [chosenSelection, setChosenSelection] = useState<{
@@ -41,6 +46,16 @@ export default function DividendTimeline() {
     preview: boolean;
   } | null>(null);
   const [selectionTouched, setSelectionTouched] = useState(false);
+  const pickerRef = useRef<HTMLDetailsElement>(null);
+  useEffect(() => {
+    const closeOnOutsideClick = (event: globalThis.PointerEvent) => {
+      if (!pickerRef.current?.contains(event.target as Node)) {
+        if (pickerRef.current) pickerRef.current.open = false;
+      }
+    };
+    document.addEventListener("pointerdown", closeOnOutsideClick);
+    return () => document.removeEventListener("pointerdown", closeOnOutsideClick);
+  }, []);
   const catalog = useQuery({
     queryKey: ["timeline-catalog"],
     queryFn: () => api<TimelineCatalog>("/timeline"),
@@ -84,44 +99,66 @@ export default function DividendTimeline() {
       </div>
     );
   const data = catalog.data;
+  const selectedLabel = selection
+    ? `${selection.symbol} — ${
+        data.companies.find((company) => company.symbol === selection.symbol)
+          ?.name ?? previewCompanyNames[selection.symbol] ?? selection.symbol
+      }`
+    : "Pilih saham";
   return (
     <div className="timeline-workspace">
-      <section className="glass timeline-catalog" aria-label="Pilih emiten">
+      <section className="glass timeline-catalog" aria-label="Pilih saham">
         <div className="timeline-catalog-title">
           <div>
-            <p className="eyebrow">EMITEN</p>
             <h2>Pilih saham untuk dianalisis</h2>
           </div>
         </div>
         {data.companies.length || data.preview_symbols.length ? (
-          <label className="timeline-picker">
-            <span className="sr-only">Emiten</span>
-            <select
-              value={
-                selection
-                  ? `${selection.preview ? "preview" : "verified"}:${selection.symbol}`
-                  : ""
+          <details
+            className="timeline-picker"
+            ref={pickerRef}
+            onKeyDown={(event) => {
+              if (event.key === "Escape") {
+                event.currentTarget.open = false;
+                event.currentTarget.querySelector("summary")?.focus();
               }
-              onChange={(e) => {
-                const [kind, symbol] = e.target.value.split(":");
-                chooseSelection(
-                  symbol ? { symbol, preview: kind === "preview" } : null,
-                );
-              }}
-            >
-              <option value="">Pilih emiten</option>
-              {data.companies.map((c) => (
-                <option key={c.symbol} value={`verified:${c.symbol}`}>
-                  {c.symbol} — {c.name}
-                </option>
+            }}
+          >
+            <summary>
+              <span>{selectedLabel}</span>
+              <ChevronDown size={18} aria-hidden="true" />
+            </summary>
+            <div className="timeline-picker-options">
+              {data.companies.map((company) => (
+                <button
+                  type="button"
+                  key={company.symbol}
+                  aria-current={selection?.symbol === company.symbol ? "true" : undefined}
+                  onClick={() => {
+                    chooseSelection({ symbol: company.symbol, preview: false });
+                    if (pickerRef.current) pickerRef.current.open = false;
+                  }}
+                >
+                  {company.symbol} — {company.name}
+                </button>
               ))}
               {data.preview_symbols.map((symbol) => (
-                <option key={`preview:${symbol}`} value={`preview:${symbol}`}>
-                  {symbol} — pratinjau
-                </option>
+                <button
+                  type="button"
+                  key={`preview:${symbol}`}
+                  aria-current={selection?.symbol === symbol ? "true" : undefined}
+                  onClick={() => {
+                    chooseSelection({ symbol, preview: true });
+                    if (pickerRef.current) pickerRef.current.open = false;
+                  }}
+                >
+                  {previewCompanyNames[symbol]
+                    ? `${symbol} — ${previewCompanyNames[symbol]}`
+                    : symbol}
+                </button>
               ))}
-            </select>
-          </label>
+            </div>
+          </details>
         ) : (
           <p className="small muted">
             {data.calendar_candidates} kandidat kalender ditemukan. Tanggal
@@ -150,12 +187,11 @@ export default function DividendTimeline() {
               className="btn primary"
               onClick={() => chooseSelection({ symbol: "LPPF", preview: true })}
             >
-              Buka pratinjau LPPF <ArrowUpRight size={16} />
+              Buka analisis LPPF <ArrowUpRight size={16} />
             </button>
           )}
           <small className="muted">
-            Pratinjau memakai harga historis nyata; kelengkapan timeline belum
-            disahkan.
+            Harga historis nyata; kelengkapan timeline belum disahkan.
           </small>
         </section>
       )}
@@ -276,34 +312,8 @@ function TimelineExplorer({ data }: { data: TimelineDetail }) {
   return (
     <>
       <section className="glass timeline-panel">
-        <header className="timeline-company-head timeline-editorial-head">
-          <div className="timeline-company">
-            <div>
-              <p className="eyebrow">ANALISIS EMITEN / {data.symbol}</p>
-              <h2>{data.symbol}</h2>
-              <p className="timeline-company-name">{data.name}</p>
-            </div>
-          </div>
-          <div className="timeline-company-provenance">
-            <span className="badge">Sumber: {data.source}</span>
-            {data.preview && (
-              <div className="timeline-preview-banner" role="note">
-                <FlaskConical size={15} aria-hidden="true" />
-                <p>
-                  <strong>Pratinjau.</strong> Kelengkapan dan basis harga belum
-                  terverifikasi.
-                </p>
-              </div>
-            )}
-          </div>
-        </header>
         <div className="timeline-editorial-copy">
-          <p className="eyebrow">01 / LINTASAN HARGA</p>
-          <h3>Harga di sekitar ex-date.</h3>
-          <p>
-            Bandingkan peristiwa dividen pada garis waktu yang sama. Pilih
-            peristiwa untuk membaca detailnya.
-          </p>
+          <h3><span>01</span> Lintasan Harga</h3>
         </div>
         <TimelinePlot
           periods={mode === "history" ? data.history : data.current}
@@ -315,7 +325,6 @@ function TimelineExplorer({ data }: { data: TimelineDetail }) {
           historyYears={data.history_years}
           hasCurrentData={data.current.some((period) => period.points.length > 0)}
           symbol={data.symbol}
-          current={mode === "current"}
         />
         {mode === "current" && (
           <div className="timeline-forecast">
@@ -384,6 +393,7 @@ function TimelineExplorer({ data }: { data: TimelineDetail }) {
           </span>
         </summary>
         <div className="timeline-audit-body">
+          <p>Sumber: {data.source}</p>
           <ul>
             {data.issues.map((issue) => (
               <li key={issue}>{tradingDayText(issue)}</li>
@@ -425,7 +435,6 @@ function TimelinePlot({
   historyYears,
   hasCurrentData,
   symbol,
-  current,
 }: {
   periods: TimelinePeriod[];
   units: Units;
@@ -436,24 +445,28 @@ function TimelinePlot({
   historyYears: number[];
   hasCurrentData: boolean;
   symbol: string;
-  current: boolean;
 }) {
-  const container = useRef<HTMLDivElement>(null);
+  const [container, setContainer] = useState<HTMLDivElement | null>(null);
   const [width, setWidth] = useState(800);
   const [pinned, setPinned] = useState<string | null>(null);
   const [legendId, setLegendId] = useState<string | null>(null);
   const [hover, setHover] = useState<Hover | null>(null);
   useEffect(() => {
-    const el = container.current;
-    if (!el) return;
+    if (!container) return;
+    const measure = (nextWidth: number) => {
+      if (nextWidth > 0) setWidth(Math.max(260, nextWidth));
+    };
+    measure(container.getBoundingClientRect().width);
     const observer = new ResizeObserver((entries) =>
-      setWidth(Math.max(260, entries[0].contentRect.width)),
+      measure(entries[0].contentRect.width),
     );
-    observer.observe(el);
+    observer.observe(container);
     return () => observer.disconnect();
-  }, []);
+  }, [container]);
   const available = periods.filter(
-    (p) => p.points.length > 0 && (units === "price" || p.cum_close !== null),
+    (p) =>
+      p.points.some((point) => point.date === p.ex_date) &&
+      (units === "price" || p.cum_close !== null),
   );
   const activeId = pinned ?? legendId ?? hover?.period.id ?? null;
   const active =
@@ -465,7 +478,7 @@ function TimelinePlot({
     (yearCounts.get(period.year) ?? 0) > 1
       ? `${period.year} · ${dt(period.ex_date)}`
       : String(period.year);
-  const missingYears = current
+  const missingYears = mode === "current"
     ? []
     : historyYears.filter(
         (year) => !periods.some((period) => period.year === year && period.points.length),
@@ -476,23 +489,67 @@ function TimelinePlot({
   const plotWidth = width - left - right;
   const value = (point: TimelinePoint) =>
     units === "price" ? point.close : point.change_pct;
-  const allPoints = available.flatMap((p) => p.points);
+  const rawPoints = available.flatMap((p) => p.points);
+  const paymentDays = available.flatMap((period) =>
+    period.phases
+      .filter((phase) => phase.key === "payment_date" && phase.day !== null)
+      .map((phase) => phase.day!),
+  );
+  const cutoffDay = paymentDays.length
+    ? Math.max(1, ...paymentDays.map((day) => day + 10))
+    : Math.max(1, ...rawPoints.map((point) => point.day));
+  const sessions = new Map(
+    available.map((period) => {
+      const ordered = [...period.points].sort((a, b) =>
+        a.date.localeCompare(b.date),
+      );
+      const exIndex = ordered.findIndex((point) => point.date === period.ex_date);
+      return [
+        period.id,
+        new Map(ordered.map((point, index) => [point.date, index - exIndex])),
+      ] as const;
+    }),
+  );
+  const sessionOf = (period: TimelinePeriod, point: TimelinePoint) =>
+    sessions.get(period.id)?.get(point.date);
+  const visiblePoints = (period: TimelinePeriod) =>
+    period.points
+      .filter((point) => point.day <= cutoffDay && value(point) !== null)
+      .toSorted((a, b) => a.date.localeCompare(b.date));
+  const allPoints = available.flatMap(visiblePoints);
+  const visibleSessions = available.flatMap((period) =>
+    visiblePoints(period).flatMap((point) => {
+      const session = sessionOf(period, point);
+      return session === undefined ? [] : [session];
+    }),
+  );
+  const minX = Math.min(-1, ...visibleSessions);
+  const maxX = Math.max(1, ...visibleSessions);
   const values = allPoints.map(value).filter((v): v is number => v !== null);
-  const minX = Math.min(-1, ...allPoints.map((p) => p.day));
-  const maxX = Math.max(1, ...allPoints.map((p) => p.day));
   const low = Math.min(...values, ...(units === "percent" ? [0] : []));
   const high = Math.max(...values, ...(units === "percent" ? [0] : []));
   const padding = (high - low || Math.abs(high) * 0.05 || 1) * 0.14;
   const minY = low - padding,
     maxY = high + padding;
-  const x = (day: number) => left + ((day - minX) / (maxX - minX)) * plotWidth;
-  // Keep nearby dates at their true x positions; move only their labels into lanes.
+  const x = (session: number) =>
+    left + ((session - minX) / (maxX - minX)) * plotWidth;
+  // Keep observed sessions at their x positions; move only their labels into lanes.
   const phaseLayout = (period: TimelinePeriod | undefined) => {
     const laneEnds: number[] = [];
     return (period?.phases ?? [])
-      .filter(
-        (phase) => phase.day !== null && phase.day >= minX && phase.day <= maxX,
-      )
+      .flatMap((phase) => {
+        const session = phase.date
+          ? sessions.get(period!.id)?.get(phase.date)
+          : undefined;
+        return phase.key === "recording_date" ||
+          session === undefined ||
+          session < minX ||
+          session > maxX ||
+          phase.day === null ||
+          phase.day > cutoffDay
+          ? []
+          : [{ ...phase, session }];
+      })
       // On narrow screens the full chronology below keeps the other dates visible.
       .filter(
         (phase) =>
@@ -500,13 +557,13 @@ function TimelinePlot({
           phase.key === "cum_date" ||
           phase.key === "ex_date",
       )
-      .toSorted((a, b) => a.day! - b.day!)
+      .toSorted((a, b) => a.session - b.session)
       .map((phase) => {
         const label = phaseLabel(phase.key, phase.label);
         const labelWidth = Math.max(84, label.length * 7.5 + 20);
         const labelX = Math.max(
           left,
-          Math.min(width - right - labelWidth, x(phase.day!) - labelWidth / 2),
+          Math.min(width - right - labelWidth, x(phase.session) - labelWidth / 2),
         );
         let lane = laneEnds.findIndex((end) => end + 10 <= labelX);
         if (lane === -1) lane = laneEnds.length;
@@ -527,11 +584,10 @@ function TimelinePlot({
   const y = (v: number) =>
     bottom - ((v - minY) / (maxY - minY)) * (bottom - top);
   const line = (p: TimelinePeriod) =>
-    p.points
-      .filter((point) => value(point) !== null)
+    visiblePoints(p)
       .map(
         (point, i) =>
-          `${i ? "L" : "M"}${x(point.day).toFixed(2)},${y(value(point)!).toFixed(2)}`,
+          `${i ? "L" : "M"}${x(sessionOf(p, point)!).toFixed(2)},${y(value(point)!).toFixed(2)}`,
       )
       .join(" ");
   const reset = () => {
@@ -562,12 +618,17 @@ function TimelinePlot({
     let distance = Infinity;
     for (const period of available) {
       if (pinned !== null && period.id !== pinned) continue;
-      const point = period.points.reduce((a, b) =>
-        Math.abs(x(a.day) - pointerX) < Math.abs(x(b.day) - pointerX) ? a : b,
+      const points = visiblePoints(period);
+      if (!points.length) continue;
+      const point = points.reduce((a, b) =>
+        Math.abs(x(sessionOf(period, a)!) - pointerX) <
+        Math.abs(x(sessionOf(period, b)!) - pointerX)
+          ? a
+          : b,
       );
       const v = value(point);
       if (v === null) continue;
-      const d = Math.hypot(x(point.day) - pointerX, y(v) - pointerY);
+      const d = Math.hypot(x(sessionOf(period, point)!) - pointerX, y(v) - pointerY);
       if (d < distance) {
         distance = d;
         closest = { period, point };
@@ -593,9 +654,9 @@ function TimelinePlot({
   }
   const observed =
     hover && (pinned === null || hover.period.id === pinned) ? hover : null;
-  const tooltipLeft = observed
+  const cardLeft = observed
     ? Math.min(
-        Math.max(0, x(observed.point.day) - 90),
+        Math.max(0, x(sessionOf(observed.period, observed.point)!) - 100),
         Math.max(0, width - 200),
       )
     : 0;
@@ -632,14 +693,15 @@ function TimelinePlot({
                 aria-pressed={mode === "history"}
                 onClick={() => switchMode("history")}
               >
-                Histori {historyYears[0]}–{historyYears.at(-1)}
+                Historis
               </button>
               <button
                 aria-pressed={mode === "current"}
+                aria-label={`Tahun Berjalan ${currentYear}${hasCurrentData ? "" : ", belum ada data"}`}
                 disabled={!hasCurrentData}
                 onClick={() => switchMode("current")}
               >
-                {currentYear} <span>{hasCurrentData ? "Aktual" : "Belum ada snapshot"}</span>
+                Tahun Berjalan
               </button>
             </div>
             <div
@@ -685,11 +747,6 @@ function TimelinePlot({
                 </button>
               ))}
             </div>
-            {pinned !== null && (
-              <button className="text-button small" onClick={reset}>
-                Bandingkan semua
-              </button>
-            )}
           </div>
         </div>
         {missingYears.length > 0 && (
@@ -698,39 +755,7 @@ function TimelinePlot({
             Tahun kosong bukan bukti tidak ada pembagian dividen.
           </p>
         )}
-        <div className="timeline-status-bar timeline-insight-grid">
-          {active ? (
-            <div
-              className="timeline-cum-ex"
-              data-direction={movement?.direction ?? "unavailable"}
-              style={{ color: movement?.color }}
-            >
-              <span className="timeline-range-key" aria-hidden="true" />
-              <span>Cum → Ex · {periodLabel(active)}</span>
-              <strong>
-                {movement
-                  ? `${movement.changePct > 0 ? "+" : ""}${pct(movement.changePct)}`
-                  : "Harga belum lengkap"}
-              </strong>
-              <span className="muted">perubahan harga penutupan</span>
-            </div>
-          ) : (
-            <div />
-          )}
-          <div className="timeline-chart-meta">
-            <span>
-              {units === "price"
-                ? "Harga penutupan (Rp) · basis sumber"
-                : "Perubahan harga dari close cum-date (%)"}
-            </span>
-            <span>
-              {pinned
-                ? `Fokus ${active ? periodLabel(active) : "peristiwa"} terkunci · pilih lagi untuk melepas`
-                : "Pilih peristiwa atau titik grafik untuk fokus"}
-            </span>
-          </div>
-        </div>
-        <div ref={container} className="timeline-chart-wrap">
+        <div ref={setContainer} className="timeline-chart-wrap">
           {available.length ? (
             <>
               <svg
@@ -738,7 +763,7 @@ function TimelinePlot({
                 height={height}
                 viewBox={`0 0 ${width} ${height}`}
                 role="img"
-                aria-label={`Overlay harga ${symbol}, ${available.map(periodLabel).join(", ")}; ${units === "price" ? "rupiah" : "perubahan persen"}; hari kalender relatif ex-date`}
+                aria-label={`Overlay harga ${symbol}, ${available.map(periodLabel).join(", ")}; ${units === "price" ? "rupiah" : "perubahan persen"}; urutan titik harga tersedia relatif ex-date`}
                 onPointerMove={onPointerMove}
                 onClick={onChartClick}
                 onPointerLeave={() => setHover(null)}
@@ -792,9 +817,8 @@ function TimelinePlot({
                       Number(b.id === activeId),
                   )
                   .map((period) => {
-                    const points = period.points.filter(
-                      (p) => value(p) !== null,
-                    );
+                    const points = visiblePoints(period);
+                    if (!points.length) return null;
                     const fade =
                       activeId !== null && period.id !== activeId;
                     return (
@@ -806,7 +830,7 @@ function TimelinePlot({
                         className="timeline-series"
                       >
                         <path
-                          d={`${line(period)} L${x(points.at(-1)!.day)},${bottom} L${x(points[0].day)},${bottom} Z`}
+                          d={`${line(period)} L${x(sessionOf(period, points.at(-1)!)!)},${bottom} L${x(sessionOf(period, points[0])!)},${bottom} Z`}
                           fill={color(period.year)}
                           fillOpacity={period.id === activeId ? 0.06 : 0}
                         />
@@ -828,15 +852,18 @@ function TimelinePlot({
                       aria-label={`Area cum ke ex-date ${active ? periodLabel(active) : ""}: ${pct(movement.changePct)}`}
                     >
                       <rect
-                        x={x(movement.cum.day)}
+                        x={x(sessionOf(active!, movement.cum)!)}
                         y={top}
-                        width={x(movement.ex.day) - x(movement.cum.day)}
+                        width={
+                          x(sessionOf(active!, movement.ex)!) -
+                          x(sessionOf(active!, movement.cum)!)
+                        }
                         height={bottom - top}
                         fill={movement.color}
                         fillOpacity=".09"
                       />
                       <path
-                        d={`${line({ ...active!, points: movement.points })} L${x(movement.ex.day)},${bottom} L${x(movement.cum.day)},${bottom} Z`}
+                        d={`${line({ ...active!, points: movement.points })} L${x(sessionOf(active!, movement.ex)!)},${bottom} L${x(sessionOf(active!, movement.cum)!)},${bottom} Z`}
                         fill={movement.color}
                         fillOpacity=".46"
                       />
@@ -850,7 +877,7 @@ function TimelinePlot({
                       {[movement.cum, movement.ex].map((point) => (
                         <circle
                           key={point.date}
-                          cx={x(point.day)}
+                          cx={x(sessionOf(active!, point)!)}
                           cy={y(value(point)!)}
                           r="3.3"
                           fill={movement.color}
@@ -863,7 +890,7 @@ function TimelinePlot({
                 {annotations.map((phase) => (
                   <path
                     key={phase.key}
-                    d={`M${phase.labelX + phase.labelWidth / 2},${phase.labelY + 26} L${x(phase.day!)},${top - 5} V${bottom}`}
+                    d={`M${phase.labelX + phase.labelWidth / 2},${phase.labelY + 26} L${x(phase.session)},${top - 5} V${bottom}`}
                     fill="none"
                     stroke={
                       phase.key === "ex_date" ? "#F7F7F3" : color(active!.year)
@@ -906,21 +933,21 @@ function TimelinePlot({
                     fill={tick === 0 ? "#F7F7F3" : "#B9C6CB"}
                     fontSize="12"
                   >
-                    {dayLabel(tick)}
+                    {sessionLabel(tick)}
                   </text>
                 ))}
                 {observed && (
                   <g>
                     <line
-                      x1={x(observed.point.day)}
-                      x2={x(observed.point.day)}
+                      x1={x(sessionOf(observed.period, observed.point)!)}
+                      x2={x(sessionOf(observed.period, observed.point)!)}
                       y1={top}
                       y2={bottom}
                       stroke={color(observed.period.year)}
                       strokeDasharray="3 4"
                     />
                     <circle
-                      cx={x(observed.point.day)}
+                      cx={x(sessionOf(observed.period, observed.point)!)}
                       cy={y(value(observed.point)!)}
                       r="4.5"
                       fill={color(observed.period.year)}
@@ -932,33 +959,23 @@ function TimelinePlot({
               </svg>
               {observed && (
                 <div
+                  className="timeline-point-card"
                   role="status"
-                  className="timeline-tooltip"
                   style={{
-                    left: tooltipLeft,
-                    top: top + 8,
-                    borderColor: color(observed.period.year),
+                    left: cardLeft,
+                    borderTopColor: color(observed.period.year),
                   }}
                 >
-                  <strong>
-                    <i style={{ background: color(observed.period.year) }} />
-                    {periodLabel(observed.period)} · {current ? "Aktual" : "Historis"}
-                  </strong>
-                  <span>
-                    {dt(observed.point.date, true)} ·{" "}
-                    {dayLabel(observed.point.day)}
-                  </span>
-                  <b>{money(observed.point.close)}</b>
+                  <div className="timeline-point-card-meta">
+                    <span>{dt(observed.point.date, true)}</span>
+                    <span>
+                      {sessionLabel(
+                        sessionOf(observed.period, observed.point)!,
+                      )}
+                    </span>
+                  </div>
+                  <strong>{money(observed.point.close)}</strong>
                   <span>{pct(observed.point.change_pct)} dari cum-date</span>
-                  <small>
-                    {observed.period.phases
-                      .filter((p) => p.date === observed.point.date)
-                      .map((p) => phaseLabel(p.key, p.label))
-                      .join(" · ") ||
-                      (observed.point.day < 0
-                        ? "Sebelum ex-date"
-                        : "Setelah ex-date")}
-                  </small>
                 </div>
               )}
             </>
@@ -969,10 +986,6 @@ function TimelinePlot({
             </div>
           )}
         </div>
-        <p className="timeline-axis-note">
-          Hari kalender relatif terhadap ex-date · H0 = ex-date · titik
-          mengikuti harga penutupan yang tersedia
-        </p>
       </div>
       {active && (
         <section

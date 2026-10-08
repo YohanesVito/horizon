@@ -1,0 +1,29 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "retrieved_at": "2026-10-08T16:27:55.597951+08:00",
+  "initialization": {
+    "protocolVersion": "2025-03-26",
+    "capabilities": {
+      "tools": {
+        "listChanged": true
+      }
+    },
+    "serverInfo": {
+      "name": "sectors-mcp",
+      "version": "1.0.0"
+    }
+  },
+  "method": "tools/call",
+  "tool": "fetch-corporate-actions",
+  "arguments": {
+    "symbol": "TLDN"
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"symbol\": \"TLDN.JK\",\n  \"corporate_actions\": {\n    \"agm\": [\n      {\n        \"agm_date\": \"2022-05-27\",\n        \"agm_time\": \"09:00:00\",\n        \"agm_place\": \"Dian Ballroom, Hotel Raffles Jakarta, Ciputra Worldjl. Prof. Dr. Satrio No. 1Jakarta Selatan\",\n        \"agm_result\": null\n      },\n      {\n        \"agm_date\": \"2023-05-03\",\n        \"agm_time\": \"08:00:00\",\n        \"agm_place\": \"The Langham Ballroom, Hotel The Langham Jakarta, District 8, Scbd Lot 28, Jl. Jend. Sudirman, Jakarta Selatan\",\n        \"agm_result\": null\n      },\n      {\n        \"agm_date\": \"2024-04-25\",\n        \"agm_time\": \"10:00:00\",\n        \"agm_place\": \"The Langham Ballroom, Hotel The Langham Jakarta District 8, Scbd Lot 28Jl. Jend. Sudirman, Jakarta Selatan\",\n        \"agm_result\": null\n      },\n      {\n        \"agm_date\": \"2024-12-13\",\n        \"agm_time\": null,\n        \"agm_place\": \"\",\n        \"agm_result\": null\n      },\n      {\n        \"agm_date\": \"2025-04-24\",\n        \"agm_time\": \"10:00:00\",\n        \"agm_place\": \"Beltway Office Park, Gedung B Lantai 5, Jl. Tb Simatupang No.41, RT 12/Rw 5, Ragunan, Pasarminggu, Jakarta Selatan 12540\",\n        \"agm_result\": null\n      },\n      {\n        \"agm_date\": \"2026-04-16\",\n        \"agm_time\": \"09:00:00\",\n        \"agm_place\": \"Beltway Office Park, Gedung B Lantai 5, Jl. Tb Simatupang No.41, Rt.12/Rw.5, Ragunan, Pasarminggu, Jakarta Selatan 12540 Kota Adm. Jakarta Selatan Dki. Jakarta Indonesia\",\n        \"agm_result\": \"Agenda #1: Shareholders approved the 2025 Annual Report and Financial Statements audited by Purwanto, Susanti & Surja, granting full discharge to the Board of Directors and Commissioners.\\nAgenda #2: The meeting approved the allocation of Rp 1.1 trillion in net profit toward reserve funds, cash dividends totaling Rp 701 billion, and retained earnings.\\nAgenda #3: Authority was granted to the Board of Commissioners to appoint an OJK-registered Public Accountant for the 2026 fiscal year and determine their professional fees.\\nAgenda #4: No discussion or decision was made regarding changes to the composition of the Board of Commissioners or Directors as no shareholder proposals were received.\\nAgenda #5: The Board of Commissioners was authorized to establish the 2026 remuneration system, including salaries and bonuses, for both the Board of Directors and Commissioners.\\nAgenda #6: This item served as a formal report on the realization of the utilization of Initial Public Offering (IPO) proceeds and required no shareholder resolution.\\nAgenda #7: Shareholders approved a revised plan for IPO proceeds, allocating funds for company acquisitions, a kernel crushing plant, a biogas power plant, and working capital for PT Cipta Davia Mandiri.\\nAgenda #8: The Board of Directors for the 2024-2027 period includes President Director Wishnu Wardhana and five directors, though the decision status for this item is not stated.\\nAgenda #9: The Board of Commissioners for the 2024-2027 period includes President Commissioner Indracahya Basuki and Independent Commissioner Iwa Kartiwa Hudaya, though the decision status for this item is not stated.\"\n      }\n    ],\n    \"bonus\": null,\n    \"warrant\": null,\n    \"dividend\": [\n      {\n        \"ex_date\": \"2026-04-27\",\n        \"payment_date\": \"2026-05-19\",\n        \"dividend_yield\": null,\n        \"dividend_amount\": 38.65\n      },\n      {\n        \"ex_date\": \"2023-05-12\",\n        \"payment_date\": \"2023-05-30\",\n        \"dividend_yield\": 0.0278999,\n        \"dividend_amount\": 13.52\n      },\n      {\n        \"ex_date\": \"2022-06-08\",\n        \"payment_date\": \"2022-06-29\",\n        \"dividend_yield\": 0.0101601,\n        \"dividend_amount\": 6.17\n      },\n      {\n        \"ex_date\": \"2025-10-14\",\n        \"payment_date\": \"2025-10-23\",\n        \"dividend_yield\": 0.0249091,\n        \"dividend_amount\": 15.5\n      },\n      {\n        \"ex_date\": \"2025-05-06\",\n        \"payment_date\": \"2025-05-15\",\n        \"dividend_yield\": 0.0498182,\n        \"dividend_amount\": 31\n      },\n      {\n        \"ex_date\": \"2024-05-07\",\n        \"payment_date\": \"2024-05-21\",\n        \"dividend_yield\": 0.0257629,\n        \"dividend_amount\": 12.21\n      }\n    ],\n    \"right_issue\": null,\n    \"stock_split\": null,\n    \"upcoming_dividend\": [\n      {\n        \"ex_date\": \"2026-10-13\",\n        \"payment_date\": \"2026-10-22\",\n        \"dividend_amount\": 20\n      }\n    ]\n  }\n}"
+      }
+    ]
+  }
+}

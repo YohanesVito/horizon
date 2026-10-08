@@ -2,6 +2,7 @@
 from contextlib import contextmanager
 from datetime import datetime, timezone
 from sqlalchemy import Column, String, Text, DateTime, text, select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.orm import declarative_base, sessionmaker
 import json
@@ -74,6 +75,17 @@ def save(key, kind, payload):
             old.payload = serialized
         else:
             s.add(Record(key=key, kind=kind, payload=serialized))
+
+
+def insert_once(key, kind, payload):
+    """Persist an immutable research observation; a duplicate key never updates it."""
+    serialized = json.dumps(payload, ensure_ascii=False, default=str, sort_keys=True)
+    try:
+        with Session.begin() as s:
+            s.add(Record(key=key, kind=kind, payload=serialized))
+            s.flush()
+    except IntegrityError:
+        raise ValueError('Rekaman sudah ada; versi sebelumnya tidak boleh ditimpa.') from None
 
 
 def get(key, default=None, *, kind=None):

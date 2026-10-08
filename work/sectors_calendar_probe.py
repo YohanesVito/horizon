@@ -6,7 +6,10 @@ from pathlib import Path
 import subprocess
 from urllib.parse import urlencode
 from zoneinfo import ZoneInfo
-from sectors_mcp_probe import load_key
+try:
+    from .sectors_mcp_probe import load_key
+except ImportError:  # Direct script invocation remains supported.
+    from sectors_mcp_probe import load_key
 
 def main():
     p=argparse.ArgumentParser()

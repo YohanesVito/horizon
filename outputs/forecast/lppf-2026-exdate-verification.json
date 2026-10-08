@@ -1,0 +1,127 @@
+{
+  "status": "partial_verification_research_only",
+  "event_id": "LPPF:2026-04-24",
+  "protocol": "docs/development/EX_DATE_VERIFICATION_PROTOCOL.md",
+  "official": {
+    "symbol": "LPPF",
+    "dividend_type": "final",
+    "dps_idr": 250,
+    "cum_regular": "2026-04-23",
+    "ex_regular": "2026-04-24",
+    "recording": "2026-04-27",
+    "payment": "2026-05-04",
+    "issuer_idxnet_publication": "2026-04-16",
+    "ksei_notice": "2026-04-17"
+  },
+  "primary_urls": {
+    "issuer_announcements": "https://matahari.com/pages/corporate-announcements",
+    "issuer_dividend_history": "https://matahari.com/pages/dividends-en",
+    "issuer_dividend_notice": "https://cdn.shopify.com/s/files/1/0666/9212/0727/files/20260416_LPPF_Disclosure_of_information_for_the_distribution_of_final_dividends_for_the_financial_year_2025.pdf?v=1776419994",
+    "ksei_dividend_notice": "https://web.ksei.co.id/Announcement/Files/LPPF_DIV_20260427_ID.pdf"
+  },
+  "historical_lppf_crosscheck": [
+    {
+      "event_id": "LPPF:2022-04-14",
+      "cum_date": "2022-04-13",
+      "ex_date": "2022-04-14",
+      "dps_idr": 250,
+      "issuer_archive_announcement_date": "2022-04-12",
+      "status": "dps_ex_date_match_current_issuer_table; archival_notice_content_not_fully_audited"
+    },
+    {
+      "event_id": "LPPF:2023-04-10",
+      "cum_date": "2023-04-06",
+      "ex_date": "2023-04-10",
+      "dps_idr": 525,
+      "issuer_archive_announcement_date": "2023-03-30",
+      "status": "dps_ex_date_match_current_issuer_table; archival_notice_content_not_fully_audited"
+    },
+    {
+      "event_id": "LPPF:2024-04-22",
+      "cum_date": "2024-04-19",
+      "ex_date": "2024-04-22",
+      "dps_idr": 200,
+      "issuer_archive_announcement_date": "2024-04-03",
+      "status": "dps_ex_date_match_current_issuer_table; archival_notice_content_not_fully_audited"
+    },
+    {
+      "event_id": "LPPF:2025-04-22",
+      "cum_date": "2025-04-21",
+      "ex_date": "2025-04-22",
+      "dps_idr": 300,
+      "issuer_archive_announcement_date": "2025-04-16",
+      "status": "dps_ex_date_match_current_issuer_table; archival_notice_content_not_fully_audited"
+    }
+  ],
+  "snapshot_sources": [
+    {
+      "file": "outputs/timeline-audit/raw/current-calendar-2026-04-01.json",
+      "sha256": "02f1c59885436b8d4c62ed92bb404173ee8f83d5de1c2e63574243a3ff0425c5",
+      "retrieved_at": "2026-10-07T12:53:42.526223+08:00",
+      "transport": "Sectors REST GET; endpoint absent from inspected MCP registry"
+    },
+    {
+      "file": "outputs/timeline-audit/raw/current-prices-LPPF-2026-04-03.json",
+      "sha256": "8dd566f90f762ce36e72f6267adcfd95106ecc264fe525b403952b4611f86bd5",
+      "retrieved_at": "2026-10-07T04:53:29.412348+00:00",
+      "transport": "MCP Streamable HTTP"
+    },
+    {
+      "file": "outputs/timeline-audit/raw/actions-LPPF.json",
+      "sha256": "88b1a6081d091897e0a7e89a326a1c542c35253b95d96d55c3da584ce952d6d7",
+      "retrieved_at": "2026-10-07T04:41:11.683079+00:00",
+      "transport": "MCP Streamable HTTP"
+    }
+  ],
+  "checks": {
+    "published_before_cum": true,
+    "schedule_and_dps_match_primary": true,
+    "provider_cum_ex_bars_adjacent_and_valid": true,
+    "provider_stock_splits_2022_to_ex": [],
+    "price_dividend_adjustment_basis_verified": false,
+    "independent_price_close_verified": false
+  },
+  "observed": {
+    "cum_close_idr": 1940,
+    "ex_close_idr": 1650,
+    "dps_idr": 250.0,
+    "price_drop_idr": 290,
+    "observed_pdr": 1.16,
+    "gross_ex_date_pnl_per_share_idr": -40.0,
+    "gross_ex_date_return_pct": -2.0618556701030926
+  },
+  "model": {
+    "version": "ex-date-pooled-pdr-v0.1",
+    "training_dataset_version": "intelligence-8a6d340ad419b922",
+    "training_events": 44,
+    "training_latest_ex_date": "2025-12-30",
+    "training_exclusions": {
+      "Event sebelum split; kesetaraan basis DPS/OHLC belum terverifikasi": 4
+    },
+    "kappa": 0.8862320664485276
+  },
+  "test": {
+    "predicted_ex_close_idr": {
+      "flat": 1940,
+      "full_dps": 1690.0,
+      "pooled_pdr": 1718.441983387868
+    },
+    "signed_error_pct_of_cum": {
+      "flat": 14.948453608247423,
+      "full_dps": 2.0618556701030926,
+      "pooled_pdr": 3.5279372880344355
+    },
+    "absolute_error_pct_of_cum": {
+      "flat": 14.948453608247423,
+      "full_dps": 2.0618556701030926,
+      "pooled_pdr": 3.5279372880344355
+    }
+  },
+  "limitations": [
+    "Satu event; LPPF sudah terlihat dalam UI/sampel pilihan dan bukan holdout blind.",
+    "Snapshot Sectors diambil setelah ex-date; dokumen resmi mendukung DPS/jadwal, bukan vintage harga provider.",
+    "Tidak ada konfirmasi independen close/adjustment factor harga provider untuk kedua hari.",
+    "Tiada pemeriksaan seluruh aksi korporasi, kondisi pasar, atau biaya transaksi, pajak, slippage."
+  ],
+  "release_decision": "Tetap research-only; jangan tampilkan garis/angka forecast live."
+}

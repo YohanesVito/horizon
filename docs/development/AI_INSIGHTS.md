@@ -38,3 +38,5 @@ Basis split, kelengkapan sesi, siklus dan arsip lama belum seluruhnya terverifik
 - Bukti guard raw10POST concurrent run legacy: [ai-insight-once-guard.json](../../outputs/development/ai-insight-once-guard.json). Bukti UI/live awal: [ai-insight-live.json](../../outputs/development/ai-insight-live.json).
 
 Pemeriksaan akhir: 115tes backend lulus; git diff --check bersih. Pemeriksaan development bukan UAT/deployment. Listener pengguna8000/3000, Supabase dan environment production tidak diubah.
+
+Integrasi main BR-08: source AI digabungkan dengan origin/main725d9c4 tanpa mengganti engine/scenario/shadow ex-date atau UI polish incoming.138tes backend gabungan serta lint/build/typecheck lulus; independen review lulus. ID gap kualitas AI sekarang ISS-068 (ISS-060 dipertahankan untuk performa). Preview terbaru lokal3001→8001; deployment production sebelumnya tidak otomatis memperoleh endpoint BE hanya dengan push frontend/main.

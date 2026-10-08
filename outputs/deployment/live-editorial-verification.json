@@ -1,0 +1,88 @@
+{
+  "base_url": "https://horizon-dividend.vercel.app",
+  "checked_at_utc": "2026-10-08T06:41:42.336750+00:00",
+  "status": "passed",
+  "checks": {
+    "health": {
+      "status": "ok",
+      "storage": "postgresql"
+    },
+    "candidates": {
+      "year": 2025,
+      "symbols": [
+        "DMAS",
+        "LPPF",
+        "ADRO",
+        "CFIN",
+        "RALS"
+      ],
+      "universe_count": 368
+    },
+    "timeline_catalog": {
+      "preview_symbols": [
+        "LPPF",
+        "DMAS",
+        "ADRO",
+        "CFIN",
+        "RALS"
+      ],
+      "verified_symbols": []
+    },
+    "previews": {
+      "DMAS": {
+        "events": 5,
+        "years": [
+          2022,
+          2023,
+          2025
+        ],
+        "forecast_status": "not_available"
+      },
+      "LPPF": {
+        "events": 5,
+        "years": [
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "forecast_status": "not_available"
+      },
+      "ADRO": {
+        "events": 9,
+        "years": [
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "forecast_status": "not_available"
+      },
+      "CFIN": {
+        "events": 2,
+        "years": [
+          2023,
+          2025
+        ],
+        "forecast_status": "not_available"
+      },
+      "RALS": {
+        "events": 4,
+        "years": [
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "forecast_status": "not_available"
+      }
+    },
+    "historical_risk": {
+      "symbol": "LPPF",
+      "complete_events": 4,
+      "trap_pct": 75.0,
+      "evidence_status": "exploratory"
+    }
+  }
+}

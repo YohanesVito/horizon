@@ -1,8 +1,16 @@
 # Deployment backend Horizon ke Dalang
 
-Status **8 Oktober 2026 WITA: DEP-01, DEP-02 dan DEP-03 DONE pada scope deployment backend dan pemeriksaan development**. FastAPI berjalan dalam Docker di VPS Dalang, database tetap Supabase. Frontend di laptop port3000 sudah memakai backend VPS. Frontend publik/Vercel dan UAT final belum dilakukan.
+Status **8 Oktober 2026 WITA: DEP-01–DEP-04 DONE pada scope deployment backend dan verifikasi alur produksi**. FastAPI berjalan dalam Docker di VPS Dalang, database tetap Supabase, dan frontend Vercel membaca API baru. UAT final belum dilakukan.
 
-## Deployment aktif
+## Rilis aktif setelah DEP-04
+
+- Release `20261008T053018Z-8544ed8b61`, source SHA-256 `8544ed8b6115c4e90c3df9207cfe82b0274688745b180a9aa22e6ea4a8df3d50`, image `sha256:adf13f074124e53ea7282b8cabe66d545e84b4eb3f1a8116a6124343905ab603`. Paket allowlist 213 file, tanpa secret dan tanpa perubahan source yang belum di-commit; manifest `git_head` `24162d8` memuat `main` `a20d32c`.
+- `/opt/horizon/current` menunjuk release ini; `/opt/horizon/deployment.json` menyimpan metadata aktif. Release sebelumnya `20261007T125050Z-f062081aa6` tetap tersedia untuk rollback.
+- Verifikasi 8 Oktober: image smoke dan lima preview kandidat lulus; `https://horizon-dividend.vercel.app` menampilkan DMAS, LPPF, ADRO, CFIN, RALS, dengan 5/5/9/2/4 peristiwa historis. Panel risiko LPPF menampilkan 4 event lengkap dan 75% hasil gross negatif sebagai statistik eksploratif. Browser membuktikan pergantian grafik ke DMAS.
+- Verifier HTTPS→API→worker→Supabase lulus memakai fixture `readiness-case-timeline-ui.json`: akses tanpa key ditolak, replay identik, probe sementara dihapus, checksum 20 record awal terjaga. Snapshot 06:54 UTC menunjukkan container running/healthy/restart 0, lima layanan kurasi inactive/PID 0. Bukti lokal: `outputs/deployment/deployment.json`, `live-editorial-verification.json`, `dalang-api-verification.json`.
+- Build dan cutover berjalan lambat karena tekanan I/O VPS hingga sekitar 98% full pada beberapa interval. Akar masalah ISS-048 masih terbuka; jangan reboot tanpa mempertimbangkan autostart lima unit kurasi. Rilis baru bukan UAT atau prediksi numerik.
+
+## Rilis awal 7 Oktober (arsip)
 
 - Backend: https://10e0ff54-f828-44de-a965-5671328a08d3.svc.dalang.io
 - Public health: `/api/health`; data, mutation dan OpenAPI membutuhkan key antarlayanan.
@@ -10,7 +18,7 @@ Status **8 Oktober 2026 WITA: DEP-01, DEP-02 dan DEP-03 DONE pada scope deployme
 - Docker Engine29.8.2, containerd2.3.6, Compose5.6.0. Container `horizon-api-1` terverifikasi healthy, restart_count0.
 - Release `20261007T125050Z-f062081aa6`;211file, SHA sumber `f062081aa6e849a672ac3d7c0fde754b71ac2b6c27b93dadf25c860a13f92937`.
 - Image `sha256:4cec0602445d515db19c1d8d1e76d0ca4b49bca6029a51fa71ec393eb4002099`.
-- Release terpasang `/opt/horizon/releases/20261007T125050Z-f062081aa6`; pointer aktif `/opt/horizon/current`, metadata `/opt/horizon/deployment.json`.
+- Release awal terpasang `/opt/horizon/releases/20261007T125050Z-f062081aa6`; pointer `/opt/horizon/current` dan metadata `/opt/horizon/deployment.json` menunjuk ke rilis ini pada saat deployment awal, sebelum DEP-04.
 - Ini snapshot working tree termasuk perubahan belum di-commit, bukan klaim remote Git sudah memuat release.
 - Kelima layanan kurasi tetap inactive/PID0; konfigurasi/data tidak diubah. Enabled state saat boot tetap aktif. Jangan reboot untuk mencoba mengatasi I/O tanpa mempertimbangkan autostart tersebut. [Runbook pemulihan kurasi](./DALANG_SERVICE_PAUSE.md).
 

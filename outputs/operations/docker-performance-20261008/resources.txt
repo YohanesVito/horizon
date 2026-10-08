@@ -1,0 +1,35 @@
+Thu Oct  8 06:21:12 UTC 2026
+               total        used        free      shared  buff/cache   available
+Mem:            1827         598         210          23        1224        1229
+Swap:              0           0           0
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda2       9.6G  4.9G  4.7G  52% /
+some avg10=73.86 avg60=85.44 avg300=76.95 total=619322453206
+full avg10=69.23 avg60=81.71 avg300=74.71 total=577872010732
+some avg10=3.27 avg60=0.82 avg300=0.18 total=477829473
+full avg10=3.15 avg60=0.79 avg300=0.17 total=449841105
+some avg10=1.79 avg60=0.70 avg300=0.26 total=3111697426
+full avg10=0.00 avg60=0.00 avg300=0.00 total=0
+horizon-api-1 CPU=0.34% MEM=73.98MiB / 768MiB PIDS=3
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          3         1         318.1MB   6.479MB (2%)
+Containers      1         1         4.096kB   0B (0%)
+Local Volumes   0         0         0B        0B
+Build Cache     19        0         322.5MB   125.3MB
+COMMAND           RSS %CPU
+unattended-upgr 212792 2.5
+systemd-journal 147620 0.0
+unattended-upgr 134464 2.9
+dockerd         109620 0.1
+python          97320  0.4
+containerd      36288  0.1
+incus-agent     24248  0.1
+unattended-upgr 21480  0.0
+packagekitd     20868  0.0
+systemd         13328  0.0
+dpkg            12900  0.9
+systemd-resolve 12632  0.0
+containerd-shim 12376  0.0
+systemd-network  9516  0.0
+polkitd          8004  0.0
+Memory=805306368 NanoCpus=1500000000 Restarts=0 OOM=false Status=running

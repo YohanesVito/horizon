@@ -12,6 +12,8 @@ from .intelligence import IntelligenceDataset, rank, scenario
 from .planner import plan_routes, replay_routes
 from .timeline import TimelineDataset
 from .discovery import top_dividend_yield
+from .ex_date_forecast import retrospective_diagnostic
+from .ex_date_scenario import ExDateScenarioInput, calculate_ex_date_scenario
 from .security import require_api_key, validate_api_key_config
 from .insights import InsightRequest, generate_insights
 
@@ -54,6 +56,20 @@ def intelligence():
     logic = FinancialLogic.model_validate(saved)
     analysis = intelligence_dataset.analyze(logic.entry_offset, logic.horizon)
     return {**analysis, 'ranking': rank(analysis, logic), 'rules': saved}
+
+
+@app.get('/api/research/ex-date')
+def ex_date_research():
+    """Historical model comparison; no live price forecast is served here."""
+    return retrospective_diagnostic(intelligence_dataset)
+
+
+@app.post('/api/ex-date/scenario')
+def ex_date_scenario(body: ExDateScenarioInput):
+    try:
+        return calculate_ex_date_scenario(body)
+    except ValueError as error:
+        raise HTTPException(422, str(error)) from None
 
 
 @app.put('/api/intelligence/rules')
