@@ -342,7 +342,6 @@ function TimelineExplorer({ data }: { data: TimelineDetail }) {
             <p className="eyebrow">03 / ENGINE RISET</p>
             <h3>Risiko historis, belum prediksi.</h3>
           </div>
-          <span className="badge">Formula v0.1 · riset</span>
         </div>
         <p className="timeline-model-intro">
           Engine membaca peristiwa historis yang memenuhi aturan masuk dan batas pengamatan.
@@ -410,14 +409,6 @@ function TimelineExplorer({ data }: { data: TimelineDetail }) {
             Setiap seri mewakili satu pembayaran tercatat; klasifikasi
             final/interim belum disahkan. RUPS dan declaration yang belum
             tersedia tidak diganti dengan tanggal lain.
-          </p>
-          <p className="tiny muted">
-            Referensi snapshot:{" "}
-            {[
-              ...new Set(
-                [...data.history, ...data.current].flatMap((p) => p.sources),
-              ),
-            ].join(" · ")}
           </p>
         </div>
       </details>
@@ -998,7 +989,6 @@ function TimelinePlot({
               Jejak dividen{" "}
               <span style={{ color: color(active.year) }}>{periodLabel(active)}</span>
             </h3>
-            <span className="small muted">{active.cycle}</span>
           </div>
           <ol className="timeline-phase-track">
             {active.phases.map((phase) => (
