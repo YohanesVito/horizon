@@ -5,16 +5,16 @@ from pydantic import BaseModel, Field, model_validator
 
 
 class SimulationRequest(BaseModel):
-    timing_mode: Literal['custom', 'payment_plus_2'] = 'custom'
+    timing_mode: Literal['payment_plus_2'] = 'payment_plus_2'
     capital: Decimal = Field(default=Decimal('100000000'), gt=0, le=Decimal('1000000000000'))
     event_ids: list[str] = Field(min_length=1, max_length=10)
-    allocation: Literal['rotation', 'equal', 'single'] = 'rotation'
+    allocation: Literal['single'] = 'single'
     entry_sessions_before_cum: int = Field(default=5, ge=0, le=10)
     exit_rule: Literal['ex_close', 'payment_close', 'price_bep', 'holding_period'] = 'price_bep'
     max_holding_sessions: int = Field(default=20, ge=1, le=60)
     end_date: date = date(2025, 5, 20)
     start_date: date | None = None
-    compare: bool = True
+    compare: Literal[False] = False
 
     @model_validator(mode='after')
     def validate_unique(self):

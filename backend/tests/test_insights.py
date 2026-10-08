@@ -397,7 +397,7 @@ def test_holding_payload_uses_persisted_values_and_marks_old_runs(monkeypatch):
     assert legacy['observation'] is None and legacy['availability'] == 'unavailable_legacy_run'
 
 
-def test_real_bbca_automatic_engine_observation_reaches_ai_prompt(monkeypatch):
+def test_real_two_event_engine_observation_reaches_ai_sections(monkeypatch):
     """Exercise bundled market snapshot -> engine -> actual AI request, without paid calls."""
     from backend.main import dataset, timeline_dataset
     from backend.domain import SimulationRequest
@@ -405,7 +405,7 @@ def test_real_bbca_automatic_engine_observation_reaches_ai_prompt(monkeypatch):
     from decimal import Decimal
     event = next(e for e in dataset.events.values() if e['symbol'] == 'BBCA' and e['cum_date'].startswith('2025') and e['replay_available'])
     result = compare(dataset, SimulationRequest(timing_mode='payment_plus_2', capital=15000000,
-                     event_ids=[event['id']], compare=False))
+                     event_ids=[event['id'], next(e['id'] for e in dataset.events.values() if e['symbol'] == 'ADRO' and e['cum_date'].startswith('2025') and e['replay_available'])], compare=False))
     trade = result['primary']['trades'][0]
     dates = dataset.market_sessions
     cum_index = dates.index(event['cum_date'])
@@ -418,6 +418,16 @@ def test_real_bbca_automatic_engine_observation_reaches_ai_prompt(monkeypatch):
     observed = []
     async def model(prompt, schema, **kwargs):
         payload = json.loads(prompt)
+        assert payload['analysis_mode'] == 'independent_events'
+        assert len(payload['holding_analysis']) == 2
+        assert all(item['starting_capital'] == 15000000 for item in payload['holding_analysis'])
+        assert 'ending_nav' not in payload['simulation']
+        assert 'gross_pnl' not in payload['simulation']
+        assert payload['alternatives'] == []
+        assert all(trade['exit_date'] is None and trade['settlement_date'] is None for trade in payload['simulation']['trades'])
+        assert 'Jangan membahas perbandingan antar-event' in kwargs['instructions']
+        assert 'bukan penjualan' in kwargs['instructions']
+        assert payload['holding_analysis'][0]['end_valuation'] == trade['end_valuation']
         actual = payload['holding_analysis'][0]
         assert actual['event_dates']['cum_date'] == event['cum_date']
         assert actual['event_dates']['ex_date'] == event['ex_date']
@@ -432,7 +442,99 @@ def test_real_bbca_automatic_engine_observation_reaches_ai_prompt(monkeypatch):
         assert payload['input']['timing_mode'] == 'payment_plus_2'
         assert 'harga pembelian historis nyata' in kwargs['instructions']
         observed.append(payload)
-        return {'summary': 'Reference entry, hypothetical holding valuation.', 'findings': []}
+        return {'sections': [{'event_id': item['event_id'], 'summary': item['symbol'] + ' independent holding valuation', 'findings': []} for item in reversed(payload['holding_analysis'])]}
     monkeypatch.setattr(ai, 'generate_structured', model)
     insight = asyncio.run(insights._generate(run, result['primary'], timeline_dataset, 'unused', context=([], [])))
     assert insight['status'] == 'completed' and len(observed) == 1
+    assert [section['event_id'] for section in insight['sections']] == [t['event_id'] for t in result['primary']['trades']]
+    assert [section['symbol'] for section in insight['sections']] == ['BBCA', 'ADRO']
+    assert insight['summary'] == '' and insight['findings'] == []
+    async def missing_sections(*args, **kwargs):
+        return {'summary': 'Unsupported old-format output', 'findings': []}
+    monkeypatch.setattr(ai, 'generate_structured', missing_sections)
+    missing = asyncio.run(insights._generate(run, result['primary'], timeline_dataset, 'unused', context=([], [])))
+    assert missing['status'] == 'unavailable' and 'sections' not in missing
+
+
+def test_section_event_identity_handles_same_ticker_missing_and_duplicate():
+    selected = {'trades': [{'event_id': 'BBCA:a', 'symbol': 'BBCA'}, {'event_id': 'BBCA:b', 'symbol': 'BBCA'}]}
+    sections = insights.normalize_sections([{'event_id': 'BBCA:b', 'summary': 'Only second event', 'findings': []}], selected)
+    assert sections[0]['event_id'] == 'BBCA:a' and sections[0]['status'] == 'unavailable'
+    assert sections[0]['summary'] is None and sections[0]['findings'] == []
+    assert sections[1]['event_id'] == 'BBCA:b' and sections[1]['summary'] == 'Only second event'
+    with pytest.raises(ai.AIError, match='Unsupported event section'):
+        insights.normalize_sections([{'event_id': 'BBCA:a'}, {'event_id': 'BBCA:a'}], selected)
+    with pytest.raises(ai.AIError, match='Unsupported event section'):
+        insights.normalize_sections([{'event_id': 'OTHER:event'}], selected)
+
+
+def ticker_fixture_run(event_ids):
+    from backend.main import dataset
+    from backend.domain import SimulationRequest
+    from backend.simulator import compare
+    result = compare(dataset, SimulationRequest(capital=15000000, event_ids=event_ids))
+    return {'id': 'ticker-parallel-fixture', 'input': result['input'], 'result': result, 'dataset_version': dataset.version}
+
+
+def test_ticker_calls_start_in_parallel_isolate_payload_and_reuse_cache(client, monkeypatch):
+    from backend.main import dataset, timeline_dataset
+    ids = [next(e['id'] for e in dataset.events.values() if e['symbol'] == symbol and e['cum_date'].startswith('2025') and e['replay_available']) for symbol in ['BBCA', 'ADRO']]
+    run = ticker_fixture_run(ids)
+    monkeypatch.setattr(ai, '_api_key', lambda: 'fixture')
+    async def research(*args):
+        return {'sources': [], 'gaps': []}
+    monkeypatch.setattr(insights, 'research_context', research)
+    started = []
+    async def exercise():
+        barrier = asyncio.Event()
+        async def model(prompt, schema, **kwargs):
+            payload = json.loads(prompt)
+            symbols = {item['symbol'] for item in payload['holding_analysis']}
+            assert len(symbols) == 1
+            symbol = next(iter(symbols))
+            assert {trade['symbol'] for trade in payload['simulation']['trades']} == {symbol}
+            assert payload['input']['event_ids'] == [item['event_id'] for item in payload['holding_analysis']]
+            started.append(symbol)
+            if len(started) == 2:
+                barrier.set()
+            await asyncio.wait_for(barrier.wait(), timeout=1)  # serial dispatch would fail
+            return {'sections': [{'event_id': item['event_id'], 'summary': symbol + ' isolated', 'findings': []} for item in payload['holding_analysis']]}
+        monkeypatch.setattr(ai, 'generate_structured', model)
+        results = await asyncio.gather(*(insights.generate_insights(run, run['result']['primary'], timeline_dataset, symbol=symbol) for symbol in ['BBCA', 'ADRO']))
+        assert all(result['status'] == 'completed' for result in results)
+        assert [result['provenance']['symbol'] for result in results] == ['BBCA', 'ADRO']
+        for symbol in ['BBCA', 'ADRO']:
+            cached = await insights.generate_insights(run, run['result']['primary'], timeline_dataset, symbol=symbol)
+            assert cached['status'] == 'completed'
+            assert insights.insight_status(run, symbol=symbol) == cached
+        assert len(started) == 2
+    asyncio.run(exercise())
+
+
+def test_same_ticker_multiple_events_one_call_and_other_ticker_retry_isolated(client, monkeypatch):
+    from backend.main import dataset, timeline_dataset
+    bbca_ids = [e['id'] for e in dataset.events.values() if e['symbol'] == 'BBCA' and e['replay_available']][:2]
+    assert len(bbca_ids) == 2
+    adro = next(e['id'] for e in dataset.events.values() if e['symbol'] == 'ADRO' and e['cum_date'].startswith('2025') and e['replay_available'])
+    run = ticker_fixture_run(bbca_ids + [adro])
+    monkeypatch.setattr(ai, '_api_key', lambda: 'fixture')
+    async def research(*args):
+        return {'sources': [], 'gaps': []}
+    monkeypatch.setattr(insights, 'research_context', research)
+    calls = {'BBCA': 0, 'ADRO': 0}
+    async def model(prompt, schema, **kwargs):
+        payload = json.loads(prompt)
+        symbol = payload['holding_analysis'][0]['symbol']
+        calls[symbol] += 1
+        if symbol == 'ADRO' and calls[symbol] == 1:
+            raise ai.AIError('Fixture failure only ADRO')
+        return {'sections': [{'event_id': item['event_id'], 'summary': item['event_id'], 'findings': []} for item in payload['holding_analysis']]}
+    monkeypatch.setattr(ai, 'generate_structured', model)
+    async def exercise():
+        bbca, adro_result = await asyncio.gather(*(insights.generate_insights(run, run['result']['primary'], timeline_dataset, symbol=symbol) for symbol in ['BBCA', 'ADRO']))
+        assert len(bbca['sections']) == 2 and len({section['event_id'] for section in bbca['sections']}) == 2
+        assert bbca['attempts'] == 1 and adro_result['attempts'] == 2
+        for symbol in calls:
+            await insights.generate_insights(run, run['result']['primary'], timeline_dataset, symbol=symbol)
+        assert calls == {'BBCA': 1, 'ADRO': 2}
+    asyncio.run(exercise())

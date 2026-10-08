@@ -24,7 +24,7 @@ def test_persisted_user_flow_and_job_contract(tmp_path, monkeypatch):
         assert c.put('/api/rules', json=rules).status_code == 200
         assert c.get('/api/rules').json()['minimum_yield'] == 10
         assert c.post('/api/simulations', json={'event_ids': [], 'capital': -1}).status_code == 422
-        r = c.post('/api/simulations', json={'event_ids': ['BBCA:2025-03-21', 'BMRI:2025-04-14', 'LPPF:2025-04-22']})
+        r = c.post('/api/simulations', json={'event_ids': ['BBCA:2025-03-21', 'BMRI:2025-04-14']})
         assert r.status_code == 202
         job_id = r.json()['id']
         for _ in range(200):
@@ -33,7 +33,12 @@ def test_persisted_user_flow_and_job_contract(tmp_path, monkeypatch):
                 break
             sleep(.01)
         assert result['status'] == 'completed', result
-        assert len(result['result']['alternatives']) == 3
+        assert c.post(f'/api/simulations/{job_id}/insights', json={'allocation': 'single'}).status_code == 422
+        assert c.post(f'/api/simulations/{job_id}/insights', json={'allocation': 'single', 'symbol': 'ADRO'}).status_code == 422
+        assert c.get(f'/api/simulations/{job_id}/insights?symbol=ADRO').status_code == 422
+        assert result['result']['alternatives'] == []
+        assert len(result['result']['primary']['trades']) == 2
+        assert result['result']['primary']['ending_nav'] is None
         assert result['result']['primary']['dataset_version'] == catalog['meta']['dataset_version']
         assert c.get('/api/simulations').json()[0]['id'] == job_id
         assert 'result' not in c.get('/api/simulations').json()[0]

@@ -145,8 +145,19 @@ export interface Trade {
   signal_date: string | null;
   capital_days: number;
   observation?: PositionObservation;
+  residual_cash?: number;
+  end_valuation?: {
+    date: string;
+    position_value: number;
+    dividend_entitled: number;
+    dividend_paid: number;
+    total_value: number;
+    pnl: number;
+    return_pct: number;
+  };
 }
 export interface Replay {
+  analysis_mode?: "independent_events";
   allocation: Allocation;
   capital: number;
   start_date: string;
