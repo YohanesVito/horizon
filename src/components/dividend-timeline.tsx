@@ -99,11 +99,14 @@ export default function DividendTimeline() {
       </div>
     );
   const data = catalog.data;
+  const companyName = (symbol: string) =>
+    data.companies.find((company) => company.symbol === symbol)?.name ??
+    candidates.data?.candidates.find((candidate) => candidate.symbol === symbol)?.name ??
+    previewCompanyNames[symbol];
+  const companyLabel = (symbol: string) =>
+    companyName(symbol) ? `${symbol} — ${companyName(symbol)}` : symbol;
   const selectedLabel = selection
-    ? `${selection.symbol} — ${
-        data.companies.find((company) => company.symbol === selection.symbol)
-          ?.name ?? previewCompanyNames[selection.symbol] ?? selection.symbol
-      }`
+    ? companyLabel(selection.symbol)
     : "Pilih saham";
   return (
     <div className="timeline-workspace">
@@ -152,9 +155,7 @@ export default function DividendTimeline() {
                     if (pickerRef.current) pickerRef.current.open = false;
                   }}
                 >
-                  {previewCompanyNames[symbol]
-                    ? `${symbol} — ${previewCompanyNames[symbol]}`
-                    : symbol}
+                  {companyLabel(symbol)}
                 </button>
               ))}
             </div>

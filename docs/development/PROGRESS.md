@@ -1,5 +1,11 @@
 # Progres development MVP
 
+## Backend terbaru pada preview lokal — 8 Oktober 2026
+
+**D-08/ISS-060: integrasi lokal berjalan; rilis VPS masih terbuka.** Proses FastAPI lokal port8000 yang masih memuat source lama dihentikan secara graceful dan dijalankan ulang dari branch `feat/timeline-ui-polish` `2cb8d96`. Proses tetap memakai SQLite `.runtime/dividen.db`; tidak ada job queued/running pada pemeriksaan sebelum restart. Frontend lokal port3000 tetap berjalan dan kini memperoleh katalog serta lima grafik dari backend terbaru tanpa mengubah VPS atau Supabase. UI yang ada sudah menerima `preview_symbols` sebagai pilihan grafik; caveat kualitas data tetap tersedia pada panel sumber.
+
+Pemeriksaan aktual: 62 tes backend lulus (satu warning Starlette lama); melalui proxy localhost3000, `/api/dividend-candidates` dan `/api/timeline` menjawab200, kandidat DMAS/LPPF/ADRO/CFIN/RALS muncul, dan kelima detail grafik menjawab200. Browser lokal sesudah reload menampilkan lima kandidat dan grafik DMAS; label dropdown disambungkan ke nama kandidat dari respons backend sehingga tidak lagi `DMAS — DMAS`. Lint, typecheck, build Next dan `git diff --check` lulus. Paket backend allowlist `20261008T090909Z-8544ed8b61` dibuat lokal (213 file, secret scan passed), tetapi belum diunggah. Pemeriksaan susulan pada alias publik `https://horizon-dividend.vercel.app` menemukan health200/storage PostgreSQL, kandidat200/lima simbol, katalog200/lima simbol, dan kelima detail grafik200; blocker kontrak ISS-060 pada alias itu tidak lagi terlihat. Sesi ini tidak melakukan deploy VPS/Vercel, push, audit identitas release VPS, atau UAT. CLI Dalang tidak tersedia.
+
 ## Rekonsiliasi UI terbaru dengan main — 8 Oktober 2026
 
 **D-08: kode gabungan terverifikasi lokal; integrasi `main`/deploy belum dilakukan.** `feat/timeline-ui-polish` `c16a844` digabung dengan `origin/main` `5e5727b` pada branch UI. Dua konflik kode (`editorial.css`, `dividend-timeline.tsx`) diselesaikan per komponen: desain chart/card compact dan sumbu berdasarkan urutan harga tersedia tetap dipakai; logika `main` untuk fokus per ID event, tahun kosong, tab periode berjalan dan data kandidat/engine historis tetap ada. Tidak memakai resolusi satu-file `ours`/`theirs`.

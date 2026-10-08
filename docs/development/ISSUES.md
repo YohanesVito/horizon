@@ -2,7 +2,7 @@
 
 ## Kesesuaian versi frontend/backend — 8 Oktober 2026
 
-- **ISS-060 — Integrasi deployment / P1 / OPEN:** pada rekonsiliasi D-08, frontend gabungan memanggil `/api/dividend-candidates`, tetapi proxy localhost ke backend VPS yang sedang aktif menjawab 404; `/api/timeline/LPPF?preview=true` menjawab 200. Endpoint kandidat tersedia pada source `main` terbaru dan 62 tes backend lokal lulus. Dampak: panel kandidat menampilkan error sampai rilis backend yang sesuai aktif. Jangan mengartikan 404 sebagai data kosong atau menyatakan alur kandidat end-to-end sudah berjalan di deployment aktif. Sebelum mempublikasikan frontend gabungan, koordinasikan rilis backend yang memuat endpoint ini atau putuskan penanganan versi sementara secara eksplisit; ulangi smoke browser/API. Terkait D-08/D-03/C-01/C-08.
+- **ISS-060 — Integrasi deployment / P1 / RESOLVED untuk kontrak API publik:** pada rekonsiliasi D-08, backend lama menjawab404 untuk `/api/dividend-candidates`. Proses backend lokal port8000 telah dijalankan ulang dari source terbaru; proxy localhost3000 menjawab200 untuk kandidat, katalog, dan kelima detail grafik. Pemeriksaan ulang pada `https://horizon-dividend.vercel.app` tanggal 8 Oktober juga menjawab200 untuk health (storage PostgreSQL), kandidat, katalog, dan detail LPPF/DMAS/ADRO/CFIN/RALS. Dengan demikian blocker kompatibilitas endpoint pada alias publik itu tidak lagi terlihat. Sesi ini tidak memasang release VPS, dan identitas release aktif belum diaudit; status alias/deployment lain serta UAT belum disimpulkan. Terkait D-08/D-03/C-01/C-08.
 
 ## Review integrasi UI dan deployment — 8 Oktober 2026
 
