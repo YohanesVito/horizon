@@ -10,6 +10,9 @@ AI E2E memakai provider mock yang ditandai `MOCK E2E`, bukan provider live: pane
 
 Cleanup lokal yang diminta PM selesai setelah E2E: hanya `/private/tmp/horizon-observation-e2e.db`,8run+4simulation-insight+1simulation-research (13 record) dihapus secara transaksional. API history menjadi `[]`; browser menampilkan UI Riwayat replay tetap ada dengan empty state. Tidak menyentuh cloud, snapshot atau konfigurasi. Backend kemudian direstart dengan konfigurasi provider lokal normal (tanpa override AI_KEY kosong), tetap SQLite terpisah dan localhost; hanya health/history dicek, tidak ada panggilan AI tambahan.
 
+
+**SIM-OBS-04 DONE (UI-only placement):** standalone AI summary dipindahkan ke accordion di masing-masing kartu peristiwa; default tertutup, tombol `aria-expanded`/`aria-controls`, klik/Enter/Space bekerja. Query ticker tetap dimount eager dan memakai cache key lama; toggle hanya visibilitas, tidak mengubah call paralel/backend. Section difilter ke event kartu. E2E Chrome dengan fixture MOCK BBCA+ADRO memverifikasi dua accordion default tertutup, konten masing-masing benar, standalone card tidak ada, reload tetap tertutup dan attempts BBCA1/ADRO1 tidak naik. Typecheck/scoped ESLint/diff check lulus. Fixture run `58d02774` dan dua insight miliknya dihapus; run pengguna Rp100juta `0e28a9dc` dipertahankan. Screenshot `/private/tmp/horizon-observation-e2e/embedded-ai-expanded.png`. Tidak ada provider live, push atau deployment pada pemeriksaan ini.
+
 ## SIM-OBS-02 — satu peristiwa all-in, 8 Oktober 2026
 
 **SUPERSEDED oleh SIM-OBS-03 (riwayat perubahan scope; C-04/C-05/C-08).** Scope saat itu membatasi simulator utama ke satu event dengan seluruh modal awal. Bagi rata dan rotasi tidak diterima API; fungsi budget bagi rata disimpan sebagai komentar. POST planner/replay rotasi memberi 410, GET history lama tetap tersedia. Entry adalah mean lima close sesi pasar sebelum cum; observasi berakhir payment+2 atau cakupan parsial. Tidak ada jual otomatis/settlement, NAV gabungan, maupun penjumlahan extrema. Nilai akhir peristiwa mencakup close terakhir, hak dividen dan sisa kas; ekstrem posisi tidak mencakup sisa kas.
@@ -477,3 +480,13 @@ Hasil gabungan diuji pada worktree terisolasi: **138tes backend lulus**, lint, p
 ## UI-COPY-03 — Rapikan label analisis — 8 Oktober 2026
 
 **DONE (instruksi PM; C-02/C-08):** tampilan Jejak dividen tidak lagi menampilkan label cycle “Pembayaran tercatat · jenis belum terverifikasi”; badge “Formula v0.1 · riset” dan paragraf Referensi snapshot berisi path internal dihapus. Metadata backend, riset risiko, fase dividen, dan isi sumber/kelengkapan lainnya dipertahankan. Browser lokal3001 membuka disclosure dan memverifikasi ketiga teks tidak ada, isi Sumber/harga snapshot, heading riset, serta fase kronologi masih ada. `npm run typecheck` dan eslint komponen lulus; tidak menjalankan build penuh untuk penghapusan tampilan ini. Belum deployment/UAT.
+
+
+## AI-COPY-04 — Narasi AI tanpa tautan sumber — 8 Oktober 2026
+
+**DONE (instruksi PM; C-08):** prompt final meminta narasi tanpa URL/sitasi sumber. UI tidak lagi menampilkan link temuan atau daftar sumber; prose cache lama dirender sebagai teks biasa dengan label link dipertahankan dan URL dihapus. Metadata riset/provenance, kalkulasi, cache dan panggilan paralel per ticker tetap. Pemeriksaan terbatas: lima kasus prose cache serta instruksi prompt lulus; ESLint komponen/helper dan TypeScript lulus. Tidak ada E2E tambahan atau panggilan provider/deploy.
+
+
+## BRAND-01 — Horizon — 8 Oktober 2026
+
+**DONE lokal (instruksi PM; C-08):** branding header/footer, metadata halaman, nama API/package dan dokumentasi produk aktif menjadi Horizon. Logo PNG PM disalin tanpa perubahan untuk header, icon tab dan Apple touch icon. Build dan lint lulus. Playwright production lokal3108 pada1440px/390px memverifikasi nama Horizon, tidak ada nama UI lama, gambar berhasil decode, wordmark terlihat, tanpa overflow horizontal; kedua endpoint icon HTTP200. API diintersep503 untuk pemeriksaan branding saja; bukan verifikasi backend/UAT. Belum deploy. Catatan bukti historis tetap memakai nama saat pemeriksaan aslinya.

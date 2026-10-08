@@ -1,4 +1,4 @@
-# Dividen Lab
+# Horizon
 
 Helper AI backend: [setup AI_KEY dan contoh JSON schema](docs/development/AI_HELPER.md).
 

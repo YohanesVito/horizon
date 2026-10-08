@@ -13,6 +13,6 @@ Skill yang dipakai: web-design-style, mode reference dengan adaptasi tekstur/gra
 | Tekstur | Lapisan radial plum di belakang panel transparan, backdrop blur, highlight pinggir kaca, tanpa gambar dekoratif yang mengganggu data. |
 | Dependency | Next.js, React, Tailwind 4, lucide-react, ECharts, TanStack Query, fontsource Sora/Manrope. Tambah komponen hanya bila dibutuhkan alur. |
 
-Nama kerja UI: Dividen Lab. Ini nama sementara produk, bukan merek yang telah ditetapkan PM.
+Nama produk/UI: Horizon, sesuai branding yang ditetapkan PM pada 8 Oktober 2026.
 
 Alur utama: Peluang, Kalender, Simulator, Watchlist, dan Metodologi. Data snapshot/historis terlihat dekat judul dan angka. Semua output uang berlabel gross. Kosong, konflik jadwal, loading dan error punya tampilan yang dapat dipahami pengguna.
