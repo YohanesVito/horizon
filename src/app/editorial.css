@@ -925,8 +925,8 @@ body {
 }
 
 .editorial-app .timeline-chronology {
-  margin-top: clamp(60px, 7vw, 110px);
-  padding-top: 35px;
+  margin-top: 32px;
+  padding-top: 28px;
   border-top: 1px solid #ffffff38;
 }
 
@@ -938,17 +938,19 @@ body {
 }
 
 .editorial-app .timeline-focus-heading h3 {
-  margin: 12px 0 8px;
+  margin: 0 0 8px;
   color: #f7f7f3;
   font-size: clamp(38px, 4vw, 64px);
   font-weight: 400;
 }
 
-.editorial-app .timeline-focus-heading .small {
-  color: #b4c0c7;
+.editorial-app .timeline-focus-heading h3 .section-number {
+  margin-right: 12px;
+  color: #ff7955;
 }
 
 .editorial-app .timeline-phase-track {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 8px;
   margin-bottom: 48px;
 }
@@ -974,11 +976,6 @@ body {
 .editorial-app .timeline-phase-track span:not(.phase-dot) {
   color: #c8d2d8;
   font-size: 14px;
-}
-
-.editorial-app .timeline-phase-track small {
-  color: #9eacb5;
-  font-size: 12px;
 }
 
 .editorial-app .timeline-readings {
@@ -2031,7 +2028,7 @@ body {
     min-height: 0;
   }
   .editorial-app .timeline-chronology {
-    margin-top: 65px;
+    margin-top: 28px;
   }
   .editorial-app .timeline-phase-track {
     grid-template-columns: repeat(2, minmax(0, 1fr));

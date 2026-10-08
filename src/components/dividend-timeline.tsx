@@ -5,11 +5,10 @@ import type { MouseEvent, PointerEvent } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
   ArrowUpRight,
-  CheckCheck,
   ChevronDown,
   LockKeyhole,
 } from "lucide-react";
-import { api, dt, money, pct, tradingDayText } from "@/lib/api";
+import { api, dt, money, pct } from "@/lib/api";
 import { cumExMovement, phaseLabel } from "@/lib/timeline-chart";
 import type { IntelligenceData } from "@/lib/intelligence-types";
 import type {
@@ -385,42 +384,6 @@ function TimelineExplorer({ data }: { data: TimelineDetail }) {
           </>
         )}
       </section>
-      <details className="glass timeline-audit">
-        <summary>
-          <CheckCheck size={17} /> Sumber & kelengkapan data{" "}
-          <span className="muted">
-            {data.preview ? "Perlu verifikasi" : "Lengkap"}
-          </span>
-        </summary>
-        <div className="timeline-audit-body">
-          <p>Sumber: {data.source}</p>
-          <ul>
-            {data.issues.map((issue) => (
-              <li key={issue}>{tradingDayText(issue)}</li>
-            ))}
-          </ul>
-          <p>
-            Harga ditampilkan sesuai snapshot Sectors. Tahun tanpa jendela harga
-            ditandai sebagai gap, bukan bukti tidak ada pembagian dividen. Normalisasi terhadap
-            cum-date membantu membandingkan pola; tidak membuktikan basis stock
-            split sudah sama. Tahun mengikuti ex-date, bukan tahun buku. Grafik
-            ini bukan proyeksi keuntungan strategi.
-          </p>
-          <p>
-            Setiap seri mewakili satu pembayaran tercatat; klasifikasi
-            final/interim belum disahkan. RUPS dan declaration yang belum
-            tersedia tidak diganti dengan tanggal lain.
-          </p>
-          <p className="tiny muted">
-            Referensi snapshot:{" "}
-            {[
-              ...new Set(
-                [...data.history, ...data.current].flatMap((p) => p.sources),
-              ),
-            ].join(" · ")}
-          </p>
-        </div>
-      </details>
     </>
   );
 }
@@ -981,18 +944,15 @@ function TimelinePlot({
       {active && (
         <section
           className="timeline-chronology"
-          aria-label={`Detail peristiwa ${periodLabel(active)}`}
+          aria-label={`Detail dividen ${periodLabel(active)}`}
         >
           <div className="timeline-focus-heading">
-            <p className="eyebrow">02 / DETAIL PERISTIWA</p>
             <h3>
-              Jejak dividen{" "}
-              <span style={{ color: color(active.year) }}>{periodLabel(active)}</span>
+              <span className="section-number">02</span> Detail Dividen {active.year}
             </h3>
-            <span className="small muted">{active.cycle}</span>
           </div>
           <ol className="timeline-phase-track">
-            {active.phases.map((phase) => (
+            {active.phases.filter((phase) => phase.key !== "declaration_date").map((phase) => (
               <li key={phase.key} className={phase.date ? "" : "unavailable"}>
                 <span
                   className="phase-dot"
@@ -1004,11 +964,6 @@ function TimelinePlot({
                 <span>
                   {phase.date ? dt(phase.date, true) : "Belum tersedia"}
                 </span>
-                <small>
-                  {phase.day !== null
-                    ? dayLabel(phase.day)
-                    : "Belum terverifikasi"}
-                </small>
               </li>
             ))}
           </ol>

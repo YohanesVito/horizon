@@ -364,10 +364,6 @@
   font-size: 11px;
   color: var(--text);
 }
-.timeline-phase-track small {
-  font-size: 9px;
-  color: var(--muted);
-}
 .timeline-phase-track .unavailable .phase-dot {
   border: 1px dashed var(--muted);
   background: var(--surface-raised);
