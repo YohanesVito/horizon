@@ -1,5 +1,14 @@
 # Log bug TODO dan blocker
 
+## Gap verifikasi AI-01 — 8 Oktober 2026
+
+**AI-01-LIVE / OPEN:** helper structured output diuji dengan mock HTTP dan key
+dummy. Kredensial, billing, akses `gpt-6-luna`, dan respons provider live belum
+diverifikasi. Saat fitur AI diintegrasikan, jalankan smoke dengan input minimal
+pada environment target. Ini batas bukti, bukan kegagalan provider yang diamati.
+Schema harus mengikuti subset strict OpenAI; schema di luar subset ditolak API,
+tanpa fallback ke output bebas. F-02 tetap pekerjaan terpisah.
+
 ## Review integrasi UI dan deployment — 8 Oktober 2026
 
 - **ISS-051 — Fixture deployment / P2 / RESOLVED:** BR-02 mempertahankan readiness-case.json asli dan menambah readiness-case-timeline-ui.json dengan tepat12perubahan prosa yang telah ditinjau. Replay engine gabungan cocok secara strict dengan seluruh JSON result; angka grossPnL2900364/endingNAV102900364 tetap. Verifier menerima --fixture eksplisit dan tidak mengendurkan kesamaan hasil. Default tetap fixture release Dalang awal yang masih aktif; runbook membedakan kedua versi. Issue UI asal044/045/046 direkonsiliasi menjadi052/053/054. Bukti integration-verification.json dan metadata fixture baru.
@@ -169,3 +178,15 @@ Update ISS-056: percobaan berikutnya dari source4588681 juga diterima Production
 ## Integrasi UI editorial dengan grafik parsial — 8 Oktober 2026
 
 - **ISS-059 — Integrasi / P1 / RESOLVED pada branch BR-04:** dry run BR-03 terhadap `origin/feat/timeline-ui-polish` `dbf21b6` menemukan empat konflik konten dan risiko regresi semantik. Branch integrasi lokal kini mempertahankan desain editorial dan mem-port T-08: lima kandidat, fokus ID event, gap eksplisit, dan tab 2026 hanya saat snapshot ada. Task hierarki UI diberi ID `UI-03`; `D-03` tetap discovery. Browser membuktikan sembilan seri ADRO, fokus 28Nov/30Des2024 berbeda, empat emiten lain dan mobile390px tanpa overflow. Forecast numerik tetap gap terpisah ISS-042; penyelesaian konflik lokal belum berarti merge ke main, push, deploy, atau UAT. Terkait BR-03/BR-04/C-02/C-08/T-08.
+
+## AI-02 — Batas analisis dan arsip — 8 Oktober 2026
+
+- **ISS-060 — Kualitas konteks AI / P2 / OPEN:** endpoint insight tersedia, tetapi histori timeline memiliki identitas siklus/basis harga/kelengkapan sesi yang belum seluruhnya diverifikasi. Distribusi event tanpa klasifikasi hanya pratinjau deskriptif; tidak boleh dijadikan rata-rata tahunan comparable atau prediksi risiko. News MCP LPPF sekitar26April2023 dan corporate action12April–10Mei2023 kosong pada smoke live; ini gap arsip, bukan bukti tidak ada kejadian. Fundamental time-aligned dan benchmark sektor belum ditelusuri (IHSG tersedia sebagai konteks pasar luas). Source IDs/schema divalidasi tetapi narasi model masih perlu penilaian pengguna; endpoint tidak membuktikan kausalitas. Tindak lanjut: audit basis split/cycle/sesi, verifikasi coverage arsip, evaluasi narasi dengan sampel nyata, dan putuskan scope fundamental/benchmark sebelum klaim riset menyeluruh. Detail/bukti [AI_INSIGHTS.md](./AI_INSIGHTS.md). Fitur tidak menutup forecast ISS-042 atau UAT.
+
+ISS-060 update guard PM: retry lama per alokasi sudah diganti budget durable maksimal tiga attempt total per run. Success direuse permanen; gagal ketiga tidak ada output AI dan tidak mencoba lagi. Failed model/provider tetap tidak memblokir replay; ini bukan bukti seluruh kesimpulan narasi benar.
+
+## SIM-UX-02-MOBILE — Header transaksi pada ponsel — 8 Oktober 2026
+
+**RESOLVED:** browser real dengan replay equal LPPF pada viewport390px menunjukkan `scrollWidth`399px; header status “Masih dipegang” bersama laba Rp2.508.000 memaksa sisi kanan nominal ke398,6px. Wrapping hanya pada header transaksi mobile memperbaiki dokumen menjadi390px. Isi tabel cash flow tetap memiliki scroll horizontal lokal saat dibuka. Bukti dan batas pemeriksaan: `outputs/development/ai-insight-live-browser.json`; ini perbaikan layout yang diamati, bukan perubahan perhitungan.
+
+ISS-060 update agentic IDX: gateway kini32toolIDX, dipilih model dalam2ronde; source/gap/evidence disimpan. Fundamental/corporate/sector data dapat ditelusuri sesuai tool terpilih dan coverage, tetapi report-period tanpa publication/vintage tetap retrospektif; current snapshot tidak boleh diklaim informasi saatkejadian. Budget6dispatch/12credit/40detik dapat meninggalkan gap. Smoke live menunjukkan news arsip kosong dan dua rejected queries, bukan penyebab pasar terbukti. Window replayend dan provenance URL IHSG telah diperbaiki dengan regression; cachedsuccess lama sengaja dipertahankan. Risiko narasi model/kualitas arsip/basis split/cycle/sesi masih terbuka; tidak menutup prediction ISS-042 atau UAT.

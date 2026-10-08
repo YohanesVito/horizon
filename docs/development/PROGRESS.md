@@ -1,5 +1,29 @@
 # Progres development MVP
 
+## Insight AI dan interaksi simulator — 8 Oktober 2026
+
+**AI-02 IN_PROGRESS (instruksi PM; S1-01/C-04/C-08):** endpoint insight untuk run
+simulasi tersimpan, statistik distribusi historis, pencarian konteks Sectors MCP,
+dan section AI di atas Jejak Transaksi. **SIM-UX-02 IN_PROGRESS (instruksi PM;
+C-04/C-05):** strategi sebelum peristiwa, all-in satu pilihan, highlight riwayat
+aktif, dan sembunyikan riwayat gagal. Verifikasi akhir belum selesai.
+
+## Fondasi AI — 8 Oktober 2026
+
+**AI-01 DONE pada scope helper backend (instruksi langsung PM; S1-01).**
+`backend.ai.generate_structured(prompt, schema)` memakai OpenAI Responses API,
+model `gpt-6-luna`, strict JSON schema, dan validasi hasil lokal. `AI_KEY` dibaca
+saat pemanggilan dengan prioritas process env → `.env.local` → `.env`.
+Tidak ada endpoint/UI atau integrasi engine prediksi. Contoh setup/pemakaian
+dan batas kontrak ada di [AI_HELPER.md](./AI_HELPER.md).
+
+Verifikasi: `.runtime/ui-feedback-venv/bin/python -m pytest backend/tests -q`
+menghasilkan **84 passed**, termasuk 22 tes helper baru; satu warning deprecation
+Starlette yang sudah ada. Mock membuktikan model/schema/auth request, hasil
+`{"label":"hello"}`, penolakan tipe/field salah, refusal/incomplete, timeout,
+HTTP error dan prioritas env. `git diff --check` lulus. Tidak ada request OpenAI
+live/biaya API, push, deployment atau klaim akses model akun sudah teruji.
+
 ## Handoff deployment dan merge main — arahan PM terbaru 8 Oktober 2026
 
 PM mengambil alih deployment Vercel dan meminta merge sekarang. **V-02 DONE dengan scope terbaru hanya merge/push main**; kewajiban Preview end-to-end sebelum merge pada rencana lama digantikan arahan ini. V-01 PARTIAL/HANDOFF, bukan DONE/UAT. Environment BACKEND_URL dan HORIZON_API_KEY berhasil dipasang pada Preview/Production setelah izin eksplisit PM; key bertipe Secret. Proses deployment yang telah dikirim sebelum interupsi ternyata selesai sebagai Production/READY (`dpl_9n4FifdytrSNHRdS4JdFRpuwtryi`), alias https://horizon-nu-kohl.vercel.app, source4588681. Belum diuji end-to-end dan bukan bukti API berfungsi. Integrasi Git otomatis ditolak approval review karena akses lintas layanan; tidak dijalankan. Tidak membuat deployment baru sesudah arahan handoff.
@@ -316,3 +340,27 @@ Pemeriksaan gabungan: `npm run lint`, `npm run typecheck`, `npm run build` (term
 Pemeriksaan gabungan yang dijalankan setelah edit kode terakhir: `npm run build`, `npm run typecheck` (sesudah build), `npm run lint`, 62 tes backend, dan `git diff --check` lulus; satu warning deprecation Starlette yang sudah ada. Browser production build lokal pada port3000 memperlihatkan desain editorial, lima kandidat, panel risiko LPPF 4 event lengkap/75% trap historis dengan rentang Wilson30,06–95,44%, dan label prediksi belum tersedia. DMAS/CFIN/RALS/LPPF masing-masing menampilkan 5/2/4/5 seri; ADRO sembilan seri, fokus28Nov dan30Des2024 menghasilkan tanggal/DPS/penurunan berbeda. Pada viewport390px, lebar dokumen390px; browser error/warning kosong. Mode2026 LPPF menampilkan harga aktual sampai6Oktober2026 dan pernyataan bahwa lintasan setelahnya belum diproyeksikan. Backend lokal memakai SQLite terpisah; tidak ada pengambilan Sectors baru, perubahan Supabase/VPS, push, deployment, atau UAT.
 
 **F-02 OPEN:** permintaan terbaru membuka kembali pekerjaan prediction engine numerik. Integrasi BR-04 memakai engine empiris yang sudah teruji dan menunjukkan status forecast belum tersedia. Implementasi model harga/trap/waktu pulih dengan angka masa depan menunggu dataset point-in-time, evaluasi walk-forward, serta keputusan rilis sesuai [PREDICTION_FORMULA.md](./PREDICTION_FORMULA.md); tidak dihitung sebagai DONE oleh BR-04.
+
+## AI-02 — Pola simulasi dan konteks bersumber — 8 Oktober 2026
+
+**AI-02 DONE pada scope endpoint dan section hasil (instruksi PM; C-04/C-08).** `POST /api/simulations/{job_id}/insights` membaca run selesai serta strategi tersimpan, menghitung distribusi historis per emiten/event, mendeteksi outlier deskriptif secara eksplisit, lalu memakai GPT-6 Luna untuk penjelasan compact. Konteks berita, aksi korporasi dan IHSG diambil melalui Sectors MCP pada jendela tanggal event ekstrem, dengan sumber/gap; fundamental time-aligned dan pembanding sektor tetap gap ISS-060. Cache sukses dan deduplikasi menjaga run/strategi dan menghindari panggilan berulang. UI menempatkan analisis di atas Jejak Transaksi, punya loading/error/retry dan source links; replay tetap terbaca saat AI unavailable. [AI_INSIGHTS.md](./AI_INSIGHTS.md) memuat kontrak, batas, keputusan statistik dan bukti.
+
+Pemeriksaan backend: **93tes lulus**, sembilan tes khusus insight. Fixture24/1/2/1/2 menghasilkan rata-rata6%, median2%, tanpa maksimum1,5%, Tukey outliertrue; distribusi2/15/18/20/22 tidak ditandai outlier. Fixture split BBCA13Oktober2021 termasuk, tanggal di luar jendela diabaikan dan hasil AGM panjang tidak bocor. Smoke API live terisolasi8001/SQLite dengan run equal menghasilkan200 completed dalam17,618detik; panggilan sama0,009detik, identik (cache). Narasi menyebut LPPF rata-rata15,30%/median17,68% sebagai penurunan beberapa event, bukan satu outlier. MCP IHSG6–26April2023 naik1,73% masuk sebagai konteks, berita/corporate kosong berlabel gap. Bukti [ai-insight-live.json](../../outputs/development/ai-insight-live.json). Listener pengguna8000/3000, Supabase dan deployment tidak diubah; bukan UAT. Pemeriksaan UI terbaru dicatat oleh pelaksana frontend setelah browser final.
+
+## SIM-UX-02 — Urutan input, arsip dan detail hasil — 8 Oktober 2026
+
+**SIM-UX-02 DONE pada scope UI lokal (instruksi PM terbaru; C-04/C-08).** Strategi alokasi ditampilkan sebelum pemilihan event. Mode all-in membatasi draf dan payload menjadi satu event, termasuk saat menyalin run lama yang berisi beberapa event; mode bagi rata/rotasi tetap dapat memilih beberapa event. Arsip aktif diberi latar dan penanda jingga serta `aria-current`; run gagal disembunyikan dari daftar tanpa menghapus record. Tiga disclosure hasil disamakan menjadi header compact dengan chevron dan urutan **Rincian arus kas & dividen → Aturan yang dipakai pada hasil ini → Asumsi dan batas hasil ini**. Isi cash flow, aturan asli, tombol salin dan asumsi tetap dapat dibuka. Penghapusan dua teks spesifik di bawah kandidat yield/footer mengikuti instruksi PM; tombol Sumber & metodologi tetap tersedia. AI tetap di atas Jejak Transaksi, dengan batas analisis/sumber pada disclosure terpisah.
+
+Pemeriksaan yang dijalankan: typecheck, lint, `git diff --check` dan build Next pada salinan proyek terisolasi lulus. Dua browser fixture suite memeriksa delapan alur AI (loading, sumber aman, cache run/draf, respons run terlambat, hasil terminal tiga kegagalan tersembunyi, serta pemeriksaan status processing/transport) dan tujuh alur input/arsip (termasuk run all-in lama dengan tiga event yang disalin/disubmit sebagai satu event). Ringkasan memakai strategi asli run beserta perbandingannya; perubahan tab hasil tidak memanggil AI atau mengganti narasi. Backend menangani maksimum tiga percobaan provider per run, mengunci sukses, dan pemeriksaan status tidak menambah percobaan setelah terminal. Browser **tanpa intersepsi** pada Next3001 → FastAPI8001 membuka run equal `86b03837-6969-43da-b28b-0ff14ea394d8`: insight v3 cached mengembalikan200 completed, menampilkan konteks IHSG dan narasi Indonesia. Ketiga disclosure di desktop1440px terukur70px saat tertutup, dapat dibuka/ditutup dengan isi yang tersedia, dan cash flow juga diuji keyboard Enter. Pada390px, disclosure dapat dibuka tanpa overflow dokumen (`scrollWidth`390); penurunan lebar yang sebelumnya399px terbukti berasal dari header transaksi LPPF + nominal laba, lalu diperbaiki dengan wrapping khusus mobile. Page errors kosong. Teks footer dan disclaimer kandidat yang diminta dihapus tidak ada dalam DOM, tombol metodologi tetap terlihat.
+
+Bukti: `outputs/development/ai-insight-browser-fixtures.json`, `simulator-selection-browser-fixtures.json`, `ai-insight-live-browser.json`, serta screenshot `result-disclosures-desktop.png`, `result-disclosures-mobile.png`, `ai-insight-live-desktop.png` dan `ai-insight-live-mobile.png`. Fixture tidak memanggil provider atau menulis run pengguna; pemeriksaan live UI memakai cache backend, bukan panggilan provider baru. Server pengguna3000/8000, data produksi, deployment dan commit/push tidak diubah. Ini pemeriksaan development, bukan UAT.
+
+Revisi guard AI-02 PM: maksimum **tiga percobaan total per ID simulasi**, hanya retry ketika gagal. Counter/claim/CAS disimpan database sebelum provider dipanggil; concurrent curl, pergantian alokasi/versi/histori dan restart tidak membuka budget baru. Sukses permanen; gagal ketiga summary kosong/exhausted dan section disembunyikan. Konteks sekali25detik + maksimal3AI×20detik, nominal≤85detik.100tes backend lulus (16insight), termasuk fail/fail/success, failed3 repeat tetap3,20atomic claims satu owner, dan late-completion CAS.10POST concurrent berbagai alokasi pada legacy completed run menghasilkan respons identik tanpa generasi AI baru; [ai-insight-once-guard.json](../../outputs/development/ai-insight-once-guard.json).
+
+Tambahan konfigurasi AI (instruksi PM via koordinator): respons belum terkonfigurasi dengan `attempts=0` dapat diperiksa lagi secara eksplisit lewat “Periksa status”, tanpa loop otomatis atau menyebut key/provider pada tampilan. Dua pemeriksaan DOM fixture lulus: status awal memanggil endpoint sekali, lalu pemeriksaan manual setelah backend siap menghasilkan ringkasan sukses dan tombol status hilang. Bukti `outputs/development/ai-insight-configuration-fixture.json`; typecheck dan ESLint komponen lulus. Tidak mengulang build atau screenshot untuk perubahan state kecil ini.
+
+## AI-02 — Riset agentic IDX terpisah — 8 Oktober2026
+
+**DONE pada scope instruksi PM terbaru.** Model memilih tool/argumen dari katalog32IDX yang dikemas; ronde kedua membaca bukti/gap untuk memilih lanjutan. Gateway schema memblokir SGX/KLSE/mining/arbitrary URL, membatasi ticker/date/pagination/payload dan credit. Maksimal2planning calls +6tool dispatch/12credit Sectors dalam40detik; evidence/dispatched calls durable dan direuse tanpa query ulang ketika final gagal. Final maksimal3attempt total20detik masing-masing; successrun lama tidak diteliti/digenerate lagi. Maksimal5OpenAI calls/run, nominal100detik, proxy120detik. AI_KEY absent kini nol attempt sebelumclaim dan recoverable setelah dikonfigurasi.
+
+Pemeriksaan akhir **115tes backend lulus**, git diff --check bersih. Smoke fresh lokal f272006d-7a93-496f-b27a-c12245763c36 completed37,721detik/finalattempt1:2planning,6dispatch,4actualMCPcalls/fourcredits,3sources; model memilih corporate/daily/news lalu menyesuaikan menjadi harga historis/keyword news/IHSG sesudah hasil/gap. Cachedrepeat berbeda alokasi identik, tanpa generasi baru. Smoke mengungkap window replayend hilang dan provenance URL IHSG; regression memperbaiki query21April–20Mei2025 diterima dan URL API resmi /v2/index-daily/{code}/, tanpa meregenerasi cachedsuccess. Audit [ai-insight-agentic-live.json](../../outputs/development/ai-insight-agentic-live.json); desain/batas [AI_INSIGHTS.md](./AI_INSIGHTS.md). Ini bounded research, bukan bukti coverage32tool penuh, kebenaran kausal, UAT atau deployment; ISS-060 tetap batas kualitas data/vintage/narasi.

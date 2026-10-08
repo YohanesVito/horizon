@@ -559,9 +559,6 @@ export default function Dashboard() {
                 ? "Kembali ke analisis"
                 : "Sumber & metodologi"}
             </button>
-            <span>
-              Seluruh hasil di luar biaya transaksi, pajak, dan slippage.
-            </span>
           </footer>
         </div>
       </main>

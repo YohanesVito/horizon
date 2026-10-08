@@ -1318,6 +1318,13 @@ body {
   border-color: #ff4713;
 }
 
+.editorial-app .run-list button.active {
+  padding-left: 14px;
+  border-left: 3px solid #ff4713;
+  border-bottom-color: #ff4713;
+  background: #fff0e9;
+}
+
 .editorial-app .run-list strong {
   color: #131e29;
   font-size: 15px;
@@ -1593,6 +1600,82 @@ body {
   color: #131e29;
   font-size: clamp(28px, 3vw, 46px);
   font-weight: 400;
+}
+
+.editorial-app .simulation-insights .insight-content {
+  max-width: 900px;
+  overflow-wrap: anywhere;
+}
+
+.editorial-app .simulation-insights .insight-summary {
+  margin: 0 0 24px;
+  color: #263640;
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.7;
+}
+
+.editorial-app .insight-findings {
+  display: grid;
+  gap: 20px;
+}
+
+.editorial-app .insight-findings article {
+  padding-left: 18px;
+  border-left: 2px solid #ff4713;
+}
+
+.editorial-app .insight-findings h4 {
+  margin: 0 0 6px;
+  color: #131e29;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.editorial-app .insight-findings p,
+.editorial-app .insight-limitations p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.editorial-app .insight-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.editorial-app .insight-links a,
+.editorial-app .insight-sources a {
+  color: #263640;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.editorial-app .insight-limitations {
+  display: grid;
+  gap: 6px;
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid #e0e4e2;
+}
+
+.editorial-app .insight-sources {
+  margin-top: 18px;
+  line-height: 1.7;
+}
+
+.editorial-app .insight-sources summary {
+  cursor: pointer;
+}
+
+.editorial-app .insight-sources li + li {
+  margin-top: 8px;
+}
+
+.editorial-app .simulation-insights .btn {
+  margin-top: 16px;
 }
 
 .editorial-app .route-step {
@@ -2048,5 +2131,97 @@ body {
     flex-direction: column;
     min-height: 0;
     padding: 45px 24px;
+  }
+}
+
+/* Result details share one compact, keyboard-accessible disclosure header. */
+.editorial-app details.result-disclosure {
+  margin: 12px 0 0;
+  padding: 0;
+  border: 1px solid #d4d9d9;
+  border-radius: 16px;
+  background: #fff;
+  color: #263640;
+}
+
+.editorial-app .result-disclosure > summary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  min-height: 68px;
+  padding: 18px 22px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.editorial-app .result-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.editorial-app .result-disclosure > summary .disclosure-title {
+  flex: 1;
+  min-width: 0;
+  color: #131e29;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.editorial-app .result-disclosure > summary small {
+  flex-shrink: 0;
+  color: #69747c;
+  font-size: 12px;
+}
+
+.editorial-app .result-disclosure > summary svg {
+  flex-shrink: 0;
+  color: #ff4713;
+  transition: transform 150ms ease;
+}
+
+.editorial-app .result-disclosure[open] > summary svg {
+  transform: rotate(180deg);
+}
+
+.editorial-app .result-disclosure > summary:focus-visible {
+  outline: 2px solid #ff4713;
+  outline-offset: -3px;
+  border-radius: 15px;
+}
+
+.editorial-app .result-disclosure .disclosure-content {
+  padding: 20px 22px 24px;
+  border-top: 1px solid #e0e4e2;
+}
+
+.editorial-app .result-disclosure .run-snapshot-actions {
+  margin-top: 0;
+}
+
+.editorial-app .result-disclosure .table-scroll table {
+  margin-top: 0;
+}
+
+@media (max-width: 640px) {
+  .editorial-app .route-body .spread {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .editorial-app .result-disclosure > summary {
+    gap: 10px;
+    min-height: 64px;
+    padding: 16px;
+  }
+  .editorial-app .result-disclosure > summary .disclosure-title {
+    font-size: 15px;
+  }
+  .editorial-app .result-disclosure > summary small {
+    max-width: 72px;
+    font-size: 11px;
+    text-align: right;
+  }
+  .editorial-app .result-disclosure .disclosure-content {
+    padding: 18px 16px;
   }
 }

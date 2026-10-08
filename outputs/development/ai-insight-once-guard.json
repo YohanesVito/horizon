@@ -1,0 +1,258 @@
+{
+  "guard": "three total attempts only on failure; success reused permanently",
+  "requests": 10,
+  "allocations": [
+    "single",
+    "equal",
+    "rotation"
+  ],
+  "identical": true,
+  "generation": "Existing legacy result reused; no fresh model request",
+  "response": {
+    "status": "completed",
+    "summary": "Replay menghasilkan laba kotor Rp6,02 juta (8,72%). Namun hasil akhir masih mencakup posisi LPPF yang belum dijual, dan dividen menjadi komponen penting dalam hasil tersebut.",
+    "findings": [
+      {
+        "title": "Hasil belum sepenuhnya terealisasi",
+        "detail": "Dividen tercatat Rp6,10 juta, sementara laba kotor keseluruhan Rp6,02 juta. LPPF masih dipegang hingga akhir replay dengan nilai posisi Rp22,00 juta; penurunan harga terhadap modal masuknya Rp912 ribu tertutup oleh dividen Rp3,42 juta, sehingga hasil kotor lot itu tercatat Rp2,51 juta. Jadi angka akhir masih mencakup posisi yang belum keluar.",
+        "source_ids": []
+      },
+      {
+        "title": "Penurunan LPPF muncul pada beberapa event, bukan hanya satu event terbesar",
+        "detail": "Dalam lima pratinjau historis LPPF, penurunan berkisar 6,25%–22,97%; rata-ratanya 15,30% dan mediannya 17,68%. Penurunan terbesar terjadi pada event 10 April 2023, dengan titik rendah 26 April sebesar 22,97%, tetapi tidak ditandai menyimpang. Pola ini menggambarkan penurunan pada beberapa event dalam sampel, bukan rata-rata yang terutama terangkat oleh satu event. Jenis dividen, basis harga, dan kelengkapan sesi belum diverifikasi, sehingga ini hanya gambaran pratinjau, bukan perbandingan tahunan yang setara.",
+        "source_ids": []
+      },
+      {
+        "title": "IHSG naik pada jendela penurunan terbesar LPPF",
+        "detail": "Pada jendela yang sama dari tanggal cum-date 6 April hingga titik rendah LPPF 26 April 2023, IHSG tercatat naik 1,73%. Ini memberi konteks pasar luas untuk periode tersebut, tetapi tidak membuktikan penyebab penurunan LPPF.",
+        "source_ids": [
+          "ihsg-lppf"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "ihsg-lppf",
+        "title": "IHSG 2023-04-06–2023-04-26 · 6792.77 → 6910.15 (+1.73%) · jendela cum-date ke low saham",
+        "url": "https://docs.sectors.app/api-references/v2/indonesia/transaction/index-daily",
+        "published_at": "2023-04-26",
+        "symbol": "LPPF",
+        "event_id": "LPPF:2023-04-10",
+        "source_kind": "provider_record",
+        "retrieved_at": "2026-10-08T08:38:24.979326+00:00"
+      }
+    ],
+    "limitations": [
+      "Replay historis, bukan prediksi; di luar biaya transaksi, pajak dan slippage.",
+      "Konteks memakai snapshot historis tersedia dan dapat melampaui tanggal replay; bukan backtest informasi yang tersedia saat keputusan.",
+      "Histori yang belum diverifikasi adalah pratinjau; basis split, kelengkapan sesi dan identitas siklus dapat membatasi perbandingan.",
+      "Berita menunjukkan konteks waktu, bukan kepastian penyebab penurunan.",
+      "Perubahan fundamental yang selaras periode dan pembanding sektor belum ditelusuri; IHSG hanya konteks pasar luas.",
+      "Arsip berita LPPF sekitar 2023-04-26 tidak ditemukan; penyebab belum diketahui.",
+      "Tidak ada catatan aksi korporasi Sectors untuk LPPF pada 2023-04-12–2023-05-10; kelengkapan arsip tidak diketahui."
+    ],
+    "statistics": {
+      "metric": "Maximum decline from cum close over first 21 available closes on/after ex-date; sessions may be incomplete. Event-weighted, not annual averages.",
+      "observed_closes_after_ex": 21,
+      "as_of_policy": "All available historical snapshot events; descriptive context may postdate replay and is not a decision-time backtest.",
+      "historical_years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "companies": [
+        {
+          "symbol": "BBCA",
+          "groups": [],
+          "unclassified_samples": [],
+          "unclassified_distribution": {
+            "count": 0,
+            "mean_pct": null,
+            "median_pct": null,
+            "maximum": null,
+            "mean_without_maximum_pct": null,
+            "upper_outlier": null,
+            "outlier_method": "Insufficient event samples.",
+            "comparability": "Descriptive preview only: dividend cycles, split basis and session coverage are unverified; not a comparable annual risk estimate."
+          },
+          "excluded": [],
+          "missing_years": [
+            2021,
+            2022,
+            2023,
+            2024,
+            2025
+          ]
+        },
+        {
+          "symbol": "BMRI",
+          "groups": [],
+          "unclassified_samples": [],
+          "unclassified_distribution": {
+            "count": 0,
+            "mean_pct": null,
+            "median_pct": null,
+            "maximum": null,
+            "mean_without_maximum_pct": null,
+            "upper_outlier": null,
+            "outlier_method": "Insufficient event samples.",
+            "comparability": "Descriptive preview only: dividend cycles, split basis and session coverage are unverified; not a comparable annual risk estimate."
+          },
+          "excluded": [],
+          "missing_years": [
+            2021,
+            2022,
+            2023,
+            2024,
+            2025
+          ]
+        },
+        {
+          "symbol": "LPPF",
+          "groups": [],
+          "unclassified_samples": [
+            {
+              "event_id": "LPPF:2021-11-11",
+              "year": 2021,
+              "ex_date": "2021-11-11",
+              "window_end": "2021-12-09",
+              "observed_close_count": 21,
+              "cum_date": "2021-11-10",
+              "low_date": "2021-12-01",
+              "drop_pct": 6.25,
+              "cycle_key": null,
+              "verified": false,
+              "issues": [
+                "Basis harga, DPS dan mata uang belum diverifikasi.",
+                "Hubungan pengumuman dan event belum diverifikasi.",
+                "Identitas siklus pembanding belum tersedia.",
+                "Jenis siklus dividen belum diverifikasi.",
+                "Kelengkapan data harga per hari bursa belum diverifikasi.",
+                "Tanggal RUPS/declaration terkait event belum terverifikasi."
+              ]
+            },
+            {
+              "event_id": "LPPF:2022-04-14",
+              "year": 2022,
+              "ex_date": "2022-04-14",
+              "window_end": "2022-05-24",
+              "observed_close_count": 21,
+              "cum_date": "2022-04-13",
+              "low_date": "2022-05-12",
+              "drop_pct": 10.833333,
+              "cycle_key": null,
+              "verified": false,
+              "issues": [
+                "Basis harga, DPS dan mata uang belum diverifikasi.",
+                "Hubungan pengumuman dan event belum diverifikasi.",
+                "Identitas siklus pembanding belum tersedia.",
+                "Jenis siklus dividen belum diverifikasi.",
+                "Kelengkapan data harga per hari bursa belum diverifikasi.",
+                "Tanggal RUPS/declaration terkait event belum terverifikasi."
+              ]
+            },
+            {
+              "event_id": "LPPF:2023-04-10",
+              "year": 2023,
+              "ex_date": "2023-04-10",
+              "window_end": "2023-05-16",
+              "observed_close_count": 21,
+              "cum_date": "2023-04-06",
+              "low_date": "2023-04-26",
+              "drop_pct": 22.970297,
+              "cycle_key": null,
+              "verified": false,
+              "issues": [
+                "Basis harga, DPS dan mata uang belum diverifikasi.",
+                "Hubungan pengumuman dan event belum diverifikasi.",
+                "Identitas siklus pembanding belum tersedia.",
+                "Jenis siklus dividen belum diverifikasi.",
+                "Kelengkapan data harga per hari bursa belum diverifikasi.",
+                "Tanggal RUPS/declaration terkait event belum terverifikasi."
+              ]
+            },
+            {
+              "event_id": "LPPF:2024-04-22",
+              "year": 2024,
+              "ex_date": "2024-04-22",
+              "window_end": "2024-05-27",
+              "observed_close_count": 21,
+              "cum_date": "2024-04-19",
+              "low_date": "2024-05-16",
+              "drop_pct": 18.767507,
+              "cycle_key": null,
+              "verified": false,
+              "issues": [
+                "Basis harga, DPS dan mata uang belum diverifikasi.",
+                "Hubungan pengumuman dan event belum diverifikasi.",
+                "Identitas siklus pembanding belum tersedia.",
+                "Jenis siklus dividen belum diverifikasi.",
+                "Kelengkapan data harga per hari bursa belum diverifikasi.",
+                "Tanggal RUPS/declaration terkait event belum terverifikasi."
+              ]
+            },
+            {
+              "event_id": "LPPF:2025-04-22",
+              "year": 2025,
+              "ex_date": "2025-04-22",
+              "window_end": "2025-05-23",
+              "observed_close_count": 21,
+              "cum_date": "2025-04-21",
+              "low_date": "2025-04-24",
+              "drop_pct": 17.676768,
+              "cycle_key": null,
+              "verified": false,
+              "issues": [
+                "Basis harga, DPS dan mata uang belum diverifikasi.",
+                "Hubungan pengumuman dan event belum diverifikasi.",
+                "Identitas siklus pembanding belum tersedia.",
+                "Jenis siklus dividen belum diverifikasi.",
+                "Kelengkapan data harga per hari bursa belum diverifikasi.",
+                "Tanggal RUPS/declaration terkait event belum terverifikasi."
+              ]
+            }
+          ],
+          "unclassified_distribution": {
+            "upper_outlier": false,
+            "outlier_method": "Tukey upper fence Q3 + 1.5 IQR, inclusive quartiles; at least 5 event samples. Descriptive only.",
+            "count": 5,
+            "mean_pct": 15.299581,
+            "median_pct": 17.676768,
+            "maximum": {
+              "event_id": "LPPF:2023-04-10",
+              "year": 2023,
+              "ex_date": "2023-04-10",
+              "window_end": "2023-05-16",
+              "observed_close_count": 21,
+              "cum_date": "2023-04-06",
+              "low_date": "2023-04-26",
+              "drop_pct": 22.970297,
+              "cycle_key": null,
+              "verified": false,
+              "issues": [
+                "Basis harga, DPS dan mata uang belum diverifikasi.",
+                "Hubungan pengumuman dan event belum diverifikasi.",
+                "Identitas siklus pembanding belum tersedia.",
+                "Jenis siklus dividen belum diverifikasi.",
+                "Kelengkapan data harga per hari bursa belum diverifikasi.",
+                "Tanggal RUPS/declaration terkait event belum terverifikasi."
+              ]
+            },
+            "mean_without_maximum_pct": 13.381902,
+            "comparability": "Descriptive preview only: dividend cycles, split basis and session coverage are unverified; not a comparable annual risk estimate."
+          },
+          "excluded": [],
+          "missing_years": []
+        }
+      ]
+    },
+    "provenance": {
+      "analysis_version": "insights-v3",
+      "run_id": "86b03837-6969-43da-b28b-0ff14ea394d8",
+      "dataset_version": "unified-b749e08ddb769800",
+      "allocation": "equal"
+    }
+  }
+}

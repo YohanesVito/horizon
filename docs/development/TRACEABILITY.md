@@ -1,5 +1,20 @@
 # Pemetaan kebutuhan ke pekerjaan development
 
+## Insight AI dan interaksi simulator — 8 Oktober 2026
+
+- AI-02 (instruksi PM; C-04/C-08): statistik pola/kejadian ekstrem dihitung kode,
+  AI menjelaskan hasil dan konteks bersumber; endpoint backend dan section sebelum
+  Jejak Transaksi. Bukan forecast atau klaim penyebab pasar terverifikasi.
+- SIM-UX-02 (instruksi PM; C-04/C-05): pilih strategi sebelum peristiwa, all-in
+  satu peristiwa, highlight run aktif, hilangkan run gagal dari daftar riwayat.
+
+## Fondasi AI — 8 Oktober 2026
+
+AI-01 mengacu instruksi langsung PM: baca `AI_KEY`, helper OpenAI `gpt-6-luna`
+dengan JSON schema yang diberikan caller, tanpa integrasi tampilan. Bukti dan
+cara pakai: [AI_HELPER.md](./AI_HELPER.md), `backend/ai.py`, `backend/tests/test_ai.py`.
+Ini fondasi S1-01, bukan implementasi prediksi F-02 atau requirement PRD baru.
+
 ## Keputusan operasi terbaru — 8 Oktober 2026
 
 DEP-01–DEP-03 DONE: FastAPI/Docker Dalang healthy, Supabase Session Pooler, HTTPS provider dan proxy Next server-only terverifikasi. Smoke image, delapan endpoint, penolakan401, replay identik fixture, preservasi20record, frontend→VPS dan browser Peluang/Timeline lulus. Kelima layanan kurasi tetapinactive. Bukti `outputs/deployment/deployment.json` dan laporan terkait; [DEPLOYMENT_DALANG.md](./DEPLOYMENT_DALANG.md). Frontend publik, UAT, login, durablequeue serta gap data/model bukan hasil deployment ini. ISS-048 storage tetap OPEN.
@@ -121,3 +136,11 @@ D-07 menggabungkan main terbaru secara lokal dengan UI D-05. C-02/C-04/C-08 kini
 ## Integrasi desain dan data BR-04
 
 C-01/C-02/C-08: desain editorial `feat/timeline-ui-polish` menjadi dasar tampilan; lima kandidat D-03 dan grafik parsial T-08 ditambahkan tanpa menyingkirkan toolbar, panel harga, kronologi, maupun layar Simulasi. Fokus berubah dari tahun ke ID event agar dua pembayaran satu emiten pada tahun sama tetap terpisah. C-06/C-07: panel Engine Riset membaca statistik empiris lama beserta aturan, ukuran sampel, dan rentang Wilson; ini belum menjalankan hipotesis prediksi harga/probabilitas F-01. `forecast.status` tetap `not_available` sesuai ISS-042. Perubahan dan bukti integrasi mengikuti PROGRESS.md; bukan penutupan PRD/UAT.
+
+## AI-02 — Penjelasan hasil dan pola historis
+
+C-04/C-08 mengikuti instruksi PM8Oktober: endpoint backend membaca snapshot run selesai, statistik deterministik menunjukkan pola/outlier tanpa menyamakan event dengan tahun, dan GPT-6 Luna menyusun penjelasan compact di atas Jejak Transaksi. Sectors MCP menyediakan news/corporate action/IHSG bertanggal; sumber dan gap tetap terlihat, perbandingan siklus belum terverifikasi berlabel pratinjau. Hasil gross tetap di luar biaya/pajak/slippage. Ini deskripsi replay dan konteks historis, bukan rekomendasi order, kausalitas, forecast F-01/F-02, atau backtest informasi saat keputusan. Fundamental time-aligned/benchmark sektor dan kualitas arsip tetap ISS-060; status detail serta bukti live/cache mengikuti [AI_INSIGHTS.md](./AI_INSIGHTS.md) dan PROGRESS.md.
+
+AI-02 revisi instruksi terbaru PM: guard biaya bersifat per ID simulasi, maksimal tiga attempt total hanya ketika failure. Klaim/counter/CAS durable, bukan hanya query cache frontend; success tidak diulang, exhausted3failures menyembunyikan hasil AI. Bukti dan batas waktu mengikuti AI_INSIGHTS.md/PROGRESS.md.
+
+AI-02 instruksi PM terbaru: riset agentic IDX-only terpisah,32tool schema server, dua ronde berdasarkan hasil terdahulu, sourceID server dan evidence durable; SGX/KLSE/mining dilarang. Maksimal2planning+3finalOpenAI calls/run (budget3hanyafinal),6tool dispatch12credit40detik research; final3x20detik. MissingAIkey tidakconsumeattempt; successfulrun cached tidakdigenerateulang. Liveadaptive37,721detik/cachedrepeat serta115tes backend/regression menunjang implementasi development, bukan causal proof atau research tanpa batas. Bukti PROGRESS.md/AI_INSIGHTS.md dan ISS-060.

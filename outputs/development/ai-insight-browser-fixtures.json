@@ -1,0 +1,51 @@
+{
+  "fixture": true,
+  "guard_semantics": "max 3 provider attempts per run handled by backend, success locked, original allocation",
+  "base": "http://127.0.0.1:3001",
+  "calls": [
+    {
+      "id": "qa-run-one",
+      "allocation": "rotation"
+    },
+    {
+      "id": "qa-run-two",
+      "allocation": "rotation"
+    },
+    {
+      "id": "qa-unavailable",
+      "allocation": "rotation"
+    },
+    {
+      "id": "qa-processing",
+      "allocation": "rotation"
+    },
+    {
+      "id": "qa-processing",
+      "allocation": "rotation"
+    },
+    {
+      "id": "qa-error",
+      "allocation": "rotation"
+    },
+    {
+      "id": "qa-error",
+      "allocation": "rotation"
+    }
+  ],
+  "checks": [
+    "Loading preserves replay and transaction details",
+    "Success above ledger, sources safe, caveats collapsed",
+    "Tabs and draft do not request AI again; original saved allocation stays fixed",
+    "Delayed other-run response cannot replace active run; revisit uses cache",
+    "After backend reports all 3 failures exhausted, AI section hidden and replay retained; revisit does not POST",
+    "Processing has explicit guarded status check, no automatic generation",
+    "Transport error permits guarded status check, no automatic repeat",
+    "390px mobile has no horizontal overflow"
+  ],
+  "errors": [],
+  "mobile": {
+    "width": 390,
+    "scrollWidth": 390
+  },
+  "status": "passed"
+}
