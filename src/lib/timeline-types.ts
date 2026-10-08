@@ -35,6 +35,19 @@ export type TimelineCatalog = {
   source: string;
   reason: string;
 };
+export type DividendCandidates = {
+  year: number;
+  as_of: string;
+  source: string;
+  basis: string;
+  universe_count: number;
+  candidates: {
+    symbol: string;
+    name: string;
+    dps: number;
+    yield_pct: number;
+  }[];
+};
 export type TimelineDetail = {
   symbol: string;
   name: string;

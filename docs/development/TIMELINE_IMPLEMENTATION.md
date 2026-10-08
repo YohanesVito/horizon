@@ -2,15 +2,19 @@
 
 Scope T-03/T-04/T-05/T-06, kebutuhan percakapan C-02/C-06/C-08. PRD lampiran dan persetujuan UAT tetap belum tersedia. Tampilan berhasil dibangun; kelengkapan dataset untuk katalog penuh tetap belum tercapai (ISS-041).
 
+Perubahan D-03 (8 Oktober): gate lima tahun di dokumen ini berlaku untuk **grafik overlay terverifikasi** saja. Daftar penemuan nama emiten memakai snapshot MCP Sectors terpisah tanpa gate itu; lihat `outputs/dividend-discovery/top-yield-2025-mcp-2026-10-08.json`. Peringkatnya yield historis 2025, bukan prediksi profit.
+
+**Arahan PM berikutnya pada 8 Oktober (T-08) mengganti gate tampilan tersebut:** grafik boleh memuat tahun apa pun yang punya jendela harga/event pada snapshot, dengan gap yang dinyatakan eksplisit. Katalog tetap memisahkan pratinjau dari periode yang sudah diverifikasi. Bagian T-03–T-06 di bawah adalah bukti historis sebelum perubahan ini.
+
 ## Cara mencoba
 
-1. Jalankan backend dari root horizon: `.venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000`.
-2. Jalankan frontend setelah build: `bun run build`, lalu `bun run start:lan` (atau `bun run start` untuk localhost saja).
-3. Buka http://127.0.0.1:3000, pilih **Timeline**. Katalog hanya menampilkan emiten yang histori lima tahunnya lengkap dan terverifikasi; sekarang nol.
-4. Pilih **Buka pratinjau LPPF** untuk memeriksa implementasi dengan harga asli Sectors. Banner menyatakan histori belum lengkap.
+1. Untuk checkout yang `.env.local`-nya mengarah ke Supabase/Dalang, jalankan backend preview dengan SQLite terpisah: `DATABASE_URL=sqlite:////private/tmp/horizon-local-preview.db .venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000`. Ini tidak membuka worker kedua pada Supabase.
+2. Jalankan frontend setelah `npm run build` dengan `BACKEND_URL=http://127.0.0.1:8000 npm run start`; proxy memakai FastAPI lokal untuk perubahan yang belum dideploy.
+3. Buka http://127.0.0.1:3000, pilih **Analisis emiten**. Lima kandidat yield historis dapat membuka grafik pratinjau dari snapshot harga yang tersedia; katalog terverifikasi masih kosong karena verifikasi peristiwa belum selesai.
+4. Pilih salah satu kandidat atau gunakan pemilih emiten. Gap tahun muncul di atas grafik; untuk emiten dengan beberapa pembayaran dalam satu tahun, pilih event berdasarkan tanggal ex-date pada legenda.
 5. Hover garis/area untuk fokus dan tooltip; klik tahun untuk mengunci, **Bandingkan semua** untuk melepas. Tombol tahun juga dapat dipakai dengan keyboard dan pada layar kecil.
 6. Bandingkan **Perubahan %** dengan **Harga Rp**. Persentase adalah perubahan close terhadap close cum-date, tidak menambahkan dividen.
-7. Pilih **2026 Aktual + Prediksi**. Harga aktual tersedia sampai6Oktober2026; panel prediksi masih kosong sesuai arahan PM. Tidak ada angka forecast atau tanggal estimasi rekaan.
+7. Untuk LPPF, pilih **2026 Aktual + Prediksi**. Harga aktual tersedia sampai6Oktober2026; panel prediksi masih kosong sesuai arahan PM. Empat kandidat lain belum memiliki snapshot periode berjalan pada integrasi ini, sehingga kontrolnya dinonaktifkan.
 8. Label **Cum date, Ex date, Recording, Payment** selalu terlihat pada grafik periode fokus. Area cum→ex merah bila close ex lebih rendah dari close cum, hijau bila lebih tinggi, dan netral bila sama. Selisih ditampilkan di atas grafik. Label bergerak ke lajur terpisah ketika tanggal berdekatan; jarak waktu aktual tetap dipertahankan.
 
 ## Data dan pemrosesan
@@ -49,3 +53,9 @@ Lint dan build/TypeScript lulus setelah perubahan label dan warna. Pemeriksaan f
 ISS-041 tetap OPEN: declaration historis, sesi pasar, unit/basis adjustment dan klasifikasi siklus belum disahkan. Pratinjau LPPF bukan pemenuhan syarat data lengkap seluruh emiten. Sampai verifikasi tersebut selesai, katalog Timeline kosong.
 
 ISS-042 tetap DEFERRED oleh PM: rumus, training, interval ketidakpastian dan validasi prediksi. Tidak membuat engine dummy atau mengambil keputusan order. Hasil simulator lama tetap di luar biaya transaksi, pajak dan slippage. UAT akhir belum dilakukan; build dan pemeriksaan browser bukan persetujuan PM.
+
+## T-08 — grafik parsial lima kandidat, 8 Oktober 2026
+
+Sumber tambahan adalah snapshot Sectors MCP/REST yang sudah tersimpan di `outputs/intelligence/raw`, dinormalisasi lewat dataset intelligence yang sama. Tidak ada pengambilan provider baru. LPPF tetap memakai pilot 2021–2025; kandidat lain memakai event 2022–2025 dengan harga jendela tersedia: DMAS 5 event (2022/2023/2025), ADRO 9 (2022–2025), CFIN 2 (2023/2025), RALS 4 (2022–2025). UI menandai tahun tanpa kurva; kekosongan snapshot tidak ditafsirkan sebagai bukti tidak ada dividen. Event dalam tahun yang sama diberi ID/tanggal ex-date sendiri pada legenda dan fokus grafik. Kurva ADRO November 2024 dipotong sebelum ex-date dividen berikutnya pada Desember 2024, dengan alasan terlihat pada audit.
+
+Semua data baru tetap pratinjau: tanggal declaration/RUPS terkait, basis adjustment, kelengkapan hari bursa, dan klasifikasi siklus belum disahkan. Tahun 2026 baru mempunyai snapshot aktual LPPF; engine forecast tetap kosong. Katalog `eligible` tidak lagi mewajibkan lima tahun, tetapi menuntut semua periode yang ditampilkan lolos review. ISS-041/042/057/058 tetap dilacak; tidak ada klaim prediksi atau hasil trading.

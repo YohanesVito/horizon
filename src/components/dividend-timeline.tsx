@@ -11,7 +11,9 @@ import {
 } from "lucide-react";
 import { api, dt, money, pct, tradingDayText } from "@/lib/api";
 import { cumExMovement, phaseLabel } from "@/lib/timeline-chart";
+import type { IntelligenceData } from "@/lib/intelligence-types";
 import type {
+  DividendCandidates,
   TimelineCatalog,
   TimelineDetail,
   TimelinePeriod,
@@ -58,6 +60,10 @@ export default function DividendTimeline() {
     queryKey: ["timeline-catalog"],
     queryFn: () => api<TimelineCatalog>("/timeline"),
   });
+  const candidates = useQuery({
+    queryKey: ["dividend-candidates"],
+    queryFn: () => api<DividendCandidates>("/dividend-candidates"),
+  });
   // LPPF langsung terbuka untuk demo; versi terverifikasi didahulukan bila tersedia.
   const defaultSelection = catalog.data?.companies.some(
     (c) => c.symbol === "LPPF",
@@ -82,7 +88,7 @@ export default function DividendTimeline() {
     enabled: selection !== null,
   });
   if (catalog.isPending)
-    return <div className="loading glass">Memeriksa histori lima tahun…</div>;
+    return <div className="loading glass">Memeriksa histori yang tersedia…</div>;
   if (catalog.isError)
     return (
       <div className="notice error" role="alert">
@@ -165,15 +171,15 @@ export default function DividendTimeline() {
           <div className="timeline-empty-icon">
             <LayersGlyph />
           </div>
-          <p className="eyebrow">FIVE YEARS. ONE PERSPECTIVE.</p>
+          <p className="eyebrow">PERIODE TERSEDIA. SATU PERSPEKTIF.</p>
           <h2>Kenali pola di sekitar dividen.</h2>
           <p>
             Bandingkan harga sebelum dan sesudah ex-date, lalu telusuri setiap
             fase sampai payment.
           </p>
-          {!data.companies.length && (
+          {!data.companies.length && !data.preview_symbols.length && (
             <span className="badge">
-              <LockKeyhole size={12} /> Katalog menunggu data lengkap
+              <LockKeyhole size={12} /> Katalog menunggu data yang dapat ditampilkan
             </span>
           )}
           {data.preview_symbols.includes("LPPF") && (
@@ -218,6 +224,59 @@ export default function DividendTimeline() {
           )}
         </>
       )}
+      <section className="dividend-candidates" aria-label="Kandidat emiten dividen">
+        <div className="dividend-candidates-heading">
+          <div>
+            <p className="eyebrow">KANDIDAT / SECTORS</p>
+            <h2>Lima yield historis tertinggi {candidates.data?.year ?? ""}</h2>
+          </div>
+          <span className="badge">Data historis</span>
+        </div>
+        {candidates.isPending && <p className="muted">Memuat kandidat dividen…</p>}
+        {candidates.isError && (
+          <div className="notice error" role="alert">
+            Kandidat belum bisa dimuat. <button className="text-button" onClick={() => candidates.refetch()}>Coba lagi</button>
+          </div>
+        )}
+        {candidates.data && (
+          <>
+            <p className="muted dividend-candidates-intro">
+              Peringkat total yield {candidates.data.year} dari {candidates.data.universe_count} emiten dengan data dividen dan yield positif. Grafik memakai jendela harga yang tersedia; tahun kosong ditandai sebagai gap.
+            </p>
+            <ol className="dividend-candidates-list">
+              {candidates.data.candidates.map((candidate, index) => (
+                <li key={candidate.symbol}>
+                  <span className="dividend-candidate-rank">{String(index + 1).padStart(2, "0")}</span>
+                  <div className="dividend-candidate-name">
+                    <strong>{candidate.symbol}</strong>
+                    <span>{candidate.name}</span>
+                  </div>
+                  <div className="dividend-candidate-values">
+                    <strong>{pct(candidate.yield_pct)}</strong>
+                    <span>DPS {money(candidate.dps)} / saham</span>
+                  </div>
+                  {data.preview_symbols.includes(candidate.symbol) ? (
+                    <button
+                      className="text-button"
+                      onClick={() => {
+                        chooseSelection({ symbol: candidate.symbol, preview: true });
+                        requestAnimationFrame(() => document.querySelector(".timeline-catalog")?.scrollIntoView({ behavior: "smooth" }));
+                      }}
+                    >
+                      Lihat grafik <ArrowUpRight size={16} aria-hidden="true" />
+                    </button>
+                  ) : (
+                    <span className="dividend-candidate-chart-status">Grafik belum tersedia</span>
+                  )}
+                </li>
+              ))}
+            </ol>
+            <p className="muted dividend-candidates-source">
+              {candidates.data.basis} Snapshot {dt(candidates.data.as_of, true)}. Peringkat ini bukan proyeksi keuntungan strategi.
+            </p>
+          </>
+        )}
+      </section>
     </div>
   );
 }
@@ -246,6 +305,13 @@ function LayersGlyph() {
 function TimelineExplorer({ data }: { data: TimelineDetail }) {
   const [mode, setMode] = useState<"history" | "current">("history");
   const [units, setUnits] = useState<Units>("percent");
+  const intelligence = useQuery({
+    queryKey: ["intelligence"],
+    queryFn: () => api<IntelligenceData>("/intelligence"),
+  });
+  const evidence = intelligence.data?.companies.find(
+    (company) => company.symbol === data.symbol,
+  );
   return (
     <>
       <section className="glass timeline-panel">
@@ -258,6 +324,9 @@ function TimelineExplorer({ data }: { data: TimelineDetail }) {
           setUnits={setUnits}
           mode={mode}
           setMode={setMode}
+          currentYear={data.current_year}
+          historyYears={data.history_years}
+          hasCurrentData={data.current.some((period) => period.points.length > 0)}
           symbol={data.symbol}
         />
         {mode === "current" && (
@@ -268,6 +337,55 @@ function TimelineExplorer({ data }: { data: TimelineDetail }) {
               <p>Belum ada proyeksi untuk pergerakan setelah titik tersebut.</p>
             </div>
           </div>
+        )}
+      </section>
+      <section className="timeline-model-evidence" aria-label="Riset risiko dan prediksi">
+        <div className="timeline-model-heading">
+          <div>
+            <p className="eyebrow">03 / ENGINE RISET</p>
+            <h3>Risiko historis, belum prediksi.</h3>
+          </div>
+          <span className="badge">Formula v0.1 · riset</span>
+        </div>
+        <p className="timeline-model-intro">
+          Engine membaca peristiwa historis yang memenuhi aturan masuk dan batas pengamatan.
+          Angka di bawah menjelaskan sampel; belum menjadi peluang untuk periode berikutnya.
+        </p>
+        {intelligence.isPending && <p className="muted">Memuat statistik historis…</p>}
+        {intelligence.isError && (
+          <p className="muted" role="alert">Statistik belum bisa dimuat. Grafik harga tetap tersedia.</p>
+        )}
+        {evidence && (
+          <>
+            <dl className="timeline-model-metrics">
+              <div>
+                <dt>Event lengkap</dt>
+                <dd>{evidence.complete_events} dari {evidence.total_events}</dd>
+              </div>
+              <div>
+                <dt>Frekuensi hasil gross negatif</dt>
+                <dd>{evidence.trap_pct === null ? "Belum cukup data" : pct(evidence.trap_pct)}</dd>
+                {evidence.trap_interval && (
+                  <small>Rentang Wilson 95%: {pct(evidence.trap_interval[0])}–{pct(evidence.trap_interval[1])}</small>
+                )}
+              </div>
+              <div>
+                <dt>Median pulih ke harga beli</dt>
+                <dd>{evidence.price_recovery.median_sessions === null ? "Belum tercapai" : `${evidence.price_recovery.median_sessions} sesi`}</dd>
+              </div>
+              <div>
+                <dt>Median BEP termasuk dividen</dt>
+                <dd>{evidence.total_recovery.median_sessions === null ? "Belum tercapai" : `${evidence.total_recovery.median_sessions} sesi`}</dd>
+              </div>
+            </dl>
+            <p className="timeline-model-footnote">
+              Aturan aktif: masuk {intelligence.data!.entry_offset} sesi sebelum cum-date,
+              evaluasi sampai {intelligence.data!.horizon} sesi sesudahnya. BEP harga
+              dan BEP total berbeda. {evidence.early_censored} event terpotong sebelum
+              horizon penuh. Statistik ini eksploratif, berbasis sampel terbatas;
+              hasil gross di luar biaya transaksi, pajak, dan slippage.
+            </p>
+          </>
         )}
       </section>
       <details className="glass timeline-audit">
@@ -285,7 +403,8 @@ function TimelineExplorer({ data }: { data: TimelineDetail }) {
             ))}
           </ul>
           <p>
-            Harga ditampilkan sesuai snapshot Sectors. Normalisasi terhadap
+            Harga ditampilkan sesuai snapshot Sectors. Tahun tanpa jendela harga
+            ditandai sebagai gap, bukan bukti tidak ada pembagian dividen. Normalisasi terhadap
             cum-date membantu membandingkan pola; tidak membuktikan basis stock
             split sudah sama. Tahun mengikuti ex-date, bukan tahun buku. Grafik
             ini bukan proyeksi keuntungan strategi.
@@ -315,6 +434,9 @@ function TimelinePlot({
   setUnits,
   mode,
   setMode,
+  currentYear,
+  historyYears,
+  hasCurrentData,
   symbol,
 }: {
   periods: TimelinePeriod[];
@@ -322,12 +444,15 @@ function TimelinePlot({
   setUnits: (u: Units) => void;
   mode: "history" | "current";
   setMode: (m: "history" | "current") => void;
+  currentYear: number;
+  historyYears: number[];
+  hasCurrentData: boolean;
   symbol: string;
 }) {
   const [container, setContainer] = useState<HTMLDivElement | null>(null);
   const [width, setWidth] = useState(800);
-  const [pinned, setPinned] = useState<number | null>(null);
-  const [legendYear, setLegendYear] = useState<number | null>(null);
+  const [pinned, setPinned] = useState<string | null>(null);
+  const [legendId, setLegendId] = useState<string | null>(null);
   const [hover, setHover] = useState<Hover | null>(null);
   useEffect(() => {
     if (!container) return;
@@ -346,9 +471,21 @@ function TimelinePlot({
       p.points.some((point) => point.date === p.ex_date) &&
       (units === "price" || p.cum_close !== null),
   );
-  const activeYear = pinned ?? legendYear ?? hover?.period.year ?? null;
+  const activeId = pinned ?? legendId ?? hover?.period.id ?? null;
   const active =
-    available.find((p) => p.year === activeYear) ?? available.at(-1);
+    available.find((p) => p.id === activeId) ?? available.at(-1);
+  const yearCounts = new Map<number, number>();
+  for (const period of available)
+    yearCounts.set(period.year, (yearCounts.get(period.year) ?? 0) + 1);
+  const periodLabel = (period: TimelinePeriod) =>
+    (yearCounts.get(period.year) ?? 0) > 1
+      ? `${period.year} · ${dt(period.ex_date)}`
+      : String(period.year);
+  const missingYears = mode === "current"
+    ? []
+    : historyYears.filter(
+        (year) => !periods.some((period) => period.year === year && period.points.length),
+      );
   const movement = cumExMovement(active);
   const left = width < 550 ? 58 : 72,
     right = width < 550 ? 18 : 28;
@@ -458,7 +595,7 @@ function TimelinePlot({
       .join(" ");
   const reset = () => {
     setPinned(null);
-    setLegendYear(null);
+    setLegendId(null);
     setHover(null);
   };
   const switchMode = (next: "history" | "current") => {
@@ -483,7 +620,7 @@ function TimelinePlot({
     let closest: Hover | null = null;
     let distance = Infinity;
     for (const period of available) {
-      if (pinned !== null && period.year !== pinned) continue;
+      if (pinned !== null && period.id !== pinned) continue;
       const points = visiblePoints(period);
       if (!points.length) continue;
       const point = points.reduce((a, b) =>
@@ -504,7 +641,7 @@ function TimelinePlot({
   }
   function onPointerMove(event: PointerEvent<SVGSVGElement>) {
     const closest = closestAt(event);
-    if (closest) setLegendYear(null);
+    if (closest) setLegendId(null);
     setHover(closest);
   }
   function onChartClick(event: MouseEvent<SVGSVGElement>) {
@@ -514,19 +651,18 @@ function TimelinePlot({
       reset();
       return;
     }
-    setPinned(closest.period.year);
-    setLegendYear(null);
+    setPinned(closest.period.id);
+    setLegendId(null);
     setHover(closest);
   }
   const observed =
-    hover && (pinned === null || hover.period.year === pinned) ? hover : null;
+    hover && (pinned === null || hover.period.id === pinned) ? hover : null;
   const cardLeft = observed
     ? Math.min(
         Math.max(0, x(sessionOf(observed.period, observed.point)!) - 100),
         Math.max(0, width - 200),
       )
     : 0;
-  const years = available.map((p) => p.year);
   const ticks = Array.from(
     new Set([
       minX,
@@ -564,6 +700,8 @@ function TimelinePlot({
               </button>
               <button
                 aria-pressed={mode === "current"}
+                aria-label={`Tahun Berjalan ${currentYear}${hasCurrentData ? "" : ", belum ada data"}`}
+                disabled={!hasCurrentData}
                 onClick={() => switchMode("current")}
               >
                 Tahun Berjalan
@@ -590,30 +728,36 @@ function TimelinePlot({
           </div>
           <div className="timeline-legend" aria-label="Fokus periode">
             <div>
-              {years.map((year) => (
+              {available.map((period) => (
                 <button
-                  key={year}
-                  style={{ "--year-color": color(year) } as React.CSSProperties}
-                  className={activeYear === year ? "focused" : ""}
-                  aria-pressed={pinned === year}
-                  aria-label={`Fokus tahun ${year}`}
-                  onMouseEnter={() => setLegendYear(year)}
-                  onMouseLeave={() => setLegendYear(null)}
-                  onFocus={() => setLegendYear(year)}
-                  onBlur={() => setLegendYear(null)}
+                  key={period.id}
+                  style={{ "--year-color": color(period.year) } as React.CSSProperties}
+                  className={activeId === period.id ? "focused" : ""}
+                  aria-pressed={pinned === period.id}
+                  aria-label={`Fokus peristiwa ${periodLabel(period)}`}
+                  onMouseEnter={() => setLegendId(period.id)}
+                  onMouseLeave={() => setLegendId(null)}
+                  onFocus={() => setLegendId(period.id)}
+                  onBlur={() => setLegendId(null)}
                   onClick={() => {
-                    setPinned(pinned === year ? null : year);
+                    setPinned(pinned === period.id ? null : period.id);
                     setHover(null);
                   }}
                 >
                   <i />
-                  {year}
-                  {pinned === year && <LockKeyhole size={13} />}
+                  {periodLabel(period)}
+                  {pinned === period.id && <LockKeyhole size={13} />}
                 </button>
               ))}
             </div>
           </div>
         </div>
+        {missingYears.length > 0 && (
+          <p className="timeline-gap-note" role="note">
+            Belum ada kurva harga untuk {missingYears.join(", ")} pada snapshot ini.
+            Tahun kosong bukan bukti tidak ada pembagian dividen.
+          </p>
+        )}
         <div ref={setContainer} className="timeline-chart-wrap">
           {available.length ? (
             <>
@@ -622,14 +766,14 @@ function TimelinePlot({
                 height={height}
                 viewBox={`0 0 ${width} ${height}`}
                 role="img"
-                aria-label={`Overlay harga ${symbol}, ${years.join(", ")}; ${units === "price" ? "rupiah" : "perubahan persen"}; urutan titik harga tersedia relatif ex-date`}
+                aria-label={`Overlay harga ${symbol}, ${available.map(periodLabel).join(", ")}; ${units === "price" ? "rupiah" : "perubahan persen"}; urutan titik harga tersedia relatif ex-date`}
                 onPointerMove={onPointerMove}
                 onClick={onChartClick}
                 onPointerLeave={() => setHover(null)}
               >
                 <title>Harga historis {symbol} pada periode dividen</title>
                 <desc>
-                  Klik garis atau area grafik, atau pilih tahun pada tombol
+                  Klik garis atau area grafik, atau pilih peristiwa pada tombol
                   legenda, untuk mengunci fokus dan membaca timeline tanggal di
                   bawah grafik. Klik grafik lagi untuk melepas fokus.
                 </desc>
@@ -672,30 +816,31 @@ function TimelinePlot({
                 {[...available]
                   .sort(
                     (a, b) =>
-                      Number(a.year === activeYear) -
-                      Number(b.year === activeYear),
+                      Number(a.id === activeId) -
+                      Number(b.id === activeId),
                   )
                   .map((period) => {
                     const points = visiblePoints(period);
                     if (!points.length) return null;
                     const fade =
-                      activeYear !== null && period.year !== activeYear;
+                      activeId !== null && period.id !== activeId;
                     return (
                       <g
                         key={period.id}
                         data-period={period.year}
+                        data-event={period.id}
                         opacity={fade ? 0.25 : 1}
                         className="timeline-series"
                       >
                         <path
                           d={`${line(period)} L${x(sessionOf(period, points.at(-1)!)!)},${bottom} L${x(sessionOf(period, points[0])!)},${bottom} Z`}
                           fill={color(period.year)}
-                          fillOpacity={period.year === activeYear ? 0.06 : 0}
+                          fillOpacity={period.id === activeId ? 0.06 : 0}
                         />
                         <path
                           d={line(period)}
                           stroke={color(period.year)}
-                          strokeWidth={period.year === activeYear ? 3 : 2.1}
+                          strokeWidth={period.id === activeId ? 3 : 2.1}
                           fill="none"
                           strokeLinejoin="round"
                         />
@@ -707,7 +852,7 @@ function TimelinePlot({
                   value(movement.ex) !== null && (
                     <g
                       data-cum-ex-area={movement.direction}
-                      aria-label={`Area cum ke ex-date ${active?.year}: ${pct(movement.changePct)}`}
+                      aria-label={`Area cum ke ex-date ${active ? periodLabel(active) : ""}: ${pct(movement.changePct)}`}
                     >
                       <rect
                         x={x(sessionOf(active!, movement.cum)!)}
@@ -848,13 +993,13 @@ function TimelinePlot({
       {active && (
         <section
           className="timeline-chronology"
-          aria-label={`Detail peristiwa ${active.year}`}
+          aria-label={`Detail peristiwa ${periodLabel(active)}`}
         >
           <div className="timeline-focus-heading">
             <p className="eyebrow">02 / DETAIL PERISTIWA</p>
             <h3>
               Jejak dividen{" "}
-              <span style={{ color: color(active.year) }}>{active.year}</span>
+              <span style={{ color: color(active.year) }}>{periodLabel(active)}</span>
             </h3>
             <span className="small muted">{active.cycle}</span>
           </div>
@@ -900,7 +1045,7 @@ function TimelinePlot({
             </div>
           </div>
           <details className="timeline-price-table">
-            <summary>Lihat data harga {active.year}</summary>
+            <summary>Lihat data harga {periodLabel(active)}</summary>
             <div className="table-scroll">
               <table>
                 <thead>

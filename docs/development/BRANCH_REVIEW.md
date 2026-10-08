@@ -1,5 +1,27 @@
 # Review branch untuk Vercel — 8 Oktober 2026
 
+## Pembaruan BR-04 — integrasi desain dan data lokal
+
+Branch lokal `codex/editorial-data-integration` menyimpan pekerjaan data/grafik dalam commit `95962d9` lalu mengambil desain editorial dari `origin/feat/timeline-ui-polish` `dbf21b6`. Konflik empat file BR-03 diselesaikan dengan memakai markup dan palet UI branch sebagai dasar, lalu menambahkan daftar lima kandidat, jendela grafik parsial, fokus berdasarkan ID event, gap tahun, dan tab 2026 yang mengikuti ketersediaan snapshot. Halaman Simulasi, dashboard, komponen chart lama, dan layout branch UI tidak diganti. Panel Engine Riset menampilkan statistik historis `IntelligenceDataset`; formula prediksi v0.1 tetap riset dan tidak menghasilkan angka forecast. ID hierarki chart dari branch UI diberi alias `UI-03` agar `D-03` discovery tetap unik.
+
+Pemeriksaan development gabungan dan browser dicatat di PROGRESS.md. Ini integrasi **lokal** pada branch terpisah; `main`, branch tim, Supabase, VPS, dan Vercel belum diubah oleh BR-04. Bagian BR-03/BR-01 di bawah adalah riwayat sebelum integrasi ini.
+
+## Pembaruan BR-03 — branch UI terbaru vs grafik parsial lokal
+
+Bagian BR-01 di bawah adalah snapshot historis sebelum integrasi awal ke `main`; jangan gunakan hash atau rekomendasi deployment lamanya sebagai status terkini. Untuk BR-03, `git ls-remote` dan fetch 8 Oktober memverifikasi `origin/main` = `598e135` serta `origin/feat/timeline-ui-polish` = `dbf21b6`. Branch UI terbaru sudah memasukkan `main` melalui merge `dbf21b6` dan menambah redesain editorial `95ced66`. Working tree `main` masih memuat perubahan lokal D-03/F-01/T-08 yang belum di-commit; tidak ada merge atau checkout yang dilakukan pada repo aktif.
+
+Salinan sementara dari `main` plus seluruh perubahan tracked/untracked lokal dipakai untuk `git merge --no-commit --no-ff dbf21b6`. Merge berhenti pada **empat konflik konten**: `src/components/dividend-timeline.tsx`, `src/app/globals.css`, `docs/development/PROGRESS.md`, dan `docs/development/SPRINT_PLAN.md`. `TRACEABILITY.md` auto-merge, tetapi isinya tetap perlu direkonsiliasi. Ini hasil dry run terhadap hash tersebut, bukan jaminan branch remote tidak akan berubah lagi. Salinan sementara berada di `/private/tmp/horizon-merge-audit.HbuMxA`; checkout aktif tetap pada `main` dan perubahan lokalnya tidak disentuh oleh simulasi.
+
+| Area | Kontribusi lokal yang harus bertahan | Kontribusi branch UI yang harus bertahan | Risiko bila memilih satu sisi seluruh file |
+|---|---|---|---|
+| `dividend-timeline.tsx` | Lima kandidat, grafik parsial, gap tahun, event ganda dibedakan menurut ID/ex-date, tab 2026 hanya saat ada snapshot, provenance pratinjau | Hierarki editorial, toolbar/status bar, fokus keyboard, panel chart dan kronologi | Branch UI masih memakai fokus menurut `year` dan copy lima tahun/LPPF; event ADRO pada tahun sama tertukar atau kandidat menghilang |
+| `globals.css` + `editorial.css` | Gaya kartu kandidat, catatan gap, keadaan disabled | Palet/hero/panel editorial dan layout responsif | CSS auto-merge sekalipun dapat menimpa warna/kontras atau menyembunyikan gap secara visual |
+| Dokumen sprint | D-03 discovery dan T-08 grafik parsial beserta bukti 62 tes | D-03 UI hierarchy, D-04/D-05/D-07 dan bukti UI | ID `D-03` dipakai dua task berbeda; status atau bukti bisa keliru jika teks digabung begitu saja |
+
+Urutan integrasi yang aman: (1) simpan perubahan lokal pada branch kerja tersendiri dengan commit yang hanya berisi file terpilih; periksa bahwa credential/runtime DB tidak ikut; (2) buat branch integrasi dari `main`, gabungkan hash UI yang sudah di-fetch, lalu gabungkan branch kerja lokal; (3) resolusi per komponen, bukan `accept ours/theirs` satu file; pakai kerangka visual UI terbaru sambil memindahkan logika kandidat/event-ID/gap/tab disabled dari T-08; (4) beri ID unik untuk task hierarki UI, misalnya `UI-03` dengan catatan asal `D-03`, dan pertahankan D-03 discovery; (5) jalankan tes backend, typecheck, lint, build, smoke lima endpoint, serta browser desktop/mobile untuk semua kandidat dan dua event ADRO 2024; (6) review diff final sebelum merge ke `main` atau push. Backend FastAPI/discovery dan snapshot Sectors lokal tidak berkonflik dengan branch UI pada dry run, tetapi tetap harus masuk commit integrasi. Jangan menafsirkan build hijau sebagai bukti semantik chart benar.
+
+BR-03 adalah review saja. Belum ada resolusi konflik, build hasil gabungan, smoke browser hasil gabungan, commit, push, atau deployment.
+
 Task BR-01: review yang diminta PM, terkait DEP-02/DEP-03 dan S5-02. Rekomendasi: **gabungkan perubahan deployment/Supabase lokal dengan feat/timeline-ui-polish, uji sebagai preview, lalu merge hasilnya ke main untuk production**. Tidak ada merge, commit, push atau deployment Vercel yang dilakukan pada review ini.
 
 ## Posisi branch yang diverifikasi dari GitHub

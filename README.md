@@ -1,6 +1,6 @@
 # Dividen Lab
 
-Workspace lokal untuk riset dan replay rotasi dividen saham Indonesia. Frontend glassmorphism/dark mengikuti palette PM; backend FastAPI. **Versi awal memakai data historis Sectors, bukan harga live atau model prediksi.**
+Workspace lokal untuk riset dan replay rotasi dividen saham Indonesia. Frontend demo memakai desain editorial dari `feat/timeline-ui-polish`; backend tetap FastAPI. **Versi awal memakai snapshot historis Sectors, bukan harga live atau model prediksi terkalibrasi.**
 
 ## Jalankan
 
@@ -49,7 +49,7 @@ npm run build
 npm run start
 ```
 
-Keduanya memakai loopback lokal. Buka http://localhost:3000/; frontend meneruskan `/api` ke backend. Snapshot yang disertakan cukup, tanpa mengambil data provider baru. Virtualenv alternatif ini tersimpan di `.runtime` yang diabaikan Git.
+Keduanya memakai loopback lokal. Buka http://localhost:3000/; frontend meneruskan `/api` ke backend. Snapshot yang disertakan cukup, tanpa mengambil data provider baru. Virtualenv alternatif ini tersimpan di `.runtime` yang diabaikan Git. **Pada checkout yang `.env.local`-nya mengarah ke Supabase/Dalang**, jangan jalankan dua perintah generik di atas tanpa override: gunakan `DATABASE_URL=sqlite:////private/tmp/horizon-local-preview.db .venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000` dan `BACKEND_URL=http://127.0.0.1:8000 npm run start` agar preview memakai database terpisah, bukan worker kedua pada Supabase.
 
 Untuk berbagi demo dengan perangkat di jaringan lokal yang sama, jalankan `bun run start:lan` sebagai pengganti `bun run start`. Buka `http://<IP-LAN-komputer>:3000` dari perangkat teman. Backend tetap berjalan pada127.0.0.1:8000; frontend meneruskan `/api` melalui port3000. Komputer host harus tetap menyala dan terhubung. Semua pengunjung memakai watchlist/rules/riwayat lokal yang sama karena akun terpisah belum tersedia. Hentikan proses LAN dan jalankan `bun run start` untuk kembali ke akses komputer sendiri.
 
@@ -59,13 +59,13 @@ Repository: https://github.com/YohanesVito/horizon. Pada clone baru, snapshot ri
 
 ## Backend Docker di Dalang
 
-Aktif per8Oktober2026: FastAPI dalam Docker di VPS Dalang, database Supabase melalui Session Pooler. [Health backend](https://10e0ff54-f828-44de-a965-5671328a08d3.svc.dalang.io/api/health). Frontend lokal3000 sudah memakai VPS; backend lokal8000 dihentikan. Cukup jalankan frontend dengan `bun run start:lan` pada konfigurasi lokal ini. Jangan menjalankan backend kedua pada database yang sama. Frontend publik/Vercel belum dideploy. Release, bukti pengujian, kendala storage dan prosedur rollback berada di [DEPLOYMENT_DALANG.md](docs/development/DEPLOYMENT_DALANG.md).
+Deployment FastAPI dalam Docker di VPS Dalang memakai Supabase melalui Session Pooler; [health backend](https://10e0ff54-f828-44de-a965-5671328a08d3.svc.dalang.io/api/health). Preview lokal terbaru pada8Oktober2026 menjalankan FastAPI sendiri dengan SQLite terpisah dan frontend3000 yang diproxy ke localhost8000, agar perubahan UI/API yang belum dideploy dapat diperiksa tanpa berbagi worker cloud. Jangan menjalankan backend kedua pada database Supabase yang sama. Status deployment frontend publik/Vercel harus diverifikasi terpisah. Release, bukti pengujian, kendala storage dan prosedur rollback berada di [DEPLOYMENT_DALANG.md](docs/development/DEPLOYMENT_DALANG.md).
 
 Frontend meneruskan `/api/*` melalui Route Handler server ke `BACKEND_URL`. Untuk backend remote, URL harus HTTPS dan `HORIZON_API_KEY` harus sama pada server Next.js dan FastAPI. Jangan menggunakan awalan `NEXT_PUBLIC_` untuk key. Jika key diaktifkan, akses langsung data API/OpenAPI memerlukan header `Authorization: Bearer ...`; hanya `/api/health` terbuka. Ini proteksi antarlayanan, bukan implementasi akun pengguna. Jalankan hanya satu proses backend untuk database Supabase yang sama.
 
 ## Fitur yang dapat dicoba
 
-**Timeline lima periode:** buka menu **Timeline → Buka pratinjau LPPF**. Bandingkan2021–2025dengan hover/fokus tahun dan modeRp/%. Tab2026memuat harga aktual sampai6Oktober2026serta panel prediksi yang belum tersedia. Katalog hanya menerima histori lengkap; sekarang belum ada emiten yang lolos seluruh verifikasi. Pratinjau LPPF terpisah dan diberi label gap data. [Runbook dan bukti pemeriksaan](docs/development/TIMELINE_IMPLEMENTATION.md).
+**Timeline kandidat:** buka **Analisis** dan pilih DMAS, LPPF, ADRO, CFIN, atau RALS. Grafik menampilkan jendela event/harga historis yang tersedia apa adanya; tahun kosong diberi label, beberapa pembayaran pada satu tahun dapat dipilih berdasarkan ex-date, dan mode Rp/% tetap ada. Semua grafik masih pratinjau karena verifikasi peristiwa/basis data belum selesai. Tab2026 hanya aktif pada LPPF dengan harga aktual sampai6Oktober2026. Panel Engine Riset menampilkan frekuensi trap dan waktu BEP historis sesuai aturan aktif, ukuran sampel, dan batas ketidakpastian; itu **bukan probabilitas atau jalur harga masa depan**. Formula v0.1 masih hipotesis riset dan prediksi numerik belum tersedia. [Runbook dan bukti pemeriksaan](docs/development/TIMELINE_IMPLEMENTATION.md).
 
 1. **Peluang:** sembilan emiten, pencarian, sorting, filter yield/frekuensi/kelengkapan data dan aturan screening tersimpan.
 2. **Detail & kalender:** 12 event kanonis tahun 2025 dari sembilan emiten yang juga ada di Intelligence; lima tahap tanggal, grafik harga setahun, riwayat dividen, null jelas.

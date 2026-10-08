@@ -2,6 +2,10 @@
 
 Status: UI/API diimplementasikan pada T-03/T-04; kelengkapan histori T-01 masih parsial. Permintaan PM: satu emiten, area transparan per periode tahunan, hover menonjolkan periode, lima tahun terakhir, hanya emiten dengan data lengkap. C-02/C-06/C-08. Bukti implementasi di TIMELINE_IMPLEMENTATION.md.
 
+**Perubahan PM 8 Oktober:** frasa “hanya emiten dengan data lengkap” kini dibatasi pada katalog **grafik overlay terverifikasi**. Penemuan/ranking nama emiten tidak memakai gate lima tahun. Kandidat dengan grafik belum lengkap tetap boleh ditemukan dengan tahun, sumber dan gap yang jelas; pembahasan gate di bawah adalah spesifikasi grafik, bukan filter discovery.
+
+**Arahan PM terbaru 8 Oktober (T-08):** syarat lima tahun penuh juga dilepas untuk **menampilkan grafik**. Periode dengan event dan harga yang benar-benar tersedia boleh tampil sebagai pratinjau, sementara tahun tanpa kurva dinyatakan sebagai gap snapshot. Beberapa event dalam satu tahun tetap terpisah berdasarkan ex-date; data tidak diimputasi. Kriteria lengkap lima tahun di bawah adalah riwayat rancangan awal dan bukan gate tampilan yang berlaku. Verifikasi asal jadwal, basis harga/DPS, dan jenis siklus tetap diperlukan sebelum mengesahkan data sebagai lengkap (ISS-041).
+
 ## Keputusan desain yang sedang dirumuskan
 
 - Gunakan overlay, bukan stacked area: harga antarperiode tidak dijumlahkan. Garis harga tetap terlihat, fill tipis; hover garis/legenda menonjolkan periode dan meredupkan yang lain. Klik mengunci fokus; perangkat sentuh memakai tap dan pemilih periode.

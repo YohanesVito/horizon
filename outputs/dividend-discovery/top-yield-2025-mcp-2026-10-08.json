@@ -1,0 +1,33 @@
+{
+  "transport": "MCP Streamable HTTP",
+  "retrieved_at": "2026-10-08T02:35:32.214040+08:00",
+  "initialization": {
+    "protocolVersion": "2025-03-26",
+    "capabilities": {
+      "tools": {
+        "listChanged": true
+      }
+    },
+    "serverInfo": {
+      "name": "sectors-mcp",
+      "version": "1.0.0"
+    }
+  },
+  "method": "tools/call",
+  "tool": "fetch-companies",
+  "arguments": {
+    "where": "total_dividend[2025] > 0 and total_yield[2025] > 0",
+    "order_by": "-total_yield[2025]",
+    "limit": 20,
+    "offset": 0,
+    "include_query_values": true
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"results\": [\n    {\n      \"symbol\": \"DMAS.JK\",\n      \"company_name\": \"PT Puradelta Lestari Tbk\",\n      \"query_values\": {\n        \"total_dividend[2025]\": 29,\n        \"total_yield[2025]\": 0.208766743540764\n      }\n    },\n    {\n      \"symbol\": \"LPPF.JK\",\n      \"company_name\": \"PT MDS Retailing Tbk\",\n      \"query_values\": {\n        \"total_dividend[2025]\": 300,\n        \"total_yield[2025]\": 0.178184926509857\n      }\n    },\n    {\n      \"symbol\": \"ADRO.JK\",\n      \"company_name\": \"Alamtri Resources Indonesia Tbk\",\n      \"query_values\": {\n        \"total_dividend[2025]\": 311.84,\n        \"total_yield[2025]\": 0.162205629050732\n      }\n    },\n    {\n      \"symbol\": \"CFIN.JK\",\n      \"company_name\": \"Clipan Finance Indonesia Tbk\",\n      \"query_values\": {\n        \"total_dividend[2025]\": 50,\n        \"total_yield[2025]\": 0.159412071108818\n      }\n    },\n    {\n      \"symbol\": \"RALS.JK\",\n      \"company_name\": \"Ramayana Lestari Sentosa Tbk\",\n      \"query_values\": {\n        \"total_dividend[2025]\": 60,\n        \"total_yield[2025]\": 0.151853129267693\n      }\n    },\n    {\n      \"symbol\": \"ACRO.JK\",\n      \"company_name\": \"PT Samcro Hyosung Adilestari Tbk.\",\n      \"query_values\": {\n        \"total_dividend[2025]\": 10.14,\n        \"total_yield[2025]\": 0.137144833803177\n      }\n    },\n    {\n      \"symbol\": \"TPMA.JK\",\n      \"company_name\": \"Trans Power Marine Tbk\",\n      \"query_values\": {\n        \"total_dividend[2025]\": 80,\n        \"total_yield[2025]\": 0.135175764560699\n      }\n    },\n    {\n      \"symbol\": \"TAPG.JK\",\n      \"company_name\": \"PT Triputra Agro Persada Tbk\",\n      \"query_values\": {\n        \"total_dividend[2025]\": 165,\n        \"total_yield[2025]\": 0.133465860038996\n      }\n    },\n    {\n      \"symbol\": \"PTBA.JK\",\n      \"company_name\": \"Bukit Asam Tbk\",\n      \"query_values\": {\n        \"total_dividend[2025]\": 332.437,\n        \"total_yield[2025]\": 0.132319927215576\n      }\n    },\n    {\n      \"symbol\": \"ITMG.JK\",\n      \"company_name\": \"Indo Tambangraya Megah Tbk\",\n      \"query_values\": {\n        \"total_dividend[2025]\": 2983,\n        \"total_yield[2025]\": 0.129304971545935\n      }\n    },\n    {\n      \"symbol\": \"YUPI.JK\",\n      \"company_name\": \"PT Yupi Indo Jelly Gum Tbk\",\n      \"query_values\": {\n        \"total_dividend[2025]\": 222.365,\n        \"total_yield[2025]\": 0.126554531976581\n      }\n    },\n    {\n      \"symbol\": \"KKGI.JK\",\n      \"company_name\": \"Resource Alam Indonesia Tbk\",\n      \"query_values\": {\n        \"total_dividend[2025]\": 47,\n        \"total_yield[2025]\": 0.125686962157488\n      }\n    },\n    {\n      \"symbol\": \"MPMX.JK\",\n      \"company_name\": \"PT Mitra Pinasthika Mustika Tbk\",\n      \"query_values\": {\n        \"total_dividend[2025]\": 120,\n        \"total_yield[2025]\": 0.123762704432011\n      }\n    },\n    {\n      \"symbol\": \"BSSR.JK\",\n      \"company_name\": \"Baramulti Suksessarana Tbk\",\n      \"query_values\": {\n        \"total_dividend[2025]\": 500.797,\n        \"total_yield[2025]\": 0.123435972258449\n      }\n    },\n    {\n      \"symbol\": \"CLPI.JK\",\n      \"company_name\": \"Colorpak Indonesia Tbk\",\n      \"query_values\": {\n        \"total_dividend[2025]\": 139.21,\n        \"total_yield[2025]\": 0.113188616931438\n      }\n    },\n    {\n      \"symbol\": \"GHON.JK\",\n      \"company_name\": \"PT Gihon Telekomunikasi Indonesia Tbk\",\n      \"query_values\": {\n        \"total_dividend[2025]\": 180,\n        \"total_yield[2025]\": 0.111529730260372\n      }\n    },\n    {\n      \"symbol\": \"AMAG.JK\",\n      \"company_name\": \"Asuransi Multi Artha Guna Tbk\",\n      \"query_values\": {\n        \"total_dividend[2025]\": 40,\n        \"total_yield[2025]\": 0.111352272331715\n      }\n    },\n    {\n      \"symbol\": \"LPIN.JK\",\n      \"company_name\": \"Multi Prima Sejahtera Tbk\",\n      \"query_values\": {\n        \"total_dividend[2025]\": 45,\n        \"total_yield[2025]\": 0.110042691230774\n      }\n    },\n    {\n      \"symbol\": \"PBID.JK\",\n      \"company_name\": \"PT Panca Budi Idaman Tbk\",\n      \"query_values\": {\n        \"total_dividend[2025]\": 55,\n        \"total_yield[2025]\": 0.109498903155327\n      }\n    },\n    {\n      \"symbol\": \"CTBN.JK\",\n      \"company_name\": \"Citra Tubindo Tbk\",\n      \"query_values\": {\n        \"total_dividend[2025]\": 530,\n        \"total_yield[2025]\": 0.108537763357162\n      }\n    }\n  ],\n  \"pagination\": {\n    \"total_count\": 368,\n    \"showing\": 20,\n    \"limit\": 20,\n    \"offset\": 0,\n    \"has_next\": true,\n    \"has_previous\": false,\n    \"next_offset\": 20,\n    \"previous_offset\": null\n  }\n}"
+      }
+    ]
+  }
+}

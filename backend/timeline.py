@@ -1,9 +1,11 @@
-"""Sourced timeline views. Incomplete evidence stays outside the eligible catalog."""
+"""Sourced timeline views. Available event windows can be previewed as-is."""
 from datetime import date
 import json
 from math import isfinite
 from pathlib import Path
 from .data import ROOT, unpack
+from .discovery import SNAPSHOT, top_dividend_yield
+from .intelligence import valid_bar
 
 HISTORY_YEARS = list(range(2021, 2026))
 CURRENT_YEAR = 2026  # Snapshot period, not a claim that this feed is live.
@@ -84,38 +86,77 @@ def make_period(event, bars, sources, review=None):
 
 
 def history_eligible(periods, years=HISTORY_YEARS):
-    # Require exactly one reviewed, comparable cycle for each requested year.
-    cycles = {p.get('cycle_key') for p in periods if p['year'] in years}
-    return len(cycles) == 1 and None not in cycles and all(len([p for p in periods if p['year'] == y]) == 1 and
-               all(p['eligible'] for p in periods if p['year'] == y) for y in years)
+    # Missing years do not disqualify a company; each displayed event still needs review.
+    visible = [period for period in periods if period['year'] in years]
+    return bool(visible) and all(period['eligible'] for period in visible)
 
 
 class TimelineDataset:
-    def __init__(self, root: Path = ROOT):
+    def __init__(self, root: Path = ROOT, intelligence_events=None):
         folder = root / 'outputs/timeline-audit'
         self.companies = {}
         coverage_path = folder / 'coverage.json'
         self.coverage = json.loads(coverage_path.read_text()) if coverage_path.exists() else {}
         pilot_path = folder / 'pilot-LPPF.json'
-        if not pilot_path.exists():
-            return
         periods = []
-        for record in json.loads(pilot_path.read_text()):
-            path = root / record['price_file']
-            if path.exists():
-                periods.append(make_period(record['calendar'], unpack(path), [
-                    record['price_file'], 'outputs/timeline-audit/pilot-LPPF.json']))
         current = []
-        calendar = folder / 'raw/current-calendar-2026-04-01.json'
-        if calendar.exists():
-            for event in unpack(calendar).get('dividend', []):
-                if event['symbol'] != 'LPPF.JK' or not event['ex_date'].startswith(str(CURRENT_YEAR)):
+        if pilot_path.exists():
+            for record in json.loads(pilot_path.read_text()):
+                path = root / record['price_file']
+                if path.exists():
+                    periods.append(make_period(record['calendar'], unpack(path), [
+                        record['price_file'], 'outputs/timeline-audit/pilot-LPPF.json']))
+            calendar = folder / 'raw/current-calendar-2026-04-01.json'
+            if calendar.exists():
+                for event in unpack(calendar).get('dividend', []):
+                    if event['symbol'] != 'LPPF.JK' or not event['ex_date'].startswith(str(CURRENT_YEAR)):
+                        continue
+                    paths = sorted((folder / 'raw').glob('current-prices-LPPF-*.json'))
+                    bars = [b for path in paths for b in unpack(path)]
+                    current.append(make_period(event, bars, [str(p.relative_to(root)) for p in [calendar, *paths]]))
+            self.companies['LPPF'] = {'symbol': 'LPPF', 'name': 'PT MDS Retailing Tbk',
+                'history': periods, 'current': current, 'eligible': history_eligible(periods)}
+
+        if not (root / SNAPSHOT).exists():
+            return
+        if intelligence_events is None:
+            from .intelligence import IntelligenceDataset
+            intelligence_events = IntelligenceDataset(root / 'outputs/intelligence/raw').events
+        for candidate in top_dividend_yield(root)['candidates']:
+            symbol = candidate['symbol']
+            if symbol in self.companies:
+                continue  # Keep the wider 2021–2025 pilot window for LPPF.
+            history = []
+            for event in intelligence_events:
+                if event['symbol'] != symbol or not event['bars'] or not event.get('cum_date'):
                     continue
-                paths = sorted((folder / 'raw').glob('current-prices-LPPF-*.json'))
-                bars = [b for path in paths for b in unpack(path)]
-                current.append(make_period(event, bars, [str(p.relative_to(root)) for p in [calendar, *paths]]))
-        self.companies['LPPF'] = {'symbol': 'LPPF', 'name': 'PT MDS Retailing Tbk',
-            'history': periods, 'current': current, 'eligible': history_eligible(periods)}
+                next_ex = event.get('next_ex_date')
+                bars = [bar for bar in event['bars'] if valid_bar(bar)
+                        and (not next_ex or bar['date'] < next_ex)]
+                if not bars:
+                    continue
+                source_files = [f'outputs/intelligence/raw/{name}' for name in event['sources']]
+                period = make_period({
+                    'symbol': f'{symbol}.JK', 'ex_date': event['ex_date'],
+                    'cum_date': event['cum_date'], 'recording_date': event['recording_date'],
+                    'payment_date': event['payment_date'], 'dividend_amount': event['dps'],
+                    'declaration_date': event['declaration_date'],
+                }, bars, source_files)
+                period['issues'] = sorted(set([
+                    *period['issues'], *event['reasons'], *event['warnings'],
+                    *(['Ada bar OHLCV tidak valid; dikeluarkan dari grafik.']
+                      if any(not valid_bar(bar) for bar in event['bars']) else []),
+                    *(['Jendela harga berhenti sebelum ex-date dividen berikutnya.']
+                      if next_ex and any(bar['date'] >= next_ex for bar in event['bars']) else []),
+                ]))
+                period['eligible'] = not period['issues']
+                history.append(period)
+            if history:
+                history.sort(key=lambda period: period['ex_date'])
+                self.companies[symbol] = {
+                    'symbol': symbol, 'name': candidate['name'], 'history': history,
+                    'current': [], 'eligible': history_eligible(history),
+                }
 
     def catalog(self):
         return {'history_years': HISTORY_YEARS, 'current_year': CURRENT_YEAR,
@@ -124,12 +165,12 @@ class TimelineDataset:
             'calendar_candidates': self.coverage.get('five_year_calendar_core_count', 0),
             'audited_symbols': self.coverage.get('symbol_count', 0),
             'source': 'Sectors MCP + REST · snapshot riset',
-            'reason': 'Histori harus lengkap dan terverifikasi sebelum masuk katalog timeline.'}
+            'reason': 'Periode dengan harga tersedia ditampilkan apa adanya; data yang belum diverifikasi tetap pratinjau.'}
 
     def detail(self, symbol, preview=False):
         company = self.companies[symbol]
         if not company['eligible'] and not preview:
-            raise ValueError('Histori belum lengkap. Data ini hanya tersedia dalam pratinjau berlabel.')
+            raise ValueError('Data timeline belum terverifikasi. Buka sebagai pratinjau berlabel.')
         return {**company, 'preview': not company['eligible'],
             'history_years': HISTORY_YEARS, 'current_year': CURRENT_YEAR,
             'axis_unit': 'calendar_days', 'forecast': {'status': 'not_available', 'points': [],

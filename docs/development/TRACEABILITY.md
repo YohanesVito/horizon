@@ -88,15 +88,25 @@ Instruksi PM 7 Oktober memprioritaskan satu alur: analisis emiten (histori dan p
 
 D-02 menggabungkan arah demo dari PM (D-01, perubahan lokal pada branch UI) dengan implementasi Sammy pada `feat/chart-sammy` (UX-01–UX-04: input modal, pilihan strategi, klik chart, dan copy/istilah). `dashboard.tsx` diselaraskan manual agar pemangkasan copy/sidebar Sammy tidak mengembalikan delapan menu atau landing Peluang. Ini sinkronisasi kontribusi, bukan bukti bahwa simulator satu-emiten, data lengkap, atau forecast sudah selesai.
 
+## Penemuan emiten D-03 — perubahan syarat PM 8 Oktober
+
+C-01/C-02: kelengkapan histori overlay lima tahun tidak lagi menjadi filter untuk menemukan **nama emiten**. D-03 mengambil peringkat yield tahunan 2025 dari MCP Sectors untuk seluruh emiten dengan dividen/yield positif yang dikembalikan screener, dan menampilkan lima teratas sebagai kandidat historis. Tahun, waktu snapshot, DPS dan batas interpretasi terlihat. `history_eligible` serta katalog grafik terverifikasi tetap dipakai hanya untuk overlay; emiten tanpa grafik dapat tetap muncul dalam daftar kandidat. ISS-041 sekarang membatasi grafik, bukan penemuan nama. Peringkat ini belum mengukur keuntungan strategi, keamanan dividen, atau kondisi pasar saat ini (ISS-057).
+
+Arahan PM berikutnya pada 8 Oktober mengubah batas grafik juga: C-02/C-08 melalui T-08 menampilkan **semua jendela peristiwa yang mempunyai event dan harga dalam snapshot** untuk lima kandidat, tanpa mewajibkan lima tahun penuh. Tahun tanpa kurva ditandai sebagai kekosongan snapshot; beberapa pembayaran pada satu tahun tetap terpisah menurut ex-date. `eligible` kini menguji verifikasi setiap periode yang ditampilkan, bukan jumlah tahun. Semua kandidat saat ini masih berstatus pratinjau karena gap verifikasi ISS-041; peringkat yield historis D-03 tidak berubah.
+
+## Formula prediksi F-01 — rancangan riset 8 Oktober
+
+C-02/C-04/C-06/C-07: [PREDICTION_FORMULA.md](./PREDICTION_FORMULA.md) mendefinisikan input point-in-time, target harga/trap/BEP/waktu pulih, hipotesis model dan cara menguji sebelum angka prediksi ditampilkan. Ini **dokumen proposal**, bukan implementasi S4-02 atau penyelesaian ISS-024/ISS-042; statusnya tetap mengikuti PROGRESS.md dan ISSUES.md.
+
 ## Integrasi BR-02 dan deployment frontend V-01/V-02
 
 C-02/C-04/C-08, S5-02: gabungan UI polish523c993 dengan proxy Next/Supabase/Dalang f64df85 mempertahankan kedua kontribusi. Fixture berversi membuktikan hitungan tidak berubah; issue052/053/054 merujuk UX/handoff, sedangkan044–050 tetap migrasi/deployment. Status deployment Vercel dan bukti aktual mengikuti PROGRESS.md; bukan kelulusan UAT.
 
 Arahan PM terbaru 8 Oktober menyerahkan deployment Vercel kepada PM dan meminta merge main segera. V-02 dibatasi merge/push; V-01 tetap PARTIAL/HANDOFF. Env server telah dipasang setelah izin; build cloud READY belum merupakan verifikasi browser/API/database atau UAT.
 
-## Hierarki chart D-03 (Chunk 2)
+## Hierarki chart UI-03 (Chunk 2; D-03 pada branch UI asal)
 
-D-03 merapikan hirarki visual timeline agar grafik lima tahun menjadi fokus utama layar. Header/picker emiten dibuat kompak, kontrol grafik disatukan dalam dua baris terstruktur (`timeline-toolbar` untuk legenda tahun dan sakelar mode/satuan; `timeline-status-bar` untuk sinyal pergerakan Cum → Ex dan instruksi interaksi). Fitur interaksi Sammy (klik/tap chart untuk mengunci fokus, tombol tahun, opasitas seri, istilah hari bursa, dan form simulator) tetap bekerja tanpa perubahan rumus/data. Sisa pekerjaan dialihkan ke Chunk 3 (pemisahan tegas 2026 aktual vs future) dan Chunk 4 (handoff emiten ke simulator).
+UI-03 merapikan hirarki visual timeline agar grafik historis menjadi fokus utama layar. Header/picker emiten dibuat kompak, kontrol grafik disatukan dalam dua baris terstruktur (`timeline-toolbar` untuk legenda peristiwa dan sakelar mode/satuan; `timeline-status-bar` untuk sinyal pergerakan Cum → Ex dan instruksi interaksi). Fitur interaksi Sammy (klik/tap chart untuk mengunci fokus, tombol peristiwa, opasitas seri, istilah hari bursa, dan form simulator) tetap bekerja; T-08 memperluas fokus dari tahun ke ID peristiwa agar beberapa dividen pada satu tahun dapat dibaca terpisah. ID UI-03 dipakai agar tidak bertabrakan dengan D-03 penemuan emiten. Pemisahan tegas aktual vs prediksi dan handoff emiten ke simulator masih terbuka.
 
 ## Penyederhanaan UI D-04
 
@@ -107,3 +117,7 @@ D-04 menindaklanjuti keputusan PM 8 Oktober untuk memprioritaskan alur dan tampi
 D-05 mengubah hierarki visual dua layar demo atas contoh Arcturis dari PM, tanpa memperluas cakupan produk. C-02 tetap melalui grafik multi-tahun beserta kontrol fokus/satuan dan detail event; C-04 melalui form replay, pembanding, dan hasil gross; C-08 melalui sumber, caveat pratinjau LPPF, dan metodologi. Hero yang besar menempatkan chart/form di bawah fold secara sengaja. Tidak ada requirement yang ditutup oleh styling ini: ISS-041/042/054 dan UAT tetap terbuka. Detail keputusan dan bukti pemeriksaan ada di [UI_REDESIGN.md](./UI_REDESIGN.md) dan [PROGRESS.md](./PROGRESS.md).
 
 D-07 menggabungkan main terbaru secara lokal dengan UI D-05. C-02/C-04/C-08 kini berada bersama backend Supabase dan proxy server Next tanpa mengubah rumus atau data. Build dan tes development lulus; browser/API lokal gabungan belum diuji karena server tidak berjalan. Merge ini tidak mempublikasikan branch atau mengubah status deployment/UAT.
+
+## Integrasi desain dan data BR-04
+
+C-01/C-02/C-08: desain editorial `feat/timeline-ui-polish` menjadi dasar tampilan; lima kandidat D-03 dan grafik parsial T-08 ditambahkan tanpa menyingkirkan toolbar, panel harga, kronologi, maupun layar Simulasi. Fokus berubah dari tahun ke ID event agar dua pembayaran satu emiten pada tahun sama tetap terpisah. C-06/C-07: panel Engine Riset membaca statistik empiris lama beserta aturan, ukuran sampel, dan rentang Wilson; ini belum menjalankan hipotesis prediksi harga/probabilitas F-01. `forecast.status` tetap `not_available` sesuai ISS-042. Perubahan dan bukti integrasi mengikuti PROGRESS.md; bukan penutupan PRD/UAT.

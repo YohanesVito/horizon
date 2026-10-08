@@ -405,6 +405,199 @@ body {
   gap: 0;
 }
 
+.editorial-app .dividend-candidates {
+  padding: clamp(48px, 6vw, 92px) clamp(24px, 5vw, 80px);
+  background: #f7f7f3;
+  color: #131e29;
+}
+
+.editorial-app .dividend-candidates-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.editorial-app .dividend-candidates-heading .eyebrow {
+  color: #db4319;
+}
+
+.editorial-app .dividend-candidates-heading h2 {
+  margin-top: 16px;
+  font-size: clamp(32px, 4vw, 58px);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 1.12;
+}
+
+.editorial-app .dividend-candidates-heading .badge {
+  border-color: #aeb5b8;
+  color: #344451;
+}
+
+.editorial-app .dividend-candidates-intro {
+  max-width: 780px;
+  margin: 24px 0 30px;
+  color: #53616b;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.editorial-app .dividend-candidates-list {
+  border-top: 1px solid #c5ccce;
+}
+
+.editorial-app .dividend-candidates-list li {
+  display: grid;
+  grid-template-columns: 50px minmax(0, 1fr) minmax(145px, auto) minmax(140px, auto);
+  align-items: center;
+  gap: 18px;
+  padding: 21px 0;
+  border-bottom: 1px solid #c5ccce;
+}
+
+.editorial-app .dividend-candidate-rank {
+  color: #db4319;
+  font: 500 14px Sora, sans-serif;
+}
+
+.editorial-app .dividend-candidate-name,
+.editorial-app .dividend-candidate-values {
+  display: grid;
+  gap: 4px;
+}
+
+.editorial-app .dividend-candidate-name strong {
+  font-size: 23px;
+  font-weight: 500;
+}
+
+.editorial-app .dividend-candidate-values strong {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.editorial-app .dividend-candidate-name span,
+.editorial-app .dividend-candidate-values span,
+.editorial-app .dividend-candidate-chart-status {
+  color: #53616b;
+  font-size: 13px;
+}
+
+.editorial-app .dividend-candidates-list .text-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #c63e17;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.editorial-app .dividend-candidates-source {
+  margin-top: 22px;
+  color: #53616b;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.editorial-app .timeline-gap-note {
+  margin: 0 0 20px;
+  padding: 13px 17px;
+  border-left: 3px solid #d9af59;
+  background: #1e2b39;
+  color: #d2dce0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.editorial-app .timeline-model-evidence {
+  padding: clamp(48px, 6vw, 92px) clamp(24px, 5vw, 80px);
+  border-bottom: 1px solid #c5ccce;
+  background: #f7f7f3;
+  color: #131e29;
+}
+
+.editorial-app .timeline-model-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.editorial-app .timeline-model-heading .eyebrow {
+  color: #db4319;
+}
+
+.editorial-app .timeline-model-heading h3 {
+  margin-top: 15px;
+  font-size: clamp(32px, 4vw, 58px);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 1.12;
+}
+
+.editorial-app .timeline-model-heading .badge {
+  border-color: #aeb5b8;
+  color: #344451;
+}
+
+.editorial-app .timeline-model-intro,
+.editorial-app .timeline-model-footnote {
+  max-width: 850px;
+  color: #53616b;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.editorial-app .timeline-model-intro {
+  margin: 24px 0 30px;
+}
+
+.editorial-app .timeline-model-footnote {
+  margin-top: 20px;
+  font-size: 13px;
+}
+
+.editorial-app .timeline-model-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid #c5ccce;
+}
+
+.editorial-app .timeline-model-metrics > div {
+  display: grid;
+  align-content: start;
+  gap: 15px;
+  min-width: 0;
+  padding: 25px 20px 25px 0;
+  border-bottom: 1px solid #c5ccce;
+}
+
+.editorial-app .timeline-model-metrics dt {
+  color: #53616b;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.editorial-app .timeline-model-metrics dd {
+  font-size: clamp(20px, 2vw, 29px);
+  line-height: 1.2;
+}
+
+.editorial-app .timeline-model-metrics small {
+  color: #53616b;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.editorial-app .timeline-segment button:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
 .editorial-app .timeline-catalog {
   display: flex;
   justify-content: space-between;
@@ -1596,6 +1789,9 @@ body {
 }
 
 @media (max-width: 1100px) {
+  .editorial-app .timeline-model-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .editorial-app .timeline-toolbar {
     flex-direction: column;
   }
@@ -1618,6 +1814,27 @@ body {
 @media (max-width: 700px) {
   .editorial-app {
     --page-gutter: 16px;
+  }
+  .editorial-app .timeline-model-evidence {
+    padding: 48px 19px;
+  }
+  .editorial-app .timeline-model-metrics > div {
+    gap: 10px;
+    padding: 20px 12px 20px 0;
+  }
+  .editorial-app .dividend-candidates {
+    padding: 48px 19px;
+  }
+  .editorial-app .dividend-candidates-list li {
+    grid-template-columns: 32px minmax(0, 1fr) auto;
+    gap: 8px 12px;
+  }
+  .editorial-app .dividend-candidate-values {
+    text-align: right;
+  }
+  .editorial-app .dividend-candidate-chart-status,
+  .editorial-app .dividend-candidates-list .text-button {
+    grid-column: 2 / -1;
   }
   .editorial-app .site-header {
     min-height: 58px;

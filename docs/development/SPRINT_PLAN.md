@@ -199,6 +199,8 @@ Docker belum tersedia; instalasi dan deployment Horizon adalah pekerjaan lanjuta
 | BR-01 | Bandingkan ancestry, perubahan polish dan kesiapan gabungan deployment tanpa mengubah checkout | Permintaan review PM; DEP-02/DEP-03, S5-02 | BRANCH_REVIEW.md, branch-review.json, build/lint/60tes/preview browser gabungan; merge dan deploy tetap langkah berikutnya |
 
 | BR-02 | Commit deployment, integrasikan UI polish, rekonsiliasi issue/fixture dan verifikasi gabungan | Persetujuan PM 8 Oktober; BR-01, C-02/C-04/C-08 | Kedua parent commit terpelihara, fixture strict berversi, build/lint/backend/proxy lulus |
+| BR-03 | Bandingkan branch UI terbaru dengan perubahan grafik parsial lokal; uji konflik dalam salinan sementara dan tetapkan urutan integrasi aman | Permintaan PM 8 Oktober; C-02/C-08; T-08 | Hash remote terkini, konflik nyata dan risiko semantik dicatat di BRANCH_REVIEW.md; checkout aktif tidak di-merge |
+| BR-04 | Integrasikan desain editorial UI dengan lima kandidat, grafik parsial per event, dan statistik risiko historis berlabel; pertahankan status forecast v0.1 sebagai riset | Permintaan PM 8 Oktober; C-01/C-02/C-06/C-08; T-08/F-01/BR-03 | Branch integrasi lokal, konflik selesai, ID task unik, build/lint/tes/backend/browser lima emiten; tidak mengklaim probabilitas prediksi atau deployment |
 | V-01 | Konfigurasi server-only dan deploy Preview Vercel dari branch gabungan | BR-02, DEP-02, S5-02 | Project/scope terverifikasi, URL Preview, browser/API sampai backend berfungsi |
 | V-02 | Merge dan push branch integrasi ke main; deployment Vercel diserahkan kepada PM | Instruksi PM terbaru 8 Oktober: deploy sendiri, merge sekarang; BR-02 | main memuat UI polish + Supabase/Dalang, remote sinkron, checkout bersih; tidak mengklaim deployment dari main atau UAT |
 
@@ -210,7 +212,30 @@ Instruksi PM terbaru memprioritaskan chart histori, periode dividen berikutnya, 
 |---|---|---|---|
 | D-01 | Navigasi demo dua area, landing analisis emiten, pratinjau LPPF langsung terbuka dengan caveat, metodologi sebagai tautan sekunder | Instruksi PM terbaru; C-02/C-08; S5-02 | Browser landing dan perpindahan area, lint/typecheck/build, tidak ada fitur lama dihapus |
 | D-02 | Sinkronkan branch UI dengan `feat/chart-sammy` sambil mempertahankan D-01; jelaskan asal kontribusi dan resolusi konflik | Instruksi PM terbaru; D-01; UX-01–UX-04 | HEAD mengikuti commit Sammy, alur D-01 tetap ada, ID issue unik, pemeriksaan integrasi lulus; tanpa commit/push baru |
-| D-03 | Rapikan hierarki informasi chart horizon: satukan toolbar & status bar, jadikan chart hero, kurangi clutter sebelum fold, pertahankan interaksi Sammy | Chunk 2; C-02/C-06/C-08; UX-01–UX-04 | Lint, typecheck, build, 46 pytest backend lulus; toolbar/legend dan status bar terintegrasi, chart terangkat ~180px tanpa overflow horizontal |
-| D-04 | Fokuskan UI demo pada alur Analisis dan Simulasi, hilangkan sidebar dua-menu, sederhanakan palet/permukaan/copy, pertahankan caveat data dan fungsi | Instruksi PM 8 Oktober; C-02/C-04/C-08; D-03 | Browser desktop/mobile dan fokus keyboard, lint/typecheck/build/backend tests; alasan desain dan batas ada di UI_REDESIGN.md |
+| D-03 | Temukan lima emiten berdasarkan yield dividen historis tanpa mensyaratkan lima tahun grafik lengkap; tampilkan status grafik secara terpisah | Keputusan PM 8 Oktober; C-01/C-02; S2-03 | Snapshot MCP Sectors, daftar kandidat dengan tahun/sumber/batas interpretasi, API dan UI diperiksa; gate grafik tetap independen |
+| UI-03 | Rapikan hierarki informasi chart horizon: satukan toolbar & status bar, jadikan chart fokus utama, pertahankan interaksi Sammy | Chunk 2 pada branch UI; C-02/C-06/C-08; UX-01–UX-04; bernama D-03 di branch asal | Bukti branch UI disimpan pada PROGRESS.md; ID diubah saat integrasi agar D-03 discovery tetap unik |
+| D-04 | Fokuskan UI demo pada alur Analisis dan Simulasi, hilangkan sidebar dua-menu, sederhanakan palet/permukaan/copy, pertahankan caveat data dan fungsi | Instruksi PM 8 Oktober; C-02/C-04/C-08; UI-03 | Browser desktop/mobile dan fokus keyboard, lint/typecheck/build/backend tests; alasan desain dan batas ada di UI_REDESIGN.md |
 | D-05 | Revisi editorial terinspirasi Arcturis: hero per viewport, palet terang/navy/jingga, tipografi besar, chart dan form/hasil lebih berjenjang; pertahankan interaksi serta caveat | Instruksi PM 8 Oktober; C-02/C-04/C-08; D-04 | Browser desktop/mobile untuk navigasi, chart, form dan metodologi; tanpa overflow, lint/typecheck/build; alasan dan batas di UI_REDESIGN.md |
 | D-07 | Gabungkan `origin/main` terbaru ke branch UI lokal tanpa push/deploy, pertahankan D-05 dan perubahan Supabase/proxy/backend main | Instruksi PM 8 Oktober; C-02/C-04/C-08; D-05 | Konflik dokumentasi diselesaikan, issue ID diselaraskan, lint/typecheck/build dan tes backend lulus; deployment live tidak disentuh |
+| D-08 | Rekonsiliasi UI chart terbaru dengan `main` yang memuat grafik parsial dan kandidat, sebelum integrasi kembali ke `main` | Permintaan PM 8 Oktober; C-01/C-02/C-08; D-07/T-08 | Fokus per ID event, chart sesi harga dan UI ringkas sama-sama bertahan; lint/typecheck/build, tes backend dan pemeriksaan browser/API; kesiapan backend live dicatat terpisah |
+
+Keputusan PM 8 Oktober: syarat histori lima tahun lengkap hanya berlaku saat **mengesahkan overlay grafik**, bukan saat menemukan nama emiten. Kandidat dengan histori grafik parsial tetap boleh tampil dengan metrik yang tersedia dan labelnya; urutan yield historis tidak menyatakan proyeksi laba atau kelayakan trading.
+
+### Formula prediksi untuk iterasi — 8 Oktober 2026
+
+| Task | Scope | Requirement | Bukti selesai |
+|---|---|---|---|
+| F-01 | Simpan hipotesis formula harga, trap, BEP dan waktu pulih beserta data, asumsi, rencana validasi, serta batas tampilnya prediksi | C-02/C-04/C-06/C-07; S4-02/T-02; instruksi PM | [PREDICTION_FORMULA.md](./PREDICTION_FORMULA.md) versi awal dan log status; dokumentasi tidak mengubah status engine prediksi |
+| F-02 | Uji dan implementasikan keluaran prediksi numerik dari formula v0.1 setelah dataset point-in-time, kecukupan sampel dan validasi walk-forward tersedia | Permintaan integrasi engine PM 8 Oktober; C-02/C-06/C-07; F-01/ISS-042 | Protokol, baseline, hasil out-of-sample dan kalibrasi ditinjau; nilai baru hanya tampil dengan status/asumsi yang dapat diaudit |
+
+### Preview lokal — permintaan PM 8 Oktober 2026
+
+| Task | Scope | Requirement | Bukti selesai |
+|---|---|---|---|
+| LOCAL-01 | Jalankan frontend dan FastAPI dari source terbaru pada loopback; gunakan SQLite preview terpisah agar backend VPS/Supabase tidak disentuh | Permintaan PM untuk mengecek hasil; C-01/C-02/C-08 | Build, localhost:3000, health/API kandidat/timeline, dan render browser diperiksa; catat batas data serta cara membuka |
+
+### Timeline apa adanya — keputusan PM 8 Oktober 2026
+
+| Task | Scope | Requirement | Bukti selesai |
+|---|---|---|---|
+| T-08 | Tampilkan grafik semua kandidat dengan jendela event/harga yang tersedia, walau tidak mencakup lima tahun; tandai tahun kosong dan bedakan beberapa event dalam satu tahun | C-02/C-08; arahan PM terbaru mengganti gate lima tahun untuk tampilan | Snapshot Sectors yang sudah di-cache, API lima kandidat, fokus per event, gap eksplisit, build/tes/browser; status verifikasi data tetap terlihat |
